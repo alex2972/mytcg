@@ -1,0 +1,15 @@
+tools/
+rea/
+my old yu gi oh game/
+compress folder.zip
+.godot/
+extracted/voice/
+extracted/png/
+extracted/mini/
+extracted/data/card/
+extracted/data/j/
+*.exe
+*.dll
+*.wav
+*.ogg
+*.mp3

@@ -1,0 +1,8 @@
+{
+"_about": "Batch 10: the last two Field Spells.",
+
+"Mountain": {"fx": [{"type": "field", "do": []},
+  {"type": "static", "mod": {"scope": "all", "filter": {"race": ["Dragon", "Winged Beast", "Thunder"]}, "atk": 200, "def": 200}}]},
+"Molten Destruction": {"fx": [{"type": "field", "do": []},
+  {"type": "static", "mod": {"scope": "all", "filter": {"attribute": "FIRE"}, "atk": 500, "def": -400}}]}
+}

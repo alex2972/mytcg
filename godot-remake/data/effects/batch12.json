@@ -1,0 +1,411 @@
+{
+ "_about": "Batch 12: the last cards of the preset decks that could be written with the current engine.",
+ "Ekibyo Drakmord": {
+  "fx": [
+   {
+    "type": "equip",
+    "target": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "monsters",
+      "filter": {
+       "face_up": true
+      },
+      "n": 1,
+      "prompt": 101
+     }
+    ],
+    "do": [
+     {
+      "op": "equip",
+      "to": "$t"
+     }
+    ]
+   },
+   {
+    "type": "static",
+    "rule": "no_attack",
+    "scope": "equipped"
+   },
+   {
+    "type": "trigger_forced",
+    "when": "end_phase",
+    "cond": [
+     {
+      "c": "turn",
+      "is": "equipped_ctrl"
+     },
+     {
+      "c": "equipped_is",
+      "filter": {}
+     }
+    ],
+    "do": [
+     {
+      "op": "counter",
+      "name": "turns",
+      "add": 1
+     },
+     {
+      "op": "if",
+      "cond": [
+       {
+        "c": "counter",
+        "name": "turns",
+        "op": ">=",
+        "v": 2
+       }
+      ],
+      "then": [
+       {
+        "op": "destroy",
+        "what": "equipped"
+       },
+       {
+        "op": "to_hand",
+        "what": "src"
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "Exchange": {
+  "fx": [
+   {
+    "type": "spell",
+    "cond": [
+     {
+      "c": "hand",
+      "who": "opp",
+      "op": ">=",
+      "v": 1
+     }
+    ],
+    "do": [
+     {
+      "op": "select",
+      "as": "a",
+      "from": "opp.hand",
+      "n": 1,
+      "min": 0,
+      "required": false,
+      "auto": false,
+      "prompt": 244
+     },
+     {
+      "op": "select",
+      "as": "b",
+      "from": "self.hand",
+      "n": 1,
+      "min": 0,
+      "required": false,
+      "auto": false,
+      "chooser": "opp",
+      "prompt": 244
+     },
+     {
+      "op": "take_from_hand",
+      "what": "$a",
+      "to": "self"
+     },
+     {
+      "op": "take_from_hand",
+      "what": "$b",
+      "to": "opp"
+     }
+    ]
+   }
+  ]
+ },
+ "Jowgen the Spiritualist": {
+  "fx": [
+   {
+    "type": "ignition",
+    "cond": [
+     {
+      "c": "hand",
+      "who": "self",
+      "op": ">=",
+      "v": 1
+     }
+    ],
+    "cost": [
+     {
+      "op": "discard",
+      "who": "self",
+      "n": 1,
+      "random": true
+     }
+    ],
+    "do": [
+     {
+      "op": "destroy",
+      "what": {
+       "from": "monsters",
+       "filter": {
+        "special_summoned": true
+       }
+      }
+     }
+    ]
+   },
+   {
+    "type": "static",
+    "rule": "no_special_summon",
+    "scope": "all"
+   }
+  ]
+ },
+ "Collected Power": {
+  "fx": [
+   {
+    "type": "trap",
+    "speed": 2,
+    "when": [
+     "summoned",
+     "special_summoned",
+     "flip_summoned",
+     "attack_declared",
+     "activated_spell",
+     "activated_trap",
+     "standby_phase",
+     "end_phase"
+    ],
+    "target": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "monsters",
+      "filter": {
+       "face_up": true
+      },
+      "n": 1,
+      "prompt": 101
+     }
+    ],
+    "do": [
+     {
+      "op": "move_equips",
+      "to": "$t"
+     }
+    ]
+   }
+  ]
+ },
+ "Dark Spirit of the Silent": {
+  "fx": [
+   {
+    "type": "trap",
+    "speed": 2,
+    "when": [
+     "attack_declared"
+    ],
+    "cond": [
+     {
+      "c": "event_by",
+      "who": "opp"
+     },
+     {
+      "c": "has",
+      "zone": "opp.monsters",
+      "filter": {
+       "face_up": true,
+       "not_attacker": true
+      },
+      "n": 1
+     }
+    ],
+    "target": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "opp.monsters",
+      "filter": {
+       "face_up": true,
+       "not_attacker": true
+      },
+      "n": 1,
+      "prompt": 163
+     }
+    ],
+    "do": [
+     {
+      "op": "swap_attacker",
+      "to": "$t"
+     }
+    ]
+   }
+  ]
+ },
+ "Gust": {
+  "fx": [
+   {
+    "type": "trap",
+    "speed": 2,
+    "when": [
+     "destroyed"
+    ],
+    "cond": [
+     {
+      "c": "event_by",
+      "who": "self"
+     },
+     {
+      "c": "event_card",
+      "filter": {
+       "type": "spell"
+      }
+     },
+     {
+      "c": "has",
+      "zone": "field",
+      "filter": {
+       "type": [
+        "spell",
+        "trap"
+       ]
+      },
+      "n": 1
+     }
+    ],
+    "target": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "field",
+      "filter": {
+       "type": [
+        "spell",
+        "trap"
+       ]
+      },
+      "n": 1,
+      "prompt": 141
+     }
+    ],
+    "do": [
+     {
+      "op": "destroy",
+      "what": "$t"
+     }
+    ]
+   }
+  ]
+ },
+ "Patrol Robo": {
+  "fx": []
+ },
+ "Last Will": {
+  "fx": [
+   {
+    "type": "spell",
+    "stay": true,
+    "do": []
+   },
+   {
+    "type": "trigger_forced",
+    "when": "sent_to_grave",
+    "cond": [
+     {
+      "c": "was_on_field"
+     },
+     {
+      "c": "event_by",
+      "who": "self"
+     },
+     {
+      "c": "event_card",
+      "filter": {
+       "type": "monster"
+      }
+     },
+     {
+      "c": "turn",
+      "is": "self"
+     }
+    ],
+    "do": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "self.deck",
+      "filter": {
+       "type": "monster",
+       "atk_max": 1500
+      },
+      "n": 1,
+      "min": 0,
+      "required": false,
+      "auto": false,
+      "prompt": 26
+     },
+     {
+      "op": "special_summon",
+      "what": "$t",
+      "pos": "atk",
+      "face_up": true
+     },
+     {
+      "op": "shuffle",
+      "who": "self"
+     },
+     {
+      "op": "to_grave",
+      "what": "src"
+     }
+    ]
+   },
+   {
+    "type": "trigger_forced",
+    "when": "end_phase",
+    "do": [
+     {
+      "op": "to_grave",
+      "what": "src"
+     }
+    ]
+   }
+  ]
+ },
+ "Chimera the Flying Mythical Beast": {
+  "fx": [
+   {
+    "type": "trigger_forced",
+    "when": "destroyed",
+    "zone": "grave",
+    "cond": [
+     {
+      "c": "event_src"
+     }
+    ],
+    "do": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "self.grave",
+      "filter": {
+       "name_in": [
+        "Gazelle the King of Mythical Beasts",
+        "Berfomet"
+       ]
+      },
+      "n": 1,
+      "min": 0,
+      "required": false,
+      "auto": false,
+      "prompt": 83
+     },
+     {
+      "op": "special_summon",
+      "what": "$t",
+      "pos": "atk",
+      "face_up": true
+     }
+    ]
+   }
+  ]
+ }
+}

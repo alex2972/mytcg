@@ -1,0 +1,43 @@
+INFO  Using log config file: jar:file:/Z:/process/tools/ghidra_12.1.4_PUBLIC/Ghidra/Framework/Generic/lib/Generic.jar!/generic.log4j.xml (LoggingInitialization)  
+INFO  Using log file: C:\Users\Usuario\AppData\Roaming\ghidra\ghidra_12.1.4_PUBLIC\application.log (LoggingInitialization)  
+INFO  Loading user preferences: C:\Users\Usuario\AppData\Roaming\ghidra\ghidra_12.1.4_PUBLIC\preferences (Preferences)  
+INFO  Searching for classes... (ClassSearcher)  
+INFO  Class search complete (1191 ms) (ClassSearcher)  
+INFO  Initializing SSL Context (DefaultSSLContextInitializer)  
+INFO  Initializing Random Number Generator... (SecureRandomFactory)  
+INFO  Random Number Generator initialization complete: SHA1PRNG (SecureRandomFactory)  
+INFO  Trust manager disabled, cacerts have not been set (DefaultTrustManagerFactory)  
+INFO  Headless startup complete (6919 ms) (AnalyzeHeadless)  
+INFO  Class searcher loaded 59 extension points (20 false positives) (ClassSearcher)  
+INFO  HEADLESS Script Paths:
+    Z:\process\tools\ghidra_12.1.4_PUBLIC\Ghidra\Extensions\ghidra-allegrex\ghidra_scripts
+    Z:\process\tools\ghidra_12.1.4_PUBLIC\Ghidra\Features\SystemEmulation\ghidra_scripts
+    Z:\process\tools\ghidra_12.1.4_PUBLIC\Ghidra\Features\PDB\ghidra_scripts
+    Z:\process\tools\ghidra_12.1.4_PUBLIC\Ghidra\Features\Base\ghidra_scripts
+    Z:\process\tools\ghidra_12.1.4_PUBLIC\Ghidra\Features\GnuDemangler\ghidra_scripts
+    Z:\process\tools\scripts
+    Z:\process\tools\ghidra_12.1.4_PUBLIC\Ghidra\Features\DecompilerDependent\ghidra_scripts
+    Z:\process\tools\ghidra_12.1.4_PUBLIC\Ghidra\Processors\Atmel\ghidra_scripts
+    Z:\process\tools\ghidra_12.1.4_PUBLIC\Ghidra\Debug\Debugger-rmi-trace\ghidra_scripts
+    Z:\process\tools\ghidra_12.1.4_PUBLIC\Ghidra\Features\SwiftDemangler\ghidra_scripts
+    Z:\process\tools\ghidra_12.1.4_PUBLIC\Ghidra\Processors\DATA\ghidra_scripts
+    Z:\process\tools\ghidra_12.1.4_PUBLIC\Ghidra\Features\PyGhidra\ghidra_scripts
+    Z:\process\tools\ghidra_12.1.4_PUBLIC\Ghidra\Debug\Debugger\ghidra_scripts
+    Z:\process\tools\ghidra_12.1.4_PUBLIC\Ghidra\Processors\JVM\ghidra_scripts
+    Z:\process\tools\ghidra_12.1.4_PUBLIC\Ghidra\Features\BSim\ghidra_scripts
+    Z:\process\tools\ghidra_12.1.4_PUBLIC\Ghidra\Features\Decompiler\ghidra_scripts
+    Z:\process\tools\ghidra_12.1.4_PUBLIC\Ghidra\Features\WildcardAssembler\ghidra_scripts
+    Z:\process\tools\ghidra_12.1.4_PUBLIC\Ghidra\Features\BytePatterns\ghidra_scripts
+    Z:\process\tools\ghidra_12.1.4_PUBLIC\Ghidra\Features\MicrosoftCodeAnalyzer\ghidra_scripts
+    Z:\process\tools\ghidra_12.1.4_PUBLIC\Ghidra\Features\FileFormats\ghidra_scripts
+    Z:\process\tools\ghidra_12.1.4_PUBLIC\Ghidra\Features\VersionTracking\ghidra_scripts
+    Z:\process\tools\ghidra_12.1.4_PUBLIC\Ghidra\Processors\8051\ghidra_scripts
+    Z:\process\tools\ghidra_12.1.4_PUBLIC\Ghidra\Features\FunctionID\ghidra_scripts
+    Z:\process\tools\ghidra_12.1.4_PUBLIC\Ghidra\Processors\PIC\ghidra_scripts (HeadlessAnalyzer)  
+INFO  HEADLESS: execution starts (HeadlessAnalyzer)  
+INFO  Opening existing project: Z:\process\ghproj2\joey (HeadlessAnalyzer)  
+INFO  Opening project: Z:\process\ghproj2\joey (HeadlessProject)  
+INFO  REPORT: Processing project file: /joey_pc.exe (HeadlessAnalyzer)  
+INFO  REPORT: Execute script: ExportAt.java 'Z:\process\analysis\ai_handlers.c' '00581040' '00581eb0' '005b1b50' '005b1b70' '005b1bb0' '005b1c30' '005b1d30' '005b1d60' '005b1e00' '005b1e50' '005b1eb0' '005b1ef0' '005b1f10' '005b1f70' '005b2090' '005b2110' '005b2160' '005b22a0' '005b2310' '005b2450' '005b24c0' '005b2580' '005b2620' '005b2640' '005b2e60' '005b3210' '005b3250' '005b32a0' '005b3400' '005b3440' '005b3480' '005b35a0' '005b35e0' '005b4860' '005b4890' '005b48d0' '005b48f0' '005b4910' '005b4970' '005b49a0' '005b49d0' '005b4ae0' '005b4b30' '005b4b50' '005b4b90' '005b4c90' '005b4d40' '005b4df0' '005b4e30' '005b4e60' '005b4ec0' '005b4f10' '005b4f70' '005b4fb0' '005b4fe0' '005b5010' '005b5040' '005b5060' '005b50a0' '005b5100' '005b5120' '005b5230' '005b5270' '005b5290' '005b5300' '005b53e0' '005b5490' '005b55a0' '005b5650' '005b5720' '005b5830' '005b58b0' '005b5920' '005b5950' '005b5a00' '005b5a20' '005b5a60' '005b5ab0' '005b5af0' '005b5b60' '005b5b80' '005b5ba0' '005b5bf0' '005b5c60' '005b5d60' '005b5da0' '005b6e10' '005b62f0' '005b76c0' '005b7a50' '005b75a0' '005b7960' '005b69d0' '005b7b50' '005b9f50' '005a59b0' '005a41c0' '005a8090' '005a5120' '005a8a50'  (HeadlessAnalyzer)  
+INFO  SCRIPT: Z:\process\tools\scripts\ExportAt.java (HeadlessAnalyzer)  
+INFO  REPORT: Save succeeded for processed file: /joey_pc.exe (HeadlessAnalyzer)  

@@ -1,0 +1,526 @@
+14|858|spell/ritual/3|Beastly Mirror Ritual|This card is used to Ritual Summon "Fiend's Mirror". You must also offer monsters whose total Level Stars equal 6 or more as a Tribute from the field or your hand.
+15|630|spell/equip/1|Malevolent Nuzzler|A monster equipped with this card increases its ATK by 700 points. When this card is sent from the field to the Graveyard, you can pay 500 Life Points to place it on top of your Deck.
+19|776|spell/normal/0|Exile of the Wicked|Destroys all face-up Fiend-Type monsters on the field.
+20|774|spell/normal/0|Nightmare's Steelcage|For 2 of your opponent's turns, all monsters on the field cannot attack. Following the second turn, this card is destroyed.
+22|382|spell/normal/0|The Shallow Grave|Each player takes 1 Monster Card from his/her respective Graveyard and Special Summons them on the field in face-down Defense Position.
+33|1012|spell/continuous/2|The Dark Door|Both players can only attack with 1 monster during their respective Battle Phases.
+50|3|spell/normal/0|Delinquent Duo|Pay 1000 Life Points. Randomly select and discard 1 card from your opponent's hand. Your opponent then selects and discards another card from his/her hand. 
+51|836|spell/normal/0|Share the Pain|Offer 1 monster on your side of the field as a Tribute. Your opponent must select 1 monster on his/her side of the field and offer it as a Tribute.
+53|297|spell/equip/1|Horn of the Unicorn|A monster equipped with this card increases its ATK and DEF by 700 points. When this card is sent from the field to the Graveyard, it returns to the top of your Deck.
+54|209|spell/equip/1|Lightning Blade|This card can only be equipped to Warrior-Type monsters. Increases the ATK of the equipped monster by 800 points and decreases the ATK of all WATER monsters on the field by 500 points.
+62|698|spell/ritual/3|Black Illusion Ritual|This card is used to Ritual Summon "Relinquished". You must also offer monsters whose total Level Stars equal 1 or more from the field or your hand as a Tribute.
+79|1100|spell/field/1|Umiiruka|Increases the ATK of all WATER monsters by 500 points and decreases their DEF by 400 points.
+84|1019|spell/quickplay/2|Tailor of the Fickle|Select 1 equipped Equip Card and switch it to another correct target.
+86|506|spell/field/1|Umi|Increases the ATK and DEF of all Fish, Sea Serpent, Thunder, and Aqua-Type monsters by 200 points. Also decreases the ATK and DEF of all Machine and Pyro-Type monsters by 200 points.
+91|943|spell/normal/0|Eternal Draught|Destroys all Fish-Type monsters on the field.
+92|1041|spell/equip/1|Ekibyo Drakmord|A monster equipped with this card cannot attack. Destroys the equipped monster at the end of the 2nd turn of the player controlling the monster. At that time, this card is returned to the owner's hand. 
+93|560|spell/normal/0|Exchange|Both players show their hands to each other. You both select 1 card from each other's hand and add it your own. When the cards are sent to the Graveyard, they are placed in the Graveyard of the original owner.
+95|1042|spell/normal/0|Chosen One|Select 1 Monster Card and 2 non-Monster Cards from your hand. Your opponent randomly selects 1 of the 3 cards. If it is the Monster Card, it is immediately Special Summoned in face-up Attack or Defense Position and the remaining 2 cards are sent to the Graveyard. If it is not a Monster Card, all 3 cards are sent to the Graveyard.
+99|151|spell/equip/1|Elf's Light|A LIGHT monster equipped with this card increases its ATK by 400 points and decreases its DEF by 200 points.
+113|868|spell/normal/0|Confiscation|Pay 1000 Life Points to look at your opponent's hand. Select 1 card and discard it to the Graveyard.
+114|142|spell/normal/0|Heavy Storm|Destroys all Spell and Trap Cards on the field.
+122|517|spell/ritual/3|Commencement Dance|This card is used to Ritual Summon "Performance of Sword". You must also offer monsters whose total Level Stars equal 6 or more as a Tribute from the field or your hand.
+123|5|spell/normal/0|Bait Doll|Force the activation of 1 face-down Trap Card.  If the timing of the activation of the Trap Card is incorrect, negate the effect and destroy it. If it is not a Trap Card, it is returned to its original position. After this card is activated, it is placed into the Deck (not the Graveyard).  The Deck is then shuffled.
+128|682|spell/continuous/2|Vengeful Bog Spirit|All monsters on the field cannot attack in the same turn that they are summoned (includes Flip Summon and Special Summon).
+134|360|spell/field/1|Gaia Power|Increases the ATK of all EARTH monsters by 500 points and decreases their DEF by 400 points.
+140|599|spell/normal/0|Tremendous Fire|Inflicts 1000 points of Direct Damage to your opponent's Life Points and 500 points of Direct Damage to your Life Points.
+143|156|spell/ritual/3|Dark Magic Ritual|This card is used to Ritual Summon "Magician of Black Chaos". You must also offer monsters whose total Level Stars equal 8 or more as a Tribute from the field or your hand.
+145|633|spell/ritual/3|Black Luster Ritual|This card is used to Ritual Summon "Black Luster Soldier". You must also offer monsters whose total Level Stars equal 8 or more as a Tribute from the field or your hand.
+148|1053|spell/equip/1|Insect Armor with Laser Cannon|An Insect-Type monster equipped with this card increases its ATK by 700 points.
+149|150|spell/equip/1|Invigoration|An EARTH monster equipped with this card increases its ATK by 400 points and decreases its DEF by 200 points.
+152|366|spell/normal/0|Restructer Revolution|Inflict 200 points of damage to your opponent's Life Points for each card in your opponent's hand.
+165|670|spell/normal/0|Breath of Light|Destroys all Rock-Type monsters on the field.
+168|421|spell/ritual/3|Turtle Oath|This card is used to Ritual Summon "Crab Turtle". You must also offer monsters whose total Level Stars equal 8 or more as a Tribute from the field or your hand.
+172|518|spell/ritual/3|Curse of the Masked Beast|This card is used to Ritual Summon "The Masked Beast". You must also offer monsters whose total Level Stars equal 8 or more as a Tribute from the field or your hand.
+183|391|spell/ritual/3|Garma Sword Oath|This card is used to Ritual Summon "Garma Sword". You must also offer monsters whose total Level Stars equal 7 or more as a Tribute from the field or your hand.
+192|520|spell/equip/1|Machine Conversion Factory|A Machine-Type monster equipped with this card increases its ATK and DEF by 300 points.
+198|840|spell/normal/0|Miracle Dig|If there are 5 or more of your monsters that have been removed from play in the current Duel, return 3 of them to the Graveyard. 
+210|343|spell/normal/0|Seal of the Ancients|At the cost of 1000 of your own Life Points, flip all of your opponent's face-down cards face-up. After seeing the cards, return them to their original positions (card effects are not activated).
+213|354|spell/equip/1|Mask of Brutality|A monster equipped with this card increases its ATK by 1000 points and decreases its DEF by 1000 points. Pay 1000 Life Points during each of your Standby Phases. If you cannot, this card is destroyed.
+216|800|spell/equip/1|Megamorph|If your Life Points are lower than your opponent's, the original ATK of a monster equipped with this card is doubled. If your Life Points are higher, the original ATK is halved. 
+229|1071|spell/continuous/2|Prohibition|When you play this card, declare the name of 1 card. As long as this card remains on the field, the declared card cannot be played. The cards which are already on the field before this card's activation are excluded.
+231|900|spell/equip/1|Silver Bow and Arrow|A Fairy-Type monster equipped with this card increases its ATK and DEF by 300 points.
+237|1001|spell/normal/0|Painful Choice|Select 5 cards from your Deck and show them to your opponent. Your opponent must select 1 card that will be added to your hand. Discard the remaining cards to the Graveyard.
+264|41|spell/normal/0|Soul Exchange|Select an opponent's monster and use it as a Tribute in place of one of your own. You must skip your Battle Phase for the turn in which this card is activated.
+265|570|spell/normal/0|Dark Magic Curtain|When this card is activated, you cannot summon any monster in the same turn (including Flip Summon and Special Summon). You can Special Summon 1 "Dark Magician" from your Deck at the cost of half your Life Points.
+275|199|spell/continuous/2|Inspection|During your opponent's Standby Phase, you can randomly select 1 card in your opponent's hand and look at it at the cost of 500 Life Points.
+280|687|spell/equip/1|Scroll of Bewitchment|Select 1 Attribute when you activate this card. Change the Attribute of the equipped monster to the one you select.
+281|458|spell/normal/0|The Forceful Sentry|Look at your opponent's hand, then select 1 card and return it to his/her Deck. The Deck is then shuffled.
+283|127|spell/normal/0|Block Attack|Select 1 of your opponent's monsters and shift it to Defense Position.
+285|270|spell/equip/1|Snatch Steal|Take control of 1 of your opponent's face-up monsters. Your opponent gains 1000 Life Points at each of his/her Standby Phases.
+287|503|spell/field/1|Wasteland|Increases the ATK and DEF of all Dinosaur, Zombie, and Rock-Type monsters by 200 points.
+291|318|spell/normal/0|Pot of Greed|Draw 2 cards from your Deck.
+300|614|spell/normal/0|Change of Heart|Select and control 1 opposing monster (regardless of position) on the field until the end of your turn.
+302|1009|spell/normal/0|Ancient Telescope|See the top 5 cards of your opponent's Deck. Return the cards to the Deck in the same order.
+309|881|spell/normal/0|Goblin's Secret Remedy|Increases your Life Points by 600 points.
+314|652|spell/equip/1|Germ Infection|The ATK of a non Machine-Type monster equipped with this card is decreased by 300 points at each of its Standby Phases.
+316|321|spell/quickplay/2|Mystical Space Typhoon|Destroy 1 Spell or Trap Card on the field.
+317|926|spell/equip/1|Cyclon Laser|This card can only be used to equip "Gradius". Increases the ATK of "Gradius" by 300 points. When "Gradius" attacks with an ATK that is higher than the DEF of your opponent's Defense Position monster, inflict the difference as Battle Damage to your opponent's Life Points.  
+319|404|spell/normal/0|Final Destiny|Discard 5 cards from your hand to destroy all the cards on the field.
+321|955|spell/equip/1|Cyber Shield|Increases the ATK of either "Harpie Lady" or "Harpie Lady Sisters" by 500 points.
+325|524|spell/normal/0|Mesmeric Control|When this card is played your opponent cannot change the position of monsters during his/her next turn.
+329|990|spell/normal/0|Thousand Knives|You can activate this card when you have "Dark Magician" on your side of the field. Destroy 1 monster on your opponent's side of the field.
+340|609|spell/equip/1|Salamandra|A FIRE monster equipped with this card increases its ATK by 700 points.
+345|557|spell/normal/0|Raigeki|Destroys all of your opponent's monsters on the field.
+348|1092|spell/normal/0|Stain Storm|Destroys all Machine-Type monsters on the field.
+359|478|spell/normal/0|Monster Reborn|Select 1 Monster Card from either your opponent's or your own Graveyard and place it on the field under your control in Attack or Defense Position (face-up). This is considered a Special Summon.
+361|489|spell/normal/0|Return of the Doomed|Discard 1 Monster Card from your hand to the Graveyard. Return 1 of your monsters that is sent to your Graveyard during this turn as a result of battle to your hand at the end of this turn.
+362|1038|spell/quickplay/2|Offerings to the Doomed|Destroys 1 face-up monster. Skip your next Draw Phase.
+363|144|spell/normal/0|Tribute to The Doomed|Discard 1 card from your hand to the Graveyard to destroy 1 Monster Card on the field (regardless of its position). 
+370|1048|spell/normal/0|Mystic Box|Destroys 1 opponent's monster and grants control of 1 of your monsters on the field to your opponent.
+371|781|spell/continuous/2|Spirit Message "I"|This card can only be placed on the field when "Destiny Board" is active.
+372|430|spell/continuous/2|Spirit Message "L"|This card can only be placed on the field when "Destiny Board" is active.
+373|269|spell/continuous/2|Spirit Message "N"|This card can only be placed on the field when "Destiny Board" is active.
+374|545|spell/continuous/2|Spirit Message "A"|This card can only be placed on the field when "Destiny Board" is active.
+376|130|spell/continuous/2|Ground Collapse|Select 2 Monster Card Zones on the field (you cannot select a zone occupied by a Monster Card). The selected zones cannot be used as long as this card remains face-up on the field.
+378|1054|spell/equip/1|Paralyzing Potion|A non Machine-Type monster equipped with this card cannot attack.
+381|1070|spell/normal/0|Curse of Fiend|Changes the battle positions of all Attack Position monsters on the field to Defense Position and vice-versa. These positions cannot be changed during the turn this card is activated except by the effect of a Spell, Trap or Effect Monster Card. You can activate this card only during your Standby Phase.
+386|918|spell/equip/1|Bright Castle|Increases the ATK of all LIGHT monsters by 700 points. 
+387|809|spell/field/1|Luminous Spark|Increases the ATK of all LIGHT monsters by 500 points and decreases their DEF by 400 points.
+390|598|spell/equip/1|Burning Spear|A FIRE monster equipped with this card increases its ATK by 400 points and decreases its DEF by 200 points.
+398|44|spell/ritual/3|Javelin Beetle Pact|This card is used to Ritual Summon "Javelin Beetle". You must also offer monsters whose total Level Stars equal 8 or more as a Tribute from the field or your hand.
+401|994|spell/equip/1|Sword of Deep-Seated|A Monster Card equipped with this card increases its ATK and DEF by 500 points.  When this card is sent to the Graveyard, place it on top of your Deck.
+403|353|spell/equip/1|Mask of the Accursed|The monster equipped with this card cannot attack. In addition, the player controlling the equipped monster must take damage of 500 Life Points during each of your Standby Phases.
+404|225|spell/normal/0|Stop Defense|Select 1 of your opponent's monsters and switch it to Attack Position. If the card is face-down, flip it face-up. If the card has a flip effect, it is activated immediately.
+407|193|spell/normal/0|Eternal Rest|Destroys all monsters equipped with Equip Cards.
+417|311|spell/equip/1|Ring of Magnetism|This card can only be equipped to a monster on your side of the field. The monster equipped with this card decreases its ATK and DEF by 500 points. In addition, all the monsters on your opponent's side of the field must attack the monster equipped with this card if they choose to attack.
+419|601|spell/normal/0|Fissure|Destroys 1 opponent's face-up monster with the lowest ATK.
+439|1074|spell/ritual/3|Revival of Dokurorider|This card is used to Ritual Summon "Dokurorider". You must also offer monsters whose total Level Stars equal 6 or more as a Tribute from the field or your hand.
+457|1047|spell/continuous/2|Jam Breeding Machine|During each of your Standby Phases, Special Summon 1 "Slime Token" (face-up Attack Position/Aqua-Type/WATER/LEVEL 1/ATK 500/DEF 500) to your side of the field. As long as this card remains face-up on the field, you cannot Summon  (including Flip Summon and Special Summon) any other monster.
+460|866|spell/field/1|Chorus of Sanctuary|Increases the DEF of all Defense Position monsters by 500 points.
+461|164|spell/continuous/2|Card of Safe Return|When a monster is Special Summoned to the field from your Graveyard, you can draw 1 card from your Deck. 
+475|161|spell/equip/1|7 Completed|A Machine-Type monster equipped with this card increases either its ATK or DEF by 700 points. You cannot change your choice as long as this card remains face-up on the field.
+476|65|spell/quickplay/2|Sebek's Blessing|You can activate this card when your Monster Card inflicts Direct Damage to your opponent's Life Points. Increase your own Life Points by an amount equal to the Direct Damage you inflicted to your opponent. 
+479|268|spell/ritual/3|Zera Ritual|This card is used to Ritual Summon "Zera The Mant". You must also offer monsters whose total Level Stars equal 8 or more as a Tribute from the field or your hand.
+484|312|spell/normal/0|Warrior Elimination|Destroys all Warrior-Type monsters on the field.
+490|236|spell/field/1|Sogen|Increases the ATK and DEF of all Beast-Warrior and Warrior-Type monsters by 200 points.
+491|434|spell/quickplay/2|Multiply|Offer 1 face-up "Kuriboh" as a Tribute. Place a "Kuriboh Token" (Fiend-Type/DARK/1 Star/ATK 300/DEF 200) in Defense Position on each open Monster Card Zone. These tokens cannot be used as Tribute Monsters.
+511|206|spell/field/1|Mystic Plasma Zone|Increases the ATK of all DARK monsters by 500 points and decreases their DEF by 400 points.
+524|1007|spell/equip/1|Raise Body Heat|A Dinosaur-Type monster equipped with this card increases its ATK and DEF by 300 points.
+527|242|spell/normal/0|Cold Wave|This card can only be activated at the start of Main Phase 1. Until your next Draw Phase, neither you nor your opponent can activate or Set any Spell or Trap Cards.
+538|590|spell/quickplay/2|The Reliable Guardian|Increase 1 monster's DEF by 700 points during the turn this card is activated.
+539|440|spell/normal/0|Soul Release|Select up to 5 cards from either you or your opponent's Graveyard and remove them from the current Duel.
+543|530|spell/equip/1|United We Stand|For every face-up monster you control, increase the ATK and DEF of the equipped monster by 800 points.
+556|286|spell/ritual/3|Resurrection of Chakra|This card is used to Ritual Summon "Chakra". You must also offer monsters whose total Level Stars equal 7 or more as a Tribute from the field or your hand.
+557|853|spell/normal/0|Ookazi|Inflicts 800 points of Direct Damage to your opponent's Life Points.
+559|45|spell/normal/0|Dian Keto the Cure Master|Increases your Life Points by 1000 points.
+563|227|spell/continuous/2|Toll|As long as this card remains face-up on the field, both you and your opponent must pay 500 Life Points per monster to attack.
+581|771|spell/equip/1|Axe of Despair|A monster equipped with this card increases its ATK by 1000 points. When this card is sent from the field to the Graveyard, you can offer 1 monster from the field as a Tribute to place it on top of your Deck. 
+584|964|spell/field/1|Rising Air Current|Increases the ATK of all WIND monsters by 500 points and decreases their DEF by 400 points.
+603|59|spell/normal/0|Card Destruction|Both players must discard their entire hands and draw the same number of cards that they discarded from their respective Decks.
+608|827|spell/equip/1|Electro-Whip|A Thunder-Type monster equipped with this card increases its ATK and DEF by 300 points.
+609|606|spell/normal/0|Soul of the Pure|Increases your Life Points by 800 points.
+610|18|spell/quickplay/2|Graceful Dice|Roll 1 six-sided die. The result is multiplied by 100 points and added to the ATK and DEF of all monsters you control until the end of your turn. Monsters summoned after this card's activation are excluded.
+612|492|spell/normal/0|Graceful Charity|Draw 3 cards from your Deck, then discard any 2 cards from your hand.
+614|2|spell/equip/1|Legendary Sword|A Warrior-Type monster equipped with this card increases its ATK and DEF by 300 points.
+623|937|spell/continuous/2|Toon World|This card is activated by paying 1000 of your Life Points.
+627|942|spell/equip/1|Stim-Pack|A monster equipped with this card increases its ATK by 700 points. Its ATK is then decreased by 200 points at each of its Standby Phases.
+634|410|spell/normal/0|Eradicating Aerosol|Destroys all Insect-Type monsters on the field.
+635|188|spell/quickplay/2|Rush Recklessly|Increase 1 monster's ATK by 700 points during the turn this card is activated.
+637|289|spell/equip/1|Gust Fan|A WIND monster equipped with this card increases its ATK by 400 points and decreases its DEF by 200 points.
+644|1088|spell/equip/1|Dragonic Attack|This card can only be used to equip Warrior-Type monsters. The equipped monster is treated as Dragon-Type and increases the ATK and DEF of the equipped monster by 500 points.
+652|484|spell/equip/1|Dragon Treasure|A Dragon-Type monster equipped with this card increases its ATK and DEF by 300 points.
+654|0|spell/normal/0|The Flute of Summoning Dragon|Playing this card when you have a Lord of D. card face-up on the field allows you to play up to 2 Dragon-Type cards from your hand as a Special Summon.
+672|1046|spell/normal/0|Upstart Goblin|Draw 1 card from your Deck. Your opponent gains 1000 Life Points.
+691|168|spell/field/1|Molten Destruction|Increases the ATK of all FIRE monsters by 500 points and decreases their DEF by 400 points.
+695|398|spell/normal/0|Harpie's Feather Duster|Destroys all of your opponent's Spell and Trap Cards on the field.
+708|555|spell/equip/1|Steel Shell|A WATER monster equipped with this card increases its ATK by 400 points and decreases its DEF by 200 points.
+710|256|spell/normal/0|Gravedigger Ghoul|Select 2 Monster Cards from your opponent's Graveyard. These Monster Cards are removed from play for the remainder of the Duel.
+711|979|spell/continuous/2|Gravekeeper's Servant|Each time your opponent attacks with a monster, the opponent must send 1 card from the top of his/her Deck to the Graveyard.
+726|621|spell/equip/1|Premature Burial|Pay 800 Life Points. Select 1 Monster Card from your Graveyard, Special Summon it on the field in face-up Attack Position, and equip it with this card. When this card is destroyed, the monster is also destroyed.
+729|504|spell/normal/0|Giant Trunade|Returns all Spell and Trap Cards on the field to the respective owner's hands.
+737|885|spell/ritual/3|Hamburger Recipe|This card is used to Ritual Summon "Hungry Burger". You must also offer monsters whose total Level Stars equal 6 or more as a Tribute from the field or your hand.
+738|0|spell/normal/0|Final Flame|Inflicts 600 points of Direct Damage to your opponent's Life Points.
+740|1090|spell/normal/0|Swords of Revealing Light|Counting from your opponent's turn, none of your opponent's monsters can attack for 3 turns of his/her own. When this card is activated, opponent's face-down monsters at that time are turned face-up, but remain in Defense Position. Any effects the monsters may have are immediately activated.
+742|1062|spell/equip/1|Horn of Light|A monster equipped with this card increases its DEF by 800 points. When this card is sent from the field to the Graveyard, you can pay 500 Life Points to place it on top of your Deck.
+745|939|spell/equip/1|Book of Secret Arts|A Spellcaster-Type monster equipped with this card increases its ATK and DEF by 300 points.
+755|0|spell/normal/0|Sparks|Inflicts 200 points of Direct Damage to your opponent's Life Points.
+769|0|spell/normal/0|Hinotama|Inflicts 500 points of Direct Damage to your opponent's Life Points.
+783|0|spell/normal/0|Riryoku|During your turn, you can reduce the ATK of 1 monster by half and add that amount to the ATK of another monster on the field.
+785|0|spell/equip/1|Follow Wind|A Winged Beast-Type monster equipped with this card increases its ATK and DEF by 300 points.
+786|0|spell/normal/0|Insect Imitation|Offer 1 monster on your side of the field as a Tribute. Select 1 Insect-Type monster from your Deck that is 1 Level higher than the Tribute monster and Special Summon it on the field in face-up Attack Position or face-down Defense Position. The Deck is then shuffled. 
+795|133|spell/field/1|Fusion Gate|As long as this card remains face-up on the field, a Fusion Monster can be Special Summoned without using "Polymerization". The Fusion-Material monsters used in the Fusion are not sent to the Graveyard, but are removed from play.
+801|0|spell/equip/1|Black Pendant|A monster equipped with this card increases its ATK by 500 points. When this card is sent from the field to the Graveyard, inflict 500 points of Direct Damage to your opponent's Life Points.
+802|0|spell/normal/0|Dark Hole|Destroys all monsters on the field.
+820|0|spell/normal/0|Blue Medicine|Increase your Life Points by 400 points.
+831|0|spell/continuous/2|Messenger of Peace|You must pay 100 Life Points at each of your Standby Phases. If you cannot pay, this card is destroyed. All monsters with an ATK of 1500 points or more cannot attack.
+850|0|spell/normal/0|Nobleman of Extermination|Destroy 1 face-down Spell or Trap Card and remove it from play. If the card is a Trap Card, both players must remove all Trap Cards of the same name from their respective Decks and remove them from play. The Decks are then shuffled.
+852|0|spell/equip/1|Power of Kaishin|An Aqua-Type monster equipped with this card increases its ATK and DEF by 300 points.
+864|0|spell/normal/0|Spiritualism|Return 1 Spell or Trap Card on your opponent's side of the field to his/her hand. This card's activation and effect cannot be negated by any other card.
+879|0|spell/normal/0|Makiu|Select either "Summoned Skull" or any Thunder-Type monster. All opponent's monsters with DEF lower than the ATK of the selected card are destroyed. You must skip your Battle Phase during the turn this card is activated.
+881|0|spell/equip/1|Vile Germs|A Plant-Type monster equipped with this card increases its ATK and DEF by 300 points.
+897|0|spell/equip/1|Mystical Moon|A Beast-Warrior-Type monster equipped with this card increases its ATK and DEF by 300 points.
+898|0|spell/normal/0|Last Day of Witch|Destroys all face-up Spellcaster-Type monsters on the field.
+906|0|spell/normal/0|Nobleman of Crossout|Destroy 1 face-down Monster Card and remove it from play. If the monster destroyed has a Flip Effect, both players must remove all Monster Cards of the same name from their respective Decks and remove them from play. The Decks are then shuffled.
+910|0|spell/equip/1|Mage Power|For every Spell and Trap Card on your side of the field, increase the ATK and DEF of the equipped monster by 500 points. 
+916|0|spell/normal/0|De-Spell|Destroys 1 Spell Card on the field. If this card's target is face-down, flip it face-up. If the card is a Spell Card, it is destroyed. If not, it is returned to its face-down position. The flipped card is not activated.
+921|0|spell/continuous/2|Chain Energy|As long as this card remains face-up on the field, both you and your opponent must pay 500 Life Points per card to play or Set cards from your respective hands.
+923|0|spell/continuous/2|Mask of Dispel|Select 1 face-up Spell Card on the field. The controller of the Spell Card must take damage of 500 Life Points during each of his/her Standby Phases. When the selected card is destroyed or removed from the field, this card is also destroyed.
+926|0|spell/normal/0|Elegant Egotist|When there are 1 or more "Harpie Lady" cards on the field, you can Special Summon 1 "Harpie Lady" or "Harpie Lady Sisters" card from your hand or your Deck. 
+929|0|spell/normal/0|Shield & Sword|For 1 turn, each face-up monster's original ATK becomes their original DEF and vice-versa. Any additions and subtractions to ATK and /or DEF due to card effects are applied to the new ATK and DEF. Monsters summoned after this card's activation are excluded.
+931|0|spell/normal/0|The Inexperienced Spy|Select and see 1 card in your opponent's hand.
+951|0|spell/continuous/2|Infinite Cards|As long as this card remains face-up on the field, there is no limit to the number of cards in both players' hands.
+953|0|spell/continuous/2|Insect Barrier|Your opponent's Insect-Type monsters cannot attack as long as this card remains face-up on the field.
+955|0|spell/equip/1|Violet Crystal|A Zombie-Type monster equipped with this card increases its ATK and DEF by 300 points.
+959|0|spell/equip/1|Magical Labyrinth|Equip "Labyrinth Wall" with this card. If you offer "Labyrinth Wall" equipped with this card as a Tribute, you can Special Summon "Wall Shadow" from your Deck.
+969|549|spell/normal/0|Rain of Mercy|Increases the Life Points of both players by 1000 points.
+978|0|spell/equip/1|Fairy Meteor Crush|When your monster equipped with this card attacks with an ATK that is higher than the DEF of your opponent's Defense Position monster, inflict the difference as Battle Damage to your opponent's Life Points.  
+983|0|spell/equip/1|Beast Fangs|A Beast-Type monster equipped with this card increases its ATK and DEF by 300 points.
+986|0|spell/normal/0|Mooyan Curry|Increase your Life Points by 200 points.
+987|0|spell/continuous/2|Burning Land|Destroys all Field Spell Cards on the field. In addition, both players take 500 points of Direct Damage during each of their respective Standby Phases.
+990|892|spell/field/1|Forest|Increases the ATK and DEF of all Insect, Beast, Plant, and Beast-Warrior-Type monsters by 200 points.
+996|0|spell/quickplay/2|Monster Recovery|Select 1 of your own monsters on your side of the field and combine it with your Deck. At the same time, combine your hand and Deck together and shuffle the Deck. Draw the same number of cards that were in your hand from the shuffled Deck.
+1004|1101|spell/field/1|Mountain|Increases the ATK and DEF of all Dragon, Winged Beast, and Thunder-Type monsters by 200 points.
+1008|359|spell/field/1|Yami|Increases the ATK and DEF of all Fiend and Spellcaster-Type monsters by 200 points. Also decreases the ATK and DEF of all Fairy-Type monsters by 200 points.
+1009|916|spell/equip/1|Dark Energy|A Fiend-Type monster equipped with this card increases its ATK and DEF by 300 points.
+1015|102|spell/normal/0|Darkness Approaches|Discard 2 cards from your hand. Select 1 face-up monster and flip it face-down, but do not change its battle position. 
+1018|302|spell/equip/1|Sword of Dark Destruction|A DARK monster equipped with this card increases its ATK by 400 points and decreases its DEF by 200 points.
+1020|0|spell/normal/0|Dark-Piercing Light|Flip all of your opponent's face-down Monster Cards on the field face-up.  The effect of the monsters will activate at this time.
+1023|363|spell/normal/0|Last Will|If a monster of yours is sent from the field to the Graveyard during the turn that you've played this card, you can select a monster with an ATK of 1500 points or less from your Deck and play it as a Special Summon. Shuffle the Deck after playing the card. This card is active for 1 turn only.
+1024|539|spell/normal/0||
+1026|1010|spell/normal/0|Polymerization|Fuses 2 or more Fusion-Material Monsters to form a new Fusion Monster.
+1027|300|spell/normal/0|Polymerization|Fuses 2 or more Fusion-Material Monsters to form a new Fusion Monster.
+1028|166|spell/quickplay/2|De-Fusion|Return 1 Fusion Monster Card on the field to the Fusion Deck. In addition, if all the Fusion-Material monsters for the returned Fusion Monster Card are in your Graveyard, you can Special Summon them all to the field in face-up Attack or Defense Position.
+1029|893|spell/normal/0|Fusion Sage|Take 1 "Polymerization" from your Deck and add it your hand. The Deck is then shuffled.
+1034|1027|spell/normal/0|The Cheerful Coffin|You can discard up to 3 Monster Cards from your hand to the Graveyard.
+1036|898|spell/ritual/3|Fortress Whale's Oath|This card is used to Ritual Summon "Fortress Whale". You must also offer monsters whose total Level Stars equal 7 or more as a Tribute from the field or your hand.
+1046|314|spell/ritual/3|War-Lion Ritual|This card is used to Ritual Summon "Super War-Lion". You must also offer monsters whose total Level Stars equal 7 or more as a Tribute from the field or your hand.
+1049|273|spell/normal/0|Raimei|Decrease your opponent's Life Points by 300 points.
+1063|711|spell/quickplay/2|Limiter Removal|Doubles the ATK of all Machine-Type monsters that are on your side of the field when this card is activated. At the end of this turn, all the monsters affected by this effect are destroyed.    
+1065|672|spell/equip/1|Sword of Dragon's Soul|This card can only be used to equip by a Warrior-Type monster to increase its ATK by 700 points. Any Dragon-Type monster battling a monster equipped with this card is automatically destroyed at the end of a Battle Phase, regardless of ATK/DEF. (Damage calculations are applied normally).
+1072|1015|spell/normal/0|Spirit Elimination|When monsters in the Graveyard are removed from play, remove monsters on your side of the field from play as substitutes. This card remains active until the end of the turn that it is activated. The substitutes remain removed from play. 
+1077|281|spell/equip/1|Laser Cannon Armor|An Insect-Type monster equipped with this card increases its ATK and DEF by 300 points.
+1086|0|spell/normal/0|Red Medicine|Increases your Life Points by 500 points.
+1091|703|spell/ritual/3|Novox's Prayer|This card is used to Ritual Summon "Skull Guardian". You must also offer monsters whose total Level Stars equal 7 or more as a Tribute from the field or your hand.
+1096|501|spell/normal/0|Dimensionhole|Remove 1 monster on your side of the field from play until your next Standby Phase. The card still counts towards the 5-card Monster Zone limit.
+1101|0|spell/normal/0|Remove Trap|Destroys 1 face-up Trap Card on the field.
+1106|320|spell/quickplay/2|Scapegoat|When this card is activated, you cannot summon any monster in the same turn (including Flip Summon and Special Summon).  Place 4 "Sheep Token" (Beast-Type/EARTH/1 Star/ATK 0/DEF 0) in Defense Position on the your side of the field. The tokens cannot be used as a Tribute for a Tribute Summon.
+1107|741|spell//0|Glory of the King's Hand|
+11|693|trap/continuous/2|Aqua Chorus|If there are Monster Cards of the same name on the field, the ATK and DEF of those cards are increased by 500 points.
+16|777|trap/normal/0|Skull Dice|Roll 1 six-sided die. The result is multiplied by 100 points and subtracted from the ATK and DEF of all monsters in your opponent's control until the end of your turn. Monsters summoned after this card's activation are excluded.
+27|184|trap/normal/0|Reverse Trap|All increases and decreases to ATK and DEF are reversed for the turn in which this card is activated.
+43|846|trap/continuous/2|Mask of Restrict|No matter what the situation, neither player can offer any monster as a Tribute.
+49|832|trap/normal/0|Windstorm of Etaqua|Change the battle positions of all face-up monsters on your opponent's side of the field.
+52|223|trap/continuous/2|The Regulation of Tribe|Select 1 Type of monster. Any monster of the selected Type cannot attack. To keep this card in effect, you must offer 1 monster from the field as a Tribute at each of your Standby Phases. If you cannot, this card is destroyed.
+68|327|trap/continuous/2|Destiny Board|At the end of each of your opponent's turns, place 1 "Spirit Message" card from your hand or your Deck face-up to the field. If it is from your Deck, then shuffle your Deck. If "Spirit Message" cards "I", "N", "A" and "L" are all on the field in their proper order, you are declared the winner. If any of the cards are destroyed or removed from the field while constructing the message, they are all sent to your Graveyard immediately.
+102|613|trap/normal/0|Reinforcements|Increase 1 selected monster's ATK by 500 points during the turn this card is activated.
+106|396|trap/continuous/2|Robbin' Goblin|Each time 1 of your monsters inflicts damage to your opponent's Life Points, 1 card is randomly selected from your opponent's hand and discarded to the Graveyard.
+107|604|trap/continuous/2|Royal Decree|As long as this card remains face-up on the field, negate the effects of all Trap Cards except this card on the field.
+108|425|trap/continuous/2|Royal Command|Negates the activation and effects of all Flip Effect monsters.
+109|625|trap/continuous/2|Imperial Order|As long as this card remains face-up on the field, negate the effects of all Spell Cards. Pay 700 Life Points during each of your Standby Phases. If you cannot, this card is destroyed.
+117|988|trap/normal/0|Major Riot|You can activate this card when 1 or more of your monsters are returned from the field to your hand. Return all Monster Cards on the field to your respective hands. Both you and your opponent can then Special Summon from your hand the same number of Monster Cards on the field in face-down Defense Position.
+120|683|trap/normal/0|Trap Hole|If the ATK of a monster summoned by your opponent (excluding Special Summon) is 1000 points or more, the monster is destroyed.
+138|818|trap/normal/0|Destruction Punch|When the ATK of an attacking monster on your opponent's side of the field is lower than the DEF of the attacked Defense Position monster on your side of the field, destroy the attacking monster. Damage calculation is applied normally.
+166|528|trap/counter/0|Solemn Judgment|Pay half of your Life Points when your opponent either activates a Spell or Trap Card or summons a monster (including Special Summon) to negate the action and destroy the Spell Card, Trap Card, or summoned monster.
+167|30|trap/continuous/2|Solemn Wishes|You gain 500 Life Points when you draw a card (or cards).
+177|219|trap/normal/0|Armored Glass|You can activate this card when a monster is equipped with an Equip Card. Negate the effects of all Equip Cards on the field during the turn this card is activated.
+207|790|trap/normal/0|Gamble|You can activate this card when your opponent's hand has 6 or more cards and your hand contains 2 or less. Toss a coin and call it. If you call it right, draw until your hand has 5 cards. If you call it wrong, skip your next turn.
+212|12|trap/continuous/2|Forced Requisition|You can activate this card when you discard from your hand. Every time you discard from your hand, your opponent must also discard the same number of cards from his/her hand.
+230|83|trap/normal/0|Metal Detector|You can activate this card when a Continuous Trap Card is activated. Negate all Continuous Trap Cards during the turn this card is activated.
+232|36|trap/continuous/2|Mirror Wall|Decrease the ATK of all your opponent's attacking monsters by half. You must pay 2000 Life Points during each of your Standby Phases.  If you cannot, this card is destroyed. 
+235|956|trap/normal/0|Kunai with Chain|You can shift an opponent's monster in Attack Position to Defense Position. In addition, you can increase the ATK of 1 of your own monsters by 500 points.
+244|512|trap/continuous/2|Gravity Bind|All monsters of Level 4 or higher cannot attack. Their positions may still be changed.
+250|284|trap/normal/0|Gryphon Wing|When your opponent activates "Harpie's Feather Duster", all of your opponent's Spell and Trap Cards are destroyed in place of your own.
+272|335|trap/normal/0|Torrential Tribute|You can activate this card when a monster is Summoned (including Flip Summon and Special Summon). Destroy all monsters on the field.
+282|867|trap/counter/0|Negate Attack|When your opponent attacks with a monster, all attacks are negated and your opponent's Battle Phase ends.
+290|861|trap/normal/0|Jar of Greed|Draw 1 card from your Deck.
+308|708|trap/continuous/2|Minor Goblin Official|You can activate this card when your opponent's Life Points are 3000 or less. Inflict 500 points of Direct Damage to your opponent's Life Points during each of his/her Standby Phases.
+332|490|trap/normal/0|Dust Tornado|Destroy 1 Spell or Trap Card on your opponent's side of the field. You can then Set 1 Spell or Trap Card from your hand. This card can only be activated if it is a Quick-Play Spell Card.
+356|1006|trap/normal/0|Just Desserts|Inflict 500 points of Direct Damage to your opponent's Life Points for each monster your opponent has on the field.
+369|957|trap/normal/0|Crush Card|Offer 1 DARK monster with an ATK of 1000 or less on your side of the field as a Tribute. You and your opponent check all monsters on your opponent's side of the field, your opponent's hand, and all cards during your opponent's next 3 turns he/she draws and destroy all monsters with an ATK of 1500 or higher.
+379|814|trap/normal/0|Shift|You can activate this card when your opponent designates 1 monster on your side of the field as the target of a Spell, Trap, or battle attack. Change the target to a different monster on your side of the field.
+389|574|trap/normal/0|Mask of Weakness|This card can only be activated in the Battle Phase. Select 1 attacking monster and decrease the selected monster's ATK by 700 points during the turn this card is activated.
+402|1079|trap/normal/0|Deal of Phantom|Select 1 monster face-up on the field. Increase the selected monster's ATK by 100 points for each monster in your Graveyard during the turn this card is activated. The number of monster is applied when this card is activated.
+406|191|trap/counter/0|Horn of Heaven|Offer 1 of your own monsters on the field as a Tribute to negate the summon (including Special Summon) of a monster and destroy it.
+408|976|trap/normal/0|Castle Walls|Increase a selected monster's DEF by 500 points during the turn this card is activated.
+414|965|trap/continuous/2|Skull Invitation|Every time a card is sent to the Graveyard, inflict 300 points of Direct Damage to its owner's Life Points per card.
+415|829|trap/continuous/2|Skull Lair|Remove any number of cards in your Graveyard from play. Destroy 1 face-up monster on the field whose Level Stars are equal to the number of the cards you removed from play.
+427|471|trap/continuous/2|The Eye of Truth|As long as this card remains face-up on the field, your opponent must show his/her hand. Your opponent increases his/her Life Points by 1000 points at each of his/her Standby Phases if he/she has a Spell Card in his/her hand.
+464|336|trap/continuous/2|Respect Play|During their respective turns, each player must show their opponent their hand.
+465|436|trap/continuous/2|Light of Intervention|Monster Cards cannot be played face-down. Monsters Set in Defense Position are played face-up on the field and are considered summoned. 
+467|233|trap/normal/0|Mirror Force|When an opponent's monster attacks, negate the attack and destroy all opponent's monsters in Attack Position.
+468|819|trap/normal/0|Mystical Refpanel|Transfer the effects of a Spell Card that targets 1 player to another player.
+472|443|trap/normal/0|World Suppression|You can activate this card when a Field Spell Card is activated.  Negate the Field Spell Card during the turn this card is activated.
+481|799|trap/continuous/2|Type Zero Magic Crusher|For each Spell Card that you discard from your hand, inflict 500 points of Direct Damage to your opponent's Life Points.
+501|645|trap/normal/0|Solomon's Lawbook|Skip your own Standby Phase.
+549|835|trap/normal/0|Chain Destruction|You can activate this card when a monster with an ATK of 2000 points or less is summoned (including Special Summon). This monster is not destroyed, but all Monster Cards of the same name in the summoning player's hand and Deck are destroyed. The summoning player's Deck is then shuffled.
+552|905|trap/normal/0|Earthshaker|Select 2 Monster Card Attributes. Your opponent then selects 1 of the 2 Attributes and destroys all face-up monsters with that Attribute on the field.
+553|692|trap/normal/0|Collected Power|Select 1 face-up monster on the field. Equip this monster with all face-up Equip Cards on the field. If the target of the Equip Card is not correct, destroy the Equip Card.
+554|1085|trap/continuous/2|Ultimate Offering|At the cost of 500 Life Points per monster, a player is allowed an extra Normal Summon or Set.
+561|674|trap/normal/0|Dark Spirit of the Silent|This card can only be activated during your opponent's Battle Step. Negate the attack of 1 monster and select another 1 of your opponent's face-up monsters and have it attack. If the new targeted attacking monster is in face-up Defense Position, change it to Attack Position.
+573|261|trap/continuous/2|DNA Surgery|Select 1 Type of monster. As long as this card remains on the field, all face-up Monster Cards will be treated as the Type you selected.
+577|1078|trap/normal/0|Ceasefire|Flip all face-down Monster Cards on the field face-up (Flip Effects are not activated). Inflict 500 points of Direct Damage to your opponent's Life Points for each Effect Monster Card on the field.
+579|721|trap/continuous/2|Jam Defender|Each time a monster on your opponent's side of the field attacks a monster on your side of the field and you have "Revival Jam" face-up on the field, you can change the attack target to "Revival Jam".
+607|828|trap/continuous/2|Goblin Fan|As long as this card remains face-up on the field, destroy all Flip Summoned monsters of Level 2 or lower. At that time, their effects are not activated.
+611|702|trap/normal/0|Fairy's Hand Mirror|Switch the opponent's Spell Card effect that specifically designates 1 monster as a target to another correctly targeted monster.
+624|47|trap/counter/0|Seven Tools of the Bandit|Pay 1000 of your Life Points to negate the activation of a Trap Card and destroy it.
+628|1040|trap/normal/0|Time Machine|When 1 monster is sent to the Graveyard as a result of battle, you can return it to the field in the same battle position as a Special Summon.
+629|303|trap/normal/0|Time Seal|Your opponent skips the Draw Phase of his/her next turn.
+632|544|trap/normal/0|Snake Fang|Decrease 1 selected monster's DEF by 500 points during the turn this card is activated.
+636|662|trap/normal/0|Gust|You can activate this card when 1 or more of your Spell Cards are destroyed and sent from the field to the Graveyard by a card effect your opponent controls. Destroy 1 Spell or Trap Card on the field.
+649|69|trap/continuous/2|Dragon Capture Jar|All Dragon-Type monsters on the field are switched to Defense Position and remain in this position as long as this card is active.
+659|348|trap/continuous/2|Tornado Wall|This card can only be activated when "Umi" is active on the field. As long as "Umi" remains face-up on the field, any damage to your Life Points becomes 0. When "Umi" is destroyed or removed from the field, this card is also destroyed. 
+675|122|trap/normal/0|Fake Trap|When your opponent uses a Spell, Trap, or Effect Monster Card to destroy your Trap Card(s), this card can be destroyed as a substitute for your Trap Card(s).
+680|684|trap/normal/0|Eatgaboon|If the ATK of a monster summoned by your opponent (excluding Special Summon) is 500 points or less, the monster is destroyed.
+684|1066|trap/normal/0|House of Adhesive Tape|If the DEF of a monster summoned by your opponent (excluding Special Summon) is 500 points or less, the monster is destroyed.
+703|1089|trap/normal/0|Graverobber|Select 1 Spell Card from your opponent's Graveyard. You can use it as your own Spell Card in your hand until the end of the turn. If you activate it, you take 2000 points of damage.  
+704|642|trap/continuous/2|Graverobber's Retribution|During each of your Standby Phases, inflict 100 points of Direct Damage to your opponent's Life Points for each of your opponent's Monster Cards that have been removed from play.
+707|301|trap/normal/0|Ring of Destruction|Destroy 1 face-up Monster Card and inflict Direct Damage equal to the destroyed card's ATK to the Life Points of both you and your opponent.
+709|245|trap/normal/0|Call of the Grave|You can activate this card when your opponent activates "Monster Reborn". Negate the effect of "Monster Reborn".
+712|980|trap/normal/0|Numinous Healer|You can activate this card when you take damage to your Life Points. Increase your Life Points by 1000 points. In addition, increase your Life Points by 500 points per card if there are additional "Numinous Healer" cards in the Graveyard. 
+714|0|trap/normal/0|Attack and Receive|You can activate this card when you take damage to your Life Points. Inflict 700 points of Direct Damage to your opponent's Life Points. In addition, inflict 300 points of Direct Damage to your opponent's Life Points per card if there are additional "Attack and Receive"cards in your Graveyard. 
+715|182|trap/normal/0|Two-Pronged Attack|Select and destroy 2 of your monsters and 1 of your opponent's monsters.
+717|1035|trap/continuous/2|The Emperor's Holiday|Negate the effects of all Equip Cards.
+736|533|trap/normal/0|Widespread Ruin|When your opponent attacks with a monster, destroy his/her Attack Position monster with the highest ATK.
+743|0|trap/normal/0|Lightforce Sword|Select 1 card at random from your opponent's hand. Keep it face-down and place it outside of the field. During your opponent's 4th turn, the card is returned to his/her hand in the Standby Phase. 
+762|197|trap/normal/0|Anti Raigeki|When your opponent activates "Raigeki", all of your opponent's monsters are destroyed in place of your own. 
+763|0|trap/continuous/2|Appropriate|You can activate this card when your opponent draws a card outside of his/her Draw Phase. After activation, every time your opponent draw a card out side of his her Draw Phase, draw 2 cards from your Deck.
+784|0|trap/counter/0|Riryoku Field|Negates the activation of a Spell Card that designates 1 monster as a target and destroys the Spell Card.
+843|0|trap/normal/0|Gift of The Mystical Elf|Increase your Life Points by 300 points for each monster on the field, regardless of position.
+845|358|trap/normal/0|Enchanted Javelin|When your opponent's monster attacks, increase your Life Points by the attacking monster's ATK points. 
+851|0|trap/normal/0|Backup Soldier|You can activate this card when there are 5 or more Monster Cards in your Graveyard. Take up to 3 Monster Cards (except monsters with effects) with an ATK of 1500 points or less from your Graveyard and add them to your hand.
+870|0|trap/normal/0|White Hole|When your opponent plays "Dark Hole", the monsters on your side of the field are not destroyed.
+890|0|trap/normal/0|Magical Hats|You can activate this card during your opponent's Battle Phase. Take 2 non-Monster Cards from your Deck and select 1 of your Monster Cards on the field, then shuffle your Deck. Shuffle the 3 selected cards and Set them on the field in face-down Defense Position. The 2 cards selected from your Deck are treated as monsters (ATK 0/DEF 0) and are destroyed at the end of the Battle Phase. 
+892|0|trap/normal/0|Magic-Arm Shield|You can activate this card when your opponent announces an attack. Select 1 of your opponent's face-up Monster Cards on the field and designate it as the target of the attack.
+893|0|trap/counter/0|Magic Jammer|Discard 1 card from your hand to the Graveyard to negate the activation of a Spell Card and destroy it.
+894|0|trap/normal/0|Magic Cylinder|Negate the attack of 1 of your opponent's monsters and inflict Direct Damage equal to the attacking monster's ATK to your opponent's Life Points.
+895|0|trap/counter/0|Magic Drain|You can activate this card when your opponent activates a Spell Card. If your opponent cannot immediately discard 1 Spell Card from his/her hand, negate the activation of the Spell Card and destroy it.
+913|0|trap/continuous/2|Anti-Spell Fragrance|As long as this card remains face-up on the field, both players must first Set Spell Cards when they use them and cannot activate them until their next turn.
+917|0|trap/normal/0|Mystic Probe|You can activate this card when a Continuous Spell Card is activated. Negate all Continuous Spell Cards during the turn this card is activated.
+922|0|trap/continuous/2|Magic Thorn|You can inflict 500 points of damage per card to your opponent's Life Points when your opponent's cards are discarded to the Graveyard by the effects of Spell, Trap or Effect Monster Cards.
+938|0|trap/normal/0|Michizure|You can activate this card when your monster is sent from the field to the Graveyard. Destroy 1 monster on the field.
+952|0|trap/continuous/2|Blind Destruction|During your Standby Phase, roll 1 six-sided die once. Destroy any monsters whose Level Stars are equal to the number rolled. If the number is "6", destroy all face-up Level 6 or higher monsters on the field.
+970|325|trap/continuous/2|Infinite Dismissal|All monsters of Level 3 or lower that are summoned to the field during this turn (excluding Special Summon) are destroyed at the End Phase of the turn.
+974|0|trap/normal/0|Metalmorph|After activation, this card is used to equip a face-up monster. The monster equipped with this card increases its ATK and DEF by 300 points. When attacking with a monster equipped with this card, you can further increase its ATK by an amount equal to half the ATK of your target.  
+985|0|trap/normal/0|Driving Snow|You can activate this card when 1 or more of your Trap Cards are destroyed and sent from the field to the Graveyard by a card effect your opponent controls. Destroy 1 Spell or Trap Card on the field.
+999|0|trap/continuous/2|Fairy Box|Each time a monster on your opponent's side of the field attacks, toss a coin and call Heads or Tails. If you call it right, the attacking monster's ATK becomes 0 only during the Battle Phase. Pay 500 Life Points during each of your Standby Phases. If you cannot, this card is destroyed.
+1010|291|trap/continuous/2|Call of the Dark|All monsters restored with "Monster Reborn" are sent to the Graveyard. "Monster Reborn" also cannot be played as long as this card remains on the field.
+1017|554|trap/continuous/2|Shadow Spell|Select 1 of your opponent's face-up monsters. The ATK of the selected monster is decreased by 700 points and its battle position cannot be changed. When the monster is destroyed, this card is also destroyed.
+1032|356|trap/normal/0|Shadow of Eyes|When your opponent Sets a Monster Card in face-down Defense Position, change it to face-up Attack Position. If the Monster Card has a Flip Effect, it is not activated.
+1061|114|trap/continuous/2|Call Of The Haunted|Select 1 monster from your Graveyard and Special Summon it in face-up Attack Position. When this card is destroyed or removed from the field, the summoned monster is destroyed. If the summoned monster is destroyed, this card is also destroyed.  
+1066|563|trap/normal/0|Acid Trap Hole|Flip 1 face-down Defense Position monster face-up.  If the monster's DEF is 2000 points or less, the monster is destroyed.  If the DEF is more than 2000 points, return the monster to its face-down Defense Position.
+1092|843|trap/continuous/2|Spellbinding Circle|Select 1 monster.  As long as this card remains face-up on the field, the selected monster cannot attack or change its battle position except by the effect of a Spell, Trap or Effect Monster Card. When the selected monster is destroyed, this card is also destroyed. If the selected monster is offered as a Tribute, this card is not destroyed.
+1102|0|trap/normal/0|Waboku|Any damage inflicted by an opponent's monster is decreased to 0 during the turn this card is activated.
+6|658|monster//1|The Little Swordsman of Aile|Offer 1 monster on your side of the field as a Tribute to increase this monster's ATK by 700 points until the end of the turn.
+7|200|monster//1|Bite Shoes|FLIP: Change the Attack or Defense Position of 1 face-up monster on the field. The card must remain face-up.
+17|775|monster//1|Tainted Wisdom|When this card is changed from Attack Position to Defense Position, shuffle your own Deck.
+18|778|monster//1|Hiro's Shadow Scout|FLIP: Your opponent draws 3 cards. Both players check the cards and any Spell Cards among them must be immediately discarded to the Graveyard.
+26|1068|monster//1|Amazon Archer|Offer 2 monsters on your side of the field as a Tribute to inflict 1200 points of Direct Damage to your opponent's Life Points. Monsters used for a Tribute Summon or that are offered as Tributes due to other cards' effects are excluded. 
+28|875|monster//1|Ameba|When this card is face-up on the field and control shifts to your opponent, inflict 2000 points of Direct Damage to your opponent's Life Points. This effect can only be used once as long as this card remains face-up on the field.
+35|981|monster//1|Invitation to a Dark Sleep|When this monster is summoned (excluding Special Summon), select 1 of your opponent's monsters. As long as this card remains face-up on the field, the selected monster cannot attack.
+37|31|monster//1|Beast of Gilfer|When this card is sent to the Graveyard, it can be treated as an Equip Spell Card and can be used to equip 1 monster on the field. The ATK of a monster equipped with this card decreases by 500 points.
+44|100|monster//1|Swordsman from a Foreign Land|A monster attacked by this card will be destroyed at the End Phase of the fifth turn after the attack.
+46|313|monster//1|Dimensional Warrior|When this card Attacks or is attacked, both this card and the opposing monster are removed from play and cannot return during the current Duel.
+58|927|monster//1|Minar|When this card is sent directly from your hand to the Graveyard by your opponent's card effect, inflict 1000 points of Direct Damage to your opponent's Life Points.
+61|696|monster//1|Mystical Sheep #1|You can substitute this card for any 1 Fusion-Material Monster. You cannot substitute for any other Fusion-Material Monsters in the current Fusion.
+63|525|monster//1|The Rock Spirit|This monster can only be Special Summoned by removing 1 EARTH monster in your Graveyard from play. Increase the ATK of this monster by 300 points during your opponent's Battle Phase.
+66|208|monster//1|Insect Queen|This card cannot attack unless you offer 1 of your monsters on the field as a Tribute. The ATK of this card increases by 200 points for each Insect-Type monster on the field. When this card destroys an enemy monster, you can place an "Insect Monster Token" (face-up Attack Position/Insect-Type/EARTH/1 Star/ATK 100/DEF 100) on the field at the end of your turn.
+75|262|monster//1|Weather Report|FLIP: Destroys all opponent's face-up "Swords of Revealing Light" on the field. If "Swords of Revealing Light" is destroyed, you can perform your Battle Phase twice this turn (or your next turn, if activated during opponent's turn).
+80|355|monster//1|Wall Shadow|You cannot Normal Summon this monster. This card can only be Special Summoned by offering "Labyrinth Wall" equipped with "Magical Labyrinth" as a Tribute. No other Tribute Monsters are necessary. 
+101|1016|monster//1|Electric Snake|When this card is sent directly from your hand to the Graveyard by your opponent's card effect, you can draw 2 cards from your Deck. 
+111|57|monster//1|Invader of the Throne|FLIP: Select 1 opponent's monster and switch control of it with this card. This effect cannot be activated during the Battle Phase.
+132|856|monster//1|Reaper of the Cards|FLIP: Destroys 1 Trap Card on the field. If this card's target is face-down, flip it face-up. If the card is a Trap Card, it is destroyed. If not, it is returned to its face-down position. The flipped card is not activated.
+146|995|monster//1|Morphing Jar #2|FLIP: Return all Monster Cards on the field to their respective Decks and shuffle them. You and your opponent then pick up cards until you both have the same number of Monster Cards (Level 4 or lower) that were returned to each Deck. Special Summon the monsters on the field in face-down Defense Position. Any other cards picked up are discarded to the Graveyard.
+155|688|monster//1|Garuda the Wind Spirit|This monster can only be Special Summoned by removing 1 WIND monster in your Graveyard from play. As long as this monster remains face-up on the field, you may change the battle position of 1 of your opponent's face-up Monster Cards at each End Phase of your opponent's turn.
+157|925|monster//1|Catapult Turtle|Offer 1 monster on your side of the field as a Tribute to inflict Direct Damage equal to half of the Tribute monster's ATK to your opponent's Life Points.  Monsters used for a Tribute Summon or that are offered as Tributes due to other cards' effects are excluded. 
+164|393|monster//1|The Immortal of Thunder|FLIP: You gain 3000 Life Points. After this card is flipped, you lose 5000 Life Points when it is sent from the field to the Graveyard.
+171|4|monster//1||
+174|907|monster//1|Masked Sorcerer|When you inflict damage to your opponent's Life Points with this card, draw 1 card from your Deck.
+175|764|monster//1|Mechanical Spider|Any DARK monster attacked by this card is automatically destroyed. Damage calculations apply.
+178|333|monster//1|Karate Man|Once per turn, the original ATK of this card can be doubled. When this effect is applied, the card is immediately destroyed at the end of the turn. 
+191|190|monster//1|Machine King|Increase the ATK of this card by 100 points for each face-up Machine-Type monster on the field.
+197|720|monster//1|Parasite Paracide|FLIP: Put this card face-up in your opponent's Deck and shuffle it. When your opponent draws this card, it is immediately Special Summoned on your opponent's side of the field face-up in Defense Position and inflicts 1000 points of Direct Damage to your opponent's Life Points. From this point, all face-up Monster Cards on your opponent's side of the field are treated as Insect-Type monsters as long as this card remains face-up on the field.
+201|583|monster//1|Goddess of Whim|Toss a coin and call Heads or Tails. Call it right and this card's ATK will be doubled during this turn. Call it wrong and it will be halved during this turn.
+206|454|monster//1|Cannon Soldier|Offer 1 monster on your side of the field as a Tribute to inflict 500 points of Direct Damage to your opponent's Life Points. Monsters used for a Tribute Summon or that are offered as Tributes due to other cards' effects are excluded. 
+208|507|monster//1|Perfectly Ultimate Great Moth|This monster is summoned by offering "Petit Moth" as a Tribute on the 6th of your turns after it has been equipped with "Cocoon of Evolution".
+218|500|monster//1|Giant Rat|When this card is sent to the Graveyard as a result of battle, you may select 1 EARTH monster with an ATK of 1500 or less from your Deck and Special Summon it to the field (no Tribute is required for monsters of Level 5 or more). The Deck is then shuffled.
+220|240|monster//1|Sinister Serpent|During your Standby Phase, if a "Sinister Serpent" exists in your Graveyard, you can return the "Sinister Serpent" to your hand.
+221|940|monster//1|Mystic Tomato|When this card is sent to the Graveyard as a result of battle, you may select 1 DARK monster with an ATK of 1500 or less from your Deck and Special Summon it to the field (no Tribute is required for monsters of Level 5 or more). The Deck is then shuffled.
+246|1069|monster//1|Griggle|When this card is face-up on the field and control shifts to your opponent, you gain 3000 Life Points. This effect can only be used once as long as this card remains face-up on the field.
+247|903|monster//1|Mother Grizzly|When this card is sent to the Graveyard as a result of battle, you may select 1 WATER monster with an ATK of 1500 or less from your Deck and Special Summon it to the field in face-up Attack Position (no Tribute is required for monsters of Level 5 or more). The Deck is then shuffled.
+248|934|monster//1|Sangan|When this card is sent from the field to the Graveyard, move 1 monster with an ATK of 1500 or less from your Deck to your hand. Your Deck is then shuffled.
+251|204|monster//1|Kuriboh|Discard this card from your hand to the Graveyard to make the damage inflicted to your Life Points by 1 opponent's monster 0. This effect must be activated during your opponent's Battle Phase.
+255|46|monster//1|Great Moth|This monster can only be Special Summoned by offering "Petit Moth" as a Tribute on the 4th of your turns after "Petit Moth" has been equipped with "Cocoon of Evolution".
+258|304|monster//1|Crimson Sentry|Offer this face-up card as a Tribute to return 1 of your monsters destroyed in battle during this turn to the bottom of your Deck.
+261|6|monster//1|Witch of the Black Forest|When this card is sent from the field to the Graveyard, move 1 monster with a DEF of 1500 or less from your Deck to your hand. Your Deck is then shuffled.
+269|73|monster//1|Gate Guardian|This card can only be Special Summoned by offering "Sanga of the Thunder", "Kazejin" and "Suijin" on your side of the field as a Tribute.
+271|914|monster//1|Gale Dogra|At the cost of 3000 Life Points, you can discard 1 monster from your Fusion Deck to the Graveyard.
+273|1067|monster//1|Wall of Illusion|The monster attacking this creature is returned to its owner's hand. Any damage resulting from the attack is calculated normally.
+274|1056|monster//1|Dreamsprite|When attacked by your opponent's monster, select another 1 of your Monster Cards and designate it as the attack's target, then calculate damage.
+276|292|monster//1|The Stern Mystic|FLIP: All face-down cards on the field are turned face-up, and then returned to their original positions. No card effects are activated when cards are turned face-up.
+278|228|monster//1|Summoner of Illusions|FLIP: Offer 1 monster on your side of the field as a Tribute (excluding this monster). Special Summon 1 Fusion Monster Card from your Fusion Deck. The Fusion Monster is destroyed at the end of the turn this card is activated.
+294|701|monster//1|Pumpking the King of Ghosts|If "Castle of Dark Illusions" is face-up on the field, increase the ATK and DEF of this card by 100 points. As long as this "Castle of Dark Illusions" remains face-up on the field, the ATK and DEF of this card continues to increase by 100 points during each of your Standby Phases. This effect continues until your 4th turn after the card is activated. 
+296|878|monster//1|Cockroach Knight|When this card has been sent to the Graveyard, it is returned to the top of the Deck.
+298|121|monster//1|Dark Sage|When you activate the effect of "Time Wizard" and call it right, you can summon this card from either your hand or your Deck by offering 1"Dark Magician" as a Tribute.  Then move 1 Spell Card from your Deck to your hand and shuffle your Deck.
+305|148|monster//1|Kotodama|As long as this card remains face-up on the field, monsters of the same name cannot exist on the field at the same time (face-down cards not included). If a card of the same name is summoned in a later turn, that card is destroyed. If 2 cards of the same name are played at the same time, both cards are destroyed.
+307|983|monster//1|Goblin Attack Force|When this card attacks, it is changed to Defense Position at the end of the Battle Phase. This position cannot be changed during your next turn.
+320|15|monster//1|Cyber Jar|FLIP: Destroys all monsters on the field (including this monster). Both players then pick up (not Draw) 5 cards from the top of their respective Decks and show the cards to each other. Immediately Special Summon any Monster Cards of Level 4 or lower among them on the field in face-up Attack Position or face-down Defense Position. The rest of the cards picked up are placed in the players' hands.
+323|149|monster//1|Kinetic Soldier|When this card battles with a Warrior-Type monster, increase the ATK and DEF of this monster by 2000 points only during damage calculation. 
+334|1008|monster//1|Electromagnetic Bagworm|FLIP: Gives you control of one of your opponent's Machine-Type monsters until your next End Phase. Any monster which destroys this card during battle has their  ATK and DEF reduced by 500 points.
+344|738|monster//1|Thunder Dragon|Discard this card from your hand to the Graveyard to add up to 2 "Thunder Dragon" cards from your Deck to your hand. Your Deck is then shuffled. This effect is activated only during a Main Phase.
+358|677|monster//1|Valkyrion the Magna Warrior|This card can only be Special Summoned by offering "Alpha the Magnet Warrior", "Beta the Magnet Warrior", and "Gamma the Magnet Warrior" from your hand or the field as a Tribute.  If "Alpha the Magnet Warrior", "Beta the Magnet Warrior", and "Gamma the Magnet Warrior" exist in the Graveyard, you can offer this card as a Tribute to Special Summon these 3 cards to the field.
+364|597|monster//1|Panther Warrior|This card cannot attack unless you offer 1 of your monsters on the field as a Tribute.
+365|958|monster//1||
+375|997|monster//1|4-Starred Ladybug of Doom|FLIP: Destroys all face-up Level 4 monsters on your opponent's side of the field.
+377|789|monster//1|The Forgiving Maiden|Offer this face-up card as a Tribute to return 1 of your monsters destroyed in battle during this turn to your hand. 
+382|732|monster//1|The Wicked Worm Beast|This card is returned to your hand at the end of your turn.
+383|519|monster//1|Giant Germ|When this card is sent to the Graveyard as a result of battle, inflict 500 points of Direct Damage to your opponent's Life Points. You can also take cards of the same name from your Deck and Special Summon them to the field in face-up Attack Position. The Deck is then shuffled.
+385|694|monster//1|Shining Angel|When this card is sent to the Graveyard as a result of battle, you can select 1 LIGHT monster with an ATK of 1500 or less from your Deck and Special Summon it to the field in face-up Attack Position (no Tribute is required for monsters of Level 5 or more). The Deck is then shuffled.
+395|105|monster//1|Shadow Ghoul|Increase the ATK of this monster by 100 points for each monster in your own Graveyard.
+405|158|monster//1|Gilasaurus|You may treat the Normal Summon of this card as a Special Summon. If you select Special Summon, your opponent may select a Monster Card from his/her Graveyard and Special Summon the monster to the field.
+409|175|monster//1|Jowgen the Spiritualist|Randomly discard 1 card from your hand to the Graveyard to destroy all Special Summoned monsters on the field. In addition, as long as this card remains face-up on the field, no monsters can be Special Summoned. 
+410|719|monster//1|Queen's Double|This monster may attack your opponent's Life Points directly.
+412|194|monster//1|Jirai Gumo|When you attack with this card, toss a coin and call it. If you call it right, attack normally. If you call it wrong, reduce your Life Points by half before attacking.
+423|435|monster//1|Deepsea Warrior|When "Umi" is face-up on the field, this card is unaffected by any Spell Cards.
+424|344|monster//1|Cocoon of Evolution|You may treat this card as an Equip Spell Card on a face-up "Petit Moth" on the field.  When equipped, the ATK and DEF of "Petit Moth" becomes the same as "Cocoon of Evolution". 
+425|449|monster//1|Goddess with the Third Eye|You can substitute this card for any 1 Fusion-Material Monster. You cannot substitute for any other Fusion-Material Monsters in the current Fusion.
+428|201|monster//1|Jinzo|As long as this card remains face-up on the field, all Trap Cards cannot be activated. The effects of all face-up Trap Cards are also negated.
+429|936|monster//1|Jinzo #7|This monster may attack your opponent's Life Points directly.
+430|295|monster//1|Suijin|Reduce the ATK of an opponent's monster attacking this card to 0. This effect can be used only once. The card's owner chooses when to activate this effect.
+434|78|monster//1|Hoshiningen|As long as this card remains face-up on the field, increase the ATK of all LIGHT monsters by 500 points and decrease the ATK of all DARK monsters by 400 points.
+440|324|monster//1|Skelengel|FLIP: You can draw 1 card from your deck.
+444|87|monster//1|Star Boy|As long as this card remains face-up on the field, increase the ATK of all WATER monsters by 500 points and decrease the ATK of all FIRE monsters by 400 points.
+453|706|monster//1|Nimble Momonga|When this card is sent to the Graveyard as a result of battle, increase your Life Points by 1000 points. You can also take cards of the same name from your Deck and Special Summon them to the field in face-down Defense Position. The Deck is then shuffled.
+455|64|monster//1|Blast Sphere|When your opponent attacks this monster in face-down Defense Position, this card is treated as an Equip Card and is used to equip the attacking monster (damage is not calculated). The equipped monster and this card are destroyed during your opponent's next Standby Phase. Your opponent then receives Direct Damage equal to the equipped monster's ATK. 
+463|71|monster//1|Kiseitai|When your opponent's monster attacks this card in face-down Defense Position, the attacking monster is equipped with this card (damage calculations are canceled). Treat this card as an Equip Spell Card. During each of your opponent's Standby Phases, increase your Life Points by half of the ATK of the monster equipped with this card.
+471|90|monster//1|Magician of Faith|FLIP: Select 1 Spell Card from your Graveyard and return it to your hand.
+474|220|monster//1|Total Defense Shogun|When this card is summoned (excluding Special Summon), it is placed on the field in Defense Position. This card can attack without being shifted to Attack Position. Damage results are calculated normally.
+480|686|monster//1|Ceremonial Bell|As long as this card remains face-up on the field, you and your opponent must show your respective hands to each other.
+483|28|monster//1|Drill Bug|When this card inflicts damage to your opponent's Life Points, you may take 1 "Parasite Paracide" card from your Deck, shuffle the Deck, and place "Parasite Paracide" face-down on top of the Deck.
+485|780|monster//1|Senju of the Thousand Hands|When this card is summoned to the field (excluding Special Summon), you may move 1 Ritual Monster Card from your Deck to your hand. The Deck is then shuffled.
+495|70|monster//1|Sword Hunter|A monster destroyed by this card becomes an Equip Spell Card. Equip "Sword Hunter" with the card to increase the ATK of this monster by 200 points. The equipped card remains on the field until this card is destroyed.
+496|1002|monster//1|Zone Eater|A monster attacked by this card will be destroyed at the End Phase of the fifth turn after the attack.
+497|993|monster//1|Sonic Bird|When this card is summoned (excluding Special Summon), you may move 1 Ritual Spell Card from your Deck to your hand.  The Deck is then shuffled.
+498|203|monster//1|Spirit of the Breeze|As long as this card remains on your side of the field in face-up Attack Position, increase your Life Points by 1000 points during each of your Standby Phases.
+499|647|monster//1|Insect Soldiers of the Sky|The ATK of this card increases by 1000 points whenever it attacks a WIND monster.
+503|876|monster//1|Dark Artist|The DEF of this monster is decreased by half when attacked by LIGHT monsters.
+504|811|monster//1|Dark-Eyes Illusionist|FLIP : As long as this card remains on the field, 1 designated monster cannot attack.
+505|271|monster//1|Dark Elf|This card requires a cost of 1000 of your own Life Points to attack.
+510|739|monster//1|Dark Zebra|If this is the only card in your control during your Standby Phase, it is automatically placed in Defense Position. You cannot change the position of this card during the same turn.
+513|821|monster//1|Dark Necrofear|This card can only be Special Summoned by removing 3 Fiend-Type monsters in your Graveyard from play. When this card is destroyed in battle or by your opponent's card effect, it is treated as an Equip Spell Card at the end of the turn. Equip 1 of your opponent's monsters with this card. As long as it is equipped with this card, you control the equipped monster. 
+515|950|monster//1|Zombyra the Dark|This card cannot attack a player directly. Each time this card destroys a monster in battle, decrease the ATK of this card by 200 points.
+516|347|monster//1|Spear Cretin|FLIP: After this card is flipped, when it is sent to the Graveyard, both you and your opponent select 1 monster from your respective Graveyards and Special Summon it on the field in face-up Attack Position or face-down Defense Position (no Tribute is required for monsters of Level 5 or more).
+523|444|monster//1|Big Eye|FLIP: See the 5 cards from the top of your Deck, arrange them in any order desired, and replace them on top of the Deck.
+532|267|monster//1|Jigen Bakudan|FLIP: After this card is flipped, offer it as a Tribute during your Standby Phase to destroy all monsters on your side of the field and inflict Direct Damage equal to half of the total ATK of the destroyed cards (excluding this monster) to your opponent's Life Points.
+537|299|monster//1|Marie the Fallen One|As long as this card exists in your Graveyard, increase your Life Points by 200 points during each of your Standby Phases.
+541|669|monster//1|Bazoo the Soul-Eater|You can remove up to 3 cards in your Graveyard from play to increase the ATK of this monster by 300 points for each card removed from play until the end of your opponent's next turn. This effect can only be used once during your turn.
+548|139|monster//1|Dancing Fairy|As long as this card remains on your side of the field in face-up Defense Position, increase your Life Points by 1000 points during each of your Standby Phases.
+569|643|monster//1|Dragon Piper|FLIP: Destroys "Dragon Capture Jar", and turns all face-up Dragon-Type monsters to Attack Position.
+570|941|monster//1|Princess of Tsurugi|FLIP: Inflicts 500 points of Direct Damage to your opponent's Life Points for each Spell and Trap Card your opponent has on the field.
+588|617|monster//1|Bubonic Vermin|FLIP: You can take 1 "Bubonic Vermin" card from your Deck and Special Summon it on the field in face-down Defense Position. The Deck is then shuffled.
+591|946|monster//1|Gearfried the Iron Knight|Any Equip Card this card is equipped with is automatically destroyed.
+592|863|monster//1|Steel Scorpion|A non Machine-Type Monster attacking "Steel Scorpion" will be destroyed at the End Phase of your opponent's 2nd turn after the attack.
+595|116|monster//1|The Bistro Butcher|When this card inflicts damage to your opponent, your opponent must draw 2 cards from his/her Deck.
+601|839|monster//1|Cyber-Stein|At the cost of 5000 of your own Life Points, you can Special Summon 1 Fusion Monster from your Fusion Deck in face-up Attack Position.
+606|253|monster//1|Electric Lizard|A non Zombie-Type monster attacking "Electric Lizard" cannot attack on its following turn.
+616|924|monster//1|The Legendary Fisherman|When "Umi" is face-up on the field, this card is unaffected by any Spell Cards and cannot be attacked by your opponent's monsters.
+620|330|monster//1|Toon Summoned Skull|This card cannot be summoned unless "Toon World" is on the field. This card cannot attack in the same turn that it is summoned. Pay 500 Life Points each time this monster attacks. When "Toon World" is destroyed, this card is also destroyed. If your opponent doesn't control a Toon monster on the field, this card may inflict Direct Damage to your opponent's Life Points. If a Toon monster is on your opponent's side of the field, your attacks must target the Toon monster. 
+621|469|monster//1|Manga Ryu-Ran|This card cannot be summoned unless "Toon World" is on the field. This card cannot attack in the same turn that it is summoned. Pay 500 Life Points each time this monster attacks. When "Toon World" is destroyed, this card is also destroyed. If your opponent doesn't control a Toon monster on the field, this card may inflict Direct Damage to your opponent's Life Points. If a Toon monster is on your opponent's side of the field, your attacks must target the Toon monster. 
+622|666|monster//1|Toon Mermaid|This card cannot be summoned unless "Toon World" is on the field. This card cannot attack in the same turn that it is summoned. Pay 500 Life Points each time this monster attacks. When "Toon World" is destroyed, this card is also destroyed. If your opponent doesn't control a Toon monster on the field, this card may inflict Direct Damage to your opponent's Life Points. If a Toon monster is on your opponent's side of the field, your attacks must target the Toon monster. 
+630|565|monster//1|Time Wizard|Toss a coin and call Heads or Tails. If you call it right, your opponent's monsters on the field are destroyed. If you call it wrong, your own monsters on the field are destroyed and you lose Life Points equal to half the total ATK of the destroyed monsters.  This card can be used only during your own turn, once per turn.
+638|432|monster//1|Greenkappa|FLIP : Select 2 face-down Spell or Trap Cards on the field and destroy them.
+647|899|monster//1|Dragon Seeker|When this card is Summoned (excluding Special Summon), destroy 1 face-up Dragon-Type monster on the field.
+653|340|monster//1|Flying Kamakiri #1|When this card is sent to the Graveyard as a result of battle, you may select 1 WIND monster with an ATK of 1500 or less from your Deck and Special Summon it to the field in face-up Attack Position (no Tribute is required for monsters of Level 5 or more). The Deck is then shuffled.
+655|407|monster//1|Trap Master|FLIP: Destroys 1 Trap Card on the field. If this card's target is face-down, flip it face-up. If the card is a Trap Card, it is destroyed. If not, it is returned to its face-down position. The flipped card is not activated.
+657|974|monster//1|Dream Clown|When this card is changed from Attack Position to Defense Position, select and destroy 1 monster on your opponent's side of the field.
+660|369|monster//1|Tornado Bird|FLIP: Return 2 Spell or Trap Cards on the field to the hands of their owner.
+670|479|monster//1|Mysterious Puppeteer|As long as this card remains face-up on the field, the Life Points of this card's controller increase by 500 points for each additional monster summoned (excluding Special Summon, but including your opponent's monsters).
+673|14|monster//1|Needle Ball|FLIP: You can inflict 1000 points of Direct Damage to your opponent's Life Points at the cost of 2000 of your own Life Points.
+674|0|monster//1|Needle Worm|FLIP: Discard 5 cards from the top of your opponent's Deck to his/her Graveyard.
+678|1091|monster//1|Slate Warrior|FLIP: Increase the ATK/DEF of this card by 500 points. Any monster that destroys this card must decrease its ATK and DEF by 500 points.
+679|0|monster//1|Beastking of the Swamps|You can substitute this card for any 1 Fusion-Material Monster. You cannot substitute for any other Fusion-Material Monsters in the current Fusion.
+692|0|monster//1|Lava Battleguard|Increase the ATK of this card by 500 points for each face-up "Swamp Battleguard" on your side of the field.
+693|556|monster//1|Swamp Battleguard|Increase the ATK of this monster by 500 points for every face-up "Lava Battleguard" on your side of the field. 
+694|0|monster//1|Harpie's Pet Dragon|Increases the ATK and DEF of this card by 300 points for each face-up "Harpie Lady" on the field.
+697|0|monster//1|Cyber Harpie|This card is treated as "Harpie Lady".
+698|439|monster//1|Harpie Lady Sisters|This monster can only be Special Summoned with the Spell Card "Elegant Egotist".
+705|94|monster//1|Versago the Destroyer|You can substitute this card for any 1 Fusion-Material Monster. You cannot substitute for any other Fusion-Material Monsters in the current Fusion.
+713|765|monster//1|Bombardment Beetle|FLIP: Flip 1 face-down Defense Position Monster Card on your opponent's side of the field face-up. If the flipped card is an Effect Monster Card, immediately destroy it without activating its effect. If the card is not an Effect Monster Card, return it to its original position.
+716|397|monster//1|Buster Blader|The ATK of this card increases by 500 points for every Dragon-Type monster on your opponent's side of the field and Graveyard.
+718|438|monster//1|The Unhappy Maiden|When this card is sent to the Graveyard as a result of battle, the Battle Phase for that turn ends immediately.
+721|891|monster//1|Patrol Robo|During your Standby Phase, you can look at 1 face-down card that's been Set by your opponent as long as this card remains face-up on the field.
+723|0|monster//1|Hane-Hane|FLIP: Select 1 Monster Card on the field (regardless of position) and return it to its owner's hand.
+725|646|monster//1|Berfomet|When this card is summoned (excluding Special Summon), you can add 1 "Gazelle the King of Mythical Beasts" from your Deck to your hand.
+727|622|monster//1|Hayabusa Knight|This monster can attack twice during the same Battle Phase.
+741|1083|monster//1|Banisher of the Light|As long as this card remains face-up on the field, any card sent to the Graveyard is removed from play.
+744|364|monster//1|Fairy Guardian|Offer this face-up card as a Tribute to return 1 Spell Card sent to your Graveyard by your opponent during this turn to the bottom of your Deck.
+746|277|monster//1|Hysteric Fairy|Offer 2 monsters on your side of the field as a Tribute to increase your Life Points by 1000 points. Monsters used for a Tribute Summon or that are offered as Tributes due to other cards' effects are excluded. 
+748|0|monster//1|Big Shield Gardna|When this card is face-down and targeted by a Spell Card whose effect targets only 1 monster the Spell Card is negated and this card is turned face-up in Defense Position. When this card is attacked, it is shifted to Attack Position following the Damage step.
+749|0|monster//1|Fire Princess|Inflict 500 points of Direct Damage to your opponent's Life Points each time you increase your own Life Points.
+753|0|monster//1|Man-Eater Bug|FLIP: Destroys 1 monster on the field (regardless of position).
+760|1099|monster//1|Flash Assailant|Decrease the ATK and DEF of this card by 400 points for every card in your hand.
+767|0|monster//1|Fire Sorcerer|FLIP: Randomly select 2 cards from your hand and remove them from play to inflict 800 points of Direct Damage to your opponent's Life Points.
+772|0|monster//1|Red-Moon Baby|A monster destroyed by this card can be Special Summoned in face-up Attack or Defense Position at the end of the Battle Phase to your side of the field.
+774|0|monster//1|Exodia the Forbidden One|An automatic victory can be declared by the player whose hand contains this card together with the Left Leg/Right Leg/Left Arm/Right Arm of the Forbidden One.
+781|0|monster//1|Kazejin|Reduce the ATK of an opponent's monster attacking this card to 0. This effect can be used only once. The card's owner chooses when to activate this effect.
+793|0|monster//1|Supply|FLIP: Return 2 Fusion-Material monsters that were sent to the Graveyard as a result of a Fusion Summon to your hand.
+806|0|monster//1|Dark Magician Girl|This card's ATK increases by 300 points for every "Dark Magician" or "Magician of Black Chaos" in either player's Graveyard.
+813|0|monster//1|Cure Mermaid|As long as this card remains face-up on your side of the field, increase your Life Points by 800 points during each of your Standby Phases.
+815|0|monster//1|Blue-Eyes Toon Dragon|This card cannot be summoned unless "Toon World" is on the field. This card cannot attack in the same turn that it is summoned. Pay 500 Life Points each time this monster attacks. When "Toon World" is destroyed, this card is also destroyed. If your opponent doesn't control a Toon monster on the field, this card may inflict Direct Damage to your opponent's Life Points. If a Toon monster is on your opponent's side of the field, your attacks must target the Toon monster. 
+819|0|monster//1|Armed Ninja|FLIP: Destroys 1 Spell Card on the field. If this card's target is face-down, flip it face-up. If the card is a Spell Card, it is destroyed. If not, it is returned to its face-down position. The flipped card is not activated.
+827|0|monster//1|Bladefly|As long as this card remains face-up on the field, increase the ATK of all WIND monsters by 500 points and decrease the ATK of all EARTH monsters by 400 points.
+839|0|monster//1|Penguin Soldier|FLIP: You can return up to 2 Monster Cards from the field to the owner's hand.
+840|0|monster//1|Penguin Knight|When this card is sent directly from your Deck to the Graveyard by an opponent's card effect, combine your Graveyard cards with your own Deck, shuffle them and form a new Deck.
+841|0|monster//1|Boar Soldier|This card can only be summoned by a Flip Summon. If summoned by a Normal Summon, the card is destroyed. If your opponent has 1 or more monsters under his/her control, the ATK of this card is decreased by 1000 points.
+844|0|monster//1|Soul of Purity and Light|This card can only be Special Summoned by removing 2 LIGHT monsters in your Graveyard from play. As long as this card remains face-up on the field, decrease the ATK of all monsters on your opponent's side of the field by 300 points during his/her Battle Phase.
+855|0|monster//1|Lady Assailant of Flames|FLIP: Remove 3 cards from the top of your Deck from play to inflict 800 points of Direct Damage to your opponent's Life Points.
+860|0|monster//1|Spirit of Flames|This card can only be Special Summoned by removing 1 FIRE monster in your Graveyard from play. Increase the ATK of this monster by 300 points during your Battle Phase. 
+868|0|monster//1|White Magical Hat|When this card inflicts damage to your opponent's Life Points, 1 card must be discarded randomly from your opponent's hand to the Graveyard. 
+872|0|monster//1||
+873|0|monster//1|Crass Clown|When this card is changed from Defense Position to Attack Position, return 1 monster on your opponent's side of the field to the owner's hand.
+896|0|monster//1|Ancient Lamp|When this monster is attacked in face-down Defense Position, you can designate 1 opponent's monster as the attack's target instead. When this card is on the field, you can Special Summon "La Jinn the Mystical Genie of the Lamp" from your hand.
+905|0|monster//1|Mushroom Man #2|A player controlling this monster loses 300 Life Points during each of his/her Standby Phases when this card is face-up on the field.  Control of this card is shifted to your opponent by paying 500 Life Points at your own End Phase.
+908|0|monster//1|The Fiend Megacyber|If your opponent has 2 or more monsters than you have on the field, you can summon this card without offering any Tributes.
+912|0|monster//1|Maha Vailo|In addition to the effects of Equip Cards, the ATK of this monster is increased by 500 points for each card equipped to this monster.
+918|0|monster//1|Mystic Lamp|This monster may attack your opponent's Life Points directly.
+920|0|monster//1|Maryokutai|The effect of this card can only be applied during your opponent's turn. When your opponent activates a Spell Card, offer this face-up card as a Tribute to negate the activation of the Spell Card and destroy it.
+928|0|monster//1|The Unfriendly Amazon|Offer 1 of your monsters on the field as a Tribute (excluding this monster) during each of your Standby Phases. If you cannot, this card is destroyed. Monsters used for a Tribute Summon or that are offered as Tributes due to other cards' effects are excluded. 
+933|0|monster//1|Blast Juggler|Offer this card as a Tribute during your Standby Phase if face-up to destroy 2 face-up monsters with an ATK of 1000 or less. 
+935|0|monster//1|Aqua Spirit|This card can only be Special Summoned by removing 1 WATER monster in your Graveyard from play. As long as this monster remains face-up on the field, during each of your opponent's Standby Phases, you can change the battle position of 1 of your opponent's face-up Monster Cards. Once changed, the monster must remain in this position for the rest of the turn.
+942|0|monster//1|Witch's Apprentice|As long as this card remains face-up on the field, increase the ATK of all DARK monsters by 500 points and decrease the ATK of all LIGHT monsters by 400 points.
+948|0|monster//1|Milus Radiant|As long as this card remains face-up on the field, increase the ATK of all EARTH monsters by 500 points and decrease the ATK of all WIND monsters by 400 points.
+950|628|monster//1|Muka Muka|Increase the ATK and DEF of this card by 300 points for every card in your hand.
+971|0|monster//1|Nuvia the Wicked|If this monster is Summoned by a Normal Summon, it is destroyed. The ATK of this card is decreased by 200 points for each monster on your opponent's side of the field.
+972|0|monster//1|Morphing Jar|FLIP: Both you and your opponent discard all cards in your hands and draw 5 cards from your respective Decks.
+975|0|monster//1|Metalzoa|This monster can only be Special Summoned from your Deck to your side of the field by offering "Zoa" equipped with "Metalmorph" as a Tribute.
+984|0|monster//1|Mad Sword Beast|When this card attacks with an ATK that is higher than the DEF of your opponent's Defense Position monster, inflict the difference as Battle Damage to your opponent's Life Points.  
+989|0|monster//1|Copycat|When this card is Summoned (including Special Summon) it adopts the original ATK and DEF of 1 opponent's monster.
+992|0|monster//1|Wodan the Resident of the Forest|Increase this card's ATK by 100 points for every Plant-Type monster that is face-up on the field.
+994|0|monster//1|Monster Eye|At the cost of 1000 Life Points, you can return "Polymerization" from the Graveyard to your hand.
+1002|120|monster//1|Yado Karu|When this card is changed from Attack Position to Defense Position, you can place any number of cards from your hand at the bottom of your Deck in any order you desire.
+1011|710|monster//1|Castle of Dark Illusions|FLIP: Increases the ATK and DEF of all Zombie-Type monsters by 200 points. As long as this card remains face-up on the field, the ATK and DEF of Zombie-Type monsters continues to increase by 200 points during each of your Standby Phases. This effect continues until your 4th turn after the card is activated. 
+1016|408|monster//1|Mask of Darkness|FLIP: Select 1 Trap Card from your Graveyard and return it to your hand.
+1025|1034|monster//1|Hourglass of Courage|For 3 turns (including your opponent's) following the Summon of this card (including Flip Summon), the ATK and DEF of this monster is halved. After that, both ATK and DEF are doubled for the remainder of the Duel.
+1030|624|monster//1|UFO Turtle|When this card is sent to the Graveyard as a result of battle, you may select 1 FIRE monster with an ATK of 1500 or less from your Deck and Special Summon it to the field in face-up Attack Position (no Tribute is required for monsters of Level 5 or more). The Deck is then shuffled.
+1037|19|monster//1|Fairy King Truesdale|As long as this card remains face-up on the field, increase the ATK and DEF of all Plant-Type monsters on your side of the field by 500 points. 
+1043|283|monster//1|Ooguchi|This monster may attack your opponent's Life Points directly.
+1045|106|monster//1|Larvae Moth|This monster can only be Special Summoned by offering "Petit Moth" as a Tribute on the 2nd of your turns after "Petit Moth" has been equipped with "Cocoon of Evolution".
+1048|276|monster//1|Sanga of the Thunder|Reduce the ATK of an opponent's monster attacking this card to 0. This effect can be used only once. The card's owner chooses when to activate this effect.
+1057|0|monster//1|Rigras Leever|FLIP: Each player selects a card from the other's hand and discards it. Any monster destroying this card during battle loses 500 points from its ATK and DEF.
+1058|417|monster//1|Little Chimera|As long as this card remains face-up on the field, increase the ATK of all FIRE monsters by 500 points and decrease the ATK of all WATER monsters by 400 points.
+1060|627|monster//1|Revival Jam|When this card is sent to the Graveyard as a result of battle, you can Special Summon this card in face-up Defense Position at your next Standby Phase by paying 1000 Life Points. This must be declared when the monster is destroyed. You cannot change its position during the same turn it is Special Summoned in this way. 
+1062|250|monster//1|Barrel Dragon|Toss a coin 3 times. If 2 out of 3 results are Heads, destroy 1 monster on your opponent's side of the field. This card's effect can only be used during your own turn, once per turn.
+1073|611|monster//1|Kycoo the Ghost Destroyer|Each time this card inflicts battle damage to your opponent's Life Points, you can remove up to 2 cards in your opponent's Graveyard from play. In addition, as long as this card remains face-up on the field, your opponent cannot remove any cards in either Graveyard from play.
+1075|635|monster//1|Rainbow Flower|This monster may attack your opponent's Life Points directly.
+1080|729|monster//1|Leghul|This monster may attack your opponent's Life Points directly.
+1083|0|monster//1|Red-Eyes Black Metal Dragon|This card can only be Special Summoned from the Deck to the field by offering "Red-Eyes B. Dragon" equipped with "Metalmorph" as a Tribute.  Your Deck is then shuffled.
+1087|0|monster//1|Lady Panther|Offer this face-up card as a Tribute to return 1 of your monsters destroyed in battle during this turn to the top of your Deck.
+1090|629|monster//1|Lord of D.|All Dragon-Type monsters cannot be targeted by Spell Cards, Trap Cards, or other effects that specifically designate a target while this card is face-up on the field.
+1093|427|monster//1|Rocket Warrior|The effect of this card can only be applied during the Battle Phase of your own turn. Any damage this monster takes is reduced to 0. Any monster attacked by this card has its ATK decreased by 500 points until the end of that turn.
+1105|0|monster//1|Kuriboh|Discard this card from your hand to the Graveyard to make the damage inflicted to your Life Points by 1 opponent's monster 0. This effect must be activated during your opponent's Battle Phase.
+144|949|monster//3|Black Luster Soldier|This monster can only be Ritual Summoned with the Ritual Spell Card, "Black Luster Ritual". You must also offer monsters whose total Level Stars equal 8 or more as a Tribute from the field or your hand.
+173|730|monster//3|The Masked Beast|This monster can only be Ritual Summoned with the Ritual Spell Card, "Curse of the Masked Beast". You must also offer monsters whose total Level Stars equal 8 or more as a Tribute from the field or your hand.
+182|848|monster//3|Garma Sword|This monster can only be Ritual Summoned with the Ritual Spell Card, "Garma Sword Oath". You must also offer monsters whose total Level Stars equal 7 or more as a Tribute from the field or your hand.
+245|540|monster//3|Crab Turtle|This monster can only be Ritual Summoned with the Ritual Spell Card, "Turtle Oath". You must also offer monsters whose total Level Stars equal 8 or more as a Tribute from the field or your hand.
+331|1004|monster//3|Relinquished|This monster can take on the ATK and DEF of 1 opponent's monster on the field (a face-down monster results in an ATK and DEF of 0). Treat the selected monster as an Equip Spell Card and use it to equip "Relinquished". You may use this effect only once per turn and can equip "Relinquished" with only 1 monster at a time. When your opponent's monster attacks this monster with an ATK higher than "Relinquished", the equipped monster is destroyed instead of "Relinquished". Any Life Point damage you receive from the attacking monster when "Relinquished" is equipped is also inflicted on your opponent.  
+397|1043|monster//3|Javelin Beetle|This monster can only be Ritual Summoned with the Ritual Spell Card, "Javelin Beetle Pact". You must also offer monsters whose total Level Stars equal 8 or more as a Tribute from the field or your hand.
+433|82|monster//3|Super War-Lion|This monster can only be Ritual Summoned with the Ritual Spell Card, "War-Lion Ritual". You must also offer monsters whose total Level Stars equal 7 or more as a Tribute from the field or your hand.
+438|426|monster//3|Dokurorider|This monster can only be Ritual Summoned with the Ritual Spell Card, "Revival of Dokurorider". You must also offer monsters whose total Level Stars equal 6 or more as a Tribute from the field or your hand.
+478|296|monster//3|Zera The Mant|This monster can only be Ritual Summoned with the Ritual Spell Card, "Zera Ritual". You must also offer monsters whose total Level Stars equal 8 or more as a Tribute from the field or your hand.
+547|854|monster//3|Performance of Sword|This monster can only be Ritual Summoned with the Ritual Spell Card, "Commencement Dance". You must also offer monsters whose total Level Stars equal 6 or more as a Tribute from the field or your hand.
+555|339|monster//3|Chakra|This monster can only be Ritual Summoned with the Ritual Spell Card, "Resurrection of Chakra". You must also offer monsters whose total Level Stars equal 7 or more as a Tribute from the field or your hand.
+597|1058|monster//3|Fiend's Mirror|This monster can only be Ritual Summoned with the Ritual Spell Card, "Beastly Mirror Ritual". You must also offer monsters whose total Level Stars equal 6 or more as a Tribute from the field or your hand.
+734|593|monster//3|Hungry Burger|This monster can only be Ritual Summoned with the Ritual Spell Card, "Hamburger Recipe". You must also offer monsters whose total Level Stars equal 6 or more as a Tribute from the field or your hand.
+891|0|monster//3|Magician of Black Chaos|This monster can only be Ritual Summoned with the Ritual Spell Card, "Dark Magic Ritual". You must also offer monsters whose total Level Stars equal 8 or more as a Tribute from the field or your hand.
+1035|0|monster//3|Fortress Whale|This monster can only be Ritual Summoned with the Ritual Spell Card, "Fortress Whale's Oath". You must also offer monsters whose total Level Stars equal 7 or more as a Tribute from the field or your hand.
+1089|0|monster//3|Skull Guardian|This monster can only be Ritual Summoned with the Ritual Spell Card, "Novox's Prayer". You must also offer monsters whose total Level Stars equal 7 or more as a Tribute from the field or your hand.

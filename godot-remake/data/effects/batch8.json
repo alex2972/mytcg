@@ -1,0 +1,25 @@
+{
+"_about": "Batch 8: jars, fusion helpers, direct attackers, Exodia, a few special monsters.",
+
+"Cyber Jar": {"fx": [{"type": "flip", "when": "flipped", "cond": [{"c": "event_src"}], "do": [{"op": "custom", "fn": "cyber_jar"}]}]},
+"Morphing Jar #2": {"fx": [{"type": "flip", "when": "flipped", "cond": [{"c": "event_src"}], "do": [{"op": "custom", "fn": "morphing_jar2"}]}]},
+"Alligator's Sword Dragon": {"fx": [{"type": "static", "rule": "direct_vs_attributes", "scope": "self", "attributes": [5, 3, 4]}]},
+"The Last Warrior from Another Planet": {"fx": [
+  {"type": "trigger_forced", "when": "special_summoned", "cond": [{"c": "event_src"}],
+   "do": [{"op": "destroy", "what": {"from": "self.monsters", "filter": {"not_src": true}}}]},
+  {"type": "static", "rule": "no_summon_any", "scope": "all"}]},
+"Summoner of Illusions": {"fx": [{"type": "flip", "when": "flipped", "cond": [{"c": "event_src"}, {"c": "has", "zone": "self.monsters", "filter": {"not_src": true}, "n": 1}, {"c": "has", "zone": "self.extra", "n": 1}],
+  "do": [{"op": "select", "as": "c", "from": "self.monsters", "filter": {"not_src": true}, "n": 1, "cost": true, "prompt": 154},
+         {"op": "to_grave", "what": "$c", "reason": "tribute"},
+         {"op": "select", "as": "f", "from": "self.extra", "n": 1, "prompt": 241},
+         {"op": "special_summon", "what": "$f", "pos": "atk", "face_up": true},
+         {"op": "set_flag", "what": "$f", "name": "destroy_at_end", "value": true}]}]},
+"Cyber-Stein": {"fx": [{"type": "ignition", "cond": [{"c": "turn", "is": "self"}, {"c": "lp", "who": "self", "op": ">", "v": 5000}, {"c": "has", "zone": "self.extra", "n": 1}, {"c": "free_zone", "who": "self"}],
+  "cost": [{"op": "pay_lp", "amount": 5000}],
+  "do": [{"op": "select", "as": "f", "from": "self.extra", "n": 1, "prompt": 241}, {"op": "special_summon", "what": "$f", "pos": "atk", "face_up": true}]}]},
+"Dark Zebra": {"fx": [{"type": "trigger_forced", "when": "standby_phase", "cond": [{"c": "turn", "is": "self"}, {"c": "none", "zone": "self.monsters", "filter": {"not_src": true}}],
+  "do": [{"op": "set_pos", "what": "src", "pos": "def", "face_up": true}]}]},
+"Wall of Illusion": {"fx": [{"type": "trigger_forced", "when": "attack_declared", "cond": [{"c": "target_is_src"}],
+  "do": [{"op": "set_flag", "what": "attacker", "name": "return_after_battle", "value": true}]}]},
+"The Legendary Fisherman": {"fx": [{"type": "static", "rule": "protected_by_field", "scope": "self", "name": "Umi"}]}
+}

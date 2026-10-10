@@ -1,0 +1,13 @@
+{
+"_about": "Batch 4: fusion (Polymerization, Fusion Gate) and Graverobber. Recipes come from data/fusions.json.",
+
+"Polymerization": {"fx": [{"type": "spell", "cond": [{"c": "fusion_possible"}], "do": [{"op": "fusion", "mode": "poly"}]}]},
+"Fusion Gate": {"fx": [
+  {"type": "field", "do": []},
+  {"type": "ignition", "cond": [{"c": "fusion_possible"}], "do": [{"op": "fusion", "mode": "gate"}]}]},
+"Graverobber": {"fx": [{"type": "trap", "speed": 2,
+  "when": ["summoned", "special_summoned", "flip_summoned", "attack_declared", "activated_spell", "activated_trap", "standby_phase", "end_phase"],
+  "cond": [{"c": "has", "zone": "opp.grave", "filter": {"type": "spell"}, "n": 1}],
+  "target": [{"op": "select", "as": "t", "from": "opp.grave", "filter": {"type": "spell"}, "n": 1, "prompt": 22}],
+  "do": [{"op": "borrow", "what": "$t"}]}]}
+}

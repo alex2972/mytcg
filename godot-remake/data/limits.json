@@ -1,0 +1,12 @@
+{
+"_about": "Copies allowed per deck (default 3). 1 = Limited, 2 = Semi-Limited, 0 = Forbidden. Names are English card names (case-insensitive). The original's list location in the exe is still unknown; this is the list the user gave for the current ruleset.",
+"Call Of The Haunted": 1,
+"Change of Heart": 1,
+"Raigeki": 1,
+"Harpie's Feather Duster": 1,
+"Magic Cylinder": 1,
+"Monster Reborn": 1,
+"Morphing Jar #2": 2,
+"Sangan": 1,
+"Witch of the Black Forest": 1
+}

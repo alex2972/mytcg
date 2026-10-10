@@ -1,0 +1,483 @@
+{
+ "_about": "Batch 7: the 16 Ritual Spells and their monsters (generated from the card texts by one pattern).",
+ "Beastly Mirror Ritual": {
+  "fx": [
+   {
+    "type": "ritual_spell",
+    "cond": [
+     {
+      "c": "ritual_possible",
+      "monster": "Fiend's Mirror",
+      "level": 6
+     }
+    ],
+    "do": [
+     {
+      "op": "ritual",
+      "monster": "Fiend's Mirror",
+      "level": 6
+     }
+    ]
+   }
+  ]
+ },
+ "Fiend's Mirror": {
+  "fx": [
+   {
+    "type": "static",
+    "rule": "no_normal_summon",
+    "scope": "self"
+   }
+  ]
+ },
+ "Black Illusion Ritual": {
+  "fx": [
+   {
+    "type": "ritual_spell",
+    "cond": [
+     {
+      "c": "ritual_possible",
+      "monster": "Relinquished",
+      "level": 1
+     }
+    ],
+    "do": [
+     {
+      "op": "ritual",
+      "monster": "Relinquished",
+      "level": 1
+     }
+    ]
+   }
+  ]
+ },
+ "Relinquished": {
+  "fx": [
+   {
+    "type": "static",
+    "rule": "no_normal_summon",
+    "scope": "self"
+   }
+  ]
+ },
+ "Commencement Dance": {
+  "fx": [
+   {
+    "type": "ritual_spell",
+    "cond": [
+     {
+      "c": "ritual_possible",
+      "monster": "Performance of Sword",
+      "level": 6
+     }
+    ],
+    "do": [
+     {
+      "op": "ritual",
+      "monster": "Performance of Sword",
+      "level": 6
+     }
+    ]
+   }
+  ]
+ },
+ "Performance of Sword": {
+  "fx": [
+   {
+    "type": "static",
+    "rule": "no_normal_summon",
+    "scope": "self"
+   }
+  ]
+ },
+ "Dark Magic Ritual": {
+  "fx": [
+   {
+    "type": "ritual_spell",
+    "cond": [
+     {
+      "c": "ritual_possible",
+      "monster": "Magician of Black Chaos",
+      "level": 8
+     }
+    ],
+    "do": [
+     {
+      "op": "ritual",
+      "monster": "Magician of Black Chaos",
+      "level": 8
+     }
+    ]
+   }
+  ]
+ },
+ "Magician of Black Chaos": {
+  "fx": [
+   {
+    "type": "static",
+    "rule": "no_normal_summon",
+    "scope": "self"
+   }
+  ]
+ },
+ "Black Luster Ritual": {
+  "fx": [
+   {
+    "type": "ritual_spell",
+    "cond": [
+     {
+      "c": "ritual_possible",
+      "monster": "Black Luster Soldier",
+      "level": 8
+     }
+    ],
+    "do": [
+     {
+      "op": "ritual",
+      "monster": "Black Luster Soldier",
+      "level": 8
+     }
+    ]
+   }
+  ]
+ },
+ "Black Luster Soldier": {
+  "fx": [
+   {
+    "type": "static",
+    "rule": "no_normal_summon",
+    "scope": "self"
+   }
+  ]
+ },
+ "Turtle Oath": {
+  "fx": [
+   {
+    "type": "ritual_spell",
+    "cond": [
+     {
+      "c": "ritual_possible",
+      "monster": "Crab Turtle",
+      "level": 8
+     }
+    ],
+    "do": [
+     {
+      "op": "ritual",
+      "monster": "Crab Turtle",
+      "level": 8
+     }
+    ]
+   }
+  ]
+ },
+ "Crab Turtle": {
+  "fx": [
+   {
+    "type": "static",
+    "rule": "no_normal_summon",
+    "scope": "self"
+   }
+  ]
+ },
+ "Curse of the Masked Beast": {
+  "fx": [
+   {
+    "type": "ritual_spell",
+    "cond": [
+     {
+      "c": "ritual_possible",
+      "monster": "The Masked Beast",
+      "level": 8
+     }
+    ],
+    "do": [
+     {
+      "op": "ritual",
+      "monster": "The Masked Beast",
+      "level": 8
+     }
+    ]
+   }
+  ]
+ },
+ "The Masked Beast": {
+  "fx": [
+   {
+    "type": "static",
+    "rule": "no_normal_summon",
+    "scope": "self"
+   }
+  ]
+ },
+ "Garma Sword Oath": {
+  "fx": [
+   {
+    "type": "ritual_spell",
+    "cond": [
+     {
+      "c": "ritual_possible",
+      "monster": "Garma Sword",
+      "level": 7
+     }
+    ],
+    "do": [
+     {
+      "op": "ritual",
+      "monster": "Garma Sword",
+      "level": 7
+     }
+    ]
+   }
+  ]
+ },
+ "Garma Sword": {
+  "fx": [
+   {
+    "type": "static",
+    "rule": "no_normal_summon",
+    "scope": "self"
+   }
+  ]
+ },
+ "Javelin Beetle Pact": {
+  "fx": [
+   {
+    "type": "ritual_spell",
+    "cond": [
+     {
+      "c": "ritual_possible",
+      "monster": "Javelin Beetle",
+      "level": 8
+     }
+    ],
+    "do": [
+     {
+      "op": "ritual",
+      "monster": "Javelin Beetle",
+      "level": 8
+     }
+    ]
+   }
+  ]
+ },
+ "Javelin Beetle": {
+  "fx": [
+   {
+    "type": "static",
+    "rule": "no_normal_summon",
+    "scope": "self"
+   }
+  ]
+ },
+ "Revival of Dokurorider": {
+  "fx": [
+   {
+    "type": "ritual_spell",
+    "cond": [
+     {
+      "c": "ritual_possible",
+      "monster": "Dokurorider",
+      "level": 6
+     }
+    ],
+    "do": [
+     {
+      "op": "ritual",
+      "monster": "Dokurorider",
+      "level": 6
+     }
+    ]
+   }
+  ]
+ },
+ "Dokurorider": {
+  "fx": [
+   {
+    "type": "static",
+    "rule": "no_normal_summon",
+    "scope": "self"
+   }
+  ]
+ },
+ "Zera Ritual": {
+  "fx": [
+   {
+    "type": "ritual_spell",
+    "cond": [
+     {
+      "c": "ritual_possible",
+      "monster": "Zera The Mant",
+      "level": 8
+     }
+    ],
+    "do": [
+     {
+      "op": "ritual",
+      "monster": "Zera The Mant",
+      "level": 8
+     }
+    ]
+   }
+  ]
+ },
+ "Zera The Mant": {
+  "fx": [
+   {
+    "type": "static",
+    "rule": "no_normal_summon",
+    "scope": "self"
+   }
+  ]
+ },
+ "Resurrection of Chakra": {
+  "fx": [
+   {
+    "type": "ritual_spell",
+    "cond": [
+     {
+      "c": "ritual_possible",
+      "monster": "Chakra",
+      "level": 7
+     }
+    ],
+    "do": [
+     {
+      "op": "ritual",
+      "monster": "Chakra",
+      "level": 7
+     }
+    ]
+   }
+  ]
+ },
+ "Chakra": {
+  "fx": [
+   {
+    "type": "static",
+    "rule": "no_normal_summon",
+    "scope": "self"
+   }
+  ]
+ },
+ "Hamburger Recipe": {
+  "fx": [
+   {
+    "type": "ritual_spell",
+    "cond": [
+     {
+      "c": "ritual_possible",
+      "monster": "Hungry Burger",
+      "level": 6
+     }
+    ],
+    "do": [
+     {
+      "op": "ritual",
+      "monster": "Hungry Burger",
+      "level": 6
+     }
+    ]
+   }
+  ]
+ },
+ "Hungry Burger": {
+  "fx": [
+   {
+    "type": "static",
+    "rule": "no_normal_summon",
+    "scope": "self"
+   }
+  ]
+ },
+ "Fortress Whale's Oath": {
+  "fx": [
+   {
+    "type": "ritual_spell",
+    "cond": [
+     {
+      "c": "ritual_possible",
+      "monster": "Fortress Whale",
+      "level": 7
+     }
+    ],
+    "do": [
+     {
+      "op": "ritual",
+      "monster": "Fortress Whale",
+      "level": 7
+     }
+    ]
+   }
+  ]
+ },
+ "Fortress Whale": {
+  "fx": [
+   {
+    "type": "static",
+    "rule": "no_normal_summon",
+    "scope": "self"
+   }
+  ]
+ },
+ "War-Lion Ritual": {
+  "fx": [
+   {
+    "type": "ritual_spell",
+    "cond": [
+     {
+      "c": "ritual_possible",
+      "monster": "Super War-Lion",
+      "level": 7
+     }
+    ],
+    "do": [
+     {
+      "op": "ritual",
+      "monster": "Super War-Lion",
+      "level": 7
+     }
+    ]
+   }
+  ]
+ },
+ "Super War-Lion": {
+  "fx": [
+   {
+    "type": "static",
+    "rule": "no_normal_summon",
+    "scope": "self"
+   }
+  ]
+ },
+ "Novox's Prayer": {
+  "fx": [
+   {
+    "type": "ritual_spell",
+    "cond": [
+     {
+      "c": "ritual_possible",
+      "monster": "Skull Guardian",
+      "level": 7
+     }
+    ],
+    "do": [
+     {
+      "op": "ritual",
+      "monster": "Skull Guardian",
+      "level": 7
+     }
+    ]
+   }
+  ]
+ },
+ "Skull Guardian": {
+  "fx": [
+   {
+    "type": "static",
+    "rule": "no_normal_summon",
+    "scope": "self"
+   }
+  ]
+ }
+}

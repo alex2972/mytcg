@@ -1,0 +1,1652 @@
+{
+"Widespread Ruin": [
+{
+"group": "chain_response",
+"h": "5b2640"
+}
+],
+"Magic-Arm Shield": [
+{
+"group": "chain_response",
+"h": "5b2640"
+}
+],
+"Shift": [
+{
+"group": "chain_response",
+"h": "5b2640"
+}
+],
+"Dark Spirit of the Silent": [
+{
+"group": "chain_response",
+"h": "5b2640"
+}
+],
+"Waboku": [
+{
+"group": "chain_response",
+"h": "5b2640"
+}
+],
+"Mirror Force": [
+{
+"group": "chain_response",
+"h": "5b2640"
+}
+],
+"Fairy Box": [
+{
+"group": "chain_response",
+"h": "5b2640"
+}
+],
+"Mirror Wall": [
+{
+"group": "chain_response",
+"h": "5b2640"
+}
+],
+"Negate Attack": [
+{
+"group": "chain_response",
+"h": "5b2640"
+}
+],
+"Magic Cylinder": [
+{
+"group": "chain_response",
+"h": "5b2640"
+}
+],
+"Enchanted Javelin": [
+{
+"group": "chain_response",
+"h": "5b2640"
+}
+],
+"Spellbinding Circle": [
+{
+"group": "chain_response",
+"h": "5b2640"
+}
+],
+"Gravity Bind": [
+{
+"group": "chain_response",
+"h": "5b2640"
+}
+],
+"?": [
+{
+"group": "chain_response",
+"h": "5b2640"
+}
+],
+"Scapegoat": [
+{
+"group": "chain_response",
+"h": "5b2640"
+}
+],
+"Call Of The Haunted": [
+{
+"group": "chain_response",
+"h": "5b2640"
+},
+{
+"group": "main_s3",
+"h": "5b55a0"
+}
+],
+"Magical Hats": [
+{
+"group": "chain_response",
+"h": "5b2640"
+}
+],
+"Kunai with Chain": [
+{
+"group": "chain_response",
+"h": "5b2640"
+}
+],
+"Graceful Dice": [
+{
+"group": "chain_response",
+"h": "5b2e60"
+},
+{
+"group": "tbl_5dd308",
+"h": "5b3480"
+}
+],
+"Skull Dice": [
+{
+"group": "chain_response",
+"h": "5b2e60"
+},
+{
+"group": "tbl_5dd308",
+"h": "5b3480"
+}
+],
+"Reinforcements": [
+{
+"group": "chain_response",
+"h": "5b2e60"
+},
+{
+"group": "tbl_5dd308",
+"h": "5b35a0"
+}
+],
+"Rush Recklessly": [
+{
+"group": "chain_response",
+"h": "5b2e60"
+},
+{
+"group": "tbl_5dd308",
+"h": "5b35a0"
+}
+],
+"Mask of Weakness": [
+{
+"group": "chain_response",
+"h": "5b2e60"
+}
+],
+"Castle Walls": [
+{
+"group": "chain_response",
+"h": "5b2e60"
+},
+{
+"group": "tbl_5dd308",
+"h": "5b35a0"
+}
+],
+"The Reliable Guardian": [
+{
+"group": "chain_response",
+"h": "5b2e60"
+},
+{
+"group": "tbl_5dd308",
+"h": "5b35a0"
+}
+],
+"Snake Fang": [
+{
+"group": "chain_response",
+"h": "5b2e60"
+},
+{
+"group": "tbl_5dd308",
+"h": "5b35e0"
+}
+],
+"Deal of Phantom": [
+{
+"group": "chain_response",
+"h": "5b2e60"
+}
+],
+"Sanga of the Thunder": [
+{
+"group": "chain_response",
+"h": "5b1b70"
+}
+],
+"Kazejin": [
+{
+"group": "chain_response",
+"h": "5b1b70"
+}
+],
+"Suijin": [
+{
+"group": "chain_response",
+"h": "5b1b70"
+}
+],
+"House of Adhesive Tape": [
+{
+"group": "chain_response",
+"h": "581040"
+}
+],
+"Eatgaboon": [
+{
+"group": "chain_response",
+"h": "581040"
+}
+],
+"Trap Hole": [
+{
+"group": "chain_response",
+"h": "581040"
+}
+],
+"Numinous Healer": [
+{
+"group": "chain_response",
+"h": "581040"
+}
+],
+"Attack and Receive": [
+{
+"group": "chain_response",
+"h": "581040"
+}
+],
+"Appropriate": [
+{
+"group": "chain_response",
+"h": "581040"
+}
+],
+"Forced Requisition": [
+{
+"group": "chain_response",
+"h": "581040"
+}
+],
+"Shadow of Eyes": [
+{
+"group": "chain_response",
+"h": "581040"
+}
+],
+"Gust": [
+{
+"group": "chain_response",
+"h": "5b4860"
+}
+],
+"Driving Snow": [
+{
+"group": "chain_response",
+"h": "5b4860"
+}
+],
+"Time Machine": [
+{
+"group": "chain_response",
+"h": "5b1c30"
+}
+],
+"Michizure": [
+{
+"group": "chain_response",
+"h": "5b1d30"
+}
+],
+"Sebek's Blessing": [
+{
+"group": "chain_response",
+"h": "5b1e00"
+}
+],
+"Chain Destruction": [
+{
+"group": "chain_response",
+"h": "5b2310"
+}
+],
+"Torrential Tribute": [
+{
+"group": "chain_response",
+"h": "5b2450"
+}
+],
+"Mystical Space Typhoon": [
+{
+"group": "chain_response",
+"h": "5b1f10"
+},
+{
+"group": "tbl_5dd308",
+"h": "5b3210"
+},
+{
+"group": "standby",
+"h": "5b49a0"
+}
+],
+"Dust Tornado": [
+{
+"group": "chain_response",
+"h": "5b1f10"
+},
+{
+"group": "tbl_5dd308",
+"h": "5b3210"
+}
+],
+"Robbin' Goblin": [
+{
+"group": "chain_response",
+"h": "581040"
+}
+],
+"Backup Soldier": [
+{
+"group": "chain_response",
+"h": "581040"
+}
+],
+"Light of Intervention": [
+{
+"group": "chain_response",
+"h": "581040"
+}
+],
+"Gamble": [
+{
+"group": "chain_response",
+"h": "581040"
+}
+],
+"Tornado Wall": [
+{
+"group": "chain_response",
+"h": "581040"
+}
+],
+"Destiny Board": [
+{
+"group": "chain_response",
+"h": "581040"
+}
+],
+"Solemn Wishes": [
+{
+"group": "chain_response",
+"h": "581040"
+}
+],
+"Respect Play": [
+{
+"group": "chain_response",
+"h": "581040"
+}
+],
+"Skull Invitation": [
+{
+"group": "chain_response",
+"h": "581040"
+}
+],
+"Crush Card": [
+{
+"group": "chain_response",
+"h": "581040"
+}
+],
+"Magic Thorn": [
+{
+"group": "chain_response",
+"h": "581040"
+}
+],
+"Minor Goblin Official": [
+{
+"group": "chain_response",
+"h": "581040"
+}
+],
+"Lightforce Sword": [
+{
+"group": "chain_response",
+"h": "581040"
+}
+],
+"DNA Surgery": [
+{
+"group": "chain_response",
+"h": "581040"
+}
+],
+"Jar of Greed": [
+{
+"group": "chain_response",
+"h": "5b2620"
+},
+{
+"group": "tbl_5dd308",
+"h": "5b3480"
+}
+],
+"Time Seal": [
+{
+"group": "chain_response",
+"h": "5b2620"
+},
+{
+"group": "tbl_5dd308",
+"h": "5b3480"
+}
+],
+"Mask of Restrict": [
+{
+"group": "chain_response",
+"h": "5b1b50"
+}
+],
+"Collected Power": [
+{
+"group": "chain_response",
+"h": "5b1bb0"
+}
+],
+"Earthshaker": [
+{
+"group": "chain_response",
+"h": "5b1d60"
+}
+],
+"The Regulation of Tribe": [
+{
+"group": "chain_response",
+"h": "5b1e50"
+}
+],
+"Blind Destruction": [
+{
+"group": "chain_response",
+"h": "5b1eb0"
+}
+],
+"Graverobber's Retribution": [
+{
+"group": "chain_response",
+"h": "5b1ef0"
+}
+],
+"Ring of Destruction": [
+{
+"group": "chain_response",
+"h": "5b1f70"
+}
+],
+"Just Desserts": [
+{
+"group": "chain_response",
+"h": "5b2090"
+}
+],
+"Gift of The Mystical Elf": [
+{
+"group": "chain_response",
+"h": "5b2110"
+}
+],
+"Ceasefire": [
+{
+"group": "chain_response",
+"h": "5b2160"
+}
+],
+"Aqua Chorus": [
+{
+"group": "chain_response",
+"h": "5b22a0"
+}
+],
+"Two-Pronged Attack": [
+{
+"group": "chain_response",
+"h": "5b24c0"
+}
+],
+"Skull Lair": [
+{
+"group": "chain_response",
+"h": "5b2580"
+}
+],
+"White Hole": [
+{
+"group": "tbl_5dd308",
+"h": "581040"
+}
+],
+"Anti Raigeki": [
+{
+"group": "tbl_5dd308",
+"h": "581040"
+}
+],
+"Call of the Grave": [
+{
+"group": "tbl_5dd308",
+"h": "581040"
+}
+],
+"Gryphon Wing": [
+{
+"group": "tbl_5dd308",
+"h": "581040"
+}
+],
+"Fake Trap": [
+{
+"group": "tbl_5dd308",
+"h": "581040"
+}
+],
+"Graverobber": [
+{
+"group": "tbl_5dd308",
+"h": "5b3250"
+},
+{
+"group": "main_s3",
+"h": "5b5650"
+}
+],
+"Imperial Order": [
+{
+"group": "tbl_5dd308",
+"h": "5b3400"
+}
+],
+"Royal Decree": [
+{
+"group": "tbl_5dd308",
+"h": "5b3440"
+},
+{
+"group": "tbl_5dd308",
+"h": "5b32a0"
+}
+],
+"Maryokutai": [
+{
+"group": "tbl_5dd308",
+"h": "5b32a0"
+}
+],
+"Magic Drain": [
+{
+"group": "tbl_5dd308",
+"h": "5b32a0"
+}
+],
+"Magic Jammer": [
+{
+"group": "tbl_5dd308",
+"h": "5b32a0"
+}
+],
+"Riryoku Field": [
+{
+"group": "tbl_5dd308",
+"h": "5b32a0"
+}
+],
+"Cold Wave": [
+{
+"group": "standby",
+"h": "5b48f0"
+}
+],
+"Harpie's Feather Duster": [
+{
+"group": "standby",
+"h": "5b4970"
+}
+],
+"Heavy Storm": [
+{
+"group": "standby",
+"h": "5b4ae0"
+}
+],
+"De-Spell": [
+{
+"group": "standby",
+"h": "5b4860"
+}
+],
+"Remove Trap": [
+{
+"group": "standby",
+"h": "5b4860"
+}
+],
+"Bait Doll": [
+{
+"group": "standby",
+"h": "5b4860"
+}
+],
+"Giant Trunade": [
+{
+"group": "standby",
+"h": "5b49d0"
+}
+],
+"Nobleman of Crossout": [
+{
+"group": "standby",
+"h": "5b4860"
+}
+],
+"Nobleman of Extermination": [
+{
+"group": "standby",
+"h": "5b4860"
+}
+],
+"Mooyan Curry": [
+{
+"group": "standby",
+"h": "5b48d0"
+},
+{
+"group": "end",
+"h": "5b48d0"
+}
+],
+"Red Medicine": [
+{
+"group": "standby",
+"h": "5b48d0"
+},
+{
+"group": "end",
+"h": "5b48d0"
+}
+],
+"Goblin's Secret Remedy": [
+{
+"group": "standby",
+"h": "5b48d0"
+},
+{
+"group": "end",
+"h": "5b48d0"
+}
+],
+"Soul of the Pure": [
+{
+"group": "standby",
+"h": "5b48d0"
+},
+{
+"group": "end",
+"h": "5b48d0"
+}
+],
+"Dian Keto the Cure Master": [
+{
+"group": "standby",
+"h": "5b48d0"
+},
+{
+"group": "end",
+"h": "5b48d0"
+}
+],
+"Blue Medicine": [
+{
+"group": "standby",
+"h": "5b48d0"
+},
+{
+"group": "end",
+"h": "5b48d0"
+}
+],
+"Rain of Mercy": [
+{
+"group": "standby",
+"h": "5b48d0"
+},
+{
+"group": "end",
+"h": "5b48d0"
+}
+],
+"Tremendous Fire": [
+{
+"group": "standby",
+"h": "5b4910"
+}
+],
+"Ookazi": [
+{
+"group": "standby",
+"h": "581040"
+}
+],
+"Final Flame": [
+{
+"group": "standby",
+"h": "581040"
+}
+],
+"Sparks": [
+{
+"group": "standby",
+"h": "581040"
+}
+],
+"Hinotama": [
+{
+"group": "standby",
+"h": "581040"
+}
+],
+"Raimei": [
+{
+"group": "standby",
+"h": "581040"
+}
+],
+"Confiscation": [
+{
+"group": "standby",
+"h": "581040"
+}
+],
+"Delinquent Duo": [
+{
+"group": "standby",
+"h": "581040"
+}
+],
+"The Forceful Sentry": [
+{
+"group": "standby",
+"h": "581040"
+}
+],
+"Painful Choice": [
+{
+"group": "standby",
+"h": "581040"
+}
+],
+"Soul Release": [
+{
+"group": "standby",
+"h": "5b4b50"
+}
+],
+"Windstorm of Etaqua": [
+{
+"group": "standby",
+"h": "5b4b90"
+}
+],
+"Metalmorph": [
+{
+"group": "standby",
+"h": "5b5a00"
+},
+{
+"group": "main_s3",
+"h": "5b5a20"
+}
+],
+"Card of Safe Return": [
+{
+"group": "standby",
+"h": "5b4890"
+}
+],
+"Pot of Greed": [
+{
+"group": "main_s3",
+"h": "581040"
+}
+],
+"Upstart Goblin": [
+{
+"group": "main_s3",
+"h": "581040"
+}
+],
+"Graceful Charity": [
+{
+"group": "main_s3",
+"h": "581040"
+}
+],
+"Fusion Sage": [
+{
+"group": "main_s3",
+"h": "581040"
+}
+],
+"Dark-Piercing Light": [
+{
+"group": "main_s3",
+"h": "581040"
+}
+],
+"Dark Hole": [
+{
+"group": "main_s3",
+"h": "5b5060"
+}
+],
+"Raigeki": [
+{
+"group": "main_s3",
+"h": "5b50a0"
+}
+],
+"Warrior Elimination": [
+{
+"group": "main_s3",
+"h": "5b5b80"
+}
+],
+"Eternal Rest": [
+{
+"group": "main_s3",
+"h": "5b5b80"
+}
+],
+"Stain Storm": [
+{
+"group": "main_s3",
+"h": "5b5b80"
+}
+],
+"Eradicating Aerosol": [
+{
+"group": "main_s3",
+"h": "5b5b80"
+}
+],
+"Breath of Light": [
+{
+"group": "main_s3",
+"h": "5b5b80"
+}
+],
+"Eternal Draught": [
+{
+"group": "main_s3",
+"h": "5b5b80"
+}
+],
+"Last Day of Witch": [
+{
+"group": "main_s3",
+"h": "5b5b80"
+}
+],
+"Exile of the Wicked": [
+{
+"group": "main_s3",
+"h": "5b5b80"
+}
+],
+"Change of Heart": [
+{
+"group": "main_s3",
+"h": "5b5120"
+}
+],
+"Soul Exchange": [
+{
+"group": "main_s3",
+"h": "5b5120"
+}
+],
+"Mr. Volcano": [
+{
+"group": "main_s3",
+"h": "5b5290"
+}
+],
+"Tribute to The Doomed": [
+{
+"group": "main_s3",
+"h": "5b4860"
+}
+],
+"Offerings to the Doomed": [
+{
+"group": "main_s3",
+"h": "5b4860"
+}
+],
+"Share the Pain": [
+{
+"group": "main_s3",
+"h": "5b5230"
+}
+],
+"Fissure": [
+{
+"group": "main_s3",
+"h": "581040"
+}
+],
+"Mystic Box": [
+{
+"group": "main_s3",
+"h": "5b5270"
+}
+],
+"Monster Reborn": [
+{
+"group": "main_s3",
+"h": "5b5300"
+}
+],
+"Premature Burial": [
+{
+"group": "main_s3",
+"h": "5b53e0"
+}
+],
+"The Shallow Grave": [
+{
+"group": "main_s3",
+"h": "5b5490"
+}
+],
+"Forest": [
+{
+"group": "main_s3",
+"h": "5b5010"
+}
+],
+"Wasteland": [
+{
+"group": "main_s3",
+"h": "5b5010"
+}
+],
+"Mountain": [
+{
+"group": "main_s3",
+"h": "5b5010"
+}
+],
+"Sogen": [
+{
+"group": "main_s3",
+"h": "5b5010"
+}
+],
+"Umi": [
+{
+"group": "main_s3",
+"h": "5b5010"
+}
+],
+"Yami": [
+{
+"group": "main_s3",
+"h": "5b5010"
+}
+],
+"Chorus of Sanctuary": [
+{
+"group": "main_s3",
+"h": "5b5010"
+}
+],
+"Gaia Power": [
+{
+"group": "main_s3",
+"h": "5b5010"
+}
+],
+"Umiiruka": [
+{
+"group": "main_s3",
+"h": "5b5010"
+}
+],
+"Molten Destruction": [
+{
+"group": "main_s3",
+"h": "5b5010"
+}
+],
+"Rising Air Current": [
+{
+"group": "main_s3",
+"h": "5b5010"
+}
+],
+"Luminous Spark": [
+{
+"group": "main_s3",
+"h": "5b5010"
+}
+],
+"Mystic Plasma Zone": [
+{
+"group": "main_s3",
+"h": "5b5010"
+}
+],
+"Polymerization": [
+{
+"group": "main_s3",
+"h": "581040"
+},
+{
+"group": "main_s3",
+"h": "581040"
+}
+],
+"Fusion Gate": [
+{
+"group": "main_s3",
+"h": "5b5040"
+}
+],
+"War-Lion Ritual": [
+{
+"group": "main_s3",
+"h": "581040"
+}
+],
+"Zera Ritual": [
+{
+"group": "main_s3",
+"h": "581040"
+}
+],
+"Black Luster Ritual": [
+{
+"group": "main_s3",
+"h": "581040"
+}
+],
+"Beastly Mirror Ritual": [
+{
+"group": "main_s3",
+"h": "581040"
+}
+],
+"Commencement Dance": [
+{
+"group": "main_s3",
+"h": "581040"
+}
+],
+"Hamburger Recipe": [
+{
+"group": "main_s3",
+"h": "581040"
+}
+],
+"Novox's Prayer": [
+{
+"group": "main_s3",
+"h": "581040"
+}
+],
+"Resurrection of Chakra": [
+{
+"group": "main_s3",
+"h": "581040"
+}
+],
+"Turtle Oath": [
+{
+"group": "main_s3",
+"h": "581040"
+}
+],
+"Garma Sword Oath": [
+{
+"group": "main_s3",
+"h": "581040"
+}
+],
+"Javelin Beetle Pact": [
+{
+"group": "main_s3",
+"h": "581040"
+}
+],
+"Fortress Whale's Oath": [
+{
+"group": "main_s3",
+"h": "581040"
+}
+],
+"Revival of Dokurorider": [
+{
+"group": "main_s3",
+"h": "581040"
+}
+],
+"Dark Magic Ritual": [
+{
+"group": "main_s3",
+"h": "581040"
+}
+],
+"Black Illusion Ritual": [
+{
+"group": "main_s3",
+"h": "581eb0"
+}
+],
+"Megamorph": [
+{
+"group": "main_s3",
+"h": "5b5950"
+}
+],
+"Legendary Sword": [
+{
+"group": "main_s3",
+"h": "5b5a20"
+}
+],
+"Sword of Dark Destruction": [
+{
+"group": "main_s3",
+"h": "5b5a20"
+}
+],
+"Dark Energy": [
+{
+"group": "main_s3",
+"h": "5b5a20"
+}
+],
+"Axe of Despair": [
+{
+"group": "main_s3",
+"h": "5b5a20"
+}
+],
+"Laser Cannon Armor": [
+{
+"group": "main_s3",
+"h": "5b5a20"
+}
+],
+"Insect Armor with Laser Cannon": [
+{
+"group": "main_s3",
+"h": "5b5a20"
+}
+],
+"Elf's Light": [
+{
+"group": "main_s3",
+"h": "5b5a20"
+}
+],
+"Beast Fangs": [
+{
+"group": "main_s3",
+"h": "5b5a20"
+}
+],
+"Steel Shell": [
+{
+"group": "main_s3",
+"h": "5b5a20"
+}
+],
+"Vile Germs": [
+{
+"group": "main_s3",
+"h": "5b5a20"
+}
+],
+"Black Pendant": [
+{
+"group": "main_s3",
+"h": "5b5a20"
+}
+],
+"Silver Bow and Arrow": [
+{
+"group": "main_s3",
+"h": "5b5a20"
+}
+],
+"Horn of Light": [
+{
+"group": "main_s3",
+"h": "5b5a20"
+}
+],
+"Horn of the Unicorn": [
+{
+"group": "main_s3",
+"h": "5b5a20"
+}
+],
+"Dragon Treasure": [
+{
+"group": "main_s3",
+"h": "5b5a20"
+}
+],
+"Electro-Whip": [
+{
+"group": "main_s3",
+"h": "5b5a20"
+}
+],
+"Cyber Shield": [
+{
+"group": "main_s3",
+"h": "5b5a20"
+}
+],
+"Mystical Moon": [
+{
+"group": "main_s3",
+"h": "5b5a20"
+}
+],
+"Malevolent Nuzzler": [
+{
+"group": "main_s3",
+"h": "5b5a20"
+}
+],
+"Violet Crystal": [
+{
+"group": "main_s3",
+"h": "5b5a20"
+}
+],
+"Book of Secret Arts": [
+{
+"group": "main_s3",
+"h": "5b5a20"
+}
+],
+"Invigoration": [
+{
+"group": "main_s3",
+"h": "5b5a20"
+}
+],
+"Machine Conversion Factory": [
+{
+"group": "main_s3",
+"h": "5b5a20"
+}
+],
+"Raise Body Heat": [
+{
+"group": "main_s3",
+"h": "5b5a20"
+}
+],
+"Follow Wind": [
+{
+"group": "main_s3",
+"h": "5b5a20"
+}
+],
+"Power of Kaishin": [
+{
+"group": "main_s3",
+"h": "5b5a20"
+}
+],
+"Magical Labyrinth": [
+{
+"group": "main_s3",
+"h": "5b5a20"
+}
+],
+"Salamandra": [
+{
+"group": "main_s3",
+"h": "5b5a20"
+}
+],
+"Bright Castle": [
+{
+"group": "main_s3",
+"h": "5b5a20"
+}
+],
+"7 Completed": [
+{
+"group": "main_s3",
+"h": "5b5a20"
+}
+],
+"Burning Spear": [
+{
+"group": "main_s3",
+"h": "5b5a20"
+}
+],
+"Gust Fan": [
+{
+"group": "main_s3",
+"h": "5b5a20"
+}
+],
+"Sword of Deep-Seated": [
+{
+"group": "main_s3",
+"h": "5b5a20"
+}
+],
+"Ring of Magnetism": [
+{
+"group": "main_s3",
+"h": "5b5ab0"
+}
+],
+"Stim-Pack": [
+{
+"group": "main_s3",
+"h": "5b5a20"
+}
+],
+"Sword of Dragon's Soul": [
+{
+"group": "main_s3",
+"h": "5b5a20"
+}
+],
+"Fairy Meteor Crush": [
+{
+"group": "main_s3",
+"h": "5b5ab0"
+}
+],
+"Mask of Brutality": [
+{
+"group": "main_s3",
+"h": "5b5a20"
+}
+],
+"Lightning Blade": [
+{
+"group": "main_s3",
+"h": "5b5a20"
+}
+],
+"United We Stand": [
+{
+"group": "main_s3",
+"h": "5b5a20"
+}
+],
+"Mage Power": [
+{
+"group": "main_s3",
+"h": "5b5a20"
+}
+],
+"Cyclon Laser": [
+{
+"group": "main_s3",
+"h": "5b5ab0"
+}
+],
+"Dragonic Attack": [
+{
+"group": "main_s3",
+"h": "5b5a20"
+}
+],
+"Block Attack": [
+{
+"group": "main_s3",
+"h": "5b5720"
+}
+],
+"Shield & Sword": [
+{
+"group": "main_s3",
+"h": "5b5830"
+}
+],
+"Card Destruction": [
+{
+"group": "main_s3",
+"h": "5b58b0"
+}
+],
+"Exchange": [
+{
+"group": "main_s3",
+"h": "5b5920"
+}
+],
+"Spiritualism": [
+{
+"group": "main_s3",
+"h": "581040"
+}
+],
+"Final Destiny": [
+{
+"group": "main_s3",
+"h": "5b5100"
+}
+],
+"Germ Infection": [
+{
+"group": "main_s3",
+"h": "5b5a60"
+}
+],
+"Paralyzing Potion": [
+{
+"group": "main_s3",
+"h": "5b5a60"
+}
+],
+"Mask of the Accursed": [
+{
+"group": "main_s3",
+"h": "5b5a60"
+}
+],
+"Ekibyo Drakmord": [
+{
+"group": "main_s3",
+"h": "5b5a60"
+}
+],
+"Limiter Removal": [
+{
+"group": "main_s2a",
+"h": "5b4b30"
+}
+],
+"Relinquished": [
+{
+"group": "main_s2",
+"h": "581040"
+}
+],
+"Thousand-Eyes Restrict": [
+{
+"group": "main_s2",
+"h": "581040"
+}
+],
+"Barrel Dragon": [
+{
+"group": "main_s2",
+"h": "581040"
+}
+],
+"Red-Eyes B. Dragon": [
+{
+"group": "main_s2",
+"h": "581040"
+}
+],
+"Zoa": [
+{
+"group": "main_s2",
+"h": "581040"
+}
+],
+"Goddess of Whim": [
+{
+"group": "main_s2",
+"h": "581040"
+}
+],
+"Cannon Soldier": [
+{
+"group": "main_s2",
+"h": "5b5af0"
+}
+],
+"Time Wizard": [
+{
+"group": "main_s2",
+"h": "5b5b60"
+}
+],
+"Jowgen the Spiritualist": [
+{
+"group": "main_s2",
+"h": "5b5b80"
+}
+],
+"Amazon Archer": [
+{
+"group": "main_s2",
+"h": "5b5ba0"
+}
+],
+"Crimson Sentry": [
+{
+"group": "main_s2",
+"h": "5b5bf0"
+}
+],
+"The Forgiving Maiden": [
+{
+"group": "main_s2",
+"h": "5b5bf0"
+}
+],
+"Karate Man": [
+{
+"group": "main_s2",
+"h": "5b5c60"
+}
+],
+"Valkyrion the Magna Warrior": [
+{
+"group": "main_s2",
+"h": "5b5d60"
+}
+],
+"Cyber-Stein": [
+{
+"group": "main_s2",
+"h": "5b5da0"
+}
+],
+"Last Will": [
+{
+"group": "end",
+"h": "5b4fe0"
+}
+],
+"Return of the Doomed": [
+{
+"group": "end",
+"h": "5b4fb0"
+}
+],
+"Swords of Revealing Light": [
+{
+"group": "end",
+"h": "5b4f10"
+}
+],
+"Nightmare's Steelcage": [
+{
+"group": "end",
+"h": "5b4f10"
+}
+],
+"Mesmeric Control": [
+{
+"group": "end",
+"h": "5b4d40"
+}
+],
+"Gravekeeper's Servant": [
+{
+"group": "end",
+"h": "581040"
+}
+],
+"Ground Collapse": [
+{
+"group": "end",
+"h": "5b4e30"
+}
+],
+"Burning Land": [
+{
+"group": "end",
+"h": "5b4e60"
+}
+],
+"The Dark Door": [
+{
+"group": "end",
+"h": "5b4df0"
+}
+],
+"Insect Barrier": [
+{
+"group": "end",
+"h": "5b4f70"
+}
+],
+"Infinite Cards": [
+{
+"group": "end",
+"h": "5b4ec0"
+}
+],
+"Jam Breeding Machine": [
+{
+"group": "end",
+"h": "581040"
+}
+],
+"Mask of Dispel": [
+{
+"group": "end",
+"h": "5b4860"
+}
+],
+"Toon World": [
+{
+"group": "end",
+"h": "5b4c90"
+}
+],
+"Chain Energy": [
+{
+"group": "end",
+"h": "581040"
+}
+]
+}

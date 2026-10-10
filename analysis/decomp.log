@@ -1,0 +1,207 @@
+INFO  Using log config file: jar:file:/Z:/process/tools/ghidra_12.1.4_PUBLIC/Ghidra/Framework/Generic/lib/Generic.jar!/generic.log4j.xml (LoggingInitialization)  
+INFO  Using log file: C:\Users\Usuario\AppData\Roaming\ghidra\ghidra_12.1.4_PUBLIC\application.log (LoggingInitialization)  
+INFO  Loading user preferences: C:\Users\Usuario\AppData\Roaming\ghidra\ghidra_12.1.4_PUBLIC\preferences (Preferences)  
+INFO  Searching for classes... (ClassSearcher)  
+INFO  Class search complete (856 ms) (ClassSearcher)  
+INFO  Initializing SSL Context (DefaultSSLContextInitializer)  
+INFO  Initializing Random Number Generator... (SecureRandomFactory)  
+INFO  Random Number Generator initialization complete: SHA1PRNG (SecureRandomFactory)  
+INFO  Trust manager disabled, cacerts have not been set (DefaultTrustManagerFactory)  
+INFO  Starting cache cleanup: C:\Users\Usuario\AppData\Local\ghidra\fscache2 (FileCacheMaintenanceDaemon)  
+INFO  Finished cache cleanup, estimated storage used: 0 (FileCacheMaintenanceDaemon)  
+INFO  Headless startup complete (2060 ms) (AnalyzeHeadless)  
+INFO  Class searcher loaded 59 extension points (20 false positives) (ClassSearcher)  
+INFO  HEADLESS Script Paths:
+    Z:\process\tools\ghidra_12.1.4_PUBLIC\Ghidra\Features\SwiftDemangler\ghidra_scripts
+    Z:\process\tools\ghidra_12.1.4_PUBLIC\Ghidra\Processors\DATA\ghidra_scripts
+    Z:\process\tools\ghidra_12.1.4_PUBLIC\Ghidra\Features\PyGhidra\ghidra_scripts
+    Z:\process\tools\ghidra_12.1.4_PUBLIC\Ghidra\Debug\Debugger\ghidra_scripts
+    Z:\process\tools\ghidra_12.1.4_PUBLIC\Ghidra\Processors\JVM\ghidra_scripts
+    Z:\process\tools\ghidra_12.1.4_PUBLIC\Ghidra\Features\BSim\ghidra_scripts
+    Z:\process\tools\ghidra_12.1.4_PUBLIC\Ghidra\Features\Decompiler\ghidra_scripts
+    Z:\process\tools\ghidra_12.1.4_PUBLIC\Ghidra\Features\SystemEmulation\ghidra_scripts
+    Z:\process\tools\ghidra_12.1.4_PUBLIC\Ghidra\Features\WildcardAssembler\ghidra_scripts
+    Z:\process\tools\ghidra_12.1.4_PUBLIC\Ghidra\Features\BytePatterns\ghidra_scripts
+    Z:\process\tools\ghidra_12.1.4_PUBLIC\Ghidra\Features\PDB\ghidra_scripts
+    Z:\process\tools\ghidra_12.1.4_PUBLIC\Ghidra\Features\Base\ghidra_scripts
+    Z:\process\tools\ghidra_12.1.4_PUBLIC\Ghidra\Features\MicrosoftCodeAnalyzer\ghidra_scripts
+    Z:\process\tools\ghidra_12.1.4_PUBLIC\Ghidra\Features\GnuDemangler\ghidra_scripts
+    Z:\process\tools\scripts
+    Z:\process\tools\ghidra_12.1.4_PUBLIC\Ghidra\Features\DecompilerDependent\ghidra_scripts
+    Z:\process\tools\ghidra_12.1.4_PUBLIC\Ghidra\Features\FileFormats\ghidra_scripts
+    Z:\process\tools\ghidra_12.1.4_PUBLIC\Ghidra\Processors\Atmel\ghidra_scripts
+    Z:\process\tools\ghidra_12.1.4_PUBLIC\Ghidra\Features\VersionTracking\ghidra_scripts
+    Z:\process\tools\ghidra_12.1.4_PUBLIC\Ghidra\Processors\8051\ghidra_scripts
+    Z:\process\tools\ghidra_12.1.4_PUBLIC\Ghidra\Features\FunctionID\ghidra_scripts
+    Z:\process\tools\ghidra_12.1.4_PUBLIC\Ghidra\Debug\Debugger-rmi-trace\ghidra_scripts
+    Z:\process\tools\ghidra_12.1.4_PUBLIC\Ghidra\Processors\PIC\ghidra_scripts (HeadlessAnalyzer)  
+INFO  HEADLESS: execution starts (HeadlessAnalyzer)  
+INFO  Creating project: Z:\process\ghproj\joey (HeadlessAnalyzer)  
+INFO  Creating project: Z:\process\ghproj\joey (DefaultProject)  
+INFO  REPORT: Processing input files:  (HeadlessAnalyzer)  
+INFO       project: Z:\process\ghproj\joey (HeadlessAnalyzer)  
+INFO  IMPORTING: file:///Z:/process/my old yu gi oh game/joey_pc.exe (HeadlessAnalyzer)  
+INFO  Using Loader: Portable Executable (PE) (ProgramLoader)  
+INFO  Using Language/Compiler: x86:LE:32:default:windows (ProgramLoader)  
+INFO  Using Library Search Path: [., C:\WINDOWS\SysWOW64, C:\Program Files\Java\jdk-21\bin, C:\WINDOWS\Sun\Java\bin, C:\WINDOWS\system32, C:\WINDOWS, C:\Program Files\Common Files\Oracle\Java\javapath, C:\WINDOWS\System32\Wbem, C:\WINDOWS\System32\WindowsPowerShell\v1.0\, C:\WINDOWS\System32\OpenSSH\, C:\Program Files (x86)\Bitvise SSH Client, C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common, C:\Program Files\Common Files\Autodesk Shared\, C:\Program Files\dotnet\, G:\Program Files\Git\cmd, C:\Program Files\NVIDIA Corporation\NVIDIA app\NvDLISR, C:\Program Files\CMake\bin, C:\Program Files\Microsoft SQL Server\150\Tools\Binn\, C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\, C:\Program Files\nodejs\, C:\Users\Usuario\AppData\Local\Programs\Python\Python310\Scripts\, C:\Users\Usuario\AppData\Local\Programs\Python\Python310\, C:\Users\Usuario\AppData\Local\Microsoft\WindowsApps, C:\Users\Usuario\.dotnet\tools, C:\Users\Usuario\AppData\Local\Programs\Microsoft VS Code\bin, C:\Users\Usuario\.lmstudio\bin, Z:\lmstudio\bin, M:\IntelliJ IDEA 2026.2.0.1\bin, C:\Users\Usuario\AppData\Local\Microsoft\WinGet\Packages\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\ffmpeg-9.0.2-full_build\bin, C:\Users\Usuario\AppData\Roaming\npm, C:\Users\Usuario\AppData\Local\Programs\Python\Python310, C:\Program Files\nodejs] (ProgramLoader)  
+WARN  Invalid or missing function at 4d513020 (ExportDataDirectory)  
+INFO  TLS callbacks at 68f051c0 (TLSDirectory)  
+INFO  TLS callbacks at 1000701c (TLSDirectory)  
+WARN  Invalid or missing function at 10085b88 (ExportDataDirectory)  
+WARN  Invalid or missing function at 69e9f8f8 (ExportDataDirectory)  
+INFO  Additional info:
+Loading file:///Z:/process/my old yu gi oh game/joey_pc.exe?MD5=75461d4ac813ecd1aa8aeca1ac526629...
+------------------------------------------------
+
+Searching 27 paths for library ADVAPI32.DLL...
+Loading file:///C:/Windows/SysWOW64/advapi32.dll?MD5=950c6d7d9ee5088375a96ae8436eaa70...
+Created exports file: C:\Users\Usuario\AppData\Roaming\ghidra\ghidra_12.1.4_PUBLIC\symbols\win32\advapi32.exports
+Library not saved to project.
+------------------------------------------------
+
+Searching 27 paths for library GDI32.DLL...
+Loading file:///C:/Windows/SysWOW64/gdi32.dll?MD5=294936e7ad3113e4281a46be514daf3d...
+Created exports file: C:\Users\Usuario\AppData\Roaming\ghidra\ghidra_12.1.4_PUBLIC\symbols\win32\gdi32.exports
+Library not saved to project.
+------------------------------------------------
+
+Searching 27 paths for library KERNEL32.DLL...
+Loading file:///C:/Windows/SysWOW64/kernel32.dll?MD5=0ce1f5f3d23f51b9ecfd453e34ca0af7...
+Created exports file: C:\Users\Usuario\AppData\Roaming\ghidra\ghidra_12.1.4_PUBLIC\symbols\win32\kernel32.exports
+Library not saved to project.
+------------------------------------------------
+
+Searching 27 paths for library MSACM32.DLL...
+Loading file:///C:/Windows/SysWOW64/msacm32.dll?MD5=7a1a1be3450bd9755d0091b86745b9da...
+Created exports file: C:\Users\Usuario\AppData\Roaming\ghidra\ghidra_12.1.4_PUBLIC\symbols\win32\msacm32.exports
+Library not saved to project.
+------------------------------------------------
+
+Searching 27 paths for library OLE32.DLL...
+Loading file:///C:/Windows/SysWOW64/ole32.dll?MD5=0c99de30cc1bc2997ebf5b7ca4b54fe8...
+[ole32.dll]: failed to create WEVTResource at 68fc5218: Failed to resolve data length for WEVTResource
+Created exports file: C:\Users\Usuario\AppData\Roaming\ghidra\ghidra_12.1.4_PUBLIC\symbols\win32\ole32.exports
+Library not saved to project.
+------------------------------------------------
+
+Searching 27 paths for library OLEAUT32.DLL...
+Loading file:///C:/Windows/SysWOW64/oleaut32.dll?MD5=96b3f5be7d92458fb909620f918a1f63...
+Created exports file: C:\Users\Usuario\AppData\Roaming\ghidra\ghidra_12.1.4_PUBLIC\symbols\win32\oleaut32.exports
+Library not saved to project.
+------------------------------------------------
+
+Searching 27 paths for library USER32.DLL...
+Loading file:///C:/Windows/SysWOW64/user32.dll?MD5=0927ed96558e5b2392df6cf7582f2655...
+[user32.dll]: failed to create WEVTResource at 69eb6a70: Failed to resolve data length for WEVTResource
+Created exports file: C:\Users\Usuario\AppData\Roaming\ghidra\ghidra_12.1.4_PUBLIC\symbols\win32\user32.exports
+Library not saved to project.
+------------------------------------------------
+
+Searching 27 paths for library WINMM.DLL...
+Loading file:///C:/Windows/SysWOW64/winmm.dll?MD5=cd17feff84b207001e3c3f4020bd33a5...
+[winmm.dll]: failed to create WEVTResource at 4f0a1310: Failed to resolve data length for WEVTResource
+Created exports file: C:\Users\Usuario\AppData\Roaming\ghidra\ghidra_12.1.4_PUBLIC\symbols\win32\winmm.exports
+Library not saved to project.
+------------------------------------------------
+
+Applying cached symbols from ADVAPI32.DLL
+Applying cached symbols from GDI32.DLL
+Applying cached symbols from KERNEL32.DLL
+Applying cached symbols from MSACM32.DLL
+Applying cached symbols from OLEAUT32.DLL
+Applying cached symbols from USER32.DLL
+Applying cached symbols from WINMM.DLL
+Applying cached symbols from OLE32.DLL
+Linking the External Programs of 'joey_pc.exe' to imported libraries...
+  [ADVAPI32.DLL] -> not found in project
+  [GDI32.DLL] -> not found in project
+  [KERNEL32.DLL] -> not found in project
+  [MSACM32.DLL] -> not found in project
+  [OLEAUT32.DLL] -> not found in project
+  [USER32.DLL] -> not found in project
+  [WINMM.DLL] -> not found in project
+  [OLE32.DLL] -> not found in project
+------------------------------------------------
+
+ (ProgramLoader)  
+INFO  IMPORTING: Loaded 0 additional files (HeadlessAnalyzer)  
+INFO  ANALYZING all memory and code: file:///Z:/process/my old yu gi oh game/joey_pc.exe (HeadlessAnalyzer)  
+WARN  Ignoring leading '_' chars on no-return name '___raise_securityfailure' specified in file: Z:\process\tools\ghidra_12.1.4_PUBLIC\Ghidra\Features\Base\data\PEFunctionsThatDoNotReturn (NoReturnFunctionAnalyzer)  
+WARN  Ignoring leading '_' chars on no-return name '___report_rangecheckfailure' specified in file: Z:\process\tools\ghidra_12.1.4_PUBLIC\Ghidra\Features\Base\data\PEFunctionsThatDoNotReturn (NoReturnFunctionAnalyzer)  
+INFO  Skipping PDB processing: missing PDB information in program metadata (PdbUniversalAnalyzer)  
+INFO  Packed database cache: C:\Users\Usuario\AppData\Local\ghidra\packed-db-cache (PackedDatabaseCache)  
+INFO  Unprocessed TypeDescriptor: char * (TypeDescriptorModel)  
+INFO  Unprocessed TypeDescriptor: char * (TypeDescriptorModel)  
+WARN  Decompiling 005b9470: Unable to read bytes at ram:03020100 (DecompileCallback)  
+INFO  Unprocessed TypeDescriptor: void * (TypeDescriptorModel)  
+INFO  Unprocessed TypeDescriptor: void * (TypeDescriptorModel)  
+INFO  Unprocessed TypeDescriptor: char * (TypeDescriptorModel)  
+INFO  Unprocessed TypeDescriptor: char * (TypeDescriptorModel)  
+INFO  Unprocessed TypeDescriptor: void * (TypeDescriptorModel)  
+INFO  Unprocessed TypeDescriptor: void * (TypeDescriptorModel)  
+INFO  Unprocessed TypeDescriptor: char * (TypeDescriptorModel)  
+INFO  Unprocessed TypeDescriptor: char * (TypeDescriptorModel)  
+INFO  Unprocessed TypeDescriptor: char * (TypeDescriptorModel)  
+INFO  Unprocessed TypeDescriptor: char * (TypeDescriptorModel)  
+WARN  Decompiling 00594f57: Unable to read bytes at ram:03020100 (DecompileCallback)  
+WARN  Decompiling 0040e260: Unable to read bytes at ram:0824448b (DecompileCallback)  
+INFO  Applied data type archive: windows_vs12_32 (ApplyDataArchiveAnalyzer)  
+INFO  Applied data type archive: windows_vs12_32 (ApplyDataArchiveAnalyzer)  
+INFO  -----------------------------------------------------
+    ASCII Strings                              0.622 secs
+    Apply Data Archives                        0.170 secs
+    Call Convention ID                         0.001 secs
+    Call-Fixup Installer                       0.102 secs
+    Create Address Tables                      0.237 secs
+    Create Address Tables - One Time           1.148 secs
+    Create Function                            1.101 secs
+    Data Reference                             0.857 secs
+    Decompiler Switch Analysis                65.148 secs
+    Demangler Microsoft                        0.126 secs
+    Disassemble                                2.584 secs
+    Disassemble Entry Points                   0.064 secs
+    Embedded Media                             0.073 secs
+    External Entry References                  0.000 secs
+    Function ID                                2.292 secs
+    Function Start Pre Search                  0.035 secs
+    Function Start Search                      0.344 secs
+    Function Start Search After Code           0.108 secs
+    Function Start Search After Data           0.157 secs
+    Function Start Search delayed - One Time   0.004 secs
+    Non-Returning Functions - Discovered       0.794 secs
+    Non-Returning Functions - Known            0.002 secs
+    PDB Universal                              0.001 secs
+    Reference                                  0.938 secs
+    Scalar Operand References                  1.778 secs
+    Shared Return Calls                        0.579 secs
+    Stack                                     10.014 secs
+    Subroutine References                      1.616 secs
+    Subroutine References - One Time           0.010 secs
+    Windows x86 PE Exception Handling          3.048 secs
+    Windows x86 PE RTTI Analyzer               0.238 secs
+    Windows x86 Thread Environment Block (TEB) Analyzer     0.009 secs
+    WindowsResourceReference                   2.910 secs
+    X86 Function Callee Purge                  1.395 secs
+    x86 Constant Reference Analyzer            8.945 secs
+-----------------------------------------------------
+     Total Time   107 secs
+-----------------------------------------------------
+ (AutoAnalysisManager)  
+INFO  REPORT: Analysis succeeded for file: file:///Z:/process/my old yu gi oh game/joey_pc.exe (HeadlessAnalyzer)  
+INFO  REPORT: Execute script: ExportDecomp.java 'Z:\process\analysis\decomp.c'  (HeadlessAnalyzer)  
+INFO  SCRIPT: Z:\process\tools\scripts\ExportDecomp.java (HeadlessAnalyzer)  
+INFO  ExportDecomp.java> decompiled 500 (GhidraScript)  
+INFO  ExportDecomp.java> decompiled 1000 (GhidraScript)  
+INFO  ExportDecomp.java> decompiled 1500 (GhidraScript)  
+INFO  ExportDecomp.java> decompiled 2000 (GhidraScript)  
+INFO  ExportDecomp.java> decompiled 2500 (GhidraScript)  
+INFO  ExportDecomp.java> decompiled 3000 (GhidraScript)  
+WARN  Decompiling 005b9470: Unable to read bytes at ram:03020100 (DecompileCallback)  
+INFO  ExportDecomp.java> decompiled 3500 (GhidraScript)  
+INFO  ExportDecomp.java> decompiled 4000 (GhidraScript)  
+INFO  ExportDecomp.java> decompiled 4500 (GhidraScript)  
+INFO  ExportDecomp.java> decompiled 5000 (GhidraScript)  
+INFO  ExportDecomp.java> decompiled 5500 (GhidraScript)  
+INFO  ExportDecomp.java> decompiled 6000 (GhidraScript)  
+INFO  ExportDecomp.java> decompiled 6500 (GhidraScript)  
+Presione una tecla para continuar . . . 

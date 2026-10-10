@@ -1,0 +1,1431 @@
+{
+ "chain_response": [
+  {
+   "id": 685,
+   "name": "Widespread Ruin",
+   "handler": "005b2640"
+  },
+  {
+   "id": 990,
+   "name": "Magic-Arm Shield",
+   "handler": "005b2640"
+  },
+  {
+   "id": 1317,
+   "name": "Shift",
+   "handler": "005b2640"
+  },
+  {
+   "id": 1529,
+   "name": "Dark Spirit of the Silent",
+   "handler": "005b2640"
+  },
+  {
+   "id": 1055,
+   "name": "Waboku",
+   "handler": "005b2640"
+  },
+  {
+   "id": 1056,
+   "name": "Mirror Force",
+   "handler": "005b2640"
+  },
+  {
+   "id": 1424,
+   "name": "Fairy Box",
+   "handler": "005b2640"
+  },
+  {
+   "id": 1099,
+   "name": "Mirror Wall",
+   "handler": "005b2640"
+  },
+  {
+   "id": 960,
+   "name": "Negate Attack",
+   "handler": "005b2640"
+  },
+  {
+   "id": 1214,
+   "name": "Magic Cylinder",
+   "handler": "005b2640"
+  },
+  {
+   "id": 1098,
+   "name": "Enchanted Javelin",
+   "handler": "005b2640"
+  },
+  {
+   "id": 348,
+   "name": "Spellbinding Circle",
+   "handler": "005b2640"
+  },
+  {
+   "id": 1323,
+   "name": "Gravity Bind",
+   "handler": "005b2640"
+  },
+  {
+   "id": 1245,
+   "name": "?",
+   "handler": "005b2640"
+  },
+  {
+   "id": 1902,
+   "name": "Scapegoat",
+   "handler": "005b2640"
+  },
+  {
+   "id": 1095,
+   "name": "Call Of The Haunted",
+   "handler": "005b2640"
+  },
+  {
+   "id": 945,
+   "name": "Magical Hats",
+   "handler": "005b2640"
+  },
+  {
+   "id": 650,
+   "name": "Kunai with Chain",
+   "handler": "005b2640"
+  },
+  {
+   "id": 1203,
+   "name": "Graceful Dice",
+   "handler": "005b2e60"
+  },
+  {
+   "id": 1204,
+   "name": "Skull Dice",
+   "handler": "005b2e60"
+  },
+  {
+   "id": 1015,
+   "name": "Reinforcements",
+   "handler": "005b2e60"
+  },
+  {
+   "id": 1075,
+   "name": "Rush Recklessly",
+   "handler": "005b2e60"
+  },
+  {
+   "id": 1415,
+   "name": "Mask of Weakness",
+   "handler": "005b2e60"
+  },
+  {
+   "id": 1016,
+   "name": "Castle Walls",
+   "handler": "005b2e60"
+  },
+  {
+   "id": 1076,
+   "name": "The Reliable Guardian",
+   "handler": "005b2e60"
+  },
+  {
+   "id": 1082,
+   "name": "Snake Fang",
+   "handler": "005b2e60"
+  },
+  {
+   "id": 1534,
+   "name": "Deal of Phantom",
+   "handler": "005b2e60"
+  },
+  {
+   "id": 370,
+   "name": "Sanga of the Thunder",
+   "handler": "005b1b70"
+  },
+  {
+   "id": 371,
+   "name": "Kazejin",
+   "handler": "005b1b70"
+  },
+  {
+   "id": 372,
+   "name": "Suijin",
+   "handler": "005b1b70"
+  },
+  {
+   "id": 680,
+   "name": "House of Adhesive Tape",
+   "handler": "00581040"
+  },
+  {
+   "id": 681,
+   "name": "Eatgaboon",
+   "handler": "00581040"
+  },
+  {
+   "id": 1002,
+   "name": "Trap Hole",
+   "handler": "00581040"
+  },
+  {
+   "id": 1140,
+   "name": "Numinous Healer",
+   "handler": "00581040"
+  },
+  {
+   "id": 1304,
+   "name": "Attack and Receive",
+   "handler": "00581040"
+  },
+  {
+   "id": 1141,
+   "name": "Appropriate",
+   "handler": "00581040"
+  },
+  {
+   "id": 1142,
+   "name": "Forced Requisition",
+   "handler": "00581040"
+  },
+  {
+   "id": 1325,
+   "name": "Shadow of Eyes",
+   "handler": "00581040"
+  },
+  {
+   "id": 1134,
+   "name": "Gust",
+   "handler": "005b4860"
+  },
+  {
+   "id": 1135,
+   "name": "Driving Snow",
+   "handler": "005b4860"
+  },
+  {
+   "id": 950,
+   "name": "Time Machine",
+   "handler": "005b1c30"
+  },
+  {
+   "id": 1301,
+   "name": "Michizure",
+   "handler": "005b1d30"
+  },
+  {
+   "id": 1179,
+   "name": "Sebek's Blessing",
+   "handler": "005b1e00"
+  },
+  {
+   "id": 969,
+   "name": "Chain Destruction",
+   "handler": "005b2310"
+  },
+  {
+   "id": 1425,
+   "name": "Torrential Tribute",
+   "handler": "005b2450"
+  },
+  {
+   "id": 1079,
+   "name": "Mystical Space Typhoon",
+   "handler": "005b1f10"
+  },
+  {
+   "id": 1094,
+   "name": "Dust Tornado",
+   "handler": "005b1f10"
+  },
+  {
+   "id": 1045,
+   "name": "Robbin' Goblin",
+   "handler": "00581040"
+  },
+  {
+   "id": 1147,
+   "name": "Backup Soldier",
+   "handler": "00581040"
+  },
+  {
+   "id": 1151,
+   "name": "Light of Intervention",
+   "handler": "00581040"
+  },
+  {
+   "id": 1303,
+   "name": "Gamble",
+   "handler": "00581040"
+  },
+  {
+   "id": 1423,
+   "name": "Tornado Wall",
+   "handler": "00581040"
+  },
+  {
+   "id": 1528,
+   "name": "Destiny Board",
+   "handler": "00581040"
+  },
+  {
+   "id": 1305,
+   "name": "Solemn Wishes",
+   "handler": "00581040"
+  },
+  {
+   "id": 1152,
+   "name": "Respect Play",
+   "handler": "00581040"
+  },
+  {
+   "id": 1306,
+   "name": "Skull Invitation",
+   "handler": "00581040"
+  },
+  {
+   "id": 660,
+   "name": "Crush Card",
+   "handler": "00581040"
+  },
+  {
+   "id": 1038,
+   "name": "Magic Thorn",
+   "handler": "00581040"
+  },
+  {
+   "id": 1302,
+   "name": "Minor Goblin Official",
+   "handler": "00581040"
+  },
+  {
+   "id": 964,
+   "name": "Lightforce Sword",
+   "handler": "00581040"
+  },
+  {
+   "id": 1145,
+   "name": "DNA Surgery",
+   "handler": "00581040"
+  },
+  {
+   "id": 1447,
+   "name": "Jar of Greed",
+   "handler": "005b2620"
+  },
+  {
+   "id": 1090,
+   "name": "Time Seal",
+   "handler": "005b2620"
+  },
+  {
+   "id": 1418,
+   "name": "Mask of Restrict",
+   "handler": "005b1b50"
+  },
+  {
+   "id": 1527,
+   "name": "Collected Power",
+   "handler": "005b1bb0"
+  },
+  {
+   "id": 1097,
+   "name": "Earthshaker",
+   "handler": "005b1d60"
+  },
+  {
+   "id": 1146,
+   "name": "The Regulation of Tribe",
+   "handler": "005b1e50"
+  },
+  {
+   "id": 1536,
+   "name": "Blind Destruction",
+   "handler": "005b1eb0"
+  },
+  {
+   "id": 1533,
+   "name": "Graverobber's Retribution",
+   "handler": "005b1ef0"
+  },
+  {
+   "id": 939,
+   "name": "Ring of Destruction",
+   "handler": "005b1f70"
+  },
+  {
+   "id": 1032,
+   "name": "Just Desserts",
+   "handler": "005b2090"
+  },
+  {
+   "id": 1092,
+   "name": "Gift of The Mystical Elf",
+   "handler": "005b2110"
+  },
+  {
+   "id": 1150,
+   "name": "Ceasefire",
+   "handler": "005b2160"
+  },
+  {
+   "id": 1178,
+   "name": "Aqua Chorus",
+   "handler": "005b22a0"
+  },
+  {
+   "id": 1005,
+   "name": "Two-Pronged Attack",
+   "handler": "005b24c0"
+  },
+  {
+   "id": 1532,
+   "name": "Skull Lair",
+   "handler": "005b2580"
+  }
+ ],
+ "tbl_5dd308": [
+  {
+   "id": 1019,
+   "name": "White Hole",
+   "handler": "00581040"
+  },
+  {
+   "id": 1022,
+   "name": "Anti Raigeki",
+   "handler": "00581040"
+  },
+  {
+   "id": 1021,
+   "name": "Call of the Grave",
+   "handler": "00581040"
+  },
+  {
+   "id": 1062,
+   "name": "Gryphon Wing",
+   "handler": "00581040"
+  },
+  {
+   "id": 689,
+   "name": "Fake Trap",
+   "handler": "00581040"
+  },
+  {
+   "id": 1079,
+   "name": "Mystical Space Typhoon",
+   "handler": "005b3210"
+  },
+  {
+   "id": 1094,
+   "name": "Dust Tornado",
+   "handler": "005b3210"
+  },
+  {
+   "id": 1091,
+   "name": "Graverobber",
+   "handler": "005b3250"
+  },
+  {
+   "id": 1154,
+   "name": "Imperial Order",
+   "handler": "005b3400"
+  },
+  {
+   "id": 1033,
+   "name": "Royal Decree",
+   "handler": "005b3440"
+  },
+  {
+   "id": 1525,
+   "name": "Maryokutai",
+   "handler": "005b32a0"
+  },
+  {
+   "id": 1321,
+   "name": "Magic Drain",
+   "handler": "005b32a0"
+  },
+  {
+   "id": 1029,
+   "name": "Magic Jammer",
+   "handler": "005b32a0"
+  },
+  {
+   "id": 1033,
+   "name": "Royal Decree",
+   "handler": "005b32a0"
+  },
+  {
+   "id": 1531,
+   "name": "Riryoku Field",
+   "handler": "005b32a0"
+  },
+  {
+   "id": 1015,
+   "name": "Reinforcements",
+   "handler": "005b35a0"
+  },
+  {
+   "id": 1016,
+   "name": "Castle Walls",
+   "handler": "005b35a0"
+  },
+  {
+   "id": 1075,
+   "name": "Rush Recklessly",
+   "handler": "005b35a0"
+  },
+  {
+   "id": 1076,
+   "name": "The Reliable Guardian",
+   "handler": "005b35a0"
+  },
+  {
+   "id": 1082,
+   "name": "Snake Fang",
+   "handler": "005b35e0"
+  },
+  {
+   "id": 1203,
+   "name": "Graceful Dice",
+   "handler": "005b3480"
+  },
+  {
+   "id": 1204,
+   "name": "Skull Dice",
+   "handler": "005b3480"
+  },
+  {
+   "id": 1447,
+   "name": "Jar of Greed",
+   "handler": "005b3480"
+  },
+  {
+   "id": 1090,
+   "name": "Time Seal",
+   "handler": "005b3480"
+  }
+ ],
+ "standby": [
+  {
+   "id": 1312,
+   "name": "Cold Wave",
+   "handler": "005b48f0"
+  },
+  {
+   "id": 671,
+   "name": "Harpie's Feather Duster",
+   "handler": "005b4970"
+  },
+  {
+   "id": 1061,
+   "name": "Heavy Storm",
+   "handler": "005b4ae0"
+  },
+  {
+   "id": 1009,
+   "name": "De-Spell",
+   "handler": "005b4860"
+  },
+  {
+   "id": 1004,
+   "name": "Remove Trap",
+   "handler": "005b4860"
+  },
+  {
+   "id": 1545,
+   "name": "Bait Doll",
+   "handler": "005b4860"
+  },
+  {
+   "id": 1079,
+   "name": "Mystical Space Typhoon",
+   "handler": "005b49a0"
+  },
+  {
+   "id": 1080,
+   "name": "Giant Trunade",
+   "handler": "005b49d0"
+  },
+  {
+   "id": 1157,
+   "name": "Nobleman of Crossout",
+   "handler": "005b4860"
+  },
+  {
+   "id": 1158,
+   "name": "Nobleman of Extermination",
+   "handler": "005b4860"
+  },
+  {
+   "id": 337,
+   "name": "Mooyan Curry",
+   "handler": "005b48d0"
+  },
+  {
+   "id": 338,
+   "name": "Red Medicine",
+   "handler": "005b48d0"
+  },
+  {
+   "id": 339,
+   "name": "Goblin's Secret Remedy",
+   "handler": "005b48d0"
+  },
+  {
+   "id": 340,
+   "name": "Soul of the Pure",
+   "handler": "005b48d0"
+  },
+  {
+   "id": 341,
+   "name": "Dian Keto the Cure Master",
+   "handler": "005b48d0"
+  },
+  {
+   "id": 1006,
+   "name": "Blue Medicine",
+   "handler": "005b48d0"
+  },
+  {
+   "id": 1315,
+   "name": "Rain of Mercy",
+   "handler": "005b48d0"
+  },
+  {
+   "id": 346,
+   "name": "Tremendous Fire",
+   "handler": "005b4910"
+  },
+  {
+   "id": 345,
+   "name": "Ookazi",
+   "handler": "00581040"
+  },
+  {
+   "id": 344,
+   "name": "Final Flame",
+   "handler": "00581040"
+  },
+  {
+   "id": 342,
+   "name": "Sparks",
+   "handler": "00581040"
+  },
+  {
+   "id": 343,
+   "name": "Hinotama",
+   "handler": "00581040"
+  },
+  {
+   "id": 1007,
+   "name": "Raimei",
+   "handler": "00581040"
+  },
+  {
+   "id": 1070,
+   "name": "Confiscation",
+   "handler": "00581040"
+  },
+  {
+   "id": 1071,
+   "name": "Delinquent Duo",
+   "handler": "00581040"
+  },
+  {
+   "id": 1077,
+   "name": "The Forceful Sentry",
+   "handler": "00581040"
+  },
+  {
+   "id": 1081,
+   "name": "Painful Choice",
+   "handler": "00581040"
+  },
+  {
+   "id": 1024,
+   "name": "Soul Release",
+   "handler": "005b4b50"
+  },
+  {
+   "id": 1177,
+   "name": "Windstorm of Etaqua",
+   "handler": "005b4b90"
+  },
+  {
+   "id": 657,
+   "name": "Metalmorph",
+   "handler": "005b5a00"
+  },
+  {
+   "id": 1429,
+   "name": "Card of Safe Return",
+   "handler": "005b4890"
+  }
+ ],
+ "main_s3": [
+  {
+   "id": 1010,
+   "name": "Pot of Greed",
+   "handler": "00581040"
+  },
+  {
+   "id": 1065,
+   "name": "Upstart Goblin",
+   "handler": "00581040"
+  },
+  {
+   "id": 968,
+   "name": "Graceful Charity",
+   "handler": "00581040"
+  },
+  {
+   "id": 1040,
+   "name": "Fusion Sage",
+   "handler": "00581040"
+  },
+  {
+   "id": 349,
+   "name": "Dark-Piercing Light",
+   "handler": "00581040"
+  },
+  {
+   "id": 335,
+   "name": "Dark Hole",
+   "handler": "005b5060"
+  },
+  {
+   "id": 336,
+   "name": "Raigeki",
+   "handler": "005b50a0"
+  },
+  {
+   "id": 652,
+   "name": "Warrior Elimination",
+   "handler": "005b5b80"
+  },
+  {
+   "id": 655,
+   "name": "Eternal Rest",
+   "handler": "005b5b80"
+  },
+  {
+   "id": 659,
+   "name": "Stain Storm",
+   "handler": "005b5b80"
+  },
+  {
+   "id": 661,
+   "name": "Eradicating Aerosol",
+   "handler": "005b5b80"
+  },
+  {
+   "id": 662,
+   "name": "Breath of Light",
+   "handler": "005b5b80"
+  },
+  {
+   "id": 663,
+   "name": "Eternal Draught",
+   "handler": "005b5b80"
+  },
+  {
+   "id": 1036,
+   "name": "Last Day of Witch",
+   "handler": "005b5b80"
+  },
+  {
+   "id": 1037,
+   "name": "Exile of the Wicked",
+   "handler": "005b5b80"
+  },
+  {
+   "id": 1027,
+   "name": "Change of Heart",
+   "handler": "005b5120"
+  },
+  {
+   "id": 1220,
+   "name": "Soul Exchange",
+   "handler": "005b5120"
+  },
+  {
+   "id": 1168,
+   "name": "Mr. Volcano",
+   "handler": "005b5290"
+  },
+  {
+   "id": 1023,
+   "name": "Tribute to The Doomed",
+   "handler": "005b4860"
+  },
+  {
+   "id": 1451,
+   "name": "Offerings to the Doomed",
+   "handler": "005b4860"
+  },
+  {
+   "id": 1059,
+   "name": "Share the Pain",
+   "handler": "005b5230"
+  },
+  {
+   "id": 1001,
+   "name": "Fissure",
+   "handler": "00581040"
+  },
+  {
+   "id": 1213,
+   "name": "Mystic Box",
+   "handler": "005b5270"
+  },
+  {
+   "id": 1008,
+   "name": "Monster Reborn",
+   "handler": "005b5300"
+  },
+  {
+   "id": 1160,
+   "name": "Premature Burial",
+   "handler": "005b53e0"
+  },
+  {
+   "id": 1159,
+   "name": "The Shallow Grave",
+   "handler": "005b5490"
+  },
+  {
+   "id": 1095,
+   "name": "Call Of The Haunted",
+   "handler": "005b55a0"
+  },
+  {
+   "id": 1091,
+   "name": "Graverobber",
+   "handler": "005b5650"
+  },
+  {
+   "id": 329,
+   "name": "Forest",
+   "handler": "005b5010"
+  },
+  {
+   "id": 330,
+   "name": "Wasteland",
+   "handler": "005b5010"
+  },
+  {
+   "id": 331,
+   "name": "Mountain",
+   "handler": "005b5010"
+  },
+  {
+   "id": 332,
+   "name": "Sogen",
+   "handler": "005b5010"
+  },
+  {
+   "id": 333,
+   "name": "Umi",
+   "handler": "005b5010"
+  },
+  {
+   "id": 334,
+   "name": "Yami",
+   "handler": "005b5010"
+  },
+  {
+   "id": 1069,
+   "name": "Chorus of Sanctuary",
+   "handler": "005b5010"
+  },
+  {
+   "id": 1125,
+   "name": "Gaia Power",
+   "handler": "005b5010"
+  },
+  {
+   "id": 1126,
+   "name": "Umiiruka",
+   "handler": "005b5010"
+  },
+  {
+   "id": 1127,
+   "name": "Molten Destruction",
+   "handler": "005b5010"
+  },
+  {
+   "id": 1128,
+   "name": "Rising Air Current",
+   "handler": "005b5010"
+  },
+  {
+   "id": 1129,
+   "name": "Luminous Spark",
+   "handler": "005b5010"
+  },
+  {
+   "id": 1130,
+   "name": "Mystic Plasma Zone",
+   "handler": "005b5010"
+  },
+  {
+   "id": 1003,
+   "name": "Polymerization",
+   "handler": "00581040"
+  },
+  {
+   "id": 1034,
+   "name": "Polymerization",
+   "handler": "00581040"
+  },
+  {
+   "id": 1547,
+   "name": "Fusion Gate",
+   "handler": "005b5040"
+  },
+  {
+   "id": 672,
+   "name": "War-Lion Ritual",
+   "handler": "00581040"
+  },
+  {
+   "id": 670,
+   "name": "Zera Ritual",
+   "handler": "00581040"
+  },
+  {
+   "id": 669,
+   "name": "Black Luster Ritual",
+   "handler": "00581040"
+  },
+  {
+   "id": 673,
+   "name": "Beastly Mirror Ritual",
+   "handler": "00581040"
+  },
+  {
+   "id": 675,
+   "name": "Commencement Dance",
+   "handler": "00581040"
+  },
+  {
+   "id": 676,
+   "name": "Hamburger Recipe",
+   "handler": "00581040"
+  },
+  {
+   "id": 678,
+   "name": "Novox's Prayer",
+   "handler": "00581040"
+  },
+  {
+   "id": 693,
+   "name": "Resurrection of Chakra",
+   "handler": "00581040"
+  },
+  {
+   "id": 691,
+   "name": "Turtle Oath",
+   "handler": "00581040"
+  },
+  {
+   "id": 696,
+   "name": "Garma Sword Oath",
+   "handler": "00581040"
+  },
+  {
+   "id": 695,
+   "name": "Javelin Beetle Pact",
+   "handler": "00581040"
+  },
+  {
+   "id": 699,
+   "name": "Fortress Whale's Oath",
+   "handler": "00581040"
+  },
+  {
+   "id": 698,
+   "name": "Revival of Dokurorider",
+   "handler": "00581040"
+  },
+  {
+   "id": 720,
+   "name": "Dark Magic Ritual",
+   "handler": "00581040"
+  },
+  {
+   "id": 958,
+   "name": "Black Illusion Ritual",
+   "handler": "00581eb0"
+  },
+  {
+   "id": 656,
+   "name": "Megamorph",
+   "handler": "005b5950"
+  },
+  {
+   "id": 300,
+   "name": "Legendary Sword",
+   "handler": "005b5a20"
+  },
+  {
+   "id": 301,
+   "name": "Sword of Dark Destruction",
+   "handler": "005b5a20"
+  },
+  {
+   "id": 302,
+   "name": "Dark Energy",
+   "handler": "005b5a20"
+  },
+  {
+   "id": 303,
+   "name": "Axe of Despair",
+   "handler": "005b5a20"
+  },
+  {
+   "id": 304,
+   "name": "Laser Cannon Armor",
+   "handler": "005b5a20"
+  },
+  {
+   "id": 305,
+   "name": "Insect Armor with Laser Cannon",
+   "handler": "005b5a20"
+  },
+  {
+   "id": 306,
+   "name": "Elf's Light",
+   "handler": "005b5a20"
+  },
+  {
+   "id": 307,
+   "name": "Beast Fangs",
+   "handler": "005b5a20"
+  },
+  {
+   "id": 308,
+   "name": "Steel Shell",
+   "handler": "005b5a20"
+  },
+  {
+   "id": 309,
+   "name": "Vile Germs",
+   "handler": "005b5a20"
+  },
+  {
+   "id": 310,
+   "name": "Black Pendant",
+   "handler": "005b5a20"
+  },
+  {
+   "id": 311,
+   "name": "Silver Bow and Arrow",
+   "handler": "005b5a20"
+  },
+  {
+   "id": 312,
+   "name": "Horn of Light",
+   "handler": "005b5a20"
+  },
+  {
+   "id": 313,
+   "name": "Horn of the Unicorn",
+   "handler": "005b5a20"
+  },
+  {
+   "id": 314,
+   "name": "Dragon Treasure",
+   "handler": "005b5a20"
+  },
+  {
+   "id": 315,
+   "name": "Electro-Whip",
+   "handler": "005b5a20"
+  },
+  {
+   "id": 316,
+   "name": "Cyber Shield",
+   "handler": "005b5a20"
+  },
+  {
+   "id": 318,
+   "name": "Mystical Moon",
+   "handler": "005b5a20"
+  },
+  {
+   "id": 320,
+   "name": "Malevolent Nuzzler",
+   "handler": "005b5a20"
+  },
+  {
+   "id": 321,
+   "name": "Violet Crystal",
+   "handler": "005b5a20"
+  },
+  {
+   "id": 322,
+   "name": "Book of Secret Arts",
+   "handler": "005b5a20"
+  },
+  {
+   "id": 323,
+   "name": "Invigoration",
+   "handler": "005b5a20"
+  },
+  {
+   "id": 324,
+   "name": "Machine Conversion Factory",
+   "handler": "005b5a20"
+  },
+  {
+   "id": 325,
+   "name": "Raise Body Heat",
+   "handler": "005b5a20"
+  },
+  {
+   "id": 326,
+   "name": "Follow Wind",
+   "handler": "005b5a20"
+  },
+  {
+   "id": 327,
+   "name": "Power of Kaishin",
+   "handler": "005b5a20"
+  },
+  {
+   "id": 651,
+   "name": "Magical Labyrinth",
+   "handler": "005b5a20"
+  },
+  {
+   "id": 653,
+   "name": "Salamandra",
+   "handler": "005b5a20"
+  },
+  {
+   "id": 657,
+   "name": "Metalmorph",
+   "handler": "005b5a20"
+  },
+  {
+   "id": 667,
+   "name": "Bright Castle",
+   "handler": "005b5a20"
+  },
+  {
+   "id": 962,
+   "name": "7 Completed",
+   "handler": "005b5a20"
+  },
+  {
+   "id": 1012,
+   "name": "Burning Spear",
+   "handler": "005b5a20"
+  },
+  {
+   "id": 1013,
+   "name": "Gust Fan",
+   "handler": "005b5a20"
+  },
+  {
+   "id": 1042,
+   "name": "Sword of Deep-Seated",
+   "handler": "005b5a20"
+  },
+  {
+   "id": 1058,
+   "name": "Ring of Magnetism",
+   "handler": "005b5ab0"
+  },
+  {
+   "id": 1060,
+   "name": "Stim-Pack",
+   "handler": "005b5a20"
+  },
+  {
+   "id": 1182,
+   "name": "Sword of Dragon's Soul",
+   "handler": "005b5a20"
+  },
+  {
+   "id": 1313,
+   "name": "Fairy Meteor Crush",
+   "handler": "005b5ab0"
+  },
+  {
+   "id": 1420,
+   "name": "Mask of Brutality",
+   "handler": "005b5a20"
+  },
+  {
+   "id": 1422,
+   "name": "Lightning Blade",
+   "handler": "005b5a20"
+  },
+  {
+   "id": 1449,
+   "name": "United We Stand",
+   "handler": "005b5a20"
+  },
+  {
+   "id": 1450,
+   "name": "Mage Power",
+   "handler": "005b5a20"
+  },
+  {
+   "id": 1540,
+   "name": "Cyclon Laser",
+   "handler": "005b5ab0"
+  },
+  {
+   "id": 1550,
+   "name": "Dragonic Attack",
+   "handler": "005b5a20"
+  },
+  {
+   "id": 1043,
+   "name": "Block Attack",
+   "handler": "005b5720"
+  },
+  {
+   "id": 967,
+   "name": "Shield & Sword",
+   "handler": "005b5830"
+  },
+  {
+   "id": 1221,
+   "name": "Card Destruction",
+   "handler": "005b58b0"
+  },
+  {
+   "id": 1205,
+   "name": "Exchange",
+   "handler": "005b5920"
+  },
+  {
+   "id": 1539,
+   "name": "Spiritualism",
+   "handler": "00581040"
+  },
+  {
+   "id": 1067,
+   "name": "Final Destiny",
+   "handler": "005b5100"
+  },
+  {
+   "id": 1046,
+   "name": "Germ Infection",
+   "handler": "005b5a60"
+  },
+  {
+   "id": 1047,
+   "name": "Paralyzing Potion",
+   "handler": "005b5a60"
+  },
+  {
+   "id": 1419,
+   "name": "Mask of the Accursed",
+   "handler": "005b5a60"
+  },
+  {
+   "id": 1548,
+   "name": "Ekibyo Drakmord",
+   "handler": "005b5a60"
+  }
+ ],
+ "main_s2a": [
+  {
+   "id": 1314,
+   "name": "Limiter Removal",
+   "handler": "005b4b30"
+  }
+ ],
+ "main_s2": [
+  {
+   "id": 730,
+   "name": "Relinquished",
+   "handler": "00581040"
+  },
+  {
+   "id": 1334,
+   "name": "Thousand-Eyes Restrict",
+   "handler": "00581040"
+  },
+  {
+   "id": 742,
+   "name": "Barrel Dragon",
+   "handler": "00581040"
+  },
+  {
+   "id": 81,
+   "name": "Red-Eyes B. Dragon",
+   "handler": "00581040"
+  },
+  {
+   "id": 390,
+   "name": "Zoa",
+   "handler": "00581040"
+  },
+  {
+   "id": 428,
+   "name": "Goddess of Whim",
+   "handler": "00581040"
+  },
+  {
+   "id": 511,
+   "name": "Cannon Soldier",
+   "handler": "005b5af0"
+  },
+  {
+   "id": 15,
+   "name": "Time Wizard",
+   "handler": "005b5b60"
+  },
+  {
+   "id": 1510,
+   "name": "Jowgen the Spiritualist",
+   "handler": "005b5b80"
+  },
+  {
+   "id": 1432,
+   "name": "Amazon Archer",
+   "handler": "005b5ba0"
+  },
+  {
+   "id": 1433,
+   "name": "Crimson Sentry",
+   "handler": "005b5bf0"
+  },
+  {
+   "id": 1444,
+   "name": "The Forgiving Maiden",
+   "handler": "005b5bf0"
+  },
+  {
+   "id": 1112,
+   "name": "Karate Man",
+   "handler": "005b5c60"
+  },
+  {
+   "id": 845,
+   "name": "Valkyrion the Magna Warrior",
+   "handler": "005b5d60"
+  },
+  {
+   "id": 419,
+   "name": "Cyber-Stein",
+   "handler": "005b5da0"
+  }
+ ],
+ "end": [
+  {
+   "id": 337,
+   "name": "Mooyan Curry",
+   "handler": "005b48d0"
+  },
+  {
+   "id": 338,
+   "name": "Red Medicine",
+   "handler": "005b48d0"
+  },
+  {
+   "id": 339,
+   "name": "Goblin's Secret Remedy",
+   "handler": "005b48d0"
+  },
+  {
+   "id": 340,
+   "name": "Soul of the Pure",
+   "handler": "005b48d0"
+  },
+  {
+   "id": 341,
+   "name": "Dian Keto the Cure Master",
+   "handler": "005b48d0"
+  },
+  {
+   "id": 1006,
+   "name": "Blue Medicine",
+   "handler": "005b48d0"
+  },
+  {
+   "id": 1315,
+   "name": "Rain of Mercy",
+   "handler": "005b48d0"
+  },
+  {
+   "id": 1054,
+   "name": "Last Will",
+   "handler": "005b4fe0"
+  },
+  {
+   "id": 1421,
+   "name": "Return of the Doomed",
+   "handler": "005b4fb0"
+  },
+  {
+   "id": 347,
+   "name": "Swords of Revealing Light",
+   "handler": "005b4f10"
+  },
+  {
+   "id": 1230,
+   "name": "Nightmare's Steelcage",
+   "handler": "005b4f10"
+  },
+  {
+   "id": 970,
+   "name": "Mesmeric Control",
+   "handler": "005b4d40"
+  },
+  {
+   "id": 1063,
+   "name": "Gravekeeper's Servant",
+   "handler": "00581040"
+  },
+  {
+   "id": 1320,
+   "name": "Ground Collapse",
+   "handler": "005b4e30"
+  },
+  {
+   "id": 1311,
+   "name": "Burning Land",
+   "handler": "005b4e60"
+  },
+  {
+   "id": 1538,
+   "name": "The Dark Door",
+   "handler": "005b4df0"
+  },
+  {
+   "id": 1352,
+   "name": "Insect Barrier",
+   "handler": "005b4f70"
+  },
+  {
+   "id": 1427,
+   "name": "Infinite Cards",
+   "handler": "005b4ec0"
+  },
+  {
+   "id": 1426,
+   "name": "Jam Breeding Machine",
+   "handler": "00581040"
+  },
+  {
+   "id": 1417,
+   "name": "Mask of Dispel",
+   "handler": "005b4860"
+  },
+  {
+   "id": 954,
+   "name": "Toon World",
+   "handler": "005b4c90"
+  },
+  {
+   "id": 1078,
+   "name": "Chain Energy",
+   "handler": "00581040"
+  }
+ ]
+}
