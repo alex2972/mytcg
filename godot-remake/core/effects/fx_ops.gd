@@ -131,6 +131,8 @@ func matches(c: DCard, f: Dictionary, ctx: Dictionary) -> bool:
 		return false
 	if f.has("special_summoned") and bool(c.flags.get("special_summoned", false)) != bool(f["special_summoned"]):
 		return false
+	if f.has("fusion_mat") and bool(c.flags.get("fusion_mat", false)) != bool(f["fusion_mat"]):
+		return false
 	if f.has("attr_var") and int(d.get("attribute", 0)) != int(ctx["vars"].get(str(f["attr_var"]), -2)) + 1:
 		return false
 	if f.get("race_of_src_flag", false) and (not ctx.has("src") or duel.race_of(c) != int(ctx["src"].flags.get("chosen_race", -1))):
@@ -332,7 +334,7 @@ func _cond(c: Dictionary, ctx: Dictionary) -> bool:
 		"var_nonempty": return not (ctx["vars"].get(c.get("name", ""), []) as Array).is_empty()
 		"summoned_this_turn": return ctx["src"].summon_turn == duel.turn
 		"was_flipped_by_battle": return bool(ctx["event"].get("by_battle", false))
-		"event_src": return int(ctx["event"].get("uid", -1)) == ctx["src"].uid
+		"event_src": return (int(ctx["event"].get("uid", -1)) == ctx["src"].uid) == bool(c.get("is", true))
 		"event_from": return str(ctx["event"].get("from", "")) == str(c.get("is", ""))
 		"equipped_is": return ctx["src"].equipped_to != null and matches(ctx["src"].equipped_to, c.get("filter", {}), ctx)
 		"event_reason": return str(ctx["event"].get("reason", "")) == str(c.get("is", ""))
@@ -345,12 +347,18 @@ func _cond(c: Dictionary, ctx: Dictionary) -> bool:
 		"event_pos": return str(ctx["event"].get("pos", "")) == str(c.get("is", ""))
 		"was_face_up": return bool(ctx["event"].get("was_face_up", false))
 		"src_face_down": return not ctx["src"].face_up
+		"src_pos": return ctx["src"].face_up and ctx["src"].pos == str(c.get("is", "atk"))
+		"attacker_weaker_than_target":
+			var wa := duel.card_by_uid(int(ctx["event"].get("attacker", -1)))
+			var wt := duel.card_by_uid(int(ctx["event"].get("target", -1)))
+			return wa != null and wt != null and wt.pos == "def" and duel.atk_of(wa) < duel.def_of(wt)
 		"free_zones": return duel.side(me).monsters.count(null) >= int(c.get("n", 1))
 		"source_is_src": return int(ctx["event"].get("source", -1)) == ctx["src"].uid
 		"var_matches":
 			var vv: Array = ctx["vars"].get(c.get("name", ""), [])
 			return not vv.is_empty() and matches(vv[0], c.get("filter", {}), ctx)
 		"target_is_src": return int(ctx["event"].get("target", -1)) == ctx["src"].uid
+		"in_battle": return int(ctx["event"].get("attacker", -1)) == ctx["src"].uid or int(ctx["event"].get("target", -1)) == ctx["src"].uid
 		"attacker_is_src": return int(ctx["event"].get("attacker", -1)) == ctx["src"].uid
 		"killer_is_src": return int(ctx["event"].get("killer", -1)) == ctx["src"].uid
 	return true
@@ -686,13 +694,16 @@ func run(step: Dictionary, ctx: Dictionary):
 					c.flags["destroy_at_end"] = true
 		"become_equip":
 			var hosts := _targets(step.get("to", "$t"), ctx)
-			var eq: DCard = ctx["src"]
-			var es: Duel.PlayerSide = duel.side(eq.owner)
+			var eq_list := _targets(step.get("card", "src"), ctx)
+			if eq_list.is_empty() or hosts.is_empty() or (eq_list[0] as DCard).token != "":
+				return null
+			var eq: DCard = eq_list[0]
+			var es: Duel.PlayerSide = duel.side((hosts[0] as DCard).controller if step.get("on_host_side", false) else eq.owner)
 			var ez: int = duel.free_zone(es.spells)
-			if not hosts.is_empty() and ez != -1:
+			if ez != -1:
 				duel._detach(eq)
 				es.spells[ez] = eq
-				eq.controller = eq.owner
+				eq.controller = (hosts[0] as DCard).controller if step.get("on_host_side", false) else eq.owner
 				eq.face_up = true
 				duel.equip_card(eq, hosts[0], {"atk": int(step.get("atk", 0)), "def": int(step.get("def", 0))})
 		"flag_from_var":
@@ -754,6 +765,17 @@ func run(step: Dictionary, ctx: Dictionary):
 				c.controller = c.owner
 				duel.side(c.owner).hand.append(c)
 				duel.log_event("to_hand", {"player": c.owner, "uid": c.uid})
+		"remove_top":
+			# banish the top `n` cards of a Deck [Lady Assailant of Flames]
+			var rdeck: Array = duel.side(who(step.get("who", "self"), ctx)).deck
+			var removed := 0
+			for i in int(step.get("n", 1)):
+				if rdeck.is_empty():
+					break
+				duel.banish_card(rdeck.back())
+				removed += 1
+			if step.has("as"):
+				ctx["vars"][step["as"]] = removed
 		"nothing": pass
 		"custom": return FxCustom.run(step.get("fn", ""), step, ctx, fx)
 		_:

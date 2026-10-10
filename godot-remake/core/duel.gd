@@ -294,6 +294,11 @@ func _apply_battle_end() -> void:
 		for c in monsters_of(p):
 			if c.flags.get("destroy_at_battle_end", false):
 				destroy_card(c, "effect")
+	for p in 2:
+		for c in monsters_of(p):
+			if c.flags.get("atk_after_battle", false):
+				c.flags.erase("atk_after_battle")
+				force_position(c, "atk", true)
 	for c in monsters_of(turn_player):
 		if c.flags.get("def_after_battle", false):
 			c.flags.erase("def_after_battle")
@@ -432,6 +437,8 @@ func send_to_grave(c: DCard, reason: String) -> void:
 	c.face_up = true
 	c.pos = "atk"
 	sides[c.owner].grave.append(c)
+	if reason == "fusion_material":
+		c.flags["fusion_mat"] = true      # Supply: remembers it was sent to the Graveyard by a Fusion Summon
 	_emit("to_grave", {"player": c.owner, "uid": c.uid, "reason": reason})
 	if reason == "destroyed:battle":
 		battle_dead.append(c.uid)

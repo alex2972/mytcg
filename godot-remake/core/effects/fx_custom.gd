@@ -117,6 +117,32 @@ static func run(fn: String, _step: Dictionary, ctx: Dictionary, fx: Fx):
 						found += 1
 					else:
 						d.send_to_grave(top2, "discard")
+		"chosen_one":
+			# Chosen One: the opponent picks at random 1 of the 3 selected cards (vars m = the Monster, o = the 2 others)
+			var me2: int = ctx["controller"]
+			var trio: Array = (ctx["vars"].get("m", []) as Array) + (ctx["vars"].get("o", []) as Array)
+			if trio.is_empty():
+				return null
+			var picked: DCard = trio[d.rng.randi_range(0, trio.size() - 1)]
+			var hit: bool = d.is_monster(picked) and d.free_zone(d.side(me2).monsters) != -1
+			if hit:
+				trio.erase(picked)
+				d.special_summon(picked, me2, "def" if int(ctx["vars"].get("pos", 0)) == 1 else "atk", true)
+			for c in trio:
+				d.send_to_grave(c, "effect")
+		"nobleman_ext":
+			# Nobleman of Extermination: remove the selected face-down Spell/Trap from play; for a Trap, every Trap of the
+			# same name leaves both Decks (removed from play) and the Decks are shuffled
+			for c in ctx["vars"].get("t", []):
+				var is_trap: bool = d.card_data(c).get("type", "") == "trap"
+				var nm: String = d.db.card_name(c.idx)
+				d.banish_card(c)
+				if is_trap:
+					for p2 in 2:
+						for dc in (d.side(p2).deck as Array).duplicate():
+							if d.db.card_name(dc.idx) == nm:
+								d.banish_card(dc)
+						d.shuffle_deck(p2)
 		_:
 			push_warning("unknown custom effect: " + fn)
 	return null

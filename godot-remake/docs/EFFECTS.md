@@ -82,3 +82,10 @@ Ops: `become_equip` {to, atk, def} (a monster/card turns into an Equip Card: Bla
 `draw_until` · `banish_random_hand` {after} · `give_to_deck` · `block_zones` {a, b, side} · `move_equips` · `swap_attacker` · `take_from_hand` (Exchange) · custom ops `crush_card`, `magical_hats`, `destiny_board`, `damage_watched`.
 Filters `attr_var`, `race_of_src_flag`, `special_summoned`. Conditions `src_face_down`, `free_zones`. Effect key `face_down_ok` (a face-down monster may use a trigger). Effect zones `extra` and `deck`.
 Static mods: `lp_rule` (Megamorph), `same_name` (Aqua Chorus). Rules: `dna_surgery`, `ground_collapse`, `no_special_summon`. Duel: `race_of`, `zone_blocked`, `skip_turn`, `lockdown_until`, `crush_until`.
+
+## Added in batch 14
+Ops: `remove_top` {who, n, as} (banish the top cards of a Deck) · `become_equip` now takes `card` (any card, default `src`) and `on_host_side` (put it in the host's controller's Spell zone; Sword Hunter) ·
+custom ops `chosen_one`, `nobleman_ext`. Conditions: `src_pos` {is: atk|def} (this card is face-up in that position) · `in_battle` (this card is the attacker or the attack target) ·
+`attacker_weaker_than_target` (the attacked monster is in Defense Position with more DEF than the attacker's ATK) · `event_src` takes `is: false` ("the event is about another card").
+Filter `fusion_mat`: a card in the Graveyard that was sent there as a Fusion Material (flag set by `Duel.send_to_grave` for the reason `fusion_material`).
+Flag `atk_after_battle`: the monster turns to face-up Attack Position when the Battle Phase ends (Big Shield Gardna).
