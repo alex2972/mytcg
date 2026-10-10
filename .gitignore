@@ -1,4 +1,4 @@
-tools/
+/tools/
 rea/
 my old yu gi oh game/
 compress folder.zip
@@ -13,3 +13,4 @@ extracted/data/j/
 *.wav
 *.ogg
 *.mp3
+__pycache__/

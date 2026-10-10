@@ -1,0 +1,5 @@
+{
+"_about": "Cards whose whole effect is handled by the engine or that have none: Exodia (Duel.check_exodia), Blue-Eyes Ultimate Dragon (a plain Fusion).",
+"Exodia the Forbidden One": {"fx": []},
+"Blue-Eyes Ultimate Dragon": {"fx": []}
+}
