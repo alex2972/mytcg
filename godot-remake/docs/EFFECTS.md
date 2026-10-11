@@ -155,3 +155,9 @@ Ops: `calc` {as, value} (remember a value before something leaves the field), `f
 Card flags `doom_turn` (destroyed at the end of that turn), `cannot_attack_until`. Filter `equipped_to_src`. Name aliases (`FxOps.NAME_ALIASES`: Cyber Harpie is Harpie Lady) and Fusion Substitutes (`FxOps.FUSION_SUBS`).
 Custom ops `shadow_scout`, `swap_control`, `probe_destroy` {kind}, `acid_trap_hole`; summon procedures `metalzoa`, `larvae_moth`, `great_moth` (`FxCustom.MOTH_TURNS`).
 Only effects with `"zone": "hand"` answer events from the hand (Kuriboh, Curse of Fiend).
+
+## Added in batch 22
+Events: `sent_to_grave` now carries `from` (hand, deck, field, grave, banished, extra) and `by` (the player whose effect did it, -1 if none); `destroyed_by_opp_effect` reads `by`. The `to_grave`, `destroy`, `discard` and `mill` steps set `Duel.effect_player`.
+Ops: `soul_exchange` (the selected opponent's monster may be Tributed this turn; `Duel.soul_exchange`), `refpanel_swap` (the Spell on top of the chain is resolved for the other player: `ctx.swap_players` swaps `self`/`opp` in `FxOps.who`), `become_equip` accepts `take_stats` (the host takes on the ATK/DEF of the equip card). Custom op `hand_mirror`.
+Condition `chain_top_targets_player`. Mod keys `hourglass` (Hourglass of Courage, flag `hourglass_turn`). `Duel.destroy_card` lets a Fake Trap take the place of a Trap Card destroyed by the opponent's effect.
+Dark Sage is summoned from Time Wizard's coin effect when the call is right.

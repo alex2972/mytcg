@@ -1964,6 +1964,27 @@
                 "what": {
                   "from": "opp.monsters"
                 }
+              },
+              {
+                "op": "if",
+                "cond": [
+                  {"c": "has", "zone": "self.monsters", "filter": {"name_is": "Dark Magician", "face_up": true}, "n": 1},
+                  {"c": "has", "zone": ["self.hand", "self.deck"], "filter": {"name_is": "Dark Sage"}, "n": 1}
+                ],
+                "then": [
+                  {"op": "yesno", "as": "sage", "prompt": 269},
+                  {
+                    "op": "if",
+                    "cond": [{"c": "var_true", "name": "sage"}],
+                    "then": [
+                      {"op": "select", "as": "dm", "from": "self.monsters", "filter": {"name_is": "Dark Magician", "face_up": true}, "n": 1, "cost": true, "prompt": 154},
+                      {"op": "to_grave", "what": "$dm", "reason": "tribute"},
+                      {"op": "select", "as": "ds", "from": ["self.hand", "self.deck"], "filter": {"name_is": "Dark Sage"}, "n": 1, "prompt": 83},
+                      {"op": "special_summon", "what": "$ds", "pos": "atk", "face_up": true},
+                      {"op": "search", "filter": {"type": "spell"}, "prompt": 51}
+                    ]
+                  }
+                ]
               }
             ],
             "tails": [

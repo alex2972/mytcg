@@ -385,6 +385,33 @@ static func run(fn: String, _step: Dictionary, ctx: Dictionary, fx: Fx):
 				d.return_to_deck(c, "shuffle")
 			d.shuffle_deck(me4)
 			d.draw_cards(me4, drawn)
+		"hand_mirror":
+			# Fairy's Hand Mirror: the opponent's Spell that designates 1 monster is switched to another correctly targeted monster
+			if fx.chain.is_empty():
+				return null
+			var mlink: Dictionary = fx.chain.back()
+			var mctx: Dictionary = mlink["ctx"]
+			var mstep: Dictionary = {}
+			for st in (mctx["effect"].get("target", []) as Array):
+				if st.get("op", "") == "select":
+					mstep = st
+					break
+			if mstep.is_empty():
+				return null
+			var olds: Array = mctx["vars"].get(mstep["as"], [])
+			var others: Array = fx.ops.select_candidates(mstep, mctx).filter(func(x): return not olds.has(x))
+			if others.is_empty():
+				return null
+			ctx["vars"]["_hm"] = others
+			fx.push_script([{"op": "select", "as": "_nt", "from": "$_hm", "n": 1, "prompt": 94}, {"op": "custom", "fn": "hand_mirror_apply"}], ctx)
+			return "pushed"
+		"hand_mirror_apply":
+			if not fx.chain.is_empty() and not (ctx["vars"].get("_nt", []) as Array).is_empty():
+				var alink: Dictionary = fx.chain.back()
+				for st in (alink["ctx"]["effect"].get("target", []) as Array):
+					if st.get("op", "") == "select":
+						alink["ctx"]["vars"][st["as"]] = ctx["vars"]["_nt"]
+						break
 		"shadow_scout":
 			# Hiro's Shadow Scout: the opponent draws 3 cards, both players see them and every Spell among them is discarded
 			var foe3: int = 1 - int(ctx["controller"])

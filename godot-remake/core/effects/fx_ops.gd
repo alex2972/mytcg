@@ -22,6 +22,10 @@ func _init(f: Fx) -> void:
 
 func who(x, ctx: Dictionary) -> int:
 	var me: int = ctx["controller"]
+	if ctx.get("swap_players", false):               # Mystical Refpanel: the effect was transferred to the other player
+		match str(x):
+			"self": return 1 - me
+			"opp": return me
 	match str(x):
 		"self": return me
 		"opp": return 1 - me
@@ -404,6 +408,13 @@ func _cond(c: Dictionary, ctx: Dictionary) -> bool:
 		"was_flipped_by_battle": return bool(ctx["event"].get("by_battle", false))
 		"event_was_flipped": return bool(ctx["event"].get("was_flipped", false))
 		"destroyed_by_opp_effect": return int(ctx["event"].get("by", -1)) == 1 - me
+		"chain_top_targets_player":
+			if fx.chain.is_empty() or fx.chain.back()["kind"] != "spell":
+				return false
+			for st in (fx.chain.back()["ctx"]["effect"].get("do", []) as Array):
+				if st.get("op", "") in ["damage", "heal", "draw", "mill", "discard", "skip_next_draw", "set_lp", "banish_random_hand", "draw_until"]:
+					return true
+			return false
 		"chain_top_card": return not fx.chain.is_empty() and matches(fx.chain.back()["card"], c.get("filter", {}), ctx)
 		"chain_top_single_monster_target": return chain_top_single_monster_target(ctx)
 		"event_src": return (int(ctx["event"].get("uid", -1)) == ctx["src"].uid) == bool(c.get("is", true))
@@ -622,7 +633,11 @@ func _run(step: Dictionary, ctx: Dictionary):
 			for c in tg(step, ctx):
 				duel.destroy_card(c, "effect")
 			duel.effect_player = -1
-		"to_grave": for c in tg(step, ctx): duel.send_to_grave(c, step.get("reason", "effect"))
+		"to_grave":
+			duel.effect_player = int(ctx.get("effect_by", me))
+			for c in tg(step, ctx):
+				duel.send_to_grave(c, step.get("reason", "effect"))
+			duel.effect_player = -1
 		"to_hand": for c in tg(step, ctx): duel.return_to_hand(c)
 		"to_deck": for c in tg(step, ctx): duel.return_to_deck(c, step.get("where", "top"))
 		"banish":
@@ -652,13 +667,15 @@ func _run(step: Dictionary, ctx: Dictionary):
 				ctx["vars"][step["as"]] = n
 			if n > 0 and not step.get("random", step.get("all", false)):
 				var chooser2: int = who(step.get("who", "self"), ctx)
-				fx.tasks.append({"t": "script", "steps": [{"op": "select", "as": "_disc", "from": "self.hand", "n": n, "chooser": "self", "prompt": step.get("prompt", 235), "cost": true, "discard": true, "auto": false}, {"op": "to_grave", "what": "$_disc", "reason": "discard"}], "i": 0, "ctx": {"src": ctx["src"], "controller": chooser2, "vars": {}, "event": ctx["event"]}})
+				fx.tasks.append({"t": "script", "steps": [{"op": "select", "as": "_disc", "from": "self.hand", "n": n, "chooser": "self", "prompt": step.get("prompt", 235), "cost": true, "discard": true, "auto": false}, {"op": "to_grave", "what": "$_disc", "reason": "discard"}], "i": 0, "ctx": {"src": ctx["src"], "controller": chooser2, "vars": {}, "event": ctx["event"], "effect_by": me}})
 				return "pushed"
 			var pool := hand.duplicate()
 			for i in n:
 				var pick: DCard = pool[duel.rng.randi_range(0, pool.size() - 1)] if step.get("random", false) else pool[0]
 				pool.erase(pick)
+				duel.effect_player = me
 				duel.send_to_grave(pick, "discard")
+				duel.effect_player = -1
 		"search":
 			# pick matching cards out of the deck and add them to the hand (then shuffle)
 			fx.tasks.append({"t": "script", "steps": [
@@ -846,7 +863,9 @@ func _run(step: Dictionary, ctx: Dictionary):
 			for i in int(step.get("n", 1)):
 				if victim.deck.is_empty():
 					break
+				duel.effect_player = me
 				duel.send_to_grave(victim.deck.back(), "milled")
+				duel.effect_player = -1
 		"double_atk":
 			for c in _targets(step.get("what", "$t"), ctx):
 				if duel.spell_unaffected(c, ctx["src"]):
@@ -854,6 +873,10 @@ func _run(step: Dictionary, ctx: Dictionary):
 				c.mods.append({"atk": duel.atk_of(c), "def": 0, "until": "end_turn", "src": ctx["src"].uid})
 				if step.get("destroy_at_end", false):
 					c.flags["destroy_at_end"] = true
+		"soul_exchange": duel.soul_exchange = {"player": me, "uid": int((ctx["vars"].get("t", []) as Array)[0].uid) if not (ctx["vars"].get("t", []) as Array).is_empty() else -1}
+		"refpanel_swap":
+			if not fx.chain.is_empty():
+				(fx.chain.back()["ctx"] as Dictionary)["swap_players"] = true
 		"become_equip":
 			var hosts := _targets(step.get("to", "$t"), ctx)
 			var eq_list := _targets(step.get("card", "src"), ctx)
@@ -867,7 +890,10 @@ func _run(step: Dictionary, ctx: Dictionary):
 				es.spells[ez] = eq
 				eq.controller = (hosts[0] as DCard).controller if step.get("on_host_side", false) else eq.owner
 				eq.face_up = true
-				duel.equip_card(eq, hosts[0], {"atk": int(step.get("atk", 0)), "def": int(step.get("def", 0))})
+				var bm := {"atk": int(step.get("atk", 0)), "def": int(step.get("def", 0))}
+				if step.get("take_stats", false):
+					bm["cocoon_stats"] = true          # the host takes on the ATK/DEF of this card (Thousand-Eyes Restrict)
+				duel.equip_card(eq, hosts[0], bm)
 		"flag_from_var":
 			for c in _targets(step.get("what", "src"), ctx):
 				c.flags[step["name"]] = int(ctx["vars"].get(step["var"], 0)) + int(step.get("add", 0))

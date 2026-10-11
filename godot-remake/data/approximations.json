@@ -216,6 +216,90 @@
     "gap": "'Designates 1 monster' means the Spell's target step ended with exactly 1 monster selected; Spells that affect monsters without a target step are not detected.",
     "fix": "Mark target-style Spells explicitly in the effect data."
   },
+  "Weather Report": {
+    "gap": "Only the destruction of Swords of Revealing Light is in; the extra Battle Phase is missing.",
+    "fix": "Let Duel run the Battle Phase twice after the flag is set."
+  },
+  "Call of the Dark": {
+    "gap": "Only the ban on playing Monster Reborn is in; monsters already restored with Monster Reborn are not sent to the Graveyard.",
+    "fix": "Remember which Special Summons came from Monster Reborn."
+  },
+  "Harpie Lady Sisters": {
+    "gap": "Cannot be Normal Summoned, but other Special Summons (not only Elegant Egotist) are not blocked.",
+    "fix": "A summon-procedure rule like Wall Shadow's."
+  },
+  "Spellbinding Circle": {
+    "gap": "The card is also destroyed when the selected monster is offered as a Tribute (the original keeps it).",
+    "fix": "Tell Tributes apart from other ways of leaving the field."
+  },
+  "Big Eye": {
+    "gap": "No effect: seeing and ordering the top 5 cards needs an interface.",
+    "fix": "A card-ordering dialog."
+  },
+  "The Stern Mystic": {
+    "gap": "No effect: turning all face-down cards face-up and back only matters as information (interface).",
+    "fix": "Show the face-down cards briefly."
+  },
+  "Ancient Telescope": {
+    "gap": "No effect: seeing the opponent's top 5 cards needs an interface.",
+    "fix": "A card-list dialog."
+  },
+  "The Inexperienced Spy": {
+    "gap": "No effect: seeing a card of the opponent's hand needs an interface.",
+    "fix": "A card-view dialog."
+  },
+  "Stim-Pack": {
+    "gap": "The -200 ATK per Standby Phase stays on the monster if the Equip Card leaves the field (also Germ Infection, -300).",
+    "fix": "Tie the decrease to the Equip Card (a counter on it)."
+  },
+  "Kazejin": {
+    "gap": "The once-only ATK reduction is tracked per time the card is on the field (also Sanga of the Thunder).",
+    "fix": "Remember the use across leaving the field if the original does."
+  },
+  "Gate Guardian": {
+    "gap": "Can only be Special Summoned from the hand with its three Tributes; other Special Summons are not blocked.",
+    "fix": "A summon-procedure rule."
+  },
+  "Zone Eater": {
+    "gap": "'The fifth turn after the attack' is counted in game turns of both players (also Swordsman from a Foreign Land and Steel Scorpion).",
+    "fix": "Verify the turn counting with the original."
+  },
+  "Trap Master": {
+    "gap": "A face-up card of the wrong kind can be selected and nothing happens (also Reaper of the Cards, Armed Ninja, De-Spell).",
+    "fix": "Restrict the selection to face-down cards and face-up cards of the right kind."
+  },
+  "Thousand-Eyes Restrict": {
+    "gap": "A face-down monster should give 0 ATK/DEF; it gives its printed values. The stats are the equipped monster's printed ones.",
+    "fix": "Use 0/0 for face-down monsters."
+  },
+  "Soul Exchange": {
+    "gap": "The game engine accepts the opponent's monster as a Tribute, but the board interface does not offer it yet (AI does not use it either).",
+    "fix": "Let the Tribute dialog list the opponent's monster."
+  },
+  "Fake Trap": {
+    "gap": "The substitution is automatic whenever the opponent's effect would destroy my other Trap Card; there is no choice and it also works face-up.",
+    "fix": "Offer the choice and require the card to be Set."
+  },
+  "Mystical Refpanel": {
+    "gap": "A Spell 'targets 1 player' if its effect damages, heals, draws, mills or discards for a player; the effect is swapped as a whole.",
+    "fix": "Mark such Spells explicitly."
+  },
+  "Fairy's Hand Mirror": {
+    "gap": "The new target must satisfy the Spell's own target filter; extra restrictions of Equip Cards are not re-checked.",
+    "fix": "Reuse the Equip Card's host legality check."
+  },
+  "Pumpking the King of Ghosts": {
+    "gap": "The Standby Phase counter is reset only at the next Standby Phase after Castle of Dark Illusions leaves the field.",
+    "fix": "Reset the counter when the Castle leaves."
+  },
+  "Hourglass of Courage": {
+    "gap": "The doubling is computed from the printed ATK/DEF (other bonuses are not doubled).",
+    "fix": "Double the final value."
+  },
+  "Minar": {
+    "gap": "Only effects that go through the standard 'discard', 'mill' and 'to_grave' steps count as the opponent's effect (also Electric Snake, Penguin Knight).",
+    "fix": "Set Duel.effect_player in every custom op that moves cards."
+  },
   "RULE: hand limit 6": {
     "gap": "The 6-card hand limit is an assumption from the tutorial text.",
     "fix": "Find it in the original's code."

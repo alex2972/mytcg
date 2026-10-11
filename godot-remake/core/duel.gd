@@ -57,6 +57,7 @@ var attackers_this_turn: Array = []  ## uids of monsters that attacked this turn
 var effect_source: DCard = null ## Source of the currently resolving operation, for Spell immunity.
 var effect_player := -1               ## the player whose card effect is destroying something right now (-1: battle, rules or unknown)
 var lost_spells: Array = []           ## uids of Spell Cards destroyed by an opponent's card effect this turn (Fairy Guardian)
+var soul_exchange := {}              ## Soul Exchange: {player, uid} the opponent's monster that player may Tribute this turn
 var next_turn_rules: Array = []       ## {rule, player}: become turn rules at the start of that player's next turn (Mesmeric Control)
 var turn_rules: Array = []       ## {rule, player} lasting until the end of the turn
 var _next_uid := 1
@@ -376,6 +377,7 @@ func _finish_turn(p: int, discards: Array) -> void:
 	_begin_turn()
 
 func _end_of_turn_cleanup() -> void:
+	soul_exchange = {}
 	for p in 2:
 		for c in monsters_of(p):
 			if int(c.flags.get("doom_turn", -1)) == turn:        # Zone Eater, Swordsman from a Foreign Land, Steel Scorpion
@@ -465,6 +467,10 @@ func send_to_grave(c: DCard, reason: String) -> void:
 	if reason in ["effect", "destroyed:effect"] and spell_unaffected(c, effect_source):
 		return
 	var was_on_field := is_on_field(c)
+	var from_zone := "field" if was_on_field else ""
+	for zone_name in ["hand", "deck", "grave", "banished", "extra"]:
+		if from_zone == "" and ((sides[c.owner].get(zone_name) as Array).has(c) or (sides[1 - c.owner].get(zone_name) as Array).has(c)):
+			from_zone = zone_name
 	var from_ctrl := c.controller
 	var was_face_up := c.face_up
 	var was_flipped: bool = c.flags.get("was_flipped", false)
@@ -501,7 +507,7 @@ func send_to_grave(c: DCard, reason: String) -> void:
 		if effect_player != -1 and effect_player != c.owner and card_data(c).get("type", "") == "spell":
 			lost_spells.append(c.uid)
 		fx.window("destroyed", {"player": from_ctrl, "uid": c.uid, "reason": reason, "killer": killer_uid, "pos": was_pos, "was_face_up": was_face_up, "by": effect_player})
-	fx.window("sent_to_grave", {"player": from_ctrl, "uid": c.uid, "reason": reason, "was_on_field": was_on_field, "killer": killer_uid,
+	fx.window("sent_to_grave", {"player": from_ctrl, "uid": c.uid, "reason": reason, "was_on_field": was_on_field, "from": from_zone, "by": effect_player, "killer": killer_uid,
 		"was_face_up": was_face_up, "was_flipped": was_flipped, "pos": was_pos})
 	if reason == "discard" and fx.has_listener("discarded"):
 		fx.window("discarded", {"player": from_ctrl, "uid": c.uid})
@@ -509,6 +515,11 @@ func send_to_grave(c: DCard, reason: String) -> void:
 func destroy_card(c: DCard, reason: String) -> void:
 	if not is_on_field(c):
 		return
+	if effect_player != -1 and effect_player != c.controller and card_data(c).get("type", "") == "trap" and card_data(c).get("subtype_name", "") != "":
+		for fake in sides[c.controller].spells:          # Fake Trap takes the place of the Trap Card that would be destroyed
+			if fake != null and fake != c and db.card_name(fake.idx) == "Fake Trap" and not prohibited(fake):
+				send_to_grave(fake, "destroyed:" + reason)
+				return
 	send_to_grave(c, "destroyed:" + reason)
 
 func return_to_hand(c: DCard) -> void:
@@ -802,7 +813,8 @@ func summon(p: int, c: DCard, tributes: Array = [], zone := -1, set_face_down :=
 	if set_face_down and fx.rule_active("no_set"):
 		set_face_down = false
 	for t in tributes:
-		if not (s.monsters as Array).has(t):
+		var borrowed: bool = int(soul_exchange.get("player", -1)) == p and int(soul_exchange.get("uid", -1)) == t.uid and (sides[opponent(p)].monsters as Array).has(t)
+		if not (s.monsters as Array).has(t) and not borrowed:
 			return "Tributes must be your monsters on the field."
 		if t.token == "Sheep Token" or t.token == "Kuriboh Token":
 			return "%ss cannot be used as Tributes." % t.token
@@ -815,8 +827,9 @@ func summon(p: int, c: DCard, tributes: Array = [], zone := -1, set_face_down :=
 	if zone == -1:
 		return "Your Monster Card Zone is full."
 	for t in tributes:
-		var z: int = (s.monsters as Array).find(t)
-		s.monsters[z] = null
+		var from_side: PlayerSide = sides[t.controller]            # Soul Exchange: the Tribute may stand on the opponent's side
+		var z: int = (from_side.monsters as Array).find(t)
+		from_side.monsters[z] = null
 		_leave_field_cleanup(t)
 		t.controller = t.owner
 		sides[t.owner].grave.append(t)      # a monster I took control of goes to its owner's Graveyard

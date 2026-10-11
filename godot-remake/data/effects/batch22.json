@@ -1,0 +1,460 @@
+{
+ "_about": "Batch 22: the last cards outside the decks and the Card List that can be written with the current engine.",
+ "Minar": {
+  "fx": [
+   {
+    "type": "trigger_forced",
+    "when": "sent_to_grave",
+    "zone": "grave",
+    "cond": [
+     {
+      "c": "event_src"
+     },
+     {
+      "c": "event_from",
+      "is": "hand"
+     },
+     {
+      "c": "destroyed_by_opp_effect"
+     }
+    ],
+    "do": [
+     {
+      "op": "damage",
+      "who": "opp",
+      "amount": 1000
+     }
+    ]
+   }
+  ]
+ },
+ "Electric Snake": {
+  "fx": [
+   {
+    "type": "trigger_forced",
+    "when": "sent_to_grave",
+    "zone": "grave",
+    "cond": [
+     {
+      "c": "event_src"
+     },
+     {
+      "c": "event_from",
+      "is": "hand"
+     },
+     {
+      "c": "destroyed_by_opp_effect"
+     }
+    ],
+    "do": [
+     {
+      "op": "yesno",
+      "as": "y",
+      "prompt": 269
+     },
+     {
+      "op": "if",
+      "cond": [
+       {
+        "c": "var_true",
+        "name": "y"
+       }
+      ],
+      "then": [
+       {
+        "op": "draw",
+        "who": "self",
+        "n": 2
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "Penguin Knight": {
+  "fx": [
+   {
+    "type": "trigger_forced",
+    "when": "sent_to_grave",
+    "zone": "grave",
+    "cond": [
+     {
+      "c": "event_src"
+     },
+     {
+      "c": "event_from",
+      "is": "deck"
+     },
+     {
+      "c": "destroyed_by_opp_effect"
+     }
+    ],
+    "do": [
+     {
+      "op": "to_deck",
+      "what": {
+       "from": "self.grave"
+      },
+      "where": "shuffle"
+     },
+     {
+      "op": "shuffle",
+      "who": "self"
+     }
+    ]
+   }
+  ]
+ },
+ "Soul Exchange": {
+  "fx": [
+   {
+    "type": "spell",
+    "cond": [
+     {
+      "c": "phase",
+      "is": [
+       "main1",
+       "main2"
+      ]
+     }
+    ],
+    "target": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "opp.monsters",
+      "filter": {},
+      "n": 1,
+      "prompt": 150
+     }
+    ],
+    "do": [
+     {
+      "op": "soul_exchange"
+     },
+     {
+      "op": "skip_phase",
+      "phase": "battle"
+     }
+    ]
+   }
+  ]
+ },
+ "Castle of Dark Illusions": {
+  "fx": [
+   {
+    "type": "flip",
+    "when": "flipped",
+    "cond": [
+     {
+      "c": "event_src"
+     }
+    ],
+    "do": [
+     {
+      "op": "set_flag",
+      "what": "src",
+      "name": "stage",
+      "value": 1
+     }
+    ]
+   },
+   {
+    "type": "static",
+    "mod": {
+     "scope": "all",
+     "filter": {
+      "race": "Zombie"
+     },
+     "per_counter": {
+      "name": "stage",
+      "by": 200,
+      "stats": [
+       "atk",
+       "def"
+      ]
+     }
+    }
+   },
+   {
+    "type": "trigger_forced",
+    "when": "standby_phase",
+    "cond": [
+     {
+      "c": "turn",
+      "is": "self"
+     },
+     {
+      "c": "counter",
+      "name": "stage",
+      "op": ">=",
+      "v": 1
+     },
+     {
+      "c": "counter",
+      "name": "stage",
+      "op": "<",
+      "v": 4
+     }
+    ],
+    "do": [
+     {
+      "op": "counter",
+      "name": "stage",
+      "add": 1
+     }
+    ]
+   }
+  ]
+ },
+ "Pumpking the King of Ghosts": {
+  "fx": [
+   {
+    "type": "static",
+    "mod": {
+     "scope": "self",
+     "per": {
+      "zone": "monsters",
+      "filter": {
+       "name_is": "Castle of Dark Illusions",
+       "face_up": true
+      },
+      "by": 100,
+      "stats": [
+       "atk",
+       "def"
+      ],
+      "max_n": 1
+     }
+    }
+   },
+   {
+    "type": "static",
+    "mod": {
+     "scope": "self",
+     "per_counter": {
+      "name": "stage",
+      "by": 100,
+      "stats": [
+       "atk",
+       "def"
+      ]
+     }
+    }
+   },
+   {
+    "type": "trigger_forced",
+    "when": "standby_phase",
+    "cond": [
+     {
+      "c": "turn",
+      "is": "self"
+     }
+    ],
+    "do": [
+     {
+      "op": "if",
+      "cond": [
+       {
+        "c": "has",
+        "zone": "monsters",
+        "filter": {
+         "name_is": "Castle of Dark Illusions",
+         "face_up": true
+        },
+        "n": 1
+       },
+       {
+        "c": "counter",
+        "name": "stage",
+        "op": "<",
+        "v": 3
+       }
+      ],
+      "then": [
+       {
+        "op": "counter",
+        "name": "stage",
+        "add": 1
+       }
+      ],
+      "else": [
+       {
+        "op": "set_flag",
+        "what": "src",
+        "name": "stage",
+        "value": 0
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "Hourglass of Courage": {
+  "fx": [
+   {
+    "type": "static",
+    "mod": {
+     "scope": "self",
+     "hourglass": true
+    }
+   },
+   {
+    "type": "trigger_forced",
+    "when": [
+     "summoned",
+     "flip_summoned"
+    ],
+    "cond": [
+     {
+      "c": "event_src"
+     }
+    ],
+    "do": [
+     {
+      "op": "set_flag",
+      "what": "src",
+      "name": "hourglass_turn",
+      "value_turn_offset": 0
+     }
+    ]
+   }
+  ]
+ },
+ "Mystical Refpanel": {
+  "fx": [
+   {
+    "type": "trap",
+    "speed": 2,
+    "when": [
+     "summoned",
+     "special_summoned",
+     "flip_summoned",
+     "attack_declared",
+     "target_declared",
+     "damage_step",
+     "activated_spell",
+     "activated_trap",
+     "standby_phase",
+     "end_phase"
+    ],
+    "do": [
+     {
+      "op": "refpanel_swap"
+     }
+    ],
+    "cond": [
+     {
+      "c": "chain_top_by",
+      "is": "opp"
+     },
+     {
+      "c": "chain_top_targets_player"
+     }
+    ]
+   }
+  ]
+ },
+ "Fairy's Hand Mirror": {
+  "fx": [
+   {
+    "type": "trap",
+    "speed": 2,
+    "when": [
+     "summoned",
+     "special_summoned",
+     "flip_summoned",
+     "attack_declared",
+     "target_declared",
+     "damage_step",
+     "activated_spell",
+     "activated_trap",
+     "standby_phase",
+     "end_phase"
+    ],
+    "do": [
+     {
+      "op": "custom",
+      "fn": "hand_mirror"
+     }
+    ],
+    "cond": [
+     {
+      "c": "chain_top_by",
+      "is": "opp"
+     },
+     {
+      "c": "chain_top_single_monster_target"
+     }
+    ]
+   }
+  ]
+ },
+ "Fake Trap": {
+  "fx": []
+ },
+ "Dark Sage": {
+  "fx": [
+   {
+    "type": "static",
+    "rule": "no_normal_summon",
+    "scope": "self"
+   }
+  ]
+ },
+ "Thousand-Eyes Restrict": {
+  "fx": [
+   {
+    "type": "static",
+    "rule": "no_attack",
+    "scope": "all",
+    "filter": {
+     "not_src": true
+    }
+   },
+   {
+    "type": "static",
+    "rule": "no_position_change",
+    "scope": "all",
+    "filter": {
+     "not_src": true
+    }
+   },
+   {
+    "type": "ignition",
+    "once_per_turn": true,
+    "target": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "opp.monsters",
+      "filter": {},
+      "n": 1,
+      "prompt": 99
+     }
+    ],
+    "do": [
+     {
+      "op": "to_grave",
+      "what": {
+       "from": "self.spells",
+       "filter": {
+        "equipped_to_src": true
+       }
+      },
+      "reason": "effect"
+     },
+     {
+      "op": "become_equip",
+      "card": "$t",
+      "to": "src",
+      "on_host_side": true,
+      "take_stats": true
+     }
+    ]
+   }
+  ]
+ }
+}

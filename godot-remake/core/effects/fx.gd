@@ -474,6 +474,11 @@ func stat_bonus(c: DCard, stat: String) -> int:
 						total += mini(n, int(m["per"].get("max_n", 1000))) * int(m["per"]["by"])
 				if m.has("per_counter") and stat in (m["per_counter"]["stats"] as Array) and _static_applies(src, m, c):
 					total += int(src.flags.get(str(m["per_counter"]["name"]), 0)) * int(m["per_counter"]["by"])
+				if m.get("hourglass", false) and (stat == "atk" or stat == "def") and _static_applies(src, m, c):
+					# Hourglass of Courage: halved for 3 turns after it is summoned, doubled afterwards
+					var printed: int = int(duel.card_data(c).get(stat, 0))
+					@warning_ignore("integer_division")
+					total += -(printed / 2) if duel.turn < int(src.flags.get("hourglass_turn", -100)) + 3 else printed
 				if m.get("half_def", false) and stat == "def" and _static_applies(src, m, c):
 					# Dark Artist: half the DEF while being attacked by a monster of the given Attribute
 					var att: DCard = duel.current_attack.get("attacker")
