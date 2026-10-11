@@ -7,6 +7,11 @@ extends RefCounted
 var fx: Fx
 var duel: Duel
 
+## Cards that count as another card for "name is" checks (Cyber Harpie is treated as Harpie Lady).
+const NAME_ALIASES := {"Cyber Harpie": "Harpie Lady"}
+## Fusion Substitute monsters: each can stand in for one Fusion-Material in a Fusion.
+const FUSION_SUBS := ["Goddess with the Third Eye", "Versago the Destroyer", "Mystical Sheep #1", "Beastking of the Swamps"]
+
 const ATTRS := {"LIGHT": 1, "DARK": 2, "WATER": 3, "FIRE": 4, "EARTH": 5, "WIND": 6, "DIVINE": 7}
 
 func _init(f: Fx) -> void:
@@ -134,7 +139,9 @@ func matches(c: DCard, f: Dictionary, ctx: Dictionary) -> bool:
 		return false
 	if f.has("number") and not (f["number"] as Array).has(c.number):
 		return false
-	if f.has("name_is") and duel.db.card_name(c.idx) != str(f["name_is"]):
+	if f.has("name_is") and duel.db.card_name(c.idx) != str(f["name_is"]) and NAME_ALIASES.get(duel.db.card_name(c.idx), "") != str(f["name_is"]):
+		return false
+	if f.get("equipped_to_src", false) and c.equipped_to != ctx.get("src"):
 		return false
 	if f.has("special_summoned") and bool(c.flags.get("special_summoned", false)) != bool(f["special_summoned"]):
 		return false
@@ -154,7 +161,7 @@ func matches(c: DCard, f: Dictionary, ctx: Dictionary) -> bool:
 		return false
 	if f.get("race_of_src_flag", false) and (not ctx.has("src") or duel.race_of(c) != int(ctx["src"].flags.get("chosen_race", -1))):
 		return false
-	if f.has("name_in") and not (f["name_in"] as Array).has(duel.db.card_name(c.idx)):
+	if f.has("name_in") and not (f["name_in"] as Array).has(duel.db.card_name(c.idx)) and not (f["name_in"] as Array).has(NAME_ALIASES.get(duel.db.card_name(c.idx), "")):
 		return false
 	if f.has("level_eq") and (not (d.get("type", "") == "monster") or int(d.get("level", 0)) != val(f["level_eq"], ctx)):
 		return false
@@ -257,7 +264,7 @@ func fusion_candidates(p: int) -> Array:
 					break
 			if found == null and not substitute_used:
 				for c in avail:
-					if duel.db.card_name(c.idx) in ["Goddess with the Third Eye", "Versago the Destroyer"]:
+					if duel.db.card_name(c.idx) in FUSION_SUBS:
 						found = c
 						substitute_used = true
 						break
@@ -606,7 +613,8 @@ func _run(step: Dictionary, ctx: Dictionary):
 				return "pushed"
 		"damage": duel.damage_player(who(step.get("who", "opp"), ctx), val(step.get("amount", 0), ctx), "effect")
 		"heal": duel.heal_player(who(step.get("who", "self"), ctx), val(step.get("amount", 0), ctx))
-		"pay_lp": duel.pay_lp(me, val(step.get("amount", 0), ctx))
+		"pay_lp": duel.pay_lp(who(step.get("who", "self"), ctx), val(step.get("amount", 0), ctx))
+		"calc": ctx["vars"][step["as"]] = val(step.get("value", 0), ctx)          # remember a value now (e.g. before a Tribute leaves the field)
 		"set_lp": duel.set_lp(who(step.get("who", "self"), ctx), val(step.get("amount", 0), ctx))
 		"draw": duel.draw_cards(who(step.get("who", "self"), ctx), val(step.get("n", 1), ctx))
 		"destroy":
@@ -702,7 +710,11 @@ func _run(step: Dictionary, ctx: Dictionary):
 				duel.take_control(c, who(step.get("to", "self"), ctx), step.get("until", "forever"))
 		"set_pos":
 			for c in _targets(step.get("what", "$t"), ctx):
-				duel.force_position(c, step.get("pos", "def"), step.get("face_up", true), step.get("quiet", false))
+				duel.force_position(c, c.pos if step.get("pos", "def") == "keep" else step.get("pos", "def"), step.get("face_up", true), step.get("quiet", false))
+		"face_down":
+			for c in _targets(step.get("what", "$t"), ctx):
+				c.face_up = false                       # Darkness Approaches: face-down without changing the position
+				duel.log_event("flip", {"player": c.controller, "uid": c.uid})
 		"flip_down":
 			for c in _targets(step.get("what", "$t"), ctx):
 				duel.force_position(c, "def", false)
@@ -719,13 +731,17 @@ func _run(step: Dictionary, ctx: Dictionary):
 		"negate_attack": duel.negate_current_attack()
 		"set_flag":
 			for c in _targets(step.get("what", "src"), ctx):
-				c.flags[step["name"]] = ctx["src"].uid if step.get("value_src", false) else step.get("value", true)
+				if step.has("value_turn_offset"):
+					c.flags[step["name"]] = duel.turn + int(step["value_turn_offset"])
+				else:
+					c.flags[step["name"]] = ctx["src"].uid if step.get("value_src", false) else step.get("value", true)
 		"skip_phase": duel.skip_phase(step.get("phase", "battle"))
 		"win": duel.force_win(me, str(step.get("reason", "effect")))
 		"log": duel.log_event(step.get("event", "effect"), step.get("data", {}))
 		"let": ctx["vars"][step["as"]] = _targets(step.get("what", "src"), ctx)
 		"counter": ctx["src"].flags[step["name"]] = int(ctx["src"].flags.get(step["name"], 0)) + int(step.get("add", 1))
 		"rule_turn": duel.add_turn_rule(step["rule"], who(step.get("who", "self"), ctx))
+		"rule_next_turn": duel.next_turn_rules.append({"rule": step["rule"], "player": who(step.get("who", "opp"), ctx)})
 		"skip_next_draw": duel.skip_draw[who(step.get("who", "self"), ctx)] = true
 		"dice":
 			var roll := duel.roll_die()
@@ -763,7 +779,8 @@ func _run(step: Dictionary, ctx: Dictionary):
 			var a := _targets(step.get("a", "src"), ctx)
 			var b := _targets(step.get("b", "$t"), ctx)
 			if a.size() > 0 and b.size() > 0:
-				a[0].flags["bound"] = b[0].uid
+				if not step.get("one_way", false):
+					a[0].flags["bound"] = b[0].uid        # one_way: only the card `b` takes `a` down with it (Spellbinding Circle)
 				b[0].flags["bound"] = a[0].uid
 		"swap_stats":
 			for c in _targets(step.get("what", "$t"), ctx):
@@ -802,7 +819,7 @@ func _run(step: Dictionary, ctx: Dictionary):
 			var prev := []
 			for i in recipe.size():
 				slots.append({"op": "select", "as": "m%d" % i, "from": ["self.hand", "self.monsters"],
-					"filter": {"type": "monster", "name_in": [recipe[i], "Goddess with the Third Eye", "Versago the Destroyer"], "not_in": prev.duplicate()}, "n": 1, "prompt": 241})
+					"filter": {"type": "monster", "name_in": [recipe[i]] + FUSION_SUBS, "not_in": prev.duplicate()}, "n": 1, "prompt": 241})
 				prev.append("m%d" % i)
 			slots.append({"op": "fusion_finish", "mode": step.get("mode", "poly"), "count": recipe.size()})
 			fx.tasks.append({"t": "script", "steps": slots, "i": 0, "ctx": ctx})

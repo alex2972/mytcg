@@ -1,0 +1,3224 @@
+{
+ "_about": "Batch 21: the remaining cards outside the decks and the Card List (part 1: equips, boosters, simple spells/traps/monsters).",
+ "Beast Fangs": {
+  "fx": [
+   {
+    "type": "equip",
+    "target": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "monsters",
+      "filter": {
+       "face_up": true,
+       "race": "Beast"
+      },
+      "n": 1,
+      "prompt": 101
+     }
+    ],
+    "do": [
+     {
+      "op": "equip",
+      "to": "$t",
+      "atk": 300,
+      "def": 300
+     }
+    ]
+   }
+  ]
+ },
+ "Dark Energy": {
+  "fx": [
+   {
+    "type": "equip",
+    "target": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "monsters",
+      "filter": {
+       "face_up": true,
+       "race": "Fiend"
+      },
+      "n": 1,
+      "prompt": 101
+     }
+    ],
+    "do": [
+     {
+      "op": "equip",
+      "to": "$t",
+      "atk": 300,
+      "def": 300
+     }
+    ]
+   }
+  ]
+ },
+ "Vile Germs": {
+  "fx": [
+   {
+    "type": "equip",
+    "target": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "monsters",
+      "filter": {
+       "face_up": true,
+       "race": "Plant"
+      },
+      "n": 1,
+      "prompt": 101
+     }
+    ],
+    "do": [
+     {
+      "op": "equip",
+      "to": "$t",
+      "atk": 300,
+      "def": 300
+     }
+    ]
+   }
+  ]
+ },
+ "Laser Cannon Armor": {
+  "fx": [
+   {
+    "type": "equip",
+    "target": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "monsters",
+      "filter": {
+       "face_up": true,
+       "race": "Insect"
+      },
+      "n": 1,
+      "prompt": 101
+     }
+    ],
+    "do": [
+     {
+      "op": "equip",
+      "to": "$t",
+      "atk": 300,
+      "def": 300
+     }
+    ]
+   }
+  ]
+ },
+ "Follow Wind": {
+  "fx": [
+   {
+    "type": "equip",
+    "target": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "monsters",
+      "filter": {
+       "face_up": true,
+       "race": "Winged Beast"
+      },
+      "n": 1,
+      "prompt": 101
+     }
+    ],
+    "do": [
+     {
+      "op": "equip",
+      "to": "$t",
+      "atk": 300,
+      "def": 300
+     }
+    ]
+   }
+  ]
+ },
+ "Dragon Treasure": {
+  "fx": [
+   {
+    "type": "equip",
+    "target": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "monsters",
+      "filter": {
+       "face_up": true,
+       "race": "Dragon"
+      },
+      "n": 1,
+      "prompt": 101
+     }
+    ],
+    "do": [
+     {
+      "op": "equip",
+      "to": "$t",
+      "atk": 300,
+      "def": 300
+     }
+    ]
+   }
+  ]
+ },
+ "Book of Secret Arts": {
+  "fx": [
+   {
+    "type": "equip",
+    "target": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "monsters",
+      "filter": {
+       "face_up": true,
+       "race": "Spellcaster"
+      },
+      "n": 1,
+      "prompt": 101
+     }
+    ],
+    "do": [
+     {
+      "op": "equip",
+      "to": "$t",
+      "atk": 300,
+      "def": 300
+     }
+    ]
+   }
+  ]
+ },
+ "Power of Kaishin": {
+  "fx": [
+   {
+    "type": "equip",
+    "target": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "monsters",
+      "filter": {
+       "face_up": true,
+       "race": "Aqua"
+      },
+      "n": 1,
+      "prompt": 101
+     }
+    ],
+    "do": [
+     {
+      "op": "equip",
+      "to": "$t",
+      "atk": 300,
+      "def": 300
+     }
+    ]
+   }
+  ]
+ },
+ "Mystical Moon": {
+  "fx": [
+   {
+    "type": "equip",
+    "target": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "monsters",
+      "filter": {
+       "face_up": true,
+       "race": "Beast-Warrior"
+      },
+      "n": 1,
+      "prompt": 101
+     }
+    ],
+    "do": [
+     {
+      "op": "equip",
+      "to": "$t",
+      "atk": 300,
+      "def": 300
+     }
+    ]
+   }
+  ]
+ },
+ "Violet Crystal": {
+  "fx": [
+   {
+    "type": "equip",
+    "target": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "monsters",
+      "filter": {
+       "face_up": true,
+       "race": "Zombie"
+      },
+      "n": 1,
+      "prompt": 101
+     }
+    ],
+    "do": [
+     {
+      "op": "equip",
+      "to": "$t",
+      "atk": 300,
+      "def": 300
+     }
+    ]
+   }
+  ]
+ },
+ "Horn of Light": {
+  "fx": [
+   {
+    "type": "equip",
+    "target": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "monsters",
+      "filter": {
+       "face_up": true
+      },
+      "n": 1,
+      "prompt": 101
+     }
+    ],
+    "do": [
+     {
+      "op": "equip",
+      "to": "$t",
+      "atk": 0,
+      "def": 800
+     }
+    ]
+   },
+   {
+    "type": "trigger_forced",
+    "when": "sent_to_grave",
+    "zone": "grave",
+    "cond": [
+     {
+      "c": "event_src"
+     },
+     {
+      "c": "was_on_field"
+     }
+    ],
+    "do": [
+     {
+      "op": "if",
+      "cond": [
+       {
+        "c": "lp",
+        "who": "self",
+        "op": ">",
+        "v": 500
+       }
+      ],
+      "then": [
+       {
+        "op": "yesno",
+        "as": "y",
+        "prompt": 269
+       },
+       {
+        "op": "if",
+        "cond": [
+         {
+          "c": "var_true",
+          "name": "y"
+         }
+        ],
+        "then": [
+         {
+          "op": "pay_lp",
+          "amount": 500
+         },
+         {
+          "op": "to_deck",
+          "what": "src",
+          "where": "top"
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "Black Pendant": {
+  "fx": [
+   {
+    "type": "equip",
+    "target": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "monsters",
+      "filter": {
+       "face_up": true
+      },
+      "n": 1,
+      "prompt": 101
+     }
+    ],
+    "do": [
+     {
+      "op": "equip",
+      "to": "$t",
+      "atk": 500,
+      "def": 0
+     }
+    ]
+   },
+   {
+    "type": "trigger_forced",
+    "when": "sent_to_grave",
+    "zone": "grave",
+    "cond": [
+     {
+      "c": "event_src"
+     },
+     {
+      "c": "was_on_field"
+     }
+    ],
+    "do": [
+     {
+      "op": "damage",
+      "who": "opp",
+      "amount": 500
+     }
+    ]
+   }
+  ]
+ },
+ "Stim-Pack": {
+  "fx": [
+   {
+    "type": "equip",
+    "target": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "monsters",
+      "filter": {
+       "face_up": true
+      },
+      "n": 1,
+      "prompt": 101
+     }
+    ],
+    "do": [
+     {
+      "op": "equip",
+      "to": "$t",
+      "atk": 700,
+      "def": 0
+     }
+    ]
+   },
+   {
+    "type": "trigger_forced",
+    "when": "standby_phase",
+    "cond": [
+     {
+      "c": "turn",
+      "is": "equipped_ctrl"
+     },
+     {
+      "c": "equipped_is",
+      "filter": {}
+     }
+    ],
+    "do": [
+     {
+      "op": "mod",
+      "what": "equipped",
+      "atk": -200,
+      "until": "forever"
+     }
+    ]
+   }
+  ]
+ },
+ "Germ Infection": {
+  "fx": [
+   {
+    "type": "equip",
+    "target": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "monsters",
+      "filter": {
+       "face_up": true,
+       "not_race": "Machine"
+      },
+      "n": 1,
+      "prompt": 101
+     }
+    ],
+    "do": [
+     {
+      "op": "equip",
+      "to": "$t",
+      "atk": 0,
+      "def": 0
+     }
+    ]
+   },
+   {
+    "type": "trigger_forced",
+    "when": "standby_phase",
+    "cond": [
+     {
+      "c": "turn",
+      "is": "equipped_ctrl"
+     },
+     {
+      "c": "equipped_is",
+      "filter": {}
+     }
+    ],
+    "do": [
+     {
+      "op": "mod",
+      "what": "equipped",
+      "atk": -300,
+      "until": "forever"
+     }
+    ]
+   }
+  ]
+ },
+ "Mooyan Curry": {
+  "fx": [
+   {
+    "type": "spell",
+    "do": [
+     {
+      "op": "heal",
+      "who": "self",
+      "amount": 200
+     }
+    ]
+   }
+  ]
+ },
+ "Red Medicine": {
+  "fx": [
+   {
+    "type": "spell",
+    "do": [
+     {
+      "op": "heal",
+      "who": "self",
+      "amount": 500
+     }
+    ]
+   }
+  ]
+ },
+ "Queen's Double": {
+  "fx": [
+   {
+    "type": "static",
+    "rule": "can_attack_directly",
+    "scope": "self"
+   }
+  ]
+ },
+ "Ooguchi": {
+  "fx": [
+   {
+    "type": "static",
+    "rule": "can_attack_directly",
+    "scope": "self"
+   }
+  ]
+ },
+ "Rainbow Flower": {
+  "fx": [
+   {
+    "type": "static",
+    "rule": "can_attack_directly",
+    "scope": "self"
+   }
+  ]
+ },
+ "Leghul": {
+  "fx": [
+   {
+    "type": "static",
+    "rule": "can_attack_directly",
+    "scope": "self"
+   }
+  ]
+ },
+ "Bladefly": {
+  "fx": [
+   {
+    "type": "static",
+    "mod": {
+     "scope": "all",
+     "filter": {
+      "attribute": "WIND"
+     },
+     "atk": 500
+    }
+   },
+   {
+    "type": "static",
+    "mod": {
+     "scope": "all",
+     "filter": {
+      "attribute": "EARTH"
+     },
+     "atk": -400
+    }
+   }
+  ]
+ },
+ "Witch's Apprentice": {
+  "fx": [
+   {
+    "type": "static",
+    "mod": {
+     "scope": "all",
+     "filter": {
+      "attribute": "DARK"
+     },
+     "atk": 500
+    }
+   },
+   {
+    "type": "static",
+    "mod": {
+     "scope": "all",
+     "filter": {
+      "attribute": "LIGHT"
+     },
+     "atk": -400
+    }
+   }
+  ]
+ },
+ "Milus Radiant": {
+  "fx": [
+   {
+    "type": "static",
+    "mod": {
+     "scope": "all",
+     "filter": {
+      "attribute": "EARTH"
+     },
+     "atk": 500
+    }
+   },
+   {
+    "type": "static",
+    "mod": {
+     "scope": "all",
+     "filter": {
+      "attribute": "WIND"
+     },
+     "atk": -400
+    }
+   }
+  ]
+ },
+ "Little Chimera": {
+  "fx": [
+   {
+    "type": "static",
+    "mod": {
+     "scope": "all",
+     "filter": {
+      "attribute": "FIRE"
+     },
+     "atk": 500
+    }
+   },
+   {
+    "type": "static",
+    "mod": {
+     "scope": "all",
+     "filter": {
+      "attribute": "WATER"
+     },
+     "atk": -400
+    }
+   }
+  ]
+ },
+ "Fairy King Truesdale": {
+  "fx": [
+   {
+    "type": "static",
+    "mod": {
+     "scope": "mine",
+     "filter": {
+      "race": "Plant"
+     },
+     "atk": 500,
+     "def": 500
+    }
+   }
+  ]
+ },
+ "Lava Battleguard": {
+  "fx": [
+   {
+    "type": "static",
+    "mod": {
+     "scope": "self",
+     "per": {
+      "zone": "self.monsters",
+      "filter": {
+       "name_is": "Swamp Battleguard",
+       "face_up": true
+      },
+      "by": 500,
+      "stats": [
+       "atk"
+      ]
+     }
+    }
+   }
+  ]
+ },
+ "Swamp Battleguard": {
+  "fx": [
+   {
+    "type": "static",
+    "mod": {
+     "scope": "self",
+     "per": {
+      "zone": "self.monsters",
+      "filter": {
+       "name_is": "Lava Battleguard",
+       "face_up": true
+      },
+      "by": 500,
+      "stats": [
+       "atk"
+      ]
+     }
+    }
+   }
+  ]
+ },
+ "Wodan the Resident of the Forest": {
+  "fx": [
+   {
+    "type": "static",
+    "mod": {
+     "scope": "self",
+     "per": {
+      "zone": "monsters",
+      "filter": {
+       "race": "Plant",
+       "face_up": true
+      },
+      "by": 100,
+      "stats": [
+       "atk"
+      ]
+     }
+    }
+   }
+  ]
+ },
+ "Shadow Ghoul": {
+  "fx": [
+   {
+    "type": "static",
+    "mod": {
+     "scope": "self",
+     "per": {
+      "zone": "self.grave",
+      "filter": {
+       "type": "monster"
+      },
+      "by": 100,
+      "stats": [
+       "atk"
+      ]
+     }
+    }
+   }
+  ]
+ },
+ "Maha Vailo": {
+  "fx": [
+   {
+    "type": "static",
+    "mod": {
+     "scope": "self",
+     "per": {
+      "zone": "self.spells",
+      "filter": {
+       "type": "spell",
+       "equipped_to_src": true
+      },
+      "by": 500,
+      "stats": [
+       "atk"
+      ]
+     }
+    }
+   }
+  ]
+ },
+ "Dark Artist": {
+  "fx": [
+   {
+    "type": "static",
+    "mod": {
+     "scope": "self",
+     "half_def": true,
+     "vs_attr": "LIGHT"
+    }
+   }
+  ]
+ },
+ "Dark Elf": {
+  "fx": [
+   {
+    "type": "static",
+    "rule": "attack_cost",
+    "scope": "self",
+    "amount": 1000
+   }
+  ]
+ },
+ "Toll": {
+  "fx": [
+   {
+    "type": "spell",
+    "stay": true,
+    "do": []
+   },
+   {
+    "type": "static",
+    "rule": "attack_cost",
+    "scope": "all",
+    "amount": 500
+   }
+  ]
+ },
+ "Chain Energy": {
+  "fx": [
+   {
+    "type": "spell",
+    "stay": true,
+    "do": []
+   },
+   {
+    "type": "static",
+    "rule": "hand_play_cost",
+    "scope": "all",
+    "amount": 500
+   }
+  ]
+ },
+ "Kaiser Dragon": {
+  "fx": []
+ },
+ "Cyber Harpie": {
+  "fx": []
+ },
+ "Mystical Sheep #1": {
+  "fx": []
+ },
+ "Beastking of the Swamps": {
+  "fx": []
+ },
+ "Harpie Lady Sisters": {
+  "fx": [
+   {
+    "type": "static",
+    "rule": "no_normal_summon",
+    "scope": "self"
+   }
+  ]
+ },
+ "Eradicating Aerosol": {
+  "fx": [
+   {
+    "type": "spell",
+    "do": [
+     {
+      "op": "destroy",
+      "what": {
+       "from": "monsters",
+       "filter": {
+        "race": "Insect"
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ "Last Day of Witch": {
+  "fx": [
+   {
+    "type": "spell",
+    "do": [
+     {
+      "op": "destroy",
+      "what": {
+       "from": "monsters",
+       "filter": {
+        "race": "Spellcaster",
+        "face_up": true
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ "The Cheerful Coffin": {
+  "fx": [
+   {
+    "type": "spell",
+    "cond": [
+     {
+      "c": "has",
+      "zone": "self.hand",
+      "filter": {
+       "type": "monster"
+      },
+      "n": 1
+     }
+    ],
+    "do": [
+     {
+      "op": "select",
+      "as": "d",
+      "from": "self.hand",
+      "filter": {
+       "type": "monster"
+      },
+      "n": 3,
+      "prompt": 235,
+      "min": 0,
+      "auto": false,
+      "required": false,
+      "discard": true
+     },
+     {
+      "op": "to_grave",
+      "what": "$d",
+      "reason": "discard"
+     }
+    ]
+   }
+  ]
+ },
+ "Gravedigger Ghoul": {
+  "fx": [
+   {
+    "type": "spell",
+    "cond": [
+     {
+      "c": "has",
+      "zone": "opp.grave",
+      "filter": {
+       "type": "monster"
+      },
+      "n": 1
+     }
+    ],
+    "do": [
+     {
+      "op": "select",
+      "as": "g",
+      "from": "opp.grave",
+      "filter": {
+       "type": "monster"
+      },
+      "n": 2,
+      "prompt": 81,
+      "min": 1,
+      "auto": false
+     },
+     {
+      "op": "banish",
+      "what": "$g"
+     }
+    ]
+   }
+  ]
+ },
+ "Elegant Egotist": {
+  "fx": [
+   {
+    "type": "spell",
+    "cond": [
+     {
+      "c": "has",
+      "zone": "monsters",
+      "filter": {
+       "name_is": "Harpie Lady",
+       "face_up": true
+      },
+      "n": 1
+     },
+     {
+      "c": "free_zone",
+      "who": "self"
+     }
+    ],
+    "do": [
+     {
+      "op": "select",
+      "as": "h",
+      "from": [
+       "self.hand",
+       "self.deck"
+      ],
+      "filter": {
+       "name_in": [
+        "Harpie Lady",
+        "Harpie Lady Sisters"
+       ]
+      },
+      "n": 1,
+      "prompt": 83
+     },
+     {
+      "op": "special_summon",
+      "what": "$h",
+      "pos": "atk",
+      "face_up": true
+     },
+     {
+      "op": "shuffle",
+      "who": "self"
+     }
+    ]
+   }
+  ]
+ },
+ "Darkness Approaches": {
+  "fx": [
+   {
+    "type": "spell",
+    "cond": [
+     {
+      "c": "has",
+      "zone": "monsters",
+      "filter": {
+       "face_up": true
+      },
+      "n": 1
+     }
+    ],
+    "cost": [
+     {
+      "op": "discard",
+      "who": "self",
+      "n": 2
+     }
+    ],
+    "target": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "monsters",
+      "filter": {
+       "face_up": true
+      },
+      "n": 1,
+      "prompt": 137
+     }
+    ],
+    "do": [
+     {
+      "op": "face_down",
+      "what": "$t"
+     }
+    ]
+   }
+  ]
+ },
+ "Curse of Fiend": {
+  "fx": [
+   {
+    "type": "quickplay",
+    "speed": 2,
+    "zone": "hand",
+    "when": [
+     "standby_phase"
+    ],
+    "cond": [
+     {
+      "c": "turn",
+      "is": "self"
+     }
+    ],
+    "do": [
+     {
+      "op": "flip_pos",
+      "what": {
+       "from": "monsters",
+       "filter": {
+        "face_up": true
+       }
+      }
+     },
+     {
+      "op": "rule_turn",
+      "rule": "no_position_change",
+      "who": "self"
+     },
+     {
+      "op": "rule_turn",
+      "rule": "no_position_change",
+      "who": "opp"
+     }
+    ]
+   }
+  ]
+ },
+ "Dark-Piercing Light": {
+  "fx": [
+   {
+    "type": "spell",
+    "do": [
+     {
+      "op": "set_pos",
+      "what": {
+       "from": "opp.monsters",
+       "filter": {
+        "face_up": false
+       }
+      },
+      "pos": "keep",
+      "face_up": true
+     }
+    ]
+   }
+  ]
+ },
+ "Mesmeric Control": {
+  "fx": [
+   {
+    "type": "spell",
+    "do": [
+     {
+      "op": "rule_next_turn",
+      "rule": "no_position_change",
+      "who": "opp"
+     }
+    ]
+   }
+  ]
+ },
+ "Ancient Telescope": {
+  "fx": [
+   {
+    "type": "spell",
+    "do": []
+   }
+  ]
+ },
+ "The Inexperienced Spy": {
+  "fx": [
+   {
+    "type": "spell",
+    "do": []
+   }
+  ]
+ },
+ "Big Eye": {
+  "fx": [
+   {
+    "type": "flip",
+    "when": "flipped",
+    "cond": [
+     {
+      "c": "event_src"
+     }
+    ],
+    "do": []
+   }
+  ]
+ },
+ "The Stern Mystic": {
+  "fx": [
+   {
+    "type": "flip",
+    "when": "flipped",
+    "cond": [
+     {
+      "c": "event_src"
+     }
+    ],
+    "do": []
+   }
+  ]
+ },
+ "Castle Walls": {
+  "fx": [
+   {
+    "type": "trap",
+    "speed": 2,
+    "when": [
+     "summoned",
+     "special_summoned",
+     "flip_summoned",
+     "attack_declared",
+     "target_declared",
+     "damage_step",
+     "activated_spell",
+     "activated_trap",
+     "standby_phase",
+     "end_phase"
+    ],
+    "do": [
+     {
+      "op": "mod",
+      "what": "$t",
+      "def": 500,
+      "until": "end_turn"
+     }
+    ],
+    "target": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "monsters",
+      "filter": {
+       "face_up": true
+      },
+      "n": 1,
+      "prompt": 134
+     }
+    ]
+   }
+  ]
+ },
+ "Snake Fang": {
+  "fx": [
+   {
+    "type": "trap",
+    "speed": 2,
+    "when": [
+     "summoned",
+     "special_summoned",
+     "flip_summoned",
+     "attack_declared",
+     "target_declared",
+     "damage_step",
+     "activated_spell",
+     "activated_trap",
+     "standby_phase",
+     "end_phase"
+    ],
+    "do": [
+     {
+      "op": "mod",
+      "what": "$t",
+      "def": -500,
+      "until": "end_turn"
+     }
+    ],
+    "target": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "monsters",
+      "filter": {
+       "face_up": true
+      },
+      "n": 1,
+      "prompt": 135
+     }
+    ]
+   }
+  ]
+ },
+ "Widespread Ruin": {
+  "fx": [
+   {
+    "type": "trap",
+    "speed": 2,
+    "when": [
+     "attack_declared"
+    ],
+    "do": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "opp.monsters",
+      "filter": {
+       "pos": "atk"
+      },
+      "n": 1,
+      "prompt": 98,
+      "pick": "max_atk"
+     },
+     {
+      "op": "destroy",
+      "what": "$t"
+     }
+    ],
+    "cond": [
+     {
+      "c": "event_by",
+      "who": "opp"
+     }
+    ]
+   }
+  ]
+ },
+ "Eatgaboon": {
+  "fx": [
+   {
+    "type": "trap",
+    "speed": 2,
+    "when": [
+     "summoned"
+    ],
+    "do": [
+     {
+      "op": "destroy",
+      "what": "event_card"
+     }
+    ],
+    "cond": [
+     {
+      "c": "event_by",
+      "who": "opp"
+     },
+     {
+      "c": "event_card",
+      "filter": {
+       "type": "monster",
+       "atk_max": 500
+      }
+     }
+    ]
+   }
+  ]
+ },
+ "House of Adhesive Tape": {
+  "fx": [
+   {
+    "type": "trap",
+    "speed": 2,
+    "when": [
+     "summoned"
+    ],
+    "do": [
+     {
+      "op": "destroy",
+      "what": "event_card"
+     }
+    ],
+    "cond": [
+     {
+      "c": "event_by",
+      "who": "opp"
+     },
+     {
+      "c": "event_card",
+      "filter": {
+       "type": "monster",
+       "def_max": 500
+      }
+     }
+    ]
+   }
+  ]
+ },
+ "Call of the Grave": {
+  "fx": [
+   {
+    "type": "trap",
+    "speed": 2,
+    "when": [
+     "summoned",
+     "special_summoned",
+     "flip_summoned",
+     "attack_declared",
+     "target_declared",
+     "damage_step",
+     "activated_spell",
+     "activated_trap",
+     "standby_phase",
+     "end_phase"
+    ],
+    "do": [
+     {
+      "op": "negate"
+     }
+    ],
+    "cond": [
+     {
+      "c": "chain_top_by",
+      "is": "opp"
+     },
+     {
+      "c": "chain_top_card",
+      "filter": {
+       "name_is": "Monster Reborn"
+      }
+     }
+    ]
+   }
+  ]
+ },
+ "Anti Raigeki": {
+  "fx": [
+   {
+    "type": "trap",
+    "speed": 2,
+    "when": [
+     "summoned",
+     "special_summoned",
+     "flip_summoned",
+     "attack_declared",
+     "target_declared",
+     "damage_step",
+     "activated_spell",
+     "activated_trap",
+     "standby_phase",
+     "end_phase"
+    ],
+    "do": [
+     {
+      "op": "negate"
+     },
+     {
+      "op": "destroy",
+      "what": {
+       "from": "opp.monsters"
+      }
+     }
+    ],
+    "cond": [
+     {
+      "c": "chain_top_by",
+      "is": "opp"
+     },
+     {
+      "c": "chain_top_card",
+      "filter": {
+       "name_is": "Raigeki"
+      }
+     }
+    ]
+   }
+  ]
+ },
+ "White Hole": {
+  "fx": [
+   {
+    "type": "trap",
+    "speed": 2,
+    "when": [
+     "summoned",
+     "special_summoned",
+     "flip_summoned",
+     "attack_declared",
+     "target_declared",
+     "damage_step",
+     "activated_spell",
+     "activated_trap",
+     "standby_phase",
+     "end_phase"
+    ],
+    "do": [
+     {
+      "op": "negate"
+     },
+     {
+      "op": "destroy",
+      "what": {
+       "from": "opp.monsters"
+      }
+     }
+    ],
+    "cond": [
+     {
+      "c": "chain_top_by",
+      "is": "opp"
+     },
+     {
+      "c": "chain_top_card",
+      "filter": {
+       "name_is": "Dark Hole"
+      }
+     }
+    ]
+   }
+  ]
+ },
+ "Call of the Dark": {
+  "fx": [
+   {
+    "type": "continuous_trap",
+    "speed": 2,
+    "stay": true,
+    "when": [
+     "summoned",
+     "special_summoned",
+     "flip_summoned",
+     "attack_declared",
+     "target_declared",
+     "damage_step",
+     "activated_spell",
+     "activated_trap",
+     "standby_phase",
+     "end_phase"
+    ],
+    "do": []
+   },
+   {
+    "type": "static",
+    "rule": "forbid_activation",
+    "name": "Monster Reborn",
+    "scope": "all"
+   }
+  ]
+ },
+ "Goblin Fan": {
+  "fx": [
+   {
+    "type": "continuous_trap",
+    "speed": 2,
+    "stay": true,
+    "when": [
+     "summoned",
+     "special_summoned",
+     "flip_summoned",
+     "attack_declared",
+     "target_declared",
+     "damage_step",
+     "activated_spell",
+     "activated_trap",
+     "standby_phase",
+     "end_phase"
+    ],
+    "do": []
+   },
+   {
+    "type": "trigger_forced",
+    "when": "flip_summoned",
+    "cond": [
+     {
+      "c": "event_card",
+      "filter": {
+       "type": "monster",
+       "level_max": 2
+      }
+     }
+    ],
+    "do": [
+     {
+      "op": "destroy",
+      "what": "event_card"
+     }
+    ]
+   }
+  ]
+ },
+ "Royal Decree": {
+  "fx": [
+   {
+    "type": "continuous_trap",
+    "speed": 2,
+    "stay": true,
+    "when": [
+     "summoned",
+     "special_summoned",
+     "flip_summoned",
+     "attack_declared",
+     "target_declared",
+     "damage_step",
+     "activated_spell",
+     "activated_trap",
+     "standby_phase",
+     "end_phase"
+    ],
+    "do": []
+   },
+   {
+    "type": "static",
+    "rule": "no_trap",
+    "scope": "all"
+   }
+  ]
+ },
+ "Reverse Trap": {
+  "fx": [
+   {
+    "type": "trap",
+    "speed": 2,
+    "when": [
+     "summoned",
+     "special_summoned",
+     "flip_summoned",
+     "attack_declared",
+     "target_declared",
+     "damage_step",
+     "activated_spell",
+     "activated_trap",
+     "standby_phase",
+     "end_phase"
+    ],
+    "do": [
+     {
+      "op": "rule_turn",
+      "rule": "reverse_stats",
+      "who": "self"
+     },
+     {
+      "op": "rule_turn",
+      "rule": "reverse_stats",
+      "who": "opp"
+     }
+    ]
+   }
+  ]
+ },
+ "Spellbinding Circle": {
+  "fx": [
+   {
+    "type": "continuous_trap",
+    "speed": 2,
+    "stay": true,
+    "when": [
+     "summoned",
+     "special_summoned",
+     "flip_summoned",
+     "attack_declared",
+     "target_declared",
+     "damage_step",
+     "activated_spell",
+     "activated_trap",
+     "standby_phase",
+     "end_phase"
+    ],
+    "target": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "monsters",
+      "filter": {
+       "face_up": true
+      },
+      "n": 1,
+      "prompt": 100
+     }
+    ],
+    "do": [
+     {
+      "op": "set_flag",
+      "what": "$t",
+      "name": "bound_by",
+      "value_src": true
+     },
+     {
+      "op": "bind",
+      "a": "src",
+      "b": "$t",
+      "one_way": true
+     }
+    ]
+   },
+   {
+    "type": "static",
+    "rule": "no_attack",
+    "scope": "bound"
+   },
+   {
+    "type": "static",
+    "rule": "no_position_change",
+    "scope": "bound"
+   }
+  ]
+ },
+ "Shadow Spell": {
+  "fx": [
+   {
+    "type": "continuous_trap",
+    "speed": 2,
+    "stay": true,
+    "when": [
+     "summoned",
+     "special_summoned",
+     "flip_summoned",
+     "attack_declared",
+     "target_declared",
+     "damage_step",
+     "activated_spell",
+     "activated_trap",
+     "standby_phase",
+     "end_phase"
+    ],
+    "target": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "opp.monsters",
+      "filter": {
+       "face_up": true
+      },
+      "n": 1,
+      "prompt": 100
+     }
+    ],
+    "do": [
+     {
+      "op": "set_flag",
+      "what": "$t",
+      "name": "bound_by",
+      "value_src": true
+     },
+     {
+      "op": "bind",
+      "a": "src",
+      "b": "$t",
+      "one_way": true
+     }
+    ]
+   },
+   {
+    "type": "static",
+    "mod": {
+     "scope": "bound",
+     "filter": {},
+     "atk": -700
+    }
+   },
+   {
+    "type": "static",
+    "rule": "no_position_change",
+    "scope": "bound"
+   }
+  ]
+ },
+ "Acid Trap Hole": {
+  "fx": [
+   {
+    "type": "trap",
+    "speed": 2,
+    "when": [
+     "summoned",
+     "special_summoned",
+     "flip_summoned",
+     "attack_declared",
+     "target_declared",
+     "damage_step",
+     "activated_spell",
+     "activated_trap",
+     "standby_phase",
+     "end_phase"
+    ],
+    "do": [
+     {
+      "op": "custom",
+      "fn": "acid_trap_hole"
+     }
+    ],
+    "target": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "opp.monsters",
+      "filter": {
+       "face_up": false,
+       "pos": "def"
+      },
+      "n": 1,
+      "prompt": 122
+     }
+    ]
+   }
+  ]
+ },
+ "The Little Swordsman of Aile": {
+  "fx": [
+   {
+    "type": "ignition",
+    "cost": [
+     {
+      "op": "select",
+      "as": "c",
+      "from": "self.monsters",
+      "filter": {
+       "not_src": true
+      },
+      "n": 1,
+      "prompt": 154,
+      "cost": true
+     },
+     {
+      "op": "to_grave",
+      "what": "$c",
+      "reason": "tribute"
+     }
+    ],
+    "do": [
+     {
+      "op": "mod",
+      "what": "src",
+      "atk": 700,
+      "until": "end_turn"
+     }
+    ]
+   }
+  ]
+ },
+ "Catapult Turtle": {
+  "fx": [
+   {
+    "type": "ignition",
+    "cost": [
+     {
+      "op": "select",
+      "as": "c",
+      "from": "self.monsters",
+      "filter": {
+       "not_src": true
+      },
+      "n": 1,
+      "prompt": 154,
+      "cost": true
+     },
+     {
+      "op": "calc",
+      "as": "dmg",
+      "value": {
+       "half": {
+        "stat": "atk",
+        "of": "c"
+       }
+      }
+     },
+     {
+      "op": "to_grave",
+      "what": "$c",
+      "reason": "tribute"
+     }
+    ],
+    "do": [
+     {
+      "op": "damage",
+      "who": "opp",
+      "amount": {
+       "var": "dmg"
+      }
+     }
+    ]
+   }
+  ]
+ },
+ "Cannon Soldier": {
+  "fx": [
+   {
+    "type": "ignition",
+    "cost": [
+     {
+      "op": "select",
+      "as": "c",
+      "from": "self.monsters",
+      "filter": {
+       "not_src": true
+      },
+      "n": 1,
+      "prompt": 154,
+      "cost": true
+     },
+     {
+      "op": "to_grave",
+      "what": "$c",
+      "reason": "tribute"
+     }
+    ],
+    "do": [
+     {
+      "op": "damage",
+      "who": "opp",
+      "amount": 500
+     }
+    ]
+   }
+  ]
+ },
+ "Needle Ball": {
+  "fx": [
+   {
+    "type": "flip",
+    "when": "flipped",
+    "cond": [
+     {
+      "c": "event_src"
+     }
+    ],
+    "do": [
+     {
+      "op": "if",
+      "cond": [
+       {
+        "c": "lp",
+        "who": "self",
+        "op": ">",
+        "v": 2000
+       }
+      ],
+      "then": [
+       {
+        "op": "yesno",
+        "as": "y",
+        "prompt": 269
+       },
+       {
+        "op": "if",
+        "cond": [
+         {
+          "c": "var_true",
+          "name": "y"
+         }
+        ],
+        "then": [
+         {
+          "op": "pay_lp",
+          "amount": 2000
+         },
+         {
+          "op": "damage",
+          "who": "opp",
+          "amount": 1000
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "Masked Sorcerer": {
+  "fx": [
+   {
+    "type": "trigger_forced",
+    "when": "damaged",
+    "cond": [
+     {
+      "c": "source_is_src"
+     },
+     {
+      "c": "event_by",
+      "who": "opp"
+     }
+    ],
+    "do": [
+     {
+      "op": "draw",
+      "who": "self",
+      "n": 1
+     }
+    ]
+   }
+  ]
+ },
+ "Mechanical Spider": {
+  "fx": [
+   {
+    "type": "trigger_forced",
+    "when": "damage_step",
+    "cond": [
+     {
+      "c": "attacker_is_src"
+     },
+     {
+      "c": "event_target",
+      "filter": {
+       "attribute": "DARK"
+      }
+     }
+    ],
+    "do": [
+     {
+      "op": "destroy",
+      "what": "attack_target"
+     }
+    ]
+   }
+  ]
+ },
+ "Dragon Seeker": {
+  "fx": [
+   {
+    "type": "trigger_forced",
+    "when": "summoned",
+    "cond": [
+     {
+      "c": "event_src"
+     }
+    ],
+    "do": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "monsters",
+      "filter": {
+       "face_up": true,
+       "race": "Dragon"
+      },
+      "n": 1,
+      "prompt": 108,
+      "required": false
+     },
+     {
+      "op": "destroy",
+      "what": "$t"
+     }
+    ]
+   }
+  ]
+ },
+ "Dragon Piper": {
+  "fx": [
+   {
+    "type": "flip",
+    "when": "flipped",
+    "cond": [
+     {
+      "c": "event_src"
+     }
+    ],
+    "do": [
+     {
+      "op": "destroy",
+      "what": {
+       "from": "field",
+       "filter": {
+        "name_is": "Dragon Capture Jar"
+       }
+      }
+     },
+     {
+      "op": "set_pos",
+      "what": {
+       "from": "monsters",
+       "filter": {
+        "face_up": true,
+        "race": "Dragon"
+       }
+      },
+      "pos": "atk",
+      "face_up": true,
+      "quiet": true
+     }
+    ]
+   }
+  ]
+ },
+ "Gale Dogra": {
+  "fx": [
+   {
+    "type": "ignition",
+    "cond": [
+     {
+      "c": "has",
+      "zone": "self.extra",
+      "n": 1
+     },
+     {
+      "c": "lp",
+      "who": "self",
+      "op": ">",
+      "v": 3000
+     }
+    ],
+    "cost": [
+     {
+      "op": "pay_lp",
+      "amount": 3000
+     },
+     {
+      "op": "select",
+      "as": "e",
+      "from": "self.extra",
+      "filter": {},
+      "n": 1,
+      "prompt": 168,
+      "cost": true
+     }
+    ],
+    "do": [
+     {
+      "op": "to_grave",
+      "what": "$e",
+      "reason": "discard"
+     }
+    ]
+   }
+  ]
+ },
+ "Monster Eye": {
+  "fx": [
+   {
+    "type": "ignition",
+    "cond": [
+     {
+      "c": "lp",
+      "who": "self",
+      "op": ">",
+      "v": 1000
+     }
+    ],
+    "target": [
+     {
+      "op": "select",
+      "as": "p",
+      "from": "self.grave",
+      "filter": {
+       "name_is": "Polymerization"
+      },
+      "n": 1,
+      "prompt": 22
+     }
+    ],
+    "cost": [
+     {
+      "op": "pay_lp",
+      "amount": 1000
+     }
+    ],
+    "do": [
+     {
+      "op": "to_hand",
+      "what": "$p"
+     }
+    ]
+   }
+  ]
+ },
+ "Cockroach Knight": {
+  "fx": [
+   {
+    "type": "trigger_forced",
+    "when": "sent_to_grave",
+    "zone": "grave",
+    "cond": [
+     {
+      "c": "event_src"
+     }
+    ],
+    "do": [
+     {
+      "op": "to_deck",
+      "what": "src",
+      "where": "top"
+     }
+    ]
+   }
+  ]
+ },
+ "Tainted Wisdom": {
+  "fx": [
+   {
+    "type": "trigger_forced",
+    "when": "position_changed",
+    "cond": [
+     {
+      "c": "event_src"
+     },
+     {
+      "c": "event_pos",
+      "is": "def"
+     }
+    ],
+    "do": [
+     {
+      "op": "shuffle",
+      "who": "self"
+     }
+    ]
+   }
+  ]
+ },
+ "Crass Clown": {
+  "fx": [
+   {
+    "type": "trigger_forced",
+    "when": "position_changed",
+    "cond": [
+     {
+      "c": "event_src"
+     },
+     {
+      "c": "event_pos",
+      "is": "atk"
+     }
+    ],
+    "do": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "opp.monsters",
+      "filter": {},
+      "n": 1,
+      "prompt": 97,
+      "required": false
+     },
+     {
+      "op": "to_hand",
+      "what": "$t"
+     }
+    ]
+   }
+  ]
+ },
+ "Yado Karu": {
+  "fx": [
+   {
+    "type": "trigger_forced",
+    "when": "position_changed",
+    "cond": [
+     {
+      "c": "event_src"
+     },
+     {
+      "c": "event_pos",
+      "is": "def"
+     },
+     {
+      "c": "has",
+      "zone": "self.hand",
+      "n": 1
+     }
+    ],
+    "do": [
+     {
+      "op": "select",
+      "as": "h",
+      "from": "self.hand",
+      "filter": {},
+      "n": 6,
+      "prompt": 235,
+      "min": 0,
+      "auto": false,
+      "required": false
+     },
+     {
+      "op": "to_deck",
+      "what": "$h",
+      "where": "bottom"
+     }
+    ]
+   }
+  ]
+ },
+ "Mask of Darkness": {
+  "fx": [
+   {
+    "type": "flip",
+    "when": "flipped",
+    "cond": [
+     {
+      "c": "event_src"
+     }
+    ],
+    "do": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "self.grave",
+      "filter": {
+       "type": "trap"
+      },
+      "n": 1,
+      "prompt": 95,
+      "min": 0,
+      "auto": false,
+      "required": false
+     },
+     {
+      "op": "to_hand",
+      "what": "$t"
+     }
+    ]
+   }
+  ]
+ },
+ "Invitation to a Dark Sleep": {
+  "fx": [
+   {
+    "type": "trigger_forced",
+    "when": "summoned",
+    "cond": [
+     {
+      "c": "event_src"
+     }
+    ],
+    "do": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "opp.monsters",
+      "filter": {},
+      "n": 1,
+      "prompt": 100,
+      "required": false
+     },
+     {
+      "op": "set_flag",
+      "what": "$t",
+      "name": "cannot_attack_by",
+      "value_src": true
+     }
+    ]
+   }
+  ]
+ },
+ "Ameba": {
+  "fx": [
+   {
+    "type": "trigger_forced",
+    "when": "control_switched",
+    "cond": [
+     {
+      "c": "event_src"
+     },
+     {
+      "c": "flag",
+      "name": "ameba_used",
+      "is": false
+     }
+    ],
+    "do": [
+     {
+      "op": "set_flag",
+      "what": "src",
+      "name": "ameba_used"
+     },
+     {
+      "op": "damage",
+      "who": "self",
+      "amount": 2000
+     }
+    ]
+   }
+  ]
+ },
+ "Griggle": {
+  "fx": [
+   {
+    "type": "trigger_forced",
+    "when": "control_switched",
+    "cond": [
+     {
+      "c": "event_src"
+     },
+     {
+      "c": "flag",
+      "name": "griggle_used",
+      "is": false
+     }
+    ],
+    "do": [
+     {
+      "op": "set_flag",
+      "what": "src",
+      "name": "griggle_used"
+     },
+     {
+      "op": "heal",
+      "who": "opp",
+      "amount": 3000
+     }
+    ]
+   }
+  ]
+ },
+ "Mushroom Man #2": {
+  "fx": [
+   {
+    "type": "trigger_forced",
+    "when": "standby_phase",
+    "cond": [
+     {
+      "c": "turn",
+      "is": "self"
+     }
+    ],
+    "do": [
+     {
+      "op": "damage",
+      "who": "self",
+      "amount": 300
+     }
+    ]
+   },
+   {
+    "type": "trigger",
+    "when": "end_phase",
+    "cond": [
+     {
+      "c": "turn",
+      "is": "self"
+     },
+     {
+      "c": "lp",
+      "who": "self",
+      "op": ">",
+      "v": 500
+     }
+    ],
+    "do": [
+     {
+      "op": "yesno",
+      "as": "y",
+      "prompt": 269
+     },
+     {
+      "op": "if",
+      "cond": [
+       {
+        "c": "var_true",
+        "name": "y"
+       }
+      ],
+      "then": [
+       {
+        "op": "pay_lp",
+        "amount": 500
+       },
+       {
+        "op": "take_control",
+        "what": "src",
+        "to": "opp"
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "Weather Report": {
+  "fx": [
+   {
+    "type": "flip",
+    "when": "flipped",
+    "cond": [
+     {
+      "c": "event_src"
+     }
+    ],
+    "do": [
+     {
+      "op": "destroy",
+      "what": {
+       "from": "opp.field",
+       "filter": {
+        "name_is": "Swords of Revealing Light",
+        "face_up": true
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ "Kazejin": {
+  "fx": [
+   {
+    "type": "trigger",
+    "when": "attack_declared",
+    "cond": [
+     {
+      "c": "target_is_src"
+     },
+     {
+      "c": "flag",
+      "name": "shield_used",
+      "is": false
+     }
+    ],
+    "do": [
+     {
+      "op": "yesno",
+      "as": "y",
+      "prompt": 269
+     },
+     {
+      "op": "if",
+      "cond": [
+       {
+        "c": "var_true",
+        "name": "y"
+       }
+      ],
+      "then": [
+       {
+        "op": "set_stat",
+        "what": "attacker",
+        "atk": 0,
+        "until": "end_turn"
+       },
+       {
+        "op": "set_flag",
+        "what": "src",
+        "name": "shield_used"
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "Sanga of the Thunder": {
+  "fx": [
+   {
+    "type": "trigger",
+    "when": "attack_declared",
+    "cond": [
+     {
+      "c": "target_is_src"
+     },
+     {
+      "c": "flag",
+      "name": "shield_used",
+      "is": false
+     }
+    ],
+    "do": [
+     {
+      "op": "yesno",
+      "as": "y",
+      "prompt": 269
+     },
+     {
+      "op": "if",
+      "cond": [
+       {
+        "c": "var_true",
+        "name": "y"
+       }
+      ],
+      "then": [
+       {
+        "op": "set_stat",
+        "what": "attacker",
+        "atk": 0,
+        "until": "end_turn"
+       },
+       {
+        "op": "set_flag",
+        "what": "src",
+        "name": "shield_used"
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "Electric Lizard": {
+  "fx": [
+   {
+    "type": "trigger_forced",
+    "when": "attack_declared",
+    "cond": [
+     {
+      "c": "target_is_src"
+     },
+     {
+      "c": "event_attacker",
+      "filter": {
+       "not_race": "Zombie"
+      }
+     }
+    ],
+    "do": [
+     {
+      "op": "set_flag",
+      "what": "attacker",
+      "name": "cannot_attack_until",
+      "value_turn_offset": 2
+     }
+    ]
+   }
+  ]
+ },
+ "Steel Scorpion": {
+  "fx": [
+   {
+    "type": "trigger_forced",
+    "when": "attack_declared",
+    "cond": [
+     {
+      "c": "target_is_src"
+     },
+     {
+      "c": "event_attacker",
+      "filter": {
+       "not_race": "Machine"
+      }
+     }
+    ],
+    "do": [
+     {
+      "op": "set_flag",
+      "what": "attacker",
+      "name": "doom_turn",
+      "value_turn_offset": 4
+     }
+    ]
+   }
+  ]
+ },
+ "Swordsman from a Foreign Land": {
+  "fx": [
+   {
+    "type": "trigger_forced",
+    "when": "attack_declared",
+    "cond": [
+     {
+      "c": "attacker_is_src"
+     }
+    ],
+    "do": [
+     {
+      "op": "set_flag",
+      "what": "attack_target",
+      "name": "doom_turn",
+      "value_turn_offset": 5
+     }
+    ]
+   }
+  ]
+ },
+ "Zone Eater": {
+  "fx": [
+   {
+    "type": "trigger_forced",
+    "when": "attack_declared",
+    "cond": [
+     {
+      "c": "attacker_is_src"
+     }
+    ],
+    "do": [
+     {
+      "op": "set_flag",
+      "what": "attack_target",
+      "name": "doom_turn",
+      "value_turn_offset": 5
+     }
+    ]
+   }
+  ]
+ },
+ "Jigen Bakudan": {
+  "fx": [
+   {
+    "type": "flip",
+    "when": "flipped",
+    "cond": [
+     {
+      "c": "event_src"
+     }
+    ],
+    "do": [
+     {
+      "op": "set_flag",
+      "what": "src",
+      "name": "armed"
+     }
+    ]
+   },
+   {
+    "type": "trigger_forced",
+    "when": "standby_phase",
+    "cond": [
+     {
+      "c": "turn",
+      "is": "self"
+     },
+     {
+      "c": "flag",
+      "name": "armed",
+      "is": true
+     }
+    ],
+    "do": [
+     {
+      "op": "let",
+      "as": "m",
+      "what": {
+       "from": "self.monsters",
+       "filter": {
+        "not_src": true
+       }
+      }
+     },
+     {
+      "op": "calc",
+      "as": "dmg",
+      "value": {
+       "half": {
+        "stat": "atk",
+        "of": "m"
+       }
+      }
+     },
+     {
+      "op": "to_grave",
+      "what": "src",
+      "reason": "tribute"
+     },
+     {
+      "op": "destroy",
+      "what": "$m"
+     },
+     {
+      "op": "damage",
+      "who": "opp",
+      "amount": {
+       "var": "dmg"
+      }
+     }
+    ]
+   }
+  ]
+ },
+ "Blast Juggler": {
+  "fx": [
+   {
+    "type": "trigger",
+    "when": "standby_phase",
+    "cond": [
+     {
+      "c": "turn",
+      "is": "self"
+     },
+     {
+      "c": "has",
+      "zone": "monsters",
+      "filter": {
+       "face_up": true,
+       "atk_max": 1000,
+       "not_src": true
+      },
+      "n": 1
+     }
+    ],
+    "cost": [
+     {
+      "op": "to_grave",
+      "what": "src",
+      "reason": "tribute"
+     }
+    ],
+    "target": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "monsters",
+      "filter": {
+       "face_up": true,
+       "atk_max": 1000,
+       "not_src": true
+      },
+      "n": 2,
+      "prompt": 105,
+      "min": 1
+     }
+    ],
+    "do": [
+     {
+      "op": "destroy",
+      "what": "$t"
+     }
+    ]
+   }
+  ]
+ },
+ "Hiro's Shadow Scout": {
+  "fx": [
+   {
+    "type": "flip",
+    "when": "flipped",
+    "cond": [
+     {
+      "c": "event_src"
+     }
+    ],
+    "do": [
+     {
+      "op": "custom",
+      "fn": "shadow_scout"
+     }
+    ]
+   }
+  ]
+ },
+ "Invader of the Throne": {
+  "fx": [
+   {
+    "type": "flip",
+    "when": "flipped",
+    "cond": [
+     {
+      "c": "event_src"
+     },
+     {
+      "c": "phase",
+      "is": [
+       "main1",
+       "main2"
+      ]
+     }
+    ],
+    "do": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "opp.monsters",
+      "filter": {},
+      "n": 1,
+      "prompt": 118,
+      "required": false
+     },
+     {
+      "op": "custom",
+      "fn": "swap_control"
+     }
+    ]
+   }
+  ]
+ },
+ "Trap Master": {
+  "fx": [
+   {
+    "type": "flip",
+    "when": "flipped",
+    "cond": [
+     {
+      "c": "event_src"
+     }
+    ],
+    "do": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "field",
+      "filter": {
+       "type": [
+        "spell",
+        "trap"
+       ]
+      },
+      "n": 1,
+      "prompt": 95,
+      "required": false
+     },
+     {
+      "op": "custom",
+      "fn": "probe_destroy",
+      "kind": "trap"
+     }
+    ]
+   }
+  ]
+ },
+ "Reaper of the Cards": {
+  "fx": [
+   {
+    "type": "flip",
+    "when": "flipped",
+    "cond": [
+     {
+      "c": "event_src"
+     }
+    ],
+    "do": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "field",
+      "filter": {
+       "type": [
+        "spell",
+        "trap"
+       ]
+      },
+      "n": 1,
+      "prompt": 95,
+      "required": false
+     },
+     {
+      "op": "custom",
+      "fn": "probe_destroy",
+      "kind": "trap"
+     }
+    ]
+   }
+  ]
+ },
+ "Armed Ninja": {
+  "fx": [
+   {
+    "type": "flip",
+    "when": "flipped",
+    "cond": [
+     {
+      "c": "event_src"
+     }
+    ],
+    "do": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "field",
+      "filter": {
+       "type": [
+        "spell",
+        "trap"
+       ]
+      },
+      "n": 1,
+      "prompt": 107,
+      "required": false
+     },
+     {
+      "op": "custom",
+      "fn": "probe_destroy",
+      "kind": "spell"
+     }
+    ]
+   }
+  ]
+ },
+ "De-Spell": {
+  "fx": [
+   {
+    "type": "spell",
+    "target": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "field",
+      "filter": {
+       "type": [
+        "spell",
+        "trap"
+       ],
+       "not_src": true
+      },
+      "n": 1,
+      "prompt": 107
+     }
+    ],
+    "do": [
+     {
+      "op": "custom",
+      "fn": "probe_destroy",
+      "kind": "spell"
+     }
+    ]
+   }
+  ]
+ },
+ "Gate Guardian": {
+  "fx": [
+   {
+    "type": "static",
+    "rule": "no_normal_summon",
+    "scope": "self"
+   },
+   {
+    "type": "ignition",
+    "zone": "hand",
+    "cond": [
+     {
+      "c": "free_zone",
+      "who": "self"
+     }
+    ],
+    "cost": [
+     {
+      "op": "select",
+      "as": "a",
+      "from": "self.monsters",
+      "filter": {
+       "name_is": "Sanga of the Thunder",
+       "face_up": true
+      },
+      "n": 1,
+      "prompt": 154,
+      "cost": true
+     },
+     {
+      "op": "select",
+      "as": "b",
+      "from": "self.monsters",
+      "filter": {
+       "name_is": "Kazejin",
+       "face_up": true
+      },
+      "n": 1,
+      "prompt": 154,
+      "cost": true
+     },
+     {
+      "op": "select",
+      "as": "c",
+      "from": "self.monsters",
+      "filter": {
+       "name_is": "Suijin",
+       "face_up": true
+      },
+      "n": 1,
+      "prompt": 154,
+      "cost": true
+     },
+     {
+      "op": "to_grave",
+      "what": "$a",
+      "reason": "tribute"
+     },
+     {
+      "op": "to_grave",
+      "what": "$b",
+      "reason": "tribute"
+     },
+     {
+      "op": "to_grave",
+      "what": "$c",
+      "reason": "tribute"
+     }
+    ],
+    "do": [
+     {
+      "op": "special_summon",
+      "what": "src",
+      "pos": "atk",
+      "face_up": true
+     }
+    ]
+   }
+  ]
+ },
+ "Metalzoa": {
+  "fx": [
+   {
+    "type": "static",
+    "rule": "no_normal_summon",
+    "scope": "self"
+   },
+   {
+    "type": "static",
+    "rule": "summon_procedure",
+    "kind": "metalzoa"
+   },
+   {
+    "type": "ignition",
+    "zone": "deck",
+    "cond": [
+     {
+      "c": "procedure_possible",
+      "kind": "metalzoa"
+     }
+    ],
+    "do": [
+     {
+      "op": "custom",
+      "fn": "summon_procedure",
+      "kind": "metalzoa"
+     }
+    ],
+    "procedure": true
+   }
+  ]
+ },
+ "Larvae Moth": {
+  "fx": [
+   {
+    "type": "static",
+    "rule": "no_normal_summon",
+    "scope": "self"
+   },
+   {
+    "type": "static",
+    "rule": "summon_procedure",
+    "kind": "larvae_moth"
+   },
+   {
+    "type": "ignition",
+    "zone": "hand",
+    "cond": [
+     {
+      "c": "procedure_possible",
+      "kind": "larvae_moth"
+     }
+    ],
+    "do": [
+     {
+      "op": "custom",
+      "fn": "summon_procedure",
+      "kind": "larvae_moth"
+     }
+    ],
+    "procedure": true
+   }
+  ]
+ },
+ "Great Moth": {
+  "fx": [
+   {
+    "type": "static",
+    "rule": "no_normal_summon",
+    "scope": "self"
+   },
+   {
+    "type": "static",
+    "rule": "summon_procedure",
+    "kind": "great_moth"
+   },
+   {
+    "type": "ignition",
+    "zone": "hand",
+    "cond": [
+     {
+      "c": "procedure_possible",
+      "kind": "great_moth"
+     }
+    ],
+    "do": [
+     {
+      "op": "custom",
+      "fn": "summon_procedure",
+      "kind": "great_moth"
+     }
+    ],
+    "procedure": true
+   }
+  ]
+ },
+ "Ancient Lamp": {
+  "fx": [
+   {
+    "type": "trigger_forced",
+    "when": "attack_declared",
+    "face_down_ok": true,
+    "cond": [
+     {
+      "c": "target_is_src"
+     },
+     {
+      "c": "src_face_down"
+     }
+    ],
+    "do": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "opp.monsters",
+      "filter": {
+       "not_attacker": true
+      },
+      "n": 1,
+      "prompt": 153,
+      "required": false
+     },
+     {
+      "op": "redirect_attack",
+      "to": "$t"
+     }
+    ]
+   },
+   {
+    "type": "ignition",
+    "cond": [
+     {
+      "c": "free_zone",
+      "who": "self"
+     }
+    ],
+    "target": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "self.hand",
+      "filter": {
+       "name_is": "La Jinn the Mystical Genie of the Lamp"
+      },
+      "n": 1,
+      "prompt": 83
+     }
+    ],
+    "do": [
+     {
+      "op": "special_summon",
+      "what": "$t",
+      "pos": "atk",
+      "face_up": true
+     }
+    ]
+   }
+  ]
+ },
+ "Kuriboh": {
+  "fx": [
+   {
+    "type": "trigger",
+    "zone": "hand",
+    "speed": 2,
+    "when": [
+     "damage_step"
+    ],
+    "cond": [
+     {
+      "c": "turn",
+      "is": "opp"
+     },
+     {
+      "c": "event_by",
+      "who": "opp"
+     }
+    ],
+    "cost": [
+     {
+      "op": "to_grave",
+      "what": "src",
+      "reason": "discard"
+     }
+    ],
+    "do": [
+     {
+      "op": "rule_turn",
+      "rule": "no_battle_damage_once",
+      "who": "self"
+     }
+    ]
+   }
+  ]
+ }
+}

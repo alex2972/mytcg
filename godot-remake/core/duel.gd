@@ -57,6 +57,7 @@ var attackers_this_turn: Array = []  ## uids of monsters that attacked this turn
 var effect_source: DCard = null ## Source of the currently resolving operation, for Spell immunity.
 var effect_player := -1               ## the player whose card effect is destroying something right now (-1: battle, rules or unknown)
 var lost_spells: Array = []           ## uids of Spell Cards destroyed by an opponent's card effect this turn (Fairy Guardian)
+var next_turn_rules: Array = []       ## {rule, player}: become turn rules at the start of that player's next turn (Mesmeric Control)
 var turn_rules: Array = []       ## {rule, player} lasting until the end of the turn
 var _next_uid := 1
 
@@ -236,6 +237,10 @@ func _begin_turn() -> void:
 	turn += 1
 	battle_dead.clear()
 	lost_spells.clear()
+	for r in next_turn_rules.duplicate():
+		if int(r["player"]) == turn_player:
+			next_turn_rules.erase(r)
+			turn_rules.append(r)
 	for c in (sides[turn_player].banished as Array).duplicate():
 		if int(c.flags.get("return_turn", 1000000)) <= turn:
 			c.flags.erase("return_turn")
@@ -371,6 +376,10 @@ func _finish_turn(p: int, discards: Array) -> void:
 	_begin_turn()
 
 func _end_of_turn_cleanup() -> void:
+	for p in 2:
+		for c in monsters_of(p):
+			if int(c.flags.get("doom_turn", -1)) == turn:        # Zone Eater, Swordsman from a Foreign Land, Steel Scorpion
+				destroy_card(c, "effect")
 	if has_turn_rule("inf_dismissal", 0) or has_turn_rule("inf_dismissal", 1):
 		# Infinite Dismissal: Level 3 or lower monsters summoned (not Special Summoned) this turn are destroyed
 		for p in 2:
@@ -724,6 +733,18 @@ func heal_player(p: int, amount: int) -> void:
 	if fx.has_listener("healed"):
 		fx.window("healed", {"player": p, "amount": amount})
 
+## Chain Energy: LP each player must pay to play or Set a card from the hand ("" when affordable).
+func hand_cost_problem(p: int) -> String:
+	var cost := fx.rule_total("hand_play_cost")
+	if cost > 0 and sides[p].lp <= cost:
+		return "Not enough Life Points to play a card from your hand."
+	return ""
+
+func pay_hand_cost(p: int) -> void:
+	var cost := fx.rule_total("hand_play_cost")
+	if cost > 0:
+		pay_lp(p, cost)
+
 func pay_lp(p: int, amount: int) -> void:
 	var s: PlayerSide = sides[p]
 	s.lp = maxi(0, s.lp - amount)
@@ -758,6 +779,8 @@ func summon(p: int, c: DCard, tributes: Array = [], zone := -1, set_face_down :=
 		return "Select a monster from your hand."
 	if normal_summoned:
 		return "You can only Normal Summon or Set once per turn."
+	if hand_cost_problem(p) != "":
+		return hand_cost_problem(p)
 	if (not set_face_down and (has_turn_rule("no_summon", p) or breeding_machine_active(p))) or fx.rule_active("no_summon_any"):
 		return "A card effect prevents you from summoning this turn."
 	for e in fx.effects_of(c):
@@ -799,6 +822,7 @@ func summon(p: int, c: DCard, tributes: Array = [], zone := -1, set_face_down :=
 		sides[t.owner].grave.append(t)      # a monster I took control of goes to its owner's Graveyard
 		t.face_up = true
 		_emit("tribute", {"player": p, "uid": t.uid})
+	pay_hand_cost(p)
 	s.hand.erase(c)
 	s.monsters[zone] = c
 	var forced_up := fx.rule_active("no_set")
@@ -827,6 +851,9 @@ func set_spell_trap(p: int, c: DCard, zone := -1) -> String:
 	var s: PlayerSide = sides[p]
 	if not s.hand.has(c) or is_monster(c):
 		return "Select a Spell or Trap card from your hand."
+	if hand_cost_problem(p) != "":
+		return hand_cost_problem(p)
+	pay_hand_cost(p)
 	var is_field: bool = card_data(c).get("subtype_name", "") == "field" and card_data(c).get("type", "") == "spell"
 	if is_field:
 		if s.field_spell != null:
@@ -852,6 +879,8 @@ func set_spell_trap(p: int, c: DCard, zone := -1) -> String:
 func change_position(p: int, c: DCard) -> String:
 	if prohibited(c):
 		return "This card is prohibited."
+	if has_turn_rule("no_position_change", p):
+		return "A card effect prevents changing positions this turn."
 	if not c.face_up:
 		if has_turn_rule("no_summon", p) or breeding_machine_active(p):
 			return "A card effect prevents Flip Summons."
@@ -922,6 +951,10 @@ func can_attack(p: int, c: DCard) -> String:
 		return "This card is prohibited."
 	if fx.rule_active("toon_attack", c) and sides[p].lp <= 500:
 		return "Not enough Life Points to attack."
+	if fx.attack_cost(c) > 0 and sides[p].lp <= fx.attack_cost(c):
+		return "Not enough Life Points to attack."
+	if int(c.flags.get("cannot_attack_until", -1)) >= turn:
+		return "This monster cannot attack yet (Electric Lizard)."
 	var g := _guard(p)
 	if g != "":
 		return g
@@ -1007,6 +1040,8 @@ func _declare_attack(p: int, c: DCard, target: DCard) -> void:
 		return
 	if fx.rule_active("toon_attack", c):
 		pay_lp(p, 500)
+	if fx.attack_cost(c) > 0:                     # Dark Elf, Toll
+		pay_lp(p, fx.attack_cost(c))
 	c.attacked = true
 	attackers_this_turn.append(c.uid)
 	current_attack = {"attacker": c, "target": target, "negated": false, "player": p}
@@ -1155,6 +1190,11 @@ func _damage(p: int, amount: int, reason: String) -> void:
 		return
 	if reason in ["battle", "direct_attack"] and has_turn_rule("no_battle_damage", p):
 		return
+	if reason in ["battle", "direct_attack"]:
+		for i in turn_rules.size():
+			if turn_rules[i]["rule"] == "no_battle_damage_once" and int(turn_rules[i]["player"]) == p:
+				turn_rules.remove_at(i)             # Kuriboh: the damage from 1 monster is 0
+				return
 	if fx.player_rule("no_damage", p):
 		return
 	var s: PlayerSide = sides[p]
@@ -1222,7 +1262,7 @@ func special_summon_problem(c: DCard, p: int, by_effect := false) -> String:
 			return "This monster requires %s on the field." % e["name"]
 		if e.get("rule", "") == "summon_procedure" and not c.flags.get("procedure_authorized", false):
 			# Wall Shadow is a Deck-only procedure; the Moth may be revived after a proper Summon.
-			if e.get("kind", "") == "wall_shadow" or not c.properly_summoned or fx._zone_of(c) not in ["grave", "banished"]:
+			if e.get("kind", "") in ["wall_shadow", "metalzoa"] or not c.properly_summoned or fx._zone_of(c) not in ["grave", "banished"]:
 				return "This monster requires its own Special Summon procedure."
 	if (fx.rule_active("no_special_summon") or fx.rule_active("no_summon_any")) and not c.flags.get("allow_summon", false):
 		return "A card effect prevents Special Summons."

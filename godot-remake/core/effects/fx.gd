@@ -37,6 +37,22 @@ func effects_of(c: DCard) -> Array:
 		return []
 	return edb.for_number(c.number)
 
+## Sum of the `amount` of every active static rule of this name that applies to `c` (or to everybody when c is null).
+func rule_total(rule: String, c: DCard = null) -> int:
+	var total := 0
+	for p in 2:
+		for src in cards_controlled(p):
+			if not src.face_up:
+				continue
+			for e in effects_of(src):
+				if e.get("type", "") == "static" and e.get("rule", "") == rule and (c == null or _static_applies(src, e, c)):
+					total += int(e.get("amount", 0))
+	return total
+
+## Life Points `c` costs to attack (Dark Elf, Toll).
+func attack_cost(c: DCard) -> int:
+	return rule_total("attack_cost", c)
+
 ## Metal Detector, Mystic Probe, World Suppression, Armored Glass: whole card kinds are switched off for the rest of the turn.
 func _negated_this_turn(c: DCard) -> bool:
 	var d: Dictionary = duel.card_data(c)
@@ -254,6 +270,15 @@ func activation_problem(p: int, c: DCard, idx: int, event: String, data: Diction
 		return "Spell Cards must be Set first (Anti-Spell Fragrance)."
 	if type in ["spell", "equip", "field", "ritual_spell", "quickplay"] and zone == "spell" and not c.face_up and c.summon_turn >= duel.turn and rule_active("spells_must_set"):
 		return "A Set Spell Card cannot be activated until your next turn (Anti-Spell Fragrance)."
+	if zone == "hand" and type in ["spell", "equip", "field", "ritual_spell", "quickplay", "trap", "counter"] and duel.hand_cost_problem(p) != "":
+		return duel.hand_cost_problem(p)
+	if type in ["spell", "equip", "field", "ritual_spell", "quickplay"]:
+		for pl in 2:
+			for guard in cards_controlled(pl):
+				if guard.face_up:
+					for ge in edb.for_number(guard.number):
+						if ge.get("rule", "") == "forbid_activation" and ge.get("name", "") == duel.db.card_name(c.idx):
+							return "%s cannot be played right now." % ge["name"]
 	if type == "flip" and rule_active("no_flip_effects"):
 		return "Flip Effects are negated."
 	if type in ["trap", "counter", "continuous_trap"] and rule_active("no_trap"):
@@ -334,6 +359,7 @@ func _start_activation(p: int, c: DCard, idx: int, event: String, data: Dictiona
 		return
 	# physical placement: spells from hand go to the field; Set cards turn face-up
 	if _zone_of(c) == "hand" and type in ["spell", "equip", "field", "ritual_spell", "quickplay", "trap", "counter"]:
+		duel.pay_hand_cost(p)
 		duel.place_spell_from_hand(c, type == "field")
 	if not c.face_up and _zone_of(c) in ["spell", "monster"]:
 		c.face_up = true
@@ -446,6 +472,14 @@ func stat_bonus(c: DCard, stat: String) -> int:
 						if m["per"].get("include_field_spell", false) and duel.side(count_controller).field_spell != null:
 							n += 1
 						total += mini(n, int(m["per"].get("max_n", 1000))) * int(m["per"]["by"])
+				if m.has("per_counter") and stat in (m["per_counter"]["stats"] as Array) and _static_applies(src, m, c):
+					total += int(src.flags.get(str(m["per_counter"]["name"]), 0)) * int(m["per_counter"]["by"])
+				if m.get("half_def", false) and stat == "def" and _static_applies(src, m, c):
+					# Dark Artist: half the DEF while being attacked by a monster of the given Attribute
+					var att: DCard = duel.current_attack.get("attacker")
+					if duel.current_attack.get("target") == c and att != null and int(duel.card_data(att).get("attribute", 0)) == ops.attr_id(m.get("vs_attr", "")):
+						@warning_ignore("integer_division")
+						total -= (int(duel.card_data(c).get("def", 0)) + c.def_bonus) / 2
 				if stat == "atk" and _static_applies(src, m, c):
 					if m.get("half_atk", false):
 						mirror_count += 1
@@ -480,6 +514,8 @@ func stat_bonus(c: DCard, stat: String) -> int:
 			adjusted = _native_half(adjusted)
 			metal_bonus = _native_half(metal_bonus)
 		total = adjusted + metal_bonus - original
+	if duel.has_turn_rule("reverse_stats", 0):        # Reverse Trap: every increase becomes a decrease and vice versa
+		total = -total
 	return total
 
 func _native_half(value: int) -> int:
@@ -503,6 +539,7 @@ func _static_applies(src: DCard, m: Dictionary, c: DCard) -> bool:
 		"mine": if c.controller != src.controller: return false
 		"theirs": if c.controller == src.controller: return false
 		"equipped": if c.equips.has(src) == false: return false
+		"bound": if int(c.flags.get("bound_by", -1)) != src.uid: return false
 	return ops.matches(c, m.get("filter", {}), {"src": src, "controller": src.controller})
 
 ## Does a face-up card controlled by `p` carry the static rule (player-wide rules such as Tornado Wall's "no_damage")?

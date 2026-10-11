@@ -385,6 +385,46 @@ static func run(fn: String, _step: Dictionary, ctx: Dictionary, fx: Fx):
 				d.return_to_deck(c, "shuffle")
 			d.shuffle_deck(me4)
 			d.draw_cards(me4, drawn)
+		"shadow_scout":
+			# Hiro's Shadow Scout: the opponent draws 3 cards, both players see them and every Spell among them is discarded
+			var foe3: int = 1 - int(ctx["controller"])
+			d.draw_cards(foe3, 3)
+			var hand3: Array = d.side(foe3).hand
+			for c in hand3.slice(maxi(0, hand3.size() - 3)):
+				if d.card_data(c).get("type", "") == "spell":
+					d.send_to_grave(c, "discard")
+		"swap_control":
+			# Invader of the Throne: switch control of this card and the selected monster (not during the Battle Phase)
+			var mine2: DCard = ctx["src"]
+			for theirs2 in ctx["vars"].get("t", []):
+				var me5: int = mine2.controller
+				var zi: int = (d.side(me5).monsters as Array).find(mine2)
+				var zj: int = (d.side(theirs2.controller).monsters as Array).find(theirs2)
+				if zi != -1 and zj != -1 and d.is_on_field(mine2) and d.is_on_field(theirs2):
+					var other_side: int = theirs2.controller
+					d.side(me5).monsters[zi] = theirs2
+					d.side(other_side).monsters[zj] = mine2
+					mine2.controller = other_side
+					theirs2.controller = me5
+					d._emit("control", {"player": me5, "uid": theirs2.uid})
+					d._emit("control", {"player": other_side, "uid": mine2.uid})
+		"probe_destroy":
+			# Trap Master, Reaper of the Cards, Armed Ninja, De-Spell: flip the selected card face-up without activating it;
+			# destroy it if it is the right kind of card, otherwise turn it back face-down
+			for c in ctx["vars"].get("t", []):
+				var right: bool = d.card_data(c).get("type", "") == str(_step.get("kind", "trap"))
+				if right:
+					c.face_up = true
+					d.destroy_card(c, "effect")
+				elif not c.face_up:
+					d.log_event("flip", {"player": c.controller, "uid": c.uid})
+		"acid_trap_hole":
+			for c in ctx["vars"].get("t", []):
+				c.face_up = true
+				if d.def_of(c) <= 2000:
+					d.destroy_card(c, "effect")
+				else:
+					c.face_up = false
 		_:
 			push_warning("unknown custom effect: " + fn)
 	return null
@@ -394,15 +434,15 @@ static func procedure_materials(d: Duel, source: DCard, kind: String) -> Array:
 	var p: int = source.owner
 	if d.prohibited(source) or d.fx.rule_active("no_special_summon") or d.fx.rule_active("no_summon_any") or d.fx.rule_active("no_tribute"):
 		return []
-	if kind == "wall_shadow" and not d.side(p).deck.has(source):
+	if kind in ["wall_shadow", "metalzoa"] and not d.side(p).deck.has(source):
 		return []
-	if kind == "ultimate_moth" and not d.side(p).hand.has(source):
+	if kind in MOTH_TURNS and not d.side(p).hand.has(source):
 		return []
 	var result := []
 	for c in d.monsters_of(p):
 		if not c.face_up or d.prohibited(c):
 			continue
-		var name: String = "Labyrinth Wall" if kind == "wall_shadow" else "Petit Moth"
+		var name: String = {"wall_shadow": "Labyrinth Wall", "metalzoa": "Zoa"}.get(kind, "Petit Moth")
 		if d.db.card_name(c.idx) != name:
 			continue
 		for eq in c.equips:
@@ -410,9 +450,14 @@ static func procedure_materials(d: Duel, source: DCard, kind: String) -> Array:
 				continue
 			if kind == "wall_shadow" and d.db.card_name(eq.idx) == "Magical Labyrinth":
 				result.append(c)
-			elif kind == "ultimate_moth" and d.db.card_name(eq.idx) == "Cocoon of Evolution" and int(eq.flags.get("cocoon_turns", 0)) >= 6:
+			elif kind == "metalzoa" and d.db.card_name(eq.idx) == "Metalmorph":
+				result.append(c)
+			elif kind in MOTH_TURNS and d.db.card_name(eq.idx) == "Cocoon of Evolution" and int(eq.flags.get("cocoon_turns", 0)) >= int(MOTH_TURNS[kind]):
 				result.append(c)
 	return result
+
+## Turns of the Petit Moth's controller that must pass with "Cocoon of Evolution" equipped before each Moth can be summoned.
+const MOTH_TURNS := {"larvae_moth": 2, "great_moth": 4, "ultimate_moth": 6}
 
 static func imitation_materials(d: Duel, p: int) -> Array:
 	if d.fx.rule_active("no_tribute") or d.fx.rule_active("no_special_summon") or d.fx.rule_active("no_summon_any"):
