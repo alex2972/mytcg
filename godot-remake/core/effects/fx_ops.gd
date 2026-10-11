@@ -131,6 +131,10 @@ func matches(c: DCard, f: Dictionary, ctx: Dictionary) -> bool:
 		return false
 	if f.has("special_summoned") and bool(c.flags.get("special_summoned", false)) != bool(f["special_summoned"]):
 		return false
+	if f.get("attacking", false) and duel.current_attack.get("attacker") != c:
+		return false
+	if f.has("fusion") and (not duel.db.fusion_recipe(duel.db.card_name(c.idx)).is_empty()) != bool(f["fusion"]):
+		return false
 	if f.has("fusion_mat") and bool(c.flags.get("fusion_mat", false)) != bool(f["fusion_mat"]):
 		return false
 	if f.has("attr_var") and int(d.get("attribute", 0)) != int(ctx["vars"].get(str(f["attr_var"]), -2)) + 1:
@@ -347,6 +351,7 @@ func _cond(c: Dictionary, ctx: Dictionary) -> bool:
 		"event_pos": return str(ctx["event"].get("pos", "")) == str(c.get("is", ""))
 		"was_face_up": return bool(ctx["event"].get("was_face_up", false))
 		"src_face_down": return not ctx["src"].face_up
+		"normal_summon_used": return duel.normal_summoned and duel.turn_player == me
 		"src_pos": return ctx["src"].face_up and ctx["src"].pos == str(c.get("is", "atk"))
 		"attacker_weaker_than_target":
 			var wa := duel.card_by_uid(int(ctx["event"].get("attacker", -1)))
@@ -552,8 +557,11 @@ func run(step: Dictionary, ctx: Dictionary):
 		"mod":
 			var atk: int = val(step.get("atk", 0), ctx)
 			var def: int = val(step.get("def", 0), ctx)
+			var mod_until: String = step.get("until", "end_turn")
+			if step.has("turn_offset"):
+				mod_until = "turn:%d" % (duel.turn + int(step["turn_offset"]))      # until the end of that turn
 			for c in _targets(step.get("what", "$t"), ctx):
-				c.mods.append({"atk": atk, "def": def, "until": step.get("until", "end_turn"), "src": ctx["src"].uid})
+				c.mods.append({"atk": atk, "def": def, "until": mod_until, "src": ctx["src"].uid})
 		"set_stat":
 			for c in _targets(step.get("what", "$t"), ctx):
 				if step.has("atk"):
@@ -563,7 +571,10 @@ func run(step: Dictionary, ctx: Dictionary):
 		"equip":
 			var tgt := _targets(step.get("to", "$t"), ctx)
 			if tgt.size() > 0:
-				duel.equip_card(ctx["src"], tgt[0], {"atk": val(step.get("atk", 0), ctx), "def": val(step.get("def", 0), ctx)})
+				var eq_mod := {"atk": val(step.get("atk", 0), ctx), "def": val(step.get("def", 0), ctx)}
+				if step.has("race"):
+					eq_mod["race"] = race_id(step["race"])
+				duel.equip_card(ctx["src"], tgt[0], eq_mod)
 		"take_control":
 			for c in _targets(step.get("what", "$t"), ctx):
 				duel.take_control(c, who(step.get("to", "self"), ctx), step.get("until", "forever"))
@@ -584,7 +595,7 @@ func run(step: Dictionary, ctx: Dictionary):
 		"negate_attack": duel.negate_current_attack()
 		"set_flag":
 			for c in _targets(step.get("what", "src"), ctx):
-				c.flags[step["name"]] = step.get("value", true)
+				c.flags[step["name"]] = ctx["src"].uid if step.get("value_src", false) else step.get("value", true)
 		"skip_phase": duel.skip_phase(step.get("phase", "battle"))
 		"win": duel.force_win(me, str(step.get("reason", "effect")))
 		"log": duel.log_event(step.get("event", "effect"), step.get("data", {}))
@@ -613,7 +624,8 @@ func run(step: Dictionary, ctx: Dictionary):
 		"token":
 			var kind: String = step.get("kind", "Sheep Token")
 			var owner: int = who(step.get("to", "self"), ctx)
-			for i in int(step.get("n", 1)):
+			var token_n: int = (duel.side(owner).monsters as Array).count(null) if str(step.get("n", 1)) == "free" else int(step.get("n", 1))
+			for i in token_n:
 				var tk := duel.new_token(kind, owner)
 				duel.special_summon(tk, owner, step.get("pos", "def"), true)
 		"bind":
@@ -776,6 +788,7 @@ func run(step: Dictionary, ctx: Dictionary):
 				removed += 1
 			if step.has("as"):
 				ctx["vars"][step["as"]] = removed
+		"extra_summon": duel.normal_summoned = false          # Ultimate Offering: one more Normal Summon or Set
 		"nothing": pass
 		"custom": return FxCustom.run(step.get("fn", ""), step, ctx, fx)
 		_:

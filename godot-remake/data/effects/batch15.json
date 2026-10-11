@@ -1,0 +1,684 @@
+{
+ "_about": "Batch 15: more cards that need no new interface (Card List).",
+ "Total Defense Shogun": {
+  "fx": [
+   {
+    "type": "trigger_forced",
+    "when": "summoned",
+    "cond": [
+     {
+      "c": "event_src"
+     }
+    ],
+    "do": [
+     {
+      "op": "set_pos",
+      "what": "src",
+      "pos": "def",
+      "face_up": true,
+      "quiet": true
+     }
+    ]
+   },
+   {
+    "type": "static",
+    "rule": "attack_in_def",
+    "scope": "self"
+   }
+  ]
+ },
+ "Boar Soldier": {
+  "fx": [
+   {
+    "type": "trigger_forced",
+    "when": "summoned",
+    "cond": [
+     {
+      "c": "event_src"
+     }
+    ],
+    "do": [
+     {
+      "op": "destroy",
+      "what": "src"
+     }
+    ]
+   },
+   {
+    "type": "static",
+    "mod": {
+     "scope": "self",
+     "per": {
+      "zone": "opp.monsters",
+      "filter": {},
+      "by": -1000,
+      "stats": [
+       "atk"
+      ],
+      "max_n": 1
+     }
+    }
+   }
+  ]
+ },
+ "Garuda the Wind Spirit": {
+  "fx": [
+   {
+    "type": "static",
+    "rule": "no_normal_summon",
+    "scope": "self"
+   },
+   {
+    "type": "ignition",
+    "zone": "hand",
+    "cond": [
+     {
+      "c": "free_zone",
+      "who": "self"
+     }
+    ],
+    "cost": [
+     {
+      "op": "select",
+      "as": "g",
+      "from": "self.grave",
+      "filter": {
+       "type": "monster",
+       "attribute": "WIND"
+      },
+      "n": 1,
+      "prompt": 86,
+      "cost": true
+     },
+     {
+      "op": "banish",
+      "what": "$g"
+     }
+    ],
+    "do": [
+     {
+      "op": "special_summon",
+      "what": "src",
+      "pos": "atk",
+      "face_up": true
+     }
+    ]
+   },
+   {
+    "type": "trigger_forced",
+    "when": "end_phase",
+    "cond": [
+     {
+      "c": "turn",
+      "is": "opp"
+     }
+    ],
+    "do": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "opp.monsters",
+      "filter": {
+       "face_up": true
+      },
+      "n": 1,
+      "prompt": 87,
+      "min": 0,
+      "required": false,
+      "auto": false
+     },
+     {
+      "op": "flip_pos",
+      "what": "$t"
+     }
+    ]
+   }
+  ]
+ },
+ "Infinite Dismissal": {
+  "fx": [
+   {
+    "type": "trap",
+    "speed": 2,
+    "when": [
+     "summoned",
+     "special_summoned",
+     "flip_summoned",
+     "attack_declared",
+     "activated_spell",
+     "activated_trap",
+     "standby_phase",
+     "end_phase"
+    ],
+    "do": [
+     {
+      "op": "rule_turn",
+      "rule": "inf_dismissal",
+      "who": "self"
+     }
+    ]
+   }
+  ]
+ },
+ "Mirror Wall": {
+  "fx": [
+   {
+    "type": "continuous_trap",
+    "speed": 2,
+    "stay": true,
+    "when": [
+     "summoned",
+     "special_summoned",
+     "flip_summoned",
+     "attack_declared",
+     "activated_spell",
+     "activated_trap",
+     "standby_phase",
+     "end_phase"
+    ],
+    "do": []
+   },
+   {
+    "type": "static",
+    "mod": {
+     "scope": "theirs",
+     "filter": {
+      "attacking": true
+     },
+     "half_atk": true
+    }
+   },
+   {
+    "type": "trigger_forced",
+    "when": "standby_phase",
+    "cond": [
+     {
+      "c": "turn",
+      "is": "self"
+     }
+    ],
+    "do": [
+     {
+      "op": "if",
+      "cond": [
+       {
+        "c": "lp",
+        "who": "self",
+        "op": ">",
+        "v": 2000
+       }
+      ],
+      "then": [
+       {
+        "op": "pay_lp",
+        "amount": 2000
+       }
+      ],
+      "else": [
+       {
+        "op": "destroy",
+        "what": "src"
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "Banisher of the Light": {
+  "fx": [
+   {
+    "type": "static",
+    "rule": "banish_graveyard",
+    "scope": "all"
+   }
+  ]
+ },
+ "Infinite Cards": {
+  "fx": [
+   {
+    "type": "spell",
+    "stay": true,
+    "do": []
+   },
+   {
+    "type": "static",
+    "rule": "no_hand_limit",
+    "scope": "all"
+   }
+  ]
+ },
+ "Royal Command": {
+  "fx": [
+   {
+    "type": "continuous_trap",
+    "speed": 2,
+    "stay": true,
+    "when": [
+     "summoned",
+     "special_summoned",
+     "flip_summoned",
+     "attack_declared",
+     "activated_spell",
+     "activated_trap",
+     "standby_phase",
+     "end_phase"
+    ],
+    "do": []
+   },
+   {
+    "type": "static",
+    "rule": "no_flip_effects",
+    "scope": "all"
+   }
+  ]
+ },
+ "Dark-Eyes Illusionist": {
+  "fx": [
+   {
+    "type": "flip",
+    "when": "flipped",
+    "cond": [
+     {
+      "c": "event_src"
+     }
+    ],
+    "do": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "monsters",
+      "filter": {
+       "face_up": true
+      },
+      "n": 1,
+      "prompt": 100
+     },
+     {
+      "op": "set_flag",
+      "what": "$t",
+      "name": "cannot_attack_by",
+      "value_src": true
+     }
+    ]
+   }
+  ]
+ },
+ "Bazoo the Soul-Eater": {
+  "fx": [
+   {
+    "type": "ignition",
+    "once_per_turn": true,
+    "cond": [
+     {
+      "c": "has",
+      "zone": "self.grave",
+      "n": 1
+     }
+    ],
+    "cost": [
+     {
+      "op": "select",
+      "as": "g",
+      "from": "self.grave",
+      "filter": {},
+      "n": 3,
+      "prompt": 164,
+      "min": 1,
+      "auto": false,
+      "cost": true
+     },
+     {
+      "op": "banish",
+      "what": "$g"
+     }
+    ],
+    "do": [
+     {
+      "op": "mod",
+      "what": "src",
+      "atk": {
+       "mul": {
+        "var_count": "g"
+       },
+       "by": 300
+      },
+      "turn_offset": 1
+     }
+    ]
+   }
+  ]
+ },
+ "Ultimate Offering": {
+  "fx": [
+   {
+    "type": "continuous_trap",
+    "speed": 2,
+    "stay": true,
+    "when": [
+     "summoned",
+     "special_summoned",
+     "flip_summoned",
+     "attack_declared",
+     "activated_spell",
+     "activated_trap",
+     "standby_phase",
+     "end_phase"
+    ],
+    "do": []
+   },
+   {
+    "type": "ignition",
+    "cond": [
+     {
+      "c": "normal_summon_used"
+     },
+     {
+      "c": "lp",
+      "who": "self",
+      "op": ">",
+      "v": 500
+     }
+    ],
+    "cost": [
+     {
+      "op": "pay_lp",
+      "amount": 500
+     }
+    ],
+    "do": [
+     {
+      "op": "extra_summon"
+     }
+    ]
+   }
+  ]
+ },
+ "Ceremonial Bell": {
+  "fx": []
+ },
+ "The Eye of Truth": {
+  "fx": [
+   {
+    "type": "continuous_trap",
+    "speed": 2,
+    "stay": true,
+    "when": [
+     "summoned",
+     "special_summoned",
+     "flip_summoned",
+     "attack_declared",
+     "activated_spell",
+     "activated_trap",
+     "standby_phase",
+     "end_phase"
+    ],
+    "do": []
+   },
+   {
+    "type": "trigger_forced",
+    "when": "standby_phase",
+    "cond": [
+     {
+      "c": "turn",
+      "is": "opp"
+     },
+     {
+      "c": "has",
+      "zone": "opp.hand",
+      "filter": {
+       "type": "spell"
+      },
+      "n": 1
+     }
+    ],
+    "do": [
+     {
+      "op": "heal",
+      "who": "opp",
+      "amount": 1000
+     }
+    ]
+   }
+  ]
+ },
+ "Dragonic Attack": {
+  "fx": [
+   {
+    "type": "equip",
+    "target": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "monsters",
+      "filter": {
+       "face_up": true,
+       "race": "Warrior"
+      },
+      "n": 1,
+      "prompt": 101
+     }
+    ],
+    "do": [
+     {
+      "op": "equip",
+      "to": "$t",
+      "atk": 500,
+      "def": 500,
+      "race": "Dragon"
+     }
+    ]
+   }
+  ]
+ },
+ "Gust Fan": {
+  "fx": [
+   {
+    "type": "equip",
+    "target": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "monsters",
+      "filter": {
+       "face_up": true,
+       "attribute": "WIND"
+      },
+      "n": 1,
+      "prompt": 101
+     }
+    ],
+    "do": [
+     {
+      "op": "equip",
+      "to": "$t",
+      "atk": 400,
+      "def": -200
+     }
+    ]
+   }
+  ]
+ },
+ "Cyclon Laser": {
+  "fx": [
+   {
+    "type": "equip",
+    "target": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "monsters",
+      "filter": {
+       "face_up": true,
+       "name_is": "Gradius"
+      },
+      "n": 1,
+      "prompt": 101
+     }
+    ],
+    "do": [
+     {
+      "op": "equip",
+      "to": "$t",
+      "atk": 300,
+      "def": 0
+     }
+    ]
+   },
+   {
+    "type": "static",
+    "rule": "pierce",
+    "scope": "equipped"
+   }
+  ]
+ },
+ "Attack and Receive": {
+  "fx": [
+   {
+    "type": "trap",
+    "speed": 2,
+    "when": [
+     "damaged"
+    ],
+    "cond": [
+     {
+      "c": "event_by",
+      "who": "self"
+     }
+    ],
+    "do": [
+     {
+      "op": "damage",
+      "who": "opp",
+      "amount": 700
+     },
+     {
+      "op": "damage",
+      "who": "opp",
+      "amount": {
+       "mul": {
+        "count": "self.grave",
+        "filter": {
+         "name_is": "Attack and Receive"
+        }
+       },
+       "by": 300
+      }
+     }
+    ]
+   }
+  ]
+ },
+ "De-Fusion": {
+  "fx": [
+   {
+    "type": "spell",
+    "target": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "monsters",
+      "filter": {
+       "face_up": true,
+       "fusion": true
+      },
+      "n": 1,
+      "prompt": 168
+     }
+    ],
+    "do": [
+     {
+      "op": "custom",
+      "fn": "de_fusion"
+     }
+    ]
+   }
+  ]
+ },
+ "The Flute of Summoning Dragon": {
+  "fx": [
+   {
+    "type": "spell",
+    "cond": [
+     {
+      "c": "has",
+      "zone": "self.monsters",
+      "filter": {
+       "name_is": "Lord of D.",
+       "face_up": true
+      },
+      "n": 1
+     },
+     {
+      "c": "free_zone",
+      "who": "self"
+     },
+     {
+      "c": "has",
+      "zone": "self.hand",
+      "filter": {
+       "type": "monster",
+       "race": "Dragon"
+      },
+      "n": 1
+     }
+    ],
+    "do": [
+     {
+      "op": "select",
+      "as": "d",
+      "from": "self.hand",
+      "filter": {
+       "type": "monster",
+       "race": "Dragon"
+      },
+      "n": 2,
+      "prompt": 83,
+      "min": 1,
+      "auto": false
+     },
+     {
+      "op": "special_summon",
+      "what": "$d",
+      "pos": "atk",
+      "face_up": true
+     }
+    ]
+   }
+  ]
+ },
+ "Multiply": {
+  "fx": [
+   {
+    "type": "spell",
+    "cost": [
+     {
+      "op": "select",
+      "as": "k",
+      "from": "self.monsters",
+      "filter": {
+       "name_is": "Kuriboh",
+       "face_up": true
+      },
+      "n": 1,
+      "prompt": 154,
+      "cost": true
+     },
+     {
+      "op": "to_grave",
+      "what": "$k",
+      "reason": "tribute"
+     }
+    ],
+    "do": [
+     {
+      "op": "token",
+      "kind": "Kuriboh Token",
+      "n": "free",
+      "pos": "def"
+     }
+    ]
+   }
+  ]
+ }
+}

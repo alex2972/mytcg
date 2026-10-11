@@ -231,6 +231,8 @@ func activation_problem(p: int, c: DCard, idx: int, event: String, data: Diction
 		return "Already face-up."
 	if type in ["trap", "counter", "continuous_trap"] and event == "":
 		return "Wait for the right timing."
+	if type == "flip" and rule_active("no_flip_effects"):
+		return "Flip Effects are negated."
 	if type in ["trap", "counter", "continuous_trap"] and rule_active("no_trap"):
 		return "Trap Cards cannot be activated."
 	if type in ["spell", "equip", "field", "ritual_spell", "quickplay", "trap", "counter", "continuous_trap"] and duel.lockdown_until > duel.turn:
@@ -398,7 +400,11 @@ func stat_bonus(c: DCard, stat: String) -> int:
 					if _static_applies(src, m, c):
 						var pc := {"src": src, "controller": c.controller, "vars": {}, "event": {}}
 						var n := ops.select_candidates({"from": m["per"]["zone"], "filter": m["per"].get("filter", {})}, pc).size()
-						total += n * int(m["per"]["by"])
+						total += mini(n, int(m["per"].get("max_n", 1000))) * int(m["per"]["by"])
+				if m.get("half_atk", false) and stat == "atk" and _static_applies(src, m, c):
+					# Mirror Wall: half of the ATK the monster would otherwise have
+					@warning_ignore("integer_division")
+					total -= (int(duel.card_data(c).get("atk", 0)) + c.atk_bonus) / 2
 				if m.has("lp_rule") and stat == "atk" and _static_applies(src, m, c):
 					# Megamorph: double the original ATK while behind in Life Points, halve it while ahead
 					var mine: int = duel.side(c.controller).lp

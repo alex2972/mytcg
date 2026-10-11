@@ -143,6 +143,28 @@ static func run(fn: String, _step: Dictionary, ctx: Dictionary, fx: Fx):
 							if d.db.card_name(dc.idx) == nm:
 								d.banish_card(dc)
 						d.shuffle_deck(p2)
+		"de_fusion":
+			# De-Fusion: the Fusion Monster goes back to the Fusion Deck; if all its materials are in my Graveyard they are Special Summoned
+			var me3: int = ctx["controller"]
+			for c in ctx["vars"].get("t", []):
+				var recipe: Array = d.db.fusion_recipe(d.db.card_name(c.idx))
+				var on_field: bool = d.is_on_field(c)
+				d._detach(c)
+				if on_field:
+					d._leave_field_cleanup(c)
+				c.controller = c.owner
+				c.face_up = false
+				d.side(c.owner).extra.append(c)
+				d._emit("to_deck", {"player": c.owner, "uid": c.uid})
+				var picked := []
+				for need in recipe:
+					for g in d.side(me3).grave:
+						if d.db.card_name(g.idx) == need and not picked.has(g) and d.is_monster(g):
+							picked.append(g)
+							break
+				if not recipe.is_empty() and picked.size() == recipe.size() and (d.side(me3).monsters as Array).count(null) >= picked.size():
+					for g in picked:
+						d.special_summon(g, me3, "atk", true)
 		_:
 			push_warning("unknown custom effect: " + fn)
 	return null

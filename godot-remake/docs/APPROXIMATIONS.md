@@ -2,7 +2,7 @@
 
 Generated from `data/approximations.json` by `tools/list_approximations.py`. Do not edit by hand.
 
-57 cards and 6 rules.
+64 cards and 6 rules.
 
 ## Cards
 
@@ -14,12 +14,14 @@ Generated from `data/approximations.json` by `tools/list_approximations.py`. Do 
 | Big Shield Gardna | The Spell-negation half is missing (face-down, targeted by a Spell). The shift to Attack Position happens when the Battle Phase ends, not right after the Damage Step. | Spell targets in the chain link, and a post-Damage-Step window. |
 | Black Illusion Ritual | Relinquished's special effect is missing (it is only a 0/0 monster). | Implement Relinquished (equip and take over ATK/DEF). |
 | Blue-Eyes Toon Dragon | The 'attack directly while the opponent controls no Toon monster' rule is missing. | As Toon Summoned Skull. |
+| Ceremonial Bell | No effect: the hand reveal is only a display matter and needs an interface. | Show both hands while the card is face-up (board view). |
 | Chosen One | The Special Summon position is chosen before the opponent picks, not after. | Ask for the position after the reveal. |
 | Copycat | Copies the target's current ATK/DEF (with modifiers) instead of the original values. | A 'base stats' value that ignores mods and equips. |
 | Cyber Jar | Summon positions and the order in which the two players pick up cards are simplified. | Check the original's order and which player's monsters are summoned first. |
 | DNA Surgery | Monster Type icons in the interface do not change. | Use Duel.race_of in the card detail panel. |
 | Dark Necrofear | Only the special summon condition is in; the 'becomes an Equip Card and takes control' effect is missing. | Use become_equip plus a control link when destroyed. |
 | Dark Spirit of the Silent | The new attacker keeps the original target instead of choosing again; its position is flipped quietly. | Check the original's sequence. |
+| De-Fusion | The materials are always Special Summoned in Attack Position, and a Fusion Monster of either side may be selected without checking whose Graveyard holds the materials. | Ask for the position and use the owner's Graveyard. |
 | Destiny Board | The Spirit Message cards can still be played or Set by hand; only the board places them properly. | Forbid playing/Setting the Spirit Message cards manually. |
 | Dream Clown | Only triggers when the player changes its position, not when an effect does. | Fire position_changed from force_position too (with a flag for effect-caused changes). |
 | Earthshaker | The opponent's choice is labelled 'First/Second' instead of showing the two attributes. | Pass the chosen attribute names into the choice labels. |
@@ -27,10 +29,12 @@ Generated from `data/approximations.json` by `tools/list_approximations.py`. Do 
 | Fairy Box | The coin is tossed without the player calling Heads or Tails. | A 'call it' prompt before the toss. |
 | Fusion Gate | Only used through an effect button; the original may offer it automatically. | Compare with the original's interface. |
 | Gamble | Coin tossed without a call. | A 'call it' prompt before the toss. |
+| Garuda the Wind Spirit | The End Phase position change is not optional unless the opponent has no monster; the player must pick a monster when one exists. | Add a Cancel button to the selection. |
 | Gilasaurus | The 'treat as Special Summon' choice only marks the card as Special Summoned (the Normal Summon of the turn is still used). | Let the summon dialog offer Special Summon, which would not use the Normal Summon. |
 | Goddess of Whim | Coin tossed without a call. | A 'call it' prompt before the toss. |
 | Ground Collapse | Only zones on the opponent's side can be blocked, and an occupied choice moves to the next free zone automatically. | A zone-picker UI for either side. |
 | Gust | Triggers when any of my Spells is destroyed, not only when the opponent's card effect destroyed it. | Record who caused a destruction (effect owner) in the destroyed event. |
+| Infinite Dismissal | Destroys every Level 3 or lower monster summoned (Normal Summoned, Flip Summoned or Set) during the turn, including ones summoned before the trap was activated. | Only count monsters summoned after the activation. |
 | Insect Queen | The Insect Monster Token appears immediately, not at the end of the turn. | Create the token in the End Phase. |
 | Jam Breeding Machine | The restriction on summoning/special summoning monsters is missing; only the Slime Tokens are in. | Static rules for summon/flip/special summon limited to the controller. |
 | Jirai Gumo | Coin tossed without a call. | A 'call it' prompt before the toss. |
@@ -42,6 +46,7 @@ Generated from `data/approximations.json` by `tools/list_approximations.py`. Do 
 | Magical Hats | The two decoys are tokens; the original takes 2 non-monster cards out of the Deck. | Move two Spell/Trap cards from the Deck onto the field as 0/0 monsters, return them afterwards. |
 | Mask of Dispel | The card is only destroyed at the next Standby Phase after the selected Spell leaves the field. | A trigger on the selected card leaving the field. |
 | Metalmorph | The extra ATK when attacking (half of the target's ATK) is missing; only the +300/+300 is in. | A battle-time ATK bonus on the equipped monster (needs the damage-step window). |
+| Mirror Wall | The halving uses the printed ATK plus permanent bonuses, ignoring temporary changes. | Apply the halving after all other ATK modifiers. |
 | Morphing Jar #2 | The card count each player picks up is an interpretation of an ambiguous card text. | Check how the original counts. |
 | Patrol Robo | No effect at all (the peek at a Set card needs an interface). | A 'look at 1 Set card' prompt shown to the player during the Standby Phase. |
 | Polymerization | 'Goddess with the Third Eye' / 'Versago the Destroyer' can be picked for more than one material slot. | Allow at most one substitute per Fusion. |
@@ -58,6 +63,8 @@ Generated from `data/approximations.json` by `tools/list_approximations.py`. Do 
 | Soul of Purity and Light | The -300 ATK to the opponent's monsters during their Battle Phase is missing. | A static modifier that depends on the current phase/turn. |
 | Spear Cretin | Also triggers if it was face-up without ever being flipped. | Remember that the card was flipped (survive the grave transition). |
 | Spirit of Flames | The +300 ATK during my Battle Phase is missing. | A static modifier that depends on the current phase/turn. |
+| The Eye of Truth | The hand reveal is missing (interface); only the +1000 LP effect is in. | Show the other player's hand while the card is face-up (board view). |
+| The Flute of Summoning Dragon | Needs a free Monster Card Zone for every Dragon; extra ones fail silently. | Limit the selection to the number of free zones. |
 | The Immortal of Thunder | The -5000 LP also triggers if it was face-up without ever being flipped (e.g. Normal Summoned face-up). | Remember that the card was flipped across the grave transition (as for Spear Cretin). |
 | The Rock Spirit | The +300 ATK during the opponent's Battle Phase is missing. | A static modifier that depends on the current phase/turn. |
 | Time Wizard | Coin tossed without a call. | A 'call it' prompt before the toss. |

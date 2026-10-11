@@ -124,6 +124,8 @@ const TOKENS := {
 		"name": {"eng": "Slime Token"}, "desc": {"eng": "Aqua / WATER / Level 1."}},
 	"Hat Token": {"type": "monster", "atk": 0, "def": 0, "level": 1, "kind": 18, "attribute": 2, "category": 0, "number": 0,
 		"name": {"eng": "Hat"}, "desc": {"eng": "A decoy created by Magical Hats. Destroyed at the end of the Battle Phase."}},
+	"Kuriboh Token": {"type": "monster", "atk": 300, "def": 200, "level": 1, "kind": 3, "attribute": 2, "category": 0, "number": 0,
+		"name": {"eng": "Kuriboh Token"}, "desc": {"eng": "Fiend / DARK / Level 1. Cannot be used as a Tribute."}},
 	"Insect Monster Token": {"type": "monster", "atk": 100, "def": 100, "level": 1, "kind": 10, "attribute": 5, "category": 0, "number": 0,
 		"name": {"eng": "Insect Monster Token"}, "desc": {"eng": "Insect / EARTH / Level 1."}},
 }
@@ -193,6 +195,9 @@ func zone_blocked(owner: int, zone: int) -> bool:
 func race_of(c: DCard) -> int:
 	if not is_monster(c):
 		return 0
+	for eq in c.equips:                          # Dragonic Attack: the equipped monster is treated as another Type
+		if eq.equip_mod.has("race"):
+			return int(eq.equip_mod["race"])
 	for p in 2:
 		for src in fx.cards_controlled(p):
 			if src.face_up and src.flags.has("dna_race"):
@@ -240,8 +245,9 @@ func _begin_turn() -> void:
 		_begin_turn()
 		return
 	normal_summoned = false
-	for c in monsters_of(turn_player):
-		c.reset_turn_flags()
+	for p in 2:
+		for c in monsters_of(p):       # both sides: a monster taken with Change of Heart must not keep its old "already attacked"
+			c.reset_turn_flags()
 	_emit("turn", {"turn": turn, "player": turn_player})
 	phase = "draw"
 	_emit("phase", {"phase": phase, "player": turn_player})
@@ -313,6 +319,8 @@ func skip_phase(ph: String) -> void:
 		_emit("phase", {"phase": phase, "player": turn_player})
 
 func hand_excess(p: int) -> int:
+	if fx.rule_active("no_hand_limit"):         # Infinite Cards
+		return 0
 	return maxi(0, (sides[p].hand as Array).size() - HAND_LIMIT)
 
 ## Ends the turn. If the hand is over the limit, `discards` must name (by uid) exactly the excess cards.
@@ -345,6 +353,12 @@ func _finish_turn(p: int, discards: Array) -> void:
 	_begin_turn()
 
 func _end_of_turn_cleanup() -> void:
+	if has_turn_rule("inf_dismissal", 0) or has_turn_rule("inf_dismissal", 1):
+		# Infinite Dismissal: Level 3 or lower monsters summoned (not Special Summoned) this turn are destroyed
+		for p in 2:
+			for c in monsters_of(p):
+				if c.summon_turn == turn and level_of(c) <= 3 and not bool(c.flags.get("special_summoned", false)) and c.token == "":
+					destroy_card(c, "effect")
 	for p in 2:
 		for c in monsters_of(p):
 			if c.flags.get("destroy_at_end", false) or c.flags.get("destroy_at_battle_end", false):
@@ -355,6 +369,7 @@ func _end_of_turn_cleanup() -> void:
 				send_to_grave(c, "returned")
 	for c in cards.values():
 		c.expire_mods("end_turn")
+		c.expire_mods("turn:%d" % turn)
 		if c.flags.get("control_until", "") == "end_turn":
 			c.flags.erase("control_until")
 			take_control(c, c.owner, "forever")
@@ -432,6 +447,12 @@ func send_to_grave(c: DCard, reason: String) -> void:
 		_leave_field_cleanup(c)
 	if c.token != "":
 		_emit("token_gone", {"player": from_ctrl, "uid": c.uid})
+		return
+	if fx.rule_active("banish_graveyard"):        # Banisher of the Light: removed from play instead of the Graveyard
+		banish_card(c)
+		if reason.begins_with("destroyed"):
+			_emit("destroy", {"player": c.owner, "uid": c.uid, "reason": reason})
+			fx.window("destroyed", {"player": from_ctrl, "uid": c.uid, "reason": reason, "killer": killer_uid, "pos": was_pos, "was_face_up": was_face_up})
 		return
 	c.controller = c.owner
 	c.face_up = true
@@ -699,8 +720,8 @@ func summon(p: int, c: DCard, tributes: Array = [], zone := -1, set_face_down :=
 	for t in tributes:
 		if not (s.monsters as Array).has(t):
 			return "Tributes must be your monsters on the field."
-		if t.token == "Sheep Token":
-			return "Sheep Tokens cannot be used as Tributes."
+		if t.token == "Sheep Token" or t.token == "Kuriboh Token":
+			return "%ss cannot be used as Tributes." % t.token
 	if zone == -1:
 		zone = free_zone(s.monsters)
 		if zone == -1 and need > 0:
@@ -713,7 +734,8 @@ func summon(p: int, c: DCard, tributes: Array = [], zone := -1, set_face_down :=
 		var z: int = (s.monsters as Array).find(t)
 		s.monsters[z] = null
 		_leave_field_cleanup(t)
-		s.grave.append(t)
+		t.controller = t.owner
+		sides[t.owner].grave.append(t)      # a monster I took control of goes to its owner's Graveyard
 		t.face_up = true
 		_emit("tribute", {"player": p, "uid": t.uid})
 	s.hand.erase(c)
@@ -829,8 +851,11 @@ func can_attack(p: int, c: DCard) -> String:
 		return "You can only attack during the Battle Phase."
 	if not (sides[p].monsters as Array).has(c):
 		return "Select one of your monsters."
-	if not c.face_up or c.pos != "atk":
+	if not c.face_up or (c.pos != "atk" and not fx.rule_active("attack_in_def", c)):
 		return "Only face-up monsters in Attack Position can attack."
+	var binder := card_by_uid(int(c.flags.get("cannot_attack_by", -1)))
+	if binder != null and is_on_field(binder) and binder.face_up:
+		return "A card effect prevents this monster from attacking."
 	if c.attacked and not (fx.rule_active("double_attack", c) and attackers_this_turn.count(c.uid) < 2):
 		return "This monster has already attacked this turn."
 	if c.flags.get("cannot_attack", false) or fx.rule_active("no_attack", c):
