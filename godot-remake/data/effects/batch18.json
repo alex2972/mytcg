@@ -1,0 +1,34 @@
+{
+  "_about": "Batch 18: Bait Doll, forced Trap activation and recycling.",
+  "Bait Doll": {
+    "fx": [
+      {
+        "type": "spell",
+        "target": [
+          {
+            "op": "select",
+            "as": "t",
+            "from": "spells",
+            "filter": {
+              "face_up": false
+            },
+            "n": 1,
+            "auto": false,
+            "prompt": 22
+          }
+        ],
+        "do": [
+          {
+            "op": "custom",
+            "fn": "bait_doll"
+          },
+          {
+            "op": "to_deck",
+            "what": "src",
+            "where": "shuffle"
+          }
+        ]
+      }
+    ]
+  }
+}

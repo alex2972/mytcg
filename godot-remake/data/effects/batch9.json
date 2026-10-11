@@ -1,57 +1,643 @@
 {
-"_about": "Batch 9: fusion substitutes, battle-graveyard revivals, dice/graveyard traps, Toon Dragon, misc monsters.",
-
-"Goddess with the Third Eye": {"fx": []},
-"Versago the Destroyer": {"fx": []},
-"Blind Destruction": {"fx": [
-  {"type": "continuous_trap", "speed": 2, "stay": true, "when": ["summoned", "special_summoned", "flip_summoned", "attack_declared", "activated_spell", "activated_trap", "standby_phase", "end_phase"], "do": []},
-  {"type": "trigger_forced", "when": "standby_phase", "cond": [{"c": "turn", "is": "self"}],
-   "do": [{"op": "dice", "as": "roll"},
-          {"op": "if", "cond": [{"c": "var_ge", "name": "roll", "v": 6}],
-           "then": [{"op": "destroy", "what": {"from": "monsters", "filter": {"face_up": true, "level_min": 6}}}],
-           "else": [{"op": "destroy", "what": {"from": "monsters", "filter": {"level_eq": {"var": "roll"}}}}]}]}]},
-"Skull Lair": {"fx": [{"type": "trap", "speed": 2, "when": ["summoned", "special_summoned", "flip_summoned", "attack_declared", "activated_spell", "activated_trap", "standby_phase", "end_phase"],
-  "cond": [{"c": "has", "zone": "self.grave", "n": 1}],
-  "cost": [{"op": "select", "as": "c", "from": "self.grave", "n": 12, "min": 1, "auto": false, "cost": true, "prompt": 154}, {"op": "banish", "what": "$c"}],
-  "do": [{"op": "select", "as": "t", "from": "monsters", "filter": {"face_up": true, "level_eq": {"var_count": "c"}}, "n": 1, "min": 0, "required": false, "prompt": 98}, {"op": "destroy", "what": "$t"}]}]},
-"Chain Destruction": {"fx": [{"type": "trap", "speed": 2, "when": ["summoned", "special_summoned"], "cond": [{"c": "event_card", "filter": {"atk_max": 2000}}],
-  "do": [{"op": "to_grave", "what": {"from": ["event.hand", "event.deck"], "filter": {"same_name_as_event": true}}, "reason": "effect"}, {"op": "shuffle", "who": "event"}]}]},
-"Time Machine": {"fx": [{"type": "trap", "speed": 2, "when": ["destroyed"], "cond": [{"c": "event_reason", "is": "destroyed:battle"}, {"c": "event_card", "filter": {"type": "monster"}}, {"c": "free_zone", "who": "self"}],
-  "do": [{"op": "special_summon", "what": "event_card", "pos_event": true, "face_up": true}]}]},
-"Dream Clown": {"fx": [{"type": "trigger_forced", "when": "position_changed", "cond": [{"c": "event_src"}, {"c": "event_pos", "is": "def"}, {"c": "has", "zone": "opp.monsters", "n": 1}],
-  "do": [{"op": "select", "as": "t", "from": "opp.monsters", "n": 1, "prompt": 109}, {"op": "destroy", "what": "$t"}]}]},
-"Red-Moon Baby": {"fx": [{"type": "trigger_forced", "when": "destroyed", "cond": [{"c": "killer_is_src"}, {"c": "free_zone", "who": "self"}],
-  "do": [{"op": "special_summon", "what": "event_card", "pos": "atk", "face_up": true}]}]},
-"Kycoo the Ghost Destroyer": {"fx": [{"type": "trigger", "when": "damaged", "cond": [{"c": "source_is_src"}],
-  "do": [{"op": "select", "as": "t", "from": "opp.grave", "n": 2, "min": 0, "required": false, "auto": false, "prompt": 22}, {"op": "banish", "what": "$t"}]}]},
-"Electromagnetic Bagworm": {"fx": [
-  {"type": "flip", "when": "flipped", "cond": [{"c": "event_src"}, {"c": "free_zone", "who": "self"}],
-   "do": [{"op": "select", "as": "t", "from": "opp.monsters", "filter": {"race": "Machine"}, "n": 1, "min": 0, "required": false, "prompt": 119},
-          {"op": "take_control", "what": "$t", "until": "end_turn"}]},
-  {"type": "trigger_forced", "when": "destroyed", "zone": "grave", "cond": [{"c": "event_src"}, {"c": "event_reason", "is": "destroyed:battle"}],
-   "do": [{"op": "mod", "what": "killer", "atk": -500, "def": -500, "until": "forever"}]}]},
-"Jam Breeding Machine": {"fx": [{"type": "spell", "stay": true, "do": []},
-  {"type": "trigger_forced", "when": "standby_phase", "cond": [{"c": "turn", "is": "self"}, {"c": "free_zone", "who": "self"}],
-   "do": [{"op": "token", "kind": "Slime Token", "n": 1, "pos": "atk"}]}]},
-"Revival Jam": {"fx": [
-  {"type": "trigger_forced", "when": "sent_to_grave", "zone": "grave", "cond": [{"c": "event_src"}, {"c": "event_reason", "is": "destroyed:battle"}],
-   "do": [{"op": "set_flag", "what": "src", "name": "jam_pending", "value": true}]},
-  {"type": "trigger_forced", "when": "standby_phase", "zone": "grave", "cond": [{"c": "turn", "is": "self"}, {"c": "flag", "name": "jam_pending", "is": true}, {"c": "free_zone", "who": "self"}, {"c": "lp", "who": "self", "op": ">", "v": 1000}],
-   "do": [{"op": "set_flag", "what": "src", "name": "jam_pending", "value": false}, {"op": "yesno", "as": "y", "prompt": 269},
-          {"op": "if", "cond": [{"c": "var_true", "name": "y"}], "then": [{"op": "pay_lp", "amount": 1000}, {"op": "special_summon", "what": "src", "pos": "def", "face_up": true}]}]}]},
-"Spear Cretin": {"fx": [{"type": "trigger_forced", "when": "sent_to_grave", "zone": "grave", "cond": [{"c": "event_src"}, {"c": "was_on_field"}, {"c": "was_face_up"}],
-  "do": [{"op": "select", "as": "a", "from": "self.grave", "filter": {"type": "monster", "not_src": true}, "n": 1, "min": 0, "required": false, "auto": false, "prompt": 83},
-         {"op": "special_summon", "what": "$a", "pos": "atk", "face_up": true},
-         {"op": "select", "as": "b", "from": "opp.grave", "filter": {"type": "monster"}, "n": 1, "min": 0, "required": false, "auto": false, "chooser": "opp", "prompt": 83},
-         {"op": "special_summon", "what": "$b", "to": "opp", "pos": "atk", "face_up": true}]}]},
-"Spirit of Flames": {"fx": [
-  {"type": "static", "rule": "no_normal_summon", "scope": "self"},
-  {"type": "ignition", "zone": "hand", "cond": [{"c": "free_zone", "who": "self"}],
-   "cost": [{"op": "select", "as": "c", "from": "self.grave", "filter": {"type": "monster", "attribute": "FIRE"}, "n": 1, "cost": true, "prompt": 154}, {"op": "banish", "what": "$c"}],
-   "do": [{"op": "special_summon", "what": "src", "pos": "atk", "face_up": true}]}]},
-"Blue-Eyes Toon Dragon": {"fx": [
-  {"type": "static", "rule": "summon_needs", "name": "Toon World"},
-  {"type": "static", "rule": "no_attack_new", "scope": "self"},
-  {"type": "trigger_forced", "when": "attack_declared", "cond": [{"c": "attacker_is_src"}], "do": [{"op": "pay_lp", "amount": 500}]},
-  {"type": "trigger_forced", "when": "sent_to_grave", "cond": [{"c": "event_card", "filter": {"name_has": "Toon World"}}], "do": [{"op": "destroy", "what": "src"}]}]}
+  "_about": "Batch 9: fusion substitutes, battle-graveyard revivals, dice/graveyard traps, Toon Dragon, misc monsters.",
+  "Goddess with the Third Eye": {
+    "fx": []
+  },
+  "Versago the Destroyer": {
+    "fx": []
+  },
+  "Blind Destruction": {
+    "fx": [
+      {
+        "type": "continuous_trap",
+        "speed": 2,
+        "stay": true,
+        "when": [
+          "summoned",
+          "special_summoned",
+          "flip_summoned",
+          "attack_declared",
+          "activated_spell",
+          "activated_trap",
+          "standby_phase",
+          "end_phase"
+        ],
+        "do": []
+      },
+      {
+        "type": "trigger_forced",
+        "when": "standby_phase",
+        "cond": [
+          {
+            "c": "turn",
+            "is": "self"
+          }
+        ],
+        "do": [
+          {
+            "op": "dice",
+            "as": "roll"
+          },
+          {
+            "op": "if",
+            "cond": [
+              {
+                "c": "var_ge",
+                "name": "roll",
+                "v": 6
+              }
+            ],
+            "then": [
+              {
+                "op": "destroy",
+                "what": {
+                  "from": "monsters",
+                  "filter": {
+                    "face_up": true,
+                    "level_min": 6
+                  }
+                }
+              }
+            ],
+            "else": [
+              {
+                "op": "destroy",
+                "what": {
+                  "from": "monsters",
+                  "filter": {
+                    "level_eq": {
+                      "var": "roll"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "Skull Lair": {
+    "fx": [
+      {
+        "type": "trap",
+        "speed": 2,
+        "when": [
+          "summoned",
+          "special_summoned",
+          "flip_summoned",
+          "attack_declared",
+          "activated_spell",
+          "activated_trap",
+          "standby_phase",
+          "end_phase"
+        ],
+        "cond": [
+          {
+            "c": "has",
+            "zone": "self.grave",
+            "n": 1
+          }
+        ],
+        "cost": [
+          {
+            "op": "select",
+            "as": "c",
+            "from": "self.grave",
+            "n": 12,
+            "min": 1,
+            "auto": false,
+            "cost": true,
+            "prompt": 154
+          },
+          {
+            "op": "banish",
+            "what": "$c"
+          }
+        ],
+        "do": [
+          {
+            "op": "select",
+            "as": "t",
+            "from": "monsters",
+            "filter": {
+              "face_up": true,
+              "level_eq": {
+                "var_count": "c"
+              }
+            },
+            "n": 1,
+            "min": 0,
+            "required": false,
+            "prompt": 98
+          },
+          {
+            "op": "destroy",
+            "what": "$t"
+          }
+        ]
+      }
+    ]
+  },
+  "Chain Destruction": {
+    "fx": [
+      {
+        "type": "trap",
+        "speed": 2,
+        "when": [
+          "summoned",
+          "special_summoned"
+        ],
+        "cond": [
+          {
+            "c": "event_card",
+            "filter": {
+              "atk_max": 2000
+            }
+          }
+        ],
+        "do": [
+          {
+            "op": "to_grave",
+            "what": {
+              "from": [
+                "event.hand",
+                "event.deck"
+              ],
+              "filter": {
+                "same_name_as_event": true
+              }
+            },
+            "reason": "effect"
+          },
+          {
+            "op": "shuffle",
+            "who": "event"
+          }
+        ]
+      }
+    ]
+  },
+  "Time Machine": {
+    "fx": [
+      {
+        "type": "trap",
+        "speed": 2,
+        "when": [
+          "destroyed"
+        ],
+        "cond": [
+          {
+            "c": "event_reason",
+            "is": "destroyed:battle"
+          },
+          {
+            "c": "event_card",
+            "filter": {
+              "type": "monster"
+            }
+          },
+          {
+            "c": "free_zone",
+            "who": "self"
+          }
+        ],
+        "do": [
+          {
+            "op": "special_summon",
+            "what": "event_card",
+            "pos_event": true,
+            "face_up": true
+          }
+        ]
+      }
+    ]
+  },
+  "Dream Clown": {
+    "fx": [
+      {
+        "type": "trigger_forced",
+        "when": "position_changed",
+        "cond": [
+          {
+            "c": "event_src"
+          },
+          {
+            "c": "event_pos",
+            "is": "def"
+          },
+          {
+            "c": "has",
+            "zone": "opp.monsters",
+            "n": 1
+          }
+        ],
+        "do": [
+          {
+            "op": "select",
+            "as": "t",
+            "from": "opp.monsters",
+            "n": 1,
+            "prompt": 109
+          },
+          {
+            "op": "destroy",
+            "what": "$t"
+          }
+        ]
+      }
+    ]
+  },
+  "Red-Moon Baby": {
+    "fx": [
+      {
+        "type": "trigger_forced",
+        "when": "destroyed",
+        "cond": [
+          {
+            "c": "killer_is_src"
+          },
+          {
+            "c": "free_zone",
+            "who": "self"
+          }
+        ],
+        "do": [
+          {
+            "op": "special_summon",
+            "what": "event_card",
+            "pos": "atk",
+            "face_up": true
+          }
+        ]
+      }
+    ]
+  },
+  "Kycoo the Ghost Destroyer": {
+    "fx": [
+      {
+        "type": "trigger",
+        "when": "damaged",
+        "cond": [
+          {
+            "c": "source_is_src"
+          }
+        ],
+        "do": [
+          {
+            "op": "select",
+            "as": "t",
+            "from": "opp.grave",
+            "n": 2,
+            "min": 0,
+            "required": false,
+            "auto": false,
+            "prompt": 22
+          },
+          {
+            "op": "banish",
+            "what": "$t"
+          }
+        ]
+      }
+    ]
+  },
+  "Electromagnetic Bagworm": {
+    "fx": [
+      {
+        "type": "flip",
+        "when": "flipped",
+        "cond": [
+          {
+            "c": "event_src"
+          },
+          {
+            "c": "free_zone",
+            "who": "self"
+          }
+        ],
+        "do": [
+          {
+            "op": "select",
+            "as": "t",
+            "from": "opp.monsters",
+            "filter": {
+              "race": "Machine"
+            },
+            "n": 1,
+            "min": 0,
+            "required": false,
+            "prompt": 119
+          },
+          {
+            "op": "take_control",
+            "what": "$t",
+            "until": "end_turn"
+          }
+        ]
+      },
+      {
+        "type": "trigger_forced",
+        "when": "destroyed",
+        "zone": "grave",
+        "cond": [
+          {
+            "c": "event_src"
+          },
+          {
+            "c": "event_reason",
+            "is": "destroyed:battle"
+          }
+        ],
+        "do": [
+          {
+            "op": "mod",
+            "what": "killer",
+            "atk": -500,
+            "def": -500,
+            "until": "forever"
+          }
+        ]
+      }
+    ]
+  },
+  "Jam Breeding Machine": {
+    "fx": [
+      {
+        "type": "spell",
+        "stay": true,
+        "do": []
+      },
+      {
+        "type": "static",
+        "rule": "breeding_machine"
+      },
+      {
+        "type": "trigger_forced",
+        "when": "standby_phase",
+        "cond": [
+          {
+            "c": "turn",
+            "is": "self"
+          },
+          {
+            "c": "free_zone",
+            "who": "self"
+          }
+        ],
+        "do": [
+          {
+            "op": "token",
+            "kind": "Slime Token",
+            "n": 1,
+            "pos": "atk"
+          }
+        ]
+      }
+    ]
+  },
+  "Revival Jam": {
+    "fx": [
+      {
+        "type": "trigger_forced",
+        "when": "sent_to_grave",
+        "zone": "grave",
+        "cond": [
+          {
+            "c": "event_src"
+          },
+          {
+            "c": "event_reason",
+            "is": "destroyed:battle"
+          }
+        ],
+        "do": [
+          {
+            "op": "set_flag",
+            "what": "src",
+            "name": "jam_pending",
+            "value": true
+          }
+        ]
+      },
+      {
+        "type": "trigger_forced",
+        "when": "standby_phase",
+        "zone": "grave",
+        "cond": [
+          {
+            "c": "turn",
+            "is": "self"
+          },
+          {
+            "c": "flag",
+            "name": "jam_pending",
+            "is": true
+          },
+          {
+            "c": "free_zone",
+            "who": "self"
+          },
+          {
+            "c": "lp",
+            "who": "self",
+            "op": ">",
+            "v": 1000
+          }
+        ],
+        "do": [
+          {
+            "op": "set_flag",
+            "what": "src",
+            "name": "jam_pending",
+            "value": false
+          },
+          {
+            "op": "yesno",
+            "as": "y",
+            "prompt": 269
+          },
+          {
+            "op": "if",
+            "cond": [
+              {
+                "c": "var_true",
+                "name": "y"
+              }
+            ],
+            "then": [
+              {
+                "op": "pay_lp",
+                "amount": 1000
+              },
+              {
+                "op": "special_summon",
+                "what": "src",
+                "pos": "def",
+                "face_up": true
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "Spear Cretin": {
+    "fx": [
+      {
+        "type": "trigger_forced",
+        "when": "sent_to_grave",
+        "zone": "grave",
+        "cond": [
+          {
+            "c": "event_src"
+          },
+          {
+            "c": "was_on_field"
+          },
+          {
+            "c": "was_face_up"
+          },
+          {
+            "c": "event_was_flipped"
+          }
+        ],
+        "do": [
+          {
+            "op": "select",
+            "as": "a",
+            "from": "self.grave",
+            "filter": {
+              "type": "monster",
+              "not_src": true
+            },
+            "n": 1,
+            "min": 0,
+            "required": false,
+            "auto": false,
+            "prompt": 83
+          },
+          {
+            "op": "special_summon",
+            "what": "$a",
+            "pos": "atk",
+            "face_up": true
+          },
+          {
+            "op": "select",
+            "as": "b",
+            "from": "opp.grave",
+            "filter": {
+              "type": "monster"
+            },
+            "n": 1,
+            "min": 0,
+            "required": false,
+            "auto": false,
+            "chooser": "opp",
+            "prompt": 83
+          },
+          {
+            "op": "special_summon",
+            "what": "$b",
+            "to": "opp",
+            "pos": "atk",
+            "face_up": true
+          }
+        ]
+      }
+    ]
+  },
+  "Spirit of Flames": {
+    "fx": [
+      {
+        "type": "static",
+        "rule": "no_normal_summon",
+        "scope": "self"
+      },
+      {
+        "type": "ignition",
+        "zone": "hand",
+        "cond": [
+          {
+            "c": "free_zone",
+            "who": "self"
+          }
+        ],
+        "cost": [
+          {
+            "op": "select",
+            "as": "c",
+            "from": "self.grave",
+            "filter": {
+              "type": "monster",
+              "attribute": "FIRE"
+            },
+            "n": 1,
+            "cost": true,
+            "prompt": 154
+          },
+          {
+            "op": "banish",
+            "what": "$c"
+          }
+        ],
+        "do": [
+          {
+            "op": "special_summon",
+            "what": "src",
+            "pos": "atk",
+            "face_up": true
+          }
+        ]
+      }
+    ]
+  },
+  "Blue-Eyes Toon Dragon": {
+    "fx": [
+      {
+        "type": "static",
+        "rule": "summon_needs",
+        "name": "Toon World"
+      },
+      {
+        "type": "static",
+        "rule": "no_attack_new",
+        "scope": "self"
+      },
+      {
+        "type": "trigger_forced",
+        "when": "attack_declared",
+        "cond": [
+          {
+            "c": "attacker_is_src"
+          }
+        ],
+        "do": [
+          {
+            "op": "pay_lp",
+            "amount": 500
+          }
+        ]
+      },
+      {
+        "type": "trigger_forced",
+        "when": "sent_to_grave",
+        "cond": [
+          {
+            "c": "event_card",
+            "filter": {
+              "name_has": "Toon World"
+            }
+          }
+        ],
+        "do": [
+          {
+            "op": "destroy",
+            "what": "src"
+          }
+        ]
+      }
+    ]
+  }
 }

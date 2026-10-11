@@ -74,6 +74,8 @@ func zone_cards(spec: String, ctx: Dictionary) -> Array:
 
 func matches(c: DCard, f: Dictionary, ctx: Dictionary) -> bool:
 	var d: Dictionary = duel.card_data(c)
+	if f.get("tribute_legal", false) and c.token in ["Sheep Token", "Kuriboh Token"]:
+		return false
 	if f.has("face_up") and c.face_up != bool(f["face_up"]):
 		return false
 	if f.has("pos") and c.pos != f["pos"]:
@@ -96,7 +98,7 @@ func matches(c: DCard, f: Dictionary, ctx: Dictionary) -> bool:
 		var list: Array = a if a is Array else [a]
 		var ok := false
 		for x in list:
-			if int(d.get("attribute", 0)) == attr_id(x):
+			if duel.attribute_of(c) == attr_id(x):
 				ok = true
 		if not ok:
 			return false
@@ -148,7 +150,7 @@ func matches(c: DCard, f: Dictionary, ctx: Dictionary) -> bool:
 		return false
 	if f.has("fusion_mat") and bool(c.flags.get("fusion_mat", false)) != bool(f["fusion_mat"]):
 		return false
-	if f.has("attr_var") and int(d.get("attribute", 0)) != int(ctx["vars"].get(str(f["attr_var"]), -2)) + 1:
+	if f.has("attr_var") and duel.attribute_of(c) != int(ctx["vars"].get(str(f["attr_var"]), -2)) + 1:
 		return false
 	if f.get("race_of_src_flag", false) and (not ctx.has("src") or duel.race_of(c) != int(ctx["src"].flags.get("chosen_race", -1))):
 		return false
@@ -184,8 +186,13 @@ func select_candidates(step: Dictionary, ctx: Dictionary) -> Array:
 	var from = step.get("from", "field")
 	var specs: Array = from if from is Array else [from]
 	for spec in specs:
+		var replaced: bool = str(spec) == "self.grave" and step.get("cost", false) and duel.has_turn_rule("spirit_elimination", ctx["controller"]) and _selection_is_banish_cost(step, ctx)
 		var pool: Array = (ctx["vars"].get(str(spec).substr(1), []) as Array) if str(spec).begins_with("$") else zone_cards(str(spec), ctx)
+		if replaced:
+			pool = pool.filter(func(c): return not duel.is_monster(c)) + duel.monsters_of(ctx["controller"])
 		for c in pool:
+			if replaced and duel.is_monster(c) and not c.face_up and (f.has("attribute") or f.has("race")):
+				continue
 			if matches(c, f, ctx) and not out.has(c):
 				out.append(c)
 	if not step.get("cost", false) and step.get("pick", "") == "" and not step.get("random", false) and fx.has_untargetable():
@@ -271,7 +278,10 @@ func val(x, ctx: Dictionary) -> int:
 		if x.has("stat"):
 			var total := 0
 			for c in ctx["vars"].get(x.get("of", ""), []):
-				total += duel.atk_of(c) if x["stat"] == "atk" else duel.def_of(c) if x["stat"] == "def" else int(duel.card_data(c).get("level", 0))
+				if x.get("original", false):
+					total += int(duel.card_data(c).get(x["stat"], 0))
+				else:
+					total += duel.atk_of(c) if x["stat"] == "atk" else duel.def_of(c) if x["stat"] == "def" else int(duel.card_data(c).get("level", 0))
 			return total
 		if x.has("lp"):
 			return duel.side(who(x["lp"], ctx)).lp
@@ -345,6 +355,17 @@ func conditions_ok(conds: Array, ctx: Dictionary, activation := false) -> String
 func _cond(c: Dictionary, ctx: Dictionary) -> bool:
 	var me: int = ctx["controller"]
 	match c.get("c", ""):
+		"inspection_source": return not ctx["event"].has("inspection") or int(ctx["event"]["inspection"]) == ctx["src"].uid
+		"manga_possible": return FxCustom.manga_possible(duel, ctx["src"])
+		"imitation_possible": return not FxCustom.imitation_materials(duel, me).is_empty()
+		"makiu_possible": return not FxCustom.makiu_monsters(duel, me).is_empty() and not duel.has_turn_rule("battle_entered", me)
+		"procedure_possible": return not FxCustom.procedure_materials(duel, ctx["src"], c["kind"]).is_empty()
+		"spell_zone": return duel.free_zone(duel.side(me).spells) != -1
+		"labyrinth_possible":
+			for shadow in duel.side(me).deck:
+				if duel.db.card_name(shadow.idx) == "Wall Shadow" and FxCustom.procedure_materials(duel, shadow, "wall_shadow").has(ctx["src"].equipped_to):
+					return true
+			return false
 		"has":
 			var step := {"from": c.get("zone", "field"), "filter": c.get("filter", {})}
 			return select_candidates(step, ctx).size() >= int(c.get("n", 1))
@@ -374,6 +395,7 @@ func _cond(c: Dictionary, ctx: Dictionary) -> bool:
 		"var_nonempty": return not (ctx["vars"].get(c.get("name", ""), []) as Array).is_empty()
 		"summoned_this_turn": return ctx["src"].summon_turn == duel.turn
 		"was_flipped_by_battle": return bool(ctx["event"].get("by_battle", false))
+		"event_was_flipped": return bool(ctx["event"].get("was_flipped", false))
 		"destroyed_by_opp_effect": return int(ctx["event"].get("by", -1)) == 1 - me
 		"chain_top_card": return not fx.chain.is_empty() and matches(fx.chain.back()["card"], c.get("filter", {}), ctx)
 		"chain_top_single_monster_target": return chain_top_single_monster_target(ctx)
@@ -383,7 +405,8 @@ func _cond(c: Dictionary, ctx: Dictionary) -> bool:
 		"event_reason": return str(ctx["event"].get("reason", "")) == str(c.get("is", ""))
 		"was_on_field": return bool(ctx["event"].get("was_on_field", false))
 		"counter": return cmp(int(ctx["src"].flags.get(c.get("name", ""), 0)), c.get("op", ">="), int(c.get("v", 0)))
-		"free_zone": return duel.free_zone(duel.side(who(c.get("who", "self"), ctx)).monsters) != -1
+		"free_zone": return duel.side(who(c.get("who", "self"), ctx)).monsters.count(null) >= int(c.get("n", 1))
+		"summon_unused": return not duel.summons_this_turn[who(c.get("who", "self"), ctx)]
 		"attacker_atk": return duel.card_by_uid(int(ctx["event"].get("attacker", -1))) != null
 		"ritual_possible": return ritual_possible(me, str(c.get("monster", "")), int(c.get("level", 1)))
 		"fusion_possible": return not fusion_candidates(me).is_empty()
@@ -418,6 +441,10 @@ func _cond(c: Dictionary, ctx: Dictionary) -> bool:
 func accept(p: Dictionary, answer) -> String:
 	var t: Dictionary = p["_task"]
 	match p["type"]:
+		"presentation":
+			if answer != true:
+				return "Wait for the roll animation."
+			fx.pending = {}
 		"select":
 			var uids: Array = answer if answer is Array else [answer]
 			var cands: Array = p["candidates"]
@@ -428,6 +455,14 @@ func accept(p: Dictionary, answer) -> String:
 				if not cands.has(u) or cards.has(duel.card_by_uid(u)):
 					return "Invalid selection."
 				cards.append(duel.card_by_uid(u))
+			if p.get("banish_intent", false):
+				var removals := [0, 0]
+				for c in cards:
+					if duel.is_monster(c) and duel.side(c.owner).grave.has(c) and duel.has_turn_rule("spirit_elimination", c.owner):
+						removals[c.owner] += 1
+				for owner in 2:
+					if removals[owner] > duel.monsters_of(owner).size():
+						return "Not enough monsters on the field to remove as substitutes."
 			if int(p.get("sum_level_min", 0)) > 0:
 				var total := 0
 				for c in cards:
@@ -504,6 +539,16 @@ func tg(step: Dictionary, ctx: Dictionary) -> Array:
 	return out
 
 func run(step: Dictionary, ctx: Dictionary):
+	var previous: DCard = duel.effect_source
+	var previous_player: int = duel.effect_player
+	duel.effect_player = ctx["controller"]
+	duel.effect_source = ctx["src"]
+	var result = _run(step, ctx)
+	duel.effect_source = previous
+	duel.effect_player = previous_player
+	return result
+
+func _run(step: Dictionary, ctx: Dictionary):
 	var me: int = ctx["controller"]
 	var op: String = step.get("op", "")
 	match op:
@@ -516,7 +561,7 @@ func run(step: Dictionary, ctx: Dictionary):
 				if step.get("required", true):
 					return "abort"
 				return null
-			if cands.size() <= mn and step.get("auto", true) and mn == mx:
+			if cands.size() <= mn and step.get("auto", true) and mn == mx and not (duel.has_turn_rule("spirit_elimination", me) and _selection_is_banish_cost(step, ctx)):
 				ctx["vars"][step["as"]] = cands.slice(0, mx)
 				return null
 			if step.get("random", false):
@@ -530,12 +575,12 @@ func run(step: Dictionary, ctx: Dictionary):
 				return null
 			var chooser: int = who(step.get("chooser", "self"), ctx)
 			return {"type": "select", "player": chooser, "candidates": cands.map(func(c): return c.uid), "min": mn, "max": mx,
-				"as": step["as"], "prompt": step.get("prompt", 0), "from": step.get("from", "field"), "cost": step.get("cost", false), "discard": step.get("discard", false),
-				"sum_level_min": int(step.get("sum_level_min", 0))}
+				"as": step["as"], "prompt": step.get("prompt", 0), "from": step.get("from", "field"), "cost": step.get("cost", false), "discard": step.get("discard", false), "prompt_text": step.get("prompt_text", ""),
+				"sum_level_min": int(step.get("sum_level_min", 0)), "banish_intent": _selection_is_banish_effect(step, ctx)}
 		"yesno":
-			return {"type": "yesno", "player": who(step.get("chooser", "self"), ctx), "as": step["as"], "prompt": step.get("prompt", 0), "card": ctx["src"].uid}
+			return {"type": "yesno", "player": who(step.get("chooser", "self"), ctx), "as": step["as"], "prompt": step.get("prompt", 0), "card": ctx["src"].uid, "prompt_text": step.get("prompt_text", ""), "show_hands": step.get("show_hands", false)}
 		"choice":
-			return {"type": "choice", "player": who(step.get("chooser", "self"), ctx), "as": step["as"], "prompt": step.get("prompt", 0), "count": int(step.get("count", 2)), "labels": step.get("labels", [])}
+			return {"type": "choice", "player": who(step.get("chooser", "self"), ctx), "as": step["as"], "prompt": step.get("prompt", 0), "count": int(step.get("count", 2)), "labels": step.get("labels", []), "prompt_text": step.get("prompt_text", "")}
 		"if":
 			var ok := true
 			for c in step.get("cond", []):
@@ -547,11 +592,17 @@ func run(step: Dictionary, ctx: Dictionary):
 				return "pushed"
 		"coin":
 			var heads := duel.rng.randi_range(0, 1) == 1
-			ctx["vars"][step.get("as", "coin")] = heads
-			duel.log_event("coin", {"player": me, "heads": heads})
-			var branch2: Array = step.get("heads", []) if heads else step.get("tails", [])
+			var correct := heads
+			if step.has("call"):
+				correct = heads == (int(ctx["vars"].get(str(step["call"]), 0)) == 0)
+			ctx["vars"][step.get("as", "coin")] = correct
+			duel.log_event("coin", {"player": me, "heads": heads, "correct": correct, "call": ctx["vars"].get(str(step.get("call", "")), -1)})
+			var branch2: Array = step.get("heads", []) if correct else step.get("tails", [])
 			if not branch2.is_empty():
 				fx.tasks.append({"t": "script", "steps": branch2, "i": 0, "ctx": ctx})
+			if fx.presentation_enabled:
+				return {"type": "presentation", "player": me}
+			if not branch2.is_empty():
 				return "pushed"
 		"damage": duel.damage_player(who(step.get("who", "opp"), ctx), val(step.get("amount", 0), ctx), "effect")
 		"heal": duel.heal_player(who(step.get("who", "self"), ctx), val(step.get("amount", 0), ctx))
@@ -566,7 +617,24 @@ func run(step: Dictionary, ctx: Dictionary):
 		"to_grave": for c in tg(step, ctx): duel.send_to_grave(c, step.get("reason", "effect"))
 		"to_hand": for c in tg(step, ctx): duel.return_to_hand(c)
 		"to_deck": for c in tg(step, ctx): duel.return_to_deck(c, step.get("where", "top"))
-		"banish": for c in tg(step, ctx): duel.banish_card(c)
+		"banish":
+			var targets: Array = tg(step, ctx)
+			var scripts := []
+			for c in targets:
+				if duel.is_monster(c) and duel.side(c.owner).grave.has(c) and duel.has_turn_rule("spirit_elimination", c.owner):
+					# Effect removal selects substitutes here; banish costs were replaced before selection.
+					scripts.append({"op": "select", "as": "substitute", "from": "self.monsters", "n": 1, "cost": true, "auto": false, "prompt_text": "Choose a monster to remove from play instead."})
+					scripts.append({"op": "banish_substitute"})
+					var subctx := {"src": ctx["src"], "controller": c.owner, "vars": {}, "event": ctx["event"]}
+					fx.push_script(scripts.duplicate(true), subctx)
+					scripts.clear()
+				else:
+					duel.banish_card(c)
+			if not fx.tasks.is_empty() and fx.tasks.back().get("ctx") != ctx:
+				return "pushed"
+		"banish_substitute":
+			for c in ctx["vars"].get("substitute", []):
+				duel.banish_card(c)
 		"discard":
 			var hand: Array = duel.side(who(step.get("who", "self"), ctx)).hand
 			var n := mini(int(step.get("n", 1)), hand.size())
@@ -609,9 +677,13 @@ func run(step: Dictionary, ctx: Dictionary):
 			if step.has("turn_offset"):
 				mod_until = "turn:%d" % (duel.turn + int(step["turn_offset"]))      # until the end of that turn
 			for c in _targets(step.get("what", "$t"), ctx):
+				if duel.spell_unaffected(c, ctx["src"]):
+					continue
 				c.mods.append({"atk": atk, "def": def, "until": mod_until, "src": ctx["src"].uid})
 		"set_stat":
 			for c in _targets(step.get("what", "$t"), ctx):
+				if duel.spell_unaffected(c, ctx["src"]):
+					continue
 				if step.has("atk"):
 					c.mods.append({"atk": val(step["atk"], ctx) - duel.atk_of(c), "def": 0, "until": step.get("until", "end_turn"), "src": ctx["src"].uid})
 				if step.has("def"):
@@ -622,6 +694,8 @@ func run(step: Dictionary, ctx: Dictionary):
 				var eq_mod := {"atk": val(step.get("atk", 0), ctx), "def": val(step.get("def", 0), ctx)}
 				if step.has("race"):
 					eq_mod["race"] = race_id(step["race"])
+				if step.has("attribute_var"):
+					eq_mod["attribute"] = int(ctx["vars"].get(step["attribute_var"], 0)) + 1
 				duel.equip_card(ctx["src"], tgt[0], eq_mod)
 		"take_control":
 			for c in _targets(step.get("what", "$t"), ctx):
@@ -633,6 +707,8 @@ func run(step: Dictionary, ctx: Dictionary):
 			for c in _targets(step.get("what", "$t"), ctx):
 				duel.force_position(c, "def", false)
 		"negate":
+			if ctx.has("forced_by"):
+				return null
 			# negate the activation of the link below this one (or the one at `link`)
 			var i := fx.chain.size() - 1
 			if i >= 0:
@@ -655,13 +731,20 @@ func run(step: Dictionary, ctx: Dictionary):
 			var roll := duel.roll_die()
 			ctx["vars"][step.get("as", "roll")] = roll
 			duel.log_event("dice", {"player": me, "roll": roll})
+			if fx.presentation_enabled:
+				return {"type": "presentation", "player": me}
 		"coins":
 			var heads_n := 0
+			var outcomes := []
 			for i in int(step.get("n", 3)):
-				if duel.rng.randi_range(0, 1) == 1:
+				var heads := duel.rng.randi_range(0, 1) == 1
+				outcomes.append(heads)
+				if heads:
 					heads_n += 1
 			ctx["vars"][step.get("as", "heads")] = heads_n
-			duel.log_event("coins", {"player": me, "heads": heads_n, "n": int(step.get("n", 3))})
+			duel.log_event("coins", {"player": me, "heads": heads_n, "n": int(step.get("n", 3)), "outcomes": outcomes})
+			if fx.presentation_enabled:
+				return {"type": "presentation", "player": me}
 		"redirect_attack":
 			var ts := _targets(step.get("to", "$t"), ctx)
 			if ts.size() > 0:
@@ -749,6 +832,8 @@ func run(step: Dictionary, ctx: Dictionary):
 				duel.send_to_grave(victim.deck.back(), "milled")
 		"double_atk":
 			for c in _targets(step.get("what", "$t"), ctx):
+				if duel.spell_unaffected(c, ctx["src"]):
+					continue
 				c.mods.append({"atk": duel.atk_of(c), "def": 0, "until": "end_turn", "src": ctx["src"].uid})
 				if step.get("destroy_at_end", false):
 					c.flags["destroy_at_end"] = true
@@ -785,7 +870,10 @@ func run(step: Dictionary, ctx: Dictionary):
 				var chosen: DCard = hand_cards[duel.rng.randi_range(0, hand_cards.size() - 1)]
 				duel.banish_card(chosen)
 				chosen.face_up = false
-				chosen.flags["return_turn"] = duel.turn + int(step.get("after", 7))
+				var delay := int(step.get("after", 7))
+				if step.has("owner_turns"):
+					delay = maxi(0, (int(step["owner_turns"]) - 1) * 2 + (0 if duel.turn_player == hp else 1))
+				chosen.flags["return_turn"] = duel.turn + delay
 		"give_to_deck":
 			var gp: int = who(step.get("to", "opp"), ctx)
 			for c in _targets(step.get("what", "src"), ctx):
@@ -856,3 +944,15 @@ func _cond_dyn(c: Dictionary, ctx: Dictionary) -> bool:
 		"var_ge": return int(ctx["vars"].get(c.get("name", ""), 0)) >= int(c.get("v", 0))
 		"var_le": return int(ctx["vars"].get(c.get("name", ""), 0)) <= int(c.get("v", 0))
 	return _cond(c, ctx)
+
+func _selection_is_banish_cost(step: Dictionary, ctx: Dictionary) -> bool:
+	for op in ctx.get("effect", {}).get("cost", []):
+		if op.get("op", "") == "banish" and op.get("what", "") == "$" + str(step.get("as", "")):
+			return true
+	return false
+
+func _selection_is_banish_effect(step: Dictionary, ctx: Dictionary) -> bool:
+	for op in ctx.get("effect", {}).get("do", []):
+		if op.get("op", "") == "banish" and op.get("what", "") == "$" + str(step.get("as", "")):
+			return true
+	return false

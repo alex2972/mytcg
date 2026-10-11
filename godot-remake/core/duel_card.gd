@@ -2,6 +2,7 @@ class_name DCard
 extends RefCounted
 ## A card instance during a duel (the CardDB entry is identified by `idx`).
 
+var properly_summoned := false ## Persistent summon history; not a temporary field flag.
 var uid := 0
 var borrowed_from := -1      ## real owner while a Spell from the opponent's graveyard is used as mine (Graverobber)
 var home_owner := -1           ## Exchange: real owner of a card taken from the other hand

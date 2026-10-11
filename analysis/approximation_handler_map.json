@@ -1,0 +1,547 @@
+{
+  "Black Illusion Ritual": {
+    "index": 62,
+    "number": 958,
+    "handlers": [
+      "005999d0",
+      "00599850"
+    ]
+  },
+  "The Rock Spirit": {
+    "index": 63,
+    "number": 1518,
+    "handlers": []
+  },
+  "Insect Queen": {
+    "index": 66,
+    "number": 761,
+    "handlers": []
+  },
+  "Destiny Board": {
+    "index": 68,
+    "number": 1528,
+    "handlers": [
+      "00590d80"
+    ]
+  },
+  "Tailor of the Fickle": {
+    "index": 84,
+    "number": 1074,
+    "handlers": [
+      "00589c70",
+      "0057b3b0",
+      "00595780"
+    ]
+  },
+  "Exchange": {
+    "index": 93,
+    "number": 1205,
+    "handlers": [
+      "0058cb70",
+      "00581ee0"
+    ]
+  },
+  "Chosen One": {
+    "index": 95,
+    "number": 1414,
+    "handlers": [
+      "0058fa90",
+      "005829d0"
+    ]
+  },
+  "Morphing Jar #2": {
+    "index": 146,
+    "number": 1163,
+    "handlers": [
+      "0058c490"
+    ]
+  },
+  "Garuda the Wind Spirit": {
+    "index": 155,
+    "number": 1519,
+    "handlers": [
+      "005907d0",
+      "0057b1f0",
+      "0057cd40",
+      "005944d0"
+    ]
+  },
+  "The Immortal of Thunder": {
+    "index": 164,
+    "number": 461,
+    "handlers": [
+      "00585970",
+      "00581040",
+      "0057c5f0"
+    ]
+  },
+  "Goddess of Whim": {
+    "index": 201,
+    "number": 428,
+    "handlers": [
+      "00585540",
+      "00580050"
+    ]
+  },
+  "Gamble": {
+    "index": 207,
+    "number": 1303,
+    "handlers": [
+      "0058ed20",
+      "00582370"
+    ]
+  },
+  "Sinister Serpent": {
+    "index": 220,
+    "number": 474,
+    "handlers": []
+  },
+  "Metal Detector": {
+    "index": 230,
+    "number": 1139,
+    "handlers": [
+      "0058b5e0",
+      "005818c0"
+    ]
+  },
+  "Mirror Wall": {
+    "index": 232,
+    "number": 1099,
+    "handlers": [
+      "0058d860"
+    ]
+  },
+  "Wall of Illusion": {
+    "index": 273,
+    "number": 1049,
+    "handlers": [
+      "0058d5e0"
+    ]
+  },
+  "Kotodama": {
+    "index": 305,
+    "number": 1124,
+    "handlers": []
+  },
+  "Cyber Jar": {
+    "index": 320,
+    "number": 1106,
+    "handlers": [
+      "0058a880"
+    ]
+  },
+  "Relinquished": {
+    "index": 331,
+    "number": 730,
+    "handlers": [
+      "00586fb0",
+      "00579c40",
+      "0057ff50",
+      "00593970"
+    ]
+  },
+  "Valkyrion the Magna Warrior": {
+    "index": 358,
+    "number": 845,
+    "handlers": [
+      "005877e0",
+      "00580100",
+      "0057cb50"
+    ]
+  },
+  "Return of the Doomed": {
+    "index": 361,
+    "number": 1421,
+    "handlers": [
+      "00590080",
+      "00582b60",
+      "0057dc10"
+    ]
+  },
+  "Ground Collapse": {
+    "index": 376,
+    "number": 1320,
+    "handlers": [
+      "0058f3d0",
+      "005826b0",
+      "00596d70"
+    ]
+  },
+  "Shift": {
+    "index": 379,
+    "number": 1317,
+    "handlers": [
+      "0058f140",
+      "0057bca0",
+      "00582590",
+      "00595530"
+    ]
+  },
+  "Gilasaurus": {
+    "index": 405,
+    "number": 1520,
+    "handlers": [
+      "00590870",
+      "005830b0"
+    ]
+  },
+  "Jirai Gumo": {
+    "index": 412,
+    "number": 366,
+    "handlers": []
+  },
+  "The Eye of Truth": {
+    "index": 427,
+    "number": 1093,
+    "handlers": [
+      "0058a250"
+    ]
+  },
+  "Jam Breeding Machine": {
+    "index": 457,
+    "number": 1426,
+    "handlers": [
+      "00583f30"
+    ]
+  },
+  "Respect Play": {
+    "index": 464,
+    "number": 1152,
+    "handlers": [
+      "00583f30"
+    ]
+  },
+  "Ceremonial Bell": {
+    "index": 480,
+    "number": 1121,
+    "handlers": []
+  },
+  "Solomon's Lawbook": {
+    "index": 501,
+    "number": 1096,
+    "handlers": [
+      "0058a660"
+    ]
+  },
+  "Dark Necrofear": {
+    "index": 513,
+    "number": 1514,
+    "handlers": [
+      "005906b0",
+      "0057a470",
+      "00583050",
+      "005944d0"
+    ]
+  },
+  "Spear Cretin": {
+    "index": 516,
+    "number": 1116,
+    "handlers": [
+      "0058b3d0",
+      "00581040",
+      "0057c5f0",
+      "00595a90"
+    ]
+  },
+  "Earthshaker": {
+    "index": 552,
+    "number": 1097,
+    "handlers": [
+      "0058a690",
+      "00581740"
+    ]
+  },
+  "Dark Spirit of the Silent": {
+    "index": 561,
+    "number": 1529,
+    "handlers": [
+      "0058dcc0",
+      "0057b0e0",
+      "005831f0",
+      "00597520"
+    ]
+  },
+  "DNA Surgery": {
+    "index": 573,
+    "number": 1145,
+    "handlers": [
+      "00583f30",
+      "00595ce0"
+    ]
+  },
+  "Toon Summoned Skull": {
+    "index": 620,
+    "number": 728,
+    "handlers": []
+  },
+  "Toon Mermaid": {
+    "index": 622,
+    "number": 727,
+    "handlers": []
+  },
+  "Time Wizard": {
+    "index": 630,
+    "number": 15,
+    "handlers": [
+      "005835f0",
+      "0057f240"
+    ]
+  },
+  "Alligator's Sword Dragon": {
+    "index": 651,
+    "number": 812,
+    "handlers": []
+  },
+  "The Flute of Summoning Dragon": {
+    "index": 654,
+    "number": 966,
+    "handlers": [
+      "00587f90",
+      "00580360"
+    ]
+  },
+  "Dream Clown": {
+    "index": 657,
+    "number": 119,
+    "handlers": [
+      "00585c80",
+      "00579c40",
+      "0057f5c0",
+      "00593970"
+    ]
+  },
+  "Slate Warrior": {
+    "index": 678,
+    "number": 1254,
+    "handlers": [
+      "0058afe0"
+    ]
+  },
+  "Patrol Robo": {
+    "index": 721,
+    "number": 579,
+    "handlers": [
+      "00585e70",
+      "0057aa30",
+      "0057f9f0",
+      "00594b70"
+    ]
+  },
+  "Lightforce Sword": {
+    "index": 743,
+    "number": 964,
+    "handlers": [
+      "00587e80",
+      "00581000"
+    ]
+  },
+  "Big Shield Gardna": {
+    "index": 748,
+    "number": 1201,
+    "handlers": []
+  },
+  "Red-Moon Baby": {
+    "index": 772,
+    "number": 1340,
+    "handlers": [
+      "0058f9f0",
+      "00582890",
+      "00597030"
+    ]
+  },
+  "Riryoku": {
+    "index": 783,
+    "number": 1181,
+    "handlers": [
+      "0058c950",
+      "0057aec0",
+      "00581de0",
+      "005961c0"
+    ]
+  },
+  "Riryoku Field": {
+    "index": 784,
+    "number": 1531,
+    "handlers": [
+      "00588d90",
+      "00580960"
+    ]
+  },
+  "Fusion Gate": {
+    "index": 795,
+    "number": 1547,
+    "handlers": [
+      "005916e0",
+      "005833d0"
+    ]
+  },
+  "Blue-Eyes Toon Dragon": {
+    "index": 815,
+    "number": 766,
+    "handlers": []
+  },
+  "Soul of Purity and Light": {
+    "index": 844,
+    "number": 1515,
+    "handlers": []
+  },
+  "Spirit of Flames": {
+    "index": 860,
+    "number": 1516,
+    "handlers": []
+  },
+  "Magical Hats": {
+    "index": 890,
+    "number": 945,
+    "handlers": [
+      "00587a90",
+      "0057bbf0",
+      "00581130"
+    ]
+  },
+  "Mage Power": {
+    "index": 910,
+    "number": 1450,
+    "handlers": [
+      "00584500",
+      "0057a470",
+      "00593a20"
+    ]
+  },
+  "Magic Thorn": {
+    "index": 922,
+    "number": 1038,
+    "handlers": [
+      "00583f30"
+    ]
+  },
+  "Mask of Dispel": {
+    "index": 923,
+    "number": 1417,
+    "handlers": [
+      "0058ff70",
+      "0057c060",
+      "00594b70"
+    ]
+  },
+  "Aqua Spirit": {
+    "index": 935,
+    "number": 1517,
+    "handlers": [
+      "005907d0",
+      "0057b1f0",
+      "0057cd40",
+      "005944d0"
+    ]
+  },
+  "Infinite Dismissal": {
+    "index": 970,
+    "number": 1322,
+    "handlers": [
+      "00583f30"
+    ]
+  },
+  "Metalmorph": {
+    "index": 974,
+    "number": 657,
+    "handlers": [
+      "00584500",
+      "0057a470",
+      "00593a20"
+    ]
+  },
+  "Copycat": {
+    "index": 989,
+    "number": 1246,
+    "handlers": [
+      "0058e790",
+      "0057b1f0",
+      "00582200",
+      "00594860"
+    ]
+  },
+  "Fairy Box": {
+    "index": 999,
+    "number": 1424,
+    "handlers": [
+      "0058da80",
+      "00582bf0"
+    ]
+  },
+  "Last Will": {
+    "index": 1023,
+    "number": 1054,
+    "handlers": [
+      "00589610",
+      "00581050"
+    ]
+  },
+  "Polymerization": {
+    "index": 1027,
+    "number": 1034,
+    "handlers": [
+      "005921c0",
+      "00580600"
+    ]
+  },
+  "De-Fusion": {
+    "index": 1028,
+    "number": 1546,
+    "handlers": [
+      "005914a0",
+      "0057c3b0",
+      "00594b70"
+    ]
+  },
+  "Shadow of Eyes": {
+    "index": 1032,
+    "number": 1325,
+    "handlers": [
+      "0058da00",
+      "0057be40",
+      "00582790",
+      "00594a10"
+    ]
+  },
+  "Barrel Dragon": {
+    "index": 1062,
+    "number": 742,
+    "handlers": [
+      "005871a0",
+      "00579c40",
+      "00580050",
+      "00593970"
+    ]
+  },
+  "Sword of Dragon's Soul": {
+    "index": 1065,
+    "number": 1182,
+    "handlers": [
+      "00584500",
+      "0057a470",
+      "00593a20"
+    ]
+  },
+  "Lord of D.": {
+    "index": 1090,
+    "number": 740,
+    "handlers": []
+  },
+  "Dimensionhole": {
+    "index": 1096,
+    "number": 1319,
+    "handlers": [
+      "0058f2d0",
+      "0057bd90",
+      "00594b70"
+    ]
+  },
+  "Scapegoat": {
+    "index": 1106,
+    "number": 1902,
+    "handlers": [
+      "0058e670",
+      "005821a0"
+    ]
+  }
+}

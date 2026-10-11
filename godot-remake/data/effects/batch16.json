@@ -85,24 +85,16 @@
       },
       "n": 1,
       "prompt": 139
+     },
+     {
+      "op": "custom",
+      "fn": "tailor_select"
      }
     ],
     "do": [
      {
-      "op": "select",
-      "as": "h",
-      "from": "monsters",
-      "filter": {
-       "face_up": true,
-       "not_equipped_by": "e"
-      },
-      "n": 1,
-      "prompt": 140
-     },
-     {
-      "op": "switch_equip",
-      "card": "$e",
-      "to": "$h"
+      "op": "custom",
+      "fn": "tailor_finish"
      }
     ]
    }

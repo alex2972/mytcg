@@ -1,83 +1,259 @@
 {
-"_about": "Cards and rules that are implemented approximately, not like the original. Key = English card name (or 'RULE: ...'). Edit this file, then run tools/list_approximations.py to regenerate docs/APPROXIMATIONS.md. tests/test_approximations.gd checks that every card name here exists.",
-
-"Metalmorph": {"gap": "The extra ATK when attacking (half of the target's ATK) is missing; only the +300/+300 is in.", "fix": "A battle-time ATK bonus on the equipped monster (needs the damage-step window)."},
-"Magic Thorn": {"gap": "Also triggers on discards paid as a cost, not only discards caused by Spell/Trap/Effect Monster effects.", "fix": "Tag the discard reason (cost vs effect) and only count effect discards."},
-"Magical Hats": {"gap": "The two decoys are tokens; the original takes 2 non-monster cards out of the Deck.", "fix": "Move two Spell/Trap cards from the Deck onto the field as 0/0 monsters, return them afterwards."},
-"Patrol Robo": {"gap": "No effect at all (the peek at a Set card needs an interface).", "fix": "A 'look at 1 Set card' prompt shown to the player during the Standby Phase."},
-"Red-Moon Baby": {"gap": "The destroyed monster comes back immediately, not at the end of the Battle Phase, and always in Attack Position.", "fix": "Queue the revival for the end of the Battle Phase and let the player pick the position."},
-"Spear Cretin": {"gap": "Also triggers if it was face-up without ever being flipped.", "fix": "Remember that the card was flipped (survive the grave transition)."},
-"Fairy Box": {"gap": "The coin is tossed without the player calling Heads or Tails.", "fix": "A 'call it' prompt before the toss."},
-"Time Wizard": {"gap": "Coin tossed without a call.", "fix": "A 'call it' prompt before the toss."},
-"Barrel Dragon": {"gap": "Coins tossed without a call (the original has no call here, so this may be exact).", "fix": "Verify against the original."},
-"Goddess of Whim": {"gap": "Coin tossed without a call.", "fix": "A 'call it' prompt before the toss."},
-"Jirai Gumo": {"gap": "Coin tossed without a call.", "fix": "A 'call it' prompt before the toss."},
-"Gamble": {"gap": "Coin tossed without a call.", "fix": "A 'call it' prompt before the toss."},
-"Copycat": {"gap": "Copies the target's current ATK/DEF (with modifiers) instead of the original values.", "fix": "A 'base stats' value that ignores mods and equips."},
-"Insect Queen": {"gap": "The Insect Monster Token appears immediately, not at the end of the turn.", "fix": "Create the token in the End Phase."},
-"Aqua Spirit": {"gap": "The Standby Phase position-change effect is missing (only the special summon condition is in).", "fix": "A trigger on the opponent's Standby Phase that lets the owner change one face-up monster's position."},
-"The Rock Spirit": {"gap": "The +300 ATK during the opponent's Battle Phase is missing.", "fix": "A static modifier that depends on the current phase/turn."},
-"Soul of Purity and Light": {"gap": "The -300 ATK to the opponent's monsters during their Battle Phase is missing.", "fix": "A static modifier that depends on the current phase/turn."},
-"Spirit of Flames": {"gap": "The +300 ATK during my Battle Phase is missing.", "fix": "A static modifier that depends on the current phase/turn."},
-"Dark Necrofear": {"gap": "Only the special summon condition is in; the 'becomes an Equip Card and takes control' effect is missing.", "fix": "Use become_equip plus a control link when destroyed."},
-"Toon Summoned Skull": {"gap": "The 'attack directly while the opponent controls no Toon monster' rule is missing.", "fix": "Use the direct_vs_attributes style rule with a Toon-monster check."},
-"Toon Mermaid": {"gap": "The 'attack directly while the opponent controls no Toon monster' rule is missing.", "fix": "As Toon Summoned Skull."},
-"Blue-Eyes Toon Dragon": {"gap": "The 'attack directly while the opponent controls no Toon monster' rule is missing.", "fix": "As Toon Summoned Skull."},
-"Mage Power": {"gap": "Counts the Spell/Trap Cards in the Spell zone only (not a face-up Field Spell).", "fix": "Include the field spell zone in the count."},
-"Mask of Dispel": {"gap": "The card is only destroyed at the next Standby Phase after the selected Spell leaves the field.", "fix": "A trigger on the selected card leaving the field."},
-"Lightforce Sword": {"gap": "The return turn (opponent's 4th turn) is computed as 7 turns later; not checked against the original.", "fix": "Verify the turn count with the original and add a test."},
-"Cyber Jar": {"gap": "Summon positions and the order in which the two players pick up cards are simplified.", "fix": "Check the original's order and which player's monsters are summoned first."},
-"Morphing Jar #2": {"gap": "The card count each player picks up is an interpretation of an ambiguous card text.", "fix": "Check how the original counts."},
-"Exchange": {"gap": "The hands are not shown to both players.", "fix": "A hand-reveal screen."},
-"Last Will": {"gap": "Implemented as a continuous effect for the turn; needs checking against the original timing.", "fix": "Verify with the original."},
-"Dream Clown": {"gap": "Only triggers when the player changes its position, not when an effect does.", "fix": "Fire position_changed from force_position too (with a flag for effect-caused changes)."},
-"Sinister Serpent": {"gap": "Returning to the hand is automatic instead of optional.", "fix": "A yes/no prompt."},
-"Jam Breeding Machine": {"gap": "The restriction on summoning/special summoning monsters is missing; only the Slime Tokens are in.", "fix": "Static rules for summon/flip/special summon limited to the controller."},
-"Scapegoat": {"gap": "The 'no summons this turn' rule blocks Normal Summons/Sets only, not Flip or Special Summons.", "fix": "Use a rule that also covers flip and special summons."},
-"Ground Collapse": {"gap": "Only zones on the opponent's side can be blocked, and an occupied choice moves to the next free zone automatically.", "fix": "A zone-picker UI for either side."},
-"Destiny Board": {"gap": "The Spirit Message cards can still be played or Set by hand; only the board places them properly.", "fix": "Forbid playing/Setting the Spirit Message cards manually."},
-"Earthshaker": {"gap": "The opponent's choice is labelled 'First/Second' instead of showing the two attributes.", "fix": "Pass the chosen attribute names into the choice labels."},
-"DNA Surgery": {"gap": "Monster Type icons in the interface do not change.", "fix": "Use Duel.race_of in the card detail panel."},
-"Valkyrion the Magna Warrior": {"gap": "Only the summon condition is in; the rest of the card text has not been read for details.", "fix": "Check the full original text and effects."},
-"Alligator's Sword Dragon": {"gap": "Face-down opposing monsters count as their real attribute when deciding if a direct attack is allowed.", "fix": "Check what the original does with face-down monsters."},
-"Polymerization": {"gap": "'Goddess with the Third Eye' / 'Versago the Destroyer' can be picked for more than one material slot.", "fix": "Allow at most one substitute per Fusion."},
-"Fusion Gate": {"gap": "Only used through an effect button; the original may offer it automatically.", "fix": "Compare with the original's interface."},
-"Black Illusion Ritual": {"gap": "Relinquished's special effect is missing (it is only a 0/0 monster).", "fix": "Implement Relinquished (equip and take over ATK/DEF)."},
-"Relinquished": {"gap": "Special effect missing.", "fix": "Implement the equip and stat takeover."},
-"Slate Warrior": {"gap": "The penalty applies to whoever destroys it in battle, including in a mutual destruction.", "fix": "Check the original for mutual destruction."},
-"Shift": {"gap": "Redirects only to my other monsters, and is limited to monster attacks (not Spell/Trap targets).", "fix": "Add target_declared events for Spell/Trap targeting."},
-"Dark Spirit of the Silent": {"gap": "The new attacker keeps the original target instead of choosing again; its position is flipped quietly.", "fix": "Check the original's sequence."},
-"Wall of Illusion": {"gap": "Sent back to the hand after damage calculation using a flag; edge cases with multiple attackers untested.", "fix": "More tests."},
-
-"The Immortal of Thunder": {"gap": "The -5000 LP also triggers if it was face-up without ever being flipped (e.g. Normal Summoned face-up).", "fix": "Remember that the card was flipped across the grave transition (as for Spear Cretin)."},
-"Return of the Doomed": {"gap": "The Spell Card stays face-up on the field until the End Phase instead of going to the Graveyard right away.", "fix": "A delayed end-of-turn effect that is not tied to a card on the field."},
-"Gilasaurus": {"gap": "The 'treat as Special Summon' choice only marks the card as Special Summoned (the Normal Summon of the turn is still used).", "fix": "Let the summon dialog offer Special Summon, which would not use the Normal Summon."},
-"Respect Play": {"gap": "The card has no effect: the hand reveal is only a display matter and needs an interface.", "fix": "Show the other player's hand while the card is face-up (board view)."},
-"Kotodama": {"gap": "Only the 'later copy is destroyed' rule is in; the 'two copies played at the same time are both destroyed' case is not.", "fix": "Detect simultaneous summons (Fusion Gate / Cyber Jar) and destroy both."},
-"Big Shield Gardna": {"gap": "The Spell-negation half is missing (face-down, targeted by a Spell). The shift to Attack Position happens when the Battle Phase ends, not right after the Damage Step.", "fix": "Spell targets in the chain link, and a post-Damage-Step window."},
-"Solomon's Lawbook": {"gap": "Implemented as 'skip my next draw'; other Standby Phase effects of mine still happen.", "fix": "Skip the whole Standby Phase of my next turn."},
-"Chosen One": {"gap": "The Special Summon position is chosen before the opponent picks, not after.", "fix": "Ask for the position after the reveal."},
-"Riryoku": {"gap": "The ATK change lasts until the end of the turn (the card text gives no duration).", "fix": "Check the original's duration."},
-"Infinite Dismissal": {"gap": "Destroys every Level 3 or lower monster summoned (Normal Summoned, Flip Summoned or Set) during the turn, including ones summoned before the trap was activated.", "fix": "Only count monsters summoned after the activation."},
-"Mirror Wall": {"gap": "The halving uses the printed ATK plus permanent bonuses, ignoring temporary changes.", "fix": "Apply the halving after all other ATK modifiers."},
-"The Eye of Truth": {"gap": "The hand reveal is missing (interface); only the +1000 LP effect is in.", "fix": "Show the other player's hand while the card is face-up (board view)."},
-"Ceremonial Bell": {"gap": "No effect: the hand reveal is only a display matter and needs an interface.", "fix": "Show both hands while the card is face-up (board view)."},
-"Garuda the Wind Spirit": {"gap": "The End Phase position change is not optional unless the opponent has no monster; the player must pick a monster when one exists.", "fix": "Add a Cancel button to the selection."},
-"De-Fusion": {"gap": "The materials are always Special Summoned in Attack Position, and a Fusion Monster of either side may be selected without checking whose Graveyard holds the materials.", "fix": "Ask for the position and use the owner's Graveyard."},
-"The Flute of Summoning Dragon": {"gap": "Needs a free Monster Card Zone for every Dragon; extra ones fail silently.", "fix": "Limit the selection to the number of free zones."},
-"Lord of D.": {"gap": "The protection covers selections made by card effects (targets chosen by a player), not random or lowest-ATK picks, and not attacks.", "fix": "Tag target selections explicitly in the effect data."},
-"Tailor of the Fickle": {"gap": "Does not check the Equip Card's own restrictions (e.g. Warrior-only) for the new monster.", "fix": "Reuse the equip target filter of the Equip Card."},
-"Dimensionhole": {"gap": "The Monster Card Zone is not reserved while the monster is removed from play, and the monster comes back as a Special Summon.", "fix": "Reserve the zone and return the monster without a summon."},
-"Sword of Dragon's Soul": {"gap": "The Dragon is destroyed when the Battle Phase ends (entering Main Phase 2 or ending the turn).", "fix": "Verify the timing against the original."},
-"Shadow of Eyes": {"gap": "Works once, as a normal Trap, for the monster that was just Set.", "fix": "Check the original: continuous or one-shot."},
-"Metal Detector": {"gap": "The negated Continuous Trap stays on the field with its effects switched off until the end of the turn (it is not destroyed); same for Mystic Probe, World Suppression and Armored Glass.", "fix": "Check what the original does to the negated card."},
-"Riryoku Field": {"gap": "'Designates 1 monster' means the Spell's target step ended with exactly 1 monster selected; Spells that affect monsters without a target step are not detected.", "fix": "Mark target-style Spells explicitly in the effect data."},
-"RULE: hand limit 6": {"gap": "The 6-card hand limit is an assumption from the tutorial text.", "fix": "Find it in the original's code."},
-"RULE: three tributes for the Gods": {"gap": "The Egyptian Gods need 3 tributes by assumption.", "fix": "Check the original."},
-"RULE: only 1 attack restriction on turn 1": {"gap": "'No attack on the first turn' follows what you told me; the exact original rule (also for the second player's first turn) is not verified.", "fix": "Check the original's code."},
-"RULE: spell speed": {"gap": "Chains follow normal spell-speed rules; the original's response-window rules (who may respond when) are only partly verified.", "fix": "Finish docs/DUEL_FLOW.md from the original's code."},
-"RULE: windows": {"gap": "'Continuous card played' (strings 193-195) and the exact order of the 31 announced windows are not all implemented.", "fix": "See docs/DUEL_FLOW.md."},
-"RULE: Quick-Play Spells": {"gap": "A Set Quick-Play Spell can only be played in the response windows the engine opens (summons, attacks, target declaration, damage step, chain links, Standby and End Phase).", "fix": "Open a window whenever a player gets priority."},
-"RULE: Who destroyed a card": {"gap": "The player responsible for a destruction is only known for the plain 'destroy' effect step (Gust, Driving Snow, Fairy Guardian); custom effects (Crush Card, Cyber Jar, ...) report none.", "fix": "Set Duel.effect_player in every custom op that destroys cards."},
-"RULE: AI": {"gap": "About 60 per-card AI handlers (for cards that had no effects) fall back to 'use if harmless'; battle boosters are approximated.", "fix": "See docs/AI_NOTES.md."}
+  "_about": "Cards and rules that are implemented approximately, not like the original. Key = English card name (or 'RULE: ...'). Edit this file, then run tools/list_approximations.py to regenerate docs/APPROXIMATIONS.md. tests/test_approximations.gd checks that every card name here exists.",
+  "Magic Thorn": {
+    "gap": "Also triggers on discards paid as a cost, not only discards caused by Spell/Trap/Effect Monster effects.",
+    "fix": "Tag the discard reason (cost vs effect) and only count effect discards."
+  },
+  "Magical Hats": {
+    "gap": "The two decoys are tokens; the original takes 2 non-monster cards out of the Deck.",
+    "fix": "Move two Spell/Trap cards from the Deck onto the field as 0/0 monsters, return them afterwards."
+  },
+  "Patrol Robo": {
+    "gap": "No effect at all (the peek at a Set card needs an interface).",
+    "fix": "A 'look at 1 Set card' prompt shown to the player during the Standby Phase."
+  },
+  "Red-Moon Baby": {
+    "gap": "The destroyed monster comes back immediately, not at the end of the Battle Phase, and always in Attack Position.",
+    "fix": "Queue the revival for the end of the Battle Phase and let the player pick the position."
+  },
+  "Jirai Gumo": {
+    "gap": "Coin tossed without a call.",
+    "fix": "A 'call it' prompt before the toss."
+  },
+  "Insect Queen": {
+    "gap": "The Insect Monster Token appears immediately, not at the end of the turn.",
+    "fix": "Create the token in the End Phase."
+  },
+  "Aqua Spirit": {
+    "gap": "The Standby Phase position-change effect is missing (only the special summon condition is in).",
+    "fix": "A trigger on the opponent's Standby Phase that lets the owner change one face-up monster's position."
+  },
+  "The Rock Spirit": {
+    "gap": "The +300 ATK during the opponent's Battle Phase is missing.",
+    "fix": "A static modifier that depends on the current phase/turn."
+  },
+  "Soul of Purity and Light": {
+    "gap": "The -300 ATK to the opponent's monsters during their Battle Phase is missing.",
+    "fix": "A static modifier that depends on the current phase/turn."
+  },
+  "Spirit of Flames": {
+    "gap": "The +300 ATK during my Battle Phase is missing.",
+    "fix": "A static modifier that depends on the current phase/turn."
+  },
+  "Dark Necrofear": {
+    "gap": "Only the special summon condition is in; the 'becomes an Equip Card and takes control' effect is missing.",
+    "fix": "Use become_equip plus a control link when destroyed."
+  },
+  "Toon Summoned Skull": {
+    "gap": "The 'attack directly while the opponent controls no Toon monster' rule is missing.",
+    "fix": "Use the direct_vs_attributes style rule with a Toon-monster check."
+  },
+  "Toon Mermaid": {
+    "gap": "The 'attack directly while the opponent controls no Toon monster' rule is missing.",
+    "fix": "As Toon Summoned Skull."
+  },
+  "Blue-Eyes Toon Dragon": {
+    "gap": "The 'attack directly while the opponent controls no Toon monster' rule is missing.",
+    "fix": "As Toon Summoned Skull."
+  },
+  "Mask of Dispel": {
+    "gap": "The card is only destroyed at the next Standby Phase after the selected Spell leaves the field.",
+    "fix": "A trigger on the selected card leaving the field."
+  },
+  "Cyber Jar": {
+    "gap": "Summon positions and the order in which the two players pick up cards are simplified.",
+    "fix": "Check the original's order and which player's monsters are summoned first."
+  },
+  "Morphing Jar #2": {
+    "gap": "The card count each player picks up is an interpretation of an ambiguous card text.",
+    "fix": "Check how the original counts."
+  },
+  "Exchange": {
+    "gap": "The hands are not shown to both players.",
+    "fix": "A hand-reveal screen."
+  },
+  "Last Will": {
+    "gap": "Implemented as a continuous effect for the turn; needs checking against the original timing.",
+    "fix": "Verify with the original."
+  },
+  "Dream Clown": {
+    "gap": "Only triggers when the player changes its position, not when an effect does.",
+    "fix": "Fire position_changed from force_position too (with a flag for effect-caused changes)."
+  },
+  "Sinister Serpent": {
+    "gap": "Returning to the hand is automatic instead of optional.",
+    "fix": "A yes/no prompt."
+  },
+  "Ground Collapse": {
+    "gap": "Only zones on the opponent's side can be blocked, and an occupied choice moves to the next free zone automatically.",
+    "fix": "A zone-picker UI for either side."
+  },
+  "Destiny Board": {
+    "gap": "The Spirit Message cards can still be played or Set by hand; only the board places them properly.",
+    "fix": "Forbid playing/Setting the Spirit Message cards manually."
+  },
+  "Earthshaker": {
+    "gap": "The opponent's choice is labelled 'First/Second' instead of showing the two attributes.",
+    "fix": "Pass the chosen attribute names into the choice labels."
+  },
+  "DNA Surgery": {
+    "gap": "Monster Type icons in the interface do not change.",
+    "fix": "Use Duel.race_of in the card detail panel."
+  },
+  "Valkyrion the Magna Warrior": {
+    "gap": "Only the summon condition is in; the rest of the card text has not been read for details.",
+    "fix": "Check the full original text and effects."
+  },
+  "Alligator's Sword Dragon": {
+    "gap": "Face-down opposing monsters count as their real attribute when deciding if a direct attack is allowed.",
+    "fix": "Check what the original does with face-down monsters."
+  },
+  "Polymerization": {
+    "gap": "'Goddess with the Third Eye' / 'Versago the Destroyer' can be picked for more than one material slot.",
+    "fix": "Allow at most one substitute per Fusion."
+  },
+  "Fusion Gate": {
+    "gap": "Only used through an effect button; the original may offer it automatically.",
+    "fix": "Compare with the original's interface."
+  },
+  "Black Illusion Ritual": {
+    "gap": "Relinquished's special effect is missing (it is only a 0/0 monster).",
+    "fix": "Implement Relinquished (equip and take over ATK/DEF)."
+  },
+  "Relinquished": {
+    "gap": "Special effect missing.",
+    "fix": "Implement the equip and stat takeover."
+  },
+  "Slate Warrior": {
+    "gap": "The penalty applies to whoever destroys it in battle, including in a mutual destruction.",
+    "fix": "Check the original for mutual destruction."
+  },
+  "Shift": {
+    "gap": "Redirects only to my other monsters, and is limited to monster attacks (not Spell/Trap targets).",
+    "fix": "Add target_declared events for Spell/Trap targeting."
+  },
+  "Dark Spirit of the Silent": {
+    "gap": "The original target is retained, as confirmed by FUN_0058dcc0. The forced position change is still quiet; exact position-change response timing needs tracing.",
+    "fix": "Trace FUN_005751e0 and the queued attack commands before changing position response windows."
+  },
+  "Wall of Illusion": {
+    "gap": "Sent back to the hand after damage calculation using a flag; edge cases with multiple attackers untested.",
+    "fix": "More tests."
+  },
+  "Return of the Doomed": {
+    "gap": "The Spell Card stays face-up on the field until the End Phase instead of going to the Graveyard right away.",
+    "fix": "A delayed end-of-turn effect that is not tied to a card on the field."
+  },
+  "Gilasaurus": {
+    "gap": "The 'treat as Special Summon' choice only marks the card as Special Summoned (the Normal Summon of the turn is still used).",
+    "fix": "Let the summon dialog offer Special Summon, which would not use the Normal Summon."
+  },
+  "Respect Play": {
+    "gap": "The card has no effect: the hand reveal is only a display matter and needs an interface.",
+    "fix": "Show the other player's hand while the card is face-up (board view)."
+  },
+  "Kotodama": {
+    "gap": "Only the 'later copy is destroyed' rule is in; the 'two copies played at the same time are both destroyed' case is not.",
+    "fix": "Detect simultaneous summons (Fusion Gate / Cyber Jar) and destroy both."
+  },
+  "Big Shield Gardna": {
+    "gap": "The face-down single-target Spell negation is implemented. The shift to Attack Position still happens at Battle Phase end rather than immediately after the individual Damage Step; exact native position-event order needs tracing.",
+    "fix": "Spell targets in the chain link, and a post-Damage-Step window."
+  },
+  "Solomon's Lawbook": {
+    "gap": "Implemented as 'skip my next draw'; other Standby Phase effects of mine still happen.",
+    "fix": "Skip the whole Standby Phase of my next turn."
+  },
+  "Riryoku": {
+    "gap": "The ATK change lasts until the end of the turn (the card text gives no duration).",
+    "fix": "Check the original's duration."
+  },
+  "Infinite Dismissal": {
+    "gap": "Destroys every Level 3 or lower monster summoned (Normal Summoned, Flip Summoned or Set) during the turn, including ones summoned before the trap was activated.",
+    "fix": "Only count monsters summoned after the activation."
+  },
+  "The Eye of Truth": {
+    "gap": "The hand reveal is missing (interface); only the +1000 LP effect is in.",
+    "fix": "Show the other player's hand while the card is face-up (board view)."
+  },
+  "Ceremonial Bell": {
+    "gap": "No effect: the hand reveal is only a display matter and needs an interface.",
+    "fix": "Show both hands while the card is face-up (board view)."
+  },
+  "De-Fusion": {
+    "gap": "Revival is now optional, each material has a position choice, and the activating player's Graveyard is used. Material eligibility still matches the printed Fusion recipe rather than recording the actual cards used, including substitutes.",
+    "fix": "Trace the native material-history flags in FUN_00599e30 and persist actual Fusion materials."
+  },
+  "The Flute of Summoning Dragon": {
+    "gap": "Needs a free Monster Card Zone for every Dragon; extra ones fail silently.",
+    "fix": "Limit the selection to the number of free zones."
+  },
+  "Lord of D.": {
+    "gap": "Selection-based Dragon targeting protection is implemented. Completeness of target classification across individual effect scripts has not been audited; attacks and effects without targets correctly remain eligible.",
+    "fix": "Audit targeting steps against FUN_0056c510 without extending protection to attacks or effects without targets."
+  },
+  "Tailor of the Fickle": {
+    "gap": "The new host is selected before the chain and checked against the Equip effect's race/Attribute/side restrictions. Special native host predicates for revival and monster Equip Cards are not fully ported.",
+    "fix": "Port the remaining Equip-specific predicates from FUN_0056fc50; preserve them when moving the Equip."
+  },
+  "Dimensionhole": {
+    "gap": "The Monster Card Zone is not reserved while the monster is removed from play, and the monster comes back as a Special Summon.",
+    "fix": "Reserve the zone and return the monster without a summon."
+  },
+  "Sword of Dragon's Soul": {
+    "gap": "The Dragon is destroyed when the Battle Phase ends (entering Main Phase 2 or ending the turn).",
+    "fix": "Verify the timing against the original."
+  },
+  "Shadow of Eyes": {
+    "gap": "Works once, as a normal Trap, for the monster that was just Set.",
+    "fix": "Check the original: continuous or one-shot."
+  },
+  "Metal Detector": {
+    "gap": "The negated Continuous Trap stays on the field with its effects switched off until the end of the turn (it is not destroyed); same for Mystic Probe, World Suppression and Armored Glass.",
+    "fix": "Check what the original does to the negated card."
+  },
+  "Riryoku Field": {
+    "gap": "'Designates 1 monster' means the Spell's target step ended with exactly 1 monster selected; Spells that affect monsters without a target step are not detected.",
+    "fix": "Mark target-style Spells explicitly in the effect data."
+  },
+  "RULE: hand limit 6": {
+    "gap": "The 6-card hand limit is an assumption from the tutorial text.",
+    "fix": "Find it in the original's code."
+  },
+  "RULE: three tributes for the Gods": {
+    "gap": "The Egyptian Gods need 3 tributes by assumption.",
+    "fix": "Check the original."
+  },
+  "RULE: only 1 attack restriction on turn 1": {
+    "gap": "'No attack on the first turn' follows what you told me; the exact original rule (also for the second player's first turn) is not verified.",
+    "fix": "Check the original's code."
+  },
+  "RULE: spell speed": {
+    "gap": "Chains follow normal spell-speed rules; the original's response-window rules (who may respond when) are only partly verified.",
+    "fix": "Finish docs/DUEL_FLOW.md from the original's code."
+  },
+  "RULE: windows": {
+    "gap": "'Continuous card played' (strings 193-195) and the exact order of the 31 announced windows are not all implemented.",
+    "fix": "See docs/DUEL_FLOW.md."
+  },
+  "RULE: Quick-Play Spells": {
+    "gap": "A Set Quick-Play Spell can only be played in the response windows the engine opens (summons, attacks, target declaration, damage step, chain links, Standby and End Phase).",
+    "fix": "Open a window whenever a player gets priority."
+  },
+  "RULE: Who destroyed a card": {
+    "gap": "The player responsible for a destruction is only known for the plain 'destroy' effect step (Gust, Driving Snow, Fairy Guardian); custom effects (Crush Card, Cyber Jar, ...) report none.",
+    "fix": "Set Duel.effect_player in every custom op that destroys cards."
+  },
+  "RULE: AI": {
+    "gap": "About 60 per-card AI handlers (for cards that had no effects) fall back to 'use if harmless'; battle boosters are approximated.",
+    "fix": "See docs/AI_NOTES.md."
+  },
+  "RULE: remaining-effect native parity": {
+    "gap": "Major Riot now matches the recovered handler's available-card/zone summon-count clamp and controller-based bounce eligibility. Multi-step effect return-window timing remains unverified: queued returns open after the chain without a last-action check. Other batches 18-20 still use extracted text and period rulings where native dispatch has not been traced.",
+    "fix": "Trace FUN_00581790 and native event delivery around FUN_0058bb10 before imposing a last-action timing rule."
+  },
+  "RULE: random-result animation motion": {
+    "gap": "Dice and coin animations now use the extracted sprite strips, final faces, shadows and sounds, and pause resolution until the result is displayed. Flight paths, frame cadence and result hold times are reconstructed rather than copied from the native renderer.",
+    "fix": "Trace the native coin/dice renderer frame order, positions and timing, then replace the reconstructed motion while keeping the recorded-result presentation barrier."
+  }
 }

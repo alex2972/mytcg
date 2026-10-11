@@ -115,21 +115,37 @@
     ],
     "do": [
      {
-      "op": "select",
-      "as": "t",
-      "from": "opp.monsters",
-      "filter": {
-       "face_up": true
-      },
-      "n": 1,
-      "prompt": 87,
-      "min": 0,
-      "required": false,
-      "auto": false
+      "op": "yesno",
+      "as": "change",
+      "prompt_text": "Change a monster's battle position with Garuda the Wind Spirit?"
      },
      {
-      "op": "flip_pos",
-      "what": "$t"
+      "op": "if",
+      "cond": [
+       {
+        "c": "var_true",
+        "name": "change"
+       }
+      ],
+      "then": [
+       {
+        "op": "select",
+        "as": "t",
+        "from": "opp.monsters",
+        "filter": {
+         "face_up": true
+        },
+        "n": 1,
+        "prompt": 87,
+        "min": 0,
+        "required": false,
+        "auto": false
+       },
+       {
+        "op": "flip_pos",
+        "what": "$t"
+       }
+      ]
      }
     ]
    }

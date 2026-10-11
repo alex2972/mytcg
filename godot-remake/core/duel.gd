@@ -37,6 +37,7 @@ var turn := 0                    ## 1-based turn counter (both players share it)
 var turn_player := 0
 var phase := ""
 var normal_summoned := false
+var summons_this_turn := [false, false] ## Successful Normal, Flip and Special Summons; excludes Sets.
 var no_first_turn_attack := false   ## the original forbids entering the Battle Phase on turn 1
 var winner := -1                 ## -1 running, 0/1 winner, 2 draw
 var win_reason := ""
@@ -53,6 +54,7 @@ var dimension_holes: Array = []       ## Dimensionhole: {uid, player} monsters r
 var battle_dead: Array = []         ## uids of monsters destroyed in battle this turn
 var killer_uid := -1                ## attacker that is destroying a monster in battle right now
 var attackers_this_turn: Array = []  ## uids of monsters that attacked this turn
+var effect_source: DCard = null ## Source of the currently resolving operation, for Spell immunity.
 var effect_player := -1               ## the player whose card effect is destroying something right now (-1: battle, rules or unknown)
 var lost_spells: Array = []           ## uids of Spell Cards destroyed by an opponent's card effect this turn (Fairy Guardian)
 var turn_rules: Array = []       ## {rule, player} lasting until the end of the turn
@@ -199,7 +201,7 @@ func race_of(c: DCard) -> int:
 	if not is_monster(c):
 		return 0
 	for eq in c.equips:                          # Dragonic Attack: the equipped monster is treated as another Type
-		if eq.equip_mod.has("race"):
+		if eq.equip_mod.has("race") and not fx.rule_active("no_equip") and not fx._negated_this_turn(eq) and not spell_unaffected(c, eq):
 			return int(eq.equip_mod["race"])
 	for p in 2:
 		for src in fx.cards_controlled(p):
@@ -241,6 +243,10 @@ func _begin_turn() -> void:
 			c.face_up = false
 			sides[turn_player].hand.append(c)
 			_emit("to_hand", {"player": turn_player, "uid": c.uid})
+	# Count actual controller turns, including skipped turns, rather than global turn arithmetic.
+	for eq in fx.cards_controlled(0) + fx.cards_controlled(1):
+		if eq.equipped_to != null and eq.equipped_to.controller == turn_player and db.card_name(eq.idx) == "Cocoon of Evolution":
+			eq.flags["cocoon_turns"] = int(eq.flags.get("cocoon_turns", 0)) + 1
 	if skip_turn[turn_player]:
 		skip_turn[turn_player] = false
 		_emit("turn_skipped", {"player": turn_player})
@@ -249,6 +255,7 @@ func _begin_turn() -> void:
 		_begin_turn()
 		return
 	normal_summoned = false
+	summons_this_turn = [false, false]
 	for h in dimension_holes.duplicate():
 		if int(h["player"]) == turn_player:
 			dimension_holes.erase(h)
@@ -290,6 +297,7 @@ func to_battle(p: int) -> String:
 	if no_first_turn_attack and turn == 1:
 		return "You cannot attack on the first turn."
 	phase = "battle"
+	add_turn_rule("battle_entered", p)
 	_emit("phase", {"phase": phase, "player": p})
 	return ""
 
@@ -414,6 +422,9 @@ func _detach(c: DCard) -> void:
 	c.equip_mod = {}
 
 func _leave_field_cleanup(c: DCard) -> void:
+	for src in fx.cards_controlled(0) + fx.cards_controlled(1):
+		if src.flags.has("prohibition_exempt"):
+			(src.flags["prohibition_exempt"] as Array).erase(c.uid)
 	# equips on a monster that leaves play go to the graveyard
 	for eq in c.equips.duplicate():
 		send_to_grave(eq, "equip_lost")
@@ -442,9 +453,12 @@ func is_on_field(c: DCard) -> bool:
 	return false
 
 func send_to_grave(c: DCard, reason: String) -> void:
+	if reason in ["effect", "destroyed:effect"] and spell_unaffected(c, effect_source):
+		return
 	var was_on_field := is_on_field(c)
 	var from_ctrl := c.controller
 	var was_face_up := c.face_up
+	var was_flipped: bool = c.flags.get("was_flipped", false)
 	var was_pos := c.pos
 	if c.home_owner != -1:
 		c.owner = c.home_owner
@@ -479,7 +493,7 @@ func send_to_grave(c: DCard, reason: String) -> void:
 			lost_spells.append(c.uid)
 		fx.window("destroyed", {"player": from_ctrl, "uid": c.uid, "reason": reason, "killer": killer_uid, "pos": was_pos, "was_face_up": was_face_up, "by": effect_player})
 	fx.window("sent_to_grave", {"player": from_ctrl, "uid": c.uid, "reason": reason, "was_on_field": was_on_field, "killer": killer_uid,
-		"was_face_up": was_face_up, "pos": was_pos})
+		"was_face_up": was_face_up, "was_flipped": was_flipped, "pos": was_pos})
 	if reason == "discard" and fx.has_listener("discarded"):
 		fx.window("discarded", {"player": from_ctrl, "uid": c.uid})
 
@@ -489,7 +503,10 @@ func destroy_card(c: DCard, reason: String) -> void:
 	send_to_grave(c, "destroyed:" + reason)
 
 func return_to_hand(c: DCard) -> void:
+	if spell_unaffected(c, effect_source):
+		return
 	var was_on_field := is_on_field(c)
+	var from_controller: int = c.controller
 	_detach(c)
 	if was_on_field:
 		_leave_field_cleanup(c)
@@ -497,13 +514,19 @@ func return_to_hand(c: DCard) -> void:
 		return
 	c.controller = c.owner
 	c.face_up = false
+	if not db.fusion_recipe(db.card_name(c.idx)).is_empty():
+		sides[c.owner].extra.append(c)
+		_emit("to_deck", {"player": c.owner, "uid": c.uid})
+		return
 	sides[c.owner].hand.append(c)
 	_emit("to_hand", {"player": c.owner, "uid": c.uid})
 	check_exodia(c.owner)
 	if was_on_field and fx.has_listener("returned_to_hand"):
-		fx.window("returned_to_hand", {"player": c.owner, "uid": c.uid})
+		fx.window("returned_to_hand", {"player": from_controller, "uid": c.uid, "by": effect_player})
 
 func return_to_deck(c: DCard, where := "top") -> void:
+	if spell_unaffected(c, effect_source):
+		return
 	var was_on_field := is_on_field(c)
 	_detach(c)
 	if was_on_field:
@@ -522,10 +545,15 @@ func return_to_deck(c: DCard, where := "top") -> void:
 	_emit("to_deck", {"player": c.owner, "uid": c.uid})
 
 func banish_card(c: DCard) -> void:
+	if spell_unaffected(c, effect_source):
+		return
 	var was_on_field := is_on_field(c)
 	_detach(c)
 	if was_on_field:
 		_leave_field_cleanup(c)
+	if c.token != "":
+		_emit("token_gone", {"player": c.controller, "uid": c.uid})
+		return
 	c.controller = c.owner
 	c.face_up = true
 	sides[c.owner].banished.append(c)
@@ -569,6 +597,9 @@ func check_exodia(p: int) -> void:
 	_win(p, "exodia")
 
 func special_summon(c: DCard, p: int, position := "atk", face_up := true) -> String:
+	var why: String = special_summon_problem(c, p, effect_source != null and effect_source != c)
+	if why != "":
+		return why
 	if c.token == "" and (fx.rule_active("no_summon_any") or fx.rule_active("no_special_summon")) and not c.flags.get("allow_summon", false):
 		return "A card effect prevents Special Summons."
 	var s: PlayerSide = sides[p]
@@ -582,10 +613,11 @@ func special_summon(c: DCard, p: int, position := "atk", face_up := true) -> Str
 	_detach(c)
 	c.controller = p
 	s.monsters[z] = c
-	c.face_up = face_up
+	c.face_up = face_up or fx.rule_active("no_set")
 	c.pos = position
 	c.summon_turn = turn
 	c.flags["special_summoned"] = true
+	summons_this_turn[p] = true
 	_emit("special_summon", {"player": p, "uid": c.uid, "zone": z})
 	fx.window("special_summoned", {"player": p, "uid": c.uid, "from": origin})
 	return ""
@@ -614,11 +646,15 @@ func equip_card(equip: DCard, monster: DCard, mod: Dictionary) -> void:
 	equip.equipped_to = monster
 	monster.equips.append(equip)
 	equip.equip_mod = mod
+	if db.card_name(equip.idx) == "Cocoon of Evolution":
+		equip.flags["cocoon_turns"] = 0
 	_emit("equip", {"uid": equip.uid, "target": monster.uid})
 	if fx.has_listener("equipped"):
 		fx.window("equipped", {"player": equip.controller, "uid": equip.uid, "target": monster.uid})
 
 func take_control(c: DCard, p: int, until := "forever") -> void:
+	if spell_unaffected(c, effect_source):
+		return
 	if c.controller == p:
 		return
 	var s: PlayerSide = sides[p]
@@ -638,9 +674,20 @@ func take_control(c: DCard, p: int, until := "forever") -> void:
 		fx.window("control_switched", {"player": p, "uid": c.uid})
 
 func force_position(c: DCard, position: String, face_up := true, quiet := false) -> void:
+	if spell_unaffected(c, effect_source):
+		return
 	var was_down := not c.face_up
 	c.pos = position
 	c.face_up = face_up
+	if was_down and face_up:
+		c.flags["was_flipped"] = true
+	if not face_up:
+		c.flags.erase("was_flipped")
+		# Cocoon cannot remain equipped to a face-down Petit Moth. Losing the
+		# Equip also resets its evolution counter before a later equip starts.
+		for eq in c.equips.duplicate():
+			if db.card_name(eq.idx) == "Cocoon of Evolution":
+				send_to_grave(eq, "equip_lost")
 	_emit("change_position", {"player": c.controller, "uid": c.uid, "pos": position})
 	if was_down and face_up and not quiet:
 		fx.window("flipped", {"player": c.controller, "uid": c.uid, "by_battle": false})
@@ -704,12 +751,14 @@ func summon(p: int, c: DCard, tributes: Array = [], zone := -1, set_face_down :=
 		return g
 	if not in_main_phase():
 		return "You can only summon during a Main Phase."
+	if prohibited(c):
+		return "This card is prohibited."
 	var s: PlayerSide = sides[p]
 	if not s.hand.has(c) or not is_monster(c):
 		return "Select a monster from your hand."
 	if normal_summoned:
 		return "You can only Normal Summon or Set once per turn."
-	if has_turn_rule("no_summon", p) or fx.rule_active("no_summon_any"):
+	if (not set_face_down and (has_turn_rule("no_summon", p) or breeding_machine_active(p))) or fx.rule_active("no_summon_any"):
 		return "A card effect prevents you from summoning this turn."
 	for e in fx.effects_of(c):
 		if e.get("rule", "") == "no_normal_summon":
@@ -761,6 +810,7 @@ func summon(p: int, c: DCard, tributes: Array = [], zone := -1, set_face_down :=
 	if set_face_down and fx.has_listener("monster_set"):
 		fx.window("monster_set", {"player": p, "uid": c.uid})
 	if not set_face_down:
+		summons_this_turn[p] = true
 		fx.window("summoned", {"player": p, "uid": c.uid})
 	return ""
 
@@ -768,6 +818,8 @@ func set_spell_trap(p: int, c: DCard, zone := -1) -> String:
 	var g := _guard(p)
 	if g != "":
 		return g
+	if prohibited(c):
+		return "This card is prohibited."
 	if lockdown_until > turn:
 		return "Spell and Trap Cards cannot be Set right now."
 	if not in_main_phase():
@@ -798,6 +850,14 @@ func set_spell_trap(p: int, c: DCard, zone := -1) -> String:
 
 ## Switch a monster between attack and defense; a face-down defense monster is Flip Summoned face-up in attack.
 func change_position(p: int, c: DCard) -> String:
+	if prohibited(c):
+		return "This card is prohibited."
+	if not c.face_up:
+		if has_turn_rule("no_summon", p) or breeding_machine_active(p):
+			return "A card effect prevents Flip Summons."
+		for e in fx.effects_of(c):
+			if e.get("rule", "") == "summon_needs" and not has_face_up_name(str(e["name"])):
+				return "This monster requires %s on the field." % e["name"]
 	var g := _guard(p)
 	if g != "":
 		return g
@@ -814,7 +874,9 @@ func change_position(p: int, c: DCard) -> String:
 	c.pos_changed = true
 	if not c.face_up:
 		c.face_up = true
+		c.flags["was_flipped"] = true
 		c.pos = "atk"
+		summons_this_turn[p] = true
 		_emit("flip_summon", {"player": p, "uid": c.uid})
 		var data := {"player": p, "uid": c.uid, "by_battle": false}
 		fx.window("flip_summoned", data, func(): fx.window("flipped", data))
@@ -856,6 +918,10 @@ func activate_effect(p: int, c: DCard, idx := 0) -> String:
 # --- battle ------------------------------------------------------------------
 
 func can_attack(p: int, c: DCard) -> String:
+	if prohibited(c):
+		return "This card is prohibited."
+	if fx.rule_active("toon_attack", c) and sides[p].lp <= 500:
+		return "Not enough Life Points to attack."
 	var g := _guard(p)
 	if g != "":
 		return g
@@ -889,6 +955,8 @@ func attack_protected(t: DCard) -> bool:
 	return false
 
 func can_attack_directly(c: DCard) -> bool:
+	if fx.rule_active("toon_attack", c):
+		return toon_targets(opponent(c.controller)).is_empty()
 	if fx.rule_active("can_attack_directly", c):
 		return true
 	for e in fx.effects_of(c):
@@ -897,7 +965,7 @@ func can_attack_directly(c: DCard) -> bool:
 			for m in monsters_of(opponent(c.controller)):
 				var allowed := false
 				for a in e["attributes"]:
-					if int(a) == int(card_data(m).get("attribute", 0)):
+					if int(a) == attribute_of(m):
 						allowed = true
 				if not allowed:
 					ok = false
@@ -910,6 +978,8 @@ func attack(p: int, c: DCard, target: DCard = null) -> String:
 	if why != "":
 		return why
 	var foe := opponent(p)
+	if fx.rule_active("toon_attack", c) and not toon_targets(foe).is_empty() and not toon_targets(foe).has(target):
+		return "This Toon must attack an opponent Toon monster."
 	if target == null:
 		if not monsters_of(foe).is_empty() and not can_attack_directly(c):
 			return "You must attack one of your opponent's monsters."
@@ -935,6 +1005,8 @@ func attack(p: int, c: DCard, target: DCard = null) -> String:
 func _declare_attack(p: int, c: DCard, target: DCard) -> void:
 	if not (sides[p].monsters as Array).has(c) or winner != -1:
 		return
+	if fx.rule_active("toon_attack", c):
+		pay_lp(p, 500)
 	c.attacked = true
 	attackers_this_turn.append(c.uid)
 	current_attack = {"attacker": c, "target": target, "negated": false, "player": p}
@@ -978,6 +1050,7 @@ func _after_target() -> void:
 		return
 	if not t.face_up:
 		t.face_up = true
+		t.flags["was_flipped"] = true
 		_emit("flip", {"player": foe, "uid": t.uid})
 		var data := {"player": foe, "uid": t.uid, "by_battle": true}
 		fx.window("flipped", data, func(): _open_damage_step(func(): _battle_damage_step()))
@@ -1003,10 +1076,11 @@ func _direct_damage_step() -> void:
 	var foe := opponent(p)
 	var ok: bool = not current_attack["negated"] and (sides[p].monsters as Array).has(a)
 	var open_field := monsters_of(foe).is_empty() or can_attack_directly(a)
+	var attack_value: int = atk_of(a)
 	current_attack = {}
 	if ok and open_field:
 		damage_source = a.uid
-		_damage(foe, atk_of(a), "direct_attack")
+		_damage(foe, attack_value, "direct_attack")
 		damage_source = -1
 
 func _battle_damage_step() -> void:
@@ -1019,11 +1093,14 @@ func _battle_damage_step() -> void:
 	if current_attack["negated"] or not (sides[p].monsters as Array).has(a) or not (sides[foe].monsters as Array).has(t):
 		current_attack = {}
 		return
+	var attack_value: int = atk_of(a)
+	var target_attack: int = atk_of(t)
+	var target_defense: int = def_of(t)
 	current_attack = {}
 	var shielded := fx.rule_active("no_battle_damage_self", a)      # read before anything leaves the field
 	var piercing := fx.rule_active("pierce", a)
 	if t.pos == "atk":
-		var diff := atk_of(a) - atk_of(t)
+		var diff := attack_value - target_attack
 		if diff > 0:
 			killer_uid = a.uid
 			destroy_card(t, "battle")
@@ -1044,7 +1121,7 @@ func _battle_damage_step() -> void:
 			destroy_card(t, "battle")
 			killer_uid = -1
 	else:
-		var diff2 := atk_of(a) - def_of(t)
+		var diff2 := attack_value - target_defense
 		if diff2 > 0:
 			killer_uid = a.uid
 			destroy_card(t, "battle")           # no damage to a defender
@@ -1124,3 +1201,63 @@ func debug_give(p: int, card_idx: int) -> DCard:
 	var c := _new_card(card_idx, p)
 	sides[p].hand.append(c)
 	return c
+
+## Cards present before Prohibition resolved are exempt until they leave the field.
+func prohibited(c: DCard) -> bool:
+	for p in 2:
+		for src in fx.cards_controlled(p):
+			if src.face_up and not fx._negated_this_turn(src) and src.flags.get("prohibited_name", "") == db.card_name(c.idx) and not (src.flags.get("prohibition_exempt", []) as Array).has(c.uid):
+				return true
+	return false
+
+func special_summon_problem(c: DCard, p: int, by_effect := false) -> String:
+	if has_turn_rule("no_summon", p):
+		return "A card effect prevents Special Summons this turn."
+	if breeding_machine_active(p) and not (c.token == "Slime Token" and effect_source != null and db.card_name(effect_source.idx) == "Jam Breeding Machine" and effect_source.controller == p):
+		return "Jam Breeding Machine prevents other summons."
+	if prohibited(c) and not by_effect:
+		return "This card is prohibited."
+	for e in fx.edb.for_number(c.number):
+		if e.get("rule", "") == "summon_needs" and not has_face_up_name(str(e["name"])):
+			return "This monster requires %s on the field." % e["name"]
+		if e.get("rule", "") == "summon_procedure" and not c.flags.get("procedure_authorized", false):
+			# Wall Shadow is a Deck-only procedure; the Moth may be revived after a proper Summon.
+			if e.get("kind", "") == "wall_shadow" or not c.properly_summoned or fx._zone_of(c) not in ["grave", "banished"]:
+				return "This monster requires its own Special Summon procedure."
+	if (fx.rule_active("no_special_summon") or fx.rule_active("no_summon_any")) and not c.flags.get("allow_summon", false):
+		return "A card effect prevents Special Summons."
+	return ""
+
+## The original restricts only the controller; setting monsters remains legal.
+func breeding_machine_active(p: int) -> bool:
+	for src in fx.cards_controlled(p):
+		if not src.face_up:
+			continue
+		for e in fx.effects_of(src):
+			if e.get("type", "") == "static" and e.get("rule", "") == "breeding_machine":
+				return true
+	return false
+
+func has_face_up_name(name: String) -> bool:
+	for c in fx.cards_controlled(0) + fx.cards_controlled(1):
+		if c.face_up and db.card_name(c.idx) == name:
+			return true
+	return false
+
+func spell_unaffected(c: DCard, source: DCard) -> bool:
+	if source == null or not is_monster(c) or not c.face_up or not is_on_field(c) or card_data(source).get("type", "") != "spell":
+		return false
+	for e in fx.effects_of(c):
+		if e.get("rule", "") == "spell_immune_umi" and has_face_up_name("Umi"):
+			return true
+	return false
+
+func attribute_of(c: DCard) -> int:
+	if c.face_up and not fx.rule_active("no_equip"):
+		for eq in c.equips:
+			if eq.face_up and eq.equip_mod.has("attribute") and not fx._negated_this_turn(eq) and not spell_unaffected(c, eq):
+				return int(eq.equip_mod["attribute"])
+	return int(card_data(c).get("attribute", 0))
+
+func toon_targets(p: int) -> Array:
+	return monsters_of(p).filter(func(c): return c.face_up and db.card_name(c.idx) in ["Manga Ryu-Ran", "Toon Mermaid", "Toon Summoned Skull", "Blue-Eyes Toon Dragon"])

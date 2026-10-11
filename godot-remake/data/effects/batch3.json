@@ -1,175 +1,2074 @@
 {
-"_about": "Batch 3: the most-played cards that still lacked effects (coin/dice, tokens, redirects, continuous traps, battle triggers).",
-
-"Upstart Goblin": {"fx": [{"type": "spell", "do": [{"op": "draw", "who": "self", "n": 1}, {"op": "heal", "who": "opp", "amount": 1000}]}]},
-"Jar of Greed": {"fx": [{"type": "trap", "speed": 2, "when": ["summoned", "special_summoned", "flip_summoned", "attack_declared", "activated_spell", "activated_trap", "standby_phase", "end_phase"],
-  "do": [{"op": "draw", "who": "self", "n": 1}]}]},
-"Time Seal": {"fx": [{"type": "trap", "speed": 2, "when": ["summoned", "special_summoned", "flip_summoned", "attack_declared", "activated_spell", "activated_trap", "standby_phase", "end_phase"],
-  "do": [{"op": "skip_next_draw", "who": "opp"}]}]},
-"Torrential Tribute": {"fx": [{"type": "trap", "speed": 2, "when": ["summoned", "special_summoned", "flip_summoned"],
-  "do": [{"op": "destroy", "what": {"from": "monsters"}}]}]},
-"Ring of Destruction": {"fx": [{"type": "trap", "speed": 2, "when": ["summoned", "special_summoned", "flip_summoned", "attack_declared", "activated_spell", "activated_trap", "standby_phase", "end_phase"],
-  "target": [{"op": "select", "as": "t", "from": "monsters", "filter": {"face_up": true}, "n": 1, "prompt": 98}],
-  "do": [{"op": "damage", "who": "opp", "amount": {"stat": "atk", "of": "t"}},
-         {"op": "damage", "who": "self", "amount": {"stat": "atk", "of": "t"}},
-         {"op": "destroy", "what": "$t"}]}]},
-"Two-Pronged Attack": {"fx": [{"type": "trap", "speed": 2, "when": ["summoned", "special_summoned", "flip_summoned", "attack_declared", "activated_spell", "activated_trap", "standby_phase", "end_phase"],
-  "target": [{"op": "select", "as": "a", "from": "self.monsters", "n": 2, "prompt": 123}, {"op": "select", "as": "b", "from": "opp.monsters", "n": 1, "prompt": 123}],
-  "do": [{"op": "destroy", "what": "$a"}, {"op": "destroy", "what": "$b"}]}]},
-"Gift of The Mystical Elf": {"fx": [{"type": "trap", "speed": 2, "when": ["summoned", "special_summoned", "flip_summoned", "attack_declared", "activated_spell", "activated_trap", "standby_phase", "end_phase"],
-  "do": [{"op": "heal", "who": "self", "amount": {"mul": {"count": "monsters"}, "by": 300}}]}]},
-"Michizure": {"fx": [{"type": "trap", "speed": 2, "when": ["sent_to_grave"],
-  "cond": [{"c": "event_by", "who": "self"}, {"c": "was_on_field"}, {"c": "event_card", "filter": {"type": "monster"}}],
-  "target": [{"op": "select", "as": "t", "from": "monsters", "n": 1, "prompt": 109}],
-  "do": [{"op": "destroy", "what": "$t"}]}]},
-"Backup Soldier": {"fx": [{"type": "trap", "speed": 2, "when": ["summoned", "special_summoned", "flip_summoned", "attack_declared", "activated_spell", "activated_trap", "standby_phase", "end_phase"],
-  "cond": [{"c": "has", "zone": "self.grave", "filter": {"type": "monster"}, "n": 5}],
-  "target": [{"op": "select", "as": "t", "from": "self.grave", "filter": {"type": "monster", "category": 0, "atk_max": 1500}, "n": 3, "min": 1, "prompt": 22}],
-  "do": [{"op": "to_hand", "what": "$t"}]}]},
-"Windstorm of Etaqua": {"fx": [{"type": "trap", "speed": 2, "when": ["summoned", "special_summoned", "flip_summoned", "attack_declared", "activated_spell", "activated_trap", "standby_phase", "end_phase"],
-  "cond": [{"c": "has", "zone": "opp.monsters", "filter": {"face_up": true}, "n": 1}],
-  "do": [{"op": "flip_pos", "what": {"from": "opp.monsters", "filter": {"face_up": true}}}]}]},
-"Dust Tornado": {"fx": [{"type": "trap", "speed": 2, "when": ["summoned", "special_summoned", "flip_summoned", "attack_declared", "activated_spell", "activated_trap", "standby_phase", "end_phase"],
-  "target": [{"op": "select", "as": "t", "from": "opp.field", "filter": {"type": ["spell", "trap"]}, "n": 1, "prompt": 141}],
-  "do": [{"op": "destroy", "what": "$t"}]}]},
-"Numinous Healer": {"fx": [{"type": "trap", "speed": 2, "when": ["damaged"], "cond": [{"c": "event_by", "who": "self"}],
-  "do": [{"op": "heal", "who": "self", "amount": 1000},
-         {"op": "heal", "who": "self", "amount": {"mul": {"count": "self.grave", "filter": {"name_has": "Numinous Healer"}}, "by": 500}}]}]},
-"Kunai with Chain": {"fx": [{"type": "trap", "speed": 2, "when": ["summoned", "special_summoned", "flip_summoned", "attack_declared", "activated_spell", "activated_trap", "standby_phase", "end_phase", "damage_step"],
-  "target": [{"op": "select", "as": "t", "from": "opp.monsters", "filter": {"face_up": true, "pos": "atk"}, "n": 1, "prompt": 136},
-             {"op": "select", "as": "u", "from": "self.monsters", "filter": {"face_up": true}, "n": 1, "min": 0, "required": false, "prompt": 133}],
-  "do": [{"op": "set_pos", "what": "$t", "pos": "def", "face_up": true}, {"op": "mod", "what": "$u", "atk": 500, "until": "end_turn"}]}]},
-"Magic-Arm Shield": {"fx": [{"type": "trap", "speed": 2, "when": ["attack_declared"], "cond": [{"c": "event_by", "who": "opp"}],
-  "target": [{"op": "select", "as": "t", "from": "opp.monsters", "filter": {"face_up": true, "not_attacker": true}, "n": 1, "prompt": 109}],
-  "do": [{"op": "redirect_attack", "to": "$t"}]}]},
-"Magic Jammer": {"fx": [{"type": "counter", "speed": 3, "when": ["activated_spell"], "cond": [{"c": "chain_top_by", "is": "opp"}],
-  "cost": [{"op": "discard", "who": "self", "n": 1, "prompt": 12}],
-  "do": [{"op": "negate", "destroy": true}]}]},
-"Magic Drain": {"fx": [{"type": "counter", "speed": 3, "when": ["activated_spell"], "cond": [{"c": "chain_top_by", "is": "opp"}],
-  "do": [{"op": "if", "cond": [{"c": "has", "zone": "opp.hand", "filter": {"type": "spell"}, "n": 1}],
-          "then": [{"op": "select", "as": "d", "from": "opp.hand", "filter": {"type": "spell"}, "n": 1, "chooser": "opp", "discard": true, "auto": false, "prompt": 235},
-                   {"op": "to_grave", "what": "$d", "reason": "discard"}],
-          "else": [{"op": "negate", "destroy": true}]}]}]},
-"Fairy Box": {"fx": [
-  {"type": "continuous_trap", "speed": 2, "stay": true, "when": ["summoned", "special_summoned", "flip_summoned", "attack_declared", "activated_spell", "activated_trap", "standby_phase", "end_phase"], "do": []},
-  {"type": "trigger_forced", "when": "attack_declared", "cond": [{"c": "event_by", "who": "opp"}],
-   "do": [{"op": "coin", "heads": [{"op": "set_stat", "what": "attacker", "atk": 0, "until": "end_turn"}]}]},
-  {"type": "trigger_forced", "when": "standby_phase", "cond": [{"c": "turn", "is": "self"}],
-   "do": [{"op": "if", "cond": [{"c": "lp", "who": "self", "op": ">=", "v": 500}], "then": [{"op": "pay_lp", "amount": 500}], "else": [{"op": "destroy", "what": "src"}]}]}]},
-"Call Of The Haunted": {"fx": [{"type": "continuous_trap", "speed": 2, "stay": true,
-  "when": ["summoned", "special_summoned", "flip_summoned", "attack_declared", "activated_spell", "activated_trap", "standby_phase", "end_phase"],
-  "cond": [{"c": "free_zone", "who": "self"}],
-  "target": [{"op": "select", "as": "t", "from": "self.grave", "filter": {"type": "monster"}, "n": 1, "prompt": 83}],
-  "do": [{"op": "special_summon", "what": "$t", "pos": "atk", "face_up": true}, {"op": "bind", "a": "src", "b": "$t"}]}]},
-"Premature Burial": {"fx": [{"type": "equip",
-  "cond": [{"c": "free_zone", "who": "self"}, {"c": "lp", "who": "self", "op": ">", "v": 800}],
-  "cost": [{"op": "pay_lp", "amount": 800}],
-  "target": [{"op": "select", "as": "t", "from": "self.grave", "filter": {"type": "monster"}, "n": 1, "prompt": 83}],
-  "do": [{"op": "special_summon", "what": "$t", "pos": "atk", "face_up": true}, {"op": "equip", "to": "$t"}, {"op": "bind", "a": "src", "b": "$t"}]}]},
-"Scapegoat": {"fx": [{"type": "quickplay", "speed": 2, "when": ["summoned", "special_summoned", "flip_summoned", "attack_declared", "target_declared", "damage_step", "activated_spell", "activated_trap", "standby_phase", "end_phase"], "cond": [{"c": "free_zone", "who": "self"}],
-  "do": [{"op": "rule_turn", "rule": "no_summon", "who": "self"}, {"op": "token", "kind": "Sheep Token", "n": 4, "pos": "def"}]}]},
-"Graceful Dice": {"fx": [{"type": "quickplay", "speed": 2, "when": ["summoned", "special_summoned", "flip_summoned", "attack_declared", "target_declared", "damage_step", "activated_spell", "activated_trap", "standby_phase", "end_phase"], "do": [{"op": "dice", "as": "roll"},
-  {"op": "mod", "what": {"from": "self.monsters"}, "atk": {"mul": {"var": "roll"}, "by": 100}, "def": {"mul": {"var": "roll"}, "by": 100}, "until": "end_turn"}]}]},
-"Skull Dice": {"fx": [{"type": "trap", "speed": 2, "when": ["summoned", "special_summoned", "flip_summoned", "attack_declared", "activated_spell", "activated_trap", "standby_phase", "end_phase", "damage_step"],
-  "do": [{"op": "dice", "as": "roll"},
-  {"op": "mod", "what": {"from": "opp.monsters"}, "atk": {"mul": {"var": "roll"}, "by": -100}, "def": {"mul": {"var": "roll"}, "by": -100}, "until": "end_turn"}]}]},
-"Mask of Weakness": {"fx": [{"type": "trap", "speed": 2, "when": ["attack_declared", "damage_step"], "cond": [{"c": "event_by", "who": "opp"}],
-  "do": [{"op": "mod", "what": "attacker", "atk": -700, "until": "end_turn"}]}]},
-"Deal of Phantom": {"fx": [{"type": "trap", "speed": 2, "when": ["summoned", "special_summoned", "flip_summoned", "attack_declared", "activated_spell", "activated_trap", "standby_phase", "end_phase", "damage_step"],
-  "target": [{"op": "select", "as": "t", "from": "monsters", "filter": {"face_up": true}, "n": 1, "prompt": 133}],
-  "do": [{"op": "mod", "what": "$t", "atk": {"mul": {"count": "self.grave", "filter": {"type": "monster"}}, "by": 100}, "until": "end_turn"}]}]},
-"Shield & Sword": {"fx": [{"type": "spell", "do": [{"op": "swap_stats", "what": {"from": "monsters", "filter": {"face_up": true}}, "until": "end_turn"}]}]},
-"Mage Power": {"fx": [
-  {"type": "equip", "target": [{"op": "select", "as": "t", "from": "monsters", "filter": {"face_up": true}, "n": 1, "prompt": 101}], "do": [{"op": "equip", "to": "$t"}]},
-  {"type": "static", "mod": {"scope": "equipped", "per": {"zone": "self.spells", "filter": {}, "by": 500, "stats": ["atk", "def"]}}}]},
-"Snatch Steal": {"fx": [
-  {"type": "equip", "cond": [{"c": "free_zone", "who": "self"}], "stay": true,
-   "target": [{"op": "select", "as": "t", "from": "opp.monsters", "filter": {"face_up": true}, "n": 1, "prompt": 119}],
-   "do": [{"op": "take_control", "what": "$t", "until": "forever"}, {"op": "link_control", "what": "$t"}]},
-  {"type": "trigger_forced", "when": "standby_phase", "cond": [{"c": "turn", "is": "opp"}], "do": [{"op": "heal", "who": "opp", "amount": 1000}]}]},
-"Insect Barrier": {"fx": [{"type": "spell", "stay": true, "do": []}, {"type": "static", "rule": "no_attack", "scope": "theirs", "filter": {"race": "Insect"}}]},
-"Gravity Bind": {"fx": [
-  {"type": "continuous_trap", "speed": 2, "stay": true, "when": ["summoned", "special_summoned", "flip_summoned", "attack_declared", "activated_spell", "activated_trap", "standby_phase", "end_phase"], "do": []},
-  {"type": "static", "rule": "no_attack", "scope": "all", "filter": {"level_min": 4}}]},
-"Mask of Restrict": {"fx": [
-  {"type": "continuous_trap", "speed": 2, "stay": true, "when": ["summoned", "special_summoned", "flip_summoned", "attack_declared", "activated_spell", "activated_trap", "standby_phase", "end_phase"], "do": []},
-  {"type": "static", "rule": "no_tribute", "scope": "all"}]},
-"Light of Intervention": {"fx": [
-  {"type": "continuous_trap", "speed": 2, "stay": true, "when": ["summoned", "special_summoned", "flip_summoned", "attack_declared", "activated_spell", "activated_trap", "standby_phase", "end_phase"], "do": []},
-  {"type": "static", "rule": "no_set", "scope": "all"}]},
-"Imperial Order": {"fx": [
-  {"type": "continuous_trap", "speed": 2, "stay": true, "when": ["summoned", "special_summoned", "flip_summoned", "attack_declared", "activated_spell", "activated_trap", "standby_phase", "end_phase"], "do": []},
-  {"type": "static", "rule": "no_spell", "scope": "all"},
-  {"type": "trigger_forced", "when": "standby_phase", "cond": [{"c": "turn", "is": "self"}],
-   "do": [{"op": "if", "cond": [{"c": "lp", "who": "self", "op": ">=", "v": 700}], "then": [{"op": "pay_lp", "amount": 700}], "else": [{"op": "destroy", "what": "src"}]}]}]},
-"Minor Goblin Official": {"fx": [
-  {"type": "continuous_trap", "speed": 2, "stay": true, "cond": [{"c": "lp", "who": "opp", "op": "<=", "v": 3000}],
-   "when": ["summoned", "special_summoned", "flip_summoned", "attack_declared", "activated_spell", "activated_trap", "standby_phase", "end_phase"], "do": []},
-  {"type": "trigger_forced", "when": "standby_phase", "cond": [{"c": "turn", "is": "opp"}], "do": [{"op": "damage", "who": "opp", "amount": 500}]}]},
-"Robbin' Goblin": {"fx": [
-  {"type": "continuous_trap", "speed": 2, "stay": true, "when": ["summoned", "special_summoned", "flip_summoned", "attack_declared", "activated_spell", "activated_trap", "standby_phase", "end_phase"], "do": []},
-  {"type": "trigger_forced", "when": "damaged", "cond": [{"c": "event_by", "who": "opp"}],
-   "do": [{"op": "discard", "who": "opp", "n": 1, "random": true}]}]},
-"Skull Invitation": {"fx": [
-  {"type": "continuous_trap", "speed": 2, "stay": true, "when": ["summoned", "special_summoned", "flip_summoned", "attack_declared", "activated_spell", "activated_trap", "standby_phase", "end_phase"], "do": []},
-  {"type": "trigger_forced", "when": "sent_to_grave", "do": [{"op": "damage", "who": "event", "amount": 300}]}]},
-
-"Witch of the Black Forest": {"fx": [{"type": "trigger_forced", "when": "sent_to_grave", "zone": "grave", "cond": [{"c": "event_src"}, {"c": "was_on_field"}],
-  "do": [{"op": "search", "filter": {"type": "monster", "def_max": 1500}, "prompt": 22}]}]},
-"Magician of Faith": {"fx": [{"type": "flip", "when": "flipped", "cond": [{"c": "event_src"}],
-  "do": [{"op": "select", "as": "t", "from": "self.grave", "filter": {"type": "spell"}, "n": 1, "min": 0, "required": false, "auto": false, "prompt": 22}, {"op": "to_hand", "what": "$t"}]}]},
-"4-Starred Ladybug of Doom": {"fx": [{"type": "flip", "when": "flipped", "cond": [{"c": "event_src"}],
-  "do": [{"op": "destroy", "what": {"from": "opp.monsters", "filter": {"face_up": true, "level_min": 4, "level_max": 4}}}]}]},
-"Penguin Soldier": {"fx": [{"type": "flip", "when": "flipped", "cond": [{"c": "event_src"}],
-  "do": [{"op": "select", "as": "t", "from": "monsters", "n": 2, "min": 0, "required": false, "auto": false, "prompt": 116}, {"op": "to_hand", "what": "$t"}]}]},
-"Slate Warrior": {"fx": [
-  {"type": "flip", "when": "flipped", "cond": [{"c": "event_src"}], "do": [{"op": "mod", "what": "src", "atk": 500, "def": 500, "until": "forever"}]},
-  {"type": "trigger_forced", "when": "destroyed", "zone": "grave", "cond": [{"c": "event_src"}, {"c": "event_reason", "is": "destroyed:battle"}],
-   "do": [{"op": "mod", "what": "killer", "atk": -500, "def": -500, "until": "forever"}]}]},
-"Rigras Leever": {"fx": [
-  {"type": "flip", "when": "flipped", "cond": [{"c": "event_src"}],
-   "do": [{"op": "select", "as": "a", "from": "opp.hand", "n": 1, "min": 0, "required": false, "auto": false, "prompt": 235},
-          {"op": "to_grave", "what": "$a", "reason": "discard"},
-          {"op": "select", "as": "b", "from": "self.hand", "n": 1, "min": 0, "required": false, "auto": false, "chooser": "opp", "prompt": 235},
-          {"op": "to_grave", "what": "$b", "reason": "discard"}]},
-  {"type": "trigger_forced", "when": "destroyed", "zone": "grave", "cond": [{"c": "event_src"}, {"c": "event_reason", "is": "destroyed:battle"}],
-   "do": [{"op": "mod", "what": "killer", "atk": -500, "def": -500, "until": "forever"}]}]},
-"Nimble Momonga": {"fx": [{"type": "trigger_forced", "when": "sent_to_grave", "zone": "grave", "cond": [{"c": "event_src"}, {"c": "event_reason", "is": "destroyed:battle"}],
-  "do": [{"op": "heal", "who": "self", "amount": 1000},
-         {"op": "select", "as": "t", "from": "self.deck", "filter": {"name_has": "Nimble Momonga"}, "n": 3, "min": 0, "required": false, "auto": false, "prompt": 26},
-         {"op": "special_summon", "what": "$t", "pos": "def", "face_up": false}, {"op": "shuffle", "who": "self"}]}]},
-"Giant Germ": {"fx": [{"type": "trigger_forced", "when": "sent_to_grave", "zone": "grave", "cond": [{"c": "event_src"}, {"c": "event_reason", "is": "destroyed:battle"}],
-  "do": [{"op": "damage", "who": "opp", "amount": 500},
-         {"op": "select", "as": "t", "from": "self.deck", "filter": {"name_has": "Giant Germ"}, "n": 3, "min": 0, "required": false, "auto": false, "prompt": 26},
-         {"op": "special_summon", "what": "$t", "pos": "atk", "face_up": true}, {"op": "shuffle", "who": "self"}]}]},
-"Shining Angel": {"fx": [{"type": "trigger_forced", "when": "sent_to_grave", "zone": "grave", "cond": [{"c": "event_src"}, {"c": "event_reason", "is": "destroyed:battle"}],
-  "do": [{"op": "select", "as": "t", "from": "self.deck", "filter": {"type": "monster", "attribute": "LIGHT", "atk_max": 1500}, "n": 1, "min": 0, "required": false, "auto": false, "prompt": 26},
-         {"op": "special_summon", "what": "$t", "pos": "atk", "face_up": true}, {"op": "shuffle", "who": "self"}]}]},
-"Bubonic Vermin": {"fx": [{"type": "flip", "when": "flipped", "cond": [{"c": "event_src"}],
-  "do": [{"op": "select", "as": "t", "from": "self.deck", "filter": {"name_has": "Bubonic Vermin"}, "n": 1, "min": 0, "required": false, "auto": false, "prompt": 26},
-         {"op": "special_summon", "what": "$t", "pos": "def", "face_up": false}, {"op": "shuffle", "who": "self"}]}]},
-"Copycat": {"fx": [{"type": "trigger_forced", "when": ["summoned", "special_summoned"], "cond": [{"c": "event_src"}],
-  "do": [{"op": "select", "as": "t", "from": "opp.monsters", "filter": {"face_up": true}, "n": 1, "min": 0, "required": false, "prompt": 119},
-         {"op": "set_stat", "what": "src", "atk": {"stat": "atk", "of": "t"}, "until": "forever"},
-         {"op": "set_stat", "what": "src", "def": {"stat": "def", "of": "t"}, "until": "forever"}]}]},
-"Goblin Attack Force": {"fx": [{"type": "trigger_forced", "when": "attack_declared", "cond": [{"c": "attacker_is_src"}],
-  "do": [{"op": "set_flag", "what": "src", "name": "def_after_battle", "value": true}]}]},
-"Zombyra the Dark": {"fx": [
-  {"type": "static", "rule": "no_direct_attack", "scope": "self"},
-  {"type": "trigger_forced", "when": "destroyed", "cond": [{"c": "killer_is_src"}], "do": [{"op": "mod", "what": "src", "atk": -200, "until": "forever"}]}]},
-"Jirai Gumo": {"fx": [{"type": "trigger_forced", "when": "attack_declared", "cond": [{"c": "attacker_is_src"}],
-  "do": [{"op": "coin", "tails": [{"op": "set_lp", "who": "self", "amount": {"half": {"lp": "self"}}}]}]}]},
-"Time Wizard": {"fx": [{"type": "ignition", "once_per_turn": true, "cond": [{"c": "turn", "is": "self"}],
-  "do": [{"op": "coin",
-          "heads": [{"op": "destroy", "what": {"from": "opp.monsters"}}],
-          "tails": [{"op": "let", "as": "m", "what": {"from": "self.monsters"}},
-                    {"op": "damage", "who": "self", "amount": {"half": {"stat": "atk", "of": "m"}}},
-                    {"op": "destroy", "what": "$m"}]}]}]},
-"Barrel Dragon": {"fx": [{"type": "ignition", "once_per_turn": true, "cond": [{"c": "turn", "is": "self"}, {"c": "has", "zone": "opp.monsters", "n": 1}],
-  "do": [{"op": "coins", "n": 3, "as": "heads"},
-         {"op": "if", "cond": [{"c": "var_ge", "name": "heads", "v": 2}],
-          "then": [{"op": "select", "as": "t", "from": "opp.monsters", "n": 1, "prompt": 109}, {"op": "destroy", "what": "$t"}]}]}]},
-"Jinzo": {"fx": [{"type": "static", "rule": "no_trap", "scope": "all"}]},
-"Gearfried the Iron Knight": {"fx": [{"type": "static", "rule": "destroy_equips", "scope": "self"}]},
-"The Fiend Megacyber": {"fx": [{"type": "static", "rule": "free_summon_behind", "scope": "self"}]}
+  "_about": "Batch 3: the most-played cards that still lacked effects (coin/dice, tokens, redirects, continuous traps, battle triggers).",
+  "Upstart Goblin": {
+    "fx": [
+      {
+        "type": "spell",
+        "do": [
+          {
+            "op": "draw",
+            "who": "self",
+            "n": 1
+          },
+          {
+            "op": "heal",
+            "who": "opp",
+            "amount": 1000
+          }
+        ]
+      }
+    ]
+  },
+  "Jar of Greed": {
+    "fx": [
+      {
+        "type": "trap",
+        "speed": 2,
+        "when": [
+          "summoned",
+          "special_summoned",
+          "flip_summoned",
+          "attack_declared",
+          "activated_spell",
+          "activated_trap",
+          "standby_phase",
+          "end_phase"
+        ],
+        "do": [
+          {
+            "op": "draw",
+            "who": "self",
+            "n": 1
+          }
+        ]
+      }
+    ]
+  },
+  "Time Seal": {
+    "fx": [
+      {
+        "type": "trap",
+        "speed": 2,
+        "when": [
+          "summoned",
+          "special_summoned",
+          "flip_summoned",
+          "attack_declared",
+          "activated_spell",
+          "activated_trap",
+          "standby_phase",
+          "end_phase"
+        ],
+        "do": [
+          {
+            "op": "skip_next_draw",
+            "who": "opp"
+          }
+        ]
+      }
+    ]
+  },
+  "Torrential Tribute": {
+    "fx": [
+      {
+        "type": "trap",
+        "speed": 2,
+        "when": [
+          "summoned",
+          "special_summoned",
+          "flip_summoned"
+        ],
+        "do": [
+          {
+            "op": "destroy",
+            "what": {
+              "from": "monsters"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "Ring of Destruction": {
+    "fx": [
+      {
+        "type": "trap",
+        "speed": 2,
+        "when": [
+          "summoned",
+          "special_summoned",
+          "flip_summoned",
+          "attack_declared",
+          "activated_spell",
+          "activated_trap",
+          "standby_phase",
+          "end_phase"
+        ],
+        "target": [
+          {
+            "op": "select",
+            "as": "t",
+            "from": "monsters",
+            "filter": {
+              "face_up": true
+            },
+            "n": 1,
+            "prompt": 98
+          }
+        ],
+        "do": [
+          {
+            "op": "damage",
+            "who": "opp",
+            "amount": {
+              "stat": "atk",
+              "of": "t"
+            }
+          },
+          {
+            "op": "damage",
+            "who": "self",
+            "amount": {
+              "stat": "atk",
+              "of": "t"
+            }
+          },
+          {
+            "op": "destroy",
+            "what": "$t"
+          }
+        ]
+      }
+    ]
+  },
+  "Two-Pronged Attack": {
+    "fx": [
+      {
+        "type": "trap",
+        "speed": 2,
+        "when": [
+          "summoned",
+          "special_summoned",
+          "flip_summoned",
+          "attack_declared",
+          "activated_spell",
+          "activated_trap",
+          "standby_phase",
+          "end_phase"
+        ],
+        "target": [
+          {
+            "op": "select",
+            "as": "a",
+            "from": "self.monsters",
+            "n": 2,
+            "prompt": 123
+          },
+          {
+            "op": "select",
+            "as": "b",
+            "from": "opp.monsters",
+            "n": 1,
+            "prompt": 123
+          }
+        ],
+        "do": [
+          {
+            "op": "destroy",
+            "what": "$a"
+          },
+          {
+            "op": "destroy",
+            "what": "$b"
+          }
+        ]
+      }
+    ]
+  },
+  "Gift of The Mystical Elf": {
+    "fx": [
+      {
+        "type": "trap",
+        "speed": 2,
+        "when": [
+          "summoned",
+          "special_summoned",
+          "flip_summoned",
+          "attack_declared",
+          "activated_spell",
+          "activated_trap",
+          "standby_phase",
+          "end_phase"
+        ],
+        "do": [
+          {
+            "op": "heal",
+            "who": "self",
+            "amount": {
+              "mul": {
+                "count": "monsters"
+              },
+              "by": 300
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "Michizure": {
+    "fx": [
+      {
+        "type": "trap",
+        "speed": 2,
+        "when": [
+          "sent_to_grave"
+        ],
+        "cond": [
+          {
+            "c": "event_by",
+            "who": "self"
+          },
+          {
+            "c": "was_on_field"
+          },
+          {
+            "c": "event_card",
+            "filter": {
+              "type": "monster"
+            }
+          }
+        ],
+        "target": [
+          {
+            "op": "select",
+            "as": "t",
+            "from": "monsters",
+            "n": 1,
+            "prompt": 109
+          }
+        ],
+        "do": [
+          {
+            "op": "destroy",
+            "what": "$t"
+          }
+        ]
+      }
+    ]
+  },
+  "Backup Soldier": {
+    "fx": [
+      {
+        "type": "trap",
+        "speed": 2,
+        "when": [
+          "summoned",
+          "special_summoned",
+          "flip_summoned",
+          "attack_declared",
+          "activated_spell",
+          "activated_trap",
+          "standby_phase",
+          "end_phase"
+        ],
+        "cond": [
+          {
+            "c": "has",
+            "zone": "self.grave",
+            "filter": {
+              "type": "monster"
+            },
+            "n": 5
+          }
+        ],
+        "target": [
+          {
+            "op": "select",
+            "as": "t",
+            "from": "self.grave",
+            "filter": {
+              "type": "monster",
+              "category": 0,
+              "atk_max": 1500
+            },
+            "n": 3,
+            "min": 1,
+            "prompt": 22
+          }
+        ],
+        "do": [
+          {
+            "op": "to_hand",
+            "what": "$t"
+          }
+        ]
+      }
+    ]
+  },
+  "Windstorm of Etaqua": {
+    "fx": [
+      {
+        "type": "trap",
+        "speed": 2,
+        "when": [
+          "summoned",
+          "special_summoned",
+          "flip_summoned",
+          "attack_declared",
+          "activated_spell",
+          "activated_trap",
+          "standby_phase",
+          "end_phase"
+        ],
+        "cond": [
+          {
+            "c": "has",
+            "zone": "opp.monsters",
+            "filter": {
+              "face_up": true
+            },
+            "n": 1
+          }
+        ],
+        "do": [
+          {
+            "op": "flip_pos",
+            "what": {
+              "from": "opp.monsters",
+              "filter": {
+                "face_up": true
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "Dust Tornado": {
+    "fx": [
+      {
+        "type": "trap",
+        "speed": 2,
+        "when": [
+          "summoned",
+          "special_summoned",
+          "flip_summoned",
+          "attack_declared",
+          "activated_spell",
+          "activated_trap",
+          "standby_phase",
+          "end_phase"
+        ],
+        "target": [
+          {
+            "op": "select",
+            "as": "t",
+            "from": "opp.field",
+            "filter": {
+              "type": [
+                "spell",
+                "trap"
+              ]
+            },
+            "n": 1,
+            "prompt": 141
+          }
+        ],
+        "do": [
+          {
+            "op": "destroy",
+            "what": "$t"
+          }
+        ]
+      }
+    ]
+  },
+  "Numinous Healer": {
+    "fx": [
+      {
+        "type": "trap",
+        "speed": 2,
+        "when": [
+          "damaged"
+        ],
+        "cond": [
+          {
+            "c": "event_by",
+            "who": "self"
+          }
+        ],
+        "do": [
+          {
+            "op": "heal",
+            "who": "self",
+            "amount": 1000
+          },
+          {
+            "op": "heal",
+            "who": "self",
+            "amount": {
+              "mul": {
+                "count": "self.grave",
+                "filter": {
+                  "name_has": "Numinous Healer"
+                }
+              },
+              "by": 500
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "Kunai with Chain": {
+    "fx": [
+      {
+        "type": "trap",
+        "speed": 2,
+        "when": [
+          "summoned",
+          "special_summoned",
+          "flip_summoned",
+          "attack_declared",
+          "activated_spell",
+          "activated_trap",
+          "standby_phase",
+          "end_phase",
+          "damage_step"
+        ],
+        "target": [
+          {
+            "op": "select",
+            "as": "t",
+            "from": "opp.monsters",
+            "filter": {
+              "face_up": true,
+              "pos": "atk"
+            },
+            "n": 1,
+            "prompt": 136
+          },
+          {
+            "op": "select",
+            "as": "u",
+            "from": "self.monsters",
+            "filter": {
+              "face_up": true
+            },
+            "n": 1,
+            "min": 0,
+            "required": false,
+            "prompt": 133
+          }
+        ],
+        "do": [
+          {
+            "op": "set_pos",
+            "what": "$t",
+            "pos": "def",
+            "face_up": true
+          },
+          {
+            "op": "mod",
+            "what": "$u",
+            "atk": 500,
+            "until": "end_turn"
+          }
+        ]
+      }
+    ]
+  },
+  "Magic-Arm Shield": {
+    "fx": [
+      {
+        "type": "trap",
+        "speed": 2,
+        "when": [
+          "attack_declared"
+        ],
+        "cond": [
+          {
+            "c": "event_by",
+            "who": "opp"
+          }
+        ],
+        "target": [
+          {
+            "op": "select",
+            "as": "t",
+            "from": "opp.monsters",
+            "filter": {
+              "face_up": true,
+              "not_attacker": true
+            },
+            "n": 1,
+            "prompt": 109
+          }
+        ],
+        "do": [
+          {
+            "op": "redirect_attack",
+            "to": "$t"
+          }
+        ]
+      }
+    ]
+  },
+  "Magic Jammer": {
+    "fx": [
+      {
+        "type": "counter",
+        "speed": 3,
+        "when": [
+          "activated_spell"
+        ],
+        "cond": [
+          {
+            "c": "chain_top_by",
+            "is": "opp"
+          }
+        ],
+        "cost": [
+          {
+            "op": "discard",
+            "who": "self",
+            "n": 1,
+            "prompt": 12
+          }
+        ],
+        "do": [
+          {
+            "op": "negate",
+            "destroy": true
+          }
+        ]
+      }
+    ]
+  },
+  "Magic Drain": {
+    "fx": [
+      {
+        "type": "counter",
+        "speed": 3,
+        "when": [
+          "activated_spell"
+        ],
+        "cond": [
+          {
+            "c": "chain_top_by",
+            "is": "opp"
+          }
+        ],
+        "do": [
+          {
+            "op": "if",
+            "cond": [
+              {
+                "c": "has",
+                "zone": "opp.hand",
+                "filter": {
+                  "type": "spell"
+                },
+                "n": 1
+              }
+            ],
+            "then": [
+              {
+                "op": "select",
+                "as": "d",
+                "from": "opp.hand",
+                "filter": {
+                  "type": "spell"
+                },
+                "n": 1,
+                "chooser": "opp",
+                "discard": true,
+                "auto": false,
+                "prompt": 235
+              },
+              {
+                "op": "to_grave",
+                "what": "$d",
+                "reason": "discard"
+              }
+            ],
+            "else": [
+              {
+                "op": "negate",
+                "destroy": true
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "Fairy Box": {
+    "fx": [
+      {
+        "type": "continuous_trap",
+        "speed": 2,
+        "stay": true,
+        "when": [
+          "summoned",
+          "special_summoned",
+          "flip_summoned",
+          "attack_declared",
+          "activated_spell",
+          "activated_trap",
+          "standby_phase",
+          "end_phase"
+        ],
+        "do": []
+      },
+      {
+        "type": "trigger_forced",
+        "when": "attack_declared",
+        "cond": [
+          {
+            "c": "event_by",
+            "who": "opp"
+          }
+        ],
+        "do": [
+          {
+            "op": "choice",
+            "as": "coin_call",
+            "count": 2,
+            "labels": [
+              "Heads",
+              "Tails"
+            ],
+            "prompt_text": "Call the coin toss."
+          },
+          {
+            "op": "coin",
+            "heads": [
+              {
+                "op": "set_stat",
+                "what": "attacker",
+                "atk": 0,
+                "until": "end_turn"
+              }
+            ],
+            "call": "coin_call"
+          }
+        ]
+      },
+      {
+        "type": "trigger_forced",
+        "when": "standby_phase",
+        "cond": [
+          {
+            "c": "turn",
+            "is": "self"
+          }
+        ],
+        "do": [
+          {
+            "op": "if",
+            "cond": [
+              {
+                "c": "lp",
+                "who": "self",
+                "op": ">=",
+                "v": 500
+              }
+            ],
+            "then": [
+              {
+                "op": "pay_lp",
+                "amount": 500
+              }
+            ],
+            "else": [
+              {
+                "op": "destroy",
+                "what": "src"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "Call Of The Haunted": {
+    "fx": [
+      {
+        "type": "continuous_trap",
+        "speed": 2,
+        "stay": true,
+        "when": [
+          "summoned",
+          "special_summoned",
+          "flip_summoned",
+          "attack_declared",
+          "activated_spell",
+          "activated_trap",
+          "standby_phase",
+          "end_phase"
+        ],
+        "cond": [
+          {
+            "c": "free_zone",
+            "who": "self"
+          }
+        ],
+        "target": [
+          {
+            "op": "select",
+            "as": "t",
+            "from": "self.grave",
+            "filter": {
+              "type": "monster"
+            },
+            "n": 1,
+            "prompt": 83
+          }
+        ],
+        "do": [
+          {
+            "op": "special_summon",
+            "what": "$t",
+            "pos": "atk",
+            "face_up": true
+          },
+          {
+            "op": "bind",
+            "a": "src",
+            "b": "$t"
+          }
+        ]
+      }
+    ]
+  },
+  "Premature Burial": {
+    "fx": [
+      {
+        "type": "equip",
+        "cond": [
+          {
+            "c": "free_zone",
+            "who": "self"
+          },
+          {
+            "c": "lp",
+            "who": "self",
+            "op": ">",
+            "v": 800
+          }
+        ],
+        "cost": [
+          {
+            "op": "pay_lp",
+            "amount": 800
+          }
+        ],
+        "target": [
+          {
+            "op": "select",
+            "as": "t",
+            "from": "self.grave",
+            "filter": {
+              "type": "monster"
+            },
+            "n": 1,
+            "prompt": 83
+          }
+        ],
+        "do": [
+          {
+            "op": "special_summon",
+            "what": "$t",
+            "pos": "atk",
+            "face_up": true
+          },
+          {
+            "op": "equip",
+            "to": "$t"
+          },
+          {
+            "op": "bind",
+            "a": "src",
+            "b": "$t"
+          }
+        ]
+      }
+    ]
+  },
+  "Scapegoat": {
+    "fx": [
+      {
+        "type": "quickplay",
+        "speed": 2,
+        "when": [
+          "summoned",
+          "special_summoned",
+          "flip_summoned",
+          "attack_declared",
+          "target_declared",
+          "damage_step",
+          "activated_spell",
+          "activated_trap",
+          "standby_phase",
+          "end_phase"
+        ],
+        "cond": [
+          {
+            "c": "free_zone",
+            "who": "self",
+            "n": 4
+          },
+          {
+            "c": "summon_unused",
+            "who": "self"
+          }
+        ],
+        "do": [
+          {
+            "op": "if",
+            "cond": [
+              {
+                "c": "free_zone",
+                "who": "self",
+                "n": 4
+              },
+              {
+                "c": "summon_unused",
+                "who": "self"
+              }
+            ],
+            "then": [
+              {
+                "op": "token",
+                "kind": "Sheep Token",
+                "n": 4,
+                "pos": "def"
+              },
+              {
+                "op": "rule_turn",
+                "rule": "no_summon",
+                "who": "self"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "Graceful Dice": {
+    "fx": [
+      {
+        "type": "quickplay",
+        "speed": 2,
+        "when": [
+          "summoned",
+          "special_summoned",
+          "flip_summoned",
+          "attack_declared",
+          "target_declared",
+          "damage_step",
+          "activated_spell",
+          "activated_trap",
+          "standby_phase",
+          "end_phase"
+        ],
+        "do": [
+          {
+            "op": "dice",
+            "as": "roll"
+          },
+          {
+            "op": "mod",
+            "what": {
+              "from": "self.monsters"
+            },
+            "atk": {
+              "mul": {
+                "var": "roll"
+              },
+              "by": 100
+            },
+            "def": {
+              "mul": {
+                "var": "roll"
+              },
+              "by": 100
+            },
+            "until": "end_turn"
+          }
+        ]
+      }
+    ]
+  },
+  "Skull Dice": {
+    "fx": [
+      {
+        "type": "trap",
+        "speed": 2,
+        "when": [
+          "summoned",
+          "special_summoned",
+          "flip_summoned",
+          "attack_declared",
+          "activated_spell",
+          "activated_trap",
+          "standby_phase",
+          "end_phase",
+          "damage_step"
+        ],
+        "do": [
+          {
+            "op": "dice",
+            "as": "roll"
+          },
+          {
+            "op": "mod",
+            "what": {
+              "from": "opp.monsters"
+            },
+            "atk": {
+              "mul": {
+                "var": "roll"
+              },
+              "by": -100
+            },
+            "def": {
+              "mul": {
+                "var": "roll"
+              },
+              "by": -100
+            },
+            "until": "end_turn"
+          }
+        ]
+      }
+    ]
+  },
+  "Mask of Weakness": {
+    "fx": [
+      {
+        "type": "trap",
+        "speed": 2,
+        "when": [
+          "attack_declared",
+          "damage_step"
+        ],
+        "cond": [
+          {
+            "c": "event_by",
+            "who": "opp"
+          }
+        ],
+        "do": [
+          {
+            "op": "mod",
+            "what": "attacker",
+            "atk": -700,
+            "until": "end_turn"
+          }
+        ]
+      }
+    ]
+  },
+  "Deal of Phantom": {
+    "fx": [
+      {
+        "type": "trap",
+        "speed": 2,
+        "when": [
+          "summoned",
+          "special_summoned",
+          "flip_summoned",
+          "attack_declared",
+          "activated_spell",
+          "activated_trap",
+          "standby_phase",
+          "end_phase",
+          "damage_step"
+        ],
+        "target": [
+          {
+            "op": "select",
+            "as": "t",
+            "from": "monsters",
+            "filter": {
+              "face_up": true
+            },
+            "n": 1,
+            "prompt": 133
+          }
+        ],
+        "do": [
+          {
+            "op": "mod",
+            "what": "$t",
+            "atk": {
+              "mul": {
+                "count": "self.grave",
+                "filter": {
+                  "type": "monster"
+                }
+              },
+              "by": 100
+            },
+            "until": "end_turn"
+          }
+        ]
+      }
+    ]
+  },
+  "Shield & Sword": {
+    "fx": [
+      {
+        "type": "spell",
+        "do": [
+          {
+            "op": "swap_stats",
+            "what": {
+              "from": "monsters",
+              "filter": {
+                "face_up": true
+              }
+            },
+            "until": "end_turn"
+          }
+        ]
+      }
+    ]
+  },
+  "Mage Power": {
+    "fx": [
+      {
+        "type": "equip",
+        "target": [
+          {
+            "op": "select",
+            "as": "t",
+            "from": "monsters",
+            "filter": {
+              "face_up": true
+            },
+            "n": 1,
+            "prompt": 101
+          }
+        ],
+        "do": [
+          {
+            "op": "equip",
+            "to": "$t"
+          }
+        ]
+      },
+      {
+        "type": "static",
+        "mod": {
+          "scope": "equipped",
+          "per": {
+            "zone": "self.spells",
+            "include_field_spell": true,
+            "filter": {},
+            "by": 500,
+            "stats": [
+              "atk",
+              "def"
+            ]
+          }
+        }
+      }
+    ]
+  },
+  "Snatch Steal": {
+    "fx": [
+      {
+        "type": "equip",
+        "cond": [
+          {
+            "c": "free_zone",
+            "who": "self"
+          }
+        ],
+        "stay": true,
+        "target": [
+          {
+            "op": "select",
+            "as": "t",
+            "from": "opp.monsters",
+            "filter": {
+              "face_up": true
+            },
+            "n": 1,
+            "prompt": 119
+          }
+        ],
+        "do": [
+          {
+            "op": "take_control",
+            "what": "$t",
+            "until": "forever"
+          },
+          {
+            "op": "link_control",
+            "what": "$t"
+          }
+        ]
+      },
+      {
+        "type": "trigger_forced",
+        "when": "standby_phase",
+        "cond": [
+          {
+            "c": "turn",
+            "is": "opp"
+          }
+        ],
+        "do": [
+          {
+            "op": "heal",
+            "who": "opp",
+            "amount": 1000
+          }
+        ]
+      }
+    ]
+  },
+  "Insect Barrier": {
+    "fx": [
+      {
+        "type": "spell",
+        "stay": true,
+        "do": []
+      },
+      {
+        "type": "static",
+        "rule": "no_attack",
+        "scope": "theirs",
+        "filter": {
+          "race": "Insect"
+        }
+      }
+    ]
+  },
+  "Gravity Bind": {
+    "fx": [
+      {
+        "type": "continuous_trap",
+        "speed": 2,
+        "stay": true,
+        "when": [
+          "summoned",
+          "special_summoned",
+          "flip_summoned",
+          "attack_declared",
+          "activated_spell",
+          "activated_trap",
+          "standby_phase",
+          "end_phase"
+        ],
+        "do": []
+      },
+      {
+        "type": "static",
+        "rule": "no_attack",
+        "scope": "all",
+        "filter": {
+          "level_min": 4
+        }
+      }
+    ]
+  },
+  "Mask of Restrict": {
+    "fx": [
+      {
+        "type": "continuous_trap",
+        "speed": 2,
+        "stay": true,
+        "when": [
+          "summoned",
+          "special_summoned",
+          "flip_summoned",
+          "attack_declared",
+          "activated_spell",
+          "activated_trap",
+          "standby_phase",
+          "end_phase"
+        ],
+        "do": []
+      },
+      {
+        "type": "static",
+        "rule": "no_tribute",
+        "scope": "all"
+      }
+    ]
+  },
+  "Light of Intervention": {
+    "fx": [
+      {
+        "type": "continuous_trap",
+        "speed": 2,
+        "stay": true,
+        "when": [
+          "summoned",
+          "special_summoned",
+          "flip_summoned",
+          "attack_declared",
+          "activated_spell",
+          "activated_trap",
+          "standby_phase",
+          "end_phase"
+        ],
+        "do": []
+      },
+      {
+        "type": "static",
+        "rule": "no_set",
+        "scope": "all"
+      }
+    ]
+  },
+  "Imperial Order": {
+    "fx": [
+      {
+        "type": "continuous_trap",
+        "speed": 2,
+        "stay": true,
+        "when": [
+          "summoned",
+          "special_summoned",
+          "flip_summoned",
+          "attack_declared",
+          "activated_spell",
+          "activated_trap",
+          "standby_phase",
+          "end_phase"
+        ],
+        "do": []
+      },
+      {
+        "type": "static",
+        "rule": "no_spell",
+        "scope": "all"
+      },
+      {
+        "type": "trigger_forced",
+        "when": "standby_phase",
+        "cond": [
+          {
+            "c": "turn",
+            "is": "self"
+          }
+        ],
+        "do": [
+          {
+            "op": "if",
+            "cond": [
+              {
+                "c": "lp",
+                "who": "self",
+                "op": ">=",
+                "v": 700
+              }
+            ],
+            "then": [
+              {
+                "op": "pay_lp",
+                "amount": 700
+              }
+            ],
+            "else": [
+              {
+                "op": "destroy",
+                "what": "src"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "Minor Goblin Official": {
+    "fx": [
+      {
+        "type": "continuous_trap",
+        "speed": 2,
+        "stay": true,
+        "cond": [
+          {
+            "c": "lp",
+            "who": "opp",
+            "op": "<=",
+            "v": 3000
+          }
+        ],
+        "when": [
+          "summoned",
+          "special_summoned",
+          "flip_summoned",
+          "attack_declared",
+          "activated_spell",
+          "activated_trap",
+          "standby_phase",
+          "end_phase"
+        ],
+        "do": []
+      },
+      {
+        "type": "trigger_forced",
+        "when": "standby_phase",
+        "cond": [
+          {
+            "c": "turn",
+            "is": "opp"
+          }
+        ],
+        "do": [
+          {
+            "op": "damage",
+            "who": "opp",
+            "amount": 500
+          }
+        ]
+      }
+    ]
+  },
+  "Robbin' Goblin": {
+    "fx": [
+      {
+        "type": "continuous_trap",
+        "speed": 2,
+        "stay": true,
+        "when": [
+          "summoned",
+          "special_summoned",
+          "flip_summoned",
+          "attack_declared",
+          "activated_spell",
+          "activated_trap",
+          "standby_phase",
+          "end_phase"
+        ],
+        "do": []
+      },
+      {
+        "type": "trigger_forced",
+        "when": "damaged",
+        "cond": [
+          {
+            "c": "event_by",
+            "who": "opp"
+          }
+        ],
+        "do": [
+          {
+            "op": "discard",
+            "who": "opp",
+            "n": 1,
+            "random": true
+          }
+        ]
+      }
+    ]
+  },
+  "Skull Invitation": {
+    "fx": [
+      {
+        "type": "continuous_trap",
+        "speed": 2,
+        "stay": true,
+        "when": [
+          "summoned",
+          "special_summoned",
+          "flip_summoned",
+          "attack_declared",
+          "activated_spell",
+          "activated_trap",
+          "standby_phase",
+          "end_phase"
+        ],
+        "do": []
+      },
+      {
+        "type": "trigger_forced",
+        "when": "sent_to_grave",
+        "do": [
+          {
+            "op": "damage",
+            "who": "event",
+            "amount": 300
+          }
+        ]
+      }
+    ]
+  },
+  "Witch of the Black Forest": {
+    "fx": [
+      {
+        "type": "trigger_forced",
+        "when": "sent_to_grave",
+        "zone": "grave",
+        "cond": [
+          {
+            "c": "event_src"
+          },
+          {
+            "c": "was_on_field"
+          }
+        ],
+        "do": [
+          {
+            "op": "search",
+            "filter": {
+              "type": "monster",
+              "def_max": 1500
+            },
+            "prompt": 22
+          }
+        ]
+      }
+    ]
+  },
+  "Magician of Faith": {
+    "fx": [
+      {
+        "type": "flip",
+        "when": "flipped",
+        "cond": [
+          {
+            "c": "event_src"
+          }
+        ],
+        "do": [
+          {
+            "op": "select",
+            "as": "t",
+            "from": "self.grave",
+            "filter": {
+              "type": "spell"
+            },
+            "n": 1,
+            "min": 0,
+            "required": false,
+            "auto": false,
+            "prompt": 22
+          },
+          {
+            "op": "to_hand",
+            "what": "$t"
+          }
+        ]
+      }
+    ]
+  },
+  "4-Starred Ladybug of Doom": {
+    "fx": [
+      {
+        "type": "flip",
+        "when": "flipped",
+        "cond": [
+          {
+            "c": "event_src"
+          }
+        ],
+        "do": [
+          {
+            "op": "destroy",
+            "what": {
+              "from": "opp.monsters",
+              "filter": {
+                "face_up": true,
+                "level_min": 4,
+                "level_max": 4
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "Penguin Soldier": {
+    "fx": [
+      {
+        "type": "flip",
+        "when": "flipped",
+        "cond": [
+          {
+            "c": "event_src"
+          }
+        ],
+        "do": [
+          {
+            "op": "select",
+            "as": "t",
+            "from": "monsters",
+            "n": 2,
+            "min": 0,
+            "required": false,
+            "auto": false,
+            "prompt": 116
+          },
+          {
+            "op": "to_hand",
+            "what": "$t"
+          }
+        ]
+      }
+    ]
+  },
+  "Slate Warrior": {
+    "fx": [
+      {
+        "type": "flip",
+        "when": "flipped",
+        "cond": [
+          {
+            "c": "event_src"
+          }
+        ],
+        "do": [
+          {
+            "op": "mod",
+            "what": "src",
+            "atk": 500,
+            "def": 500,
+            "until": "forever"
+          }
+        ]
+      },
+      {
+        "type": "trigger_forced",
+        "when": "destroyed",
+        "zone": "grave",
+        "cond": [
+          {
+            "c": "event_src"
+          },
+          {
+            "c": "event_reason",
+            "is": "destroyed:battle"
+          }
+        ],
+        "do": [
+          {
+            "op": "mod",
+            "what": "killer",
+            "atk": -500,
+            "def": -500,
+            "until": "forever"
+          }
+        ]
+      }
+    ]
+  },
+  "Rigras Leever": {
+    "fx": [
+      {
+        "type": "flip",
+        "when": "flipped",
+        "cond": [
+          {
+            "c": "event_src"
+          }
+        ],
+        "do": [
+          {
+            "op": "select",
+            "as": "a",
+            "from": "opp.hand",
+            "n": 1,
+            "min": 0,
+            "required": false,
+            "auto": false,
+            "prompt": 235
+          },
+          {
+            "op": "to_grave",
+            "what": "$a",
+            "reason": "discard"
+          },
+          {
+            "op": "select",
+            "as": "b",
+            "from": "self.hand",
+            "n": 1,
+            "min": 0,
+            "required": false,
+            "auto": false,
+            "chooser": "opp",
+            "prompt": 235
+          },
+          {
+            "op": "to_grave",
+            "what": "$b",
+            "reason": "discard"
+          }
+        ]
+      },
+      {
+        "type": "trigger_forced",
+        "when": "destroyed",
+        "zone": "grave",
+        "cond": [
+          {
+            "c": "event_src"
+          },
+          {
+            "c": "event_reason",
+            "is": "destroyed:battle"
+          }
+        ],
+        "do": [
+          {
+            "op": "mod",
+            "what": "killer",
+            "atk": -500,
+            "def": -500,
+            "until": "forever"
+          }
+        ]
+      }
+    ]
+  },
+  "Nimble Momonga": {
+    "fx": [
+      {
+        "type": "trigger_forced",
+        "when": "sent_to_grave",
+        "zone": "grave",
+        "cond": [
+          {
+            "c": "event_src"
+          },
+          {
+            "c": "event_reason",
+            "is": "destroyed:battle"
+          }
+        ],
+        "do": [
+          {
+            "op": "heal",
+            "who": "self",
+            "amount": 1000
+          },
+          {
+            "op": "select",
+            "as": "t",
+            "from": "self.deck",
+            "filter": {
+              "name_has": "Nimble Momonga"
+            },
+            "n": 3,
+            "min": 0,
+            "required": false,
+            "auto": false,
+            "prompt": 26
+          },
+          {
+            "op": "special_summon",
+            "what": "$t",
+            "pos": "def",
+            "face_up": false
+          },
+          {
+            "op": "shuffle",
+            "who": "self"
+          }
+        ]
+      }
+    ]
+  },
+  "Giant Germ": {
+    "fx": [
+      {
+        "type": "trigger_forced",
+        "when": "sent_to_grave",
+        "zone": "grave",
+        "cond": [
+          {
+            "c": "event_src"
+          },
+          {
+            "c": "event_reason",
+            "is": "destroyed:battle"
+          }
+        ],
+        "do": [
+          {
+            "op": "damage",
+            "who": "opp",
+            "amount": 500
+          },
+          {
+            "op": "select",
+            "as": "t",
+            "from": "self.deck",
+            "filter": {
+              "name_has": "Giant Germ"
+            },
+            "n": 3,
+            "min": 0,
+            "required": false,
+            "auto": false,
+            "prompt": 26
+          },
+          {
+            "op": "special_summon",
+            "what": "$t",
+            "pos": "atk",
+            "face_up": true
+          },
+          {
+            "op": "shuffle",
+            "who": "self"
+          }
+        ]
+      }
+    ]
+  },
+  "Shining Angel": {
+    "fx": [
+      {
+        "type": "trigger_forced",
+        "when": "sent_to_grave",
+        "zone": "grave",
+        "cond": [
+          {
+            "c": "event_src"
+          },
+          {
+            "c": "event_reason",
+            "is": "destroyed:battle"
+          }
+        ],
+        "do": [
+          {
+            "op": "select",
+            "as": "t",
+            "from": "self.deck",
+            "filter": {
+              "type": "monster",
+              "attribute": "LIGHT",
+              "atk_max": 1500
+            },
+            "n": 1,
+            "min": 0,
+            "required": false,
+            "auto": false,
+            "prompt": 26
+          },
+          {
+            "op": "special_summon",
+            "what": "$t",
+            "pos": "atk",
+            "face_up": true
+          },
+          {
+            "op": "shuffle",
+            "who": "self"
+          }
+        ]
+      }
+    ]
+  },
+  "Bubonic Vermin": {
+    "fx": [
+      {
+        "type": "flip",
+        "when": "flipped",
+        "cond": [
+          {
+            "c": "event_src"
+          }
+        ],
+        "do": [
+          {
+            "op": "select",
+            "as": "t",
+            "from": "self.deck",
+            "filter": {
+              "name_has": "Bubonic Vermin"
+            },
+            "n": 1,
+            "min": 0,
+            "required": false,
+            "auto": false,
+            "prompt": 26
+          },
+          {
+            "op": "special_summon",
+            "what": "$t",
+            "pos": "def",
+            "face_up": false
+          },
+          {
+            "op": "shuffle",
+            "who": "self"
+          }
+        ]
+      }
+    ]
+  },
+  "Copycat": {
+    "fx": [
+      {
+        "type": "trigger_forced",
+        "when": [
+          "summoned",
+          "special_summoned"
+        ],
+        "cond": [
+          {
+            "c": "event_src"
+          }
+        ],
+        "do": [
+          {
+            "op": "select",
+            "as": "t",
+            "from": "opp.monsters",
+            "filter": {
+              "face_up": true
+            },
+            "n": 1,
+            "min": 0,
+            "required": false,
+            "prompt": 119
+          },
+          {
+            "op": "set_stat",
+            "what": "src",
+            "atk": {
+              "stat": "atk",
+              "of": "t",
+              "original": true
+            },
+            "until": "forever"
+          },
+          {
+            "op": "set_stat",
+            "what": "src",
+            "def": {
+              "stat": "def",
+              "of": "t",
+              "original": true
+            },
+            "until": "forever"
+          }
+        ]
+      }
+    ]
+  },
+  "Goblin Attack Force": {
+    "fx": [
+      {
+        "type": "trigger_forced",
+        "when": "attack_declared",
+        "cond": [
+          {
+            "c": "attacker_is_src"
+          }
+        ],
+        "do": [
+          {
+            "op": "set_flag",
+            "what": "src",
+            "name": "def_after_battle",
+            "value": true
+          }
+        ]
+      }
+    ]
+  },
+  "Zombyra the Dark": {
+    "fx": [
+      {
+        "type": "static",
+        "rule": "no_direct_attack",
+        "scope": "self"
+      },
+      {
+        "type": "trigger_forced",
+        "when": "destroyed",
+        "cond": [
+          {
+            "c": "killer_is_src"
+          }
+        ],
+        "do": [
+          {
+            "op": "mod",
+            "what": "src",
+            "atk": -200,
+            "until": "forever"
+          }
+        ]
+      }
+    ]
+  },
+  "Jirai Gumo": {
+    "fx": [
+      {
+        "type": "trigger_forced",
+        "when": "attack_declared",
+        "cond": [
+          {
+            "c": "attacker_is_src"
+          }
+        ],
+        "do": [
+          {
+            "op": "coin",
+            "tails": [
+              {
+                "op": "set_lp",
+                "who": "self",
+                "amount": {
+                  "half": {
+                    "lp": "self"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "Time Wizard": {
+    "fx": [
+      {
+        "type": "ignition",
+        "once_per_turn": true,
+        "cond": [
+          {
+            "c": "turn",
+            "is": "self"
+          }
+        ],
+        "do": [
+          {
+            "op": "choice",
+            "as": "coin_call",
+            "count": 2,
+            "labels": [
+              "Heads",
+              "Tails"
+            ],
+            "prompt_text": "Call the coin toss."
+          },
+          {
+            "op": "coin",
+            "heads": [
+              {
+                "op": "destroy",
+                "what": {
+                  "from": "opp.monsters"
+                }
+              }
+            ],
+            "tails": [
+              {
+                "op": "let",
+                "as": "m",
+                "what": {
+                  "from": "self.monsters"
+                }
+              },
+              {
+                "op": "damage",
+                "who": "self",
+                "amount": {
+                  "half": {
+                    "stat": "atk",
+                    "of": "m"
+                  }
+                }
+              },
+              {
+                "op": "destroy",
+                "what": "$m"
+              }
+            ],
+            "call": "coin_call"
+          }
+        ]
+      }
+    ]
+  },
+  "Barrel Dragon": {
+    "fx": [
+      {
+        "type": "ignition",
+        "once_per_turn": true,
+        "cond": [
+          {
+            "c": "turn",
+            "is": "self"
+          },
+          {
+            "c": "has",
+            "zone": "opp.monsters",
+            "n": 1
+          }
+        ],
+        "do": [
+          {
+            "op": "coins",
+            "n": 3,
+            "as": "heads"
+          },
+          {
+            "op": "if",
+            "cond": [
+              {
+                "c": "var_ge",
+                "name": "heads",
+                "v": 2
+              }
+            ],
+            "then": [
+              {
+                "op": "select",
+                "as": "t",
+                "from": "opp.monsters",
+                "n": 1,
+                "prompt": 109
+              },
+              {
+                "op": "destroy",
+                "what": "$t"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "Jinzo": {
+    "fx": [
+      {
+        "type": "static",
+        "rule": "no_trap",
+        "scope": "all"
+      }
+    ]
+  },
+  "Gearfried the Iron Knight": {
+    "fx": [
+      {
+        "type": "static",
+        "rule": "destroy_equips",
+        "scope": "self"
+      }
+    ]
+  },
+  "The Fiend Megacyber": {
+    "fx": [
+      {
+        "type": "static",
+        "rule": "free_summon_behind",
+        "scope": "self"
+      }
+    ]
+  }
 }

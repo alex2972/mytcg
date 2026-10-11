@@ -1,1068 +1,1061 @@
 {
- "_about": "Batch 14: card effects that need no new interface (preset-deck cards and Card List cards).",
- "Blue Medicine": {
-  "fx": [
-   {
-    "type": "spell",
-    "do": [
-     {
-      "op": "heal",
-      "who": "self",
-      "amount": 400
-     }
-    ]
-   }
-  ]
- },
- "Mystic Lamp": {
-  "fx": [
-   {
-    "type": "static",
-    "rule": "can_attack_directly",
-    "scope": "self"
-   }
-  ]
- },
- "Muka Muka": {
-  "fx": [
-   {
-    "type": "static",
-    "mod": {
-     "scope": "self",
-     "per": {
-      "zone": "self.hand",
-      "filter": {},
-      "by": 300,
-      "stats": [
-       "atk",
-       "def"
-      ]
-     }
-    }
-   }
-  ]
- },
- "Harpie's Pet Dragon": {
-  "fx": [
-   {
-    "type": "static",
-    "mod": {
-     "scope": "self",
-     "per": {
-      "zone": "monsters",
-      "filter": {
-       "name_is": "Harpie Lady",
-       "face_up": true
-      },
-      "by": 300,
-      "stats": [
-       "atk",
-       "def"
-      ]
-     }
-    }
-   }
-  ]
- },
- "The Wicked Worm Beast": {
-  "fx": [
-   {
-    "type": "trigger_forced",
-    "when": "end_phase",
-    "cond": [
-     {
-      "c": "turn",
-      "is": "self"
-     }
-    ],
-    "do": [
-     {
-      "op": "to_hand",
-      "what": "src"
-     }
-    ]
-   }
-  ]
- },
- "Mad Sword Beast": {
-  "fx": [
-   {
-    "type": "static",
-    "rule": "pierce",
-    "scope": "self"
-   }
-  ]
- },
- "Fusion Sage": {
-  "fx": [
-   {
-    "type": "spell",
-    "do": [
-     {
-      "op": "search",
-      "filter": {
-       "name_is": "Polymerization"
-      },
-      "prompt": 51
-     }
-    ]
-   }
-  ]
- },
- "Spirit of the Breeze": {
-  "fx": [
-   {
-    "type": "trigger_forced",
-    "when": "standby_phase",
-    "cond": [
-     {
-      "c": "turn",
-      "is": "self"
-     },
-     {
-      "c": "src_pos",
-      "is": "atk"
-     }
-    ],
-    "do": [
-     {
-      "op": "heal",
-      "who": "self",
-      "amount": 1000
-     }
-    ]
-   }
-  ]
- },
- "Dancing Fairy": {
-  "fx": [
-   {
-    "type": "trigger_forced",
-    "when": "standby_phase",
-    "cond": [
-     {
-      "c": "turn",
-      "is": "self"
-     },
-     {
-      "c": "src_pos",
-      "is": "def"
-     }
-    ],
-    "do": [
-     {
-      "op": "heal",
-      "who": "self",
-      "amount": 1000
-     }
-    ]
-   }
-  ]
- },
- "Bite Shoes": {
-  "fx": [
-   {
-    "type": "flip",
-    "when": "flipped",
-    "cond": [
-     {
-      "c": "event_src"
-     }
-    ],
-    "do": [
-     {
-      "op": "select",
-      "as": "t",
-      "from": "monsters",
-      "filter": {
-       "face_up": true
-      },
-      "n": 1,
-      "prompt": 87
-     },
-     {
-      "op": "flip_pos",
-      "what": "$t"
-     }
-    ]
-   }
-  ]
- },
- "Amazon Archer": {
-  "fx": [
-   {
-    "type": "ignition",
-    "cost": [
-     {
-      "op": "select",
-      "as": "c",
-      "from": "self.monsters",
-      "filter": {
-       "not_src": true
-      },
-      "n": 2,
-      "prompt": 154,
-      "cost": true
-     },
-     {
-      "op": "to_grave",
-      "what": "$c",
-      "reason": "tribute"
-     }
-    ],
-    "do": [
-     {
-      "op": "damage",
-      "who": "opp",
-      "amount": 1200
-     }
-    ]
-   }
-  ]
- },
- "Hysteric Fairy": {
-  "fx": [
-   {
-    "type": "ignition",
-    "cost": [
-     {
-      "op": "select",
-      "as": "c",
-      "from": "self.monsters",
-      "filter": {
-       "not_src": true
-      },
-      "n": 2,
-      "prompt": 154,
-      "cost": true
-     },
-     {
-      "op": "to_grave",
-      "what": "$c",
-      "reason": "tribute"
-     }
-    ],
-    "do": [
-     {
-      "op": "heal",
-      "who": "self",
-      "amount": 1000
-     }
-    ]
-   }
-  ]
- },
- "Fire Sorcerer": {
-  "fx": [
-   {
-    "type": "flip",
-    "when": "flipped",
-    "cond": [
-     {
-      "c": "event_src"
-     }
-    ],
-    "do": [
-     {
-      "op": "select",
-      "as": "h",
-      "from": "self.hand",
-      "filter": {},
-      "n": 2,
-      "prompt": 94,
-      "random": true,
-      "required": false
-     },
-     {
-      "op": "if",
-      "cond": [
-       {
-        "c": "var_nonempty",
-        "name": "h"
-       }
-      ],
-      "then": [
-       {
-        "op": "banish",
-        "what": "$h"
-       },
-       {
-        "op": "damage",
-        "who": "opp",
-        "amount": 800
-       }
-      ]
-     }
-    ]
-   }
-  ]
- },
- "Lady Assailant of Flames": {
-  "fx": [
-   {
-    "type": "flip",
-    "when": "flipped",
-    "cond": [
-     {
-      "c": "event_src"
-     }
-    ],
-    "do": [
-     {
-      "op": "if",
-      "cond": [
-       {
-        "c": "deck",
-        "who": "self",
-        "op": ">=",
-        "v": 3
-       }
-      ],
-      "then": [
-       {
-        "op": "remove_top",
-        "who": "self",
-        "n": 3
-       },
-       {
-        "op": "damage",
-        "who": "opp",
-        "amount": 800
-       }
-      ]
-     }
-    ]
-   }
-  ]
- },
- "Greenkappa": {
-  "fx": [
-   {
-    "type": "flip",
-    "when": "flipped",
-    "cond": [
-     {
-      "c": "event_src"
-     }
-    ],
-    "do": [
-     {
-      "op": "select",
-      "as": "t",
-      "from": "field",
-      "filter": {
-       "type": [
-        "spell",
-        "trap"
-       ],
-       "face_up": false
-      },
-      "n": 2,
-      "prompt": 94,
-      "min": 1
-     },
-     {
-      "op": "destroy",
-      "what": "$t"
-     }
-    ]
-   }
-  ]
- },
- "Dreamsprite": {
-  "fx": [
-   {
-    "type": "trigger_forced",
-    "when": "attack_declared",
-    "cond": [
-     {
-      "c": "target_is_src"
-     }
-    ],
-    "do": [
-     {
-      "op": "select",
-      "as": "t",
-      "from": "self.monsters",
-      "filter": {
-       "not_src": true
-      },
-      "n": 1,
-      "prompt": 153,
-      "required": false
-     },
-     {
-      "op": "redirect_attack",
-      "to": "$t"
-     }
-    ]
-   }
-  ]
- },
- "The Immortal of Thunder": {
-  "fx": [
-   {
-    "type": "flip",
-    "when": "flipped",
-    "cond": [
-     {
-      "c": "event_src"
-     }
-    ],
-    "do": [
-     {
-      "op": "heal",
-      "who": "self",
-      "amount": 3000
-     }
-    ]
-   },
-   {
-    "type": "trigger_forced",
-    "when": "sent_to_grave",
-    "zone": "grave",
-    "cond": [
-     {
-      "c": "event_src"
-     },
-     {
-      "c": "was_on_field"
-     },
-     {
-      "c": "was_face_up"
-     }
-    ],
-    "do": [
-     {
-      "op": "damage",
-      "who": "self",
-      "amount": 5000
-     }
-    ]
-   }
-  ]
- },
- "Solomon's Lawbook": {
-  "fx": [
-   {
-    "type": "trap",
-    "speed": 2,
-    "when": [
-     "summoned",
-     "special_summoned",
-     "flip_summoned",
-     "attack_declared",
-     "activated_spell",
-     "activated_trap",
-     "standby_phase",
-     "end_phase"
-    ],
-    "do": [
-     {
-      "op": "skip_next_draw",
-      "who": "self"
-     }
-    ]
-   }
-  ]
- },
- "Messenger of Peace": {
-  "fx": [
-   {
-    "type": "spell",
-    "stay": true,
-    "do": []
-   },
-   {
-    "type": "static",
-    "rule": "no_attack",
-    "scope": "all",
-    "filter": {
-     "atk_min": 1500
-    }
-   },
-   {
-    "type": "trigger_forced",
-    "when": "standby_phase",
-    "cond": [
-     {
-      "c": "turn",
-      "is": "self"
-     }
-    ],
-    "do": [
-     {
-      "op": "if",
-      "cond": [
-       {
-        "c": "lp",
-        "who": "self",
-        "op": ">",
-        "v": 100
-       }
-      ],
-      "then": [
-       {
-        "op": "pay_lp",
-        "amount": 100
-       }
-      ],
-      "else": [
-       {
-        "op": "destroy",
-        "what": "src"
-       }
-      ]
-     }
-    ]
-   }
-  ]
- },
- "Type Zero Magic Crusher": {
-  "fx": [
-   {
-    "type": "trap",
-    "speed": 2,
-    "when": [
-     "summoned",
-     "special_summoned",
-     "flip_summoned",
-     "attack_declared",
-     "activated_spell",
-     "activated_trap",
-     "standby_phase",
-     "end_phase"
-    ],
-    "cost": [
-     {
-      "op": "select",
-      "as": "s",
-      "from": "self.hand",
-      "filter": {
-       "type": "spell"
-      },
-      "n": 10,
-      "prompt": 235,
-      "min": 1,
-      "auto": false,
-      "cost": true,
-      "discard": true
-     },
-     {
-      "op": "to_grave",
-      "what": "$s",
-      "reason": "discard"
-     }
-    ],
-    "do": [
-     {
-      "op": "damage",
-      "who": "opp",
-      "amount": {
-       "mul": {
-        "var_count": "s"
-       },
-       "by": 500
-      }
-     }
-    ]
-   }
-  ]
- },
- "Riryoku": {
-  "fx": [
-   {
-    "type": "spell",
-    "target": [
-     {
-      "op": "select",
-      "as": "a",
-      "from": "monsters",
-      "filter": {
-       "face_up": true
-      },
-      "n": 1,
-      "prompt": 146
-     },
-     {
-      "op": "select",
-      "as": "b",
-      "from": "monsters",
-      "filter": {
-       "face_up": true,
-       "not_in": [
-        "a"
-       ]
-      },
-      "n": 1,
-      "prompt": 147
-     }
-    ],
-    "do": [
-     {
-      "op": "mod",
-      "what": "$b",
-      "atk": {
-       "half": {
-        "stat": "atk",
-        "of": "a"
-       }
-      },
-      "until": "end_turn"
-     },
-     {
-      "op": "mod",
-      "what": "$a",
-      "atk": {
-       "mul": {
-        "half": {
-         "stat": "atk",
-         "of": "a"
-        }
-       },
-       "by": -1
-      },
-      "until": "end_turn"
-     }
-    ]
-   }
-  ]
- },
- "Destruction Punch": {
-  "fx": [
-   {
-    "type": "trap",
-    "speed": 2,
-    "when": [
-     "attack_declared"
-    ],
-    "cond": [
-     {
-      "c": "event_by",
-      "who": "opp"
-     },
-     {
-      "c": "attacker_weaker_than_target"
-     }
-    ],
-    "do": [
-     {
-      "op": "let",
-      "as": "a",
-      "what": "attacker"
-     },
-     {
-      "op": "destroy",
-      "what": "$a"
-     }
-    ]
-   }
-  ]
- },
- "Dimensional Warrior": {
-  "fx": [
-   {
-    "type": "trigger_forced",
-    "when": "attack_declared",
-    "cond": [
-     {
-      "c": "in_battle"
-     }
-    ],
-    "do": [
-     {
-      "op": "let",
-      "as": "a",
-      "what": "attacker"
-     },
-     {
-      "op": "let",
-      "as": "t",
-      "what": "attack_target"
-     },
-     {
-      "op": "negate_attack"
-     },
-     {
-      "op": "banish",
-      "what": "$a"
-     },
-     {
-      "op": "banish",
-      "what": "$t"
-     }
-    ]
-   }
-  ]
- },
- "Nobleman of Extermination": {
-  "fx": [
-   {
-    "type": "spell",
-    "target": [
-     {
-      "op": "select",
-      "as": "t",
-      "from": "field",
-      "filter": {
-       "type": [
-        "spell",
-        "trap"
-       ],
-       "face_up": false,
-       "not_src": true
-      },
-      "n": 1,
-      "prompt": 144
-     }
-    ],
-    "do": [
-     {
-      "op": "custom",
-      "fn": "nobleman_ext"
-     }
-    ]
-   }
-  ]
- },
- "Chosen One": {
-  "fx": [
-   {
-    "type": "spell",
-    "cond": [
-     {
-      "c": "free_zone",
-      "who": "self"
-     }
-    ],
-    "target": [
-     {
-      "op": "select",
-      "as": "m",
-      "from": "self.hand",
-      "filter": {
-       "type": "monster"
-      },
-      "n": 1,
-      "prompt": 111
-     },
-     {
-      "op": "select",
-      "as": "o",
-      "from": "self.hand",
-      "filter": {
-       "type": [
-        "spell",
-        "trap"
-       ],
-       "not_src": true
-      },
-      "n": 2,
-      "prompt": 33
-     }
-    ],
-    "do": [
-     {
-      "op": "choice",
-      "as": "pos",
-      "count": 2,
-      "labels": [
-       "Attack Position",
-       "Defense Position"
-      ],
-      "prompt": 247
-     },
-     {
-      "op": "custom",
-      "fn": "chosen_one"
-     }
-    ]
-   }
-  ]
- },
- "Return of the Doomed": {
-  "fx": [
-   {
-    "type": "spell",
-    "stay": true,
-    "cost": [
-     {
-      "op": "select",
-      "as": "c",
-      "from": "self.hand",
-      "filter": {
-       "type": "monster"
-      },
-      "n": 1,
-      "prompt": 235,
-      "cost": true,
-      "discard": true
-     },
-     {
-      "op": "to_grave",
-      "what": "$c",
-      "reason": "discard"
-     }
-    ],
-    "do": []
-   },
-   {
-    "type": "trigger_forced",
-    "when": "end_phase",
-    "cond": [
-     {
-      "c": "turn",
-      "is": "self"
-     }
-    ],
-    "do": [
-     {
-      "op": "select",
-      "as": "r",
-      "from": "self.dead_battle",
-      "filter": {},
-      "n": 1,
-      "prompt": 116,
-      "required": false
-     },
-     {
-      "op": "to_hand",
-      "what": "$r"
-     },
-     {
-      "op": "destroy",
-      "what": "src"
-     }
-    ]
-   }
-  ]
- },
- "Gilasaurus": {
-  "fx": [
-   {
-    "type": "trigger_forced",
-    "when": "summoned",
-    "cond": [
-     {
-      "c": "event_src"
-     }
-    ],
-    "do": [
-     {
-      "op": "yesno",
-      "as": "y",
-      "prompt": 269
-     },
-     {
-      "op": "if",
-      "cond": [
-       {
-        "c": "var_true",
-        "name": "y"
-       }
-      ],
-      "then": [
-       {
-        "op": "set_flag",
-        "what": "src",
-        "name": "special_summoned",
-        "value": true
-       },
-       {
-        "op": "select",
-        "as": "b",
-        "from": "opp.grave",
-        "filter": {
-         "type": "monster"
-        },
-        "n": 1,
-        "prompt": 83,
-        "min": 0,
-        "required": false,
-        "auto": false,
-        "chooser": "opp"
-       },
-       {
-        "op": "special_summon",
-        "what": "$b",
-        "to": "opp",
-        "pos": "atk",
-        "face_up": true
-       }
-      ]
-     }
-    ]
-   }
-  ]
- },
- "Sword Hunter": {
-  "fx": [
-   {
-    "type": "trigger_forced",
-    "when": "destroyed",
-    "cond": [
-     {
-      "c": "killer_is_src"
-     },
-     {
-      "c": "event_card",
-      "filter": {
-       "type": "monster"
-      }
-     }
-    ],
-    "do": [
-     {
-      "op": "become_equip",
-      "card": "event_card",
-      "to": "src",
-      "atk": 200,
-      "on_host_side": true
-     }
-    ]
-   }
-  ]
- },
- "Supply": {
-  "fx": [
-   {
-    "type": "flip",
-    "when": "flipped",
-    "cond": [
-     {
-      "c": "event_src"
-     }
-    ],
-    "do": [
-     {
-      "op": "select",
-      "as": "t",
-      "from": "self.grave",
-      "filter": {
-       "type": "monster",
-       "fusion_mat": true
-      },
-      "n": 2,
-      "prompt": 22,
-      "min": 1
-     },
-     {
-      "op": "to_hand",
-      "what": "$t"
-     }
-    ]
-   }
-  ]
- },
- "Respect Play": {
-  "fx": [
-   {
-    "type": "continuous_trap",
-    "speed": 2,
-    "stay": true,
-    "when": [
-     "summoned",
-     "special_summoned",
-     "flip_summoned",
-     "attack_declared",
-     "activated_spell",
-     "activated_trap",
-     "standby_phase",
-     "end_phase"
-    ],
-    "do": []
-   }
-  ]
- },
- "Kotodama": {
-  "fx": [
-   {
-    "type": "trigger_forced",
-    "when": [
-     "summoned",
-     "special_summoned",
-     "flip_summoned"
-    ],
-    "cond": [
-     {
-      "c": "event_src",
-      "is": false
-     },
-     {
-      "c": "event_card",
-      "filter": {
-       "name_is": "Kotodama"
-      }
-     }
-    ],
-    "do": [
-     {
-      "op": "destroy",
-      "what": "event_card"
-     }
-    ]
-   }
-  ]
- },
- "Gryphon Wing": {
-  "fx": [
-   {
-    "type": "trap",
-    "speed": 2,
-    "when": [
-     "activated_spell"
-    ],
-    "cond": [
-     {
-      "c": "event_by",
-      "who": "opp"
-     },
-     {
-      "c": "event_card",
-      "filter": {
-       "name_is": "Harpie's Feather Duster"
-      }
-     }
-    ],
-    "do": [
-     {
-      "op": "negate"
-     },
-     {
-      "op": "destroy",
-      "what": {
-       "from": "opp.field",
-       "filter": {
-        "type": [
-         "spell",
-         "trap"
+  "_about": "Batch 14: card effects that need no new interface (preset-deck cards and Card List cards).",
+  "Blue Medicine": {
+    "fx": [
+      {
+        "type": "spell",
+        "do": [
+          {
+            "op": "heal",
+            "who": "self",
+            "amount": 400
+          }
         ]
-       }
       }
-     }
     ]
-   }
-  ]
- },
- "Mysterious Puppeteer": {
-  "fx": [
-   {
-    "type": "trigger_forced",
-    "when": "summoned",
-    "cond": [
-     {
-      "c": "event_src",
-      "is": false
-     }
-    ],
-    "do": [
-     {
-      "op": "heal",
-      "who": "self",
-      "amount": 500
-     }
+  },
+  "Mystic Lamp": {
+    "fx": [
+      {
+        "type": "static",
+        "rule": "can_attack_directly",
+        "scope": "self"
+      }
     ]
-   }
-  ]
- }
+  },
+  "Muka Muka": {
+    "fx": [
+      {
+        "type": "static",
+        "mod": {
+          "scope": "self",
+          "per": {
+            "zone": "self.hand",
+            "filter": {},
+            "by": 300,
+            "stats": [
+              "atk",
+              "def"
+            ]
+          }
+        }
+      }
+    ]
+  },
+  "Harpie's Pet Dragon": {
+    "fx": [
+      {
+        "type": "static",
+        "mod": {
+          "scope": "self",
+          "per": {
+            "zone": "monsters",
+            "filter": {
+              "name_is": "Harpie Lady",
+              "face_up": true
+            },
+            "by": 300,
+            "stats": [
+              "atk",
+              "def"
+            ]
+          }
+        }
+      }
+    ]
+  },
+  "The Wicked Worm Beast": {
+    "fx": [
+      {
+        "type": "trigger_forced",
+        "when": "end_phase",
+        "cond": [
+          {
+            "c": "turn",
+            "is": "self"
+          }
+        ],
+        "do": [
+          {
+            "op": "to_hand",
+            "what": "src"
+          }
+        ]
+      }
+    ]
+  },
+  "Mad Sword Beast": {
+    "fx": [
+      {
+        "type": "static",
+        "rule": "pierce",
+        "scope": "self"
+      }
+    ]
+  },
+  "Fusion Sage": {
+    "fx": [
+      {
+        "type": "spell",
+        "do": [
+          {
+            "op": "search",
+            "filter": {
+              "name_is": "Polymerization"
+            },
+            "prompt": 51
+          }
+        ]
+      }
+    ]
+  },
+  "Spirit of the Breeze": {
+    "fx": [
+      {
+        "type": "trigger_forced",
+        "when": "standby_phase",
+        "cond": [
+          {
+            "c": "turn",
+            "is": "self"
+          },
+          {
+            "c": "src_pos",
+            "is": "atk"
+          }
+        ],
+        "do": [
+          {
+            "op": "heal",
+            "who": "self",
+            "amount": 1000
+          }
+        ]
+      }
+    ]
+  },
+  "Dancing Fairy": {
+    "fx": [
+      {
+        "type": "trigger_forced",
+        "when": "standby_phase",
+        "cond": [
+          {
+            "c": "turn",
+            "is": "self"
+          },
+          {
+            "c": "src_pos",
+            "is": "def"
+          }
+        ],
+        "do": [
+          {
+            "op": "heal",
+            "who": "self",
+            "amount": 1000
+          }
+        ]
+      }
+    ]
+  },
+  "Bite Shoes": {
+    "fx": [
+      {
+        "type": "flip",
+        "when": "flipped",
+        "cond": [
+          {
+            "c": "event_src"
+          }
+        ],
+        "do": [
+          {
+            "op": "select",
+            "as": "t",
+            "from": "monsters",
+            "filter": {
+              "face_up": true
+            },
+            "n": 1,
+            "prompt": 87
+          },
+          {
+            "op": "flip_pos",
+            "what": "$t"
+          }
+        ]
+      }
+    ]
+  },
+  "Amazon Archer": {
+    "fx": [
+      {
+        "type": "ignition",
+        "cost": [
+          {
+            "op": "select",
+            "as": "c",
+            "from": "self.monsters",
+            "filter": {
+              "not_src": true
+            },
+            "n": 2,
+            "prompt": 154,
+            "cost": true
+          },
+          {
+            "op": "to_grave",
+            "what": "$c",
+            "reason": "tribute"
+          }
+        ],
+        "do": [
+          {
+            "op": "damage",
+            "who": "opp",
+            "amount": 1200
+          }
+        ]
+      }
+    ]
+  },
+  "Hysteric Fairy": {
+    "fx": [
+      {
+        "type": "ignition",
+        "cost": [
+          {
+            "op": "select",
+            "as": "c",
+            "from": "self.monsters",
+            "filter": {
+              "not_src": true
+            },
+            "n": 2,
+            "prompt": 154,
+            "cost": true
+          },
+          {
+            "op": "to_grave",
+            "what": "$c",
+            "reason": "tribute"
+          }
+        ],
+        "do": [
+          {
+            "op": "heal",
+            "who": "self",
+            "amount": 1000
+          }
+        ]
+      }
+    ]
+  },
+  "Fire Sorcerer": {
+    "fx": [
+      {
+        "type": "flip",
+        "when": "flipped",
+        "cond": [
+          {
+            "c": "event_src"
+          }
+        ],
+        "do": [
+          {
+            "op": "select",
+            "as": "h",
+            "from": "self.hand",
+            "filter": {},
+            "n": 2,
+            "prompt": 94,
+            "random": true,
+            "required": false
+          },
+          {
+            "op": "if",
+            "cond": [
+              {
+                "c": "var_nonempty",
+                "name": "h"
+              }
+            ],
+            "then": [
+              {
+                "op": "banish",
+                "what": "$h"
+              },
+              {
+                "op": "damage",
+                "who": "opp",
+                "amount": 800
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "Lady Assailant of Flames": {
+    "fx": [
+      {
+        "type": "flip",
+        "when": "flipped",
+        "cond": [
+          {
+            "c": "event_src"
+          }
+        ],
+        "do": [
+          {
+            "op": "if",
+            "cond": [
+              {
+                "c": "deck",
+                "who": "self",
+                "op": ">=",
+                "v": 3
+              }
+            ],
+            "then": [
+              {
+                "op": "remove_top",
+                "who": "self",
+                "n": 3
+              },
+              {
+                "op": "damage",
+                "who": "opp",
+                "amount": 800
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "Greenkappa": {
+    "fx": [
+      {
+        "type": "flip",
+        "when": "flipped",
+        "cond": [
+          {
+            "c": "event_src"
+          }
+        ],
+        "do": [
+          {
+            "op": "select",
+            "as": "t",
+            "from": "field",
+            "filter": {
+              "type": [
+                "spell",
+                "trap"
+              ],
+              "face_up": false
+            },
+            "n": 2,
+            "prompt": 94,
+            "min": 1
+          },
+          {
+            "op": "destroy",
+            "what": "$t"
+          }
+        ]
+      }
+    ]
+  },
+  "Dreamsprite": {
+    "fx": [
+      {
+        "type": "trigger_forced",
+        "when": "attack_declared",
+        "cond": [
+          {
+            "c": "target_is_src"
+          }
+        ],
+        "do": [
+          {
+            "op": "select",
+            "as": "t",
+            "from": "self.monsters",
+            "filter": {
+              "not_src": true
+            },
+            "n": 1,
+            "prompt": 153,
+            "required": false
+          },
+          {
+            "op": "redirect_attack",
+            "to": "$t"
+          }
+        ]
+      }
+    ]
+  },
+  "The Immortal of Thunder": {
+    "fx": [
+      {
+        "type": "flip",
+        "when": "flipped",
+        "cond": [
+          {
+            "c": "event_src"
+          }
+        ],
+        "do": [
+          {
+            "op": "heal",
+            "who": "self",
+            "amount": 3000
+          }
+        ]
+      },
+      {
+        "type": "trigger_forced",
+        "when": "sent_to_grave",
+        "zone": "grave",
+        "cond": [
+          {
+            "c": "event_src"
+          },
+          {
+            "c": "was_on_field"
+          },
+          {
+            "c": "was_face_up"
+          },
+          {
+            "c": "event_was_flipped"
+          }
+        ],
+        "do": [
+          {
+            "op": "damage",
+            "who": "self",
+            "amount": 5000
+          }
+        ]
+      }
+    ]
+  },
+  "Solomon's Lawbook": {
+    "fx": [
+      {
+        "type": "trap",
+        "speed": 2,
+        "when": [
+          "summoned",
+          "special_summoned",
+          "flip_summoned",
+          "attack_declared",
+          "activated_spell",
+          "activated_trap",
+          "standby_phase",
+          "end_phase"
+        ],
+        "do": [
+          {
+            "op": "skip_next_draw",
+            "who": "self"
+          }
+        ]
+      }
+    ]
+  },
+  "Messenger of Peace": {
+    "fx": [
+      {
+        "type": "spell",
+        "stay": true,
+        "do": []
+      },
+      {
+        "type": "static",
+        "rule": "no_attack",
+        "scope": "all",
+        "filter": {
+          "atk_min": 1500
+        }
+      },
+      {
+        "type": "trigger_forced",
+        "when": "standby_phase",
+        "cond": [
+          {
+            "c": "turn",
+            "is": "self"
+          }
+        ],
+        "do": [
+          {
+            "op": "if",
+            "cond": [
+              {
+                "c": "lp",
+                "who": "self",
+                "op": ">",
+                "v": 100
+              }
+            ],
+            "then": [
+              {
+                "op": "pay_lp",
+                "amount": 100
+              }
+            ],
+            "else": [
+              {
+                "op": "destroy",
+                "what": "src"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "Type Zero Magic Crusher": {
+    "fx": [
+      {
+        "type": "trap",
+        "speed": 2,
+        "when": [
+          "summoned",
+          "special_summoned",
+          "flip_summoned",
+          "attack_declared",
+          "activated_spell",
+          "activated_trap",
+          "standby_phase",
+          "end_phase"
+        ],
+        "cost": [
+          {
+            "op": "select",
+            "as": "s",
+            "from": "self.hand",
+            "filter": {
+              "type": "spell"
+            },
+            "n": 10,
+            "prompt": 235,
+            "min": 1,
+            "auto": false,
+            "cost": true,
+            "discard": true
+          },
+          {
+            "op": "to_grave",
+            "what": "$s",
+            "reason": "discard"
+          }
+        ],
+        "do": [
+          {
+            "op": "damage",
+            "who": "opp",
+            "amount": {
+              "mul": {
+                "var_count": "s"
+              },
+              "by": 500
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "Riryoku": {
+    "fx": [
+      {
+        "type": "spell",
+        "target": [
+          {
+            "op": "select",
+            "as": "a",
+            "from": "monsters",
+            "filter": {
+              "face_up": true
+            },
+            "n": 1,
+            "prompt": 146
+          },
+          {
+            "op": "select",
+            "as": "b",
+            "from": "monsters",
+            "filter": {
+              "face_up": true,
+              "not_in": [
+                "a"
+              ]
+            },
+            "n": 1,
+            "prompt": 147
+          }
+        ],
+        "do": [
+          {
+            "op": "mod",
+            "what": "$b",
+            "atk": {
+              "half": {
+                "stat": "atk",
+                "of": "a"
+              }
+            },
+            "until": "end_turn"
+          },
+          {
+            "op": "mod",
+            "what": "$a",
+            "atk": {
+              "mul": {
+                "half": {
+                  "stat": "atk",
+                  "of": "a"
+                }
+              },
+              "by": -1
+            },
+            "until": "end_turn"
+          }
+        ]
+      }
+    ]
+  },
+  "Destruction Punch": {
+    "fx": [
+      {
+        "type": "trap",
+        "speed": 2,
+        "when": [
+          "attack_declared"
+        ],
+        "cond": [
+          {
+            "c": "event_by",
+            "who": "opp"
+          },
+          {
+            "c": "attacker_weaker_than_target"
+          }
+        ],
+        "do": [
+          {
+            "op": "let",
+            "as": "a",
+            "what": "attacker"
+          },
+          {
+            "op": "destroy",
+            "what": "$a"
+          }
+        ]
+      }
+    ]
+  },
+  "Dimensional Warrior": {
+    "fx": [
+      {
+        "type": "trigger_forced",
+        "when": "attack_declared",
+        "cond": [
+          {
+            "c": "in_battle"
+          }
+        ],
+        "do": [
+          {
+            "op": "let",
+            "as": "a",
+            "what": "attacker"
+          },
+          {
+            "op": "let",
+            "as": "t",
+            "what": "attack_target"
+          },
+          {
+            "op": "negate_attack"
+          },
+          {
+            "op": "banish",
+            "what": "$a"
+          },
+          {
+            "op": "banish",
+            "what": "$t"
+          }
+        ]
+      }
+    ]
+  },
+  "Nobleman of Extermination": {
+    "fx": [
+      {
+        "type": "spell",
+        "target": [
+          {
+            "op": "select",
+            "as": "t",
+            "from": "field",
+            "filter": {
+              "type": [
+                "spell",
+                "trap"
+              ],
+              "face_up": false,
+              "not_src": true
+            },
+            "n": 1,
+            "prompt": 144
+          }
+        ],
+        "do": [
+          {
+            "op": "custom",
+            "fn": "nobleman_ext"
+          }
+        ]
+      }
+    ]
+  },
+  "Chosen One": {
+    "fx": [
+      {
+        "type": "spell",
+        "cond": [
+          {
+            "c": "free_zone",
+            "who": "self"
+          }
+        ],
+        "target": [
+          {
+            "op": "select",
+            "as": "m",
+            "from": "self.hand",
+            "filter": {
+              "type": "monster"
+            },
+            "n": 1,
+            "prompt": 111
+          },
+          {
+            "op": "select",
+            "as": "o",
+            "from": "self.hand",
+            "filter": {
+              "type": [
+                "spell",
+                "trap"
+              ],
+              "not_src": true
+            },
+            "n": 2,
+            "prompt": 33
+          }
+        ],
+        "do": [
+          {
+            "op": "custom",
+            "fn": "chosen_one"
+          }
+        ]
+      }
+    ]
+  },
+  "Return of the Doomed": {
+    "fx": [
+      {
+        "type": "spell",
+        "stay": true,
+        "cost": [
+          {
+            "op": "select",
+            "as": "c",
+            "from": "self.hand",
+            "filter": {
+              "type": "monster"
+            },
+            "n": 1,
+            "prompt": 235,
+            "cost": true,
+            "discard": true
+          },
+          {
+            "op": "to_grave",
+            "what": "$c",
+            "reason": "discard"
+          }
+        ],
+        "do": []
+      },
+      {
+        "type": "trigger_forced",
+        "when": "end_phase",
+        "cond": [
+          {
+            "c": "turn",
+            "is": "self"
+          }
+        ],
+        "do": [
+          {
+            "op": "select",
+            "as": "r",
+            "from": "self.dead_battle",
+            "filter": {},
+            "n": 1,
+            "prompt": 116,
+            "required": false
+          },
+          {
+            "op": "to_hand",
+            "what": "$r"
+          },
+          {
+            "op": "destroy",
+            "what": "src"
+          }
+        ]
+      }
+    ]
+  },
+  "Gilasaurus": {
+    "fx": [
+      {
+        "type": "trigger_forced",
+        "when": "summoned",
+        "cond": [
+          {
+            "c": "event_src"
+          }
+        ],
+        "do": [
+          {
+            "op": "yesno",
+            "as": "y",
+            "prompt": 269
+          },
+          {
+            "op": "if",
+            "cond": [
+              {
+                "c": "var_true",
+                "name": "y"
+              }
+            ],
+            "then": [
+              {
+                "op": "set_flag",
+                "what": "src",
+                "name": "special_summoned",
+                "value": true
+              },
+              {
+                "op": "select",
+                "as": "b",
+                "from": "opp.grave",
+                "filter": {
+                  "type": "monster"
+                },
+                "n": 1,
+                "prompt": 83,
+                "min": 0,
+                "required": false,
+                "auto": false,
+                "chooser": "opp"
+              },
+              {
+                "op": "special_summon",
+                "what": "$b",
+                "to": "opp",
+                "pos": "atk",
+                "face_up": true
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "Sword Hunter": {
+    "fx": [
+      {
+        "type": "trigger_forced",
+        "when": "destroyed",
+        "cond": [
+          {
+            "c": "killer_is_src"
+          },
+          {
+            "c": "event_card",
+            "filter": {
+              "type": "monster"
+            }
+          }
+        ],
+        "do": [
+          {
+            "op": "become_equip",
+            "card": "event_card",
+            "to": "src",
+            "atk": 200,
+            "on_host_side": true
+          }
+        ]
+      }
+    ]
+  },
+  "Supply": {
+    "fx": [
+      {
+        "type": "flip",
+        "when": "flipped",
+        "cond": [
+          {
+            "c": "event_src"
+          }
+        ],
+        "do": [
+          {
+            "op": "select",
+            "as": "t",
+            "from": "self.grave",
+            "filter": {
+              "type": "monster",
+              "fusion_mat": true
+            },
+            "n": 2,
+            "prompt": 22,
+            "min": 1
+          },
+          {
+            "op": "to_hand",
+            "what": "$t"
+          }
+        ]
+      }
+    ]
+  },
+  "Respect Play": {
+    "fx": [
+      {
+        "type": "continuous_trap",
+        "speed": 2,
+        "stay": true,
+        "when": [
+          "summoned",
+          "special_summoned",
+          "flip_summoned",
+          "attack_declared",
+          "activated_spell",
+          "activated_trap",
+          "standby_phase",
+          "end_phase"
+        ],
+        "do": []
+      }
+    ]
+  },
+  "Kotodama": {
+    "fx": [
+      {
+        "type": "trigger_forced",
+        "when": [
+          "summoned",
+          "special_summoned",
+          "flip_summoned"
+        ],
+        "cond": [
+          {
+            "c": "event_src",
+            "is": false
+          },
+          {
+            "c": "event_card",
+            "filter": {
+              "name_is": "Kotodama"
+            }
+          }
+        ],
+        "do": [
+          {
+            "op": "destroy",
+            "what": "event_card"
+          }
+        ]
+      }
+    ]
+  },
+  "Gryphon Wing": {
+    "fx": [
+      {
+        "type": "trap",
+        "speed": 2,
+        "when": [
+          "activated_spell"
+        ],
+        "cond": [
+          {
+            "c": "event_by",
+            "who": "opp"
+          },
+          {
+            "c": "event_card",
+            "filter": {
+              "name_is": "Harpie's Feather Duster"
+            }
+          }
+        ],
+        "do": [
+          {
+            "op": "negate"
+          },
+          {
+            "op": "destroy",
+            "what": {
+              "from": "opp.field",
+              "filter": {
+                "type": [
+                  "spell",
+                  "trap"
+                ]
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "Mysterious Puppeteer": {
+    "fx": [
+      {
+        "type": "trigger_forced",
+        "when": "summoned",
+        "cond": [
+          {
+            "c": "event_src",
+            "is": false
+          }
+        ],
+        "do": [
+          {
+            "op": "heal",
+            "who": "self",
+            "amount": 500
+          }
+        ]
+      }
+    ]
+  }
 }

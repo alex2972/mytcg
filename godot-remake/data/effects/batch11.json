@@ -1,951 +1,962 @@
 {
- "_about": "Batch 11: the hard cases - equip-monsters, race/attribute choices, Magical Hats, Destiny Board, zone blocking, turn skipping.",
- "Blast Sphere": {
-  "fx": [
-   {
-    "type": "trigger_forced",
-    "when": "attack_declared",
-    "face_down_ok": true,
-    "cond": [
-     {
-      "c": "target_is_src"
-     },
-     {
-      "c": "src_face_down"
-     }
-    ],
-    "do": [
-     {
-      "op": "negate_attack"
-     },
-     {
-      "op": "become_equip",
-      "to": "attacker"
-     }
-    ]
-   },
-   {
-    "type": "trigger_forced",
-    "when": "standby_phase",
-    "cond": [
-     {
-      "c": "turn",
-      "is": "opp"
-     },
-     {
-      "c": "equipped_is",
-      "filter": {}
-     }
-    ],
-    "do": [
-     {
-      "op": "let",
-      "as": "m",
-      "what": "equipped"
-     },
-     {
-      "op": "damage",
-      "who": "opp",
-      "amount": {
-       "stat": "atk",
-       "of": "m"
+  "_about": "Batch 11: the hard cases - equip-monsters, race/attribute choices, Magical Hats, Destiny Board, zone blocking, turn skipping.",
+  "Blast Sphere": {
+    "fx": [
+      {
+        "type": "trigger_forced",
+        "when": "attack_declared",
+        "face_down_ok": true,
+        "cond": [
+          {
+            "c": "target_is_src"
+          },
+          {
+            "c": "src_face_down"
+          }
+        ],
+        "do": [
+          {
+            "op": "negate_attack"
+          },
+          {
+            "op": "become_equip",
+            "to": "attacker"
+          }
+        ]
+      },
+      {
+        "type": "trigger_forced",
+        "when": "standby_phase",
+        "cond": [
+          {
+            "c": "turn",
+            "is": "opp"
+          },
+          {
+            "c": "equipped_is",
+            "filter": {}
+          }
+        ],
+        "do": [
+          {
+            "op": "let",
+            "as": "m",
+            "what": "equipped"
+          },
+          {
+            "op": "damage",
+            "who": "opp",
+            "amount": {
+              "stat": "atk",
+              "of": "m"
+            }
+          },
+          {
+            "op": "destroy",
+            "what": "$m"
+          },
+          {
+            "op": "destroy",
+            "what": "src"
+          }
+        ]
       }
-     },
-     {
-      "op": "destroy",
-      "what": "$m"
-     },
-     {
-      "op": "destroy",
-      "what": "src"
-     }
     ]
-   }
-  ]
- },
- "Kiseitai": {
-  "fx": [
-   {
-    "type": "trigger_forced",
-    "when": "attack_declared",
-    "face_down_ok": true,
-    "cond": [
-     {
-      "c": "target_is_src"
-     },
-     {
-      "c": "src_face_down"
-     }
-    ],
-    "do": [
-     {
-      "op": "negate_attack"
-     },
-     {
-      "op": "become_equip",
-      "to": "attacker"
-     }
-    ]
-   },
-   {
-    "type": "trigger_forced",
-    "when": "standby_phase",
-    "cond": [
-     {
-      "c": "turn",
-      "is": "opp"
-     },
-     {
-      "c": "equipped_is",
-      "filter": {}
-     }
-    ],
-    "do": [
-     {
-      "op": "let",
-      "as": "m",
-      "what": "equipped"
-     },
-     {
-      "op": "heal",
-      "who": "self",
-      "amount": {
-       "half": {
-        "stat": "atk",
-        "of": "m"
-       }
+  },
+  "Kiseitai": {
+    "fx": [
+      {
+        "type": "trigger_forced",
+        "when": "attack_declared",
+        "face_down_ok": true,
+        "cond": [
+          {
+            "c": "target_is_src"
+          },
+          {
+            "c": "src_face_down"
+          }
+        ],
+        "do": [
+          {
+            "op": "negate_attack"
+          },
+          {
+            "op": "become_equip",
+            "to": "attacker"
+          }
+        ]
+      },
+      {
+        "type": "trigger_forced",
+        "when": "standby_phase",
+        "cond": [
+          {
+            "c": "turn",
+            "is": "opp"
+          },
+          {
+            "c": "equipped_is",
+            "filter": {}
+          }
+        ],
+        "do": [
+          {
+            "op": "let",
+            "as": "m",
+            "what": "equipped"
+          },
+          {
+            "op": "heal",
+            "who": "self",
+            "amount": {
+              "half": {
+                "stat": "atk",
+                "of": "m"
+              }
+            }
+          }
+        ]
       }
-     }
     ]
-   }
-  ]
- },
- "DNA Surgery": {
-  "fx": [
-   {
-    "type": "continuous_trap",
-    "speed": 2,
-    "stay": true,
-    "when": [
-     "summoned",
-     "special_summoned",
-     "flip_summoned",
-     "attack_declared",
-     "activated_spell",
-     "activated_trap",
-     "standby_phase",
-     "end_phase"
-    ],
-    "do": [
-     {
-      "op": "choice",
-      "as": "r",
-      "count": 20,
-      "labels": [
-       "Dragon",
-       "Zombie",
-       "Fiend",
-       "Pyro",
-       "Sea Serpent",
-       "Rock",
-       "Machine",
-       "Fish",
-       "Dinosaur",
-       "Insect",
-       "Beast",
-       "Beast-Warrior",
-       "Plant",
-       "Aqua",
-       "Warrior",
-       "Winged Beast",
-       "Fairy",
-       "Spellcaster",
-       "Thunder",
-       "Reptile"
-      ],
-      "prompt": 241
-     },
-     {
-      "op": "flag_from_var",
-      "what": "src",
-      "name": "dna_race",
-      "var": "r",
-      "add": 1
-     }
+  },
+  "DNA Surgery": {
+    "fx": [
+      {
+        "type": "continuous_trap",
+        "speed": 2,
+        "stay": true,
+        "when": [
+          "summoned",
+          "special_summoned",
+          "flip_summoned",
+          "attack_declared",
+          "activated_spell",
+          "activated_trap",
+          "standby_phase",
+          "end_phase"
+        ],
+        "do": [
+          {
+            "op": "choice",
+            "as": "r",
+            "count": 20,
+            "labels": [
+              "Dragon",
+              "Zombie",
+              "Fiend",
+              "Pyro",
+              "Sea Serpent",
+              "Rock",
+              "Machine",
+              "Fish",
+              "Dinosaur",
+              "Insect",
+              "Beast",
+              "Beast-Warrior",
+              "Plant",
+              "Aqua",
+              "Warrior",
+              "Winged Beast",
+              "Fairy",
+              "Spellcaster",
+              "Thunder",
+              "Reptile"
+            ],
+            "prompt": 241
+          },
+          {
+            "op": "flag_from_var",
+            "what": "src",
+            "name": "dna_race",
+            "var": "r",
+            "add": 1
+          }
+        ]
+      },
+      {
+        "type": "static",
+        "rule": "dna_surgery",
+        "scope": "all"
+      }
     ]
-   },
-   {
-    "type": "static",
-    "rule": "dna_surgery",
-    "scope": "all"
-   }
-  ]
- },
- "The Regulation of Tribe": {
-  "fx": [
-   {
-    "type": "continuous_trap",
-    "speed": 2,
-    "stay": true,
-    "when": [
-     "summoned",
-     "special_summoned",
-     "flip_summoned",
-     "attack_declared",
-     "activated_spell",
-     "activated_trap",
-     "standby_phase",
-     "end_phase"
-    ],
-    "do": [
-     {
-      "op": "choice",
-      "as": "r",
-      "count": 20,
-      "labels": [
-       "Dragon",
-       "Zombie",
-       "Fiend",
-       "Pyro",
-       "Sea Serpent",
-       "Rock",
-       "Machine",
-       "Fish",
-       "Dinosaur",
-       "Insect",
-       "Beast",
-       "Beast-Warrior",
-       "Plant",
-       "Aqua",
-       "Warrior",
-       "Winged Beast",
-       "Fairy",
-       "Spellcaster",
-       "Thunder",
-       "Reptile"
-      ],
-      "prompt": 241
-     },
-     {
-      "op": "flag_from_var",
-      "what": "src",
-      "name": "chosen_race",
-      "var": "r",
-      "add": 1
-     }
-    ]
-   },
-   {
-    "type": "static",
-    "rule": "no_attack",
-    "scope": "all",
-    "filter": {
-     "race_of_src_flag": true
-    }
-   },
-   {
-    "type": "trigger_forced",
-    "when": "standby_phase",
-    "cond": [
-     {
-      "c": "turn",
-      "is": "self"
-     }
-    ],
-    "do": [
-     {
-      "op": "if",
-      "cond": [
-       {
-        "c": "has",
-        "zone": "self.monsters",
-        "n": 1
-       }
-      ],
-      "then": [
-       {
-        "op": "select",
-        "as": "c",
-        "from": "self.monsters",
-        "n": 1,
-        "cost": true,
-        "prompt": 154
-       },
-       {
-        "op": "to_grave",
-        "what": "$c",
-        "reason": "tribute"
-       }
-      ],
-      "else": [
-       {
-        "op": "destroy",
-        "what": "src"
-       }
-      ]
-     }
-    ]
-   }
-  ]
- },
- "Earthshaker": {
-  "fx": [
-   {
-    "type": "trap",
-    "speed": 2,
-    "when": [
-     "summoned",
-     "special_summoned",
-     "flip_summoned",
-     "attack_declared",
-     "activated_spell",
-     "activated_trap",
-     "standby_phase",
-     "end_phase"
-    ],
-    "do": [
-     {
-      "op": "choice",
-      "as": "a",
-      "count": 7,
-      "labels": [
-       "LIGHT",
-       "DARK",
-       "WATER",
-       "FIRE",
-       "EARTH",
-       "WIND",
-       "DIVINE"
-      ],
-      "prompt": 242
-     },
-     {
-      "op": "choice",
-      "as": "b",
-      "count": 7,
-      "labels": [
-       "LIGHT",
-       "DARK",
-       "WATER",
-       "FIRE",
-       "EARTH",
-       "WIND",
-       "DIVINE"
-      ],
-      "prompt": 243
-     },
-     {
-      "op": "choice",
-      "as": "p",
-      "count": 2,
-      "labels": [
-       "First",
-       "Second"
-      ],
-      "chooser": "opp",
-      "prompt": 264
-     },
-     {
-      "op": "if",
-      "cond": [
-       {
-        "c": "var_eq",
-        "name": "p",
-        "v": 0
-       }
-      ],
-      "then": [
-       {
-        "op": "destroy",
-        "what": {
-         "from": "monsters",
-         "filter": {
-          "face_up": true,
-          "attr_var": "a"
-         }
+  },
+  "The Regulation of Tribe": {
+    "fx": [
+      {
+        "type": "continuous_trap",
+        "speed": 2,
+        "stay": true,
+        "when": [
+          "summoned",
+          "special_summoned",
+          "flip_summoned",
+          "attack_declared",
+          "activated_spell",
+          "activated_trap",
+          "standby_phase",
+          "end_phase"
+        ],
+        "do": [
+          {
+            "op": "choice",
+            "as": "r",
+            "count": 20,
+            "labels": [
+              "Dragon",
+              "Zombie",
+              "Fiend",
+              "Pyro",
+              "Sea Serpent",
+              "Rock",
+              "Machine",
+              "Fish",
+              "Dinosaur",
+              "Insect",
+              "Beast",
+              "Beast-Warrior",
+              "Plant",
+              "Aqua",
+              "Warrior",
+              "Winged Beast",
+              "Fairy",
+              "Spellcaster",
+              "Thunder",
+              "Reptile"
+            ],
+            "prompt": 241
+          },
+          {
+            "op": "flag_from_var",
+            "what": "src",
+            "name": "chosen_race",
+            "var": "r",
+            "add": 1
+          }
+        ]
+      },
+      {
+        "type": "static",
+        "rule": "no_attack",
+        "scope": "all",
+        "filter": {
+          "race_of_src_flag": true
         }
-       }
-      ],
-      "else": [
-       {
-        "op": "destroy",
-        "what": {
-         "from": "monsters",
-         "filter": {
-          "face_up": true,
-          "attr_var": "b"
-         }
+      },
+      {
+        "type": "trigger_forced",
+        "when": "standby_phase",
+        "cond": [
+          {
+            "c": "turn",
+            "is": "self"
+          }
+        ],
+        "do": [
+          {
+            "op": "if",
+            "cond": [
+              {
+                "c": "has",
+                "zone": "self.monsters",
+                "n": 1
+              }
+            ],
+            "then": [
+              {
+                "op": "select",
+                "as": "c",
+                "from": "self.monsters",
+                "n": 1,
+                "cost": true,
+                "prompt": 154
+              },
+              {
+                "op": "to_grave",
+                "what": "$c",
+                "reason": "tribute"
+              }
+            ],
+            "else": [
+              {
+                "op": "destroy",
+                "what": "src"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "Earthshaker": {
+    "fx": [
+      {
+        "type": "trap",
+        "speed": 2,
+        "when": [
+          "summoned",
+          "special_summoned",
+          "flip_summoned",
+          "attack_declared",
+          "activated_spell",
+          "activated_trap",
+          "standby_phase",
+          "end_phase"
+        ],
+        "do": [
+          {
+            "op": "choice",
+            "as": "a",
+            "count": 7,
+            "labels": [
+              "LIGHT",
+              "DARK",
+              "WATER",
+              "FIRE",
+              "EARTH",
+              "WIND",
+              "DIVINE"
+            ],
+            "prompt": 242
+          },
+          {
+            "op": "choice",
+            "as": "b",
+            "count": 7,
+            "labels": [
+              "LIGHT",
+              "DARK",
+              "WATER",
+              "FIRE",
+              "EARTH",
+              "WIND",
+              "DIVINE"
+            ],
+            "prompt": 243
+          },
+          {
+            "op": "choice",
+            "as": "p",
+            "count": 2,
+            "labels": [
+              "First",
+              "Second"
+            ],
+            "chooser": "opp",
+            "prompt": 264
+          },
+          {
+            "op": "if",
+            "cond": [
+              {
+                "c": "var_eq",
+                "name": "p",
+                "v": 0
+              }
+            ],
+            "then": [
+              {
+                "op": "destroy",
+                "what": {
+                  "from": "monsters",
+                  "filter": {
+                    "face_up": true,
+                    "attr_var": "a"
+                  }
+                }
+              }
+            ],
+            "else": [
+              {
+                "op": "destroy",
+                "what": {
+                  "from": "monsters",
+                  "filter": {
+                    "face_up": true,
+                    "attr_var": "b"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "Magical Hats": {
+    "fx": [
+      {
+        "type": "trap",
+        "speed": 2,
+        "when": [
+          "attack_declared"
+        ],
+        "cond": [
+          {
+            "c": "event_by",
+            "who": "opp"
+          },
+          {
+            "c": "free_zones",
+            "n": 2
+          }
+        ],
+        "target": [
+          {
+            "op": "select",
+            "as": "m",
+            "from": "self.monsters",
+            "n": 1,
+            "prompt": 109
+          }
+        ],
+        "do": [
+          {
+            "op": "custom",
+            "fn": "magical_hats"
+          }
+        ]
+      }
+    ]
+  },
+  "Destiny Board": {
+    "fx": [
+      {
+        "type": "continuous_trap",
+        "speed": 2,
+        "stay": true,
+        "when": [
+          "summoned",
+          "special_summoned",
+          "flip_summoned",
+          "attack_declared",
+          "activated_spell",
+          "activated_trap",
+          "standby_phase",
+          "end_phase"
+        ],
+        "do": []
+      },
+      {
+        "type": "trigger_forced",
+        "when": "end_phase",
+        "cond": [
+          {
+            "c": "turn",
+            "is": "opp"
+          }
+        ],
+        "do": [
+          {
+            "op": "custom",
+            "fn": "destiny_board"
+          }
+        ]
+      }
+    ]
+  },
+  "Spirit Message \"I\"": {
+    "fx": []
+  },
+  "Spirit Message \"N\"": {
+    "fx": []
+  },
+  "Spirit Message \"A\"": {
+    "fx": []
+  },
+  "Spirit Message \"L\"": {
+    "fx": []
+  },
+  "Valkyrion the Magna Warrior": {
+    "fx": [
+      {
+        "type": "static",
+        "rule": "no_normal_summon",
+        "scope": "self"
+      },
+      {
+        "type": "ignition",
+        "zone": "extra",
+        "cond": [
+          {
+            "c": "free_zone",
+            "who": "self"
+          }
+        ],
+        "cost": [
+          {
+            "op": "select",
+            "as": "a",
+            "from": [
+              "self.hand",
+              "self.monsters"
+            ],
+            "filter": {
+              "name_is": "Alpha The Magnet Warrior"
+            },
+            "n": 1,
+            "cost": true
+          },
+          {
+            "op": "select",
+            "as": "b",
+            "from": [
+              "self.hand",
+              "self.monsters"
+            ],
+            "filter": {
+              "name_is": "Beta The Magnet Warrior"
+            },
+            "n": 1,
+            "cost": true
+          },
+          {
+            "op": "select",
+            "as": "c",
+            "from": [
+              "self.hand",
+              "self.monsters"
+            ],
+            "filter": {
+              "name_is": "Gamma The Magnet Warrior"
+            },
+            "n": 1,
+            "cost": true
+          },
+          {
+            "op": "to_grave",
+            "what": "$a",
+            "reason": "tribute"
+          },
+          {
+            "op": "to_grave",
+            "what": "$b",
+            "reason": "tribute"
+          },
+          {
+            "op": "to_grave",
+            "what": "$c",
+            "reason": "tribute"
+          }
+        ],
+        "do": [
+          {
+            "op": "special_summon",
+            "what": "src",
+            "pos": "atk",
+            "face_up": true
+          }
+        ]
+      }
+    ]
+  },
+  "Red-Eyes Black Metal Dragon": {
+    "fx": [
+      {
+        "type": "static",
+        "rule": "no_normal_summon",
+        "scope": "self"
+      },
+      {
+        "type": "ignition",
+        "zone": "deck",
+        "cond": [
+          {
+            "c": "free_zone",
+            "who": "self"
+          }
+        ],
+        "cost": [
+          {
+            "op": "select",
+            "as": "c",
+            "from": "self.monsters",
+            "filter": {
+              "name_is": "Red-Eyes B. Dragon",
+              "has_equip": true
+            },
+            "n": 1,
+            "cost": true
+          },
+          {
+            "op": "to_grave",
+            "what": "$c",
+            "reason": "tribute"
+          }
+        ],
+        "do": [
+          {
+            "op": "special_summon",
+            "what": "src",
+            "pos": "atk",
+            "face_up": true
+          },
+          {
+            "op": "shuffle",
+            "who": "self"
+          }
+        ]
+      }
+    ]
+  },
+  "Gamble": {
+    "fx": [
+      {
+        "type": "trap",
+        "speed": 2,
+        "when": [
+          "summoned",
+          "special_summoned",
+          "flip_summoned",
+          "attack_declared",
+          "activated_spell",
+          "activated_trap",
+          "standby_phase",
+          "end_phase"
+        ],
+        "cond": [
+          {
+            "c": "hand",
+            "who": "opp",
+            "op": ">=",
+            "v": 6
+          },
+          {
+            "c": "hand",
+            "who": "self",
+            "op": "<=",
+            "v": 2
+          }
+        ],
+        "do": [
+          {
+            "op": "choice",
+            "as": "coin_call",
+            "count": 2,
+            "labels": [
+              "Heads",
+              "Tails"
+            ],
+            "prompt_text": "Call the coin toss."
+          },
+          {
+            "op": "coin",
+            "heads": [
+              {
+                "op": "draw_until",
+                "n": 5
+              }
+            ],
+            "tails": [
+              {
+                "op": "skip_turn",
+                "who": "self"
+              }
+            ],
+            "call": "coin_call"
+          }
+        ]
+      }
+    ]
+  },
+  "Crush Card": {
+    "fx": [
+      {
+        "type": "trap",
+        "speed": 2,
+        "when": [
+          "summoned",
+          "special_summoned",
+          "flip_summoned",
+          "attack_declared",
+          "activated_spell",
+          "activated_trap",
+          "standby_phase",
+          "end_phase"
+        ],
+        "cost": [
+          {
+            "op": "select",
+            "as": "c",
+            "from": "self.monsters",
+            "filter": {
+              "attribute": "DARK",
+              "atk_max": 1000
+            },
+            "n": 1,
+            "cost": true,
+            "prompt": 154
+          },
+          {
+            "op": "to_grave",
+            "what": "$c",
+            "reason": "tribute"
+          }
+        ],
+        "do": [
+          {
+            "op": "custom",
+            "fn": "crush_card"
+          }
+        ]
+      }
+    ]
+  },
+  "Megamorph": {
+    "fx": [
+      {
+        "type": "equip",
+        "target": [
+          {
+            "op": "select",
+            "as": "t",
+            "from": "monsters",
+            "filter": {
+              "face_up": true
+            },
+            "n": 1,
+            "prompt": 101
+          }
+        ],
+        "do": [
+          {
+            "op": "equip",
+            "to": "$t"
+          }
+        ]
+      },
+      {
+        "type": "static",
+        "mod": {
+          "scope": "equipped",
+          "lp_rule": true
         }
-       }
-      ]
-     }
+      }
     ]
-   }
-  ]
- },
- "Magical Hats": {
-  "fx": [
-   {
-    "type": "trap",
-    "speed": 2,
-    "when": [
-     "attack_declared"
-    ],
-    "cond": [
-     {
-      "c": "event_by",
-      "who": "opp"
-     },
-     {
-      "c": "free_zones",
-      "n": 2
-     }
-    ],
-    "target": [
-     {
-      "op": "select",
-      "as": "m",
-      "from": "self.monsters",
-      "n": 1,
-      "prompt": 109
-     }
-    ],
-    "do": [
-     {
-      "op": "custom",
-      "fn": "magical_hats"
-     }
+  },
+  "Parasite Paracide": {
+    "fx": [
+      {
+        "type": "flip",
+        "when": "flipped",
+        "cond": [
+          {
+            "c": "event_src"
+          }
+        ],
+        "do": [
+          {
+            "op": "give_to_deck",
+            "what": "src",
+            "to": "opp"
+          }
+        ]
+      }
     ]
-   }
-  ]
- },
- "Destiny Board": {
-  "fx": [
-   {
-    "type": "continuous_trap",
-    "speed": 2,
-    "stay": true,
-    "when": [
-     "summoned",
-     "special_summoned",
-     "flip_summoned",
-     "attack_declared",
-     "activated_spell",
-     "activated_trap",
-     "standby_phase",
-     "end_phase"
-    ],
-    "do": []
-   },
-   {
-    "type": "trigger_forced",
-    "when": "end_phase",
-    "cond": [
-     {
-      "c": "turn",
-      "is": "opp"
-     }
-    ],
-    "do": [
-     {
-      "op": "custom",
-      "fn": "destiny_board"
-     }
+  },
+  "Beast of Gilfer": {
+    "fx": [
+      {
+        "type": "trigger",
+        "when": "sent_to_grave",
+        "zone": "grave",
+        "cond": [
+          {
+            "c": "event_src"
+          },
+          {
+            "c": "was_on_field"
+          }
+        ],
+        "do": [
+          {
+            "op": "select",
+            "as": "t",
+            "from": "monsters",
+            "filter": {
+              "face_up": true
+            },
+            "n": 1,
+            "min": 0,
+            "required": false,
+            "auto": false,
+            "prompt": 101
+          },
+          {
+            "op": "become_equip",
+            "to": "$t",
+            "atk": -500
+          }
+        ]
+      }
     ]
-   }
-  ]
- },
- "Spirit Message \"I\"": {
-  "fx": []
- },
- "Spirit Message \"N\"": {
-  "fx": []
- },
- "Spirit Message \"A\"": {
-  "fx": []
- },
- "Spirit Message \"L\"": {
-  "fx": []
- },
- "Valkyrion the Magna Warrior": {
-  "fx": [
-   {
-    "type": "static",
-    "rule": "no_normal_summon",
-    "scope": "self"
-   },
-   {
-    "type": "ignition",
-    "zone": "extra",
-    "cond": [
-     {
-      "c": "free_zone",
-      "who": "self"
-     }
-    ],
-    "cost": [
-     {
-      "op": "select",
-      "as": "a",
-      "from": [
-       "self.hand",
-       "self.monsters"
-      ],
-      "filter": {
-       "name_is": "Alpha The Magnet Warrior"
+  },
+  "Ground Collapse": {
+    "fx": [
+      {
+        "type": "spell",
+        "stay": true,
+        "do": [
+          {
+            "op": "choice",
+            "as": "a",
+            "count": 5,
+            "labels": [
+              "1",
+              "2",
+              "3",
+              "4",
+              "5"
+            ],
+            "prompt": 247
+          },
+          {
+            "op": "choice",
+            "as": "b",
+            "count": 5,
+            "labels": [
+              "1",
+              "2",
+              "3",
+              "4",
+              "5"
+            ],
+            "prompt": 247
+          },
+          {
+            "op": "block_zones",
+            "a": "a",
+            "b": "b",
+            "side": "opp"
+          }
+        ]
       },
-      "n": 1,
-      "cost": true
-     },
-     {
-      "op": "select",
-      "as": "b",
-      "from": [
-       "self.hand",
-       "self.monsters"
-      ],
-      "filter": {
-       "name_is": "Beta The Magnet Warrior"
+      {
+        "type": "static",
+        "rule": "ground_collapse",
+        "scope": "all"
+      }
+    ]
+  },
+  "Aqua Chorus": {
+    "fx": [
+      {
+        "type": "continuous_trap",
+        "speed": 2,
+        "stay": true,
+        "when": [
+          "summoned",
+          "special_summoned",
+          "flip_summoned",
+          "attack_declared",
+          "activated_spell",
+          "activated_trap",
+          "standby_phase",
+          "end_phase"
+        ],
+        "do": []
       },
-      "n": 1,
-      "cost": true
-     },
-     {
-      "op": "select",
-      "as": "c",
-      "from": [
-       "self.hand",
-       "self.monsters"
-      ],
-      "filter": {
-       "name_is": "Gamma The Magnet Warrior"
+      {
+        "type": "static",
+        "mod": {
+          "scope": "all",
+          "same_name": true,
+          "atk": 500,
+          "def": 500
+        }
+      }
+    ]
+  },
+  "Mask of Dispel": {
+    "fx": [
+      {
+        "type": "spell",
+        "stay": true,
+        "target": [
+          {
+            "op": "select",
+            "as": "t",
+            "from": "field",
+            "filter": {
+              "type": "spell",
+              "face_up": true,
+              "not_src": true
+            },
+            "n": 1,
+            "prompt": 95
+          }
+        ],
+        "do": [
+          {
+            "op": "watch",
+            "what": "$t"
+          }
+        ]
       },
-      "n": 1,
-      "cost": true
-     },
-     {
-      "op": "to_grave",
-      "what": "$a",
-      "reason": "tribute"
-     },
-     {
-      "op": "to_grave",
-      "what": "$b",
-      "reason": "tribute"
-     },
-     {
-      "op": "to_grave",
-      "what": "$c",
-      "reason": "tribute"
-     }
-    ],
-    "do": [
-     {
-      "op": "special_summon",
-      "what": "src",
-      "pos": "atk",
-      "face_up": true
-     }
+      {
+        "type": "trigger_forced",
+        "when": "standby_phase",
+        "do": [
+          {
+            "op": "custom",
+            "fn": "damage_watched"
+          }
+        ]
+      }
     ]
-   }
-  ]
- },
- "Red-Eyes Black Metal Dragon": {
-  "fx": [
-   {
-    "type": "static",
-    "rule": "no_normal_summon",
-    "scope": "self"
-   },
-   {
-    "type": "ignition",
-    "zone": "deck",
-    "cond": [
-     {
-      "c": "free_zone",
-      "who": "self"
-     }
-    ],
-    "cost": [
-     {
-      "op": "select",
-      "as": "c",
-      "from": "self.monsters",
-      "filter": {
-       "name_is": "Red-Eyes B. Dragon",
-       "has_equip": true
-      },
-      "n": 1,
-      "cost": true
-     },
-     {
-      "op": "to_grave",
-      "what": "$c",
-      "reason": "tribute"
-     }
-    ],
-    "do": [
-     {
-      "op": "special_summon",
-      "what": "src",
-      "pos": "atk",
-      "face_up": true
-     },
-     {
-      "op": "shuffle",
-      "who": "self"
-     }
+  },
+  "Lightforce Sword": {
+    "fx": [
+      {
+        "type": "trap",
+        "speed": 2,
+        "when": [
+          "summoned",
+          "special_summoned",
+          "flip_summoned",
+          "attack_declared",
+          "activated_spell",
+          "activated_trap",
+          "standby_phase",
+          "end_phase"
+        ],
+        "cond": [
+          {
+            "c": "hand",
+            "who": "opp",
+            "op": ">=",
+            "v": 1
+          }
+        ],
+        "do": [
+          {
+            "op": "banish_random_hand",
+            "who": "opp",
+            "owner_turns": 4
+          }
+        ]
+      }
     ]
-   }
-  ]
- },
- "Gamble": {
-  "fx": [
-   {
-    "type": "trap",
-    "speed": 2,
-    "when": [
-     "summoned",
-     "special_summoned",
-     "flip_summoned",
-     "attack_declared",
-     "activated_spell",
-     "activated_trap",
-     "standby_phase",
-     "end_phase"
-    ],
-    "cond": [
-     {
-      "c": "hand",
-      "who": "opp",
-      "op": ">=",
-      "v": 6
-     },
-     {
-      "c": "hand",
-      "who": "self",
-      "op": "<=",
-      "v": 2
-     }
-    ],
-    "do": [
-     {
-      "op": "coin",
-      "heads": [
-       {
-        "op": "draw_until",
-        "n": 5
-       }
-      ],
-      "tails": [
-       {
-        "op": "skip_turn",
-        "who": "self"
-       }
-      ]
-     }
+  },
+  "Cold Wave": {
+    "fx": [
+      {
+        "type": "spell",
+        "cond": [
+          {
+            "c": "phase",
+            "is": [
+              "main1"
+            ]
+          }
+        ],
+        "do": [
+          {
+            "op": "lockdown",
+            "turns": 2
+          }
+        ]
+      }
     ]
-   }
-  ]
- },
- "Crush Card": {
-  "fx": [
-   {
-    "type": "trap",
-    "speed": 2,
-    "when": [
-     "summoned",
-     "special_summoned",
-     "flip_summoned",
-     "attack_declared",
-     "activated_spell",
-     "activated_trap",
-     "standby_phase",
-     "end_phase"
-    ],
-    "cost": [
-     {
-      "op": "select",
-      "as": "c",
-      "from": "self.monsters",
-      "filter": {
-       "attribute": "DARK",
-       "atk_max": 1000
-      },
-      "n": 1,
-      "cost": true,
-      "prompt": 154
-     },
-     {
-      "op": "to_grave",
-      "what": "$c",
-      "reason": "tribute"
-     }
-    ],
-    "do": [
-     {
-      "op": "custom",
-      "fn": "crush_card"
-     }
-    ]
-   }
-  ]
- },
- "Megamorph": {
-  "fx": [
-   {
-    "type": "equip",
-    "target": [
-     {
-      "op": "select",
-      "as": "t",
-      "from": "monsters",
-      "filter": {
-       "face_up": true
-      },
-      "n": 1,
-      "prompt": 101
-     }
-    ],
-    "do": [
-     {
-      "op": "equip",
-      "to": "$t"
-     }
-    ]
-   },
-   {
-    "type": "static",
-    "mod": {
-     "scope": "equipped",
-     "lp_rule": true
-    }
-   }
-  ]
- },
- "Parasite Paracide": {
-  "fx": [
-   {
-    "type": "flip",
-    "when": "flipped",
-    "cond": [
-     {
-      "c": "event_src"
-     }
-    ],
-    "do": [
-     {
-      "op": "give_to_deck",
-      "what": "src",
-      "to": "opp"
-     }
-    ]
-   }
-  ]
- },
- "Beast of Gilfer": {
-  "fx": [
-   {
-    "type": "trigger",
-    "when": "sent_to_grave",
-    "zone": "grave",
-    "cond": [
-     {
-      "c": "event_src"
-     },
-     {
-      "c": "was_on_field"
-     }
-    ],
-    "do": [
-     {
-      "op": "select",
-      "as": "t",
-      "from": "monsters",
-      "filter": {
-       "face_up": true
-      },
-      "n": 1,
-      "min": 0,
-      "required": false,
-      "auto": false,
-      "prompt": 101
-     },
-     {
-      "op": "become_equip",
-      "to": "$t",
-      "atk": -500
-     }
-    ]
-   }
-  ]
- },
- "Ground Collapse": {
-  "fx": [
-   {
-    "type": "spell",
-    "stay": true,
-    "do": [
-     {
-      "op": "choice",
-      "as": "a",
-      "count": 5,
-      "labels": [
-       "1",
-       "2",
-       "3",
-       "4",
-       "5"
-      ],
-      "prompt": 247
-     },
-     {
-      "op": "choice",
-      "as": "b",
-      "count": 5,
-      "labels": [
-       "1",
-       "2",
-       "3",
-       "4",
-       "5"
-      ],
-      "prompt": 247
-     },
-     {
-      "op": "block_zones",
-      "a": "a",
-      "b": "b",
-      "side": "opp"
-     }
-    ]
-   },
-   {
-    "type": "static",
-    "rule": "ground_collapse",
-    "scope": "all"
-   }
-  ]
- },
- "Aqua Chorus": {
-  "fx": [
-   {
-    "type": "continuous_trap",
-    "speed": 2,
-    "stay": true,
-    "when": [
-     "summoned",
-     "special_summoned",
-     "flip_summoned",
-     "attack_declared",
-     "activated_spell",
-     "activated_trap",
-     "standby_phase",
-     "end_phase"
-    ],
-    "do": []
-   },
-   {
-    "type": "static",
-    "mod": {
-     "scope": "all",
-     "same_name": true,
-     "atk": 500,
-     "def": 500
-    }
-   }
-  ]
- },
- "Mask of Dispel": {
-  "fx": [
-   {
-    "type": "spell",
-    "stay": true,
-    "target": [
-     {
-      "op": "select",
-      "as": "t",
-      "from": "field",
-      "filter": {
-       "type": "spell",
-       "face_up": true,
-       "not_src": true
-      },
-      "n": 1,
-      "prompt": 95
-     }
-    ],
-    "do": [
-     {
-      "op": "watch",
-      "what": "$t"
-     }
-    ]
-   },
-   {
-    "type": "trigger_forced",
-    "when": "standby_phase",
-    "do": [
-     {
-      "op": "custom",
-      "fn": "damage_watched"
-     }
-    ]
-   }
-  ]
- },
- "Lightforce Sword": {
-  "fx": [
-   {
-    "type": "trap",
-    "speed": 2,
-    "when": [
-     "summoned",
-     "special_summoned",
-     "flip_summoned",
-     "attack_declared",
-     "activated_spell",
-     "activated_trap",
-     "standby_phase",
-     "end_phase"
-    ],
-    "cond": [
-     {
-      "c": "hand",
-      "who": "opp",
-      "op": ">=",
-      "v": 1
-     }
-    ],
-    "do": [
-     {
-      "op": "banish_random_hand",
-      "who": "opp",
-      "after": 7
-     }
-    ]
-   }
-  ]
- },
- "Cold Wave": {
-  "fx": [
-   {
-    "type": "spell",
-    "cond": [
-     {
-      "c": "phase",
-      "is": [
-       "main1"
-      ]
-     }
-    ],
-    "do": [
-     {
-      "op": "lockdown",
-      "turns": 2
-     }
-    ]
-   }
-  ]
- }
+  }
 }

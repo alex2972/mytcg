@@ -14,6 +14,7 @@ var ops: FxOps
 var tasks: Array = []
 var chain: Array = []            ## open links, last = top
 var pending: Dictionary = {}
+var presentation_enabled := false  ## Board opt-in; pure engine/AI tests remain synchronous.
 var resolving := false
 var activating := 0              ## activations whose cost/targets are still being paid; events raised meanwhile wait
 var queued: Array = []           ## events raised while a chain resolves; windows open after it finishes
@@ -28,6 +29,10 @@ func _init(d: Duel, effect_db: EffectDB) -> void:
 # --- lookups -------------------------------------------------------------------------
 
 func effects_of(c: DCard) -> Array:
+	if duel.card_data(c).get("type", "") == "trap" and trap_negated(c):
+		return []
+	if duel.prohibited(c):
+		return []
 	if c.face_up and not duel.turn_rules.is_empty() and _negated_this_turn(c):
 		return []
 	return edb.for_number(c.number)
@@ -200,6 +205,8 @@ func duel_card(uid: int) -> DCard:
 
 ## Why `c`'s effect `idx` cannot be activated by `p` now ("" = it can).
 func activation_problem(p: int, c: DCard, idx: int, event: String, data: Dictionary) -> String:
+	if duel.prohibited(c):
+		return "This card is prohibited."
 	var effs := effects_of(c)
 	if idx >= effs.size():
 		return "No such effect."
@@ -315,6 +322,16 @@ func _start_activation(p: int, c: DCard, idx: int, event: String, data: Dictiona
 	var e: Dictionary = effects_of(c)[idx]
 	var ctx := {"src": c, "controller": p, "vars": {}, "event": data, "effect": e, "idx": idx}
 	var type: String = e.get("type", "")
+	if duel.db.card_name(c.idx) == "Prohibition":
+		c.flags["prohibition_exempt"] = (cards_controlled(0) + cards_controlled(1)).map(func(card): return card.uid)
+	if e.get("procedure", false):
+		activating += 1
+		push_call(func():
+			activating -= 1
+			_flush_queue())
+		push_script(e.get("cost", []) + e.get("target", []) + e.get("do", []), ctx)
+		pump()
+		return
 	# physical placement: spells from hand go to the field; Set cards turn face-up
 	if _zone_of(c) == "hand" and type in ["spell", "equip", "field", "ritual_spell", "quickplay", "trap", "counter"]:
 		duel.place_spell_from_hand(c, type == "field")
@@ -366,6 +383,8 @@ func _run_resolve(_t: Dictionary) -> void:
 	# a Spell that has to stay on the field (Equip, Field, Continuous) does nothing if it was destroyed in response
 	if (e.get("type", "") in ["equip", "field"] or e.get("stay", false)) and e.get("type", "") in ["spell", "equip", "field", "ritual_spell"] 			and _zone_of(c) not in ["spell", "fieldspell"]:
 		link["negated"] = true
+	if link["kind"] == "trap" and trap_negated(c):
+		link["negated"] = true
 	if link["negated"]:
 		duel.log_event("negated", {"uid": c.uid})
 		return
@@ -397,14 +416,20 @@ func _flush_queue() -> void:
 ## Extra ATK/DEF `c` gets from face-up cards' static effects (equips, field spells, continuous effects) and timed mods.
 func stat_bonus(c: DCard, stat: String) -> int:
 	var total := 0
+	var mirror_count := 0
+	var metalmorph_count := 0
 	for m in c.mods:
-		total += int(m.get(stat, 0))
+		if not duel.spell_unaffected(c, duel.card_by_uid(int(m.get("src", -1)))):
+			total += int(m.get(stat, 0))
 	if c.equipped_to != null:
 		pass
 	if not c.equips.is_empty() and not rule_active("no_equip"):
 		for eq in c.equips:
-			if not (eq.face_up and duel.has_turn_rule("neg_equip", 0)):
-				total += int(eq.equip_mod.get(stat, 0))
+			if not (eq.face_up and duel.has_turn_rule("neg_equip", 0)) and not duel.spell_unaffected(c, eq):
+				if eq.equip_mod.get("cocoon_stats", false):
+					total += int(duel.card_data(eq).get(stat, 0)) - int(duel.card_data(c).get(stat, 0))
+				else:
+					total += int(eq.equip_mod.get(stat, 0))
 	for p in 2:
 		for src in cards_controlled(p):
 			if not src.face_up:
@@ -415,13 +440,17 @@ func stat_bonus(c: DCard, stat: String) -> int:
 				var m: Dictionary = e["mod"]
 				if m.has("per") and stat in (m["per"]["stats"] as Array):
 					if _static_applies(src, m, c):
-						var pc := {"src": src, "controller": c.controller, "vars": {}, "event": {}}
+						var count_controller: int = src.controller if m.get("scope", "all") == "equipped" else c.controller
+						var pc := {"src": src, "controller": count_controller, "vars": {}, "event": {}}
 						var n := ops.select_candidates({"from": m["per"]["zone"], "filter": m["per"].get("filter", {})}, pc).size()
+						if m["per"].get("include_field_spell", false) and duel.side(count_controller).field_spell != null:
+							n += 1
 						total += mini(n, int(m["per"].get("max_n", 1000))) * int(m["per"]["by"])
-				if m.get("half_atk", false) and stat == "atk" and _static_applies(src, m, c):
-					# Mirror Wall: half of the ATK the monster would otherwise have
-					@warning_ignore("integer_division")
-					total -= (int(duel.card_data(c).get("atk", 0)) + c.atk_bonus) / 2
+				if stat == "atk" and _static_applies(src, m, c):
+					if m.get("half_atk", false):
+						mirror_count += 1
+					if m.get("metalmorph", false) and not rule_active("no_equip"):
+						metalmorph_count += 1
 				if m.has("lp_rule") and stat == "atk" and _static_applies(src, m, c):
 					# Megamorph: double the original ATK while behind in Life Points, halve it while ahead
 					var mine: int = duel.side(c.controller).lp
@@ -438,7 +467,25 @@ func stat_bonus(c: DCard, stat: String) -> int:
 				if m.get("same_name", false) and not _has_twin(c):
 					continue
 				total += int(m[stat])
+	if stat == "atk" and (mirror_count > 0 or metalmorph_count > 0):
+		var original := int(duel.card_data(c).get("atk", 0)) + c.atk_bonus
+		var adjusted := maxi(0, original + total)
+		var metal_bonus := 0
+		var target: DCard = duel.current_attack.get("target")
+		if metalmorph_count > 0 and duel.current_attack.get("attacker") == c and target != null and duel.is_on_field(target):
+			metal_bonus = metalmorph_count * _native_half(duel.atk_of(target))
+		# FUN_0056dd30 halves the completed stat; FUN_005b7c50 separately
+		# halves Metalmorph's battle bonus for each Mirror Wall affecting it.
+		for _i in mirror_count:
+			adjusted = _native_half(adjusted)
+			metal_bonus = _native_half(metal_bonus)
+		total = adjusted + metal_bonus - original
 	return total
+
+func _native_half(value: int) -> int:
+	# FUN_005be050: the original rounds an odd, nonnegative ATK up.
+	@warning_ignore("integer_division")
+	return (value + 1) / 2
 
 func _has_twin(c: DCard) -> bool:
 	for p in 2:
@@ -448,6 +495,8 @@ func _has_twin(c: DCard) -> bool:
 	return false
 
 func _static_applies(src: DCard, m: Dictionary, c: DCard) -> bool:
+	if duel.spell_unaffected(c, src):
+		return false
 	var scope: String = m.get("scope", "all")
 	match scope:
 		"self": if c != src: return false
@@ -486,4 +535,14 @@ func rule_active(rule: String, c: DCard = null) -> bool:
 				if e.get("type", "") == "static" and e.get("rule", "") == rule:
 					if c == null or _static_applies(src, e, c):
 						return true
+	return false
+
+## Raw lookup avoids recursive static-rule scans (Royal Decree also negates other Traps).
+func trap_negated(c: DCard) -> bool:
+	for src in cards_controlled(0) + cards_controlled(1):
+		if not src.face_up or src == c or duel.prohibited(src) or _negated_this_turn(src):
+			continue
+		for e in edb.for_number(src.number):
+			if e.get("type", "") == "static" and e.get("rule", "") == "no_trap":
+				return true
 	return false

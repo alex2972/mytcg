@@ -105,6 +105,7 @@ func _init(card_db: CardDB, deck0: Deck, deck1: Deck, seed_value := 0, first := 
 
 func _ready() -> void:
 	fx_enabled = ai_delay > 0.0
+	duel.fx.presentation_enabled = fx_enabled
 	_build()
 	AudioUtil.music("m_duel%d" % (1 + duel.rng.randi() % 3))
 	AudioUtil.sfx("start")
@@ -578,9 +579,14 @@ func _animate_lp() -> void:
 
 ## Run after every engine action: play the animations for what happened, then refresh the board.
 func _after_action() -> void:
-	var events := duel.drain_events()
+	if anim_busy:
+		return
 	anim_busy = true
-	await _play_events(events)
+	while true:
+		await _play_events(duel.drain_events())
+		if duel.fx.pending.get("type", "") != "presentation":
+			break
+		duel.respond(true)
 	_sync(true)
 	_animate_lp()
 	_update_ui()
@@ -643,8 +649,15 @@ func _play_events(events: Array) -> void:
 				AudioUtil.sfx("return")
 			"chain":
 				AudioUtil.sfx("chain")
-			"coin":
+			"coin", "coins":
 				AudioUtil.sfx("coin")
+				if fx_enabled:
+					var outcomes: Array = e.get("outcomes", [bool(e.get("heads", false))])
+					await fx.toss_coins(outcomes)
+			"dice":
+				AudioUtil.sfx("dice")
+				if fx_enabled:
+					await fx.roll_dice(int(e["roll"]))
 			"attack":
 				AudioUtil.sfx("attack")
 				var to := _view_center(e["target"]) if e["target"] != -1 else (Vector2(HAND_CENTER_X, 30) if e["player"] == 0 else Vector2(HAND_CENTER_X, 570))
@@ -734,6 +747,8 @@ func _hover_cursor(c: DCard) -> String:
 			return "on" if s.hand.has(c) else "off"
 	if s.hand.has(c) and duel.in_main_phase():
 		if duel.is_monster(c):
+			if _first_effect_idx(c) != -1 and not hand_set_pref:
+				return "act"
 			if duel.normal_summoned:
 				return "over"
 			return "set" if hand_set_pref else "summon"
@@ -848,6 +863,10 @@ func _card_action(c: DCard) -> void:
 	pending_card = c
 	if s.hand.has(c) and duel.in_main_phase():
 		if duel.is_monster(c):
+			var effect_idx: int = _first_effect_idx(c)
+			if effect_idx != -1 and not hand_set_pref:
+				_do(duel.activate_effect(0, c, effect_idx))
+				return
 			if duel.tributes_required(c) > 0 and not duel.normal_summoned:
 				var need := duel.tributes_required(c)
 				if fx_enabled:
@@ -876,8 +895,8 @@ func _card_action(c: DCard) -> void:
 			_do(duel.change_position(0, c))
 		elif duel.phase == "battle" and duel.can_attack(0, c) == "":
 			_take_sword(c)
-			if duel.monsters_of(1).is_empty():
-				# no possible blocker: the sword flies straight at the opponent
+			if duel.monsters_of(1).is_empty() or (duel.can_attack_directly(c) and await _ask("Attack your opponent directly?", "yesno")):
+				# direct attack: the sword flies straight at the opponent
 				var sword := active_sword
 				active_sword = null
 				anim_busy = true
@@ -1143,7 +1162,9 @@ func _check_decision() -> void:
 				_highlight()
 				return
 			_close_discard_prompt()
-			var t := _dlg_text(int(p.get("prompt", 0)))
+			var t: String = str(p.get("prompt_text", ""))
+			if t == "":
+				t = _dlg_text(int(p.get("prompt", 0)))
 			if fx_enabled:
 				decision_busy = true
 				await _ask(t if t != "" else SELECT_HINT, "ok")
@@ -1158,7 +1179,9 @@ func _check_decision() -> void:
 				_highlight()
 		"yesno":
 			var c := duel.card_by_uid(int(p.get("card", -1)))
-			var t2 := _dlg_text(int(p.get("prompt", 0)), db.card_name(c.idx, lang) if c != null else "")
+			var t2: String = str(p.get("prompt_text", ""))
+			if t2 == "":
+				t2 = _dlg_text(int(p.get("prompt", 0)), db.card_name(c.idx, lang) if c != null else "")
 			if t2 == "" and c != null:
 				t2 = _dlg_text(250, db.card_name(c.idx, lang))
 			if fx_enabled:
@@ -1169,10 +1192,36 @@ func _check_decision() -> void:
 			else:
 				_show_buttons(t2 if t2 != "" else "Activate the effect?", [["YES", true], ["NO", false]])
 		"choice":
+			if p.get("catalog", false):
+				_show_name_catalog(p)
+				return
 			var items := []
 			for i in int(p["count"]):
 				items.append([(p["labels"][i] if i < (p["labels"] as Array).size() else str(i + 1)), i])
-			_show_buttons(_dlg_text(int(p.get("prompt", 0))), items)
+			var title: String = str(p.get("prompt_text", ""))
+			_show_buttons(title if title != "" else _dlg_text(int(p.get("prompt", 0))), items)
+			if p.has("reveal_cards"):
+				var revealed_list := ItemList.new()
+				revealed_list.custom_minimum_size = Vector2(340, 220)
+				revealed_list.fixed_icon_size = Vector2i(36, 52)
+				for uid in p["reveal_cards"]:
+					var card: DCard = duel.card_by_uid(int(uid))
+					revealed_list.add_item(db.card_name(card.idx, lang), _tex(db.art_path(card.idx, true)))
+				decision_box.add_child(revealed_list)
+				decision_box.move_child(revealed_list, 1)
+				decision_popup.reset_size()
+			if p.has("reveal"):
+				var revealed: DCard = duel.card_by_uid(int(p["reveal"]))
+				var art := TextureRect.new()
+				art.texture = _tex(db.art_path(revealed.idx, false))
+				art.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+				art.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+				art.custom_minimum_size = Vector2(190, 270)
+				decision_box.add_child(art)
+				decision_box.move_child(art, 1)
+				decision_popup.reset_size()
+			if p.has("reveal") or p.has("reveal_cards"):
+				decision_popup.popup_centered()
 		"chain":
 			if fx_enabled:
 				decision_busy = true
@@ -1407,3 +1456,36 @@ func _damage_number(amount: int, center: Vector2, heal: bool) -> void:
 	tw.tween_property(n, "position:y", n.position.y - 50, 1.0)
 	tw.tween_property(n, "modulate:a", 0.0, 1.0).set_delay(0.4)
 	tw.chain().tween_callback(n.queue_free)
+
+## Prohibition uses a searchable catalogue; answers stay ordinary choices for the existing AI.
+func _show_name_catalog(p: Dictionary) -> void:
+	_show_buttons(str(p.get("prompt_text", "Declare a card name.")), [])
+	var search := LineEdit.new()
+	search.placeholder_text = "Search card names"
+	decision_box.add_child(search)
+	var names := ItemList.new()
+	names.custom_minimum_size = Vector2(340, 280)
+	decision_box.add_child(names)
+	var fill := func(query: String):
+		names.clear()
+		for i in int(p["count"]):
+			if query.is_empty() or str(p["labels"][i]).to_lower().contains(query.to_lower()):
+				var row: int = names.add_item(str(p["labels"][i]))
+				names.set_item_metadata(row, i)
+	fill.call("")
+	search.text_changed.connect(fill)
+	var confirm := Button.new()
+	confirm.text = "Declare"
+	confirm.disabled = true
+	decision_box.add_child(confirm)
+	names.item_selected.connect(func(_row): confirm.disabled = false)
+	search.text_changed.connect(func(_query): confirm.disabled = true)
+	var answer := func():
+		var rows: PackedInt32Array = names.get_selected_items()
+		if not rows.is_empty():
+			_answer(int(names.get_item_metadata(rows[0])))
+	confirm.pressed.connect(answer)
+	names.item_activated.connect(func(_row): answer.call())
+	decision_popup.reset_size()
+	decision_popup.popup_centered()
+	search.grab_focus()

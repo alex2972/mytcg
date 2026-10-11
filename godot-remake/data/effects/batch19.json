@@ -1,0 +1,175 @@
+{
+  "_about": "Batch 19: Wall Shadow, Major Riot and Perfectly Ultimate Great Moth; required Equip supports.",
+  "Wall Shadow": {
+    "fx": [
+      {
+        "type": "static",
+        "rule": "no_normal_summon",
+        "scope": "self"
+      },
+      {
+        "type": "static",
+        "rule": "summon_procedure",
+        "kind": "wall_shadow"
+      },
+      {
+        "type": "ignition",
+        "zone": "deck",
+        "cond": [
+          {
+            "c": "procedure_possible",
+            "kind": "wall_shadow"
+          }
+        ],
+        "do": [
+          {
+            "op": "custom",
+            "fn": "summon_procedure",
+            "kind": "wall_shadow"
+          }
+        ],
+        "procedure": true
+      }
+    ]
+  },
+  "Major Riot": {
+    "fx": [
+      {
+        "type": "trap",
+        "speed": 2,
+        "when": "returned_to_hand",
+        "cond": [
+          {
+            "c": "event_by",
+            "who": "self"
+          },
+          {
+            "c": "event_card",
+            "filter": {
+              "type": "monster"
+            }
+          },
+          {
+            "c": "destroyed_by_opp_effect"
+          }
+        ],
+        "do": [
+          {
+            "op": "custom",
+            "fn": "major_riot"
+          }
+        ]
+      }
+    ]
+  },
+  "Perfectly Ultimate Great Moth": {
+    "fx": [
+      {
+        "type": "static",
+        "rule": "no_normal_summon",
+        "scope": "self"
+      },
+      {
+        "type": "static",
+        "rule": "summon_procedure",
+        "kind": "ultimate_moth"
+      },
+      {
+        "type": "ignition",
+        "zone": "hand",
+        "cond": [
+          {
+            "c": "procedure_possible",
+            "kind": "ultimate_moth"
+          }
+        ],
+        "do": [
+          {
+            "op": "custom",
+            "fn": "summon_procedure",
+            "kind": "ultimate_moth"
+          }
+        ],
+        "procedure": true
+      }
+    ]
+  },
+  "Magical Labyrinth": {
+    "fx": [
+      {
+        "type": "equip",
+        "target": [
+          {
+            "op": "select",
+            "as": "t",
+            "from": "monsters",
+            "filter": {
+              "name_is": "Labyrinth Wall",
+              "face_up": true
+            },
+            "n": 1,
+            "prompt": 241
+          }
+        ],
+        "do": [
+          {
+            "op": "equip",
+            "to": "$t"
+          }
+        ]
+      },
+      {
+        "type": "ignition",
+        "cond": [
+          {
+            "c": "labyrinth_possible"
+          }
+        ],
+        "do": [
+          {
+            "op": "custom",
+            "fn": "labyrinth_summon"
+          }
+        ],
+        "procedure": true
+      }
+    ]
+  },
+  "Cocoon of Evolution": {
+    "fx": [
+      {
+        "type": "ignition",
+        "zone": "hand",
+        "cond": [
+          {
+            "c": "has",
+            "zone": "self.spells",
+            "n": 0
+          },
+          {
+            "c": "spell_zone"
+          }
+        ],
+        "target": [
+          {
+            "op": "select",
+            "as": "t",
+            "from": "monsters",
+            "filter": {
+              "name_is": "Petit Moth",
+              "face_up": true
+            },
+            "n": 1,
+            "prompt": 241
+          }
+        ],
+        "do": [
+          {
+            "op": "custom",
+            "fn": "cocoon_equip"
+          }
+        ]
+      }
+    ]
+  }
+}

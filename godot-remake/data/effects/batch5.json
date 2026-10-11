@@ -1,102 +1,1143 @@
 {
-"_about": "Batch 5: spells, flip/battle monsters, continuous traps reacting to draws and discards, attack costs, Toon cards, special-summon-from-hand monsters.",
-
-"Graceful Charity": {"fx": [{"type": "spell", "do": [{"op": "draw", "who": "self", "n": 3}, {"op": "discard", "who": "self", "n": 2}]}]},
-"Rain of Mercy": {"fx": [{"type": "spell", "do": [{"op": "heal", "who": "self", "amount": 1000}, {"op": "heal", "who": "opp", "amount": 1000}]}]},
-"Yami": {"fx": [{"type": "field", "do": []},
-  {"type": "static", "mod": {"scope": "all", "filter": {"race": ["Fiend", "Spellcaster"]}, "atk": 200, "def": 200}},
-  {"type": "static", "mod": {"scope": "all", "filter": {"race": "Fairy"}, "atk": -200, "def": -200}}]},
-"Steel Shell": {"fx": [{"type": "equip", "target": [{"op": "select", "as": "t", "from": "monsters", "filter": {"face_up": true, "attribute": "WATER"}, "n": 1, "prompt": 101}],
-  "do": [{"op": "equip", "to": "$t", "atk": 400, "def": -200}]}]},
-"Metalmorph": {"fx": [{"type": "equip", "target": [{"op": "select", "as": "t", "from": "monsters", "filter": {"face_up": true}, "n": 1, "prompt": 101}],
-  "do": [{"op": "equip", "to": "$t", "atk": 300, "def": 300}]}]},
-"Fairy Meteor Crush": {"fx": [
-  {"type": "equip", "target": [{"op": "select", "as": "t", "from": "monsters", "filter": {"face_up": true}, "n": 1, "prompt": 101}], "do": [{"op": "equip", "to": "$t"}]},
-  {"type": "static", "rule": "pierce", "scope": "equipped"}]},
-"Spiritualism": {"fx": [{"type": "spell",
-  "target": [{"op": "select", "as": "t", "from": "opp.field", "filter": {"type": ["spell", "trap"]}, "n": 1, "prompt": 95}],
-  "do": [{"op": "to_hand", "what": "$t"}]}]},
-"Nobleman of Crossout": {"fx": [{"type": "spell",
-  "target": [{"op": "select", "as": "t", "from": "monsters", "filter": {"face_up": false}, "n": 1, "prompt": 98}],
-  "do": [{"op": "banish", "what": "$t"}]}]},
-"The Shallow Grave": {"fx": [{"type": "spell", "do": [
-  {"op": "select", "as": "a", "from": "self.grave", "filter": {"type": "monster"}, "n": 1, "min": 0, "required": false, "auto": false, "prompt": 83},
-  {"op": "special_summon", "what": "$a", "pos": "def", "face_up": false},
-  {"op": "select", "as": "b", "from": "opp.grave", "filter": {"type": "monster"}, "n": 1, "min": 0, "required": false, "auto": false, "chooser": "opp", "prompt": 83},
-  {"op": "special_summon", "what": "$b", "to": "opp", "pos": "def", "face_up": false}]}]},
-"Toon World": {"fx": [{"type": "spell", "stay": true, "cost": [{"op": "pay_lp", "amount": 1000}], "do": []}]},
-
-"Cure Mermaid": {"fx": [{"type": "trigger_forced", "when": "standby_phase", "cond": [{"c": "turn", "is": "self"}], "do": [{"op": "heal", "who": "self", "amount": 800}]}]},
-"Thunder Dragon": {"fx": [{"type": "ignition", "zone": "hand", "cost": [{"op": "to_grave", "what": "src", "reason": "discard"}],
-  "cond": [{"c": "has", "zone": "self.deck", "filter": {"name_has": "Thunder Dragon"}, "n": 1}],
-  "do": [{"op": "select", "as": "t", "from": "self.deck", "filter": {"name_has": "Thunder Dragon"}, "n": 2, "min": 0, "required": false, "auto": false, "prompt": 22},
-         {"op": "to_hand", "what": "$t"}, {"op": "shuffle", "who": "self"}]}]},
-"Needle Worm": {"fx": [{"type": "flip", "when": "flipped", "cond": [{"c": "event_src"}], "do": [{"op": "mill", "who": "opp", "n": 5}]}]},
-"Mother Grizzly": {"fx": [{"type": "trigger_forced", "when": "sent_to_grave", "zone": "grave", "cond": [{"c": "event_src"}, {"c": "event_reason", "is": "destroyed:battle"}],
-  "do": [{"op": "select", "as": "t", "from": "self.deck", "filter": {"type": "monster", "attribute": "WATER", "atk_max": 1500}, "n": 1, "min": 0, "required": false, "auto": false, "prompt": 26},
-         {"op": "special_summon", "what": "$t", "pos": "atk", "face_up": true}, {"op": "shuffle", "who": "self"}]}]},
-"Giant Rat": {"fx": [{"type": "trigger_forced", "when": "sent_to_grave", "zone": "grave", "cond": [{"c": "event_src"}, {"c": "event_reason", "is": "destroyed:battle"}],
-  "do": [{"op": "select", "as": "t", "from": "self.deck", "filter": {"type": "monster", "attribute": "EARTH", "atk_max": 1500}, "n": 1, "min": 0, "required": false, "auto": false, "prompt": 26},
-         {"op": "special_summon", "what": "$t", "pos": "atk", "face_up": true}, {"op": "shuffle", "who": "self"}]}]},
-"Goddess of Whim": {"fx": [{"type": "ignition", "once_per_turn": true, "cond": [{"c": "turn", "is": "self"}],
-  "do": [{"op": "let", "as": "s", "what": "src"},
-         {"op": "coin", "heads": [{"op": "mod", "what": "src", "atk": {"stat": "atk", "of": "s"}, "until": "end_turn"}],
-                        "tails": [{"op": "mod", "what": "src", "atk": {"mul": {"stat": "atk", "of": "s"}, "by": -0.5}, "until": "end_turn"}]}]}]},
-"Karate Man": {"fx": [
-  {"type": "ignition", "once_per_turn": true, "cond": [{"c": "turn", "is": "self"}],
-   "do": [{"op": "let", "as": "s", "what": "src"}, {"op": "mod", "what": "src", "atk": {"stat": "atk", "of": "s"}, "until": "end_turn"}, {"op": "set_flag", "what": "src", "name": "karate", "value": true}]},
-  {"type": "trigger_forced", "when": "end_phase", "cond": [{"c": "flag", "name": "karate", "is": true}], "do": [{"op": "destroy", "what": "src"}]}]},
-"Suijin": {"fx": [{"type": "trigger", "when": "attack_declared", "cond": [{"c": "target_is_src"}, {"c": "event_by", "who": "opp"}, {"c": "flag", "name": "suijin_used", "is": false}],
-  "do": [{"op": "set_stat", "what": "attacker", "atk": 0, "until": "end_turn"}, {"op": "set_flag", "what": "src", "name": "suijin_used", "value": true}]}]},
-"Panther Warrior": {"fx": [{"type": "static", "rule": "attack_needs_tribute", "scope": "self"}]},
-"Insect Queen": {"fx": [
-  {"type": "static", "rule": "attack_needs_tribute", "scope": "self"},
-  {"type": "static", "mod": {"scope": "self", "per": {"zone": "monsters", "filter": {"race": "Insect", "face_up": true}, "by": 200, "stats": ["atk"]}}},
-  {"type": "trigger_forced", "when": "destroyed", "cond": [{"c": "killer_is_src"}], "do": [{"op": "token", "kind": "Insect Monster Token", "n": 1, "pos": "atk"}]}]},
-"Rocket Warrior": {"fx": [
-  {"type": "static", "rule": "no_battle_damage_self", "scope": "self"},
-  {"type": "trigger_forced", "when": "attack_declared", "cond": [{"c": "attacker_is_src"}], "do": [{"op": "mod", "what": "attack_target", "atk": -500, "until": "end_turn"}]}]},
-"Aqua Spirit": {"fx": [
-  {"type": "static", "rule": "no_normal_summon", "scope": "self"},
-  {"type": "ignition", "zone": "hand", "cond": [{"c": "free_zone", "who": "self"}],
-   "cost": [{"op": "select", "as": "c", "from": "self.grave", "filter": {"type": "monster", "attribute": "WATER"}, "n": 1, "cost": true, "prompt": 154}, {"op": "banish", "what": "$c"}],
-   "do": [{"op": "special_summon", "what": "src", "pos": "atk", "face_up": true}]}]},
-"The Rock Spirit": {"fx": [
-  {"type": "static", "rule": "no_normal_summon", "scope": "self"},
-  {"type": "ignition", "zone": "hand", "cond": [{"c": "free_zone", "who": "self"}],
-   "cost": [{"op": "select", "as": "c", "from": "self.grave", "filter": {"type": "monster", "attribute": "EARTH"}, "n": 1, "cost": true, "prompt": 154}, {"op": "banish", "what": "$c"}],
-   "do": [{"op": "special_summon", "what": "src", "pos": "atk", "face_up": true}]}]},
-"Soul of Purity and Light": {"fx": [
-  {"type": "static", "rule": "no_normal_summon", "scope": "self"},
-  {"type": "ignition", "zone": "hand", "cond": [{"c": "free_zone", "who": "self"}],
-   "cost": [{"op": "select", "as": "c", "from": "self.grave", "filter": {"type": "monster", "attribute": "LIGHT"}, "n": 2, "cost": true, "prompt": 154}, {"op": "banish", "what": "$c"}],
-   "do": [{"op": "special_summon", "what": "src", "pos": "atk", "face_up": true}]}]},
-"Dark Necrofear": {"fx": [
-  {"type": "static", "rule": "no_normal_summon", "scope": "self"},
-  {"type": "ignition", "zone": "hand", "cond": [{"c": "free_zone", "who": "self"}],
-   "cost": [{"op": "select", "as": "c", "from": "self.grave", "filter": {"type": "monster", "race": "Fiend"}, "n": 3, "cost": true, "prompt": 154}, {"op": "banish", "what": "$c"}],
-   "do": [{"op": "special_summon", "what": "src", "pos": "atk", "face_up": true}]}]},
-"Toon Summoned Skull": {"fx": [
-  {"type": "static", "rule": "summon_needs", "name": "Toon World"},
-  {"type": "static", "rule": "no_attack_new", "scope": "self"},
-  {"type": "trigger_forced", "when": "attack_declared", "cond": [{"c": "attacker_is_src"}], "do": [{"op": "pay_lp", "amount": 500}]},
-  {"type": "trigger_forced", "when": "sent_to_grave", "cond": [{"c": "event_card", "filter": {"name_has": "Toon World"}}], "do": [{"op": "destroy", "what": "src"}]}]},
-"Toon Mermaid": {"fx": [
-  {"type": "static", "rule": "summon_needs", "name": "Toon World"},
-  {"type": "static", "rule": "no_attack_new", "scope": "self"},
-  {"type": "trigger_forced", "when": "attack_declared", "cond": [{"c": "attacker_is_src"}], "do": [{"op": "pay_lp", "amount": 500}]},
-  {"type": "trigger_forced", "when": "sent_to_grave", "cond": [{"c": "event_card", "filter": {"name_has": "Toon World"}}], "do": [{"op": "destroy", "what": "src"}]}]},
-
-"Solemn Wishes": {"fx": [
-  {"type": "continuous_trap", "speed": 2, "stay": true, "when": ["summoned", "special_summoned", "flip_summoned", "attack_declared", "activated_spell", "activated_trap", "standby_phase", "end_phase"], "do": []},
-  {"type": "trigger_forced", "when": "drew", "cond": [{"c": "event_by", "who": "self"}], "do": [{"op": "heal", "who": "self", "amount": 500}]}]},
-"Appropriate": {"fx": [
-  {"type": "continuous_trap", "speed": 2, "stay": true, "when": ["drew"], "cond": [{"c": "event_by", "who": "opp"}, {"c": "phase", "is": ["standby", "main1", "battle", "main2", "end"]}], "do": [{"op": "draw", "who": "self", "n": 2}]},
-  {"type": "trigger_forced", "when": "drew", "cond": [{"c": "event_by", "who": "opp"}, {"c": "phase", "is": ["standby", "main1", "battle", "main2", "end"]}], "do": [{"op": "draw", "who": "self", "n": 2}]}]},
-"Forced Requisition": {"fx": [
-  {"type": "continuous_trap", "speed": 2, "stay": true, "when": ["discarded"], "cond": [{"c": "event_by", "who": "self"}], "do": [{"op": "discard", "who": "opp", "n": 1, "random": true}]},
-  {"type": "trigger_forced", "when": "discarded", "cond": [{"c": "event_by", "who": "self"}], "do": [{"op": "discard", "who": "opp", "n": 1, "random": true}]}]},
-"Magic Thorn": {"fx": [
-  {"type": "continuous_trap", "speed": 2, "stay": true, "when": ["summoned", "special_summoned", "flip_summoned", "attack_declared", "activated_spell", "activated_trap", "standby_phase", "end_phase"], "do": []},
-  {"type": "trigger_forced", "when": "discarded", "cond": [{"c": "event_by", "who": "opp"}], "do": [{"op": "damage", "who": "opp", "amount": 500}]}]}
+  "_about": "Batch 5: spells, flip/battle monsters, continuous traps reacting to draws and discards, attack costs, Toon cards, special-summon-from-hand monsters.",
+  "Graceful Charity": {
+    "fx": [
+      {
+        "type": "spell",
+        "do": [
+          {
+            "op": "draw",
+            "who": "self",
+            "n": 3
+          },
+          {
+            "op": "discard",
+            "who": "self",
+            "n": 2
+          }
+        ]
+      }
+    ]
+  },
+  "Rain of Mercy": {
+    "fx": [
+      {
+        "type": "spell",
+        "do": [
+          {
+            "op": "heal",
+            "who": "self",
+            "amount": 1000
+          },
+          {
+            "op": "heal",
+            "who": "opp",
+            "amount": 1000
+          }
+        ]
+      }
+    ]
+  },
+  "Yami": {
+    "fx": [
+      {
+        "type": "field",
+        "do": []
+      },
+      {
+        "type": "static",
+        "mod": {
+          "scope": "all",
+          "filter": {
+            "race": [
+              "Fiend",
+              "Spellcaster"
+            ]
+          },
+          "atk": 200,
+          "def": 200
+        }
+      },
+      {
+        "type": "static",
+        "mod": {
+          "scope": "all",
+          "filter": {
+            "race": "Fairy"
+          },
+          "atk": -200,
+          "def": -200
+        }
+      }
+    ]
+  },
+  "Steel Shell": {
+    "fx": [
+      {
+        "type": "equip",
+        "target": [
+          {
+            "op": "select",
+            "as": "t",
+            "from": "monsters",
+            "filter": {
+              "face_up": true,
+              "attribute": "WATER"
+            },
+            "n": 1,
+            "prompt": 101
+          }
+        ],
+        "do": [
+          {
+            "op": "equip",
+            "to": "$t",
+            "atk": 400,
+            "def": -200
+          }
+        ]
+      }
+    ]
+  },
+  "Metalmorph": {
+    "fx": [
+      {
+        "type": "equip",
+        "target": [
+          {
+            "op": "select",
+            "as": "t",
+            "from": "monsters",
+            "filter": {
+              "face_up": true
+            },
+            "n": 1,
+            "prompt": 101
+          }
+        ],
+        "do": [
+          {
+            "op": "equip",
+            "to": "$t",
+            "atk": 300,
+            "def": 300
+          }
+        ]
+      },
+      {
+        "type": "static",
+        "mod": {
+          "scope": "equipped",
+          "metalmorph": true
+        }
+      }
+    ]
+  },
+  "Fairy Meteor Crush": {
+    "fx": [
+      {
+        "type": "equip",
+        "target": [
+          {
+            "op": "select",
+            "as": "t",
+            "from": "monsters",
+            "filter": {
+              "face_up": true
+            },
+            "n": 1,
+            "prompt": 101
+          }
+        ],
+        "do": [
+          {
+            "op": "equip",
+            "to": "$t"
+          }
+        ]
+      },
+      {
+        "type": "static",
+        "rule": "pierce",
+        "scope": "equipped"
+      }
+    ]
+  },
+  "Spiritualism": {
+    "fx": [
+      {
+        "type": "spell",
+        "target": [
+          {
+            "op": "select",
+            "as": "t",
+            "from": "opp.field",
+            "filter": {
+              "type": [
+                "spell",
+                "trap"
+              ]
+            },
+            "n": 1,
+            "prompt": 95
+          }
+        ],
+        "do": [
+          {
+            "op": "to_hand",
+            "what": "$t"
+          }
+        ]
+      }
+    ]
+  },
+  "Nobleman of Crossout": {
+    "fx": [
+      {
+        "type": "spell",
+        "target": [
+          {
+            "op": "select",
+            "as": "t",
+            "from": "monsters",
+            "filter": {
+              "face_up": false
+            },
+            "n": 1,
+            "prompt": 98
+          }
+        ],
+        "do": [
+          {
+            "op": "banish",
+            "what": "$t"
+          }
+        ]
+      }
+    ]
+  },
+  "The Shallow Grave": {
+    "fx": [
+      {
+        "type": "spell",
+        "do": [
+          {
+            "op": "select",
+            "as": "a",
+            "from": "self.grave",
+            "filter": {
+              "type": "monster"
+            },
+            "n": 1,
+            "min": 0,
+            "required": false,
+            "auto": false,
+            "prompt": 83
+          },
+          {
+            "op": "special_summon",
+            "what": "$a",
+            "pos": "def",
+            "face_up": false
+          },
+          {
+            "op": "select",
+            "as": "b",
+            "from": "opp.grave",
+            "filter": {
+              "type": "monster"
+            },
+            "n": 1,
+            "min": 0,
+            "required": false,
+            "auto": false,
+            "chooser": "opp",
+            "prompt": 83
+          },
+          {
+            "op": "special_summon",
+            "what": "$b",
+            "to": "opp",
+            "pos": "def",
+            "face_up": false
+          }
+        ]
+      }
+    ]
+  },
+  "Toon World": {
+    "fx": [
+      {
+        "type": "spell",
+        "stay": true,
+        "cost": [
+          {
+            "op": "pay_lp",
+            "amount": 1000
+          }
+        ],
+        "do": []
+      }
+    ]
+  },
+  "Cure Mermaid": {
+    "fx": [
+      {
+        "type": "trigger_forced",
+        "when": "standby_phase",
+        "cond": [
+          {
+            "c": "turn",
+            "is": "self"
+          }
+        ],
+        "do": [
+          {
+            "op": "heal",
+            "who": "self",
+            "amount": 800
+          }
+        ]
+      }
+    ]
+  },
+  "Thunder Dragon": {
+    "fx": [
+      {
+        "type": "ignition",
+        "zone": "hand",
+        "cost": [
+          {
+            "op": "to_grave",
+            "what": "src",
+            "reason": "discard"
+          }
+        ],
+        "cond": [
+          {
+            "c": "has",
+            "zone": "self.deck",
+            "filter": {
+              "name_has": "Thunder Dragon"
+            },
+            "n": 1
+          }
+        ],
+        "do": [
+          {
+            "op": "select",
+            "as": "t",
+            "from": "self.deck",
+            "filter": {
+              "name_has": "Thunder Dragon"
+            },
+            "n": 2,
+            "min": 0,
+            "required": false,
+            "auto": false,
+            "prompt": 22
+          },
+          {
+            "op": "to_hand",
+            "what": "$t"
+          },
+          {
+            "op": "shuffle",
+            "who": "self"
+          }
+        ]
+      }
+    ]
+  },
+  "Needle Worm": {
+    "fx": [
+      {
+        "type": "flip",
+        "when": "flipped",
+        "cond": [
+          {
+            "c": "event_src"
+          }
+        ],
+        "do": [
+          {
+            "op": "mill",
+            "who": "opp",
+            "n": 5
+          }
+        ]
+      }
+    ]
+  },
+  "Mother Grizzly": {
+    "fx": [
+      {
+        "type": "trigger_forced",
+        "when": "sent_to_grave",
+        "zone": "grave",
+        "cond": [
+          {
+            "c": "event_src"
+          },
+          {
+            "c": "event_reason",
+            "is": "destroyed:battle"
+          }
+        ],
+        "do": [
+          {
+            "op": "select",
+            "as": "t",
+            "from": "self.deck",
+            "filter": {
+              "type": "monster",
+              "attribute": "WATER",
+              "atk_max": 1500
+            },
+            "n": 1,
+            "min": 0,
+            "required": false,
+            "auto": false,
+            "prompt": 26
+          },
+          {
+            "op": "special_summon",
+            "what": "$t",
+            "pos": "atk",
+            "face_up": true
+          },
+          {
+            "op": "shuffle",
+            "who": "self"
+          }
+        ]
+      }
+    ]
+  },
+  "Giant Rat": {
+    "fx": [
+      {
+        "type": "trigger_forced",
+        "when": "sent_to_grave",
+        "zone": "grave",
+        "cond": [
+          {
+            "c": "event_src"
+          },
+          {
+            "c": "event_reason",
+            "is": "destroyed:battle"
+          }
+        ],
+        "do": [
+          {
+            "op": "select",
+            "as": "t",
+            "from": "self.deck",
+            "filter": {
+              "type": "monster",
+              "attribute": "EARTH",
+              "atk_max": 1500
+            },
+            "n": 1,
+            "min": 0,
+            "required": false,
+            "auto": false,
+            "prompt": 26
+          },
+          {
+            "op": "special_summon",
+            "what": "$t",
+            "pos": "atk",
+            "face_up": true
+          },
+          {
+            "op": "shuffle",
+            "who": "self"
+          }
+        ]
+      }
+    ]
+  },
+  "Goddess of Whim": {
+    "fx": [
+      {
+        "type": "ignition",
+        "once_per_turn": true,
+        "cond": [
+          {
+            "c": "turn",
+            "is": "self"
+          }
+        ],
+        "do": [
+          {
+            "op": "let",
+            "as": "s",
+            "what": "src"
+          },
+          {
+            "op": "choice",
+            "as": "coin_call",
+            "count": 2,
+            "labels": [
+              "Heads",
+              "Tails"
+            ],
+            "prompt_text": "Call the coin toss."
+          },
+          {
+            "op": "coin",
+            "heads": [
+              {
+                "op": "mod",
+                "what": "src",
+                "atk": {
+                  "stat": "atk",
+                  "of": "s"
+                },
+                "until": "end_turn"
+              }
+            ],
+            "tails": [
+              {
+                "op": "mod",
+                "what": "src",
+                "atk": {
+                  "mul": {
+                    "stat": "atk",
+                    "of": "s"
+                  },
+                  "by": -0.5
+                },
+                "until": "end_turn"
+              }
+            ],
+            "call": "coin_call"
+          }
+        ]
+      }
+    ]
+  },
+  "Karate Man": {
+    "fx": [
+      {
+        "type": "ignition",
+        "once_per_turn": true,
+        "cond": [
+          {
+            "c": "turn",
+            "is": "self"
+          }
+        ],
+        "do": [
+          {
+            "op": "let",
+            "as": "s",
+            "what": "src"
+          },
+          {
+            "op": "mod",
+            "what": "src",
+            "atk": {
+              "stat": "atk",
+              "of": "s"
+            },
+            "until": "end_turn"
+          },
+          {
+            "op": "set_flag",
+            "what": "src",
+            "name": "karate",
+            "value": true
+          }
+        ]
+      },
+      {
+        "type": "trigger_forced",
+        "when": "end_phase",
+        "cond": [
+          {
+            "c": "flag",
+            "name": "karate",
+            "is": true
+          }
+        ],
+        "do": [
+          {
+            "op": "destroy",
+            "what": "src"
+          }
+        ]
+      }
+    ]
+  },
+  "Suijin": {
+    "fx": [
+      {
+        "type": "trigger",
+        "when": "attack_declared",
+        "cond": [
+          {
+            "c": "target_is_src"
+          },
+          {
+            "c": "event_by",
+            "who": "opp"
+          },
+          {
+            "c": "flag",
+            "name": "suijin_used",
+            "is": false
+          }
+        ],
+        "do": [
+          {
+            "op": "set_stat",
+            "what": "attacker",
+            "atk": 0,
+            "until": "end_turn"
+          },
+          {
+            "op": "set_flag",
+            "what": "src",
+            "name": "suijin_used",
+            "value": true
+          }
+        ]
+      }
+    ]
+  },
+  "Panther Warrior": {
+    "fx": [
+      {
+        "type": "static",
+        "rule": "attack_needs_tribute",
+        "scope": "self"
+      }
+    ]
+  },
+  "Insect Queen": {
+    "fx": [
+      {
+        "type": "static",
+        "rule": "attack_needs_tribute",
+        "scope": "self"
+      },
+      {
+        "type": "static",
+        "mod": {
+          "scope": "self",
+          "per": {
+            "zone": "monsters",
+            "filter": {
+              "race": "Insect",
+              "face_up": true
+            },
+            "by": 200,
+            "stats": [
+              "atk"
+            ]
+          }
+        }
+      },
+      {
+        "type": "trigger_forced",
+        "when": "destroyed",
+        "cond": [
+          {
+            "c": "killer_is_src"
+          }
+        ],
+        "do": [
+          {
+            "op": "token",
+            "kind": "Insect Monster Token",
+            "n": 1,
+            "pos": "atk"
+          }
+        ]
+      }
+    ]
+  },
+  "Rocket Warrior": {
+    "fx": [
+      {
+        "type": "static",
+        "rule": "no_battle_damage_self",
+        "scope": "self"
+      },
+      {
+        "type": "trigger_forced",
+        "when": "attack_declared",
+        "cond": [
+          {
+            "c": "attacker_is_src"
+          }
+        ],
+        "do": [
+          {
+            "op": "mod",
+            "what": "attack_target",
+            "atk": -500,
+            "until": "end_turn"
+          }
+        ]
+      }
+    ]
+  },
+  "Aqua Spirit": {
+    "fx": [
+      {
+        "type": "static",
+        "rule": "no_normal_summon",
+        "scope": "self"
+      },
+      {
+        "type": "ignition",
+        "zone": "hand",
+        "cond": [
+          {
+            "c": "free_zone",
+            "who": "self"
+          }
+        ],
+        "cost": [
+          {
+            "op": "select",
+            "as": "c",
+            "from": "self.grave",
+            "filter": {
+              "type": "monster",
+              "attribute": "WATER"
+            },
+            "n": 1,
+            "cost": true,
+            "prompt": 154
+          },
+          {
+            "op": "banish",
+            "what": "$c"
+          }
+        ],
+        "do": [
+          {
+            "op": "special_summon",
+            "what": "src",
+            "pos": "atk",
+            "face_up": true
+          }
+        ]
+      }
+    ]
+  },
+  "The Rock Spirit": {
+    "fx": [
+      {
+        "type": "static",
+        "rule": "no_normal_summon",
+        "scope": "self"
+      },
+      {
+        "type": "ignition",
+        "zone": "hand",
+        "cond": [
+          {
+            "c": "free_zone",
+            "who": "self"
+          }
+        ],
+        "cost": [
+          {
+            "op": "select",
+            "as": "c",
+            "from": "self.grave",
+            "filter": {
+              "type": "monster",
+              "attribute": "EARTH"
+            },
+            "n": 1,
+            "cost": true,
+            "prompt": 154
+          },
+          {
+            "op": "banish",
+            "what": "$c"
+          }
+        ],
+        "do": [
+          {
+            "op": "special_summon",
+            "what": "src",
+            "pos": "atk",
+            "face_up": true
+          }
+        ]
+      }
+    ]
+  },
+  "Soul of Purity and Light": {
+    "fx": [
+      {
+        "type": "static",
+        "rule": "no_normal_summon",
+        "scope": "self"
+      },
+      {
+        "type": "ignition",
+        "zone": "hand",
+        "cond": [
+          {
+            "c": "free_zone",
+            "who": "self"
+          }
+        ],
+        "cost": [
+          {
+            "op": "select",
+            "as": "c",
+            "from": "self.grave",
+            "filter": {
+              "type": "monster",
+              "attribute": "LIGHT"
+            },
+            "n": 2,
+            "cost": true,
+            "prompt": 154
+          },
+          {
+            "op": "banish",
+            "what": "$c"
+          }
+        ],
+        "do": [
+          {
+            "op": "special_summon",
+            "what": "src",
+            "pos": "atk",
+            "face_up": true
+          }
+        ]
+      }
+    ]
+  },
+  "Dark Necrofear": {
+    "fx": [
+      {
+        "type": "static",
+        "rule": "no_normal_summon",
+        "scope": "self"
+      },
+      {
+        "type": "ignition",
+        "zone": "hand",
+        "cond": [
+          {
+            "c": "free_zone",
+            "who": "self"
+          }
+        ],
+        "cost": [
+          {
+            "op": "select",
+            "as": "c",
+            "from": "self.grave",
+            "filter": {
+              "type": "monster",
+              "race": "Fiend"
+            },
+            "n": 3,
+            "cost": true,
+            "prompt": 154
+          },
+          {
+            "op": "banish",
+            "what": "$c"
+          }
+        ],
+        "do": [
+          {
+            "op": "special_summon",
+            "what": "src",
+            "pos": "atk",
+            "face_up": true
+          }
+        ]
+      }
+    ]
+  },
+  "Toon Summoned Skull": {
+    "fx": [
+      {
+        "type": "static",
+        "rule": "summon_needs",
+        "name": "Toon World"
+      },
+      {
+        "type": "static",
+        "rule": "no_attack_new",
+        "scope": "self"
+      },
+      {
+        "type": "trigger_forced",
+        "when": "attack_declared",
+        "cond": [
+          {
+            "c": "attacker_is_src"
+          }
+        ],
+        "do": [
+          {
+            "op": "pay_lp",
+            "amount": 500
+          }
+        ]
+      },
+      {
+        "type": "trigger_forced",
+        "when": "sent_to_grave",
+        "cond": [
+          {
+            "c": "event_card",
+            "filter": {
+              "name_has": "Toon World"
+            }
+          }
+        ],
+        "do": [
+          {
+            "op": "destroy",
+            "what": "src"
+          }
+        ]
+      }
+    ]
+  },
+  "Toon Mermaid": {
+    "fx": [
+      {
+        "type": "static",
+        "rule": "summon_needs",
+        "name": "Toon World"
+      },
+      {
+        "type": "static",
+        "rule": "no_attack_new",
+        "scope": "self"
+      },
+      {
+        "type": "trigger_forced",
+        "when": "attack_declared",
+        "cond": [
+          {
+            "c": "attacker_is_src"
+          }
+        ],
+        "do": [
+          {
+            "op": "pay_lp",
+            "amount": 500
+          }
+        ]
+      },
+      {
+        "type": "trigger_forced",
+        "when": "sent_to_grave",
+        "cond": [
+          {
+            "c": "event_card",
+            "filter": {
+              "name_has": "Toon World"
+            }
+          }
+        ],
+        "do": [
+          {
+            "op": "destroy",
+            "what": "src"
+          }
+        ]
+      }
+    ]
+  },
+  "Solemn Wishes": {
+    "fx": [
+      {
+        "type": "continuous_trap",
+        "speed": 2,
+        "stay": true,
+        "when": [
+          "summoned",
+          "special_summoned",
+          "flip_summoned",
+          "attack_declared",
+          "activated_spell",
+          "activated_trap",
+          "standby_phase",
+          "end_phase"
+        ],
+        "do": []
+      },
+      {
+        "type": "trigger_forced",
+        "when": "drew",
+        "cond": [
+          {
+            "c": "event_by",
+            "who": "self"
+          }
+        ],
+        "do": [
+          {
+            "op": "heal",
+            "who": "self",
+            "amount": 500
+          }
+        ]
+      }
+    ]
+  },
+  "Appropriate": {
+    "fx": [
+      {
+        "type": "continuous_trap",
+        "speed": 2,
+        "stay": true,
+        "when": [
+          "drew"
+        ],
+        "cond": [
+          {
+            "c": "event_by",
+            "who": "opp"
+          },
+          {
+            "c": "phase",
+            "is": [
+              "standby",
+              "main1",
+              "battle",
+              "main2",
+              "end"
+            ]
+          }
+        ],
+        "do": [
+          {
+            "op": "draw",
+            "who": "self",
+            "n": 2
+          }
+        ]
+      },
+      {
+        "type": "trigger_forced",
+        "when": "drew",
+        "cond": [
+          {
+            "c": "event_by",
+            "who": "opp"
+          },
+          {
+            "c": "phase",
+            "is": [
+              "standby",
+              "main1",
+              "battle",
+              "main2",
+              "end"
+            ]
+          }
+        ],
+        "do": [
+          {
+            "op": "draw",
+            "who": "self",
+            "n": 2
+          }
+        ]
+      }
+    ]
+  },
+  "Forced Requisition": {
+    "fx": [
+      {
+        "type": "continuous_trap",
+        "speed": 2,
+        "stay": true,
+        "when": [
+          "discarded"
+        ],
+        "cond": [
+          {
+            "c": "event_by",
+            "who": "self"
+          }
+        ],
+        "do": [
+          {
+            "op": "discard",
+            "who": "opp",
+            "n": 1,
+            "random": true
+          }
+        ]
+      },
+      {
+        "type": "trigger_forced",
+        "when": "discarded",
+        "cond": [
+          {
+            "c": "event_by",
+            "who": "self"
+          }
+        ],
+        "do": [
+          {
+            "op": "discard",
+            "who": "opp",
+            "n": 1,
+            "random": true
+          }
+        ]
+      }
+    ]
+  },
+  "Magic Thorn": {
+    "fx": [
+      {
+        "type": "continuous_trap",
+        "speed": 2,
+        "stay": true,
+        "when": [
+          "summoned",
+          "special_summoned",
+          "flip_summoned",
+          "attack_declared",
+          "activated_spell",
+          "activated_trap",
+          "standby_phase",
+          "end_phase"
+        ],
+        "do": []
+      },
+      {
+        "type": "trigger_forced",
+        "when": "discarded",
+        "cond": [
+          {
+            "c": "event_by",
+            "who": "opp"
+          }
+        ],
+        "do": [
+          {
+            "op": "damage",
+            "who": "opp",
+            "amount": 500
+          }
+        ]
+      }
+    ]
+  }
 }

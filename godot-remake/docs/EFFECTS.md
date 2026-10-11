@@ -110,3 +110,40 @@ Cards that react to a chained card therefore list the usual timings in `when` an
 Turn rules `neg_continuous_trap`, `neg_continuous_spell`, `neg_field_spell`, `neg_equip` (set for both players with two `rule_turn` steps) switch off the effects of that kind of face-up card (`Fx.effects_of`, equip bonuses in `Fx.stat_bonus`) until the end of the turn.
 Rule `spells_must_set` (Anti-Spell Fragrance). The `destroyed` event carries `by` (the player whose effect destroyed the card, -1 if none/battle); condition `destroyed_by_opp_effect`. `Duel.lost_spells` / zone `self.lost_spells`: my Spells destroyed by an opponent's effect this turn (Fairy Guardian).
 Effects that respond to a chain link need `speed: 2`, also `trigger_forced` ones (Big Shield Gardna).
+
+
+## Added in batches 18-20
+
+- `procedure: true` on an ignition entry performs a summon procedure without starting a chain. Costs and choices pause normally; Summon response windows open after the procedure finishes. `DCard.properly_summoned` persists outside temporary field flags for eligible revivals.
+- Conditions: `procedure_possible` (`kind`: `wall_shadow`/`ultimate_moth`), `labyrinth_possible`, `manga_possible`, `spell_zone`, `imitation_possible`, `makiu_possible`, `inspection_source`. Filter: `tribute_legal` excludes Sheep/Kuriboh Tokens.
+- `equip.attribute_var` sets an effective Attribute from a six-option choice (index + 1). All Attribute filters and field modifiers use `Duel.attribute_of()`. Spell immunity suspends Equip effects without detaching the Equip.
+- `prompt_text` supplies a direct prompt on `select`, `yesno`, or `choice`. `choice.catalog` is a searchable card-name catalogue; `choice.reveal` privately displays a card's art, and `choice.reveal_cards` displays a hand list. These use the existing choice-answer protocol; AI code is unchanged.
+- Custom functions: `bait_doll`, `summon_procedure`/`procedure_finish`, `labyrinth_summon`/`labyrinth_finish`, `cocoon_equip`, `major_riot`/`riot_show_hands`, `declare_card`/`prohibition`, `inspection`/`inspection_again`, `manga_summon`/`manga_finish`, `imitation_cost`/`imitation_tribute`/`imitation_summon`/`imitation_finish`, `makiu_target`/`makiu`.
+- Static rules: `summon_procedure`, `spell_immune_umi`, `toon_attack`. Turn rules: `spirit_elimination` (replaces graveyard monster banish costs using the original filter; effects ask for a field substitute), `battle_entered` (Makiu cannot be activated after taking a Battle Phase).
+- Bait Doll resolves a forced Trap within its own resolution, with no new response chain; counter negation cannot negate the already resolving Bait Doll. Printed free-timing Traps are checked separately from the existing restricted response-window lists. Jinzo/Royal Decree negate Trap effects and static rules while active.
+- Prohibition snapshots field exemptions on activation, removes exemptions when cards leave, blocks playing declared cards, and suppresses effects/attacks of non-exempt declared cards summoned by an effect. Effect summons remain possible (period ruling), while direct summon procedures are prohibited.
+- `returned_to_hand` now includes `by` (effect controller) as well as the previous field controller. Major Riot requires an opponent effect. Its queued last-action timing limitation is recorded in `data/approximations.json`.
+- Inspection opens an `inspection_again` window after each paid reveal, allowing repeated optional uses during the same opponent Standby Phase.
+
+Validation: `test_effects13.gd` (batch 18), `test_effects14.gd` (batch 19), `test_effects15.gd` (batch 20), `test_remaining_effect_ui.gd`; visual fixtures in `screenshot_remaining_effects.gd`.
+
+Period-rule reference used to clarify incomplete printed text: [2003 tournament card rulings](https://ms.yugipedia.com/a/a1/2003_tournament_rulings.pdf), particularly Manga Ryu-Ran, Major Riot, Prohibition, Bait Doll and Spirit Elimination. Newer errata are not applied when they contradict the extracted 2004 text (e.g. an opponent's Toon World permits Manga's summon).
+
+
+## Native approximation audit
+
+Source functions and remaining timing limits are in `NATIVE_APPROXIMATION_AUDIT.md`.
+
+- Value expressions support `original: true` on `stat` to read printed ATK/DEF.
+- Coin scripts can insert a `choice` named `coin_call` (Heads=0, Tails=1), then use `coin.call: "coin_call"`; `heads`/`tails` branches mean correct/incorrect call. The coin log records actual `heads`, `call`, and `correct` separately.
+- `free_zone.n` requires a specific number of free Monster Card Zones. `summon_unused` checks all Normal/Flip/Special Summons this turn. Sets remain legal under the native summon locks.
+- `banish_random_hand.owner_turns` counts the affected player's turns, including the current one when applicable, for Lightforce Sword.
+- `event_was_flipped` uses history captured before a monster leaves the field. Setting it again resets that history.
+- Mage Power supports `per.include_field_spell` and source-controller counting. Mirror Wall halves final current ATK; Metalmorph's battle bonus uses the native separate rounding.
+
+
+## Random-result animation playback
+
+`Fx.presentation_enabled` is enabled by the animated duel board and defaults to false for standalone rules/AI simulations. Coin, multiple-coin and dice operations record their result once, then yield a `presentation` barrier before executing following effects or coin branches. The board drains events, awaits the original sprite-strip animation, acknowledges the barrier, and continues draining resulting events. No AI decision changes are needed.
+
+Multiple-coin events include an `outcomes` array in addition to the success count. `DuelFx` uses the original `coin_rotate`, dice tumble/random strips, all six `dice_decide` textures, shadows and ripple; recorded outcomes select the final face. Presentation does not consume duel RNG. The motion timing approximation is recorded in `data/approximations.json`. `test_roll_animations.gd` checks waiting, single resolution, matching all coin faces, disabled animation handling, and cleanup.

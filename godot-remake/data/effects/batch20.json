@@ -1,0 +1,331 @@
+{
+  "_about": "Batch 20: remaining Card List effects and their player choices.",
+  "Prohibition": {
+    "fx": [
+      {
+        "type": "spell",
+        "stay": true,
+        "target": [
+          {
+            "op": "custom",
+            "fn": "declare_card"
+          }
+        ],
+        "do": [
+          {
+            "op": "custom",
+            "fn": "prohibition"
+          }
+        ]
+      }
+    ]
+  },
+  "Inspection": {
+    "fx": [
+      {
+        "type": "spell",
+        "stay": true,
+        "do": []
+      },
+      {
+        "type": "trigger",
+        "when": [
+          "standby_phase",
+          "inspection_again"
+        ],
+        "cond": [
+          {
+            "c": "event_by",
+            "who": "opp"
+          },
+          {
+            "c": "hand",
+            "who": "opp",
+            "op": ">",
+            "v": 0
+          },
+          {
+            "c": "phase",
+            "is": [
+              "standby"
+            ]
+          },
+          {
+            "c": "lp",
+            "who": "self",
+            "op": ">",
+            "v": 500
+          },
+          {
+            "c": "inspection_source"
+          }
+        ],
+        "cost": [
+          {
+            "op": "pay_lp",
+            "amount": 500
+          }
+        ],
+        "do": [
+          {
+            "op": "select",
+            "as": "peek",
+            "from": "opp.hand",
+            "filter": {},
+            "n": 1,
+            "random": true
+          },
+          {
+            "op": "custom",
+            "fn": "inspection"
+          },
+          {
+            "op": "custom",
+            "fn": "inspection_again"
+          }
+        ]
+      }
+    ]
+  },
+  "Scroll of Bewitchment": {
+    "fx": [
+      {
+        "type": "equip",
+        "target": [
+          {
+            "op": "select",
+            "as": "t",
+            "from": "monsters",
+            "filter": {
+              "face_up": true
+            },
+            "n": 1,
+            "prompt": 241
+          },
+          {
+            "op": "choice",
+            "as": "attribute",
+            "count": 6,
+            "labels": [
+              "LIGHT",
+              "DARK",
+              "WATER",
+              "FIRE",
+              "EARTH",
+              "WIND"
+            ],
+            "prompt_text": "Choose an Attribute."
+          }
+        ],
+        "do": [
+          {
+            "op": "equip",
+            "to": "$t",
+            "attribute_var": "attribute"
+          }
+        ]
+      }
+    ]
+  },
+  "Deepsea Warrior": {
+    "fx": [
+      {
+        "type": "static",
+        "rule": "spell_immune_umi",
+        "scope": "self"
+      }
+    ]
+  },
+  "Jam Defender": {
+    "fx": [
+      {
+        "type": "continuous_trap",
+        "speed": 2,
+        "stay": true,
+        "when": [
+          "summoned",
+          "special_summoned",
+          "flip_summoned",
+          "attack_declared",
+          "activated_spell",
+          "activated_trap",
+          "standby_phase",
+          "end_phase",
+          "target_declared"
+        ],
+        "do": []
+      },
+      {
+        "type": "trigger",
+        "speed": 2,
+        "when": "target_declared",
+        "cond": [
+          {
+            "c": "event_by",
+            "who": "opp"
+          },
+          {
+            "c": "event_target",
+            "mine": true
+          },
+          {
+            "c": "has",
+            "zone": "self.monsters",
+            "filter": {
+              "name_is": "Revival Jam",
+              "face_up": true,
+              "not_target": true
+            }
+          }
+        ],
+        "do": [
+          {
+            "op": "select",
+            "as": "t",
+            "from": "self.monsters",
+            "filter": {
+              "name_is": "Revival Jam",
+              "face_up": true,
+              "not_target": true
+            },
+            "n": 1,
+            "prompt": 241
+          },
+          {
+            "op": "redirect_attack",
+            "to": "$t"
+          }
+        ]
+      }
+    ]
+  },
+  "Manga Ryu-Ran": {
+    "fx": [
+      {
+        "type": "static",
+        "rule": "no_normal_summon",
+        "scope": "self"
+      },
+      {
+        "type": "static",
+        "rule": "summon_procedure",
+        "kind": "manga"
+      },
+      {
+        "type": "static",
+        "rule": "summon_needs",
+        "name": "Toon World"
+      },
+      {
+        "type": "static",
+        "rule": "no_attack_new",
+        "scope": "self"
+      },
+      {
+        "type": "static",
+        "rule": "toon_attack",
+        "scope": "self"
+      },
+      {
+        "type": "trigger_forced",
+        "when": "destroyed",
+        "cond": [
+          {
+            "c": "event_card",
+            "filter": {
+              "name_is": "Toon World"
+            }
+          }
+        ],
+        "do": [
+          {
+            "op": "destroy",
+            "what": "src"
+          }
+        ]
+      },
+      {
+        "type": "ignition",
+        "zone": "hand",
+        "procedure": true,
+        "cond": [
+          {
+            "c": "manga_possible"
+          }
+        ],
+        "do": [
+          {
+            "op": "custom",
+            "fn": "manga_summon"
+          }
+        ]
+      }
+    ]
+  },
+  "Insect Imitation": {
+    "fx": [
+      {
+        "type": "spell",
+        "cond": [
+          {
+            "c": "imitation_possible"
+          }
+        ],
+        "cost": [
+          {
+            "op": "custom",
+            "fn": "imitation_cost"
+          }
+        ],
+        "do": [
+          {
+            "op": "custom",
+            "fn": "imitation_summon"
+          }
+        ]
+      }
+    ]
+  },
+  "Makiu": {
+    "fx": [
+      {
+        "type": "spell",
+        "cond": [
+          {
+            "c": "makiu_possible"
+          }
+        ],
+        "target": [
+          {
+            "op": "custom",
+            "fn": "makiu_target"
+          }
+        ],
+        "do": [
+          {
+            "op": "custom",
+            "fn": "makiu"
+          },
+          {
+            "op": "skip_phase",
+            "phase": "battle"
+          }
+        ]
+      }
+    ]
+  },
+  "Spirit Elimination": {
+    "fx": [
+      {
+        "type": "spell",
+        "do": [
+          {
+            "op": "rule_turn",
+            "rule": "spirit_elimination",
+            "who": "self"
+          }
+        ]
+      }
+    ]
+  }
+}
