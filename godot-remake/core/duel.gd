@@ -49,6 +49,7 @@ var skip_turn := [false, false]        ## Gamble: the player's next turn is skip
 var lockdown_until := -1            ## Cold Wave: no Spell/Trap may be activated or Set while turn < this
 var crush_until := [-1, -1]         ## Crush Card: monsters drawn up to this turn with ATK >= 1500 are destroyed
 var damage_source := -1               ## monster that is inflicting the damage being dealt (battle)
+var dimension_holes: Array = []       ## Dimensionhole: {uid, player} monsters removed from play until their controller's next Standby Phase
 var battle_dead: Array = []         ## uids of monsters destroyed in battle this turn
 var killer_uid := -1                ## attacker that is destroying a monster in battle right now
 var attackers_this_turn: Array = []  ## uids of monsters that attacked this turn
@@ -245,6 +246,12 @@ func _begin_turn() -> void:
 		_begin_turn()
 		return
 	normal_summoned = false
+	for h in dimension_holes.duplicate():
+		if int(h["player"]) == turn_player:
+			dimension_holes.erase(h)
+			var back := card_by_uid(int(h["uid"]))
+			if back != null and (sides[turn_player].banished as Array).has(back):
+				special_summon(back, turn_player, "atk", true)
 	for p in 2:
 		for c in monsters_of(p):       # both sides: a monster taken with Change of Heart must not keep its old "already attacked"
 			c.reset_turn_flags()

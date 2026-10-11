@@ -97,3 +97,9 @@ Filters `attacking` (the monster currently attacking) and `fusion`. Condition `n
 Rules: `attack_in_def` (Total Defense Shogun) `banish_graveyard` (Banisher of the Light) `no_hand_limit` `no_flip_effects` (Royal Command). Turn rule `inf_dismissal`. Card flag `cannot_attack_by` (uid of the card that binds it).
 Turn flags (`attacked`, `pos_changed`) are reset for the monsters of both players at the start of every turn, so a monster taken with Change of Heart can act normally.
 Mods ending at a later turn use `until: "turn:N"`; a monster that is a Tribute goes to its owner's Graveyard even if you control it.
+
+## Added in batch 16
+Quick-Play Spells (card subtype 5) are declared as `quickplay` with `speed: 2` and a `when` list, so they can be Set and played from the turn after, in response to
+`summoned special_summoned flip_summoned attack_declared target_declared damage_step activated_spell activated_trap standby_phase end_phase` (tests/test_effects11.gd checks every one).
+Ops: `switch_equip` {card, to} (Tailor of the Fickle) · custom ops `dimensionhole` (`Duel.dimension_holes`), `monster_recovery`.
+Filters `equipping` (an Equip Card attached to a monster) and `not_equipped_by` {var}. Condition `battle_involves_equipped`. Rule `untargetable` (Lord of D.: such cards are dropped from target selections; see `Fx.has_untargetable`).

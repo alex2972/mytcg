@@ -133,6 +133,12 @@ func matches(c: DCard, f: Dictionary, ctx: Dictionary) -> bool:
 		return false
 	if f.get("attacking", false) and duel.current_attack.get("attacker") != c:
 		return false
+	if f.has("equipping") and (c.equipped_to != null) != bool(f["equipping"]):
+		return false
+	if f.has("not_equipped_by"):
+		for ev in ctx["vars"].get(str(f["not_equipped_by"]), []):
+			if c.equips.has(ev):
+				return false
 	if f.has("fusion") and (not duel.db.fusion_recipe(duel.db.card_name(c.idx)).is_empty()) != bool(f["fusion"]):
 		return false
 	if f.has("fusion_mat") and bool(c.flags.get("fusion_mat", false)) != bool(f["fusion_mat"]):
@@ -177,6 +183,9 @@ func select_candidates(step: Dictionary, ctx: Dictionary) -> Array:
 		for c in pool:
 			if matches(c, f, ctx) and not out.has(c):
 				out.append(c)
+	if not step.get("cost", false) and step.get("pick", "") == "" and not step.get("random", false) and fx.has_untargetable():
+		# Lord of D.: such monsters cannot be selected as the target of a card effect
+		out = out.filter(func(c): return not (duel.is_on_field(c) and fx.rule_active("untargetable", c)))
 	var pick: String = step.get("pick", "")
 	if pick != "" and not out.is_empty():
 		var best := 0
@@ -363,6 +372,9 @@ func _cond(c: Dictionary, ctx: Dictionary) -> bool:
 			var vv: Array = ctx["vars"].get(c.get("name", ""), [])
 			return not vv.is_empty() and matches(vv[0], c.get("filter", {}), ctx)
 		"target_is_src": return int(ctx["event"].get("target", -1)) == ctx["src"].uid
+		"battle_involves_equipped":
+			var host: DCard = ctx["src"].equipped_to
+			return host != null and (int(ctx["event"].get("attacker", -1)) == host.uid or int(ctx["event"].get("target", -1)) == host.uid)
 		"in_battle": return int(ctx["event"].get("attacker", -1)) == ctx["src"].uid or int(ctx["event"].get("target", -1)) == ctx["src"].uid
 		"attacker_is_src": return int(ctx["event"].get("attacker", -1)) == ctx["src"].uid
 		"killer_is_src": return int(ctx["event"].get("killer", -1)) == ctx["src"].uid
@@ -788,6 +800,11 @@ func run(step: Dictionary, ctx: Dictionary):
 				removed += 1
 			if step.has("as"):
 				ctx["vars"][step["as"]] = removed
+		"switch_equip":
+			var sw_cards := _targets(step.get("card", "$e"), ctx)
+			var sw_hosts := _targets(step.get("to", "$h"), ctx)
+			if not sw_cards.is_empty() and not sw_hosts.is_empty():
+				duel.equip_card(sw_cards[0], sw_hosts[0], (sw_cards[0] as DCard).equip_mod)
 		"extra_summon": duel.normal_summoned = false          # Ultimate Offering: one more Normal Summon or Set
 		"nothing": pass
 		"custom": return FxCustom.run(step.get("fn", ""), step, ctx, fx)

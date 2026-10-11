@@ -38,11 +38,11 @@
   "do": [{"op": "destroy", "what": "$t"}]}]},
 
 "Mystical Space Typhoon": {"fx": [{"type": "quickplay", "speed": 2,
-  "when": ["summoned", "attack_declared", "activated_spell", "activated_trap", "standby_phase", "end_phase"],
+  "when": ["summoned", "special_summoned", "flip_summoned", "attack_declared", "target_declared", "damage_step", "activated_spell", "activated_trap", "standby_phase", "end_phase"],
   "target": [{"op": "select", "as": "t", "from": "field", "filter": {"type": ["spell", "trap"], "not_src": true}, "n": 1, "prompt": 141}],
   "do": [{"op": "destroy", "what": "$t"}]}]},
 "Offerings to the Doomed": {"fx": [{"type": "quickplay", "speed": 2,
-  "when": ["summoned", "attack_declared", "activated_spell", "activated_trap", "standby_phase", "end_phase"],
+  "when": ["summoned", "special_summoned", "flip_summoned", "attack_declared", "target_declared", "damage_step", "activated_spell", "activated_trap", "standby_phase", "end_phase"],
   "target": [{"op": "select", "as": "t", "from": "monsters", "filter": {"face_up": true}, "n": 1, "prompt": 98}],
   "do": [{"op": "destroy", "what": "$t"}, {"op": "skip_next_draw", "who": "self"}]}]},
 

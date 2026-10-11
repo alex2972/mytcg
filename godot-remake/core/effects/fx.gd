@@ -440,6 +440,16 @@ func _static_applies(src: DCard, m: Dictionary, c: DCard) -> bool:
 	return ops.matches(c, m.get("filter", {}), {"src": src, "controller": src.controller})
 
 ## Does a face-up card controlled by `p` carry the static rule (player-wide rules such as Tornado Wall's "no_damage")?
+## Is any face-up card currently making monsters untargetable (Lord of D.)? Cheap pre-check for target selection.
+func has_untargetable() -> bool:
+	for p in 2:
+		for src in cards_controlled(p):
+			if src.face_up:
+				for e in effects_of(src):
+					if e.get("rule", "") == "untargetable":
+						return true
+	return false
+
 func player_rule(rule: String, p: int) -> bool:
 	for src in cards_controlled(p):
 		if not src.face_up:

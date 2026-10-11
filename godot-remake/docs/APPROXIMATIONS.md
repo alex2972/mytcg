@@ -2,7 +2,7 @@
 
 Generated from `data/approximations.json` by `tools/list_approximations.py`. Do not edit by hand.
 
-64 cards and 6 rules.
+69 cards and 7 rules.
 
 ## Cards
 
@@ -23,6 +23,7 @@ Generated from `data/approximations.json` by `tools/list_approximations.py`. Do 
 | Dark Spirit of the Silent | The new attacker keeps the original target instead of choosing again; its position is flipped quietly. | Check the original's sequence. |
 | De-Fusion | The materials are always Special Summoned in Attack Position, and a Fusion Monster of either side may be selected without checking whose Graveyard holds the materials. | Ask for the position and use the owner's Graveyard. |
 | Destiny Board | The Spirit Message cards can still be played or Set by hand; only the board places them properly. | Forbid playing/Setting the Spirit Message cards manually. |
+| Dimensionhole | The Monster Card Zone is not reserved while the monster is removed from play, and the monster comes back as a Special Summon. | Reserve the zone and return the monster without a summon. |
 | Dream Clown | Only triggers when the player changes its position, not when an effect does. | Fire position_changed from force_position too (with a flag for effect-caused changes). |
 | Earthshaker | The opponent's choice is labelled 'First/Second' instead of showing the two attributes. | Pass the chosen attribute names into the choice labels. |
 | Exchange | The hands are not shown to both players. | A hand-reveal screen. |
@@ -41,6 +42,7 @@ Generated from `data/approximations.json` by `tools/list_approximations.py`. Do 
 | Kotodama | Only the 'later copy is destroyed' rule is in; the 'two copies played at the same time are both destroyed' case is not. | Detect simultaneous summons (Fusion Gate / Cyber Jar) and destroy both. |
 | Last Will | Implemented as a continuous effect for the turn; needs checking against the original timing. | Verify with the original. |
 | Lightforce Sword | The return turn (opponent's 4th turn) is computed as 7 turns later; not checked against the original. | Verify the turn count with the original and add a test. |
+| Lord of D. | The protection covers selections made by card effects (targets chosen by a player), not random or lowest-ATK picks, and not attacks. | Tag target selections explicitly in the effect data. |
 | Mage Power | Counts the Spell/Trap Cards in the Spell zone only (not a face-up Field Spell). | Include the field spell zone in the count. |
 | Magic Thorn | Also triggers on discards paid as a cost, not only discards caused by Spell/Trap/Effect Monster effects. | Tag the discard reason (cost vs effect) and only count effect discards. |
 | Magical Hats | The two decoys are tokens; the original takes 2 non-monster cards out of the Deck. | Move two Spell/Trap cards from the Deck onto the field as 0/0 monsters, return them afterwards. |
@@ -56,6 +58,7 @@ Generated from `data/approximations.json` by `tools/list_approximations.py`. Do 
 | Return of the Doomed | The Spell Card stays face-up on the field until the End Phase instead of going to the Graveyard right away. | A delayed end-of-turn effect that is not tied to a card on the field. |
 | Riryoku | The ATK change lasts until the end of the turn (the card text gives no duration). | Check the original's duration. |
 | Scapegoat | The 'no summons this turn' rule blocks Normal Summons/Sets only, not Flip or Special Summons. | Use a rule that also covers flip and special summons. |
+| Shadow of Eyes | Works once, as a normal Trap, for the monster that was just Set. | Check the original: continuous or one-shot. |
 | Shift | Redirects only to my other monsters, and is limited to monster attacks (not Spell/Trap targets). | Add target_declared events for Spell/Trap targeting. |
 | Sinister Serpent | Returning to the hand is automatic instead of optional. | A yes/no prompt. |
 | Slate Warrior | The penalty applies to whoever destroys it in battle, including in a mutual destruction. | Check the original for mutual destruction. |
@@ -63,6 +66,8 @@ Generated from `data/approximations.json` by `tools/list_approximations.py`. Do 
 | Soul of Purity and Light | The -300 ATK to the opponent's monsters during their Battle Phase is missing. | A static modifier that depends on the current phase/turn. |
 | Spear Cretin | Also triggers if it was face-up without ever being flipped. | Remember that the card was flipped (survive the grave transition). |
 | Spirit of Flames | The +300 ATK during my Battle Phase is missing. | A static modifier that depends on the current phase/turn. |
+| Sword of Dragon's Soul | The Dragon is destroyed when the Battle Phase ends (entering Main Phase 2 or ending the turn). | Verify the timing against the original. |
+| Tailor of the Fickle | Does not check the Equip Card's own restrictions (e.g. Warrior-only) for the new monster. | Reuse the equip target filter of the Equip Card. |
 | The Eye of Truth | The hand reveal is missing (interface); only the +1000 LP effect is in. | Show the other player's hand while the card is face-up (board view). |
 | The Flute of Summoning Dragon | Needs a free Monster Card Zone for every Dragon; extra ones fail silently. | Limit the selection to the number of free zones. |
 | The Immortal of Thunder | The -5000 LP also triggers if it was face-up without ever being flipped (e.g. Normal Summoned face-up). | Remember that the card was flipped across the grave transition (as for Spear Cretin). |
@@ -78,6 +83,7 @@ Generated from `data/approximations.json` by `tools/list_approximations.py`. Do 
 | Area | What differs | What it takes to fix |
 |---|---|---|
 | AI | About 60 per-card AI handlers (for cards that had no effects) fall back to 'use if harmless'; battle boosters are approximated. | See docs/AI_NOTES.md. |
+| Quick-Play Spells | A Set Quick-Play Spell can only be played in the response windows the engine opens (summons, attacks, target declaration, damage step, chain links, Standby and End Phase). | Open a window whenever a player gets priority. |
 | hand limit 6 | The 6-card hand limit is an assumption from the tutorial text. | Find it in the original's code. |
 | only 1 attack restriction on turn 1 | 'No attack on the first turn' follows what you told me; the exact original rule (also for the second player's first turn) is not verified. | Check the original's code. |
 | spell speed | Chains follow normal spell-speed rules; the original's response-window rules (who may respond when) are only partly verified. | Finish docs/DUEL_FLOW.md from the original's code. |

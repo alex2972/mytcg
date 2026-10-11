@@ -73,6 +73,8 @@ func test_all() -> void:
 	test_control()
 	test_monsters()
 	test_spells_traps()
+	test_quickplay()
+	test_batch16()
 
 func find_card(kind: int, max_level := 12) -> int:
 	for i in range(1, db.cards.size()):
@@ -339,3 +341,147 @@ func test_spells_traps() -> void:
 	d.activate_effect(0, df, 0)
 	settle(d)
 	check(d.side(0).extra.has(fm) and d.side(0).monsters.has(m1) and d.side(0).monsters.has(m2), "De-Fusion: the Fusion Monster returns, its materials are Special Summoned from the Graveyard")
+
+func test_quickplay() -> void:
+	# every Quick-Play Spell with an effect must be declared as quickplay with timings (so it works when Set)
+	var bad := []
+	var eff := EffectDB.load_default(db)
+	var checked := 0
+	for i in range(1, db.cards.size()):
+		var c: Dictionary = db.card(i)
+		if c.get("type", "") == "spell" and int(c.get("subtype", -1)) == 5:
+			var effects: Array = eff.for_number(int(c.get("number", 0)))
+			checked += 1 if not effects.is_empty() else 0
+			for e in effects:
+				if e.get("type", "") != "quickplay" or (e.get("when", []) as Array).is_empty():
+					bad.append(db.card_name(i))
+	check(checked >= 10, "the Quick-Play check looked at %d cards" % checked)
+	check(bad.is_empty(), "all Quick-Play Spells are declared with timings: %s" % str(bad))
+	# Graceful Dice, Set, played in response to an attack
+	var d := new_duel()
+	var gd := d.debug_place_spell(0, idx("Graceful Dice"), 0, false)
+	var def_mon := mon(d, 0, 0, 1000, 1000, true, "def")
+	next_turn(d)
+	var att := mon(d, 1, 0, 1500, 1000)
+	d.phase = "battle"
+	d.attack(1, att, def_mon)
+	check(d.fx.pending.get("type", "") == "chain" and int(d.fx.pending.get("player", -1)) == 0, "a Set Quick-Play Spell gets a chance to respond to an attack")
+	settle(d, "use")
+	check(d.side(0).grave.has(gd) and d.atk_of(def_mon) >= 1100, "...and Graceful Dice raises ATK/DEF (ATK %d)" % d.atk_of(def_mon))
+	# the same from the hand on the opponent's turn is not allowed
+	d = new_duel()
+	var hand_gd := d.debug_give(0, idx("Graceful Dice"))
+	mon(d, 0, 0, 1000)
+	next_turn(d)
+	check(d.fx.activation_problem(0, hand_gd, 0, "attack_declared", {}) != "", "Quick-Play Spells in the hand cannot be played on the opponent's turn")
+	# Set Quick-Play: not the turn it was Set
+	d = new_duel()
+	var setqp := d.debug_give(0, idx("Rush Recklessly"))
+	d.set_spell_trap(0, setqp)
+	check(d.fx.activation_problem(0, setqp, 0, "end_phase", {}) != "", "...and a Set Quick-Play Spell waits until the next turn")
+	# Rush Recklessly as a Set card in response to an attack
+	d = new_duel()
+	var rr := d.debug_place_spell(0, idx("Rush Recklessly"), 0, false)
+	var mine := mon(d, 0, 0, 1000)
+	var foe := mon(d, 1, 0, 1500)
+	next_turn(d)
+	d.phase = "battle"
+	d.attack(1, foe, mine)
+	settle(d, "use")
+	check(d.side(0).grave.has(rr) and d.atk_of(mine) == 1700, "Rush Recklessly: +700 ATK when responding to an attack (ATK %d)" % d.atk_of(mine))
+
+func test_batch16() -> void:
+	# Raimei
+	var d := new_duel()
+	d.activate_effect(0, d.debug_give(0, idx("Raimei")), 0)
+	settle(d)
+	check(d.side(1).lp == 7700, "Raimei: 300 damage")
+	# Tailor of the Fickle
+	d = new_duel()
+	var h1 := place(d, 0, 0, "Harpie Lady")
+	var h2 := place(d, 0, 1, "Harpie Lady")
+	var b0: int = d.atk_of(h2)
+	var gf := d.debug_give(0, idx("Gust Fan"))
+	d.activate_effect(0, gf, 0)
+	d.respond([h1.uid]) if not d.fx.pending.is_empty() else null
+	settle(d)
+	check(gf.equipped_to == h1, "Gust Fan is on the first Harpie Lady")
+	var tf := d.debug_give(0, idx("Tailor of the Fickle"))
+	d.activate_effect(0, tf, 0)
+	settle(d)
+	check(gf.equipped_to == h2 and d.atk_of(h2) == b0 + 400, "Tailor of the Fickle switches the Equip Card to another monster")
+	# Monster Recovery
+	d = new_duel()
+	var mm := mon(d, 0, 0, 1000)
+	for i in 3:
+		d.debug_give(0, idx("Pot of Greed"))
+	var mr := d.debug_give(0, idx("Monster Recovery"))
+	var deck_n: int = d.side(0).deck.size()
+	d.activate_effect(0, mr, 0)
+	settle(d)
+	check(d.side(0).hand.size() == 3 and d.side(0).deck.has(mm) and d.side(0).deck.size() == deck_n + 1, "Monster Recovery: the monster joins the Deck, the hand is redrawn")
+	# Lord of D.
+	d = new_duel()
+	var lord := place(d, 0, 0, "Lord of D.")
+	var dragon := d.debug_place(1, find_card(1, 6), 1, true, "atk")
+	var coh := d.debug_give(0, idx("Change of Heart"))
+	check(d.activate_effect(0, coh, 0) != "", "Lord of D.: Dragons cannot be targeted")
+	d.destroy_card(lord, "effect")
+	check(d.activate_effect(0, coh, 0) == "", "...unless Lord of D. is gone")
+	settle(d)
+	check(dragon.controller == 0, "...and then Change of Heart takes it")
+	# Lady Panther
+	d = new_duel()
+	var lp := place(d, 0, 1, "Lady Panther")
+	var fighter := mon(d, 0, 0, 500)
+	mon(d, 1, 0, 3000)
+	d.phase = "battle"
+	d.attack(0, fighter, d.monsters_of(1)[0])
+	settle(d)
+	d.to_main2(0)
+	check(d.activate_effect(0, lp, 0) == "", "Lady Panther can be offered")
+	settle(d)
+	check(d.side(0).deck.back() == fighter and d.side(0).grave.has(lp), "...and returns the monster destroyed in battle to the top of the Deck")
+	# Sword of Dragon's Soul
+	d = new_duel()
+	var war := d.debug_place(0, find_card(15, 4), 0, true, "atk")
+	var sw := d.debug_give(0, idx("Sword of Dragon's Soul"))
+	d.activate_effect(0, sw, 0)
+	settle(d)
+	var drg := mon(d, 1, 0, 100, 100, true, "atk", db.card_name(find_card(1, 6)))
+	d.phase = "battle"
+	d.attack(0, war, drg)
+	settle(d)
+	var war_alive: bool = d.side(0).monsters.has(war)
+	d.to_main2(0)
+	settle(d)
+	check(war_alive and not d.side(1).monsters.has(drg), "Sword of Dragon's Soul: a Dragon battling the equipped monster is destroyed")
+	# Shadow of Eyes
+	d = new_duel()
+	var soe := trap(d, 0, 0, "Shadow of Eyes")
+	next_turn(d)
+	var setm := d.debug_give(1, idx("Armored Starfish"))
+	d.summon(1, setm, [], -1, true)
+	settle(d, "use")
+	check(setm.face_up and setm.pos == "atk" and d.side(0).grave.has(soe), "Shadow of Eyes turns a Set monster face-up in Attack Position")
+	# Dimensionhole
+	d = new_duel()
+	var dh_m := mon(d, 0, 0, 1000)
+	var dh := d.debug_give(0, idx("Dimensionhole"))
+	d.activate_effect(0, dh, 0)
+	settle(d)
+	check(d.side(0).banished.has(dh_m), "Dimensionhole removes my monster from play")
+	next_turn(d)
+	check(d.side(0).banished.has(dh_m), "...through the opponent's turn")
+	next_turn(d)
+	check(d.side(0).monsters.has(dh_m) and dh_m.face_up, "...and it returns at my next Standby Phase")
+	# The Unfriendly Amazon
+	d = new_duel()
+	var ua := place(d, 0, 0, "The Unfriendly Amazon")
+	var food := mon(d, 0, 1, 100)
+	next_turn(d)
+	next_turn(d)
+	check(d.side(0).grave.has(food) and d.side(0).monsters.has(ua), "The Unfriendly Amazon offers another monster each Standby Phase")
+	next_turn(d)
+	next_turn(d)
+	check(d.side(0).grave.has(ua), "...and is destroyed when there is none left")

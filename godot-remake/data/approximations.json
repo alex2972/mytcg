@@ -66,10 +66,16 @@
 "Garuda the Wind Spirit": {"gap": "The End Phase position change is not optional unless the opponent has no monster; the player must pick a monster when one exists.", "fix": "Add a Cancel button to the selection."},
 "De-Fusion": {"gap": "The materials are always Special Summoned in Attack Position, and a Fusion Monster of either side may be selected without checking whose Graveyard holds the materials.", "fix": "Ask for the position and use the owner's Graveyard."},
 "The Flute of Summoning Dragon": {"gap": "Needs a free Monster Card Zone for every Dragon; extra ones fail silently.", "fix": "Limit the selection to the number of free zones."},
+"Lord of D.": {"gap": "The protection covers selections made by card effects (targets chosen by a player), not random or lowest-ATK picks, and not attacks.", "fix": "Tag target selections explicitly in the effect data."},
+"Tailor of the Fickle": {"gap": "Does not check the Equip Card's own restrictions (e.g. Warrior-only) for the new monster.", "fix": "Reuse the equip target filter of the Equip Card."},
+"Dimensionhole": {"gap": "The Monster Card Zone is not reserved while the monster is removed from play, and the monster comes back as a Special Summon.", "fix": "Reserve the zone and return the monster without a summon."},
+"Sword of Dragon's Soul": {"gap": "The Dragon is destroyed when the Battle Phase ends (entering Main Phase 2 or ending the turn).", "fix": "Verify the timing against the original."},
+"Shadow of Eyes": {"gap": "Works once, as a normal Trap, for the monster that was just Set.", "fix": "Check the original: continuous or one-shot."},
 "RULE: hand limit 6": {"gap": "The 6-card hand limit is an assumption from the tutorial text.", "fix": "Find it in the original's code."},
 "RULE: three tributes for the Gods": {"gap": "The Egyptian Gods need 3 tributes by assumption.", "fix": "Check the original."},
 "RULE: only 1 attack restriction on turn 1": {"gap": "'No attack on the first turn' follows what you told me; the exact original rule (also for the second player's first turn) is not verified.", "fix": "Check the original's code."},
 "RULE: spell speed": {"gap": "Chains follow normal spell-speed rules; the original's response-window rules (who may respond when) are only partly verified.", "fix": "Finish docs/DUEL_FLOW.md from the original's code."},
 "RULE: windows": {"gap": "'Continuous card played' (strings 193-195) and the exact order of the 31 announced windows are not all implemented.", "fix": "See docs/DUEL_FLOW.md."},
+"RULE: Quick-Play Spells": {"gap": "A Set Quick-Play Spell can only be played in the response windows the engine opens (summons, attacks, target declaration, damage step, chain links, Standby and End Phase).", "fix": "Open a window whenever a player gets priority."},
 "RULE: AI": {"gap": "About 60 per-card AI handlers (for cards that had no effects) fall back to 'use if harmless'; battle boosters are approximated.", "fix": "See docs/AI_NOTES.md."}
 }
