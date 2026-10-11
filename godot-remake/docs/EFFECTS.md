@@ -103,3 +103,10 @@ Quick-Play Spells (card subtype 5) are declared as `quickplay` with `speed: 2` a
 `summoned special_summoned flip_summoned attack_declared target_declared damage_step activated_spell activated_trap standby_phase end_phase` (tests/test_effects11.gd checks every one).
 Ops: `switch_equip` {card, to} (Tailor of the Fickle) · custom ops `dimensionhole` (`Duel.dimension_holes`), `monster_recovery`.
 Filters `equipping` (an Equip Card attached to a monster) and `not_equipped_by` {var}. Condition `battle_involves_equipped`. Rule `untargetable` (Lord of D.: such cards are dropped from target selections; see `Fx.has_untargetable`).
+
+## Added in batch 17
+A card chained inside a response window (attack, summon, ...) does not open an `activated_*` window of its own: the other player answers in the same window with the same event.
+Cards that react to a chained card therefore list the usual timings in `when` and look at the top of the chain: conditions `chain_top_card` {filter}, `chain_top_by` {is}, `chain_top_single_monster_target` (exactly 1 monster chosen by a Spell's target step), `chain_top_targets_src` (that monster is this card).
+Turn rules `neg_continuous_trap`, `neg_continuous_spell`, `neg_field_spell`, `neg_equip` (set for both players with two `rule_turn` steps) switch off the effects of that kind of face-up card (`Fx.effects_of`, equip bonuses in `Fx.stat_bonus`) until the end of the turn.
+Rule `spells_must_set` (Anti-Spell Fragrance). The `destroyed` event carries `by` (the player whose effect destroyed the card, -1 if none/battle); condition `destroyed_by_opp_effect`. `Duel.lost_spells` / zone `self.lost_spells`: my Spells destroyed by an opponent's effect this turn (Fairy Guardian).
+Effects that respond to a chain link need `speed: 2`, also `trigger_forced` ones (Big Shield Gardna).

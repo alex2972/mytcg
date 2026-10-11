@@ -53,6 +53,8 @@ var dimension_holes: Array = []       ## Dimensionhole: {uid, player} monsters r
 var battle_dead: Array = []         ## uids of monsters destroyed in battle this turn
 var killer_uid := -1                ## attacker that is destroying a monster in battle right now
 var attackers_this_turn: Array = []  ## uids of monsters that attacked this turn
+var effect_player := -1               ## the player whose card effect is destroying something right now (-1: battle, rules or unknown)
+var lost_spells: Array = []           ## uids of Spell Cards destroyed by an opponent's card effect this turn (Fairy Guardian)
 var turn_rules: Array = []       ## {rule, player} lasting until the end of the turn
 var _next_uid := 1
 
@@ -231,6 +233,7 @@ func _guard(p: int) -> String:
 func _begin_turn() -> void:
 	turn += 1
 	battle_dead.clear()
+	lost_spells.clear()
 	for c in (sides[turn_player].banished as Array).duplicate():
 		if int(c.flags.get("return_turn", 1000000)) <= turn:
 			c.flags.erase("return_turn")
@@ -472,7 +475,9 @@ func send_to_grave(c: DCard, reason: String) -> void:
 		battle_dead.append(c.uid)
 	if reason.begins_with("destroyed"):
 		_emit("destroy", {"player": c.owner, "uid": c.uid, "reason": reason})
-		fx.window("destroyed", {"player": from_ctrl, "uid": c.uid, "reason": reason, "killer": killer_uid, "pos": was_pos, "was_face_up": was_face_up})
+		if effect_player != -1 and effect_player != c.owner and card_data(c).get("type", "") == "spell":
+			lost_spells.append(c.uid)
+		fx.window("destroyed", {"player": from_ctrl, "uid": c.uid, "reason": reason, "killer": killer_uid, "pos": was_pos, "was_face_up": was_face_up, "by": effect_player})
 	fx.window("sent_to_grave", {"player": from_ctrl, "uid": c.uid, "reason": reason, "was_on_field": was_on_field, "killer": killer_uid,
 		"was_face_up": was_face_up, "pos": was_pos})
 	if reason == "discard" and fx.has_listener("discarded"):

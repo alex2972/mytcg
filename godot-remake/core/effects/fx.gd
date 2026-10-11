@@ -28,7 +28,19 @@ func _init(d: Duel, effect_db: EffectDB) -> void:
 # --- lookups -------------------------------------------------------------------------
 
 func effects_of(c: DCard) -> Array:
+	if c.face_up and not duel.turn_rules.is_empty() and _negated_this_turn(c):
+		return []
 	return edb.for_number(c.number)
+
+## Metal Detector, Mystic Probe, World Suppression, Armored Glass: whole card kinds are switched off for the rest of the turn.
+func _negated_this_turn(c: DCard) -> bool:
+	var d: Dictionary = duel.card_data(c)
+	var sub: String = d.get("subtype_name", "")
+	var rule := ""
+	match d.get("type", ""):
+		"trap": rule = "neg_continuous_trap" if sub == "continuous" else ""
+		"spell": rule = {"continuous": "neg_continuous_spell", "field": "neg_field_spell", "equip": "neg_equip"}.get(sub, "")
+	return rule != "" and duel.has_turn_rule(rule, 0)
 
 ## Does any card on the field react to `event`? (used to avoid opening empty windows for frequent events)
 func has_listener(event: String) -> bool:
@@ -231,6 +243,10 @@ func activation_problem(p: int, c: DCard, idx: int, event: String, data: Diction
 		return "Already face-up."
 	if type in ["trap", "counter", "continuous_trap"] and event == "":
 		return "Wait for the right timing."
+	if type in ["spell", "equip", "field", "ritual_spell", "quickplay"] and zone == "hand" and rule_active("spells_must_set"):
+		return "Spell Cards must be Set first (Anti-Spell Fragrance)."
+	if type in ["spell", "equip", "field", "ritual_spell", "quickplay"] and zone == "spell" and not c.face_up and c.summon_turn >= duel.turn and rule_active("spells_must_set"):
+		return "A Set Spell Card cannot be activated until your next turn (Anti-Spell Fragrance)."
 	if type == "flip" and rule_active("no_flip_effects"):
 		return "Flip Effects are negated."
 	if type in ["trap", "counter", "continuous_trap"] and rule_active("no_trap"):
@@ -387,7 +403,8 @@ func stat_bonus(c: DCard, stat: String) -> int:
 		pass
 	if not c.equips.is_empty() and not rule_active("no_equip"):
 		for eq in c.equips:
-			total += int(eq.equip_mod.get(stat, 0))
+			if not (eq.face_up and duel.has_turn_rule("neg_equip", 0)):
+				total += int(eq.equip_mod.get(stat, 0))
 	for p in 2:
 		for src in cards_controlled(p):
 			if not src.face_up:

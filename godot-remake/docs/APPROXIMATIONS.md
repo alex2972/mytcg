@@ -2,7 +2,7 @@
 
 Generated from `data/approximations.json` by `tools/list_approximations.py`. Do not edit by hand.
 
-69 cards and 7 rules.
+70 cards and 8 rules.
 
 ## Cards
 
@@ -34,7 +34,6 @@ Generated from `data/approximations.json` by `tools/list_approximations.py`. Do 
 | Gilasaurus | The 'treat as Special Summon' choice only marks the card as Special Summoned (the Normal Summon of the turn is still used). | Let the summon dialog offer Special Summon, which would not use the Normal Summon. |
 | Goddess of Whim | Coin tossed without a call. | A 'call it' prompt before the toss. |
 | Ground Collapse | Only zones on the opponent's side can be blocked, and an occupied choice moves to the next free zone automatically. | A zone-picker UI for either side. |
-| Gust | Triggers when any of my Spells is destroyed, not only when the opponent's card effect destroyed it. | Record who caused a destruction (effect owner) in the destroyed event. |
 | Infinite Dismissal | Destroys every Level 3 or lower monster summoned (Normal Summoned, Flip Summoned or Set) during the turn, including ones summoned before the trap was activated. | Only count monsters summoned after the activation. |
 | Insect Queen | The Insect Monster Token appears immediately, not at the end of the turn. | Create the token in the End Phase. |
 | Jam Breeding Machine | The restriction on summoning/special summoning monsters is missing; only the Slime Tokens are in. | Static rules for summon/flip/special summon limited to the controller. |
@@ -47,6 +46,7 @@ Generated from `data/approximations.json` by `tools/list_approximations.py`. Do 
 | Magic Thorn | Also triggers on discards paid as a cost, not only discards caused by Spell/Trap/Effect Monster effects. | Tag the discard reason (cost vs effect) and only count effect discards. |
 | Magical Hats | The two decoys are tokens; the original takes 2 non-monster cards out of the Deck. | Move two Spell/Trap cards from the Deck onto the field as 0/0 monsters, return them afterwards. |
 | Mask of Dispel | The card is only destroyed at the next Standby Phase after the selected Spell leaves the field. | A trigger on the selected card leaving the field. |
+| Metal Detector | The negated Continuous Trap stays on the field with its effects switched off until the end of the turn (it is not destroyed); same for Mystic Probe, World Suppression and Armored Glass. | Check what the original does to the negated card. |
 | Metalmorph | The extra ATK when attacking (half of the target's ATK) is missing; only the +300/+300 is in. | A battle-time ATK bonus on the equipped monster (needs the damage-step window). |
 | Mirror Wall | The halving uses the printed ATK plus permanent bonuses, ignoring temporary changes. | Apply the halving after all other ATK modifiers. |
 | Morphing Jar #2 | The card count each player picks up is an interpretation of an ambiguous card text. | Check how the original counts. |
@@ -57,6 +57,7 @@ Generated from `data/approximations.json` by `tools/list_approximations.py`. Do 
 | Respect Play | The card has no effect: the hand reveal is only a display matter and needs an interface. | Show the other player's hand while the card is face-up (board view). |
 | Return of the Doomed | The Spell Card stays face-up on the field until the End Phase instead of going to the Graveyard right away. | A delayed end-of-turn effect that is not tied to a card on the field. |
 | Riryoku | The ATK change lasts until the end of the turn (the card text gives no duration). | Check the original's duration. |
+| Riryoku Field | 'Designates 1 monster' means the Spell's target step ended with exactly 1 monster selected; Spells that affect monsters without a target step are not detected. | Mark target-style Spells explicitly in the effect data. |
 | Scapegoat | The 'no summons this turn' rule blocks Normal Summons/Sets only, not Flip or Special Summons. | Use a rule that also covers flip and special summons. |
 | Shadow of Eyes | Works once, as a normal Trap, for the monster that was just Set. | Check the original: continuous or one-shot. |
 | Shift | Redirects only to my other monsters, and is limited to monster attacks (not Spell/Trap targets). | Add target_declared events for Spell/Trap targeting. |
@@ -84,6 +85,7 @@ Generated from `data/approximations.json` by `tools/list_approximations.py`. Do 
 |---|---|---|
 | AI | About 60 per-card AI handlers (for cards that had no effects) fall back to 'use if harmless'; battle boosters are approximated. | See docs/AI_NOTES.md. |
 | Quick-Play Spells | A Set Quick-Play Spell can only be played in the response windows the engine opens (summons, attacks, target declaration, damage step, chain links, Standby and End Phase). | Open a window whenever a player gets priority. |
+| Who destroyed a card | The player responsible for a destruction is only known for the plain 'destroy' effect step (Gust, Driving Snow, Fairy Guardian); custom effects (Crush Card, Cyber Jar, ...) report none. | Set Duel.effect_player in every custom op that destroys cards. |
 | hand limit 6 | The 6-card hand limit is an assumption from the tutorial text. | Find it in the original's code. |
 | only 1 attack restriction on turn 1 | 'No attack on the first turn' follows what you told me; the exact original rule (also for the second player's first turn) is not verified. | Check the original's code. |
 | spell speed | Chains follow normal spell-speed rules; the original's response-window rules (who may respond when) are only partly verified. | Finish docs/DUEL_FLOW.md from the original's code. |

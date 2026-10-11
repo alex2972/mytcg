@@ -4,7 +4,6 @@
 "Metalmorph": {"gap": "The extra ATK when attacking (half of the target's ATK) is missing; only the +300/+300 is in.", "fix": "A battle-time ATK bonus on the equipped monster (needs the damage-step window)."},
 "Magic Thorn": {"gap": "Also triggers on discards paid as a cost, not only discards caused by Spell/Trap/Effect Monster effects.", "fix": "Tag the discard reason (cost vs effect) and only count effect discards."},
 "Magical Hats": {"gap": "The two decoys are tokens; the original takes 2 non-monster cards out of the Deck.", "fix": "Move two Spell/Trap cards from the Deck onto the field as 0/0 monsters, return them afterwards."},
-"Gust": {"gap": "Triggers when any of my Spells is destroyed, not only when the opponent's card effect destroyed it.", "fix": "Record who caused a destruction (effect owner) in the destroyed event."},
 "Patrol Robo": {"gap": "No effect at all (the peek at a Set card needs an interface).", "fix": "A 'look at 1 Set card' prompt shown to the player during the Standby Phase."},
 "Red-Moon Baby": {"gap": "The destroyed monster comes back immediately, not at the end of the Battle Phase, and always in Attack Position.", "fix": "Queue the revival for the end of the Battle Phase and let the player pick the position."},
 "Spear Cretin": {"gap": "Also triggers if it was face-up without ever being flipped.", "fix": "Remember that the card was flipped (survive the grave transition)."},
@@ -71,11 +70,14 @@
 "Dimensionhole": {"gap": "The Monster Card Zone is not reserved while the monster is removed from play, and the monster comes back as a Special Summon.", "fix": "Reserve the zone and return the monster without a summon."},
 "Sword of Dragon's Soul": {"gap": "The Dragon is destroyed when the Battle Phase ends (entering Main Phase 2 or ending the turn).", "fix": "Verify the timing against the original."},
 "Shadow of Eyes": {"gap": "Works once, as a normal Trap, for the monster that was just Set.", "fix": "Check the original: continuous or one-shot."},
+"Metal Detector": {"gap": "The negated Continuous Trap stays on the field with its effects switched off until the end of the turn (it is not destroyed); same for Mystic Probe, World Suppression and Armored Glass.", "fix": "Check what the original does to the negated card."},
+"Riryoku Field": {"gap": "'Designates 1 monster' means the Spell's target step ended with exactly 1 monster selected; Spells that affect monsters without a target step are not detected.", "fix": "Mark target-style Spells explicitly in the effect data."},
 "RULE: hand limit 6": {"gap": "The 6-card hand limit is an assumption from the tutorial text.", "fix": "Find it in the original's code."},
 "RULE: three tributes for the Gods": {"gap": "The Egyptian Gods need 3 tributes by assumption.", "fix": "Check the original."},
 "RULE: only 1 attack restriction on turn 1": {"gap": "'No attack on the first turn' follows what you told me; the exact original rule (also for the second player's first turn) is not verified.", "fix": "Check the original's code."},
 "RULE: spell speed": {"gap": "Chains follow normal spell-speed rules; the original's response-window rules (who may respond when) are only partly verified.", "fix": "Finish docs/DUEL_FLOW.md from the original's code."},
 "RULE: windows": {"gap": "'Continuous card played' (strings 193-195) and the exact order of the 31 announced windows are not all implemented.", "fix": "See docs/DUEL_FLOW.md."},
 "RULE: Quick-Play Spells": {"gap": "A Set Quick-Play Spell can only be played in the response windows the engine opens (summons, attacks, target declaration, damage step, chain links, Standby and End Phase).", "fix": "Open a window whenever a player gets priority."},
+"RULE: Who destroyed a card": {"gap": "The player responsible for a destruction is only known for the plain 'destroy' effect step (Gust, Driving Snow, Fairy Guardian); custom effects (Crush Card, Cyber Jar, ...) report none.", "fix": "Set Duel.effect_player in every custom op that destroys cards."},
 "RULE: AI": {"gap": "About 60 per-card AI handlers (for cards that had no effects) fall back to 'use if harmless'; battle boosters are approximated.", "fix": "See docs/AI_NOTES.md."}
 }

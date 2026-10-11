@@ -1,0 +1,392 @@
+{
+ "_about": "Batch 17: 'negate for the turn' traps, Anti-Spell Fragrance, and cards that react to who destroyed what.",
+ "Metal Detector": {
+  "fx": [
+   {
+    "type": "trap",
+    "speed": 2,
+    "when": [
+     "summoned",
+     "special_summoned",
+     "flip_summoned",
+     "attack_declared",
+     "target_declared",
+     "damage_step",
+     "activated_spell",
+     "activated_trap",
+     "standby_phase",
+     "end_phase"
+    ],
+    "cond": [
+     {
+      "c": "chain_top_by",
+      "is": "opp"
+     },
+     {
+      "c": "chain_top_card",
+      "filter": {
+       "type": "trap",
+       "subtype": "continuous"
+      }
+     }
+    ],
+    "do": [
+     {
+      "op": "negate"
+     },
+     {
+      "op": "rule_turn",
+      "rule": "neg_continuous_trap",
+      "who": "self"
+     },
+     {
+      "op": "rule_turn",
+      "rule": "neg_continuous_trap",
+      "who": "opp"
+     }
+    ]
+   }
+  ]
+ },
+ "Mystic Probe": {
+  "fx": [
+   {
+    "type": "trap",
+    "speed": 2,
+    "when": [
+     "summoned",
+     "special_summoned",
+     "flip_summoned",
+     "attack_declared",
+     "target_declared",
+     "damage_step",
+     "activated_spell",
+     "activated_trap",
+     "standby_phase",
+     "end_phase"
+    ],
+    "cond": [
+     {
+      "c": "chain_top_by",
+      "is": "opp"
+     },
+     {
+      "c": "chain_top_card",
+      "filter": {
+       "type": "spell",
+       "subtype": "continuous"
+      }
+     }
+    ],
+    "do": [
+     {
+      "op": "negate"
+     },
+     {
+      "op": "rule_turn",
+      "rule": "neg_continuous_spell",
+      "who": "self"
+     },
+     {
+      "op": "rule_turn",
+      "rule": "neg_continuous_spell",
+      "who": "opp"
+     }
+    ]
+   }
+  ]
+ },
+ "World Suppression": {
+  "fx": [
+   {
+    "type": "trap",
+    "speed": 2,
+    "when": [
+     "summoned",
+     "special_summoned",
+     "flip_summoned",
+     "attack_declared",
+     "target_declared",
+     "damage_step",
+     "activated_spell",
+     "activated_trap",
+     "standby_phase",
+     "end_phase"
+    ],
+    "cond": [
+     {
+      "c": "chain_top_by",
+      "is": "opp"
+     },
+     {
+      "c": "chain_top_card",
+      "filter": {
+       "type": "spell",
+       "subtype": "field"
+      }
+     }
+    ],
+    "do": [
+     {
+      "op": "negate"
+     },
+     {
+      "op": "rule_turn",
+      "rule": "neg_field_spell",
+      "who": "self"
+     },
+     {
+      "op": "rule_turn",
+      "rule": "neg_field_spell",
+      "who": "opp"
+     }
+    ]
+   }
+  ]
+ },
+ "Armored Glass": {
+  "fx": [
+   {
+    "type": "trap",
+    "speed": 2,
+    "when": [
+     "equipped"
+    ],
+    "do": [
+     {
+      "op": "rule_turn",
+      "rule": "neg_equip",
+      "who": "self"
+     },
+     {
+      "op": "rule_turn",
+      "rule": "neg_equip",
+      "who": "opp"
+     }
+    ]
+   }
+  ]
+ },
+ "Anti-Spell Fragrance": {
+  "fx": [
+   {
+    "type": "continuous_trap",
+    "speed": 2,
+    "stay": true,
+    "when": [
+     "summoned",
+     "special_summoned",
+     "flip_summoned",
+     "attack_declared",
+     "activated_spell",
+     "activated_trap",
+     "standby_phase",
+     "end_phase"
+    ],
+    "do": []
+   },
+   {
+    "type": "static",
+    "rule": "spells_must_set",
+    "scope": "all"
+   }
+  ]
+ },
+ "Riryoku Field": {
+  "fx": [
+   {
+    "type": "trap",
+    "speed": 2,
+    "when": [
+     "summoned",
+     "special_summoned",
+     "flip_summoned",
+     "attack_declared",
+     "target_declared",
+     "damage_step",
+     "activated_spell",
+     "activated_trap",
+     "standby_phase",
+     "end_phase"
+    ],
+    "cond": [
+     {
+      "c": "chain_top_by",
+      "is": "opp"
+     },
+     {
+      "c": "chain_top_single_monster_target"
+     }
+    ],
+    "do": [
+     {
+      "op": "negate",
+      "destroy": true
+     }
+    ]
+   }
+  ]
+ },
+ "Driving Snow": {
+  "fx": [
+   {
+    "type": "trap",
+    "speed": 2,
+    "when": [
+     "destroyed"
+    ],
+    "cond": [
+     {
+      "c": "event_by",
+      "who": "self"
+     },
+     {
+      "c": "destroyed_by_opp_effect"
+     },
+     {
+      "c": "event_card",
+      "filter": {
+       "type": "trap"
+      }
+     },
+     {
+      "c": "has",
+      "zone": "field",
+      "filter": {
+       "type": [
+        "spell",
+        "trap"
+       ],
+       "not_src": true
+      },
+      "n": 1
+     }
+    ],
+    "target": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "field",
+      "filter": {
+       "type": [
+        "spell",
+        "trap"
+       ],
+       "not_src": true
+      },
+      "n": 1,
+      "prompt": 141
+     }
+    ],
+    "do": [
+     {
+      "op": "destroy",
+      "what": "$t"
+     }
+    ]
+   }
+  ]
+ },
+ "Fairy Guardian": {
+  "fx": [
+   {
+    "type": "ignition",
+    "cond": [
+     {
+      "c": "has",
+      "zone": "self.lost_spells",
+      "n": 1
+     }
+    ],
+    "cost": [
+     {
+      "op": "to_grave",
+      "what": "src",
+      "reason": "tribute"
+     }
+    ],
+    "do": [
+     {
+      "op": "select",
+      "as": "s",
+      "from": "self.lost_spells",
+      "filter": {},
+      "n": 1,
+      "prompt": 22
+     },
+     {
+      "op": "to_deck",
+      "what": "$s",
+      "where": "bottom"
+     }
+    ]
+   }
+  ]
+ },
+ "Big Shield Gardna": {
+  "fx": [
+   {
+    "type": "trigger_forced",
+    "when": "attack_declared",
+    "face_down_ok": true,
+    "cond": [
+     {
+      "c": "target_is_src"
+     }
+    ],
+    "do": [
+     {
+      "op": "set_flag",
+      "what": "src",
+      "name": "atk_after_battle",
+      "value": true
+     }
+    ]
+   },
+   {
+    "type": "trigger_forced",
+    "speed": 2,
+    "when": [
+     "summoned",
+     "special_summoned",
+     "flip_summoned",
+     "attack_declared",
+     "target_declared",
+     "damage_step",
+     "activated_spell",
+     "activated_trap",
+     "standby_phase",
+     "end_phase"
+    ],
+    "face_down_ok": true,
+    "cond": [
+     {
+      "c": "chain_top_by",
+      "is": "opp"
+     },
+     {
+      "c": "src_face_down"
+     },
+     {
+      "c": "chain_top_single_monster_target"
+     },
+     {
+      "c": "chain_top_targets_src"
+     }
+    ],
+    "do": [
+     {
+      "op": "negate"
+     },
+     {
+      "op": "set_pos",
+      "what": "src",
+      "pos": "def",
+      "face_up": true,
+      "quiet": true
+     }
+    ]
+   }
+  ]
+ }
+}

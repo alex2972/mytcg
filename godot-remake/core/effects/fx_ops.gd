@@ -55,6 +55,11 @@ func zone_cards(spec: String, ctx: Dictionary) -> Array:
 			"grave": out.append_array(s.grave)
 			"banished": out.append_array(s.banished)
 			"extra": out.append_array(s.extra)
+			"lost_spells":
+				for u in duel.lost_spells:
+					var lc := duel.card_by_uid(u)
+					if lc != null and (s.grave as Array).has(lc):
+						out.append(lc)
 			"dead_battle":
 				for u in duel.battle_dead:
 					var dc := duel.card_by_uid(u)
@@ -286,6 +291,28 @@ func val(x, ctx: Dictionary) -> int:
 			return val(x["half"], ctx) / 2
 	return 0
 
+## Does the Spell Card on top of the chain designate exactly 1 monster as its target? [Riryoku Field, Big Shield Gardna]
+func chain_top_single_monster_target(ctx: Dictionary) -> bool:
+	if fx.chain.is_empty():
+		return false
+	var link: Dictionary = fx.chain.back()
+	var lctx: Dictionary = link["ctx"]
+	var chosen := []
+	for step in (lctx["effect"].get("target", []) as Array):
+		if step.get("op", "") == "select":
+			for c in lctx["vars"].get(step.get("as", ""), []):
+				if duel.is_monster(c) and not chosen.has(c):
+					chosen.append(c)
+	return chosen.size() == 1 and link["kind"] == "spell"
+
+func chain_top_target(ctx: Dictionary) -> DCard:
+	var link: Dictionary = fx.chain.back()
+	for step in (link["ctx"]["effect"].get("target", []) as Array):
+		for c in link["ctx"]["vars"].get(step.get("as", ""), []):
+			if duel.is_monster(c):
+				return c
+	return null
+
 func cmp(a: int, op: String, b: int) -> bool:
 	match op:
 		"<": return a < b
@@ -347,6 +374,9 @@ func _cond(c: Dictionary, ctx: Dictionary) -> bool:
 		"var_nonempty": return not (ctx["vars"].get(c.get("name", ""), []) as Array).is_empty()
 		"summoned_this_turn": return ctx["src"].summon_turn == duel.turn
 		"was_flipped_by_battle": return bool(ctx["event"].get("by_battle", false))
+		"destroyed_by_opp_effect": return int(ctx["event"].get("by", -1)) == 1 - me
+		"chain_top_card": return not fx.chain.is_empty() and matches(fx.chain.back()["card"], c.get("filter", {}), ctx)
+		"chain_top_single_monster_target": return chain_top_single_monster_target(ctx)
 		"event_src": return (int(ctx["event"].get("uid", -1)) == ctx["src"].uid) == bool(c.get("is", true))
 		"event_from": return str(ctx["event"].get("from", "")) == str(c.get("is", ""))
 		"equipped_is": return ctx["src"].equipped_to != null and matches(ctx["src"].equipped_to, c.get("filter", {}), ctx)
@@ -372,6 +402,8 @@ func _cond(c: Dictionary, ctx: Dictionary) -> bool:
 			var vv: Array = ctx["vars"].get(c.get("name", ""), [])
 			return not vv.is_empty() and matches(vv[0], c.get("filter", {}), ctx)
 		"target_is_src": return int(ctx["event"].get("target", -1)) == ctx["src"].uid
+		"chain_top_targets_src":
+			return not fx.chain.is_empty() and chain_top_target(ctx) == ctx["src"]
 		"battle_involves_equipped":
 			var host: DCard = ctx["src"].equipped_to
 			return host != null and (int(ctx["event"].get("attacker", -1)) == host.uid or int(ctx["event"].get("target", -1)) == host.uid)
@@ -526,7 +558,11 @@ func run(step: Dictionary, ctx: Dictionary):
 		"pay_lp": duel.pay_lp(me, val(step.get("amount", 0), ctx))
 		"set_lp": duel.set_lp(who(step.get("who", "self"), ctx), val(step.get("amount", 0), ctx))
 		"draw": duel.draw_cards(who(step.get("who", "self"), ctx), val(step.get("n", 1), ctx))
-		"destroy": for c in tg(step, ctx): duel.destroy_card(c, "effect")
+		"destroy":
+			duel.effect_player = me
+			for c in tg(step, ctx):
+				duel.destroy_card(c, "effect")
+			duel.effect_player = -1
 		"to_grave": for c in tg(step, ctx): duel.send_to_grave(c, step.get("reason", "effect"))
 		"to_hand": for c in tg(step, ctx): duel.return_to_hand(c)
 		"to_deck": for c in tg(step, ctx): duel.return_to_deck(c, step.get("where", "top"))
