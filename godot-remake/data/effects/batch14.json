@@ -1004,28 +1004,6 @@
    }
   ]
  },
- "Big Shield Gardna": {
-  "fx": [
-   {
-    "type": "trigger_forced",
-    "when": "attack_declared",
-    "face_down_ok": true,
-    "cond": [
-     {
-      "c": "target_is_src"
-     }
-    ],
-    "do": [
-     {
-      "op": "set_flag",
-      "what": "src",
-      "name": "atk_after_battle",
-      "value": true
-     }
-    ]
-   }
-  ]
- },
  "Gryphon Wing": {
   "fx": [
    {

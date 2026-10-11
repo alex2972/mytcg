@@ -2,7 +2,7 @@
 
 Generated from `data/approximations.json` by `tools/list_approximations.py`. Do not edit by hand.
 
-57 cards and 6 rules.
+70 cards and 8 rules.
 
 ## Cards
 
@@ -14,34 +14,41 @@ Generated from `data/approximations.json` by `tools/list_approximations.py`. Do 
 | Big Shield Gardna | The Spell-negation half is missing (face-down, targeted by a Spell). The shift to Attack Position happens when the Battle Phase ends, not right after the Damage Step. | Spell targets in the chain link, and a post-Damage-Step window. |
 | Black Illusion Ritual | Relinquished's special effect is missing (it is only a 0/0 monster). | Implement Relinquished (equip and take over ATK/DEF). |
 | Blue-Eyes Toon Dragon | The 'attack directly while the opponent controls no Toon monster' rule is missing. | As Toon Summoned Skull. |
+| Ceremonial Bell | No effect: the hand reveal is only a display matter and needs an interface. | Show both hands while the card is face-up (board view). |
 | Chosen One | The Special Summon position is chosen before the opponent picks, not after. | Ask for the position after the reveal. |
 | Copycat | Copies the target's current ATK/DEF (with modifiers) instead of the original values. | A 'base stats' value that ignores mods and equips. |
 | Cyber Jar | Summon positions and the order in which the two players pick up cards are simplified. | Check the original's order and which player's monsters are summoned first. |
 | DNA Surgery | Monster Type icons in the interface do not change. | Use Duel.race_of in the card detail panel. |
 | Dark Necrofear | Only the special summon condition is in; the 'becomes an Equip Card and takes control' effect is missing. | Use become_equip plus a control link when destroyed. |
 | Dark Spirit of the Silent | The new attacker keeps the original target instead of choosing again; its position is flipped quietly. | Check the original's sequence. |
+| De-Fusion | The materials are always Special Summoned in Attack Position, and a Fusion Monster of either side may be selected without checking whose Graveyard holds the materials. | Ask for the position and use the owner's Graveyard. |
 | Destiny Board | The Spirit Message cards can still be played or Set by hand; only the board places them properly. | Forbid playing/Setting the Spirit Message cards manually. |
+| Dimensionhole | The Monster Card Zone is not reserved while the monster is removed from play, and the monster comes back as a Special Summon. | Reserve the zone and return the monster without a summon. |
 | Dream Clown | Only triggers when the player changes its position, not when an effect does. | Fire position_changed from force_position too (with a flag for effect-caused changes). |
 | Earthshaker | The opponent's choice is labelled 'First/Second' instead of showing the two attributes. | Pass the chosen attribute names into the choice labels. |
 | Exchange | The hands are not shown to both players. | A hand-reveal screen. |
 | Fairy Box | The coin is tossed without the player calling Heads or Tails. | A 'call it' prompt before the toss. |
 | Fusion Gate | Only used through an effect button; the original may offer it automatically. | Compare with the original's interface. |
 | Gamble | Coin tossed without a call. | A 'call it' prompt before the toss. |
+| Garuda the Wind Spirit | The End Phase position change is not optional unless the opponent has no monster; the player must pick a monster when one exists. | Add a Cancel button to the selection. |
 | Gilasaurus | The 'treat as Special Summon' choice only marks the card as Special Summoned (the Normal Summon of the turn is still used). | Let the summon dialog offer Special Summon, which would not use the Normal Summon. |
 | Goddess of Whim | Coin tossed without a call. | A 'call it' prompt before the toss. |
 | Ground Collapse | Only zones on the opponent's side can be blocked, and an occupied choice moves to the next free zone automatically. | A zone-picker UI for either side. |
-| Gust | Triggers when any of my Spells is destroyed, not only when the opponent's card effect destroyed it. | Record who caused a destruction (effect owner) in the destroyed event. |
+| Infinite Dismissal | Destroys every Level 3 or lower monster summoned (Normal Summoned, Flip Summoned or Set) during the turn, including ones summoned before the trap was activated. | Only count monsters summoned after the activation. |
 | Insect Queen | The Insect Monster Token appears immediately, not at the end of the turn. | Create the token in the End Phase. |
 | Jam Breeding Machine | The restriction on summoning/special summoning monsters is missing; only the Slime Tokens are in. | Static rules for summon/flip/special summon limited to the controller. |
 | Jirai Gumo | Coin tossed without a call. | A 'call it' prompt before the toss. |
 | Kotodama | Only the 'later copy is destroyed' rule is in; the 'two copies played at the same time are both destroyed' case is not. | Detect simultaneous summons (Fusion Gate / Cyber Jar) and destroy both. |
 | Last Will | Implemented as a continuous effect for the turn; needs checking against the original timing. | Verify with the original. |
 | Lightforce Sword | The return turn (opponent's 4th turn) is computed as 7 turns later; not checked against the original. | Verify the turn count with the original and add a test. |
+| Lord of D. | The protection covers selections made by card effects (targets chosen by a player), not random or lowest-ATK picks, and not attacks. | Tag target selections explicitly in the effect data. |
 | Mage Power | Counts the Spell/Trap Cards in the Spell zone only (not a face-up Field Spell). | Include the field spell zone in the count. |
 | Magic Thorn | Also triggers on discards paid as a cost, not only discards caused by Spell/Trap/Effect Monster effects. | Tag the discard reason (cost vs effect) and only count effect discards. |
 | Magical Hats | The two decoys are tokens; the original takes 2 non-monster cards out of the Deck. | Move two Spell/Trap cards from the Deck onto the field as 0/0 monsters, return them afterwards. |
 | Mask of Dispel | The card is only destroyed at the next Standby Phase after the selected Spell leaves the field. | A trigger on the selected card leaving the field. |
+| Metal Detector | The negated Continuous Trap stays on the field with its effects switched off until the end of the turn (it is not destroyed); same for Mystic Probe, World Suppression and Armored Glass. | Check what the original does to the negated card. |
 | Metalmorph | The extra ATK when attacking (half of the target's ATK) is missing; only the +300/+300 is in. | A battle-time ATK bonus on the equipped monster (needs the damage-step window). |
+| Mirror Wall | The halving uses the printed ATK plus permanent bonuses, ignoring temporary changes. | Apply the halving after all other ATK modifiers. |
 | Morphing Jar #2 | The card count each player picks up is an interpretation of an ambiguous card text. | Check how the original counts. |
 | Patrol Robo | No effect at all (the peek at a Set card needs an interface). | A 'look at 1 Set card' prompt shown to the player during the Standby Phase. |
 | Polymerization | 'Goddess with the Third Eye' / 'Versago the Destroyer' can be picked for more than one material slot. | Allow at most one substitute per Fusion. |
@@ -50,7 +57,9 @@ Generated from `data/approximations.json` by `tools/list_approximations.py`. Do 
 | Respect Play | The card has no effect: the hand reveal is only a display matter and needs an interface. | Show the other player's hand while the card is face-up (board view). |
 | Return of the Doomed | The Spell Card stays face-up on the field until the End Phase instead of going to the Graveyard right away. | A delayed end-of-turn effect that is not tied to a card on the field. |
 | Riryoku | The ATK change lasts until the end of the turn (the card text gives no duration). | Check the original's duration. |
+| Riryoku Field | 'Designates 1 monster' means the Spell's target step ended with exactly 1 monster selected; Spells that affect monsters without a target step are not detected. | Mark target-style Spells explicitly in the effect data. |
 | Scapegoat | The 'no summons this turn' rule blocks Normal Summons/Sets only, not Flip or Special Summons. | Use a rule that also covers flip and special summons. |
+| Shadow of Eyes | Works once, as a normal Trap, for the monster that was just Set. | Check the original: continuous or one-shot. |
 | Shift | Redirects only to my other monsters, and is limited to monster attacks (not Spell/Trap targets). | Add target_declared events for Spell/Trap targeting. |
 | Sinister Serpent | Returning to the hand is automatic instead of optional. | A yes/no prompt. |
 | Slate Warrior | The penalty applies to whoever destroys it in battle, including in a mutual destruction. | Check the original for mutual destruction. |
@@ -58,6 +67,10 @@ Generated from `data/approximations.json` by `tools/list_approximations.py`. Do 
 | Soul of Purity and Light | The -300 ATK to the opponent's monsters during their Battle Phase is missing. | A static modifier that depends on the current phase/turn. |
 | Spear Cretin | Also triggers if it was face-up without ever being flipped. | Remember that the card was flipped (survive the grave transition). |
 | Spirit of Flames | The +300 ATK during my Battle Phase is missing. | A static modifier that depends on the current phase/turn. |
+| Sword of Dragon's Soul | The Dragon is destroyed when the Battle Phase ends (entering Main Phase 2 or ending the turn). | Verify the timing against the original. |
+| Tailor of the Fickle | Does not check the Equip Card's own restrictions (e.g. Warrior-only) for the new monster. | Reuse the equip target filter of the Equip Card. |
+| The Eye of Truth | The hand reveal is missing (interface); only the +1000 LP effect is in. | Show the other player's hand while the card is face-up (board view). |
+| The Flute of Summoning Dragon | Needs a free Monster Card Zone for every Dragon; extra ones fail silently. | Limit the selection to the number of free zones. |
 | The Immortal of Thunder | The -5000 LP also triggers if it was face-up without ever being flipped (e.g. Normal Summoned face-up). | Remember that the card was flipped across the grave transition (as for Spear Cretin). |
 | The Rock Spirit | The +300 ATK during the opponent's Battle Phase is missing. | A static modifier that depends on the current phase/turn. |
 | Time Wizard | Coin tossed without a call. | A 'call it' prompt before the toss. |
@@ -71,6 +84,8 @@ Generated from `data/approximations.json` by `tools/list_approximations.py`. Do 
 | Area | What differs | What it takes to fix |
 |---|---|---|
 | AI | About 60 per-card AI handlers (for cards that had no effects) fall back to 'use if harmless'; battle boosters are approximated. | See docs/AI_NOTES.md. |
+| Quick-Play Spells | A Set Quick-Play Spell can only be played in the response windows the engine opens (summons, attacks, target declaration, damage step, chain links, Standby and End Phase). | Open a window whenever a player gets priority. |
+| Who destroyed a card | The player responsible for a destruction is only known for the plain 'destroy' effect step (Gust, Driving Snow, Fairy Guardian); custom effects (Crush Card, Cyber Jar, ...) report none. | Set Duel.effect_player in every custom op that destroys cards. |
 | hand limit 6 | The 6-card hand limit is an assumption from the tutorial text. | Find it in the original's code. |
 | only 1 attack restriction on turn 1 | 'No attack on the first turn' follows what you told me; the exact original rule (also for the second player's first turn) is not verified. | Check the original's code. |
 | spell speed | Chains follow normal spell-speed rules; the original's response-window rules (who may respond when) are only partly verified. | Finish docs/DUEL_FLOW.md from the original's code. |

@@ -254,6 +254,9 @@
       "who": "self"
      },
      {
+      "c": "destroyed_by_opp_effect"
+     },
+     {
       "c": "event_card",
       "filter": {
        "type": "spell"

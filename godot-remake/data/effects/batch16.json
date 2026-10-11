@@ -1,0 +1,367 @@
+{
+ "_about": "Batch 16: Quick-Play spells that were missing, and the remaining Card List cards that need no interface.",
+ "Raimei": {
+  "fx": [
+   {
+    "type": "spell",
+    "do": [
+     {
+      "op": "damage",
+      "who": "opp",
+      "amount": 300
+     }
+    ]
+   }
+  ]
+ },
+ "Rush Recklessly": {
+  "fx": [
+   {
+    "type": "quickplay",
+    "speed": 2,
+    "when": [
+     "summoned",
+     "special_summoned",
+     "flip_summoned",
+     "attack_declared",
+     "target_declared",
+     "damage_step",
+     "activated_spell",
+     "activated_trap",
+     "standby_phase",
+     "end_phase"
+    ],
+    "target": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "monsters",
+      "filter": {
+       "face_up": true
+      },
+      "n": 1,
+      "prompt": 133
+     }
+    ],
+    "do": [
+     {
+      "op": "mod",
+      "what": "$t",
+      "atk": 700,
+      "until": "end_turn"
+     }
+    ]
+   }
+  ]
+ },
+ "Tailor of the Fickle": {
+  "fx": [
+   {
+    "type": "quickplay",
+    "speed": 2,
+    "when": [
+     "summoned",
+     "special_summoned",
+     "flip_summoned",
+     "attack_declared",
+     "target_declared",
+     "damage_step",
+     "activated_spell",
+     "activated_trap",
+     "standby_phase",
+     "end_phase"
+    ],
+    "target": [
+     {
+      "op": "select",
+      "as": "e",
+      "from": "field",
+      "filter": {
+       "type": [
+        "spell"
+       ],
+       "face_up": true,
+       "equipping": true
+      },
+      "n": 1,
+      "prompt": 139
+     }
+    ],
+    "do": [
+     {
+      "op": "select",
+      "as": "h",
+      "from": "monsters",
+      "filter": {
+       "face_up": true,
+       "not_equipped_by": "e"
+      },
+      "n": 1,
+      "prompt": 140
+     },
+     {
+      "op": "switch_equip",
+      "card": "$e",
+      "to": "$h"
+     }
+    ]
+   }
+  ]
+ },
+ "Monster Recovery": {
+  "fx": [
+   {
+    "type": "quickplay",
+    "speed": 2,
+    "when": [
+     "summoned",
+     "special_summoned",
+     "flip_summoned",
+     "attack_declared",
+     "target_declared",
+     "damage_step",
+     "activated_spell",
+     "activated_trap",
+     "standby_phase",
+     "end_phase"
+    ],
+    "target": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "self.monsters",
+      "filter": {},
+      "n": 1,
+      "prompt": 125
+     }
+    ],
+    "do": [
+     {
+      "op": "custom",
+      "fn": "monster_recovery"
+     }
+    ]
+   }
+  ]
+ },
+ "Lord of D.": {
+  "fx": [
+   {
+    "type": "static",
+    "rule": "untargetable",
+    "scope": "all",
+    "filter": {
+     "race": "Dragon"
+    }
+   }
+  ]
+ },
+ "Lady Panther": {
+  "fx": [
+   {
+    "type": "ignition",
+    "cond": [
+     {
+      "c": "has",
+      "zone": "self.dead_battle",
+      "n": 1
+     }
+    ],
+    "cost": [
+     {
+      "op": "to_grave",
+      "what": "src",
+      "reason": "tribute"
+     }
+    ],
+    "do": [
+     {
+      "op": "select",
+      "as": "r",
+      "from": "self.dead_battle",
+      "filter": {},
+      "n": 1,
+      "prompt": 125
+     },
+     {
+      "op": "to_deck",
+      "what": "$r",
+      "where": "top"
+     }
+    ]
+   }
+  ]
+ },
+ "Sword of Dragon's Soul": {
+  "fx": [
+   {
+    "type": "equip",
+    "target": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "monsters",
+      "filter": {
+       "face_up": true,
+       "race": "Warrior"
+      },
+      "n": 1,
+      "prompt": 101
+     }
+    ],
+    "do": [
+     {
+      "op": "equip",
+      "to": "$t",
+      "atk": 700,
+      "def": 0
+     }
+    ]
+   },
+   {
+    "type": "trigger_forced",
+    "when": "damage_step",
+    "cond": [
+     {
+      "c": "battle_involves_equipped"
+     },
+     {
+      "c": "event_attacker",
+      "filter": {
+       "race": "Dragon"
+      }
+     }
+    ],
+    "do": [
+     {
+      "op": "set_flag",
+      "what": "attacker",
+      "name": "destroy_at_battle_end",
+      "value": true
+     }
+    ]
+   },
+   {
+    "type": "trigger_forced",
+    "when": "damage_step",
+    "cond": [
+     {
+      "c": "battle_involves_equipped"
+     },
+     {
+      "c": "event_target",
+      "filter": {
+       "race": "Dragon"
+      }
+     }
+    ],
+    "do": [
+     {
+      "op": "set_flag",
+      "what": "attack_target",
+      "name": "destroy_at_battle_end",
+      "value": true
+     }
+    ]
+   }
+  ]
+ },
+ "Shadow of Eyes": {
+  "fx": [
+   {
+    "type": "trap",
+    "speed": 2,
+    "when": [
+     "monster_set"
+    ],
+    "cond": [
+     {
+      "c": "event_by",
+      "who": "opp"
+     }
+    ],
+    "do": [
+     {
+      "op": "set_pos",
+      "what": "event_card",
+      "pos": "atk",
+      "face_up": true,
+      "quiet": true
+     }
+    ]
+   }
+  ]
+ },
+ "Dimensionhole": {
+  "fx": [
+   {
+    "type": "spell",
+    "target": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "self.monsters",
+      "filter": {},
+      "n": 1,
+      "prompt": 126
+     }
+    ],
+    "do": [
+     {
+      "op": "custom",
+      "fn": "dimensionhole"
+     }
+    ]
+   }
+  ]
+ },
+ "The Unfriendly Amazon": {
+  "fx": [
+   {
+    "type": "trigger_forced",
+    "when": "standby_phase",
+    "cond": [
+     {
+      "c": "turn",
+      "is": "self"
+     }
+    ],
+    "do": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "self.monsters",
+      "filter": {
+       "not_src": true
+      },
+      "n": 1,
+      "prompt": 154,
+      "required": false
+     },
+     {
+      "op": "if",
+      "cond": [
+       {
+        "c": "var_nonempty",
+        "name": "t"
+       }
+      ],
+      "then": [
+       {
+        "op": "to_grave",
+        "what": "$t",
+        "reason": "tribute"
+       }
+      ],
+      "else": [
+       {
+        "op": "destroy",
+        "what": "src"
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ }
+}

@@ -86,7 +86,7 @@
   {"type": "continuous_trap", "speed": 2, "stay": true, "when": ["summoned", "special_summoned", "flip_summoned", "attack_declared", "activated_spell", "activated_trap", "standby_phase", "end_phase"], "do": []},
   {"type": "trigger_forced", "when": "standby_phase", "cond": [{"c": "turn", "is": "self"}],
    "do": [{"op": "damage", "who": "opp", "amount": {"mul": {"count": "opp.banished", "filter": {"type": "monster"}}, "by": 100}}]}]},
-"Limiter Removal": {"fx": [{"type": "spell", "do": [{"op": "double_atk", "what": {"from": "self.monsters", "filter": {"face_up": true, "race": "Machine"}}, "destroy_at_end": true}]}]},
+"Limiter Removal": {"fx": [{"type": "quickplay", "speed": 2, "when": ["summoned", "special_summoned", "flip_summoned", "attack_declared", "target_declared", "damage_step", "activated_spell", "activated_trap", "standby_phase", "end_phase"], "do": [{"op": "double_atk", "what": {"from": "self.monsters", "filter": {"face_up": true, "race": "Machine"}}, "destroy_at_end": true}]}]},
 "The Emperor's Holiday": {"fx": [
   {"type": "continuous_trap", "speed": 2, "stay": true, "when": ["summoned", "special_summoned", "flip_summoned", "attack_declared", "activated_spell", "activated_trap", "standby_phase", "end_phase"], "do": []},
   {"type": "static", "rule": "no_equip", "scope": "all"}]},

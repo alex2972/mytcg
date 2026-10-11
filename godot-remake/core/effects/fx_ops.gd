@@ -55,6 +55,11 @@ func zone_cards(spec: String, ctx: Dictionary) -> Array:
 			"grave": out.append_array(s.grave)
 			"banished": out.append_array(s.banished)
 			"extra": out.append_array(s.extra)
+			"lost_spells":
+				for u in duel.lost_spells:
+					var lc := duel.card_by_uid(u)
+					if lc != null and (s.grave as Array).has(lc):
+						out.append(lc)
 			"dead_battle":
 				for u in duel.battle_dead:
 					var dc := duel.card_by_uid(u)
@@ -131,6 +136,16 @@ func matches(c: DCard, f: Dictionary, ctx: Dictionary) -> bool:
 		return false
 	if f.has("special_summoned") and bool(c.flags.get("special_summoned", false)) != bool(f["special_summoned"]):
 		return false
+	if f.get("attacking", false) and duel.current_attack.get("attacker") != c:
+		return false
+	if f.has("equipping") and (c.equipped_to != null) != bool(f["equipping"]):
+		return false
+	if f.has("not_equipped_by"):
+		for ev in ctx["vars"].get(str(f["not_equipped_by"]), []):
+			if c.equips.has(ev):
+				return false
+	if f.has("fusion") and (not duel.db.fusion_recipe(duel.db.card_name(c.idx)).is_empty()) != bool(f["fusion"]):
+		return false
 	if f.has("fusion_mat") and bool(c.flags.get("fusion_mat", false)) != bool(f["fusion_mat"]):
 		return false
 	if f.has("attr_var") and int(d.get("attribute", 0)) != int(ctx["vars"].get(str(f["attr_var"]), -2)) + 1:
@@ -173,6 +188,9 @@ func select_candidates(step: Dictionary, ctx: Dictionary) -> Array:
 		for c in pool:
 			if matches(c, f, ctx) and not out.has(c):
 				out.append(c)
+	if not step.get("cost", false) and step.get("pick", "") == "" and not step.get("random", false) and fx.has_untargetable():
+		# Lord of D.: such monsters cannot be selected as the target of a card effect
+		out = out.filter(func(c): return not (duel.is_on_field(c) and fx.rule_active("untargetable", c)))
 	var pick: String = step.get("pick", "")
 	if pick != "" and not out.is_empty():
 		var best := 0
@@ -273,6 +291,28 @@ func val(x, ctx: Dictionary) -> int:
 			return val(x["half"], ctx) / 2
 	return 0
 
+## Does the Spell Card on top of the chain designate exactly 1 monster as its target? [Riryoku Field, Big Shield Gardna]
+func chain_top_single_monster_target(ctx: Dictionary) -> bool:
+	if fx.chain.is_empty():
+		return false
+	var link: Dictionary = fx.chain.back()
+	var lctx: Dictionary = link["ctx"]
+	var chosen := []
+	for step in (lctx["effect"].get("target", []) as Array):
+		if step.get("op", "") == "select":
+			for c in lctx["vars"].get(step.get("as", ""), []):
+				if duel.is_monster(c) and not chosen.has(c):
+					chosen.append(c)
+	return chosen.size() == 1 and link["kind"] == "spell"
+
+func chain_top_target(ctx: Dictionary) -> DCard:
+	var link: Dictionary = fx.chain.back()
+	for step in (link["ctx"]["effect"].get("target", []) as Array):
+		for c in link["ctx"]["vars"].get(step.get("as", ""), []):
+			if duel.is_monster(c):
+				return c
+	return null
+
 func cmp(a: int, op: String, b: int) -> bool:
 	match op:
 		"<": return a < b
@@ -334,6 +374,9 @@ func _cond(c: Dictionary, ctx: Dictionary) -> bool:
 		"var_nonempty": return not (ctx["vars"].get(c.get("name", ""), []) as Array).is_empty()
 		"summoned_this_turn": return ctx["src"].summon_turn == duel.turn
 		"was_flipped_by_battle": return bool(ctx["event"].get("by_battle", false))
+		"destroyed_by_opp_effect": return int(ctx["event"].get("by", -1)) == 1 - me
+		"chain_top_card": return not fx.chain.is_empty() and matches(fx.chain.back()["card"], c.get("filter", {}), ctx)
+		"chain_top_single_monster_target": return chain_top_single_monster_target(ctx)
 		"event_src": return (int(ctx["event"].get("uid", -1)) == ctx["src"].uid) == bool(c.get("is", true))
 		"event_from": return str(ctx["event"].get("from", "")) == str(c.get("is", ""))
 		"equipped_is": return ctx["src"].equipped_to != null and matches(ctx["src"].equipped_to, c.get("filter", {}), ctx)
@@ -347,6 +390,7 @@ func _cond(c: Dictionary, ctx: Dictionary) -> bool:
 		"event_pos": return str(ctx["event"].get("pos", "")) == str(c.get("is", ""))
 		"was_face_up": return bool(ctx["event"].get("was_face_up", false))
 		"src_face_down": return not ctx["src"].face_up
+		"normal_summon_used": return duel.normal_summoned and duel.turn_player == me
 		"src_pos": return ctx["src"].face_up and ctx["src"].pos == str(c.get("is", "atk"))
 		"attacker_weaker_than_target":
 			var wa := duel.card_by_uid(int(ctx["event"].get("attacker", -1)))
@@ -358,6 +402,11 @@ func _cond(c: Dictionary, ctx: Dictionary) -> bool:
 			var vv: Array = ctx["vars"].get(c.get("name", ""), [])
 			return not vv.is_empty() and matches(vv[0], c.get("filter", {}), ctx)
 		"target_is_src": return int(ctx["event"].get("target", -1)) == ctx["src"].uid
+		"chain_top_targets_src":
+			return not fx.chain.is_empty() and chain_top_target(ctx) == ctx["src"]
+		"battle_involves_equipped":
+			var host: DCard = ctx["src"].equipped_to
+			return host != null and (int(ctx["event"].get("attacker", -1)) == host.uid or int(ctx["event"].get("target", -1)) == host.uid)
 		"in_battle": return int(ctx["event"].get("attacker", -1)) == ctx["src"].uid or int(ctx["event"].get("target", -1)) == ctx["src"].uid
 		"attacker_is_src": return int(ctx["event"].get("attacker", -1)) == ctx["src"].uid
 		"killer_is_src": return int(ctx["event"].get("killer", -1)) == ctx["src"].uid
@@ -509,7 +558,11 @@ func run(step: Dictionary, ctx: Dictionary):
 		"pay_lp": duel.pay_lp(me, val(step.get("amount", 0), ctx))
 		"set_lp": duel.set_lp(who(step.get("who", "self"), ctx), val(step.get("amount", 0), ctx))
 		"draw": duel.draw_cards(who(step.get("who", "self"), ctx), val(step.get("n", 1), ctx))
-		"destroy": for c in tg(step, ctx): duel.destroy_card(c, "effect")
+		"destroy":
+			duel.effect_player = me
+			for c in tg(step, ctx):
+				duel.destroy_card(c, "effect")
+			duel.effect_player = -1
 		"to_grave": for c in tg(step, ctx): duel.send_to_grave(c, step.get("reason", "effect"))
 		"to_hand": for c in tg(step, ctx): duel.return_to_hand(c)
 		"to_deck": for c in tg(step, ctx): duel.return_to_deck(c, step.get("where", "top"))
@@ -552,8 +605,11 @@ func run(step: Dictionary, ctx: Dictionary):
 		"mod":
 			var atk: int = val(step.get("atk", 0), ctx)
 			var def: int = val(step.get("def", 0), ctx)
+			var mod_until: String = step.get("until", "end_turn")
+			if step.has("turn_offset"):
+				mod_until = "turn:%d" % (duel.turn + int(step["turn_offset"]))      # until the end of that turn
 			for c in _targets(step.get("what", "$t"), ctx):
-				c.mods.append({"atk": atk, "def": def, "until": step.get("until", "end_turn"), "src": ctx["src"].uid})
+				c.mods.append({"atk": atk, "def": def, "until": mod_until, "src": ctx["src"].uid})
 		"set_stat":
 			for c in _targets(step.get("what", "$t"), ctx):
 				if step.has("atk"):
@@ -563,7 +619,10 @@ func run(step: Dictionary, ctx: Dictionary):
 		"equip":
 			var tgt := _targets(step.get("to", "$t"), ctx)
 			if tgt.size() > 0:
-				duel.equip_card(ctx["src"], tgt[0], {"atk": val(step.get("atk", 0), ctx), "def": val(step.get("def", 0), ctx)})
+				var eq_mod := {"atk": val(step.get("atk", 0), ctx), "def": val(step.get("def", 0), ctx)}
+				if step.has("race"):
+					eq_mod["race"] = race_id(step["race"])
+				duel.equip_card(ctx["src"], tgt[0], eq_mod)
 		"take_control":
 			for c in _targets(step.get("what", "$t"), ctx):
 				duel.take_control(c, who(step.get("to", "self"), ctx), step.get("until", "forever"))
@@ -584,7 +643,7 @@ func run(step: Dictionary, ctx: Dictionary):
 		"negate_attack": duel.negate_current_attack()
 		"set_flag":
 			for c in _targets(step.get("what", "src"), ctx):
-				c.flags[step["name"]] = step.get("value", true)
+				c.flags[step["name"]] = ctx["src"].uid if step.get("value_src", false) else step.get("value", true)
 		"skip_phase": duel.skip_phase(step.get("phase", "battle"))
 		"win": duel.force_win(me, str(step.get("reason", "effect")))
 		"log": duel.log_event(step.get("event", "effect"), step.get("data", {}))
@@ -613,7 +672,8 @@ func run(step: Dictionary, ctx: Dictionary):
 		"token":
 			var kind: String = step.get("kind", "Sheep Token")
 			var owner: int = who(step.get("to", "self"), ctx)
-			for i in int(step.get("n", 1)):
+			var token_n: int = (duel.side(owner).monsters as Array).count(null) if str(step.get("n", 1)) == "free" else int(step.get("n", 1))
+			for i in token_n:
 				var tk := duel.new_token(kind, owner)
 				duel.special_summon(tk, owner, step.get("pos", "def"), true)
 		"bind":
@@ -776,6 +836,12 @@ func run(step: Dictionary, ctx: Dictionary):
 				removed += 1
 			if step.has("as"):
 				ctx["vars"][step["as"]] = removed
+		"switch_equip":
+			var sw_cards := _targets(step.get("card", "$e"), ctx)
+			var sw_hosts := _targets(step.get("to", "$h"), ctx)
+			if not sw_cards.is_empty() and not sw_hosts.is_empty():
+				duel.equip_card(sw_cards[0], sw_hosts[0], (sw_cards[0] as DCard).equip_mod)
+		"extra_summon": duel.normal_summoned = false          # Ultimate Offering: one more Normal Summon or Set
 		"nothing": pass
 		"custom": return FxCustom.run(step.get("fn", ""), step, ctx, fx)
 		_:
