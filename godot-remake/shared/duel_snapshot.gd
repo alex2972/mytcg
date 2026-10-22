@@ -18,9 +18,9 @@ static func build(duel: Duel, viewer: int, revealed := {}, rng: RandomNumberGene
 	var mine := viewer
 	var foe := 1 - viewer
 	var players := []
-	for p in [mine, foe]:
+	for p: int in [mine, foe]:
 		var s: Duel.PlayerSide = duel.side(p)
-		var own := p == viewer
+		var own: bool = p == viewer
 		var deck_uids: Array = s.deck.map(func(c): return c.uid)
 		_shuffle(deck_uids, rng)
 		players.append({

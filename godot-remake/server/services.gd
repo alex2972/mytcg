@@ -8,3 +8,6 @@ static func install(server: GameServer) -> void:
 	server.services["shop_backend"] = shop
 	server.services["auth"] = ServerAuth.new(server, shop.store, server.db)
 	server.services["shop"] = ServerShop.new(server, shop)
+	server.services["rooms"] = RoomManager.new(server)
+	server.services["ranked"] = RankedService.new(server, shop.store)
+	server.services["matchmaker"] = Matchmaker.new(server)

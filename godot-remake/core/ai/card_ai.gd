@@ -41,7 +41,15 @@ static func use_main(d: Duel, p: int, include_end: bool) -> bool:
 				var verdict := _handler(str(en["h"]), d, p, c, int(o["idx"]), "", {})
 				if verdict == 0 or (verdict == -1 and not SimpleAI._safe(d, p, e)):
 					continue
+				# An effect that keeps resolving without changing anything (e.g. a Fusion Gate fusion that
+				# aborts) must not be retried forever: at most 2 activations of one effect per turn.
+				var key := "%d:%d:%d" % [d.turn, c.uid, int(o["idx"])]
+				var tried: Dictionary = d.get_meta("ai_tried", {})
+				if int(tried.get(key, 0)) >= 2:
+					continue
 				if d.activate_effect(p, c, int(o["idx"])) == "":
+					tried[key] = int(tried.get(key, 0)) + 1
+					d.set_meta("ai_tried", tried)
 					return true
 	return false
 

@@ -128,6 +128,7 @@ func _start(first: int) -> void:
 	duel.fx.presentation_enabled = false
 	duel.fx.interactive_selections = true
 	duel.fx.interactive_players = [0, 1].filter(func(i): return human(i))
+	_broadcast()            # the starting picture: full decks, empty hands (clients animate the deal)
 	duel.start_opening_deal()
 	_advance()
 
@@ -176,17 +177,20 @@ func _run_bots() -> void:
 		elif duel.turn_player == a:
 			_auto_end_turn(a)
 		if _progress_mark() == before:
-			_log("WARN", "room %s: bot seat %d is stuck (phase %s); it surrenders" % [id, a, duel.phase])
+			var tail: Array = duel.events.slice(-10).map(func(e): return "%s:%s" % [e.get("type", ""), db.card_name(duel.card_by_uid(int(e.get("uid", e.get("attacker", 0)))).idx) if duel.card_by_uid(int(e.get("uid", e.get("attacker", 0)))) != null else ""])
+			_log("WARN", "room %s: bot seat %d is stuck (phase %s, attack %s, tasks %s, pumping %s, pending %s); it surrenders. Last events: %s" % [id, a, duel.phase, str(duel.current_attack.keys()), str(duel.fx.tasks.map(func(t): return t.get("t", "?"))), str(duel.fx._pumping), str(duel.fx.pending.get("type", "")), ", ".join(PackedStringArray(tail))])
 			duel.surrender(a)
 			return
 	if steps >= MAX_BOT_STEPS:
-		_log("ERROR", "room %s: bot step limit reached; the bot surrenders" % id)
+		var tail: Array = duel.events.slice(-8).map(func(e): return "%s:%s" % [e.get("type", ""), db.card_name(duel.card_by_uid(int(e.get("uid", 0))).idx) if duel.card_by_uid(int(e.get("uid", 0))) != null else ""])
+		_log("ERROR", "room %s: bot step limit reached in %s; the bot surrenders. Last events: %s" % [id, duel.phase, ", ".join(PackedStringArray(tail))])
 		var a := actor()
 		if a >= 0:
 			duel.surrender(a)
 
 func _progress_mark() -> String:
-	return "%d|%d|%s|%d|%s" % [duel.events.size(), duel.turn, duel.phase, duel.winner, str(duel.fx.pending.get("type", "")) + str(duel.fx.pending.get("player", ""))]
+	return "%d|%d|%s|%d|%s|%d|%d|%d" % [duel.events.size(), duel.turn, duel.phase, duel.winner, str(duel.fx.pending.get("type", "")) + str(duel.fx.pending.get("player", "")),
+		duel.fx.tasks.size(), duel.fx.chain.size(), hash(duel.fx.pending.get("options", []))]
 
 ## Safe default for a decision nobody answered: pass / no / the first allowed choice.
 func _auto_answer(seat: int) -> void:

@@ -158,10 +158,16 @@ var fx_enabled := true
 var music_started := false
 var strings: Array = []
 var opening_source: SubViewport = null
+var online := false                      ## the duel runs on the server (duel is a RemoteDuel)
 
-func _init(card_db: CardDB, deck0: Deck, deck1: Deck, seed_value := 0, first := 0) -> void:
+## Online play passes a RemoteDuel (the server runs the rules; this board only shows and sends intents).
+func _init(card_db: CardDB, deck0: Deck, deck1: Deck, seed_value := 0, first := 0, remote: Duel = null) -> void:
 	db = card_db
-	duel = Duel.create(db, deck0, deck1, seed_value, first, null, true)
+	if remote != null:
+		duel = remote
+		online = true
+	else:
+		duel = Duel.create(db, deck0, deck1, seed_value, first, null, true)
 	duel.no_first_turn_attack = true
 	custom_minimum_size = SIZE
 	size = SIZE
@@ -183,6 +189,11 @@ func _ready() -> void:
 	if is_instance_valid(opening_source):
 		opening_source.queue_free()
 		opening_source = null
+	if online:
+		duel.updated.connect(_on_remote_update)
+		duel.refused.connect(_on_remote_refused)
+		await _after_action()
+		return
 	duel.start_opening_deal()
 	await _after_action()
 	_maybe_ai()
@@ -1534,8 +1545,18 @@ func _try_end_turn() -> void:
 
 # --- opponent turn -------------------------------------------------------------
 
+## Online: the server sent a batch (our action's result or the opponent's moves).
+func _on_remote_update() -> void:
+	await _after_action()
+
+func _on_remote_refused(reason: String) -> void:
+	prompt.text = reason
+	AudioUtil.sfx("unable")
+	_update_ui()
+	_check_decision()
+
 func _maybe_ai() -> void:
-	if ai_running:
+	if ai_running or online:
 		return
 	ai_running = true
 	while duel.winner == -1:

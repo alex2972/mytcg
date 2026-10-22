@@ -74,6 +74,29 @@ static func add(deck: Deck, db: CardDB, idx: int, section := "", owned := -1) ->
 		section_of(deck, section).append(idx)
 	return reason
 
+## Ranked play enforces every deck-building rule: 40-60 Main Deck cards, at most 15 Fusion and 15 Side,
+## Fusion monsters only in the Fusion Deck, and copies per name under the limited/forbidden list.
+## Returns the first problem, or "" when the deck is legal.
+static func ranked_problem(deck: Deck, db: CardDB) -> String:
+	if deck == null:
+		return "No deck."
+	if deck.main.size() < MIN_MAIN:
+		return "Deck needs at least %d cards (has %d)." % [MIN_MAIN, deck.main.size()]
+	if deck.main.size() > MAX_MAIN:
+		return "Deck can have at most %d cards." % MAX_MAIN
+	if deck.extra.size() > MAX_EXTRA or deck.side.size() > MAX_SIDE:
+		return "The Fusion and Side Decks can have at most %d cards each." % MAX_EXTRA
+	for i in deck.extra:
+		if not belongs_in_extra(db, int(i)):
+			return "Only Fusion Monsters go in the Fusion Deck."
+	for i in deck.main + deck.side:
+		if belongs_in_extra(db, int(i)):
+			return "Fusion Monsters belong in the Fusion Deck."
+	for i in deck.main + deck.extra + deck.side:
+		if group_copies(deck, db, int(i)) > copy_limit(db, int(i)):
+			return "Too many copies of %s for ranked play." % db.card_name(int(i))
+	return ""
+
 ## Problems that make the deck unusable for a duel (empty array = valid).
 static func problems(deck: Deck, db: CardDB) -> Array:
 	var out := []

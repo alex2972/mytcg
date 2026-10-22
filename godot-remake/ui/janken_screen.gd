@@ -4,6 +4,8 @@ extends Control
 ## Assets and coordinates come from the original's janken.txt; crate frames: 1 idle, 2 lit (hover), 3 chosen.
 
 signal finished(human_first: bool)
+signal picked(hand: int)                ## online: my pick for the server (0 rock, 1 paper, 2 scissors)
+signal order_picked(first: bool)        ## online: my first/second choice for the server
 
 enum Phase { SELECT, RESULT, ORDER, DONE }
 
@@ -35,6 +37,19 @@ var row_top: Control
 var row_bottom: Control
 var belt_time := 0.0
 var belts: Array[TextureRect] = []
+## Online: the server decides. My pick is sent with `picked`, the reveal waits for remote_result(),
+## and when the opponent chooses the order the screen waits for remote_order().
+var remote := false
+var _remote_picks: Array = []
+var _remote_order := -1
+const SERVER_HAND := {"gu": 0, "pa": 1, "cyo": 2}
+const HAND_OF_SERVER := ["gu", "pa", "cyo"]
+
+func remote_result(mine: int, theirs: int) -> void:
+	_remote_picks = [mine, theirs]
+
+func remote_order(human_first: bool) -> void:
+	_remote_order = 1 if human_first else 0
 
 func _process(delta: float) -> void:
 	if phase != Phase.SELECT:
@@ -189,7 +204,14 @@ func _choose(hand: String) -> void:
 	AudioUtil.sfx("decide")
 	CursorUtil.set_state("off")
 	my_pick = hand
-	cpu_pick = HANDS[rng.randi_range(0, 2)]
+	if remote:
+		picked.emit(int(SERVER_HAND[hand]))
+		while _remote_picks.is_empty():
+			await get_tree().process_frame
+		cpu_pick = HAND_OF_SERVER[clampi(int(_remote_picks[1]), 0, 2)]
+		_remote_picks = []
+	else:
+		cpu_pick = HANDS[rng.randi_range(0, 2)]
 	banner.texture = _t("bg_mid_m1")
 	var chosen := hovered
 	if chosen < 0:
@@ -297,6 +319,10 @@ func _show_order() -> void:
 	if not human_won:
 		# the opponent decides (original shows its choice lit up)
 		var first := rng.randi_range(0, 1)       # 0 = the opponent chose FIRST, so the human goes second
+		if remote:
+			while _remote_order < 0:
+				await get_tree().process_frame
+			first = 1 if _remote_order == 1 else 0
 		await get_tree().create_timer(0.8).timeout
 		(order_crates[first] as TextureRect).texture = _t("start_%s_%s2" % [kinds[first], lang])
 		await _choose_order(first, first == 1)
@@ -316,6 +342,8 @@ func _on_order_input(event: InputEvent, i: int) -> void:
 
 func _choose_order(i: int, human_first: bool) -> void:
 	order_busy = true
+	if remote and human_won:
+		order_picked.emit(human_first)
 	CursorUtil.set_state("off")
 	AudioUtil.sfx("decide")
 	var other: TextureRect = order_crates[1 - i]

@@ -33,7 +33,6 @@ const DEFAULT_CONFIG := {
 	"queue_window_base": 100,
 	"queue_window_per_second": 25,
 	"queue_window_cap": 600,
-	"casual_any_after": 5.0,
 	"casual_bot_after": 30.0,
 	"reward_ranked_win": 50,
 	"reward_ranked_loss": 10,
