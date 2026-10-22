@@ -18,8 +18,11 @@ static func load_default(card_db: CardDB, path := "") -> Collection:
 	var c := Collection.new()
 	c.db = card_db
 	if FileAccess.file_exists(path):
-		var parsed = JSON.parse_string(FileAccess.get_file_as_string(path))
-		if parsed is Dictionary:
+		var parsed = AccountStore._read_json(path)
+		if not parsed is Dictionary:
+			# Damaged file: keep it for recovery instead of overwriting it with a starter collection.
+			AccountStore.quarantine(path)
+		elif parsed is Dictionary:
 			if parsed.has("format"):
 				# Format 2: keyed by Konami card number, stable across card-database rebuilds.
 				c.counts = counts_from_numbers(card_db, parsed.get("cards", {}))

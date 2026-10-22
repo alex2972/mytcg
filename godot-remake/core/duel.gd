@@ -97,6 +97,27 @@ func _new_card(idx: int, owner: int) -> DCard:
 	_next_uid += 1
 	return c
 
+## Frees a finished duel: the engine objects reference each other (Duel <-> Fx <-> FxOps, equip links,
+## tasks holding callables), which reference counting alone never releases. Long-running servers call this.
+func dispose() -> void:
+	for c in cards.values():
+		c.equipped_to = null
+		c.equips = []
+	if fx != null:
+		fx.tasks.clear()
+		fx.pending = {}
+		fx.chain.clear()
+		if fx.ops != null:
+			fx.ops.fx = null
+			fx.ops.duel = null
+		fx.ops = null
+		fx.duel = null
+	fx = null
+	events.clear()
+	cards.clear()
+	sides.clear()
+	current_attack = {}
+
 func card_by_uid(uid: int) -> DCard:
 	return cards.get(uid)
 

@@ -1,11 +1,13 @@
 extends Node
-## Dedicated server entry: godot --headless --path . res://server/server_main.tscn -- --port 9080 --data user://server_dev [--dev]
+## Dedicated server entry:
+##   godot --headless --path . res://server/server_main.tscn -- --port 9080 --data user://server_dev [--dev]
+##         [--tls-cert fullchain.pem --tls-key privkey.pem]   (wss:// directly; or put a TLS proxy in front)
 
 var server: GameServer
 
 func _ready() -> void:
 	var args := OS.get_cmdline_user_args()
-	var opts := {"--port": str(Protocol.DEFAULT_PORT), "--data": "user://server_dev"}
+	var opts := {"--port": str(Protocol.DEFAULT_PORT), "--data": "user://server_dev", "--tls-cert": "", "--tls-key": ""}
 	var dev := false
 	var i := 0
 	while i < args.size():
@@ -23,7 +25,16 @@ func _ready() -> void:
 	if dev:
 		overrides["dev"] = true
 	server.setup(opts["--data"], overrides)
-	if server.listen(int(opts["--port"])) != OK:
+	var tls: TLSOptions = null
+	if opts["--tls-cert"] != "" and opts["--tls-key"] != "":
+		var cert := X509Certificate.new()
+		var key := CryptoKey.new()
+		if cert.load(opts["--tls-cert"]) != OK or key.load(opts["--tls-key"]) != OK:
+			server.log_line("ERROR", "could not load the TLS certificate/key")
+			get_tree().quit(1)
+			return
+		tls = TLSOptions.server(key, cert)
+	if server.listen(int(opts["--port"]), tls) != OK:
 		get_tree().quit(1)
 		return
 	get_tree().set_auto_accept_quit(false)

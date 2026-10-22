@@ -19,6 +19,9 @@ var _rid := 0
 var _replies := {}               ## rid -> result
 var _ping_accum := 0.0
 var hello_ok := false
+## TLS for wss:// URLs (null = verify against the system's trusted certificates).
+## Development with a self-signed certificate: TLSOptions.client_unsafe().
+var tls_options: TLSOptions = null
 
 func _ready() -> void:
 	net = NetNode.new()
@@ -40,7 +43,7 @@ func open(server_url: String) -> Error:
 	ws.outbound_buffer_size = 4194304
 	ws.max_queued_packets = 4096
 	ws.handshake_timeout = 10.0
-	var err := ws.create_client(server_url)
+	var err := ws.create_client(server_url, tls_options)
 	if err != OK:
 		state = "offline"
 		return err

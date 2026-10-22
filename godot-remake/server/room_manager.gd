@@ -66,6 +66,13 @@ func create_room(mode: String, a: Dictionary, b: Dictionary, fixed_seed := -1) -
 	server.log_line("INFO", "room %s (%s): %s vs %s" % [id, mode, a.get("name", "?"), b.get("name", "?")])
 	return room
 
+## Server shutdown: every running duel ends as a no-contest (no rating change, no rewards).
+func shutdown() -> void:
+	for room in rooms.values():
+		var r: DuelRoom = room
+		if r.state != "finished":
+			r._finish(2, "server_shutdown")
+
 func tick(t: float) -> void:
 	for room in rooms.values():
 		(room as DuelRoom).tick(t)
@@ -143,4 +150,8 @@ func _on_room_ended(room: DuelRoom) -> void:
 		if acc != "" and account_room.get(acc, "") == room.id:
 			account_room.erase(acc)
 	# Keep the finished room briefly so late resyncs still get the result.
-	server.get_tree().create_timer(5.0).timeout.connect(func(): rooms.erase(room.id))
+	server.get_tree().create_timer(5.0).timeout.connect(func():
+		rooms.erase(room.id)
+		if room.duel != null:
+			room.duel.dispose()
+			room.duel = null)

@@ -3,6 +3,8 @@ extends RefCounted
 ## Results of finished duels: Elo ratings (ranked, human vs human only), win/loss records, DP rewards,
 ## the match log (<data>/matches/<yyyy-mm>.jsonl, written before the profiles), and the leaderboard.
 
+const NO_CONTEST := ["server_shutdown", "stuck"]
+
 var server: GameServer
 var store: AccountStore
 var _board_cache := []
@@ -36,6 +38,11 @@ func on_duel_finished(room: DuelRoom) -> Array:
 		if humans[i] and room.seats[i]["account"] != "":
 			profiles[i] = store.profile(room.seats[i]["account"])
 	var pvp: bool = humans[0] and humans[1] and not profiles[0].is_empty() and not profiles[1].is_empty()
+	if NO_CONTEST.has(str(r.get("reason", ""))):
+		# The duel did not really finish (server shut down, rules engine stuck): log it, change nothing.
+		_append_match({"room": room.id, "mode": room.mode, "time": int(server.now()), "winner": winner, "reason": r.get("reason", ""),
+			"turns": int(r.get("turns", 0)), "players": [room.seats[0]["account"], room.seats[1]["account"]], "no_contest": true})
+		return [{"no_contest": true}, {"no_contest": true}]
 	var ranked: bool = room.mode == "ranked" and pvp
 	var log_row := {"room": room.id, "mode": room.mode, "time": int(server.now()), "winner": winner, "reason": r.get("reason", ""),
 		"turns": int(r.get("turns", 0)), "players": [room.seats[0]["account"], room.seats[1]["account"]], "bots": [room.seats[0]["bot"], room.seats[1]["bot"]]}

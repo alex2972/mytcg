@@ -16,6 +16,12 @@ func _init(game_server: GameServer) -> void:
 	server.register("queue_leave", _on_leave, true)
 	server.peer_left.connect(func(peer): _remove_peer(peer))
 
+func shutdown() -> void:
+	for mode in queues:
+		for e in queues[mode]:
+			server.push(int(e["peer"]), "queue_status", {"mode": mode, "cancelled": true, "reason": "server_shutdown"})
+		queues[mode] = []
+
 func status() -> Dictionary:
 	return {"queue_ranked": queues["ranked"].size(), "queue_casual": queues["casual"].size()}
 

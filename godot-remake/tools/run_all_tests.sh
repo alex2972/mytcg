@@ -11,7 +11,7 @@ for f in tests/test_*.gd tests/online/test_*.gd; do
   total=$((total+1))
   out=$(timeout 90 "$G" --headless --path . -s "$f" 2>&1)
   code=$?
-  bad=$(echo "$out" | grep -iE "FAIL|SCRIPT ERROR|Parse Error" | head -5)
+  bad=$(echo "$out" | grep -E "^FAIL|FAIL:|SCRIPT ERROR|Parse Error|tests: [0-9]+ FAILED| FAILED$" | grep -v "Returning: FAILED" | head -5)
   if [ $code -ne 0 ] || [ -n "$bad" ]; then
     failed=$((failed+1))
     echo "== $f (exit $code)"

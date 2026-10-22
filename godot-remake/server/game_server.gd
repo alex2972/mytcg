@@ -102,23 +102,25 @@ func _ready() -> void:
 	api.peer_connected.connect(_on_peer_connected)
 	api.peer_disconnected.connect(_on_peer_disconnected)
 
-## Starts listening for WebSocket clients.
-func listen(port: int) -> Error:
+## Starts listening for WebSocket clients (wss:// when `tls` is given, e.g. TLSOptions.server(key, cert)).
+func listen(port: int, tls: TLSOptions = null) -> Error:
 	var ws := WebSocketMultiplayerPeer.new()
 	ws.inbound_buffer_size = int(config["ws_buffer_bytes"])
 	ws.outbound_buffer_size = int(config["ws_buffer_bytes"])
 	ws.max_queued_packets = 4096
 	ws.handshake_timeout = 10.0
-	var err := ws.create_server(port)
+	var err := ws.create_server(port, "*", tls)
 	if err != OK:
 		log_line("ERROR", "could not listen on port %d: %s" % [port, error_string(err)])
 		return err
 	peer = ws
 	api.multiplayer_peer = ws
-	log_line("INFO", "listening on ws://*:%d (protocol %d, data %s)" % [port, Protocol.VERSION, Protocol.data_hash().left(12)])
+	log_line("INFO", "listening on %s://*:%d (protocol %d, data %s)" % ["wss" if tls != null else "ws", port, Protocol.VERSION, Protocol.data_hash().left(12)])
 	return OK
 
 func stop() -> void:
+	for id in peers.keys():
+		push(id, "server_closing", {})
 	for s in services.values():
 		if s.has_method("shutdown"):
 			s.shutdown()

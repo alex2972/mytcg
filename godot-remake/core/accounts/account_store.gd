@@ -21,9 +21,52 @@ func _init(root_dir := DEFAULT_ROOT, start_dp := 0) -> void:
 	root = root_dir.trim_suffix("/")
 	starting_dp = start_dp
 	DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(root))
-	var parsed = _read_json(root + "/index.json")
+	var index_path := root + "/index.json"
+	var parsed = _read_json(index_path)
 	if parsed is Dictionary and parsed.get("accounts") is Array:
 		_index = parsed
+	elif FileAccess.file_exists(index_path):
+		quarantine(index_path)
+		rebuild_index()
+
+## Rebuilds index.json from the account folders (each valid profile.json). Returns how many were found.
+func rebuild_index() -> int:
+	var active: String = str(_index.get("active", ""))
+	_index = {"accounts": [], "active": ""}
+	var dir := ProjectSettings.globalize_path(root)
+	var ids := DirAccess.get_directories_at(dir)
+	ids.sort()
+	for id in ids:
+		var p = _read_json(profile_path(id))
+		if p is Dictionary and str(p.get("id", "")) == id:
+			(_index["accounts"] as Array).append({"id": id, "name": str(p.get("name", id))})
+	if has_account(active):
+		_index["active"] = active
+	_save_index()
+	return (_index["accounts"] as Array).size()
+
+## Checks every account file at startup. Unreadable files are moved aside (never overwritten) and
+## accounts missing from the index are added back. Returns {"accounts", "quarantined": [paths], "reindexed"}.
+func validate() -> Dictionary:
+	var quarantined := []
+	var dir := ProjectSettings.globalize_path(root)
+	var missing := 0
+	for id in DirAccess.get_directories_at(dir):
+		for path in [profile_path(id), collection_path(id)]:
+			if FileAccess.file_exists(path) and not _read_json(path) is Dictionary:
+				quarantined.append(quarantine(path))
+		if FileAccess.file_exists(profile_path(id)) and not has_account(id):
+			missing += 1
+	if missing > 0:
+		rebuild_index()
+	return {"accounts": accounts().size(), "quarantined": quarantined, "reindexed": missing}
+
+## Moves a damaged file to "<path>.corrupt-<unix time>" so nothing overwrites it; returns the new path.
+static func quarantine(path: String) -> String:
+	var target := "%s.corrupt-%d" % [path, int(Time.get_unix_time_from_system())]
+	DirAccess.rename_absolute(ProjectSettings.globalize_path(path), ProjectSettings.globalize_path(target))
+	push_warning("Damaged save moved aside: %s" % target)
+	return target
 
 ## Account id for a display name, compared case-insensitively ("" when none).
 func find_by_name(display_name: String) -> String:
@@ -124,7 +167,10 @@ func _save_index() -> void:
 static func _read_json(path: String) -> Variant:
 	if not FileAccess.file_exists(path):
 		return null
-	return JSON.parse_string(FileAccess.get_file_as_string(path))
+	var json := JSON.new()
+	if json.parse(FileAccess.get_file_as_string(path)) != OK:
+		return null
+	return json.data
 
 ## Write to a temporary file and rename, so a crash never leaves a half-written save.
 static func write_json(path: String, data: Variant) -> Error:

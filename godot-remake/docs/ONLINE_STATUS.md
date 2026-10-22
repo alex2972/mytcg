@@ -1,35 +1,39 @@
-# Online: status (autonomous run, stopped early at the usage limit)
+# Online: status
 
-Branch `online` (local only, nothing pushed). Plan: `docs/ONLINE_PLAN.md`. Decisions: `docs/ONLINE_DECISIONS.md`.
+Branch `online` (local only, nothing pushed). Plan: `docs/ONLINE_PLAN.md`. How it works: `docs/ONLINE.md`. Decisions: `docs/ONLINE_DECISIONS.md`.
 User overrides: no web build (phase 8 skipped), no pushing.
 
-## Done
-- **Phase 1 transport**: WebSocket + Godot high-level RPC (`shared/net_node.gd`, 2 generic RPCs), `GameServer` (config, logging, audit log,
-  rate limit, strikes/kicks, hello/version+data-hash check, idle/hello timeouts), `OnlineClient`, `server/server_main.tscn`, test harness.
-- **Phase 2 accounts**: register/login/token/logout, empty passwords allowed, PBKDF2 hashes, login delays, one session per account,
-  login screen (`client/login_screen.gd`), title-screen "Online" button, `Session` online mode with saved token.
-- **Phase 3 data**: shop/collection/deck on the server (`server/shop_service.gd`), `RemoteShopBackend`, card numbers on the wire and in
-  collection files (format 2, old format still read), deck save validation, idempotent retransmissions, screens load through `Session`.
-- **Phase 4 rooms**: `server/duel_room.gd` (janken, intents validated, bots via JoeyAI, timers, disconnect grace, reconnect resync, surrender),
-  `shared/duel_snapshot.gd` (hidden-info filter, mirrored so each client is player 0), `server/room_manager.gd`, dev bot duel.
-- **Phase 5 client duel**: `client/remote_duel.gd` (extends Duel; DuelBoard runs unchanged), janken online mode, `client/online_duel_screen.gd`.
-- **Phase 6 ranked**: `server/matchmaker.gd` (ranked window, casual, CPU fallback, practice), `server/ranked.gd` (Elo, records, rewards,
-  match log, leaderboard), `DeckRules.ranked_problem`, `client/online_lobby.gd`.
-- **Phase 7 (part)**: fuzz test (found and fixed a shop crash and a reply-cache bug).
-- CPU fix found by 200 bot duels: an effect that changes nothing (Fusion Gate) is no longer retried forever (also affected offline play).
+## Phase checklist
+| Phase | State |
+|---|---|
+| 1 Transport, server skeleton | done (WebSocket + high-level RPC, hello/version/data hash, rate limit, strikes, timeouts, logs, config) |
+| 2 Accounts and auth | done (register/login/token/logout, optional passwords hashed with PBKDF2, login delays, one session per account, login screen) |
+| 3 Remote data and shop | done (shop, collection, deck on the server; card numbers on the wire and in files; idempotent requests) |
+| 4 Authoritative duel rooms | done (janken, intents, CPU seats, timers, disconnect grace, reconnect, surrender, hidden-info filter) |
+| 5 Client duel | done (RemoteDuel extends Duel so the board is unchanged; janken online; online duel screen) |
+| 6 Matchmaking and ranked | done (ranked window, casual, CPU fallback, practice, Elo, rewards, match log, leaderboard, lobby) |
+| 7 Hardening and operations | done (fuzz test, damaged-file quarantine + index rebuild, daily backups, no-contest shutdown, TLS, deploy kit, memory leak fix) |
+| 8 Web client build | skipped on request |
+| 9 Soak, docs, handover | done (soak tool, ONLINE.md, this file) |
 
-## Tests (all green when last run individually)
-`tests/online/`: test_transport, test_auth, test_online_data, test_room_rules, test_hidden_info, test_online_duel, test_matchmaking, test_fuzz_rpc.
-Run everything: `bash tools/run_all_tests.sh` (from `godot-remake/`). The full suite was green after phase 3; it was NOT rerun after phases 4-7
-(the last background run started in the wrong folder). Rerun it first.
-Tools: `tools/online/bot_duels.gd` (200 CPU duels: all finished; rerun after the CPU fix), `tools/online/shot_online.gd` (windowed end-to-end screenshots).
+## Results
+- Test suite: `bash tools/run_all_tests.sh` -> 75 test scripts (including 9 online files), all pass. The one intermittent failure seen
+  (`tests/test_deck_editor.gd` "drawer animates instead of jumping", a frame-timing check older than the online work) passes when rerun alone.
+- Soak (`tools/online/soak.gd -- 4 8`): 4.3 min, 8 clients, 70 duels (42 ranked, 28 casual) through the real protocol, 38 rooms, 0 stuck,
+  0 errors, rating changes sum to 0. Memory grew 81 -> 117 MB in that run, which led to the `Duel.dispose()` fix (30 CPU duels: +11.4 MB before, +2.8 MB after).
+- Soak after the fix (`-- 3 8`, the soak's clients now dispose their duels as the real duel screen does): 3.5 min, 72 duels (46 ranked, 26 casual),
+  36 rooms, 0 stuck, 0 errors, 0 refusals, rating sum 0; memory 81.6 -> 84.7 MB, no objects leaked at exit.
+- CPU robustness (`tools/online/bot_duels.gd -- 200`): all 200 duels finished; the 14 CPU stalls seen before the `CardAI` fix were Fusion Gate retry loops
+  and a progress check that ignored closing response windows (both fixed; 80 seeded duels then ran clean).
+- Hidden information: 16 duels, ~12 000 card entries checked against the server's real state, no leaks.
+- Real window: lobby -> janken -> board -> summon -> surrender -> result checked with `tools/online/shot_online.gd`.
 
-## Run it
-Server: `godot --headless --path . res://server/server_main.tscn -- --port 9080 --data user://server_dev --dev`
-Client: start the game, Online, server `ws://127.0.0.1:9080`, Register, Play Online.
+## Not verified here
+- Docker/Caddy deployment (no Docker in this environment); the files are in `deploy/`.
+- Two humans on two machines over the internet (tested with in-process clients over localhost WebSocket).
 
-## Open items (not done)
-- Phase 7 rest: quarantine of corrupt JSON files, daily backups, graceful shutdown (end rooms as no-contest; ranked should not rate
-  "stuck"/"server_shutdown"), native TLS options, `deploy/` (Dockerfile, compose, Caddyfile, README).
-- Phase 9: soak test with many bot clients, `docs/ONLINE.md` (protocol reference), final full-suite run.
-- Phase 8 (web build) skipped by request.
+## Open items / ideas
+- Web export (needs export templates, bundled fonts instead of system fonts, an audio-unlock click).
+- Persistent tokens (a server restart logs everyone out; clients fall back to the login screen).
+- A real database behind `AccountStore` when the player count grows; multiple deck slots; friends/chat/spectators; seasons.
+- The soak's CPU-like clients are simple; a human-like client could find more rule-edge refusals.

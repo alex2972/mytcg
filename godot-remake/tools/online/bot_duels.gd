@@ -13,6 +13,7 @@ func run() -> void:
 	var turns := []
 	var errors := []
 	var t0 := Time.get_ticks_msec()
+	var mem0 := OS.get_static_memory_usage()
 	var rng := RandomNumberGenerator.new()
 	rng.randomize()
 	for i in n:
@@ -29,9 +30,12 @@ func run() -> void:
 		var reason := str(r.result.get("reason", "unfinished")) if r.state == "finished" else "unfinished"
 		reasons[reason] = int(reasons.get(reason, 0)) + 1
 		turns.append(int(r.result.get("turns", 0)))
+		if r.duel != null:
+			r.duel.dispose()
 	turns.sort()
 	print("bot duels: %d in %.1f s" % [n, (Time.get_ticks_msec() - t0) / 1000.0])
 	print("outcomes: ", reasons)
 	print("turns: median %d, max %d" % [turns[turns.size() / 2], turns[-1]])
 	print("room warnings/errors: %d %s" % [errors.size(), str(errors.slice(0, 5))])
+	print("memory: %.1f MB -> %.1f MB" % [mem0 / 1048576.0, OS.get_static_memory_usage() / 1048576.0])
 	quit(0 if not reasons.has("unfinished") and not reasons.has("stuck") else 1)

@@ -159,6 +159,8 @@ func _show_result() -> void:
 	box.add_child(ok)
 
 func _exit_tree() -> void:
+	if remote != null:
+		remote.dispose()
 	var session := _session()
 	if session != null and session.online != null and session.online.pushed.is_connected(_on_push):
 		session.online.pushed.disconnect(_on_push)

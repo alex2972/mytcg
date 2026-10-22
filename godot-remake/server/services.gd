@@ -6,6 +6,7 @@ static func install(server: GameServer) -> void:
 	server.db = CardDB.load_default()
 	var shop := LocalShopBackend.new(server.db, server.data_dir + "/accounts")
 	server.services["shop_backend"] = shop
+	server.services["maintenance"] = ServerMaintenance.new(server, shop.store)
 	server.services["auth"] = ServerAuth.new(server, shop.store, server.db)
 	server.services["shop"] = ServerShop.new(server, shop)
 	server.services["rooms"] = RoomManager.new(server)
