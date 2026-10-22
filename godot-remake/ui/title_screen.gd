@@ -7,6 +7,7 @@ var main_menu: PlankMenu
 var duel_menu: PlankMenu
 var options_button: TextureButton
 var account_button: Button
+var online_button: Button
 var account_panel: PanelContainer
 var account_list: VBoxContainer
 var new_account_name: LineEdit
@@ -58,8 +59,19 @@ func _ready() -> void:
 	account_button.position = Vector2(24, 534)
 	account_button.size = Vector2(180, 36)
 	account_button.clip_text = true
-	account_button.pressed.connect(toggle_accounts)
+	account_button.pressed.connect(func():
+		if _session() != null and _session().is_online():
+			action.emit("online")
+		else:
+			toggle_accounts())
 	add_child(account_button)
+	# Temporary entry to online play (sign in, ranked/casual).
+	online_button = Button.new()
+	online_button.name = "OnlineButton"
+	online_button.position = Vector2(596, 534)
+	online_button.size = Vector2(180, 36)
+	online_button.pressed.connect(func(): action.emit("online"))
+	add_child(online_button)
 	_build_account_panel()
 	_update_account_button()
 
@@ -69,8 +81,14 @@ func _session() -> Node:
 func _update_account_button() -> void:
 	var session := _session()
 	account_button.visible = session != null and main_menu.visible
+	online_button.visible = account_button.visible
 	if session == null:
 		return
+	if session.is_online():
+		account_button.text = "Online: " + str(session.display_name())
+		online_button.text = "Play Online"
+		return
+	online_button.text = "Online"
 	var current: String = session.account_id()
 	for a in session.accounts():
 		if a["id"] == current:
@@ -139,6 +157,7 @@ func _on_main(i: int) -> void:
 			main_menu.visible = false
 			options_button.visible = false
 			account_button.visible = false
+			online_button.visible = false
 			account_panel.visible = false
 			duel_menu.visible = true
 			CursorUtil.set_state("off")

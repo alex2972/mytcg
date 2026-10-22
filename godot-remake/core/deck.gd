@@ -49,6 +49,24 @@ static func load_file(path: String, db: CardDB) -> Deck:
 	var f := FileAccess.open(path, FileAccess.READ)
 	return null if f == null else from_bytes(f.get_buffer(f.get_length()), db)
 
+## {"main": [numbers], "extra": [...], "side": [...]} for the network.
+func to_numbers(db: CardDB) -> Dictionary:
+	var out := {}
+	for key in ["main", "extra", "side"]:
+		out[key] = (get(key) as Array).map(func(i): return int(db.cards[int(i)].get("number", 0)))
+	return out
+
+static func from_numbers(db: CardDB, data: Dictionary) -> Deck:
+	var d := Deck.new()
+	for key in ["main", "extra", "side"]:
+		var list: Array = data.get(key, []) if data.get(key, []) is Array else []
+		var section: Array = d.get(key)
+		for n in list.slice(0, 80):
+			var i := Collection.index_of_number(db, int(n))
+			if i > 0:
+				section.append(i)
+	return d
+
 func copies(card_index: int) -> int:
 	return main.count(card_index) + extra.count(card_index) + side.count(card_index)
 

@@ -60,6 +60,7 @@ var _log_file: FileAccess
 var _metrics := {"requests": 0, "errors": 0, "kicks": 0}
 var _metrics_at := 0.0
 var services := {}               ## name -> service object (auth, shop, rooms, matchmaker, ranked)
+var db: CardDB
 
 func now() -> float:
 	return Time.get_unix_time_from_system() + clock_offset

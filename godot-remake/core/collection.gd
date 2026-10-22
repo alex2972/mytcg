@@ -70,6 +70,39 @@ func max_deck_size() -> int:
 func can_build_deck() -> bool:
 	return max_deck_size() >= DeckRules.MIN_MAIN
 
+# --- stable card identity (Konami numbers) for the network and the server store ---------------
+
+static var _by_number := {}
+static var _by_number_db: CardDB = null
+
+## CardDB index of a Konami card number (0 when unknown).
+static func index_of_number(card_db: CardDB, number: int) -> int:
+	if _by_number_db != card_db:
+		_by_number = {}
+		for i in range(1, card_db.cards.size()):
+			var n := int(card_db.cards[i].get("number", -1))
+			if not _by_number.has(n):
+				_by_number[n] = i
+		_by_number_db = card_db
+	return int(_by_number.get(number, 0))
+
+## {"<number>": copies} -> {index: copies} (unknown numbers are dropped).
+static func counts_from_numbers(card_db: CardDB, numbers: Dictionary) -> Dictionary:
+	var out := {}
+	for k in numbers:
+		var i := index_of_number(card_db, int(k))
+		if i > 0:
+			out[i] = mini(MAX_OWNED, int(out.get(i, 0)) + int(numbers[k]))
+	return out
+
+## {index: copies} -> {"<number>": copies}
+func to_numbers() -> Dictionary:
+	var out := {}
+	for i in counts:
+		if int(counts[i]) > 0:
+			out[str(int(db.cards[int(i)].get("number", 0)))] = int(counts[i])
+	return out
+
 ## The signed-in account's collection file.
 static func active_path() -> String:
 	var tree := Engine.get_main_loop() as SceneTree

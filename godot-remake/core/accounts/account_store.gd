@@ -25,6 +25,14 @@ func _init(root_dir := DEFAULT_ROOT, start_dp := 0) -> void:
 	if parsed is Dictionary and parsed.get("accounts") is Array:
 		_index = parsed
 
+## Account id for a display name, compared case-insensitively ("" when none).
+func find_by_name(display_name: String) -> String:
+	var key := display_name.strip_edges().to_lower()
+	for a in _index["accounts"]:
+		if str(a["name"]).to_lower() == key:
+			return str(a["id"])
+	return ""
+
 func accounts() -> Array:
 	return (_index["accounts"] as Array).duplicate(true)
 
