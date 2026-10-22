@@ -162,8 +162,10 @@ func on_c2s(sender: int, kind, rid, args) -> void:
 		return
 	# A repeated request id gets the stored answer (idempotent purchases and intents).
 	var replies: Dictionary = info["replies"]
-	if rid > 0 and replies.has(rid):
-		_reply(sender, rid, replies[rid])
+	# A retransmission is the same request id, kind and arguments; only that gets the stored answer.
+	var fingerprint := hash([kind, args])
+	if rid > 0 and replies.has(rid) and replies[rid]["fp"] == fingerprint:
+		_reply(sender, rid, replies[rid]["result"])
 		return
 	var result = (h["fn"] as Callable).call(sender, args)
 	if not result is Dictionary:
@@ -172,7 +174,7 @@ func on_c2s(sender: int, kind, rid, args) -> void:
 	if not result.get("ok", false):
 		_metrics["errors"] += 1
 	if rid > 0:
-		replies[rid] = result
+		replies[rid] = {"fp": fingerprint, "result": result}
 		if replies.size() > 50:
 			replies.erase(replies.keys().min())
 		_reply(sender, rid, result)

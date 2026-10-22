@@ -35,18 +35,18 @@ func _on_shop(peer: int, args: Dictionary) -> Dictionary:
 		"get_catalog":
 			return shop.get_catalog()
 		"get_product_contents":
-			if typeof(a.get("product_id", "")) != TYPE_STRING:
+			if typeof(a.get("product_id")) != TYPE_STRING:
 				return Protocol.fail("invalid_args")
-			var r := shop.get_product_contents(str(a["product_id"]))
+			var r := shop.get_product_contents(str(a.get("product_id")))
 			if r.get("ok", false):
 				r = r.duplicate(true)
 				for s in r["sections"]:
 					s["cards"] = (s["cards"] as Array).map(func(i): return _number(int(i)))
 			return r
 		"purchase":
-			if typeof(a.get("product_id", "")) != TYPE_STRING:
+			if typeof(a.get("product_id")) != TYPE_STRING:
 				return Protocol.fail("invalid_args")
-			var r := shop.purchase(account, str(a["product_id"]))
+			var r := shop.purchase(account, str(a.get("product_id")))
 			if r.get("ok", false):
 				for c in r["cards"]:
 					c["number"] = _number(int(c["index"]))
