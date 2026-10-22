@@ -1,7 +1,8 @@
 extends Node
 ## Dedicated server entry:
-##   godot --headless --path . res://server/server_main.tscn -- --port 9080 --data user://server_dev [--dev]
-##         [--tls-cert fullchain.pem --tls-key privkey.pem]   (wss:// directly; or put a TLS proxy in front)
+##   godot --path . --headless -- --server --port=9080 --data=user://server_dev [--dev]
+##         [--tls-cert=fullchain.pem --tls-key=privkey.pem]   (wss:// directly; or put a TLS proxy in front)
+## Options also accept a separate value (`--port 9080`); the scene can be run directly (res://server/server_main.tscn).
 
 var server: GameServer
 
@@ -14,6 +15,8 @@ func _ready() -> void:
 		var a: String = args[i]
 		if a == "--dev":
 			dev = true
+		elif a.contains("=") and opts.has(a.get_slice("=", 0)):
+			opts[a.get_slice("=", 0)] = a.substr(a.find("=") + 1)
 		elif opts.has(a) and i + 1 < args.size():
 			opts[a] = args[i + 1]
 			i += 1

@@ -7,8 +7,8 @@ local accounts, local shop) still works exactly as before.
 ## Running
 ```
 # server (from godot-remake/); --dev enables the dev-only bot duel request
-godot --headless --path . res://server/server_main.tscn -- --port 9080 --data user://server_dev [--dev]
-      [--tls-cert fullchain.pem --tls-key privkey.pem]
+godot --path . --headless -- --server --port=9080 --data=user://server_dev [--dev]
+      [--tls-cert=fullchain.pem --tls-key=privkey.pem]
 # client: start the game -> "Online" (bottom right of the title) -> server ws://127.0.0.1:9080 -> Register/Login -> Play Online
 ```
 Deployment (Docker + Caddy for wss://): `deploy/README.md`.

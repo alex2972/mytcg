@@ -5,6 +5,10 @@ var current: Control
 var back_button := Button.new()
 
 func _ready() -> void:
+	# `godot --path . --headless -- --server --port=27840` runs the dedicated server instead of the game.
+	if OS.get_cmdline_user_args().has("--server"):
+		get_tree().change_scene_to_file.call_deferred("res://server/server_main.tscn")
+		return
 	back_button.text = "< Back"
 	back_button.pressed.connect(show_title)
 	back_button.z_index = 50
