@@ -642,7 +642,7 @@ func _run(step: Dictionary, ctx: Dictionary):
 					return "abort"
 				return null
 			var chooser: int = who(step.get("chooser", "self"), ctx)
-			if cands.size() <= mn and (not fx.interactive_selections or chooser != 0) and step.get("auto", true) and mn == mx and not (duel.has_turn_rule("spirit_elimination", me) and _selection_is_banish_cost(step, ctx)):
+			if cands.size() <= mn and (not fx.interactive_selections or not fx.interactive_players.has(chooser)) and step.get("auto", true) and mn == mx and not (duel.has_turn_rule("spirit_elimination", me) and _selection_is_banish_cost(step, ctx)):
 				ctx["vars"][step["as"]] = cands.slice(0, mx)
 				return null
 			if step.get("random", false):

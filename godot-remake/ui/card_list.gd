@@ -37,7 +37,11 @@ func _ready() -> void:
 	custom_minimum_size = Vector2(800, 600)
 	size = Vector2(800, 600)
 	db = CardDB.load_default()
-	collection = Collection.load_default(db)
+	var session := get_node_or_null("/root/Session")
+	if session != null:
+		collection = await session.load_collection()
+	else:
+		collection = Collection.load_default(db)
 	pool = collection.pool()
 	pages = int(ceil(float(pool.size()) / PER_PAGE))
 	_build()

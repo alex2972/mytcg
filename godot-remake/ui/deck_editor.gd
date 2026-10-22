@@ -26,6 +26,9 @@ var db: CardDB
 var collection: Collection
 var lang := "eng"
 var working_path := Deck.active_working_path()
+var online := false                 # signed in: the deck lives on the server
+var _save_pending := false
+var _saving := false
 var deck := Deck.new()
 var presets := {}
 var grids := {}                 # section -> Control holding thumbs
@@ -72,9 +75,15 @@ func _ready() -> void:
 	custom_minimum_size = Vector2(800, 600)
 	size = Vector2(800, 600)
 	db = CardDB.load_default()
-	collection = Collection.load_default(db)
+	var session := get_node_or_null("/root/Session")
+	online = session != null and session.is_online()
 	presets = JSON.parse_string(FileAccess.get_file_as_string("res://data/decks.json"))
-	deck = Deck.load_working(db, working_path)
+	if session != null:
+		collection = await session.load_collection()
+		deck = await session.load_deck(working_path)
+	else:
+		collection = Collection.load_default(db)
+		deck = Deck.load_working(db, working_path)
 	_build()
 	_sort_deck()
 	_refresh_pool()
@@ -291,8 +300,9 @@ func _build_filter_panel() -> void:
 	box.add_child(langs)
 	var all := CheckBox.new()
 	all.text = "Debug: unlock every card"
+	all.disabled = online           # the server owns online collections
 	all.toggled.connect(func(on):
-		if on:
+		if on and not online:
 			collection.unlock_all()
 			_refresh_pool()
 			_refresh_deck())
@@ -336,9 +346,12 @@ func _sort_deck() -> void:
 	deck.side.sort_custom(key)
 
 func _refresh_deck() -> void:
-	var save_error := deck.save_working(db, working_path)
-	if save_error != OK:
-		push_error("Could not save the working deck: %s" % error_string(save_error))
+	if online:
+		_queue_online_save()
+	else:
+		var save_error := deck.save_working(db, working_path)
+		if save_error != OK:
+			push_error("Could not save the working deck: %s" % error_string(save_error))
 	for sec in SECTIONS:
 		var g: Control = grids[sec]
 		for ch in g.get_children():
@@ -627,3 +640,18 @@ func _draw_detail_strip() -> void:
 	if race >= 1 and race <= 20:
 		var texture := DECK_TEXTURES.get_texture("res://assets/j/duel/card/icon_syuzoku.png")
 		d_icons.draw_texture_rect_region(texture, Rect2(17, 0, 16, 16), Rect2((race - 1) * 16, 0, 16, 16))
+
+## Online autosave: at most one save in flight, the latest deck wins (1 s debounce).
+func _queue_online_save() -> void:
+	if _save_pending:
+		return
+	_save_pending = true
+	await get_tree().create_timer(1.0).timeout
+	while _saving:
+		await get_tree().process_frame
+	_save_pending = false
+	_saving = true
+	var r: Dictionary = await get_node("/root/Session").save_deck(deck)
+	_saving = false
+	if not r.get("ok", false) and is_instance_valid(status):
+		status.text = "Not saved: " + str(r.get("reason", r.get("error", "")))

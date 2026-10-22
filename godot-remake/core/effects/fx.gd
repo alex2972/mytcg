@@ -15,6 +15,7 @@ var tasks: Array = []
 var chain: Array = []            ## open links, last = top
 var pending: Dictionary = {}
 var interactive_selections := false
+var interactive_players: Array = [0]   ## seats that pick their own selections (online: every human seat)
 var presentation_enabled := false  ## Board opt-in; pure engine/AI tests remain synchronous.
 var resolving := false
 var activating := 0              ## activations whose cost/targets are still being paid; events raised meanwhile wait

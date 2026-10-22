@@ -7,3 +7,4 @@ static func install(server: GameServer) -> void:
 	var shop := LocalShopBackend.new(server.db, server.data_dir + "/accounts")
 	server.services["shop_backend"] = shop
 	server.services["auth"] = ServerAuth.new(server, shop.store, server.db)
+	server.services["shop"] = ServerShop.new(server, shop)

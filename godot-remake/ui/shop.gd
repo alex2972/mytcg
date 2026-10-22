@@ -396,7 +396,7 @@ func show_contents() -> void:
 		hint.text = "The card list is not available"
 		return
 	AudioUtil.sfx("decide")
-	var owned := Collection.load_default(session.db).counts
+	var owned: Dictionary = (await session.load_collection()).counts
 	contents_view = PackContents.new()
 	add_child(contents_view)
 	contents_view.closed.connect(close_contents)

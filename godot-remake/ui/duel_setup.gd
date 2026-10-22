@@ -37,7 +37,12 @@ func _ready() -> void:
 	go.pressed.connect(start)
 	form.add_child(go)
 	# Too few cards to ever make a 40-card deck: point the player to the shop.
-	var cards := Collection.load_default(db)
+	var session := get_node_or_null("/root/Session")
+	var cards: Collection
+	if session != null:
+		cards = await session.load_collection()
+	else:
+		cards = Collection.load_default(db)
 	if not cards.can_build_deck():
 		DuelDialog.notice(self, DuelDialog.SHOP_NOTICE)
 
@@ -63,7 +68,14 @@ A deck needs at least %d cards to duel." % [deck.main.size(), DeckRules.MIN_MAIN
 	return ""
 
 func start(seed_value := -1, deck_a := "", deck_b := "", skip_janken := false) -> void:
-	var a: Deck = Deck.load_working(db) if mine.selected == 0 else _deck_from_preset(mine.get_item_text(mine.selected))
+	var session := get_node_or_null("/root/Session")
+	var a: Deck
+	if mine.selected != 0:
+		a = _deck_from_preset(mine.get_item_text(mine.selected))
+	elif session != null:
+		a = await session.load_deck()
+	else:
+		a = Deck.load_working(db)
 	var b: Deck = _deck_from_preset(theirs.get_item_text(theirs.selected))
 	if deck_a != "":
 		a = _deck_from_preset(deck_a)
@@ -72,7 +84,12 @@ func start(seed_value := -1, deck_a := "", deck_b := "", skip_janken := false) -
 	var problem := deck_problem(a)
 	if problem != "":
 		# The 40-card minimum is enforced here: no duel starts with an illegal deck.
-		if not Collection.load_default(db).can_build_deck():
+		var owned: Collection
+		if session != null:
+			owned = await session.load_collection()
+		else:
+			owned = Collection.load_default(db)
+		if not owned.can_build_deck():
 			problem = DuelDialog.SHOP_NOTICE
 		AudioUtil.sfx("unable")
 		last_refusal = problem

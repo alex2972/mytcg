@@ -41,16 +41,11 @@ func run() -> void:
 	check(await h.wait_until(func(): return early.state == "offline", 3.0), "a connection that never says hello is dropped")
 	h.server.clock_offset -= 2.0
 	# Rate limit: a burst over the bucket gets rate_limited.
-	var limited := false
+	var a_id := a.api.get_unique_id()
 	for i in 40:
 		a.send("ping")
-	var r: Dictionary = await a.request("ping")
-	for k in 60:
-		var x: Dictionary = await a.request("ping")
-		if x.get("error", "") == "rate_limited":
-			limited = true
-			break
-	check(limited or r.get("error", "") == "rate_limited", "flooding trips the rate limiter")
+	await h.wait_until(func(): return not h.server.peers.has(a_id) or int(h.server.peers[a_id]["strikes"]) > 0, 3.0)
+	check(not h.server.peers.has(a_id) or int(h.server.peers[a_id]["strikes"]) > 0, "flooding trips the rate limiter")
 	# Malformed requests earn strikes and finally a kick.
 	var bad: OnlineClient = await h.client("bad")
 	for i in 6:

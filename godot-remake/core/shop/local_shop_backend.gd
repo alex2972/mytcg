@@ -85,6 +85,44 @@ func get_product_contents(product_id: String) -> Dictionary:
 	sections.sort_custom(func(a, b): return int(a["rank"]) > int(b["rank"]))
 	return {"ok": true, "product_id": product_id, "name": product["name"], "sections": sections}
 
+func get_collection(account_id := "") -> Dictionary:
+	if store.profile(account_id).is_empty():
+		return {"ok": false, "error": "unknown_account"}
+	return {"ok": true, "collection": Collection.load_default(db, store.collection_path(account_id))}
+
+func get_deck(account_id := "") -> Dictionary:
+	if store.profile(account_id).is_empty():
+		return {"ok": false, "error": "unknown_account"}
+	return {"ok": true, "deck": Deck.load_working(db, store.deck_path(account_id))}
+
+func save_deck(account_id: String, deck: Deck) -> Dictionary:
+	if store.profile(account_id).is_empty():
+		return {"ok": false, "error": "unknown_account"}
+	var why := deck_save_problem(deck, Collection.load_default(db, store.collection_path(account_id)))
+	if why != "":
+		return {"ok": false, "error": "deck_invalid", "reason": why}
+	if deck.save_working(db, store.deck_path(account_id)) != OK:
+		return {"ok": false, "error": "save_failed"}
+	return {"ok": true}
+
+## Why a deck may not be saved: section sizes, Fusion routing, ownership, copies per name. "" when fine.
+## The 40-card minimum is not checked here (a deck in progress may be saved).
+func deck_save_problem(deck: Deck, collection: Collection) -> String:
+	if deck.main.size() > DeckRules.MAX_MAIN or deck.extra.size() > DeckRules.MAX_EXTRA or deck.side.size() > DeckRules.MAX_SIDE:
+		return "A deck section is over its size limit."
+	for i in deck.extra:
+		if not DeckRules.belongs_in_extra(db, int(i)):
+			return "Only Fusion Monsters go in the Fusion Deck."
+	for i in deck.main + deck.side:
+		if DeckRules.belongs_in_extra(db, int(i)):
+			return "Fusion Monsters belong in the Fusion Deck."
+	for i in deck.main + deck.extra + deck.side:
+		if deck.copies(int(i)) > collection.owned(int(i)):
+			return "You don't own enough copies of %s." % db.card_name(int(i))
+		if DeckRules.group_copies(deck, db, int(i)) > DeckRules.copy_limit(db, int(i)):
+			return "Too many copies of %s." % db.card_name(int(i))
+	return ""
+
 func _rarity(rarity: String) -> Dictionary:
 	return (catalog.get("rarities", {}) as Dictionary).get(rarity, {})
 

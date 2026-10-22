@@ -88,6 +88,36 @@ func ensure_ready_default() -> void:
 	if _ready_root == "":
 		ensure_ready()
 
+# --- cards and deck of the signed-in account (local files offline, the server online) ----------
+
+## The account's collection. Offline this returns at once; online it waits for the server.
+func load_collection() -> Collection:
+	ensure_ready_default()
+	if is_online():
+		var r: Dictionary = await backend.get_collection(account_id())
+		if r.get("ok", false):
+			return r["collection"]
+		var empty := Collection.new()
+		empty.db = db
+		return empty
+	return Collection.load_default(db)
+
+## The account's working deck (offline: `path` overrides the file, for tests).
+func load_deck(path := "") -> Deck:
+	ensure_ready_default()
+	if is_online():
+		var r: Dictionary = await backend.get_deck(account_id())
+		return r["deck"] if r.get("ok", false) else Deck.new()
+	return Deck.load_working(db, path)
+
+## Saves the working deck: offline to `path` (or the account file), online on the server.
+func save_deck(deck: Deck, path := "") -> Dictionary:
+	ensure_ready_default()
+	if is_online():
+		return await backend.save_deck(account_id(), deck)
+	var err := deck.save_working(db, path)
+	return {"ok": err == OK, "error": "" if err == OK else "save_failed"}
+
 # --- online ------------------------------------------------------------------------------------
 
 func online_client() -> OnlineClient:

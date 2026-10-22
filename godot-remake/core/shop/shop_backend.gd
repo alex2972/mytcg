@@ -23,6 +23,18 @@ func get_catalog() -> Dictionary:
 func get_product_contents(_product_id: String) -> Dictionary:
 	return {"ok": false, "error": "unavailable"}
 
+## {"ok", "collection": Collection}
+func get_collection(_account_id := "") -> Dictionary:
+	return {"ok": false, "error": "unavailable"}
+
+## {"ok", "deck": Deck}
+func get_deck(_account_id := "") -> Dictionary:
+	return {"ok": false, "error": "unavailable"}
+
+## Saves the account's working deck after checking ownership and deck-building limits (not the 40 minimum).
+func save_deck(_account_id: String, _deck: Deck) -> Dictionary:
+	return {"ok": false, "error": "unavailable"}
+
 ## {"ok", "product_id", "cards": [{"index", "name", "new", "rarity", "rare"}], "balance"}
 func purchase(_account_id: String, _product_id: String) -> Dictionary:
 	return {"ok": false, "error": "unavailable"}

@@ -20,8 +20,12 @@ static func load_default(card_db: CardDB, path := "") -> Collection:
 	if FileAccess.file_exists(path):
 		var parsed = JSON.parse_string(FileAccess.get_file_as_string(path))
 		if parsed is Dictionary:
-			for k in parsed:
-				c.counts[int(k)] = mini(MAX_OWNED, int(parsed[k]))     # saves from before the cap
+			if parsed.has("format"):
+				# Format 2: keyed by Konami card number, stable across card-database rebuilds.
+				c.counts = counts_from_numbers(card_db, parsed.get("cards", {}))
+			else:
+				for k in parsed:          # format 1 (CardDB indices), still read
+					c.counts[int(k)] = mini(MAX_OWNED, int(parsed[k]))     # saves from before the cap
 			return c
 	c.give_starter()
 	c.save(path)
@@ -109,8 +113,9 @@ static func active_path() -> String:
 	var session: Node = tree.root.get_node_or_null("Session") if tree != null else null
 	return session.collection_path() if session != null else SAVE_PATH
 
+## Saves in format 2 ({"format": 2, "cards": {"<number>": copies}}).
 func save(path := "") -> Error:
-	return AccountStore.write_json(active_path() if path.is_empty() else path, counts)
+	return AccountStore.write_json(active_path() if path.is_empty() else path, {"format": 2, "cards": to_numbers()})
 
 func owned(idx: int) -> int:
 	return int(counts.get(idx, 0))
