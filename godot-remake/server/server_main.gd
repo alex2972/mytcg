@@ -1,8 +1,8 @@
 extends Node
 ## Dedicated server entry:
-##   godot --path . --headless -- --server --port=9080 --data=user://server_dev [--dev]
+##   godot --path . --headless -- --server --port=27840 --data=user://server_dev [--dev]
 ##         [--tls-cert=fullchain.pem --tls-key=privkey.pem]   (wss:// directly; or put a TLS proxy in front)
-## Options also accept a separate value (`--port 9080`); the scene can be run directly (res://server/server_main.tscn).
+## Options also accept a separate value (`--port 27840`); the scene can be run directly (res://server/server_main.tscn).
 
 var server: GameServer
 

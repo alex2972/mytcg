@@ -20,7 +20,7 @@ For wss:// without a proxy add `--tls-cert fullchain.pem --tls-key privkey.pem` 
 Plain `ws://` is fine on a LAN; browsers on https pages need `wss://`.
 
 ## Options
-- `--port` (default 9080), `--data` (default user://server_dev), `--dev` (enables `dev_start_bot_duel`; keep it off in production),
+- `--port` (default 27840; the Docker files set 9080 explicitly), `--data` (default user://server_dev), `--dev` (enables `dev_start_bot_duel`; keep it off in production),
   `--tls-cert` / `--tls-key`.
 - Stop with Ctrl+C / `docker compose stop`: running duels end as a no-contest (no rating change), queues are cancelled.
 

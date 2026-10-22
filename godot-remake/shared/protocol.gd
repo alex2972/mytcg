@@ -3,8 +3,8 @@ extends RefCounted
 ## Shared protocol constants and helpers (client and server).
 
 const VERSION := 1
-const DEFAULT_PORT := 9080
-const DEFAULT_URL := "ws://127.0.0.1:9080"
+const DEFAULT_PORT := 27840
+const DEFAULT_URL := "ws://127.0.0.1:27840"
 
 ## Error codes (string values travel in {"ok": false, "error": <code>}).
 const ERRORS := ["outdated_client", "not_authenticated", "bad_credentials", "name_taken", "bad_name", "bad_password",

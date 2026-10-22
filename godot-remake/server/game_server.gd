@@ -3,13 +3,13 @@ extends Node
 ## The authoritative game server: one node that owns its own SceneMultiplayer (for its subtree), the "Net"
 ## RPC node, the configuration, logging, connected peers, and the services (auth, shop, rooms, matchmaking,
 ## ranked). Clients only send requests ("kinds"); every request is validated here.
-## Run: godot --headless --path . res://server/server_main.tscn -- --port 9080 --data user://server_dev
+## Run: godot --headless --path . -- --server --port=27840 --data=user://server_dev
 
 signal peer_joined(peer: int)
 signal peer_left(peer: int)
 
 const DEFAULT_CONFIG := {
-	"port": 9080,
+	"port": 27840,
 	"hello_timeout": 10.0,          ## seconds a new connection has to send hello
 	"idle_timeout": 20.0,           ## seconds without any message before a peer is dropped
 	"rate_per_second": 30.0,
