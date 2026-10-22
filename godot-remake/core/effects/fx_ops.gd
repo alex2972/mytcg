@@ -191,6 +191,53 @@ func matches(c: DCard, f: Dictionary, ctx: Dictionary) -> bool:
 		return false
 	return true
 
+## Empty searches are information, not a zero-card selection. Costs and random
+## choices still use their existing failure rules.
+func empty_search_notice(step: Dictionary, ctx: Dictionary) -> bool:
+	if step.get("cost", false) or step.get("random", false):
+		return false
+	var source = step.get("from", "field")
+	var specs: Array = source if source is Array else [source]
+	var locations: Array[String] = []
+	for spec in specs:
+		var parts := str(spec).split(".")
+		var zone: String = parts[-1]
+		if zone not in ["deck", "grave", "extra", "banished"]:
+			return false
+		var location: String = {"deck": "Deck", "grave": "Graveyard", "extra": "Extra Deck", "banished": "removed-from-play cards"}[zone]
+		var owner_text := "either player's"
+		if parts.size() == 2:
+			owner_text = "your" if who(parts[0], ctx) == 0 else "your opponent's"
+		locations.append(owner_text + " " + location)
+	var filter: Dictionary = step.get("filter", {})
+	var description := "matching cards"
+	if filter.has("name_is"):
+		description = '"%s" cards' % str(filter["name_is"])
+	elif filter.has("name_has"):
+		description = 'cards with "%s" in their name' % str(filter["name_has"])
+	else:
+		var qualifiers: Array[String] = []
+		if filter.has("attribute"):
+			qualifiers.append(str(CardDB.ATTRIBUTES.get(attr_id(filter["attribute"]), filter["attribute"])))
+		if filter.has("race"):
+			qualifiers.append(CardDB.RACES[race_id(filter["race"])])
+		var card_type: String = str(filter.get("type", "card"))
+		qualifiers.append(card_type if card_type in ["monster", "spell", "trap"] else "matching card")
+		description = " ".join(qualifiers) + "s"
+		var limits: Array[String] = []
+		for stat in ["atk", "def", "level"]:
+			if filter.has(stat + "_min") and filter.has(stat + "_max") and int(filter[stat + "_min"]) == int(filter[stat + "_max"]):
+				limits.append("%s %d" % [stat.to_upper(), int(filter[stat + "_min"])])
+				continue
+			for bound in ["min", "max"]:
+				var key: String = stat + "_" + bound
+				if filter.has(key):
+					limits.append("%s %d or %s" % [stat.to_upper(), int(filter[key]), "higher" if bound == "min" else "lower"])
+		if not limits.is_empty():
+			description += " with " + " and ".join(limits)
+	duel.log_event("empty_search", {"player": ctx["controller"], "message": "There are no %s in %s." % [description, " or ".join(locations)]})
+	return true
+
 func select_candidates(step: Dictionary, ctx: Dictionary) -> Array:
 	var out := []
 	var f: Dictionary = step.get("filter", {})
@@ -487,6 +534,14 @@ func accept(p: Dictionary, answer) -> String:
 					total += duel.level_of(c)
 				if total < int(p["sum_level_min"]):
 					return "The Tributes' total Level must be at least %d." % int(p["sum_level_min"])
+			if p.get("order_deck", false):
+				var deck: Array = duel.side(int(p["player"])).deck
+				var current: Array = deck.slice(-cards.size())
+				for card in cards:
+					if not current.has(card):
+						return "The top cards have changed."
+				for i in cards.size():
+					deck[deck.size() - 1 - i] = cards[i]
 			t["ctx"]["vars"][p["as"]] = cards
 			fx.pending = {}
 		"yesno":
@@ -513,6 +568,10 @@ func accept(p: Dictionary, answer) -> String:
 				if not ok:
 					fx.pending = p
 					return "That card cannot be chained."
+				var why: String = fx.activation_problem(cur, fx.duel_card(uid), idx, t["event"], t["data"])
+				if why != "":
+					fx.pending = p
+					return why
 				t["passes"] = 0
 				t["cur"] = 1 - cur
 				t["fired"]["%d:%d" % [uid, idx]] = true
@@ -574,12 +633,16 @@ func _run(step: Dictionary, ctx: Dictionary):
 			var cands := select_candidates(step, ctx)
 			var mn: int = int(step.get("min", step.get("n", 1)))
 			var mx: int = int(step.get("n", 1))
+			if cands.is_empty() and empty_search_notice(step, ctx):
+				ctx["vars"][step["as"]] = []
+				return "abort" if mn > 0 and step.get("required", true) else null
 			if cands.size() < mn:
 				ctx["vars"][step["as"]] = []
 				if step.get("required", true):
 					return "abort"
 				return null
-			if cands.size() <= mn and step.get("auto", true) and mn == mx and not (duel.has_turn_rule("spirit_elimination", me) and _selection_is_banish_cost(step, ctx)):
+			var chooser: int = who(step.get("chooser", "self"), ctx)
+			if cands.size() <= mn and (not fx.interactive_selections or chooser != 0) and step.get("auto", true) and mn == mx and not (duel.has_turn_rule("spirit_elimination", me) and _selection_is_banish_cost(step, ctx)):
 				ctx["vars"][step["as"]] = cands.slice(0, mx)
 				return null
 			if step.get("random", false):
@@ -591,10 +654,22 @@ func _run(step: Dictionary, ctx: Dictionary):
 					picks[j] = tmp
 				ctx["vars"][step["as"]] = picks.slice(0, mx)
 				return null
-			var chooser: int = who(step.get("chooser", "self"), ctx)
 			return {"type": "select", "player": chooser, "candidates": cands.map(func(c): return c.uid), "min": mn, "max": mx,
 				"as": step["as"], "prompt": step.get("prompt", 0), "from": step.get("from", "field"), "cost": step.get("cost", false), "discard": step.get("discard", false), "prompt_text": step.get("prompt_text", ""),
-				"sum_level_min": int(step.get("sum_level_min", 0)), "banish_intent": _selection_is_banish_effect(step, ctx)}
+				"sum_level_min": int(step.get("sum_level_min", 0)), "banish_intent": _selection_is_banish_effect(step, ctx), "hidden_pick": step.get("hidden_pick", false)}
+		"order_deck":
+			var top: Array = duel.side(me).deck.slice(-mini(5, duel.side(me).deck.size()))
+			top.reverse()
+			if top.is_empty():
+				return null
+			return {"type": "select", "player": me, "candidates": top.map(func(c): return c.uid), "min": top.size(), "max": top.size(), "as": "ordered", "from": "self.deck", "order_deck": true, "prompt_text": "Switch the order of your cards."}
+		"reveal":
+			var shown: Array = tg(step, ctx)
+			if shown.is_empty():
+				return null
+			duel.log_event("reveal_cards", {"cards": shown.map(func(c): return c.uid), "public": step.get("public", false), "viewer": me, "seconds": step.get("seconds", 4.0), "sequential": step.get("sequential", false)})
+			if fx.presentation_enabled:
+				return {"type": "presentation", "player": me}
 		"yesno":
 			return {"type": "yesno", "player": who(step.get("chooser", "self"), ctx), "as": step["as"], "prompt": step.get("prompt", 0), "card": ctx["src"].uid, "prompt_text": step.get("prompt_text", ""), "show_hands": step.get("show_hands", false)}
 		"choice":
@@ -660,6 +735,8 @@ func _run(step: Dictionary, ctx: Dictionary):
 				duel.banish_card(c)
 		"discard":
 			var hand: Array = duel.side(who(step.get("who", "self"), ctx)).hand
+			if (ctx.get("effect", {}).get("cost", []) as Array).has(step) and hand.size() < int(step.get("n", 1)):
+				return "abort"
 			var n := mini(int(step.get("n", 1)), hand.size())
 			if step.get("all", false):
 				n = hand.size()
@@ -682,7 +759,10 @@ func _run(step: Dictionary, ctx: Dictionary):
 				{"op": "select", "as": "_s", "from": "self.deck", "filter": step.get("filter", {}), "n": 1, "min": 0, "required": false, "auto": false, "prompt": step.get("prompt", 51)},
 				{"op": "to_hand", "what": "$_s"}, {"op": "shuffle", "who": "self"}], "i": 0, "ctx": ctx})
 			return "pushed"
-		"shuffle": duel.shuffle_deck(who(step.get("who", "self"), ctx))
+		"shuffle":
+			duel.shuffle_deck(who(step.get("who", "self"), ctx))
+			if fx.presentation_enabled:
+				return {"type": "presentation", "player": me}
 		"special_summon":
 			for c in _targets(step.get("what", "$t"), ctx):
 				var to: int = who(step.get("to", "self"), ctx)

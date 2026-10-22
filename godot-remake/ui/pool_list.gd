@@ -11,8 +11,15 @@ signal picked(card_index: int)
 signal hovered(card_index: int)
 signal scrolled(ratio: float)
 
+const DECK_TEXTURES := preload("res://ui/deck_textures.gd")
+
+const NAME_GOLD := Color("ffcc00")
+
 const ROW_H := 55.0          # the separator stripes baked into kaban.png repeat every 55px
 
+var artwork_layer := Control.new()
+var expansion := 0.0
+var lang := "eng"
 var db: CardDB
 var rows: Array = []
 var used := {}                 # card index -> copies in the deck
@@ -23,6 +30,13 @@ var thumbs := {}
 var _tex_cache := {}
 
 func _init() -> void:
+	texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	artwork_layer.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
+	artwork_layer.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	artwork_layer.show_behind_parent = true
+	artwork_layer.position = Vector2(6, 0)
+	artwork_layer.draw.connect(_draw_artwork)
+	add_child(artwork_layer)
 	clip_contents = true
 	mouse_filter = Control.MOUSE_FILTER_STOP
 
@@ -54,7 +68,7 @@ func _visible_rows() -> int:
 
 func _t(path: String) -> Texture2D:
 	if not _tex_cache.has(path):
-		_tex_cache[path] = load(path) if ResourceLoader.exists(path) else null
+		_tex_cache[path] = DECK_TEXTURES.get_texture(path) if ResourceLoader.exists(path) else null
 	return _tex_cache[path]
 
 func _thumb(card: int) -> Texture2D:
@@ -64,7 +78,11 @@ func _thumb(card: int) -> Texture2D:
 	return thumbs[card]
 
 func _draw() -> void:
+	artwork_layer.queue_redraw()
+	# Reserve six pixels inside the clip for badges overhanging the thumbnail.
+	draw_set_transform(Vector2(6, 0))
 	var digits := _t("res://assets/j/deck_c/font/font_k_kousyu.png")
+	var levels := _t("res://assets/j/deck_c/font/font_k_star.png")
 	var small := _t("res://assets/j/deck_c/font/font_small.png")
 	var seigen := _t("res://assets/j/deck_c/icon/icon_seigen.png")
 	var first := int(floor(scroll))
@@ -76,19 +94,38 @@ func _draw() -> void:
 		var card: int = rows[r]
 		var y := off + k * ROW_H
 		var spare: int = int(owned.get(card, 0)) - int(used.get(card, 0))
-		var tint := Color.WHITE if spare > 0 else Color(0.45, 0.45, 0.5, 1.0)
-		draw_texture_rect(_thumb(card), Rect2(5, y, 38, 55), false, tint)
 		# limit badge
 		var lim := DeckRules.copy_limit(db, card)
 		if lim < DeckRules.MAX_COPIES and seigen != null:
-			draw_texture_rect_region(seigen, Rect2(0, y + 2, 16, 16), Rect2(16 * (0 if lim == 0 else lim), 0, 16, 16))
+			draw_texture_rect_region(seigen, Rect2(2, y + 1, 15.5, 15.5), Rect2(16 * (0 if lim == 0 else lim), 0, 16, 16))
 		# spare copies, bottom-right of the thumbnail
 		if spare > 0 and small != null:
-			DigitFont.draw_number(self, small, str(spare), Vector2(46, y + 41), 9, 14, "right")
-		if db.is_monster(card) and digits != null:
+			DigitFont.draw_number(self, small, str(spare), Vector2(37, y + 38), 9, 14, "right")
+		if db.is_monster(card) and digits != null and expansion < 0.5:
 			var c := db.card(card)
-			_draw_sky(digits, str(int(c.atk)), Vector2(84, y + 10))
-			_draw_sky(digits, str(int(c.def)), Vector2(84, y + 29))
+			_draw_sky(digits, str(int(c.atk)), Vector2(68, y + 10))
+			_draw_sky(digits, str(int(c.def)), Vector2(68, y + 27))
+		if expansion >= 0.5:
+			var c := db.card(card)
+			draw_string(ThemeDB.fallback_font, Vector2(43, y + 21), db.card_name(card, lang), HORIZONTAL_ALIGNMENT_LEFT, size.x - 51, 11, _name_color(card))
+			if db.is_monster(card):
+				_draw_sky(digits, str(int(c.atk)), Vector2(67, y + 29))
+				draw_texture(_t("res://assets/j/deck_c/font/font_k_sura.png"), Vector2(68, y + 29))
+				_draw_sky(digits, str(int(c.def)), Vector2(99, y + 29))
+				var race := int(c.get("kind", 0))
+				if race > 0:
+					draw_texture_rect_region(_t("res://assets/j/deck_c/icon/icon_syuzoku.png"), Rect2(121, y + 28, 16, 16), Rect2((race - 1) * 16, 0, 16, 16))
+				draw_texture(_t("res://assets/j/deck_c/icon/icon_star.png"), Vector2(143, y + 28))
+				var level := int(c.level)
+				if level >= 1 and level <= 12:
+					draw_texture_rect_region(levels, Rect2(162, y + 31, 11, 12), Rect2((level - 1) * 11, 0, 11, 12))
+			if not db.is_monster(card):
+				var subtype := int(c.get("subtype", 0))
+				if subtype >= 1 and subtype <= 6:
+					draw_texture_rect_region(_t("res://assets/j/deck_c/icon/icon_mahouwana.png"), Rect2(121, y + 28, 16, 16), Rect2((subtype - 1) * 16, 0, 16, 16))
+			var attr := int(c.get("attribute", 0))
+			if attr > 0:
+				draw_texture_rect_region(_t("res://assets/j/deck_c/icon/icon_zokusei.png"), Rect2(105, y + 28, 16, 16), Rect2((attr - 1) * 16, 0, 16, 16))
 		if r == hover_row:
 			draw_rect(Rect2(2, y + 1, size.x - 4, ROW_H - 2), Color(1, 1, 1, 0.14))
 
@@ -137,3 +174,19 @@ func _notification(what: int) -> void:
 		hover_row = -1
 		CursorUtil.set_state("off")
 		queue_redraw()
+
+func _name_color(card: int) -> Color:
+	return Color.RED if DeckRules.copy_limit(db, card) == 0 else NAME_GOLD
+
+## Separate artwork from pixel-font/icon drawing so it keeps smooth downsampling.
+func _draw_artwork() -> void:
+	var first := int(floor(scroll))
+	var offset := -(scroll - first) * ROW_H
+	for k in _visible_rows():
+		var row := first + k
+		if row >= rows.size():
+			break
+		var card: int = rows[row]
+		var spare := int(owned.get(card, 0)) - int(used.get(card, 0))
+		var tint := Color.WHITE if spare > 0 else Color(0.45, 0.45, 0.5, 1.0)
+		artwork_layer.draw_texture_rect(_thumb(card), Rect2(2, offset + k * ROW_H + 2, 35, 51), false, tint)

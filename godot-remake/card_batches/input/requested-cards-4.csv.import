@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://3f8xyvc2n6cm"
+
+[deps]
+
+files=["res://card_batches/input/requested-cards-4.artwork.translation", "res://card_batches/input/requested-cards-4.name.translation", "res://card_batches/input/requested-cards-4.kind.translation", "res://card_batches/input/requested-cards-4.attribute.translation", "res://card_batches/input/requested-cards-4.level.translation", "res://card_batches/input/requested-cards-4.race.translation", "res://card_batches/input/requested-cards-4.atk.translation", "res://card_batches/input/requested-cards-4.def.translation", "res://card_batches/input/requested-cards-4.description.translation", "res://card_batches/input/requested-cards-4.titleColor.translation", "res://card_batches/input/requested-cards-4.subtype.translation", "res://card_batches/input/requested-cards-4.titleSize.translation", "res://card_batches/input/requested-cards-4.bodySize.translation", "res://card_batches/input/requested-cards-4.gameNumber.translation"]
+
+source_file="res://card_batches/input/requested-cards-4.csv"
+dest_files=["res://card_batches/input/requested-cards-4.artwork.translation", "res://card_batches/input/requested-cards-4.name.translation", "res://card_batches/input/requested-cards-4.kind.translation", "res://card_batches/input/requested-cards-4.attribute.translation", "res://card_batches/input/requested-cards-4.level.translation", "res://card_batches/input/requested-cards-4.race.translation", "res://card_batches/input/requested-cards-4.atk.translation", "res://card_batches/input/requested-cards-4.def.translation", "res://card_batches/input/requested-cards-4.description.translation", "res://card_batches/input/requested-cards-4.titleColor.translation", "res://card_batches/input/requested-cards-4.subtype.translation", "res://card_batches/input/requested-cards-4.titleSize.translation", "res://card_batches/input/requested-cards-4.bodySize.translation", "res://card_batches/input/requested-cards-4.gameNumber.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

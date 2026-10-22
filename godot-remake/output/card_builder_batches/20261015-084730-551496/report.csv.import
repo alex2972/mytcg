@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://b2v63wj2s3a2t"
+
+[deps]
+
+files=["res://output/card_builder_batches/20261015-084730-551496/report.filename.translation", "res://output/card_builder_batches/20261015-084730-551496/report.name.translation", "res://output/card_builder_batches/20261015-084730-551496/report.status.translation"]
+
+source_file="res://output/card_builder_batches/20261015-084730-551496/report.csv"
+dest_files=["res://output/card_builder_batches/20261015-084730-551496/report.filename.translation", "res://output/card_builder_batches/20261015-084730-551496/report.name.translation", "res://output/card_builder_batches/20261015-084730-551496/report.status.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

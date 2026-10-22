@@ -1,0 +1,231 @@
+{
+  "created": 17,
+  "errors": 0,
+  "input": "Z:\\process\\godot-remake\\card_batches\\input\\requested-cards-6.csv",
+  "previewPages": [
+    "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-090449-106828\\preview-01.png"
+  ],
+  "cards": [
+    {
+      "row": 2,
+      "filename": "ABI",
+      "name": "Big Insect",
+      "status": "created",
+      "files": [
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-090449-106828\\ABI.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-090449-106828\\ABI-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-090449-106828\\ABI.json"
+      ],
+      "bodySize": 6.1,
+      "lines": 2
+    },
+    {
+      "row": 3,
+      "filename": "AB",
+      "name": "Blocker",
+      "status": "created",
+      "files": [
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-090449-106828\\AB.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-090449-106828\\AB-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-090449-106828\\AB.json"
+      ],
+      "bodySize": 6.1,
+      "lines": 2
+    },
+    {
+      "row": 4,
+      "filename": "ABP",
+      "name": "Bolt Penguin",
+      "status": "created",
+      "files": [
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-090449-106828\\ABP.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-090449-106828\\ABP-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-090449-106828\\ABP.json"
+      ],
+      "bodySize": 6.1,
+      "lines": 2
+    },
+    {
+      "row": 5,
+      "filename": "ABR",
+      "name": "Bracchio-raidus",
+      "status": "created",
+      "files": [
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-090449-106828\\ABR.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-090449-106828\\ABR-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-090449-106828\\ABR.json"
+      ],
+      "bodySize": 6.1,
+      "lines": 1
+    },
+    {
+      "row": 6,
+      "filename": "ACZ",
+      "name": "Clown Zombie",
+      "status": "created",
+      "files": [
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-090449-106828\\ACZ.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-090449-106828\\ACZ-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-090449-106828\\ACZ.json"
+      ],
+      "bodySize": 6.1,
+      "lines": 2
+    },
+    {
+      "row": 7,
+      "filename": "ACS",
+      "name": "Crimson Sunbird",
+      "status": "created",
+      "files": [
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-090449-106828\\ACS.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-090449-106828\\ACS-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-090449-106828\\ACS.json"
+      ],
+      "bodySize": 6.1,
+      "lines": 1
+    },
+    {
+      "row": 8,
+      "filename": "AFKT",
+      "name": "Fairy King Truesdale",
+      "status": "created",
+      "files": [
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-090449-106828\\AFKT.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-090449-106828\\AFKT-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-090449-106828\\AFKT.json"
+      ],
+      "bodySize": 6.1,
+      "lines": 3
+    },
+    {
+      "row": 9,
+      "filename": "AFP",
+      "name": "Firewing Pegasus",
+      "status": "created",
+      "files": [
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-090449-106828\\AFP.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-090449-106828\\AFP-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-090449-106828\\AFP.json"
+      ],
+      "bodySize": 6.1,
+      "lines": 1
+    },
+    {
+      "row": 10,
+      "filename": "AGMOG",
+      "name": "Great Mammoth of Goldfine",
+      "status": "created",
+      "files": [
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-090449-106828\\AGMOG.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-090449-106828\\AGMOG-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-090449-106828\\AGMOG.json"
+      ],
+      "bodySize": 6.1,
+      "lines": 1
+    },
+    {
+      "row": 11,
+      "filename": "AHOC",
+      "name": "Hourglass of Courage",
+      "status": "created",
+      "files": [
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-090449-106828\\AHOC.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-090449-106828\\AHOC-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-090449-106828\\AHOC.json"
+      ],
+      "bodySize": 6.1,
+      "lines": 4
+    },
+    {
+      "row": 12,
+      "filename": "ALDOW",
+      "name": "Last Day of Witch",
+      "status": "created",
+      "files": [
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-090449-106828\\ALDOW.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-090449-106828\\ALDOW-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-090449-106828\\ALDOW.json"
+      ],
+      "bodySize": 6.1,
+      "lines": 1
+    },
+    {
+      "row": 13,
+      "filename": "ALD",
+      "name": "Little D",
+      "status": "created",
+      "files": [
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-090449-106828\\ALD.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-090449-106828\\ALD-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-090449-106828\\ALD.json"
+      ],
+      "bodySize": 6.1,
+      "lines": 1
+    },
+    {
+      "row": 14,
+      "filename": "AME",
+      "name": "Monster Eye",
+      "status": "created",
+      "files": [
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-090449-106828\\AME.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-090449-106828\\AME-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-090449-106828\\AME.json"
+      ],
+      "bodySize": 6.1,
+      "lines": 2
+    },
+    {
+      "row": 15,
+      "filename": "ARD",
+      "name": "Rogue Doll",
+      "status": "created",
+      "files": [
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-090449-106828\\ARD.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-090449-106828\\ARD-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-090449-106828\\ARD.json"
+      ],
+      "bodySize": 6.1,
+      "lines": 2
+    },
+    {
+      "row": 16,
+      "filename": "ATIS",
+      "name": "The Inexperienced Spy",
+      "status": "created",
+      "files": [
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-090449-106828\\ATIS.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-090449-106828\\ATIS-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-090449-106828\\ATIS.json"
+      ],
+      "bodySize": 6.1,
+      "lines": 1
+    },
+    {
+      "row": 17,
+      "filename": "ATSH",
+      "name": "The Snake Hair",
+      "status": "created",
+      "files": [
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-090449-106828\\ATSH.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-090449-106828\\ATSH-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-090449-106828\\ATSH.json"
+      ],
+      "bodySize": 6.1,
+      "lines": 2
+    },
+    {
+      "row": 18,
+      "filename": "AWGOTA",
+      "name": "Wretched Ghost of the Attic",
+      "status": "created",
+      "files": [
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-090449-106828\\AWGOTA.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-090449-106828\\AWGOTA-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-090449-106828\\AWGOTA.json"
+      ],
+      "bodySize": 6.1,
+      "lines": 1
+    }
+  ]
+}

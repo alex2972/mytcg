@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://3ajnxjlu6rd8"
+
+[deps]
+
+files=["res://card_batches/input/example.artwork.translation", "res://card_batches/input/example.name.translation", "res://card_batches/input/example.kind.translation", "res://card_batches/input/example.attribute.translation", "res://card_batches/input/example.level.translation", "res://card_batches/input/example.race.translation", "res://card_batches/input/example.atk.translation", "res://card_batches/input/example.def.translation", "res://card_batches/input/example.description.translation", "res://card_batches/input/example.titleColor.translation"]
+
+source_file="res://card_batches/input/example.csv"
+dest_files=["res://card_batches/input/example.artwork.translation", "res://card_batches/input/example.name.translation", "res://card_batches/input/example.kind.translation", "res://card_batches/input/example.attribute.translation", "res://card_batches/input/example.level.translation", "res://card_batches/input/example.race.translation", "res://card_batches/input/example.atk.translation", "res://card_batches/input/example.def.translation", "res://card_batches/input/example.description.translation", "res://card_batches/input/example.titleColor.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

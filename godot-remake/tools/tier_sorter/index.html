@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Card Tier Sorter</title>
+<style>
+  :root { --bg:#14161c; --panel:#1d2029; --line:#2d3140; --text:#e6e8ee; --dim:#9aa1b2; --t1:#6aa84f; --t2:#d9a441; --t3:#d4574e; --t0:#7a6fb0; --un:#4a90c2; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font:14px/1.4 system-ui, Segoe UI, sans-serif; height:100vh; display:flex; flex-direction:column; }
+  header { display:flex; flex-wrap:wrap; gap:8px 14px; align-items:center; padding:8px 12px; background:var(--panel); border-bottom:1px solid var(--line); }
+  header input, header select, header button { background:#262a36; color:var(--text); border:1px solid var(--line); border-radius:6px; padding:5px 8px; font:inherit; }
+  header button { cursor:pointer; } header button:hover { background:#31364a; }
+  header label { color:var(--dim); display:flex; gap:6px; align-items:center; }
+  #status { margin-left:auto; color:var(--dim); }
+  main { flex:1; display:grid; grid-template-columns: repeat(5, minmax(0,1fr)); gap:8px; padding:8px; min-height:0; }
+  .col { background:var(--panel); border:1px solid var(--line); border-radius:8px; display:flex; flex-direction:column; min-height:0; }
+  .col h2 { margin:0; padding:8px 10px; font-size:14px; border-bottom:1px solid var(--line); display:flex; justify-content:space-between; border-top:4px solid var(--c); border-radius:8px 8px 0 0; }
+  .col h2 small { color:var(--dim); font-weight:normal; }
+  .grid { flex:1; overflow:auto; padding:6px; display:flex; flex-wrap:wrap; gap:5px; align-content:flex-start; }
+  .col.over { outline:2px dashed var(--c); outline-offset:-4px; background:#222634; }
+  .card { width:var(--w); aspect-ratio:200/290; position:relative; cursor:grab; border-radius:3px; overflow:hidden; background:#000; flex:none; }
+  .card img { width:100%; height:100%; display:block; pointer-events:none; }
+  .card.sel { outline:3px solid #fff; outline-offset:-1px; }
+  .card.guess { outline:2px dashed #fff8; outline-offset:-2px; }
+  .card .noart { position:absolute; left:0; top:0; background:#c33; color:#fff; font-size:9px; padding:0 3px; }
+  #preview { position:fixed; right:14px; bottom:14px; width:300px; background:#10121a; border:1px solid var(--line); border-radius:8px; padding:8px; display:none; pointer-events:none; z-index:5; box-shadow:0 8px 30px #000a; }
+  #preview img { width:100%; border-radius:4px; display:block; }
+  #preview p { margin:6px 2px 0; color:var(--dim); font-size:12px; }
+  #preview #ptxt { color:var(--text); font-weight:600; }
+  #preview #pdesc { color:var(--text); font-size:13px; line-height:1.45; white-space:pre-wrap; }
+  #help { color:var(--dim); font-size:12px; padding:2px 12px 6px; background:var(--panel); border-bottom:1px solid var(--line); }
+</style>
+</head>
+<body>
+<header>
+  <input id="q" placeholder="Search name or text..." size="24">
+  <select id="ftype"><option value="">All types</option><option>Normal</option><option>Effect</option><option>Fusion</option><option>Ritual</option><option>Spell</option><option>Trap</option></select>
+  <select id="fsort"><option value="name">Sort: name</option><option value="power">Sort: ATK/DEF</option><option value="level">Sort: level</option><option value="kind">Sort: type</option></select>
+  <label><input type="checkbox" id="flisted"> Card List cards only (the original 350)</label>
+  <label>Size <input type="range" id="size" min="50" max="150" value="80"></label>
+  <button id="suggest" title="Fills only the Unsorted cards with a rough guess (dashed outline). Move a card to confirm it.">Suggest for unsorted</button>
+  <button id="noart" title="Every Unsorted card that has no art (and no replacement art) goes to Special">No art, unsorted → Special</button>
+  <button id="rules" title="Unsorted Fusion, Ritual and weak Normal monsters go to Special (see the rules in the chat)">Fusion/Ritual → Special, weak Normals → Tier 1</button>
+  <button id="finish" title="Every card still Unsorted becomes Tier 2. Press this when you are done with Tier 1 and Tier 3.">Finish: unsorted → Tier 2</button>
+  <button id="accept" title="Save every dashed suggestion as a real tier">Accept all suggestions</button>
+  <button id="clear" title="Select none">Clear selection</button>
+  <span id="status">loading...</span>
+</header>
+<div id="help">Drag cards between columns (drag a selected group to move them all). Click = select, Ctrl+click = add, Shift+click = range. With cards selected or hovered press <b>1 / 2 / 3</b> for a tier, <b>0</b> for Special, <b>U</b> for Unsorted. Everything is saved automatically to data/card_tiers.json.</div>
+<main id="cols"></main>
+<div id="preview"><img id="pimg"><p id="ptxt"></p><p id="pdesc"></p></div>
+<script>
+const COLS = [
+  {id:"u", tier:null, name:"Unsorted", c:"var(--un)"},
+  {id:"1", tier:1, name:"Tier 1 · bottom", c:"var(--t1)"},
+  {id:"2", tier:2, name:"Tier 2 · most of the pool", c:"var(--t2)"},
+  {id:"3", tier:3, name:"Tier 3 · power pack", c:"var(--t3)"},
+  {id:"0", tier:0, name:"Special · never in packs", c:"var(--t0)"},
+];
+let cards = [], tiers = {}, guesses = {}, selected = new Set(), lastClicked = null, hovered = null, saveTimer = null;
+const $ = s => document.querySelector(s);
+let noGuess = new Set();
+const colOf = n => (n in tiers ? String(tiers[n]) : (n in guesses && !noGuess.has(n) ? String(guesses[n]) : "u"));
+
+function build() {
+  const root = $("#cols"); root.innerHTML = "";
+  for (const col of COLS) {
+    const el = document.createElement("section"); el.className = "col"; el.dataset.id = col.id; el.style.setProperty("--c", col.c);
+    el.innerHTML = `<h2><span>${col.name}</span><small></small></h2><div class="grid"></div>`;
+    el.addEventListener("dragover", e => { e.preventDefault(); el.classList.add("over"); });
+    el.addEventListener("dragleave", e => { if (!el.contains(e.relatedTarget)) el.classList.remove("over"); });
+    el.addEventListener("drop", e => { e.preventDefault(); el.classList.remove("over"); moveSelected(col.id); });
+    root.appendChild(el);
+  }
+}
+function visible(c) {
+  const q = $("#q").value.trim().toLowerCase(), t = $("#ftype").value;
+  if (q && !(c.name.toLowerCase().includes(q) || c.text.toLowerCase().includes(q))) return false;
+  if (t && c.kind !== t) return false;
+  if ($("#flisted").checked && !c.listed) return false;
+  return true;
+}
+function render() {
+  const scrollTops = {};
+  for (const col of COLS) { const g = document.querySelector(`.col[data-id="${col.id}"] .grid`); if (g) scrollTops[col.id] = g.scrollTop; }
+  const w = $("#size").value; document.documentElement.style.setProperty("--w", w + "px");
+  const sortKey = $("#fsort").value;
+  const sorters = {name:(a,b)=>a.name.localeCompare(b.name), power:(a,b)=>Math.max(b.atk,b.def)-Math.max(a.atk,a.def), level:(a,b)=>b.level-a.level||a.name.localeCompare(b.name), kind:(a,b)=>a.kind.localeCompare(b.kind)||a.name.localeCompare(b.name)};
+  const list = cards.filter(visible).sort(sorters[sortKey]);
+  const counts = {};
+  for (const col of COLS) { counts[col.id] = 0; document.querySelector(`.col[data-id="${col.id}"] .grid`).innerHTML = ""; }
+  const total = {}; for (const c of cards) total[colOf(c.number)] = (total[colOf(c.number)] || 0) + 1;
+  for (const c of list) {
+    const id = colOf(c.number); counts[id]++;
+    const el = document.createElement("div"); el.className = "card" + (selected.has(c.number) ? " sel" : "") + (!(c.number in tiers) && id !== "u" ? " guess" : "");
+    el.draggable = true; el.dataset.n = c.number;
+    el.innerHTML = `<img loading="lazy" src="/art/${c.number}" alt="${c.name}">` + (c.has_art ? "" : `<span class="noart">no art</span>`);
+    el.addEventListener("click", e => clickCard(e, c.number, list));
+    el.addEventListener("dragstart", e => { if (!selected.has(c.number)) { selected = new Set([c.number]); render(); } e.dataTransfer.setData("text/plain", "cards"); });
+    el.addEventListener("mouseenter", () => { hovered = c.number; showPreview(c); });
+    el.addEventListener("mouseleave", () => { hovered = null; $("#preview").style.display = "none"; });
+    document.querySelector(`.col[data-id="${id}"] .grid`).appendChild(el);
+  }
+  for (const col of COLS) document.querySelector(`.col[data-id="${col.id}"] .grid`).scrollTop = scrollTops[col.id] || 0;
+  for (const col of COLS) document.querySelector(`.col[data-id="${col.id}"] small`).textContent = `${counts[col.id]} shown / ${total[col.id] || 0}`;
+  const sorted = cards.length - (total.u || 0);
+  $("#status").textContent = `${sorted}/${cards.length} sorted · ${selected.size} selected`;
+}
+function showPreview(c) {
+  $("#pimg").src = "/art/" + c.number;
+  const stats = c.type === "monster" ? `${c.attribute} · ${c.race} · Lv${c.level} · ATK ${c.atk} / DEF ${c.def}` : `${c.kind} ${c.subtype}`;
+  $("#ptxt").textContent = `#${c.number} ${c.name} — ${stats}`;
+  $("#pdesc").textContent = c.text;
+  $("#preview").style.display = "block";
+}
+function clickCard(e, n, list) {
+  if (e.shiftKey && lastClicked !== null) {
+    const ids = list.map(c => c.number), a = ids.indexOf(lastClicked), b = ids.indexOf(n);
+    if (a >= 0 && b >= 0) for (let i = Math.min(a, b); i <= Math.max(a, b); i++) selected.add(ids[i]);
+  } else if (e.ctrlKey || e.metaKey) { selected.has(n) ? selected.delete(n) : selected.add(n); }
+  else { selected = selected.has(n) && selected.size === 1 ? new Set() : new Set([n]); }
+  lastClicked = n; render();
+}
+function moveSelected(colId) {
+  const targets = selected.size ? [...selected] : (hovered !== null ? [hovered] : []);
+  for (const n of targets) { if (colId === "u") { delete tiers[n]; noGuess.add(n); } else { tiers[n] = Number(colId); noGuess.delete(n); } }
+  selected = new Set(); render(); scheduleSave();
+}
+function scheduleSave() { clearTimeout(saveTimer); $("#status").textContent = "saving..."; saveTimer = setTimeout(save, 400); }
+async function save() {
+  const r = await fetch("/api/tiers", {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify({tiers})});
+  const j = await r.json(); render(); $("#status").textContent += ` · saved (${j.saved})`;
+}
+document.addEventListener("keydown", e => {
+  if (e.target.tagName === "INPUT") return;
+  const map = {"1":"1","2":"2","3":"3","0":"0","u":"u","U":"u"};
+  if (map[e.key]) moveSelected(map[e.key]);
+  if (e.key === "Escape") { selected = new Set(); render(); }
+});
+$("#suggest").onclick = async () => {
+  const g = await (await fetch("/api/suggest")).json();
+  guesses = {}; noGuess = new Set();
+  for (const c of cards) if (!(c.number in tiers) && g[c.number]) guesses[c.number] = g[c.number];
+  // suggestions are shown in their column with a dashed outline and are NOT saved until you accept or move them
+  render(); $("#status").textContent = `suggested ${Object.keys(guesses).length} cards (dashed) - not saved yet`;
+};
+$("#noart").onclick = () => {
+  const list = cards.filter(c => !c.has_art && !(c.number in tiers));
+  if (!list.length) { $("#status").textContent = `nothing to move: no unsorted card is missing art (${cards.filter(c => !c.has_art).length} cards have no art in total)`; return; }
+  for (const c of list) tiers[c.number] = 0;
+  guesses = {}; render(); scheduleSave();
+  setTimeout(() => $("#status").textContent += ` · moved ${list.length} no-art cards to Special`, 600);
+};
+$("#rules").onclick = () => {
+  // Fusion / Ritual / Lv5-6 Normals with nothing above 2000 -> Special; the 3 weak-Normal criteria -> Tier 1.
+  // A Normal with art that already sits in Special (put there by the earlier version of this button) is re-sorted too.
+  const n = {fusion: 0, ritual: 0, last: 0, c1: 0, c2: 0, c3: 0};
+  for (const c of cards) {
+    if (c.type !== "monster") continue;
+    const free = !(c.number in tiers), stale = tiers[c.number] === 0 && c.has_art && c.kind === "Normal";
+    if (!free && !stale) continue;
+    const best = Math.max(c.atk, c.def);
+    let why = null, tier = 1;
+    if (c.kind === "Fusion" && free) { why = "fusion"; tier = 0; }
+    else if (c.kind === "Ritual" && free) { why = "ritual"; tier = 0; }
+    else if (c.kind === "Normal") {
+      if ((c.level === 5 || c.level === 6) && best <= 2000) { why = "last"; tier = 0; }
+      else if (c.level <= 4 && best <= 1700) why = "c1";
+      else if ((c.level === 5 || c.level === 6) && best < 2400) why = "c2";
+      else if ((c.level === 7 || c.level === 8) && c.atk < 2700) why = "c3";
+    }
+    if (why) { tiers[c.number] = tier; n[why]++; }
+  }
+  guesses = {}; render(); scheduleSave();
+  setTimeout(() => $("#status").textContent += ` · Special: fusion ${n.fusion}, ritual ${n.ritual}, Lv5-6 under 2000 ${n.last} · Tier 1: Lv≤4 ${n.c1}, Lv5-6 ${n.c2}, Lv7-8 ${n.c3}`, 600);
+};
+$("#finish").onclick = () => {
+  const list = cards.filter(c => !(c.number in tiers));
+  if (!list.length) { $("#status").textContent = "nothing to move: no card is Unsorted"; return; }
+  for (const c of list) tiers[c.number] = 2;
+  guesses = {}; render(); scheduleSave();
+  setTimeout(() => $("#status").textContent += ` · moved ${list.length} cards to Tier 2`, 600);
+};
+$("#accept").onclick = () => { for (const [n, t] of Object.entries(guesses)) if (!noGuess.has(Number(n)) && !(Number(n) in tiers)) tiers[Number(n)] = t; guesses = {}; render(); scheduleSave(); };
+$("#clear").onclick = () => { selected = new Set(); render(); };
+for (const id of ["q", "ftype", "fsort", "flisted", "size"]) $("#" + id).addEventListener("input", render);
+
+(async () => {
+  build();
+  const j = await (await fetch("/api/cards")).json();
+  cards = j.cards; tiers = Object.fromEntries(Object.entries(j.tiers).map(([k, v]) => [Number(k), v]));
+  render();
+})();
+</script>
+</body>
+</html>

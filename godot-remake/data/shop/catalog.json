@@ -1,0 +1,71 @@
+{
+	"version": 2,
+	"starting_dp": 2450,
+	"rarities": {
+		"ultra_rare": {"label": "ULTRA RARE", "reveal": "gold", "rank": 3},
+		"fusion_set": {"label": "FUSION SETS", "rank": 2},
+		"ritual_set": {"label": "RITUAL SETS", "rank": 1},
+		"common": {"label": "COMMON", "rank": 0}
+	},
+	"pools": {
+		"joey_pool": {"source": "card_list_pool", "note": "Placeholder: the 350 cards of the Card List."},
+		"m1_ultra": {"source": "cards", "note": "Test ultra rares: a few high-ATK Tier 1 monsters.",
+			"cards": ["Dark Magician", "Red-Eyes B. Dragon", "Tri-Horned Dragon", "Wingweaver", "Sengenjin",
+				"Dark Magician Girl", "Valkyrion the Magna Warrior", "Perfectly Ultimate Great Moth", "Blue-Eyes White Dragon"]},
+		"st1_ultra": {"source": "cards", "note": "Shown and revealed as ultra rare, but same odds as every other card in the pack.",
+			"cards": ["De-Spell", "The Flute of Summoning Dragon", "Waboku", "Fake Trap", "Stim-Pack"]},
+		"st1_common": {"source": "filter", "base": "all", "tiers": [1], "types": ["spell", "trap"], "exclude_pools": ["st1_ultra"],
+			"note": "Every other Tier 1 Spell and Trap."},
+		"rf1_fusion_sets": {"source": "sets", "note": "Fusion monster + its two materials (data/fusions.json).", "sets": [
+				["Skull Knight", "Tainted Wisdom", "Ancient Brain"],
+				{"cards": ["Gaia the Dragon Champion", "Gaia The Fierce Knight", "Curse of Dragon"], "rarity": "ultra_rare", "weight": 0.25},
+				{"cards": ["Labyrinth Tank", "Giga-Tech Wolf", "Cannon Soldier"], "rarity": "ultra_rare", "weight": 0.25},
+				{"cards": ["Thousand Dragon", "Time Wizard", "Baby Dragon"], "rarity": "ultra_rare", "weight": 0.25},
+				["Bickuribox", "Crass Clown", "Dream Clown"],
+				["Crimson Sunbird", "Faith Bird", "Skull Red Bird"],
+				["Kaiser Dragon", "Winged Dragon, Guardian of the Fortress #1", "Fairy Dragon"],
+				["Bracchio-raidus", "Two-Headed King Rex", "Crawling Dragon #2"],
+				["Great Mammoth of Goldfine", "The Snake Hair", "Dragon Zombie"],
+				["Humanoid Worm Drake", "Worm Drake", "Humanoid Slime"],
+				["Chimera the Flying Mythical Beast", "Gazelle the King of Mythical Beasts", "Berfomet"],
+				["Empress Judge", "Queen's Double", "Hibikime"],
+				["Mystical Sand", "Giant Soldier of Stone", "Ancient Elf"],
+				["Punished Eagle", "Blue-Winged Crown", "Niwatori"],
+				["Roaring Ocean Snake", "Mystic Lamp", "Hyosube"],
+				["Rabid Horseman", "Battle Ox", "Mystic Horseman"],
+				["Flame Swordsman", "Flame Manipulator", "Masaki the Legendary Swordsman"]]},
+		"rf1_ritual_sets": {"source": "sets", "note": "Ritual monster + the Ritual Spell that summons it (its effect data).", "sets": [
+				{"cards": ["Zera The Mant", "Zera Ritual"], "rarity": "ultra_rare", "weight": 0.25},
+				["Crab Turtle", "Turtle Oath"],
+				["Garma Sword", "Garma Sword Oath"],
+				["Chakra", "Resurrection of Chakra"],
+				["Javelin Beetle", "Javelin Beetle Pact"],
+				["Fortress Whale", "Fortress Whale's Oath"],
+				["Super War-Lion", "War-Lion Ritual"],
+				["Fiend's Mirror", "Beastly Mirror Ritual"],
+				["Skull Guardian", "Novox's Prayer"],
+				["Hungry Burger", "Hamburger Recipe"],
+				["Performance of Sword", "Commencement Dance"],
+				["Dokurorider", "Revival of Dokurorider"]]},
+		"m1_common": {"source": "filter", "base": "all", "tiers": [1], "type": "monster", "categories": ["Normal", "Effect"],
+			"exclude_pools": ["m1_ultra"],
+			"exclude_names": ["Krokodilus", "Kaminarikozou", "Kamakiriman", "Key Mace #2", "Kairyu-Shin", "Kageningen"], "note": "Tier 1 Normal and Effect Monsters (data/card_tiers.json)."}
+	},
+	"products": [
+		{"id": "pack_monsters_1", "category": "packs", "name": "MONSTERS 1", "price": 150, "art": "res://assets/ui/shop/packs/monsters_1.png",
+			"contents": {"slots": [{"count": 5, "rarities": [
+				{"rarity": "ultra_rare", "pool": "m1_ultra", "weight": 2},
+				{"rarity": "common", "pool": "m1_common", "weight": 98}]}]}},
+		{"id": "pack_spells_traps_1", "category": "packs", "name": "SPELLS & TRAPS 1", "price": 150, "art": "res://assets/ui/shop/packs/spells_traps_1.png",
+			"contents": {"slots": [{"count": 5, "equal_odds": true, "rarities": [
+				{"rarity": "ultra_rare", "pool": "st1_ultra"},
+				{"rarity": "common", "pool": "st1_common"}]}]}},
+		{"id": "pack_ritual_fusion", "category": "packs", "name": "RITUAL & FUSION", "price": 150, "art": "res://assets/ui/shop/packs/ritual_fusion.png",
+			"note": "Card 1-3: one Fusion set, card 4-5: one Ritual set.",
+			"contents": {"slots": [{"set_pool": "rf1_fusion_sets", "rarity": "fusion_set", "label": "Fusion"}, {"set_pool": "rf1_ritual_sets", "rarity": "ritual_set", "label": "Ritual"}]}},
+		{"id": "pack_monsters_2", "category": "packs", "name": "MONSTERS 2", "price": 150, "art": "res://assets/ui/shop/packs/monsters_2.png",
+			"contents": {"slots": [{"count": 5, "pool": "joey_pool"}]}},
+		{"id": "pack_monsters_3", "category": "packs", "name": "MONSTERS 3", "price": 150, "art": "res://assets/ui/shop/packs/monsters_3.png",
+			"contents": {"slots": [{"count": 5, "pool": "joey_pool"}]}}
+	]
+}

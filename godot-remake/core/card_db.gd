@@ -47,8 +47,11 @@ func card_desc(index: int, lang := "eng") -> String:
 
 func art_path(index: int, small := false) -> String:
 	var key := "mini" if small else "art"
-	var override := "res://assets/art_override/%d.png" % int(cards[index].get("number", -1))
-	if not small and FileAccess.file_exists(override):
+	var number := int(cards[index].get("number", -1))
+	if small and FileAccess.file_exists("res://assets/art_override_mini/%d.png" % number):
+		return "res://assets/art_override_mini/%d.png" % number       # made by tools/make_override_minis.py (bicubic, like the originals)
+	var override := "res://assets/art_override/%d.png" % number
+	if FileAccess.file_exists(override):
 		return override
 	var base: String = cards[index].get(key, "")
 	return "" if base.is_empty() else "res://assets/%s/%s.png" % ["mini" if small else "cards", base]

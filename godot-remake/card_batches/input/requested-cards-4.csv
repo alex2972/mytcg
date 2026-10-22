@@ -1,0 +1,12 @@
+﻿filename,artwork,name,kind,attribute,level,race,atk,def,description,code,edition,titleColor,subtype,zoom,cropX,cropY,brightness,contrast,saturation,titleSize,bodySize,gameNumber
+AAOTS,AmazonoftheSeas-TF04-JP-VG.webp,Amazon of the Seas,Normal,WATER,4,Fish,1300,1400,A mermaid who serves as herald of the Sea King and guards the sanctuary.,,,black,normal,,,,,,,16.5,6.1,625
+ABMR,BeastlyMirrorRitual-TF04-JP-VG.webp,Beastly Mirror Ritual,Spell,,,,,,"This card is used to Ritual Summon ""Fiend's Mirror"". You must also offer monsters whose total Level Stars equal 6 or more as a Tribute from the field or your hand.",,,white,ritual,,,,,,,16.5,6.1,673
+ABOL,Breath-of-Light.jpg,Breath of Light,Spell,,,,,,Destroys all Rock-Type monsters on the field.,,,white,normal,,,,,,,16.5,6.1,662
+AFM,fiendsmirror.jpg,Fiend's Mirror,Ritual,DARK,6,Fiend,2100,1800,"This monster can only be Ritual Summoned with the Ritual Spell Card, ""Beastly Mirror Ritual"". You must also offer monsters whose total Level Stars equal 6 or more as a Tribute from the field or your hand.",,,black,normal,,,,,,,16.5,6.1,364
+AHOL,HourglassofLife-TF04-JP-VG.webp,Hourglass of Life,Normal,LIGHT,2,Fairy,700,600,This creature grants power instead of shortening life.,,,black,normal,,,,,,,16.5,6.1,228
+AIAWLC,insect armor with laser cannon.jpg,Insect Armor with Laser Cannon,Spell,,,,,,An Insect-Type monster equipped with this card increases its ATK by 700 points.,,,white,equip,,,,,,,16.5,6.1,305
+AI,Invigoration-OW.webp,Invigoration,Spell,,,,,,An EARTH monster equipped with this card increases its ATK by 400 points and decreases its DEF by 200 points.,,,white,equip,,,,,,,16.5,6.1,323
+AKTS,KanantheSwordmistress-TF04-JP-VG.webp,Kanan the Swordmistress,Normal,EARTH,4,Warrior,1400,1400,"A lady warrior armed with sword and shield, she floats like a butterfly and stings like a bee.",,,black,normal,,,,,,,16.5,6.1,351
+AKM,keymace.jpg,Key Mace,Normal,LIGHT,1,Fairy,400,300,A small fairy whose cute appearance melts the heart of its enemies.,,,black,normal,,,,,,,16.5,6.1,191
+AMM,mushroomman.webp,Mushroom Man,Normal,EARTH,2,Plant,800,600,"Found in humid regions, this creature attacks enemies with a lethal rain of poison spores.",,,black,normal,,,,,,,16.5,6.1,7
+ARR,RestructerRevolution-MADU-EN-VG-artwork.png,Restructer Revolution,Spell,,,,,,Inflict 200 points of damage to your opponent's Life Points for each card in your opponent's hand.,,,white,normal,,,,,,,16.5,6.1,1039

@@ -1,0 +1,169 @@
+0x01 case0x0 uVar17 = DAT_00a550a0 & 0xffff; iVar8 = FUN_00481210(); if (
+0x02 case0x1 FUN_00403ec0(); uVar17 = 0; do { iVar8 = 0xc; puVar12 = &DAT
+0x03 case0x2 FUN_004048c0(); return;
+0x04 case0x3 FUN_00404770(); return;
+0x05 case0x4 FUN_00409d00(); return;
+0x06 case0x5 FUN_00409ab0(); return;
+0x07 case0x6 FUN_004089c0(); return;
+0x08 case0x7 FUN_00404460(); return;
+0x09 case0xac goto switchD_005b9497_caseD_ac;
+0x0a case0x8 FUN_00408a40(); return;
+0x0b case0x9 FUN_00408ab0(); return;
+0x0c case0xa FUN_0040b470(); return;
+0x0d case0xb FUN_0040b4d0(); return;
+0x0e case0xc FUN_0040b560(); return;
+0x0f case0xac goto switchD_005b9497_caseD_ac;
+0x10 case0xac goto switchD_005b9497_caseD_ac;
+0x11 case0xd FUN_004086c0(); return;
+0x12 case0xe FUN_0040c050(); return;
+0x13 case0xf FUN_0040c050(); return;
+0x14 case0x10 FUN_00404580(); return;
+0x15 case0x11 break;
+0x16 case0x12 break;
+0x17 case0x13 break;
+0x18 case0x14 break;
+0x19 case0x15 sVar13 = 0x10; break;
+0x1a case0x16 sVar13 = 0x11; break;
+0x1b case0x17 sVar13 = 0x13; break;
+0x1c case0xac goto switchD_005b9497_caseD_ac;
+0x1d case0xac goto switchD_005b9497_caseD_ac;
+0x1e case0x18 sVar13 = 0x12; break;
+0x1f case0x19 sVar13 = 3; break;
+0x20 case0x1a sVar13 = 2; break;
+0x21 case0x1b sVar13 = 4; break;
+0x22 case0xac goto switchD_005b9497_caseD_ac;
+0x23 case0xac goto switchD_005b9497_caseD_ac;
+0x24 case0xac goto switchD_005b9497_caseD_ac;
+0x25 case0xac goto switchD_005b9497_caseD_ac;
+0x26 case0xac goto switchD_005b9497_caseD_ac;
+0x27 case0xac goto switchD_005b9497_caseD_ac;
+0x28 case0xac goto switchD_005b9497_caseD_ac;
+0x29 case0xac goto switchD_005b9497_caseD_ac;
+0x2a case0xac goto switchD_005b9497_caseD_ac;
+0x2b case0xac goto switchD_005b9497_caseD_ac;
+0x2c case0xac goto switchD_005b9497_caseD_ac;
+0x2d case0xac goto switchD_005b9497_caseD_ac;
+0x2e case0xac goto switchD_005b9497_caseD_ac;
+0x2f case0xac goto switchD_005b9497_caseD_ac;
+0x30 case0x1c FUN_005b7c50(); FUN_005b8210(); DAT_00a558ac = DAT_00a558ac 
+0x31 case0x1d FUN_00407a20(); return;
+0x32 case0x1e uVar17 = DAT_00a550a0 & 0xffff; if ((_DAT_00a54e5c & 0x180) 
+0x33 case0x1f FUN_00407880(); return;
+0x34 case0x20 FUN_00407960(); return;
+0x35 case0x21 FUN_0056c180(); DAT_00a558ac = DAT_00a558ac & 0xffffbfff; re
+0x36 case0xac goto switchD_005b9497_caseD_ac;
+0x37 case0x22 if (((DAT_00a577f8._2_2_ & 0x10) == 0) || (((DAT_00a54e5c ^ 
+0x38 case0x23 DAT_00a577f8._2_2_ = CONCAT11(6,DAT_00a577f8._2_1_); _DAT_00
+0x39 case0x24 FUN_005b7c50(); _DAT_00a577fc = _DAT_00a577fc & 0xffffff00; 
+0x3a case0x25 DAT_00a57840 = DAT_00a57840 | 0x20; DAT_00a558ac = DAT_00a55
+0x3b case0x26 if (((DAT_00a577f8._2_2_ & 0x10) == 0) || (((DAT_00a54e5c ^ 
+0x3c case0x27 FUN_00405020(); return;
+0x3d case0xac goto switchD_005b9497_caseD_ac;
+0x3e case0xac goto switchD_005b9497_caseD_ac;
+0x3f case0xac goto switchD_005b9497_caseD_ac;
+0x40 case0x28 FUN_00408410(); return;
+0x41 case0x29 FUN_0040c050(); return;
+0x42 case0x2a FUN_00408470(); return;
+0x43 case0x2b FUN_00408470(); return;
+0x44 case0xac goto switchD_005b9497_caseD_ac;
+0x45 case0xac goto switchD_005b9497_caseD_ac;
+0x46 case0xac goto switchD_005b9497_caseD_ac;
+0x47 case0xac goto switchD_005b9497_caseD_ac;
+0x48 case0xac goto switchD_005b9497_caseD_ac;
+0x49 case0xac goto switchD_005b9497_caseD_ac;
+0x4a case0xac goto switchD_005b9497_caseD_ac;
+0x4b case0xac goto switchD_005b9497_caseD_ac;
+0x4c case0xac goto switchD_005b9497_caseD_ac;
+0x4d case0x2c FUN_0056b1c0(); DAT_00a558ac = DAT_00a558ac & 0xffffbfff; re
+0x4e case0xac goto switchD_005b9497_caseD_ac;
+0x4f case0xac goto switchD_005b9497_caseD_ac;
+0x50 case0x2d FUN_00404920(); return;
+0x51 case0x2e FUN_00404920(); return;
+0x52 case0x2f FUN_00404920(); return;
+0x53 case0x30 FUN_00404920(); return;
+0x54 case0x31 FUN_00404920(); return;
+0x55 case0x32 FUN_00404920(); return;
+0x56 case0x33 FUN_00407860(); return;
+0x57 case0x34 FUN_00407a90(); return;
+0x58 case0x35 FUN_00407ac0(); return;
+0x59 case0x36 FUN_00407b30(); return;
+0x5a case0x37 FUN_00407b70(); return;
+0x5b case0xac goto switchD_005b9497_caseD_ac;
+0x5c case0xac goto switchD_005b9497_caseD_ac;
+0x5d case0xac goto switchD_005b9497_caseD_ac;
+0x5e case0xac goto switchD_005b9497_caseD_ac;
+0x5f case0xac goto switchD_005b9497_caseD_ac;
+0x60 case0x38 FUN_00408b90(); return;
+0x61 case0x39 uVar17 = DAT_00a558ac & 0x7f; uVar15 = (DAT_00a550a0 & 0xfff
+0x62 case0x3a uVar17 = DAT_00a558ac & 0x7f; if (uVar17 == 0) { uVar17 = (u
+0x63 case0x3b uVar17 = DAT_00a558ac & 0x7f; if (uVar17 == 0) { uVar17 = (D
+0x64 case0x3c uVar17 = FUN_00402460(); if ((DAT_00a558ac & 0x7f) == 0) { D
+0x65 case0x3d FUN_00402460(); FUN_005690d0(); DAT_00a558ac = DAT_00a558ac 
+0x66 case0x3e FUN_00402460(); if ((DAT_00a558ac & 0x7f) == 0) { DAT_00a558
+0x67 case0x3f goto LAB_005725f0;
+0x68 case0x40 DAT_00a550a4 = CONCAT22(1,uVar4); LAB_005725f0: uVar17 = DAT
+0x69 case0xac goto switchD_005b9497_caseD_ac;
+0x6a case0x41 FUN_00402460(); FUN_00568c00(); FUN_00408b20(); DAT_00a558ac
+0x6b case0x42 FUN_00402460(); FUN_00568ca0(); DAT_00a558ac = DAT_00a558ac 
+0x6c case0x43 uVar15 = (DAT_00a550a0 & 0xffff) >> 0xf; uVar17 = FUN_005687
+0x6d case0xac goto switchD_005b9497_caseD_ac;
+0x6e case0x44 FUN_00407120(); return;
+0x6f case0x45 FUN_004061b0(); return;
+0x70 case0x46 FUN_004063e0(); return;
+0x71 case0x47 FUN_004067d0(); return;
+0x72 case0x48 FUN_00406b20(); return;
+0x73 case0x49 FUN_00406f70(); return;
+0x74 case0x4a FUN_0040c050(); return;
+0x75 case0x4b FUN_00407120(); return;
+0x76 case0x4c FUN_00407120(); return;
+0x77 case0x4d FUN_004049c0(); return;
+0x78 case0x4e uVar17 = (DAT_00a550a0 & 0xffff) >> 0xf; (&DAT_00a55d74)[(ui
+0x79 case0x4f FUN_00404b40(); return;
+0x7a case0x50 FUN_00405620(); return;
+0x7b case0x51 if ((DAT_00a558ac & 0x7f) == 0) { if (((&DAT_00a55d74)[(uint
+0x7c case0x52 FUN_00405190(); return;
+0x7d case0x53 uVar17 = FUN_00402460(); if ((uVar17 & 0xfff) != 0) { FUN_00
+0x7e case0x54 uVar17 = FUN_00402460(); if ((uVar17 & 0xfff) != 0) { FUN_00
+0x7f case0x55 FUN_00407c70(); return;
+0x80 case0x56 FUN_00407e60(); return;
+0x81 case0x57 if ((DAT_00a558ac & 0x7f) == 0) { if (((&DAT_00a55d74)[(uint
+0x82 case0x58 if ((DAT_00a558ac & 0x7f) == 0) { if (((&DAT_00a55d74)[(uint
+0x83 case0x59 puStack_30 = (undefined4 *)(uint)DAT_00a550a0._2_1_; puStack
+0x84 case0x5a FUN_0040a0d0(); return;
+0x85 case0x5b uStack_94 = (uint)bVar16; uVar15 = (uint)DAT_00a550a4._1_1_;
+0x86 case0x5c FUN_0056ab60(); DAT_00a558ac = DAT_00a558ac & 0xffffbfff; re
+0x87 case0x5d switch(DAT_00a550a4 >> 0x10 & 0xff) { case 1: case 2: case 4
+0x88 case0x5e uVar17 = (DAT_00a550a0 & 0xffff) >> 0xf; if (DAT_00a550a4._2
+0x89 case0xac goto switchD_005b9497_caseD_ac;
+0x8a case0x5f uVar17 = (DAT_00a550a0 & 0xffff) >> 0xf; iVar8 = (uint)uVar7
+0x8b case0x60 FUN_0040b270(); return;
+0x8c case0xac goto switchD_005b9497_caseD_ac;
+0x8d case0x61 goto LAB_00571de0;
+0x8e case0x62 FUN_00408ee0(); return;
+0x8f case0x63 FUN_00409240(); return;
+0x90 case0x64 FUN_00409700(); return;
+0x91 case0x65 FUN_00408030(); return;
+0x92 case0x66 FUN_00573c30(); return;
+0x93 case0xac goto switchD_005b9497_caseD_ac;
+0x94 case0x67 uVar15 = (uint)DAT_00a550a4._2_2_ + (uint)uVar7; uVar17 = (D
+0x95 case0x68 FUN_004074f0(); return;
+0x96 case0xac goto switchD_005b9497_caseD_ac;
+0x97 case0x69 FUN_0040b370(); return;
+0x98 case0xac goto switchD_005b9497_caseD_ac;
+0x99 case0xac goto switchD_005b9497_caseD_ac;
+0x9a case0xac goto switchD_005b9497_caseD_ac;
+0x9b case0xac goto switchD_005b9497_caseD_ac;
+0x9c case0xac goto switchD_005b9497_caseD_ac;
+0x9d case0xac goto switchD_005b9497_caseD_ac;
+0x9e case0xac goto switchD_005b9497_caseD_ac;
+0x9f case0xac goto switchD_005b9497_caseD_ac;
+0xa0 case0xac goto switchD_005b9497_caseD_ac;
+0xa1 case0x6a FUN_0040c050(); return;
+0xa2 case0x6b LAB_00571de0: (&DAT_00a55d7e)[(uint)uVar7 * 0x48 + ((DAT_00a
+0xa3 case0xac goto switchD_005b9497_caseD_ac;
+0xa4 case0xac goto switchD_005b9497_caseD_ac;
+0xa5 case0x6c FUN_0040a3c0(); return;
+0xa6 case0x6d FUN_00402460(); FUN_005675c0(); DAT_00a558ac = DAT_00a558ac 
+0xa7 case0x6e uVar9 = DAT_00a550a4 & 0xffff; uVar17 = (uint)uVar7; uVar15 
+0xa8 case0xac goto switchD_005b9497_caseD_ac;
+0xa9 case0xac goto switchD_005b9497_caseD_ac;

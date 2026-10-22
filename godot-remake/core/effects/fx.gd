@@ -14,6 +14,7 @@ var ops: FxOps
 var tasks: Array = []
 var chain: Array = []            ## open links, last = top
 var pending: Dictionary = {}
+var interactive_selections := false
 var presentation_enabled := false  ## Board opt-in; pure engine/AI tests remain synchronous.
 var resolving := false
 var activating := 0              ## activations whose cost/targets are still being paid; events raised meanwhile wait
@@ -85,6 +86,9 @@ func pump() -> void:
 	while pending.is_empty() and not tasks.is_empty():
 		var t: Dictionary = tasks.back()
 		match t["t"]:
+			"presentation":
+				tasks.pop_back()
+				pending = {"type": "presentation", "player": duel.turn_player, "_task": {}}
 			"call":
 				tasks.pop_back()
 				(t["fn"] as Callable).call()
@@ -104,6 +108,9 @@ func respond(answer) -> String:
 	return ""
 
 func _run_script(t: Dictionary) -> void:
+	if t["ctx"].get("aborted", false):
+		tasks.erase(t)
+		return
 	var steps: Array = t["steps"]
 	while t["i"] < steps.size():
 		var step: Dictionary = steps[t["i"]]
@@ -116,10 +123,19 @@ func _run_script(t: Dictionary) -> void:
 		if r is String and r == "pushed":
 			return
 		if r is String and r == "abort":
+			t["ctx"]["aborted"] = true
 			tasks.erase(t)
 			return
 	if tasks.has(t) and tasks.back() == t:
 		tasks.pop_back()
+
+func after_presentation(fn: Callable) -> void:
+	if not presentation_enabled:
+		fn.call()
+		return
+	push_call(fn)
+	tasks.append({"t": "presentation"})
+	pump()
 
 func push_script(steps: Array, ctx: Dictionary) -> void:
 	tasks.append({"t": "script", "steps": steps, "i": 0, "ctx": ctx})
@@ -364,18 +380,24 @@ func _start_activation(p: int, c: DCard, idx: int, event: String, data: Dictiona
 	if not c.face_up and _zone_of(c) in ["spell", "monster"]:
 		c.face_up = true
 		duel.log_event("flip", {"player": p, "uid": c.uid})
+	duel.log_event("card_activated", {"uid": c.uid, "player": p, "kind": type})
 	c.used[idx] = duel.turn
 	if c.borrowed_from != -1:
 		duel.damage_player(p, 2000, "effect")               # Graverobber's price
 	activating += 1
 	var add := func():
 		activating -= 1
+		if ctx.get("aborted", false):
+			_flush_queue()
+			return
 		_add_link(p, c, idx, ctx, open_window)
 	push_call(add)
 	if not (e.get("target", []) as Array).is_empty():
 		push_script(e["target"], ctx)
 	if not (e.get("cost", []) as Array).is_empty():
 		push_script(e["cost"], ctx)
+	if presentation_enabled:
+		tasks.append({"t": "presentation"})
 	pump()
 
 func _add_link(p: int, c: DCard, idx: int, ctx: Dictionary, open_window: bool) -> void:

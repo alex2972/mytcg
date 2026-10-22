@@ -15,6 +15,7 @@ const BOTTOM_INSET := 22.0
 const CENTER := Vector2(524, 305)
 const TEXT_X := 82.0
 
+var text_x := TEXT_X
 var message := ""
 var kind := "yesno"                  # "yesno", "ok", or persistent "discard" instructions
 var body_h := 100.0
@@ -41,6 +42,17 @@ static func clean(text: String) -> String:
 	re.compile("@[0-9]")
 	return re.sub(text, "", true)
 
+## Shows an OK message over `parent`; await the returned dialog's `answered`.
+static func notice(parent: Node, text: String) -> DuelDialog:
+	var dlg := DuelDialog.new()
+	dlg.setup(text, "ok")
+	dlg.text_x = 36.0
+	parent.add_child(dlg)
+	return dlg
+
+const SHOP_NOTICE := "You don't have enough cards for a 40-card deck.
+Go to the shop to get your starter cards."
+
 func setup(text: String, dialog_kind: String) -> void:
 	message = clean(text)
 	kind = dialog_kind
@@ -55,7 +67,7 @@ func _ready() -> void:
 	font.font_weight = 700
 	label.add_theme_font_override("font", font)
 	var text_size := font.get_multiline_string_size(message, HORIZONTAL_ALIGNMENT_LEFT,
-		BASE_W - TEXT_X - 22.0, 14, -1, TextServer.BREAK_MANDATORY | TextServer.BREAK_WORD_BOUND)
+		BASE_W - text_x - 22.0, 14, -1, TextServer.BREAK_MANDATORY | TextServer.BREAK_WORD_BOUND)
 	body_h = maxf(64.0, text_size.y + 32.0) if kind == "discard" else maxf(92.0, text_size.y + 48.0)
 	panel.size = Vector2(BASE_W, TOP_H + body_h + BOTTOM_H - BOTTOM_INSET)
 	panel.scale = Vector2(SCALE, SCALE)
@@ -66,8 +78,8 @@ func _ready() -> void:
 	add_child(panel)
 	label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	label.text = message
-	label.position = Vector2(TEXT_X, TOP_H + 4.0)
-	label.size = Vector2(BASE_W - TEXT_X - 22.0, body_h - 40.0)
+	label.position = Vector2(text_x, TOP_H + 4.0)
+	label.size = Vector2(BASE_W - text_x - 22.0, body_h - 40.0)
 	label.add_theme_font_size_override("font_size", 14)
 	label.add_theme_color_override("font_color", Color(1, 1, 1))
 	label.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.85))
@@ -113,13 +125,14 @@ func _button_at(local: Vector2) -> String:
 	return ""
 
 func _on_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_RIGHT and not done and kind != "discard":
+		_finish(false)
+		return
 	if event is InputEventMouseMotion:
 		var key := _button_at((event.position - panel.position) / SCALE)
 		if key != hover:
 			hover = key
 			CursorUtil.set_state("on" if key != "" else "off")
-			if key != "":
-				AudioUtil.sfx("cursor")
 			panel.queue_redraw()
 	elif event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT and not done:
 		var key := _button_at((event.position - panel.position) / SCALE)
@@ -131,7 +144,15 @@ func _finish(value: bool) -> void:
 		return
 	done = true
 	hide()
-	AudioUtil.sfx("decide")
 	CursorUtil.set_state("off")
 	answered.emit(value)
 	queue_free()
+
+
+## Let the board inspect friendly Set cards beneath a modal decision, without permitting clicks.
+func _input(event: InputEvent) -> void:
+	if not (event is InputEventMouseMotion) or done:
+		return
+	var board := get_parent()
+	if board.has_method("_preview_set_cards"):
+		board._preview_set_cards(board.get_global_transform_with_canvas().affine_inverse() * event.position)

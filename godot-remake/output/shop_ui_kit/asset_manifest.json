@@ -1,0 +1,149 @@
+[
+  {
+    "file": "back_disabled.png",
+    "width": 336,
+    "height": 189,
+    "has_transparent_corner": true,
+    "bytes": 147490
+  },
+  {
+    "file": "back_hover.png",
+    "width": 335,
+    "height": 184,
+    "has_transparent_corner": true,
+    "bytes": 150816
+  },
+  {
+    "file": "back_normal.png",
+    "width": 330,
+    "height": 183,
+    "has_transparent_corner": true,
+    "bytes": 142426
+  },
+  {
+    "file": "back_pressed.png",
+    "width": 332,
+    "height": 185,
+    "has_transparent_corner": true,
+    "bytes": 136043
+  },
+  {
+    "file": "background.png",
+    "width": 1448,
+    "height": 1086,
+    "has_transparent_corner": false,
+    "bytes": 3068721
+  },
+  {
+    "file": "balance_panel.png",
+    "width": 351,
+    "height": 126,
+    "has_transparent_corner": true,
+    "bytes": 102414
+  },
+  {
+    "file": "footer_strip.png",
+    "width": 1490,
+    "height": 135,
+    "has_transparent_corner": true,
+    "bytes": 399191
+  },
+  {
+    "file": "header_strip.png",
+    "width": 1491,
+    "height": 139,
+    "has_transparent_corner": true,
+    "bytes": 463649
+  },
+  {
+    "file": "logo_yugioh.png",
+    "width": 1951,
+    "height": 806,
+    "has_transparent_corner": true,
+    "bytes": 1508123
+  },
+  {
+    "file": "price_disabled.png",
+    "width": 307,
+    "height": 117,
+    "has_transparent_corner": true,
+    "bytes": 90055
+  },
+  {
+    "file": "price_hover.png",
+    "width": 308,
+    "height": 118,
+    "has_transparent_corner": true,
+    "bytes": 92114
+  },
+  {
+    "file": "price_normal.png",
+    "width": 307,
+    "height": 118,
+    "has_transparent_corner": true,
+    "bytes": 89164
+  },
+  {
+    "file": "scroll_arrow_down.png",
+    "width": 117,
+    "height": 120,
+    "has_transparent_corner": true,
+    "bytes": 41255
+  },
+  {
+    "file": "scroll_thumb.png",
+    "width": 64,
+    "height": 127,
+    "has_transparent_corner": true,
+    "bytes": 21984
+  },
+  {
+    "file": "scroll_track.png",
+    "width": 69,
+    "height": 267,
+    "has_transparent_corner": true,
+    "bytes": 45481
+  },
+  {
+    "file": "selection_corner.png",
+    "width": 88,
+    "height": 105,
+    "has_transparent_corner": true,
+    "bytes": 21616
+  },
+  {
+    "file": "tab_hover.png",
+    "width": 350,
+    "height": 109,
+    "has_transparent_corner": true,
+    "bytes": 95647
+  },
+  {
+    "file": "tab_normal.png",
+    "width": 348,
+    "height": 108,
+    "has_transparent_corner": true,
+    "bytes": 95756
+  },
+  {
+    "file": "tab_pressed.png",
+    "width": 350,
+    "height": 107,
+    "has_transparent_corner": true,
+    "bytes": 89218
+  },
+  {
+    "file": "tab_selected.png",
+    "width": 352,
+    "height": 112,
+    "has_transparent_corner": true,
+    "bytes": 100151
+  },
+  {
+    "file": "title_card_shop.png",
+    "width": 600,
+    "height": 142,
+    "has_transparent_corner": true,
+    "bytes": 218428
+  }
+]

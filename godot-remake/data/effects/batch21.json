@@ -1145,7 +1145,21 @@
   "fx": [
    {
     "type": "spell",
-    "do": []
+    "do": [
+     {
+      "op": "select",
+      "as": "peek",
+      "from": "opp.hand",
+      "n": 1,
+      "auto": false,
+      "hidden_pick": true,
+      "prompt_text": "Pick 1 card from your opponent's hand."
+     },
+     {
+      "op": "reveal",
+      "what": "$peek"
+     }
+    ]
    }
   ]
  },
@@ -1159,7 +1173,11 @@
       "c": "event_src"
      }
     ],
-    "do": []
+    "do": [
+     {
+      "op": "order_deck"
+     }
+    ]
    }
   ]
  },
@@ -1173,7 +1191,20 @@
       "c": "event_src"
      }
     ],
-    "do": []
+    "do": [
+     {
+      "op": "reveal",
+      "what": {
+       "from": "field",
+       "filter": {
+        "face_up": false
+       }
+      },
+      "public": true,
+      "sequential": true,
+      "seconds": 4
+     }
+    ]
    }
   ]
  },

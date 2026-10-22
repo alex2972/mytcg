@@ -1,0 +1,179 @@
+{
+  "created": 13,
+  "errors": 0,
+  "input": "Z:\\process\\godot-remake\\card_batches\\input\\requested-cards-5.csv",
+  "previewPages": [
+    "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-085543-107982\\preview-01.png"
+  ],
+  "cards": [
+    {
+      "row": 2,
+      "filename": "AAT",
+      "name": "Ancient Telescope",
+      "status": "created",
+      "files": [
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-085543-107982\\AAT.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-085543-107982\\AAT-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-085543-107982\\AAT.json"
+      ],
+      "bodySize": 6.1,
+      "lines": 2
+    },
+    {
+      "row": 3,
+      "filename": "ACF",
+      "name": "Crazy Fish",
+      "status": "created",
+      "files": [
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-085543-107982\\ACF.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-085543-107982\\ACF-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-085543-107982\\ACF.json"
+      ],
+      "bodySize": 6.1,
+      "lines": 1
+    },
+    {
+      "row": 4,
+      "filename": "ADR",
+      "name": "Dark Rabbit",
+      "status": "created",
+      "files": [
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-085543-107982\\ADR.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-085543-107982\\ADR-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-085543-107982\\ADR.json"
+      ],
+      "bodySize": 6.1,
+      "lines": 2
+    },
+    {
+      "row": 5,
+      "filename": "AG",
+      "name": "Gokibore",
+      "status": "created",
+      "files": [
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-085543-107982\\AG.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-085543-107982\\AG-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-085543-107982\\AG.json"
+      ],
+      "bodySize": 6.1,
+      "lines": 2
+    },
+    {
+      "row": 6,
+      "filename": "AK",
+      "name": "Kattapillar",
+      "status": "created",
+      "files": [
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-085543-107982\\AK.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-085543-107982\\AK-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-085543-107982\\AK.json"
+      ],
+      "bodySize": 6.1,
+      "lines": 1
+    },
+    {
+      "row": 7,
+      "filename": "AH",
+      "name": "Haniwa",
+      "status": "created",
+      "files": [
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-085543-107982\\AH.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-085543-107982\\AH-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-085543-107982\\AH.json"
+      ],
+      "bodySize": 6.1,
+      "lines": 1
+    },
+    {
+      "row": 8,
+      "filename": "AHL",
+      "name": "Happy Lover",
+      "status": "created",
+      "files": [
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-085543-107982\\AHL.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-085543-107982\\AHL-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-085543-107982\\AHL.json"
+      ],
+      "bodySize": 6.1,
+      "lines": 2
+    },
+    {
+      "row": 9,
+      "filename": "AKD",
+      "name": "Koumori Dragon",
+      "status": "created",
+      "files": [
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-085543-107982\\AKD.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-085543-107982\\AKD-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-085543-107982\\AKD.json"
+      ],
+      "bodySize": 6.1,
+      "lines": 2
+    },
+    {
+      "row": 10,
+      "filename": "ANB",
+      "name": "Needle Ball",
+      "status": "created",
+      "files": [
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-085543-107982\\ANB.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-085543-107982\\ANB-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-085543-107982\\ANB.json"
+      ],
+      "bodySize": 6.1,
+      "lines": 3
+    },
+    {
+      "row": 11,
+      "filename": "ATOS",
+      "name": "Temple of Skulls",
+      "status": "created",
+      "files": [
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-085543-107982\\ATOS.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-085543-107982\\ATOS-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-085543-107982\\ATOS.json"
+      ],
+      "bodySize": 6.1,
+      "lines": 2
+    },
+    {
+      "row": 12,
+      "filename": "ATA",
+      "name": "Toon Alligator",
+      "status": "created",
+      "files": [
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-085543-107982\\ATA.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-085543-107982\\ATA-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-085543-107982\\ATA.json"
+      ],
+      "bodySize": 6.1,
+      "lines": 1
+    },
+    {
+      "row": 13,
+      "filename": "AVR",
+      "name": "Violent Rain",
+      "status": "created",
+      "files": [
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-085543-107982\\AVR.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-085543-107982\\AVR-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-085543-107982\\AVR.json"
+      ],
+      "bodySize": 6.1,
+      "lines": 1
+    },
+    {
+      "row": 14,
+      "filename": "AWE",
+      "name": "Warrior Elimination",
+      "status": "created",
+      "files": [
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-085543-107982\\AWE.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-085543-107982\\AWE-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-085543-107982\\AWE.json"
+      ],
+      "bodySize": 6.1,
+      "lines": 1
+    }
+  ]
+}

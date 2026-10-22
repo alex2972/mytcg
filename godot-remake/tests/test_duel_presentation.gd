@@ -100,7 +100,7 @@ func _init() -> void:
 	if dialog() != null:
 		click_dialog("ok")
 	check(board._decision_select_active(), "OK enables target picking")
-	check(board._hover_cursor(target) == "act", "valid targets show the selection cursor")
+	check(board._hover_cursor(target) == "on", "valid targets show the selection cursor")
 	board._check_decision()
 	check(dialog() == null, "refresh does not repeat acknowledged instruction")
 	board.fx_enabled = false

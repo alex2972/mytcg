@@ -1,0 +1,5 @@
+﻿filename,artwork,name,kind,attribute,level,race,atk,def,description,code,edition,titleColor,subtype,zoom,cropX,cropY,brightness,contrast,saturation,titleSize,bodySize,gameNumber
+AMG,milenium golem.webp,Millennium Golem,Normal,EARTH,6,Rock,2000,2200,"For nearly a millennium, this golem has served as guardian of an ancient treasure trove.",,,black,normal,,,,,,,16.5,6.1,452
+AS,Foto_sengenjin.webp,Sengenjin,Normal,EARTH,8,Beast-Warrior,2750,2500,An unstoppable savage that carries a Millennium Item.,,,black,normal,,,,,,,16.5,6.1,702
+ACS,cybershield.jpg,Cyber Shield,Spell,,,,,,"Increases the ATK of either ""Harpie Lady"" or ""Harpie Lady Sisters"" by 500 points.",,,white,equip,,,,,,,16.5,6.1,316
+AFV,FlameViper-MADU-EN-VG-artwork.png,Flame Viper,Normal,EARTH,2,Pyro,400,450,A fire-breathing snake whose speed makes it a difficult target.,,,black,normal,,,,,,,16.5,6.1,643

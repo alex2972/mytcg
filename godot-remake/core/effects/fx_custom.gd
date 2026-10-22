@@ -121,7 +121,7 @@ static func run(fn: String, _step: Dictionary, ctx: Dictionary, fx: Fx):
 		"inspection":
 			var seen: Array = ctx["vars"].get("peek", [])
 			if not seen.is_empty():
-				return {"type": "choice", "player": ctx["controller"], "as": "seen", "count": 1, "labels": ["OK"], "reveal": seen[0].uid, "prompt_text": d.db.card_name(seen[0].idx)}
+				return fx.ops.run({"op": "reveal", "what": "$peek"}, ctx)
 		"inspection_again":
 			fx.window("inspection_again", {"player": 1 - int(ctx["controller"]), "inspection": ctx["src"].uid})
 		"imitation_cost":
@@ -137,6 +137,7 @@ static func run(fn: String, _step: Dictionary, ctx: Dictionary, fx: Fx):
 			var insects: Array = d.side(ctx["controller"]).deck.filter(func(c): return d.is_monster(c) and d.race_of(c) == fx.ops.race_id("Insect") and d.level_of(c) == int(ctx["vars"].get("level", -1)) and d.special_summon_problem(c, ctx["controller"], true) == "")
 			ctx["vars"]["insects"] = insects
 			if insects.is_empty():
+				fx.ops.empty_search_notice({"from": "self.deck", "filter": {"type": "monster", "race": "Insect", "level_min": ctx["vars"]["level"], "level_max": ctx["vars"]["level"]}}, ctx)
 				d.shuffle_deck(ctx["controller"])
 				return null
 			fx.push_script([{"op": "select", "as": "insect", "from": "$insects", "n": 1, "auto": false, "prompt": 241}, {"op": "choice", "as": "position", "count": 2, "labels": ["Face-up Attack", "Face-down Defense"], "prompt_text": "Choose the summon position."}, {"op": "custom", "fn": "imitation_finish"}], ctx)
@@ -264,22 +265,65 @@ static func run(fn: String, _step: Dictionary, ctx: Dictionary, fx: Fx):
 						s.hand.append(top)
 						d._emit("draw", {"player": p, "uid": top.uid})
 		"morphing_jar2":
+			# Native 0058c490 counts Main Deck returns by OWNER, regardless of Level.
 			var returned := [0, 0]
-			for p in 2:
-				for c in d.monsters_of(p):
-					if d.level_of(c) <= 4:
-						returned[p] += 1
-					d.return_to_deck(c, "shuffle")
-			for p in 2:
-				var found := 0
-				var s2: Duel.PlayerSide = d.side(p)
-				while found < returned[p] and not s2.deck.is_empty():
-					var top2: DCard = s2.deck.back()
-					if d.is_monster(top2) and d.level_of(top2) <= 4 and d.free_zone(s2.monsters) != -1:
-						d.special_summon(top2, p, "def", false)
-						found += 1
-					else:
-						d.send_to_grave(top2, "discard")
+			for c in d.monsters_of(0) + d.monsters_of(1):
+				d.return_to_deck(c)
+				if d.side(c.owner).deck.has(c):
+					returned[c.owner] += 1
+			for p in [d.turn_player, 1 - d.turn_player]:
+				if returned[p] > 0:
+					d.shuffle_deck(p)
+			ctx["vars"]["jar2"] = {"remaining": returned, "players": [d.turn_player, 1 - d.turn_player], "player_index": 0, "summoned": [[], []]}
+			fx.push_script([{"op": "custom", "fn": "jar2_excavate"}, {"op": "custom", "fn": "jar2_finish"}], ctx)
+			return {"type": "presentation", "player": d.turn_player} if fx.presentation_enabled else "pushed"
+		"jar2_excavate":
+			var state: Dictionary = ctx["vars"]["jar2"]
+			while int(state["player_index"]) < 2:
+				var p: int = state["players"][state["player_index"]]
+				if int(state["remaining"][p]) == 0 or d.side(p).deck.is_empty():
+					state["player_index"] += 1
+					continue
+				var top: DCard = d.side(p).deck.back()
+				state["top"] = top
+				d.log_event("excavate", {"player": p, "uid": top.uid})
+				fx.push_script([{"op": "custom", "fn": "jar2_place"}, {"op": "custom", "fn": "jar2_excavate"}], ctx)
+				return {"type": "presentation", "player": p} if fx.presentation_enabled else "pushed"
+		"jar2_place":
+			var state: Dictionary = ctx["vars"]["jar2"]
+			var p: int = state["players"][state["player_index"]]
+			var top: DCard = state["top"]
+			# Every excavated monster consumes a count, even if too large or unable to summon.
+			if d.is_monster(top):
+				state["remaining"][p] -= 1
+			if d.is_monster(top) and d.level_of(top) <= 4 and d.special_summon(top, p, "def", false) == "":
+				state["summoned"][p].append(top.uid)
+			else:
+				# Picked up from the Deck, not drawn and not discarded from the hand.
+				d.send_to_grave(top, "excavated")
+			if fx.presentation_enabled:
+				return {"type": "presentation", "player": p}
+		"jar2_finish":
+			var state: Dictionary = ctx["vars"]["jar2"]
+			# Native 00576170 conceals the identity of multiple newly Set monsters.
+			for p in state["players"]:
+				var zones := []
+				var monsters := []
+				for z in 5:
+					var c: DCard = d.side(p).monsters[z]
+					if c != null and not c.face_up and state["summoned"][p].has(c.uid):
+						zones.append(z)
+						monsters.append(c)
+				if monsters.size() > 1:
+					d._shuffle(monsters)
+					var positions := []
+					for i in zones.size():
+						d.side(p).monsters[zones[i]] = monsters[i]
+						positions.append({"uid": monsters[i].uid, "zone": zones[i]})
+					d.log_event("shuffle_set_monsters", {"player": p, "positions": positions})
+			ctx["vars"].erase("jar2")
+			if fx.presentation_enabled:
+				return {"type": "presentation", "player": d.turn_player}
 		"tailor_select":
 			var equips: Array = ctx["vars"].get("e", [])
 			if equips.is_empty():

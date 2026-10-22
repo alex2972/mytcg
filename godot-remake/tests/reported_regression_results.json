@@ -1,0 +1,227 @@
+[
+  {
+    "suite": "test_ai_duel.gd",
+    "code": 0,
+    "details": ""
+  },
+  {
+    "suite": "test_ai_responses.gd",
+    "code": 0,
+    "details": ""
+  },
+  {
+    "suite": "test_approximations.gd",
+    "code": 0,
+    "details": ""
+  },
+  {
+    "suite": "test_battle_steps.gd",
+    "code": 0,
+    "details": ""
+  },
+  {
+    "suite": "test_board.gd",
+    "code": 0,
+    "details": ""
+  },
+  {
+    "suite": "test_board_effects.gd",
+    "code": 0,
+    "details": ""
+  },
+  {
+    "suite": "test_card_db.gd",
+    "code": 0,
+    "details": ""
+  },
+  {
+    "suite": "test_deck.gd",
+    "code": 0,
+    "details": ""
+  },
+  {
+    "suite": "test_deck_editor.gd",
+    "code": 0,
+    "details": ""
+  },
+  {
+    "suite": "test_deck_rules.gd",
+    "code": 0,
+    "details": ""
+  },
+  {
+    "suite": "test_discard_panel.gd",
+    "code": 0,
+    "details": ""
+  },
+  {
+    "suite": "test_duel.gd",
+    "code": 0,
+    "details": ""
+  },
+  {
+    "suite": "test_duel_presentation.gd",
+    "code": 0,
+    "details": ""
+  },
+  {
+    "suite": "test_effects.gd",
+    "code": 0,
+    "details": ""
+  },
+  {
+    "suite": "test_effects10.gd",
+    "code": 0,
+    "details": ""
+  },
+  {
+    "suite": "test_effects11.gd",
+    "code": 0,
+    "details": ""
+  },
+  {
+    "suite": "test_effects12.gd",
+    "code": 0,
+    "details": ""
+  },
+  {
+    "suite": "test_effects13.gd",
+    "code": 0,
+    "details": ""
+  },
+  {
+    "suite": "test_effects14.gd",
+    "code": 0,
+    "details": ""
+  },
+  {
+    "suite": "test_effects15.gd",
+    "code": 0,
+    "details": ""
+  },
+  {
+    "suite": "test_effects16.gd",
+    "code": 0,
+    "details": ""
+  },
+  {
+    "suite": "test_effects17.gd",
+    "code": 0,
+    "details": ""
+  },
+  {
+    "suite": "test_effects2.gd",
+    "code": 0,
+    "details": ""
+  },
+  {
+    "suite": "test_effects3.gd",
+    "code": 0,
+    "details": ""
+  },
+  {
+    "suite": "test_effects4.gd",
+    "code": 0,
+    "details": ""
+  },
+  {
+    "suite": "test_effects5.gd",
+    "code": 0,
+    "details": ""
+  },
+  {
+    "suite": "test_effects6.gd",
+    "code": 0,
+    "details": ""
+  },
+  {
+    "suite": "test_effects7.gd",
+    "code": 0,
+    "details": ""
+  },
+  {
+    "suite": "test_effects8.gd",
+    "code": 0,
+    "details": ""
+  },
+  {
+    "suite": "test_effects9.gd",
+    "code": 0,
+    "details": ""
+  },
+  {
+    "suite": "test_first_turn.gd",
+    "code": 0,
+    "details": ""
+  },
+  {
+    "suite": "test_janken.gd",
+    "code": 0,
+    "details": ""
+  },
+  {
+    "suite": "test_joey_vs_simple.gd",
+    "code": 0,
+    "details": ""
+  },
+  {
+    "suite": "test_music.gd",
+    "code": 0,
+    "details": ""
+  },
+  {
+    "suite": "test_native_battle.gd",
+    "code": 0,
+    "details": ""
+  },
+  {
+    "suite": "test_native_coins.gd",
+    "code": 0,
+    "details": ""
+  },
+  {
+    "suite": "test_native_history.gd",
+    "code": 0,
+    "details": ""
+  },
+  {
+    "suite": "test_native_rules.gd",
+    "code": 0,
+    "details": ""
+  },
+  {
+    "suite": "test_native_targeting.gd",
+    "code": 0,
+    "details": ""
+  },
+  {
+    "suite": "test_remaining_effect_ui.gd",
+    "code": 0,
+    "details": ""
+  },
+  {
+    "suite": "test_reported_regressions.gd",
+    "code": 0,
+    "details": ""
+  },
+  {
+    "suite": "test_reveal_order.gd",
+    "code": 0,
+    "details": ""
+  },
+  {
+    "suite": "test_roll_animations.gd",
+    "code": 0,
+    "details": ""
+  },
+  {
+    "suite": "test_sword.gd",
+    "code": 0,
+    "details": ""
+  },
+  {
+    "suite": "test_ui_parity.gd",
+    "code": 0,
+    "details": ""
+  }
+]

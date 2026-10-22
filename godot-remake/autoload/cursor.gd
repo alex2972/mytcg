@@ -15,7 +15,7 @@ var _pressed := false
 var ripple_layer := Control.new()
 
 func _ready() -> void:
-	layer = 128
+	layer = 1025
 	ripple_layer.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	ripple_layer.size = Vector2(4096, 4096)
 	ripple_layer.draw.connect(_draw_ripples)
@@ -27,6 +27,8 @@ func _ready() -> void:
 	set_state("off")
 
 func _tex(s: String) -> Texture2D:
+	# Keep the unavailable-action sprite extracted but unused for now.
+	if s == "over": s = "off"
 	if not textures.has(s):
 		var path := "res://assets/cursor/cursor0%d.png" % (1 if s == "press" else 0)
 		if s != "off" and s != "on" and s != "press":

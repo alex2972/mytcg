@@ -8,10 +8,6 @@
     "gap": "The two decoys are tokens; the original takes 2 non-monster cards out of the Deck.",
     "fix": "Move two Spell/Trap cards from the Deck onto the field as 0/0 monsters, return them afterwards."
   },
-  "Patrol Robo": {
-    "gap": "No effect at all (the peek at a Set card needs an interface).",
-    "fix": "A 'look at 1 Set card' prompt shown to the player during the Standby Phase."
-  },
   "Red-Moon Baby": {
     "gap": "The destroyed monster comes back immediately, not at the end of the Battle Phase, and always in Attack Position.",
     "fix": "Queue the revival for the end of the Battle Phase and let the player pick the position."
@@ -65,8 +61,8 @@
     "fix": "Check the original's order and which player's monsters are summoned first."
   },
   "Morphing Jar #2": {
-    "gap": "The card count each player picks up is an interpretation of an ambiguous card text.",
-    "fix": "Check how the original counts."
+    "gap": "Rules/counts now follow native handler 0058c490: count all Main Deck returns by owner, stop on any excavated monster, summon only eligible Level 4 or lower monsters, and conceal multiple newly Set monsters by shuffling their occupied positions. Excavation uses a 0.45-second face-up preview and a 0.35-second position shuffle; these visual timings/path are reconstructed without a reference clip.",
+    "fix": "Compare an original Morphing Jar #2 resolution video to match the excavation display and face-down position shuffle choreography/timing."
   },
   "Exchange": {
     "gap": "The hands are not shown to both players.",
@@ -232,21 +228,9 @@
     "gap": "The card is also destroyed when the selected monster is offered as a Tribute (the original keeps it).",
     "fix": "Tell Tributes apart from other ways of leaving the field."
   },
-  "Big Eye": {
-    "gap": "No effect: seeing and ordering the top 5 cards needs an interface.",
-    "fix": "A card-ordering dialog."
-  },
-  "The Stern Mystic": {
-    "gap": "No effect: turning all face-down cards face-up and back only matters as information (interface).",
-    "fix": "Show the face-down cards briefly."
-  },
   "Ancient Telescope": {
     "gap": "No effect: seeing the opponent's top 5 cards needs an interface.",
     "fix": "A card-list dialog."
-  },
-  "The Inexperienced Spy": {
-    "gap": "No effect: seeing a card of the opponent's hand needs an interface.",
-    "fix": "A card-view dialog."
   },
   "Stim-Pack": {
     "gap": "The -200 ATK per Standby Phase stays on the monster if the Equip Card leaves the field (also Germ Infection, -300).",
@@ -271,10 +255,6 @@
   "Thousand-Eyes Restrict": {
     "gap": "A face-down monster should give 0 ATK/DEF; it gives its printed values. The stats are the equipped monster's printed ones.",
     "fix": "Use 0/0 for face-down monsters."
-  },
-  "Soul Exchange": {
-    "gap": "The game engine accepts the opponent's monster as a Tribute, but the board interface does not offer it yet (AI does not use it either).",
-    "fix": "Let the Tribute dialog list the opponent's monster."
   },
   "Fake Trap": {
     "gap": "The substitution is automatic whenever the opponent's effect would destroy my other Trap Card; there is no choice and it also works face-up.",
@@ -339,5 +319,45 @@
   "RULE: random-result animation motion": {
     "gap": "Dice and coin animations now use the extracted sprite strips, final faces, shadows and sounds, and pause resolution until the result is displayed. Flight paths, frame cadence and result hold times are reconstructed rather than copied from the native renderer.",
     "fix": "Trace the native coin/dice renderer frame order, positions and timing, then replace the reconstructed motion while keeping the recorded-result presentation barrier."
+  },
+  "RULE: deck shuffle presentation": {
+    "gap": "Frame cycle, tick stages and motion follow native 00453540/00453560; wall-clock timing uses 60 updates per second (original update frequency unverified). Sound ID 0x1000000f currently uses card_move.",
+    "fix": "Verify the original update frequency and sound-ID mapping with runtime evidence."
+  },
+  "RULE: video animation reconstruction": {
+    "gap": "Eight original-game clips guide stage order, native textures, direction, geometry and durations (10fps, approximately 0.1s uncertainty). Smooth tween curves, RPS reveal/centering, banner yaw and effect-destruction fragment trajectories are reconstructed; exact native interpolation and particle renderer are not yet traced.",
+    "fix": "Compare higher-frame-rate captures or native renderer tick functions before claiming pixel-exact timing and particle trajectories."
+  },
+  "RULE: Set animation clock": {
+    "gap": "Set circle rotation, scale, opacity envelope and eight staggered rising stars follow native 0044f370/0044f390. Playback maps the native 12-tick increment to 30 updates/sec (~0.71s), inferred from the 10fps reference rather than a traced native clock. Star radii use a separate deterministic visual RNG instead of consuming duel RNG.",
+    "fix": "Verify native update frequency with a higher-frame-rate capture; retain independent visual randomness so presentation cannot affect duel results."
+  },
+  "RULE: summon and Tribute presentation clock": {
+    "gap": "Normal Summon now follows native 0044f9f0/0044fa10: fading card ghost, pixel-sized wrapped rainbow crop, tick*5/8 scrolling and cosine opacity. Tribute follows 00487040/00487060/004870b0: expanding/rotating gold ring, native white-card layers and staggered rising stars, Graveyard handoff at tick 248 while the afterimage finishes through tick 384. Durations (1.0s summon renderer plus 0.2s arrival pause; 1.2s Tribute renderer plus 0.15s Graveyard settle) are fitted to 10fps clips; native clock and externally held Tribute tick-128 pause are not traced. Visual star radii use independent deterministic randomness.",
+    "fix": "Verify native frame clock and Tribute tick-128 hold with higher-frame-rate playback or native event dispatch, preserving visual-only RNG and the asynchronous Graveyard handoff."
+  },
+  "RULE: smooth battle presentation": {
+    "gap": "Battle phase and attack stages follow recovered 00480c20/00480c60, 00414110/004142c0 and 004514b0 plus a 60fps recording of the original (docs/BATTLE_TIMING_NATIVE.md section 7): sword travel 0.25s, impact ring 0.47s, 1.06s quiet damage step, survivor shine 0.30s + 0.69s, damage number over the damaged player's monster with 1.15s hold, LP countdown at 30 steps/s, 0.33s pause, then star+puffs destruction (0.75s) and Graveyard. The recording is one case (attacker destroyed, attacker's controller damaged); timing for other cases (no-damage kills, double destruction, direct attacks) reuses the same stage lengths, and simultaneous destructions start together. No audio was captured, so sound onsets are not verified.",
+    "fix": "Record more battle cases (direct attack, defence-position kill, mutual destruction) with audio and compare stage lengths."
+  },
+  "RULE: duel opening presentation clock": {
+    "gap": "Opening now uses a horizontal-strip reveal from the live Janken scene, native 00451950/00451980 title scale/opacity stages, and native 00418b60 sine-eased card-center movement, linear size interpolation and continuous flip into hand. Durations and 16px transition-strip spacing are fitted to the 10fps duelstart clip; native transition rasterization and update clock are unverified. Motion is evaluated every rendered frame, never limited to recording FPS. Opponent cards slide into their upside-down resting hand without rotating in flight. The opponent Deck uses the reference vertical flip (KONAMI bottom-left); matching the precise native back projection between Deck and hand remains unverified.",
+    "fix": "Verify strip renderer and clock against higher-frame-rate native playback; retain sequential presentation acknowledgements and independent game RNG."
+  },
+  "RULE: activation and effect destruction pacing": {
+    "gap": "Activation, target confirmation, effect destruction and resolved-card Graveyard flight now wait for their preceding visual stage. Native 00450590/004505d0 pulse and counter-rotation are interpolated continuously; extracted shine supplies destruction core. Durations (0.6s flare, 0.4s selection, 0.75s fragments, 0.4s Graveyard flight) fit the low-FPS reference; particle breakup uses deterministic texture fragments instead of the original software rasterizer. Native exact compositing and update clock remain unverified.",
+    "fix": "Compare higher-frame-rate native playback for duration and particle refinement while preserving sequential visual barriers and independent game RNG."
+  },
+  "RULE: responsive battle feedback": {
+    "gap": "Target clicks now launch swords immediately with simultaneous aiming/travel; unused red cursor and target-hover orb are disabled. Phase panels flip individually from outgoing to incoming color, staggered top-to-bottom using the extracted sprite sheet. Battle destruction has no shake (SHAKE_DURATION 0.0, matching the 60fps recording; the optional shake remains configurable) and a completion-driven Graveyard handoff. Flip stagger and shake interpolation are reconstructed from the low-FPS references; exact native raster projection and clock remain unverified. Damage/healing-number timing is tracked separately under LP and damage-number animation clock.",
+    "fix": "Refine panel projection and shake from higher-frame-rate native playback; preserve immediate input feedback and sequential resolution barriers."
+  },
+  "RULE: LP and damage-number animation clock": {
+    "gap": "LP numbers use native 004806f0 right-to-left stagger, full-height hop and quarter-height rebound, followed by native 0047c560 remaining-delta countdown in 100/10/1 steps synchronized with displayed LP and clipped bar. Native default coordinates are (525,140)/(525,460). Timing maps native updates to 60Hz (0.533s entry); native clock is unverified because supplied portrait video is sped up and crops the left LP panel. Blue healing uses the same recovered native renderer although no healing occurs in the clip. Engine LP values and RNG are unchanged.",
+    "fix": "Confirm normal-speed native clock and LP-panel motion with an uncropped reference; retain render-rate digit interpolation and event-by-event displayed LP synchronization."
+  },
+  "RULE: Deck editor collection drawer": {
+    "gap": "Uses original panel, filter, sorting and card-info sprites. Drawer motion uses a smooth 0.30-second tween inferred from screenshots; exact original duration is unverified. Sorts attack/defense/level descending, type/attribute ascending with alphabetical ties; original tie ordering is unverified. Expanded names use the current UI font. Preview typography uses Arial and Arial Black matched visually to screenshots; exact original font settings remain unverified.",
+    "fix": "Compare an original deck-editor video and native sorting tables to refine motion duration, font and tie ordering."
   }
 }

@@ -44,6 +44,11 @@ func sfx(sfx_name: String) -> void:
 	players[0].play()
 
 func music(name: String, loop := true) -> void:
+	if name in ["m_win", "m_lose"]:
+		loop = false
+	if not music_player.is_inside_tree():
+		call_deferred("music", name, loop)
+		return
 	if name == current_music:
 		return
 	current_music = name

@@ -1,0 +1,342 @@
+[
+  {
+    "suite": "test_ai_duel.gd",
+    "code": 0,
+    "summary": [
+      "ai duel tests: OK"
+    ],
+    "details": ""
+  },
+  {
+    "suite": "test_ai_responses.gd",
+    "code": 0,
+    "summary": [
+      "ai response tests: OK"
+    ],
+    "details": ""
+  },
+  {
+    "suite": "test_approximations.gd",
+    "code": 0,
+    "summary": [
+      "approximation list tests: OK"
+    ],
+    "details": ""
+  },
+  {
+    "suite": "test_battle_steps.gd",
+    "code": 0,
+    "summary": [
+      "battle step tests: OK"
+    ],
+    "details": ""
+  },
+  {
+    "suite": "test_board.gd",
+    "code": 0,
+    "summary": [
+      "board tests: OK"
+    ],
+    "details": ""
+  },
+  {
+    "suite": "test_board_effects.gd",
+    "code": 0,
+    "summary": [
+      "board effects tests: OK"
+    ],
+    "details": ""
+  },
+  {
+    "suite": "test_card_db.gd",
+    "code": 0,
+    "summary": [
+      "card_db tests: OK"
+    ],
+    "details": ""
+  },
+  {
+    "suite": "test_deck.gd",
+    "code": 0,
+    "summary": [
+      "deck tests: OK"
+    ],
+    "details": ""
+  },
+  {
+    "suite": "test_deck_editor.gd",
+    "code": 0,
+    "summary": [
+      "deck editor tests: OK"
+    ],
+    "details": ""
+  },
+  {
+    "suite": "test_deck_rules.gd",
+    "code": 0,
+    "summary": [
+      "deck rules tests: OK"
+    ],
+    "details": ""
+  },
+  {
+    "suite": "test_discard_panel.gd",
+    "code": 0,
+    "summary": [
+      "discard panel tests: OK"
+    ],
+    "details": ""
+  },
+  {
+    "suite": "test_duel.gd",
+    "code": 0,
+    "summary": [
+      "duel tests: OK"
+    ],
+    "details": ""
+  },
+  {
+    "suite": "test_duel_presentation.gd",
+    "code": 0,
+    "summary": [
+      "duel presentation tests: OK"
+    ],
+    "details": ""
+  },
+  {
+    "suite": "test_effects.gd",
+    "code": 0,
+    "summary": [
+      "effect tests: OK"
+    ],
+    "details": ""
+  },
+  {
+    "suite": "test_effects10.gd",
+    "code": 0,
+    "summary": [
+      "effect tests 10: OK"
+    ],
+    "details": ""
+  },
+  {
+    "suite": "test_effects11.gd",
+    "code": 0,
+    "summary": [
+      "effect tests 11: OK"
+    ],
+    "details": ""
+  },
+  {
+    "suite": "test_effects12.gd",
+    "code": 0,
+    "summary": [
+      "effect tests 12: OK"
+    ],
+    "details": ""
+  },
+  {
+    "suite": "test_effects13.gd",
+    "code": 0,
+    "summary": [
+      "effect tests 13: OK"
+    ],
+    "details": ""
+  },
+  {
+    "suite": "test_effects14.gd",
+    "code": 0,
+    "summary": [
+      "effect tests 14: OK"
+    ],
+    "details": ""
+  },
+  {
+    "suite": "test_effects15.gd",
+    "code": 0,
+    "summary": [
+      "effect tests 15: OK"
+    ],
+    "details": ""
+  },
+  {
+    "suite": "test_effects16.gd",
+    "code": 0,
+    "summary": [
+      "effect tests 16: OK"
+    ],
+    "details": ""
+  },
+  {
+    "suite": "test_effects17.gd",
+    "code": 0,
+    "summary": [
+      "effect tests 17: OK"
+    ],
+    "details": ""
+  },
+  {
+    "suite": "test_effects2.gd",
+    "code": 0,
+    "summary": [
+      "effect tests 2: OK"
+    ],
+    "details": ""
+  },
+  {
+    "suite": "test_effects3.gd",
+    "code": 0,
+    "summary": [
+      "effect tests 3: OK"
+    ],
+    "details": ""
+  },
+  {
+    "suite": "test_effects4.gd",
+    "code": 0,
+    "summary": [
+      "effect tests 4: OK"
+    ],
+    "details": ""
+  },
+  {
+    "suite": "test_effects5.gd",
+    "code": 0,
+    "summary": [
+      "effect tests 5: OK"
+    ],
+    "details": ""
+  },
+  {
+    "suite": "test_effects6.gd",
+    "code": 0,
+    "summary": [
+      "effect tests 6: OK"
+    ],
+    "details": ""
+  },
+  {
+    "suite": "test_effects7.gd",
+    "code": 0,
+    "summary": [
+      "effect tests 7: OK"
+    ],
+    "details": ""
+  },
+  {
+    "suite": "test_effects8.gd",
+    "code": 0,
+    "summary": [
+      "effect tests 8: OK"
+    ],
+    "details": ""
+  },
+  {
+    "suite": "test_effects9.gd",
+    "code": 0,
+    "summary": [
+      "effect tests 9: OK"
+    ],
+    "details": ""
+  },
+  {
+    "suite": "test_first_turn.gd",
+    "code": 0,
+    "summary": [],
+    "details": ""
+  },
+  {
+    "suite": "test_janken.gd",
+    "code": 0,
+    "summary": [
+      "janken tests: OK"
+    ],
+    "details": ""
+  },
+  {
+    "suite": "test_joey_vs_simple.gd",
+    "code": 0,
+    "summary": [],
+    "details": ""
+  },
+  {
+    "suite": "test_music.gd",
+    "code": 0,
+    "summary": [
+      "music tests: OK"
+    ],
+    "details": ""
+  },
+  {
+    "suite": "test_native_battle.gd",
+    "code": 0,
+    "summary": [
+      "native battle tests: OK"
+    ],
+    "details": ""
+  },
+  {
+    "suite": "test_native_coins.gd",
+    "code": 0,
+    "summary": [
+      "native coin tests: OK"
+    ],
+    "details": ""
+  },
+  {
+    "suite": "test_native_history.gd",
+    "code": 0,
+    "summary": [
+      "native history tests: OK"
+    ],
+    "details": ""
+  },
+  {
+    "suite": "test_native_rules.gd",
+    "code": 0,
+    "summary": [
+      "native rules tests: OK"
+    ],
+    "details": ""
+  },
+  {
+    "suite": "test_native_targeting.gd",
+    "code": 0,
+    "summary": [
+      "native targeting tests: OK"
+    ],
+    "details": ""
+  },
+  {
+    "suite": "test_remaining_effect_ui.gd",
+    "code": 0,
+    "summary": [
+      "remaining effect UI tests: OK"
+    ],
+    "details": ""
+  },
+  {
+    "suite": "test_reveal_order.gd",
+    "code": 0,
+    "summary": [
+      "reveal and ordering tests: OK"
+    ],
+    "details": ""
+  },
+  {
+    "suite": "test_roll_animations.gd",
+    "code": 0,
+    "summary": [
+      "roll animation tests: OK"
+    ],
+    "details": ""
+  },
+  {
+    "suite": "test_sword.gd",
+    "code": 0,
+    "summary": [
+      "sword tests: OK"
+    ],
+    "details": ""
+  }
+]

@@ -299,7 +299,46 @@
   ]
  },
  "Patrol Robo": {
-  "fx": []
+  "fx": [
+   {
+    "type": "trigger",
+    "when": "standby_phase",
+    "once_per_turn": true,
+    "cond": [
+     {
+      "c": "event_by",
+      "who": "self"
+     },
+     {
+      "c": "has",
+      "zone": "opp.field",
+      "filter": {
+       "face_up": false
+      },
+      "n": 1
+     }
+    ],
+    "target": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "opp.field",
+      "filter": {
+       "face_up": false
+      },
+      "n": 1,
+      "auto": false,
+      "prompt_text": "Designate 1 of your opponent's facedown cards\nthat you wish to target."
+     }
+    ],
+    "do": [
+     {
+      "op": "reveal",
+      "what": "$t"
+     }
+    ]
+   }
+  ]
  },
  "Last Will": {
   "fx": [

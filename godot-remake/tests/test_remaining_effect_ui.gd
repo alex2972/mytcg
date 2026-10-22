@@ -61,10 +61,13 @@ func _init() -> void:
 	while d.fx.pending.get("type", "") == "chain": d.respond("pass")
 	b.presented_decision = {}
 	b._check_decision()
-	var preview := false
-	for child in b.decision_box.get_children():
-		if child is TextureRect and child.texture != null: preview = true
-	check(d.fx.pending.has("reveal") and preview, "Inspection shows card artwork with acknowledgement")
+	check(d.fx.pending.get("hidden_pick", false) and not b.list_dialog.visible, "Inspection lets the player click a hidden hand card without revealing its name")
+	var secret: DCard = d.side(1).hand[0]
+	b._sync(false)
+	b._set_revealed(secret.uid, true)
+	check(b.views[secret.uid].shown_face_up and not secret.face_up, "selected hand card is visually revealed without changing state")
+	b._set_revealed(secret.uid, false)
+	check(not b.views[secret.uid].shown_face_up, "hand card returns to its back")
 	b.queue_free()
 	await process_frame
 	print("remaining effect UI tests: ", "OK" if fails == 0 else "%d FAILED" % fails)

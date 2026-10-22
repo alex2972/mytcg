@@ -13,10 +13,10 @@ static func sfx(name: String) -> void:
 	if a != null:
 		a.sfx(name)
 
-static func music(name: String) -> void:
+static func music(name: String, loop := true) -> void:
 	var a := _node()
 	if a != null:
-		a.music(name)
+		a.music(name, loop)
 
 static func stop_music() -> void:
 	var a := _node()

@@ -21,6 +21,35 @@ func _init() -> void:
 		if d.is_monster(c) and d.tributes_required(c) == 0 and d.fx.effects_of(c).is_empty():
 			mon = c
 	check(mon != null, "monster in hand")
+	board._show_card_detail(mon)
+	check(board.d_name.get_theme_color("font_color") == Color.BLACK and board.d_name.get_theme_font("font").font_weight == 700, "detail name uses dark bold lettering")
+	check(board.d_stats.get_theme_color("font_color") == Color.BLACK and board.d_stats.get_theme_font("font").font_weight == 900, "detail stats use heavy black lettering")
+	var icon_image := board._ui("card/icon_syuzoku").get_image()
+	var green_pixels := 0
+	for y in icon_image.get_height():
+		for x in icon_image.get_width():
+			var pixel := icon_image.get_pixel(x, y)
+			if pixel.a > 0 and pixel.r8 == 85 and pixel.g8 == 255 and pixel.b8 == 0:
+				green_pixels += 1
+	check(green_pixels == 0, "duel type-icon atlas has no opaque green transparency pixels")
+
+	# Inspection remains available on the opponent's first turn, even during playback.
+	var hand_view: DuelBoard.CardView = board.views[mon.uid]
+	var resting_position: Vector2 = board._layout(mon)["pos"]
+	d.turn_player = 1
+	board.mode = DuelBoard.Mode.AI
+	board.anim_busy = true
+	board._on_card_enter(hand_view)
+	await create_timer(board.MOVE_TIME + 0.05).timeout
+	check(hand_view.position.y == 466, "own hand card rises during opponent animation")
+	check(board.detail_card == mon and board._hover_cursor(mon) == "off", "opponent-turn hover inspects without offering a summon")
+	check(d.side(0).hand.has(mon) and not board._can_act(), "inspection does not enable playing cards on opponent turn")
+	board._on_card_exit(hand_view)
+	await create_timer(board.MOVE_TIME + 0.05).timeout
+	check(hand_view.position.is_equal_approx(resting_position), "card lowers after opponent-turn hover exit")
+	board.anim_busy = false
+	board.mode = DuelBoard.Mode.IDLE
+	d.turn_player = 0
 	check(board._hover_cursor(mon) == "summon", "hover cursor on a hand monster says Summon")
 	board.hand_set_pref = true
 	check(board._hover_cursor(mon) == "set", "right-click toggle switches it to Set")

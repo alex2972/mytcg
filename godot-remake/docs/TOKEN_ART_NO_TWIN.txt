@@ -1,0 +1,335 @@
+Token-art cards that have NO twin with real art (332). A duplicate entry (same name with art) is not listed.
+index | Konami number | name | type
+--------------------------------------------------------------------------------
+   5 |   123 | Ancient Tool | monster lv5 1700/1400
+   8 |   150 | Rhaimundos of the Red Sword | monster lv4 1200/1300
+   9 |   445 | Aqua Snake | monster lv3 1050/900
+  10 |   441 | Aqua Dragon | monster lv6 2250/1900
+  13 |   266 | Unknown Warrior of Fiend | monster lv3 1000/500
+  14 |   673 | Beastly Mirror Ritual | spell
+  23 |   639 | Acid Crawler | monster lv3 900/700
+  25 |   594 | Fiend Reflection #1 | monster lv4 1300/1400
+  29 |   179 | Arlownay | monster lv3 800/1000
+  36 |   232 | Dark Titan of Terror | monster lv4 1300/1100
+  38 |    29 | Zombie Warrior | monster lv3 1200/900
+  39 |   195 | Arma Knight | monster lv4 1000/1200
+  44 |   398 | Swordsman from a Foreign Land | monster lv1 250/250
+  45 |   559 | Invader from Another Dimension | monster lv4 950/1400
+  47 |   624 | Fairy of the Fountain | monster lv4 1600/1100
+  55 |   587 | Living Vase | monster lv3 900/1100
+  56 |   228 | Hourglass of Life | monster lv2 700/600
+  57 |   111 | That Which Feeds on Life | monster lv4 1200/1000
+  59 |   603 | Obese Marmot of Nefariousness | monster lv3 750/800
+  64 |   455 | Minomushi Warrior | monster lv4 1300/1200
+  65 |   476 | Alinsection | monster lv3 950/700
+  67 |    24 | Horn Imp | monster lv4 1300/1000
+  70 |   495 | Wilmee | monster lv4 1000/1200
+  71 |   463 | Wing Eagle | monster lv5 1800/1500
+  72 |   263 | Wing Egg Elf | monster lv3 500/1300
+  73 |   269 | Wetha | monster lv3 1000/900
+  74 |   129 | Weather Control | monster lv2 600/400
+  76 |   262 | Rock Ogre Grotto #2 | monster lv3 700/1400
+  77 |   242 | Water Element | monster lv3 900/700
+  78 |   434 | Water Girl | monster lv4 1250/1000
+  82 |   433 | Beautiful Beast Trainer | monster lv5 1750/1500
+  83 |   230 | Wood Clown | monster lv3 800/1200
+  85 |   625 | Amazon of the Seas | monster lv4 1300/1400
+  87 |   444 | Guardian of the Sea | monster lv4 1300/1000
+  88 |   431 | Waterdragon Fairy | monster lv3 1100/700
+  89 |   241 | Candle of Fate | monster lv2 600/600
+  90 |   471 | Air Eater | monster lv6 2100/1600
+  91 |   663 | Eternal Draught | spell
+  96 |   529 | Eldeen | monster lv3 950/1000
+ 103 |   252 | Fairywitch | monster lv3 800/1000
+ 115 |    60 | Wolf | monster lv3 1200/800
+ 116 |   595 | Ghoul with an Appetite | monster lv4 1600/1200
+ 125 |   351 | Kanan the Swordmistress | monster lv4 1400/1400
+ 127 |   283 | Tao the Chanter | monster lv3 1200/900
+ 129 |     4 | Ryu-Kishin | monster lv3 1000/500
+ 136 |   426 | Kaiser Dragon | monster lv7 2300/2000
+ 142 |   114 | Kamionwizard | monster lv4 1300/1100
+ 144 |   363 | Black Luster Soldier | monster lv8 3000/2500
+ 145 |   669 | Black Luster Ritual | spell
+ 148 |   305 | Insect Armor with Laser Cannon | spell
+ 149 |   323 | Invigoration | spell
+ 150 |   149 | Akihiron | monster lv5 1700/1400
+ 152 |  1039 | Restructer Revolution | spell
+ 154 |   105 | Spirit of the Winds | monster lv5 1700/1400
+ 156 |   143 | Djinn the Watcher of the Wind | monster lv3 700/900
+ 158 |   405 | Yaiba Robo | monster lv4 1000/1300
+ 160 |   450 | Kanikabuto | monster lv3 650/900
+ 161 |   475 | Ganigumo | monster lv2 600/800
+ 162 |   534 | Kamakiriman | monster lv4 1150/1400
+ 165 |   662 | Breath of Light | spell
+ 170 |   181 | Masked Clown | monster lv2 500/700
+ 171 |  1257 | (no name) | monster lv8 3300/2500
+ 175 |   409 | Mechanical Spider | monster lv2 400/500
+ 176 |   576 | Crow Goblin | monster lv5 1850/1600
+ 180 |   482 | Garvas | monster lv6 2000/1700
+ 182 |   715 | Garma Sword | monster lv7 2550/2150
+ 183 |   696 | Garma Sword Oath | spell
+ 185 |   517 | Boulder Tortoise | monster lv6 1450/2200
+ 187 |   618 | Rock Spirit | monster lv5 1650/1900
+ 189 |   454 | Barrel Rock | monster lv4 1000/1300
+ 190 |   191 | Key Mace | monster lv1 400/300
+ 193 |   407 | Giant Mech-Soldier | monster lv6 1750/1900
+ 194 |   412 | Cyber Soldier | monster lv5 1500/1700
+ 196 |   418 | Giganto | monster lv5 1700/1800
+ 200 |     7 | Mushroom Man | monster lv2 800/600
+ 202 |    89 | Gyakutenno Megami | monster lv6 1800/2000
+ 203 |   498 | Kattapillar | monster lv1 250/300
+ 204 |   251 | Nekogal #1 | monster lv3 1100/900
+ 205 |   626 | Nekogal #2 | monster lv6 1900/2000
+ 214 |   567 | Anthrosaurus | monster lv3 1000/850
+ 217 |   521 | Monstrous Bird | monster lv6 2000/1900
+ 224 |   645 | Gruesome Goo | monster lv3 1300/700
+ 225 |   404 | Saber Slasher | monster lv5 1450/1500
+ 227 |   563 | Great Mammoth of Goldfine | monster lv6 2200/1800
+ 238 |   589 | Beaked Snake | monster lv3 800/900
+ 242 |   527 | Togex | monster lv5 1600/1800
+ 243 |    76 | Grappler | monster lv4 1300/1200
+ 249 |    45 | Griffore | monster lv4 1200/1500
+ 252 |   506 | Crazy Fish | monster lv4 1600/1200
+ 253 |   606 | Great Bill | monster lv4 1250/1300
+ 259 |   286 | Ogre of the Black Shadow | monster lv4 1200/1400
+ 260 |   564 | Man-eating Black Shark | monster lv5 2100/1300
+ 262 |    75 | Krokodilus | monster lv4 1100/1200
+ 263 |   205 | Twin Long Rods #1 | monster lv3 900/700
+ 266 |   103 | Curtain of the Dark Ones | monster lv2 600/500
+ 270 |   285 | Gatekeeper | monster lv5 1500/1800
+ 271 |   505 | Gale Dogra | monster lv2 650/600
+ 288 |   466 | Crimson Sunbird | monster lv6 2300/1800
+ 292 |   276 | Gorgon Egg | monster lv3 300/1300
+ 293 |   202 | Phantom Ghost | monster lv2 600/800
+ 295 |   430 | Ice Water | monster lv3 1150/900
+ 297 |    53 | Gokibore | monster lv4 1200/1400
+ 298 |  1202 | Dark Sage | monster lv9 2800/3200
+ 302 |  1018 | Ancient Telescope | spell
+ 304 |   258 | Ancient Sorcerer | monster lv4 1000/1300
+ 306 |   184 | Eyearmor | monster lv2 600/500
+ 310 |   420 | Cyber Commander | monster lv2 750/700
+ 311 |   417 | Golgoil | monster lv4 900/1600
+ 312 |   484 | Korogashi | monster lv2 550/400
+ 313 |    46 | Torike | monster lv3 1200/600
+ 321 |   316 | Cyber Shield | spell
+ 324 |   440 | Mech Bass | monster lv5 1800/1500
+ 333 |   178 | Phantom Dewan | monster lv2 700/600
+ 335 |   272 | Ancient Tree of Enlightenment | monster lv3 600/1500
+ 338 |   162 | Lisark | monster lv4 1300/1300
+ 339 |   555 | The Wandering Doomed | monster lv2 800/600
+ 341 |   451 | Zarigun | monster lv2 600/700
+ 343 |   210 | Kaminarikozou | monster lv2 700/600
+ 346 |   530 | Mystical Sand | monster lv6 2100/1700
+ 348 |   659 | Stain Storm | spell
+ 349 |   448 | 30,000-Year White Turtle | monster lv5 1250/2100
+ 350 |   473 | Sea Kamen | monster lv4 1100/1300
+ 351 |   442 | Sea King Dragon | monster lv6 2000/1700
+ 353 |   403 | Tatsunootoshigo | monster lv5 1350/1600
+ 356 |  1032 | Just Desserts | trap
+ 360 |   134 | Fiend's Hand | monster lv2 600/600
+ 365 |  1250 | (no name) | monster lv7 2300/2100
+ 366 |   152 | Dokuroizo the Grim Reaper | monster lv3 900/1200
+ 386 |   667 | Bright Castle | spell
+ 388 |   100 | Wings of Wicked Flame | monster lv2 700/600
+ 391 |   183 | Genin | monster lv3 600/900
+ 396 |   106 | Kageningen | monster lv2 800/600
+ 397 |   716 | Javelin Beetle | monster lv8 2450/2550
+ 398 |   695 | Javelin Beetle Pact | spell
+ 399 |   413 | Shovel Crusher | monster lv3 900/1200
+ 420 |   578 | Abyss Flower | monster lv2 750/400
+ 431 |   399 | Emperor of the Land and Sea | monster lv5 1800/1500
+ 432 |   638 | Amphibious Bugroth | monster lv5 1850/1300
+ 433 |   355 | Super War-Lion | monster lv7 2300/2100
+ 441 |   544 | Skelgon | monster lv6 1700/1900
+ 442 |   598 | Violent Rain | monster lv4 1550/800
+ 443 |   472 | Vermillion Sparrow | monster lv5 1900/1500
+ 446 |   256 | Stone Armadiller | monster lv3 800/1200
+ 447 |   456 | Stone Ghost | monster lv4 1200/1000
+ 449 |   425 | Stone D. | monster lv7 2000/2300
+ 450 |   619 | Snakeyashi | monster lv4 1000/1200
+ 454 |   206 | Droll Bird | monster lv2 600/500
+ 466 |   133 | Mystical Capture Chain | monster lv2 700/700
+ 468 |  1247 | Mystical Refpanel | trap
+ 469 |   621 | Ill Witch | monster lv5 1600/1500
+ 477 |   163 | Lord of Zemia | monster lv4 1300/1000
+ 478 |   359 | Zera The Mant | monster lv8 2800/2300
+ 479 |   670 | Zera Ritual | spell
+ 484 |   652 | Warrior Elimination | spell
+ 487 |   702 | Sengenjin | monster lv8 2750/2500
+ 488 |   452 | Millennium Golem | monster lv6 2000/2200
+ 493 |   470 | Soul Hunter | monster lv6 2200/1800
+ 494 |    10 | Sword Arm of Dragon | monster lv6 1750/2030
+ 496 |   392 | Zone Eater | monster lv1 250/200
+ 500 |   218 | Solitude | monster lv3 1050/1000
+ 502 |   196 | Mech Mole Zombie | monster lv2 500/400
+ 503 |   287 | Dark Artist | monster lv3 600/1400
+ 506 |    86 | Dark Chimera | monster lv5 1610/1460
+ 507 |   208 | Winged Cleaver | monster lv2 700/700
+ 509 |   180 | Dark Shade | monster lv3 1000/1000
+ 517 |   122 | Dark Plant | monster lv1 300/400
+ 518 |   172 | Dark Prisoner | monster lv3 600/1000
+ 519 |   383 | Dark Rabbit | monster lv4 1100/1500
+ 521 |   502 | Turtle Raccoon | monster lv3 700/900
+ 528 |   166 | Ancient Jar | monster lv1 400/200
+ 529 |   422 | Dice Armadillo | monster lv5 1650/1800
+ 536 |   125 | Orion the Battle King | monster lv5 1800/1500
+ 540 |   245 | One Who Hunts Souls | monster lv4 1100/1000
+ 544 |   632 | Winged Egg of New Life | monster lv5 1400/1700
+ 545 |   374 | Dungeon Worm | monster lv5 1800/1500
+ 551 |   288 | Change Slime | monster lv1 400/300
+ 555 |   708 | Chakra | monster lv7 2450/2000
+ 556 |   693 | Resurrection of Chakra | spell
+ 557 |   345 | Ookazi | spell
+ 566 |   289 | Moon Envoy | monster lv4 1100/1000
+ 567 |   259 | Lunar Queen Elzaim | monster lv3 750/1100
+ 572 |   575 | Giant Scorpion of the Tundra | monster lv3 1100/1000
+ 578 |   158 | Dig Beak | monster lv2 500/800
+ 580 |   260 | Wicked Mirror | monster lv2 700/600
+ 583 |   201 | Air Marmot of Nefariousness | monster lv2 400/600
+ 585 |   225 | Skull Stalker | monster lv3 900/800
+ 587 |   520 | Skullbird | monster lv6 1900/1700
+ 589 |   239 | The Drdek | monster lv3 700/800
+ 594 |    69 | Fiend Kraken | monster lv4 1200/1400
+ 596 |   284 | Serpent Marauder | monster lv2 700/600
+ 597 |   364 | Fiend's Mirror | monster lv6 2100/1800
+ 599 |   140 | Spiked Snail | monster lv3 700/1300
+ 600 |    30 | Koumori Dragon | monster lv4 1500/1200
+ 604 |   107 | Graveyard and the Hand of Invitation | monster lv3 700/900
+ 613 |   102 | Job-Change Mirror | monster lv3 800/1300
+ 617 |   588 | Tentacle Plant | monster lv2 500/600
+ 618 |   600 | Tenderness | monster lv3 700/1400
+ 619 |   380 | Toon Alligator | monster lv4 800/1600
+ 625 |   109 | Hero of the East | monster lv3 1100/1000
+ 626 |   139 | Toad Master | monster lv3 1000/1000
+ 631 |   142 | Necrolancer the Timelord | monster lv3 800/900
+ 633 |   145 | Temple of Skulls | monster lv4 900/1300
+ 634 |   661 | Eradicating Aerosol | spell
+ 641 |   104 | Tomozaurus | monster lv2 500/400
+ 643 |   569 | Trakadon | monster lv3 1300/800
+ 645 |   501 | D. Human | monster lv4 1300/1100
+ 648 |   137 | Dragon Statue | monster lv3 1100/900
+ 656 |   215 | Dryad | monster lv4 1200/1400
+ 663 |   204 | Dorover | monster lv3 900/800
+ 664 |   194 | Doron | monster lv2 900/500
+ 665 |   151 | The Melting Red Shadow | monster lv2 500/700
+ 666 |   622 | The Thing That Hides in the Mud | monster lv4 1200/1300
+ 667 |   115 | Nightmare Scorpion | monster lv3 900/800
+ 668 |   633 | Night Lizard | monster lv4 1150/1300
+ 671 |   136 | Mystery Hand | monster lv2 500/500
+ 673 |   489 | Needle Ball | monster lv2 750/700
+ 681 |   525 | Neck Hunter | monster lv6 1750/1900
+ 683 |   120 | Sleeping Lion | monster lv4 700/1700
+ 685 |   224 | Fiend Sword | monster lv4 1400/800
+ 686 |   480 | Burglar | monster lv3 850/800
+ 697 |  1249 | Cyber Harpie | monster lv4 1800/1300
+ 701 |   294 | Bio Plant | monster lv3 600/1300
+ 719 |   410 | Bat | monster lv1 300/350
+ 720 |   197 | Happy Lover | monster lv2 800/500
+ 722 |   236 | Haniwa | monster lv2 500/500
+ 724 |   211 | Meotoko | monster lv2 700/600
+ 728 |   593 | Rose Spectre of Dunn | monster lv6 2000/1800
+ 730 |   173 | Hurricail | monster lv2 900/200
+ 731 |    85 | Barox | monster lv5 1380/1530
+ 736 |   685 | Widespread Ruin | trap
+ 747 |    48 | Big Insect | monster lv4 1200/1500
+ 751 |    74 | Man-Eating Plant | monster lv2 800/600
+ 754 |   226 | Hitodenchak | monster lv2 600/700
+ 759 |   249 | Hyo | monster lv3 800/1200
+ 764 |   175 | Fire Eye | monster lv2 800/600
+ 765 |   713 | Firewing Pegasus | monster lv6 2250/1800
+ 768 |   153 | Fire Reaper | monster lv2 700/500
+ 770 |   187 | Synchar | monster lv3 800/900
+ 773 |   238 | Vishwar Randi | monster lv3 900/700
+ 779 |   583 | Binding Chain | monster lv3 1000/1100
+ 780 |   485 | Boo Koo | monster lv2 650/500
+ 782 |   602 | Fairy Dragon | monster lv4 1100/1200
+ 788 |   449 | Kappa Avenger | monster lv3 1200/900
+ 798 |   508 | Bracchio-raidus | monster lv6 2200/2000
+ 799 |   481 | Pragtical | monster lv5 1900/1500
+ 809 |   387 | Pendulum Machine | monster lv6 1750/2000
+ 810 |  2387 | Pendulum Machine | monster lv6 1750/2000
+ 811 |   504 | Prisman | monster lv3 800/1000
+ 818 |   138 | Blue-Eyed Silver Zombie | monster lv3 900/700
+ 821 |   513 | Brave Scizzar | monster lv4 1300/1000
+ 826 |   643 | Flame Viper | monster lv2 400/450
+ 829 |   415 | Blocker | monster lv4 850/1800
+ 833 |   572 | Little D | monster lv3 1100/700
+ 835 |   549 | Behegon | monster lv4 1350/1000
+ 837 |   186 | Gate Deeg | monster lv3 700/800
+ 838 |     8 | Shadow Specter | monster lv1 500/200
+ 846 |    43 | Rogue Doll | monster lv4 1600/1000
+ 848 |   182 | Lucky Trinket | monster lv2 600/800
+ 853 |   557 | Pot the Trick | monster lv2 400/400
+ 854 |   547 | Bone Mouse | monster lv1 400/300
+ 865 |   459 | Bolt Escargot | monster lv5 1400/1500
+ 866 |   460 | Bolt Penguin | monster lv3 1100/800
+ 867 |   282 | Holograh | monster lv3 1100/700
+ 869 |   435 | White Dolphin | monster lv2 500/400
+ 872 |  1251 | (no name) | monster lv4 1400/1200
+ 874 |    97 | Clown Zombie | monster lv2 1350/0
+ 875 |    28 | Mountain Warrior | monster lv3 600/1000
+ 876 |   503 | Fungi of the Musk | monster lv1 400/300
+ 880 |   203 | Mabarrel | monster lv5 1700/1400
+ 882 |   488 | Barrel Lily | monster lv3 1100/600
+ 898 |  1036 | Last Day of Witch | spell
+ 899 |   647 | Machine Attacker | monster lv5 1600/1300
+ 900 |   231 | Madjinn Gunn | monster lv2 600/800
+ 903 |   247 | Master & Expert | monster lv4 1200/1000
+ 911 |   297 | Wicked Dragon with the Ersatz Head | monster lv3 900/900
+ 914 |   271 | Mavelus | monster lv4 1300/900
+ 924 |   616 | Marine Beast | monster lv5 1700/1600
+ 930 |   253 | Embryonic Beast | monster lv2 500/750
+ 931 |  1014 | The Inexperienced Spy | spell
+ 940 |   221 | Midnight Fiend | monster lv2 800/600
+ 941 |   570 | B. Dragon Jungle King | monster lv6 2100/1800
+ 946 |   591 | Muse-A | monster lv3 850/900
+ 949 |   144 | The Bewitching Phantom Thief | monster lv2 700/700
+ 960 |    78 | Megazowler | monster lv6 1800/2000
+ 967 |   535 | Mechaleon | monster lv2 800/600
+ 968 |   270 | Megirus Light | monster lv3 900/600
+ 973 |    87 | Metal Guardian | monster lv5 1150/2150
+ 979 |   711 | Meteor Dragon | monster lv6 1800/2000
+ 980 |   712 | Meteor B. Dragon | monster lv8 3500/2000
+ 981 |    35 | The Snake Hair | monster lv4 1500/1200
+ 986 |   337 | Mooyan Curry | spell
+ 988 |   117 | Supporter in the Shadows | monster lv3 1000/1000
+ 991 |   227 | Wood Remains | monster lv3 1000/900
+ 994 |   401 | Monster Eye | monster lv1 250/350
+ 997 |   375 | Monster Tamer | monster lv5 1800/1600
+ 998 |   176 | Monsturtle | monster lv3 800/1000
+1000 |   586 | Mon Larvas | monster lv4 1300/1400
+1001 |   237 | Yashinoki | monster lv2 800/600
+1003 |   562 | Wretched Ghost of the Attic | monster lv2 550/400
+1005 |   121 | Yamatano Dragon Scroll | monster lv2 900/300
+1007 |   524 | Spirit of the Mountain | monster lv5 1300/1800
+1010 |  1026 | Call of the Dark | trap
+1013 |   267 | Sectarian of Secrets | monster lv2 700/500
+1014 |   240 | Dark Assailant | monster lv4 1200/1200
+1017 |  1244 | Shadow Spell | trap
+1021 |   147 | The Shadow Who Controls the Dark | monster lv3 800/700
+1024 |  1258 | (no name) | spell
+1025 |   615 | Hourglass of Courage | monster lv4 1100/1200
+1035 |   717 | Fortress Whale | monster lv7 2350/2150
+1036 |   699 | Fortress Whale's Oath | spell
+1037 |  1252 | Fairy King Truesdale | monster lv6 2200/1500
+1039 |   565 | Yormungarde | monster lv3 1200/900
+1040 |   628 | Armored Rat | monster lv3 950/1100
+1041 |    92 | Zanki | monster lv5 1500/1700
+1046 |   672 | War-Lion Ritual | spell
+1050 |   127 | LaMoon | monster lv5 1200/1700
+1051 |   190 | LaLa Li-oon | monster lv2 600/600
+1053 |   148 | Lord of the Lamp | monster lv4 1400/1200
+1059 |    72 | Kairyu-Shin | monster lv5 1800/1500
+1070 |   381 | Rude Kaiser | monster lv5 1800/1600
+1071 |   229 | Rare Fish | monster lv4 1500/1200
+1076 |   493 | Rainbow Marine Mermaid | monster lv5 1550/1700
+1078 |   577 | Leo Wizard | monster lv5 1350/1200
+1084 |   189 | Akakieisu | monster lv3 1000/800
+1088 |   644 | Royal Guard | monster lv6 1900/2200
+1094 |   599 | Key Mace #2 | monster lv4 1050/1200
+1103 |   509 | Laughing Flower | monster lv2 900/500
+1107 |  1903 | Glory of the King's Hand | spell
+1108 |  1910 | Obelisk the Tormentor | monster lv10 4000/4000
+1109 |  1911 | Slifer the Sky Dragon | monster lv10 4000/4000
+1110 |  1912 | The Winged Dragon of Ra | monster lv10 4000/4000
+1114 |  1923 | Slime Token | monster lv1 500/500

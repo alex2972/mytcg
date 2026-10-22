@@ -15,7 +15,6 @@ func _ready() -> void:
 func _set_screen(screen: Control, with_back := false, music := "") -> void:
 	if music != "":
 		AudioUtil.music(music)
-	AudioUtil.sfx("scene_change")
 	if current != null:
 		current.queue_free()
 	current = screen
@@ -27,7 +26,7 @@ func _set_screen(screen: Control, with_back := false, music := "") -> void:
 func show_title() -> void:
 	var t: Control = load("res://ui/title_screen.gd").new()
 	t.action.connect(_on_title_action)
-	_set_screen(t, false, "m_title")
+	_set_screen(t, false, "m_menu")
 
 func _page(script_path: String) -> Control:
 	var c := Control.new()
@@ -37,6 +36,10 @@ func _page(script_path: String) -> Control:
 
 func _on_title_action(action: String) -> void:
 	match action:
+		"shop":
+			var shop := _page("res://ui/shop.gd")
+			shop.back.connect(show_title)
+			_set_screen(shop, false, "m_kaban")
 		"deck":
 			var editor := _page("res://ui/deck_editor.gd")
 			editor.back.connect(show_title)
@@ -45,6 +48,9 @@ func _on_title_action(action: String) -> void:
 			var list := _page("res://ui/card_list.gd")
 			list.back.connect(show_title)
 			_set_screen(list, false, "m_kaban")
-		"single_duel", "match_duel": _set_screen(_page("res://ui/duel_setup.gd"), true, "m_menu")
+		"single_duel", "match_duel":
+			var setup := _page("res://ui/duel_setup.gd")
+			setup.set("match_mode", action == "match_duel")
+			_set_screen(setup, true, "m_menu")
 		"quit": get_tree().quit()
 		_: pass   # options / replay: not built yet

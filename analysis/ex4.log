@@ -1,0 +1,49 @@
+INFO  Using log config file: jar:file:/Z:/process/tools/ghidra_12.1.4_PUBLIC/Ghidra/Framework/Generic/lib/Generic.jar!/generic.log4j.xml (LoggingInitialization)  
+INFO  Using log file: C:\Users\Usuario\AppData\Roaming\ghidra\ghidra_12.1.4_PUBLIC\application.log (LoggingInitialization)  
+INFO  Loading user preferences: C:\Users\Usuario\AppData\Roaming\ghidra\ghidra_12.1.4_PUBLIC\preferences (Preferences)  
+INFO  Searching for classes... (ClassSearcher)  
+INFO  Class search complete (727 ms) (ClassSearcher)  
+INFO  Initializing SSL Context (DefaultSSLContextInitializer)  
+INFO  Initializing Random Number Generator... (SecureRandomFactory)  
+INFO  Random Number Generator initialization complete: SHA1PRNG (SecureRandomFactory)  
+INFO  Trust manager disabled, cacerts have not been set (DefaultTrustManagerFactory)  
+INFO  Starting cache cleanup: C:\Users\Usuario\AppData\Local\ghidra\fscache2 (FileCacheMaintenanceDaemon)  
+INFO  Finished cache cleanup, estimated storage used: 0 (FileCacheMaintenanceDaemon)  
+INFO  Headless startup complete (9417 ms) (AnalyzeHeadless)  
+INFO  Class searcher loaded 59 extension points (20 false positives) (ClassSearcher)  
+ERROR Error, bundle event for non-GhidraBundle: reference:file://C:\Users\Usuario\AppData\Roaming\ghidra\ghidra_12.1.4_PUBLIC\osgi\compiled-bundles\b4f9519e
+ (MyBundleListener)  
+ERROR Error, bundle event for non-GhidraBundle: reference:file://C:\Users\Usuario\AppData\Roaming\ghidra\ghidra_12.1.4_PUBLIC\osgi\compiled-bundles\b4f9519e
+ (MyBundleListener)  
+INFO  HEADLESS Script Paths:
+    Z:\process\tools\ghidra_12.1.4_PUBLIC\Ghidra\Extensions\ghidra-allegrex\ghidra_scripts
+    Z:\process\tools\ghidra_12.1.4_PUBLIC\Ghidra\Features\SystemEmulation\ghidra_scripts
+    Z:\process\tools\ghidra_12.1.4_PUBLIC\Ghidra\Features\PDB\ghidra_scripts
+    Z:\process\tools\ghidra_12.1.4_PUBLIC\Ghidra\Features\Base\ghidra_scripts
+    Z:\process\tools\ghidra_12.1.4_PUBLIC\Ghidra\Features\GnuDemangler\ghidra_scripts
+    Z:\process\tools\scripts
+    Z:\process\tools\ghidra_12.1.4_PUBLIC\Ghidra\Features\DecompilerDependent\ghidra_scripts
+    Z:\process\tools\ghidra_12.1.4_PUBLIC\Ghidra\Processors\Atmel\ghidra_scripts
+    Z:\process\tools\ghidra_12.1.4_PUBLIC\Ghidra\Debug\Debugger-rmi-trace\ghidra_scripts
+    Z:\process\tools\ghidra_12.1.4_PUBLIC\Ghidra\Features\SwiftDemangler\ghidra_scripts
+    Z:\process\tools\ghidra_12.1.4_PUBLIC\Ghidra\Processors\DATA\ghidra_scripts
+    Z:\process\tools\ghidra_12.1.4_PUBLIC\Ghidra\Features\PyGhidra\ghidra_scripts
+    Z:\process\tools\ghidra_12.1.4_PUBLIC\Ghidra\Debug\Debugger\ghidra_scripts
+    Z:\process\tools\ghidra_12.1.4_PUBLIC\Ghidra\Processors\JVM\ghidra_scripts
+    Z:\process\tools\ghidra_12.1.4_PUBLIC\Ghidra\Features\BSim\ghidra_scripts
+    Z:\process\tools\ghidra_12.1.4_PUBLIC\Ghidra\Features\Decompiler\ghidra_scripts
+    Z:\process\tools\ghidra_12.1.4_PUBLIC\Ghidra\Features\WildcardAssembler\ghidra_scripts
+    Z:\process\tools\ghidra_12.1.4_PUBLIC\Ghidra\Features\BytePatterns\ghidra_scripts
+    Z:\process\tools\ghidra_12.1.4_PUBLIC\Ghidra\Features\MicrosoftCodeAnalyzer\ghidra_scripts
+    Z:\process\tools\ghidra_12.1.4_PUBLIC\Ghidra\Features\FileFormats\ghidra_scripts
+    Z:\process\tools\ghidra_12.1.4_PUBLIC\Ghidra\Features\VersionTracking\ghidra_scripts
+    Z:\process\tools\ghidra_12.1.4_PUBLIC\Ghidra\Processors\8051\ghidra_scripts
+    Z:\process\tools\ghidra_12.1.4_PUBLIC\Ghidra\Features\FunctionID\ghidra_scripts
+    Z:\process\tools\ghidra_12.1.4_PUBLIC\Ghidra\Processors\PIC\ghidra_scripts (HeadlessAnalyzer)  
+INFO  HEADLESS: execution starts (HeadlessAnalyzer)  
+INFO  Opening existing project: Z:\process\ghproj2\joey (HeadlessAnalyzer)  
+INFO  Opening project: Z:\process\ghproj2\joey (HeadlessProject)  
+INFO  REPORT: Processing project file: /joey_pc.exe (HeadlessAnalyzer)  
+INFO  REPORT: Execute script: ExportAt.java 'Z:\process\analysis\phase_fns.c' '005a1e50' '005a1f30' '005a22c0' '005a2740' '005a2990' '005a2d60' '005a31a0' '005a3a10' '005a3af0' '005a4010'  (HeadlessAnalyzer)  
+INFO  SCRIPT: Z:\process\tools\scripts\ExportAt.java (HeadlessAnalyzer)  
+INFO  REPORT: Save succeeded for processed file: /joey_pc.exe (HeadlessAnalyzer)  

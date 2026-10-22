@@ -1,0 +1,6 @@
+[gd_resource type="SystemFont" format=3]
+
+[resource]
+font_names = PackedStringArray("Impact", "Arial Narrow", "Arial")
+font_weight = 700
+allow_system_fallback = true

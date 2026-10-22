@@ -34,6 +34,7 @@ Event data always has `player` (who caused it) and usually `uid` (the card invol
 ## Steps (`op`)
 Selection: `select` {as, from, filter, n, min, pick: min_atk|max_atk|min_def|max_def, random, chooser, prompt, cost} ·
 `yesno` · `choice` {count, labels} · `let` {as, what}.
+Empty non-cost, non-random searches in Deck, Graveyard, Extra Deck or removed-from-play cards emit `empty_search`: the board shows an OK notice describing the filter and location, rather than offering an empty selection. Existing required/optional continuation and shuffle rules remain in force.
 Movement: `destroy` `to_grave` `to_hand` `to_deck` {where} `banish` `special_summon` {pos|pos_var, face_up} `discard` {who, n, random} `search` {filter} `shuffle`.
 Stats: `mod` {atk, def, until: end_turn|forever} `set_stat` `equip` {to, atk, def}.
 Players: `damage` `heal` `pay_lp` `set_lp` `draw` `skip_next_draw`.
@@ -69,6 +70,7 @@ Static rules: `no_trap` (Jinzo) `no_spell` `no_tribute` `no_set` `no_direct_atta
 ## Added in batches 6-8
 Ops: `double_atk` {what, destroy_at_end} · `ritual` {monster, level} (select the Ritual Monster from hand, then tributes whose Levels add up; `select` has `sum_level_min`) ·
 `set_pos` accepts `quiet` (no Flip effects) · custom ops `cyber_jar`, `morphing_jar2` (core/effects/fx_custom.gd).
+`morphing_jar2` follows native `0058c490`: return all field monsters to their owners (Fusion monsters to Extra Deck, tokens vanish), shuffle affected Main Decks once, then excavate for the turn player followed by the other player. Count every Main Deck return and every excavated monster regardless of Level; Special Summon eligible Level 4 or lower monsters face-down in Defense, send all other excavated cards to the Graveyard, and stop safely when the Deck empties. Excavation is neither drawing nor discarding from hand. Presentation barriers separate each reveal and destination; multiple newly Set monsters have their occupied positions shuffled at the end, as in native `00576170`.
 Zone `dead_battle` = my monsters destroyed in battle this turn. Conditions: `source_is_src` (this monster inflicted the damage), `var_matches` {name, filter}, `ritual_possible`.
 Events: `healed`. Static rules: `no_damage` (Tornado Wall, player-wide) `no_equip` `double_attack` `can_attack_directly` `direct_vs_attributes` {attributes} `no_summon_any`
 `protected_by_field` {name}. Flags: `destroy_at_end`, `return_after_battle`. Exodia: five pieces in hand win (Duel.check_exodia).
@@ -161,3 +163,11 @@ Events: `sent_to_grave` now carries `from` (hand, deck, field, grave, banished, 
 Ops: `soul_exchange` (the selected opponent's monster may be Tributed this turn; `Duel.soul_exchange`), `refpanel_swap` (the Spell on top of the chain is resolved for the other player: `ctx.swap_players` swaps `self`/`opp` in `FxOps.who`), `become_equip` accepts `take_stats` (the host takes on the ATK/DEF of the equip card). Custom op `hand_mirror`.
 Condition `chain_top_targets_player`. Mod keys `hourglass` (Hourglass of Courage, flag `hourglass_turn`). `Duel.destroy_card` lets a Fake Trap take the place of a Trap Card destroyed by the opponent's effect.
 Dark Sage is summoned from Time Wizard's coin effect when the call is right.
+
+## Temporary reveals and deck ordering
+`order_deck` asks for a permutation of up to five cards from the top of the controller's Deck (first choice becomes the next draw). The board uses the original selection panel and numbers cards in click order. Invalid or repeated cards are rejected.
+`reveal` {what, public, sequential, seconds} shows cards temporarily in their existing positions. It logs `reveal_cards` and uses a presentation barrier when animations are enabled. It never changes face-up state or emits Flip events. Stern Mystic reveals Set field cards sequentially, holds them together for four seconds, then conceals them. Private hand reveals use `select` with `hidden_pick: true` and `auto: false`, allowing clicks on hidden opponent hand cards without listing their names.
+
+`Fx.interactive_selections` requires a human click even with one valid candidate. Patrol Robo uses a private temporary reveal of one opponent Set field card during its controller's Standby Phase. Failed activation scripts do not add a chain link; offered responses recheck activation requirements before accepting their costs.
+
+Card activation presentation logs `card_activated` and pauses before its cost/target steps when presentation is enabled. This prevents rolls and chain effects from outrunning the visible flip/activation. The board's opening deal similarly pauses each draw independently.

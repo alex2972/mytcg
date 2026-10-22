@@ -126,7 +126,9 @@
       "from": "opp.monsters",
       "filter": {},
       "n": 1,
-      "prompt": 150
+      "prompt": 150,
+      "auto": false,
+      "prompt_text": "Designate which one of your opponent's monsters\nthat you wish to offer as tribute."
      }
     ],
     "do": [

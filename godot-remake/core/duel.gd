@@ -62,7 +62,7 @@ var next_turn_rules: Array = []       ## {rule, player}: become turn rules at th
 var turn_rules: Array = []       ## {rule, player} lasting until the end of the turn
 var _next_uid := 1
 
-static func create(card_db: CardDB, deck0: Deck, deck1: Deck, seed_value := 0, first := 0, effect_db: EffectDB = null) -> Duel:
+static func create(card_db: CardDB, deck0: Deck, deck1: Deck, seed_value := 0, first := 0, effect_db: EffectDB = null, deferred_start := false) -> Duel:
 	var d := Duel.new()
 	d.db = card_db
 	d.rng.seed = seed_value
@@ -80,11 +80,15 @@ static func create(card_db: CardDB, deck0: Deck, deck1: Deck, seed_value := 0, f
 		for i in deck.extra:
 			s.extra.append(d._new_card(i, p))
 		d._shuffle(s.deck)
-		for k in START_HAND:
-			if not s.deck.is_empty():
-				s.hand.append(s.deck.pop_back())
+		if not deferred_start:
+			for k in START_HAND:
+				if not s.deck.is_empty():
+					s.hand.append(s.deck.pop_back())
 	d.turn_player = first
-	d._begin_turn()
+	if deferred_start:
+		d.phase = "opening"
+	else:
+		d._begin_turn()
 	return d
 
 func _new_card(idx: int, owner: int) -> DCard:
@@ -223,10 +227,10 @@ func pending() -> Dictionary:
 func respond(answer) -> String:
 	return fx.respond(answer)
 
-func _guard(p: int) -> String:
+func _guard(p: int, ignore_busy := false) -> String:
 	if winner != -1:
 		return "The duel is over."
-	if fx.is_busy():
+	if fx.is_busy() and not ignore_busy:
 		return "Resolve the pending decision first."
 	if p != turn_player:
 		return "Not your turn."
@@ -272,8 +276,16 @@ func _begin_turn() -> void:
 		for c in monsters_of(p):       # both sides: a monster taken with Change of Heart must not keep its old "already attacked"
 			c.reset_turn_flags()
 	_emit("turn", {"turn": turn, "player": turn_player})
+	fx.after_presentation(_begin_draw_phase)
+
+func _begin_draw_phase() -> void:
+	if winner != -1:
+		return
 	phase = "draw"
 	_emit("phase", {"phase": phase, "player": turn_player})
+	fx.after_presentation(_draw_for_turn)
+
+func _draw_for_turn() -> void:
 	var s: PlayerSide = sides[turn_player]
 	if s.deck.is_empty():
 		_win(opponent(turn_player), "deck_out")
@@ -284,7 +296,7 @@ func _begin_turn() -> void:
 		draw_cards(turn_player, 1)
 	phase = "standby"
 	_emit("phase", {"phase": phase, "player": turn_player})
-	fx.window("standby_phase", {"player": turn_player}, func(): _enter_main1())
+	fx.after_presentation(func(): fx.window("standby_phase", {"player": turn_player}, _enter_main1))
 
 func _enter_main1() -> void:
 	if winner != -1:
@@ -361,7 +373,7 @@ func end_turn(p: int, discards: Array = []) -> String:
 			return "Invalid discard."
 	phase = "end"
 	_emit("phase", {"phase": phase, "player": p})
-	fx.window("end_phase", {"player": p}, func(): _finish_turn(p, discards))
+	fx.after_presentation(func(): fx.window("end_phase", {"player": p}, func(): _finish_turn(p, discards)))
 	return ""
 
 func _finish_turn(p: int, discards: Array) -> void:
@@ -548,13 +560,19 @@ func return_to_deck(c: DCard, where := "top") -> void:
 	if spell_unaffected(c, effect_source):
 		return
 	var was_on_field := is_on_field(c)
+	var from_controller: int = c.controller
 	_detach(c)
 	if was_on_field:
 		_leave_field_cleanup(c)
 	if c.token != "":
+		_emit("token_gone", {"player": from_controller, "uid": c.uid})
 		return
 	c.controller = c.owner
 	c.face_up = false
+	if is_monster(c) and int(card_data(c).get("category", -1)) == 2:
+		sides[c.owner].extra.append(c)
+		_emit("to_deck", {"player": c.owner, "uid": c.uid, "extra": true})
+		return
 	var deck: Array = sides[c.owner].deck
 	if where == "bottom":
 		deck.push_front(c)
@@ -638,7 +656,7 @@ func special_summon(c: DCard, p: int, position := "atk", face_up := true) -> Str
 	c.summon_turn = turn
 	c.flags["special_summoned"] = true
 	summons_this_turn[p] = true
-	_emit("special_summon", {"player": p, "uid": c.uid, "zone": z})
+	_emit("special_summon", {"player": p, "uid": c.uid, "zone": z, "face_up": c.face_up, "pos": c.pos})
 	fx.window("special_summoned", {"player": p, "uid": c.uid, "from": origin})
 	return ""
 
@@ -777,6 +795,42 @@ func force_win(p: int, reason: String) -> void:
 # --- summoning ---------------------------------------------------------------
 
 ## Normal Summon (face-up attack) or Set (face-down defense) of a monster from hand.
+## Could `p` Normal Summon / Set `c` right now, if the right Tributes were chosen? "" = yes, otherwise the reason. Changes nothing.
+func summon_problem(p: int, c: DCard) -> String:
+	var s: PlayerSide = sides[p]
+	if winner != -1 or p != turn_player or not in_main_phase():
+		return "Not now."
+	if not s.hand.has(c) or not is_monster(c):
+		return "Select a monster from your hand."
+	if normal_summoned:
+		return "You can only Normal Summon or Set once per turn."
+	if has_turn_rule("no_summon", p) or fx.rule_active("no_summon_any"):
+		return "A card effect prevents you from summoning this turn."
+	for e in fx.effects_of(c):
+		if e.get("rule", "") in ["no_normal_summon", "summon_needs"]:
+			var blocked := true
+			if e["rule"] == "summon_needs":
+				blocked = true
+				for pl in 2:
+					for card in fx.cards_controlled(pl):
+						if card.face_up and db.card_name(card.idx) == str(e.get("name", "")):
+							blocked = false
+			if blocked:
+				return "This monster cannot be Normal Summoned or Set."
+	var need := tributes_required(c)
+	if need > 0:
+		if fx.rule_active("no_tribute"):
+			return "A card effect prevents Tribute Summons."
+		var usable := 0
+		for m in monsters_of(p):
+			if m.token != "Sheep Token":
+				usable += 1
+		if usable < need:
+			return "Not enough monsters to Tribute."
+	elif free_zone(s.monsters) == -1:
+		return "Your Monster Card Zone is full."
+	return ""
+
 func summon(p: int, c: DCard, tributes: Array = [], zone := -1, set_face_down := false) -> String:
 	var g := _guard(p)
 	if g != "":
@@ -819,9 +873,13 @@ func summon(p: int, c: DCard, tributes: Array = [], zone := -1, set_face_down :=
 		if t.token == "Sheep Token" or t.token == "Kuriboh Token":
 			return "%ss cannot be used as Tributes." % t.token
 	if zone == -1:
-		zone = free_zone(s.monsters)
-		if zone == -1 and need > 0:
-			zone = (s.monsters as Array).find(tributes[0])
+		# Reuse the leftmost offered monster's zone, regardless of click order.
+		for tribute in tributes:
+			var offered_zone: int = s.monsters.find(tribute)
+			if offered_zone >= 0 and not zone_blocked(p, offered_zone):
+				zone = offered_zone if zone == -1 else mini(zone, offered_zone)
+		if zone == -1:
+			zone = free_zone(s.monsters)
 	elif s.monsters[zone] != null and not tributes.has(s.monsters[zone]):
 		return "That zone is occupied."
 	if zone == -1:
@@ -959,7 +1017,7 @@ func activate_effect(p: int, c: DCard, idx := 0) -> String:
 
 # --- battle ------------------------------------------------------------------
 
-func can_attack(p: int, c: DCard) -> String:
+func can_attack(p: int, c: DCard, ignore_busy := false) -> String:
 	if prohibited(c):
 		return "This card is prohibited."
 	if fx.rule_active("toon_attack", c) and sides[p].lp <= 500:
@@ -968,7 +1026,7 @@ func can_attack(p: int, c: DCard) -> String:
 		return "Not enough Life Points to attack."
 	if int(c.flags.get("cannot_attack_until", -1)) >= turn:
 		return "This monster cannot attack yet (Electric Lizard)."
-	var g := _guard(p)
+	var g := _guard(p, ignore_busy)
 	if g != "":
 		return g
 	if phase != "battle":
@@ -1314,3 +1372,24 @@ func attribute_of(c: DCard) -> int:
 
 func toon_targets(p: int) -> Array:
 	return monsters_of(p).filter(func(c): return c.face_up and db.card_name(c.idx) in ["Manga Ryu-Ran", "Toon Mermaid", "Toon Summoned Skull", "Blue-Eyes Toon Dragon"])
+
+
+func start_opening_deal() -> void:
+	if phase == "opening":
+		_deal_opening(opponent(turn_player), 0)
+
+func _deal_opening(player: int, count: int) -> void:
+	if count >= START_HAND:
+		if player != turn_player:
+			_deal_opening(turn_player, 0)
+		else:
+			_begin_turn()
+		return
+	var hand: PlayerSide = sides[player]
+	if hand.deck.is_empty():
+		_win(opponent(player), "deck_out")
+		return
+	var card: DCard = hand.deck.pop_back()
+	hand.hand.append(card)
+	_emit("draw", {"player": player, "uid": card.uid, "opening": true})
+	fx.after_presentation(func(): _deal_opening(player, count + 1))

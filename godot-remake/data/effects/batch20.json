@@ -73,7 +73,9 @@
             "from": "opp.hand",
             "filter": {},
             "n": 1,
-            "random": true
+            "auto": false,
+            "hidden_pick": true,
+            "prompt_text": "Pick 1 card from your opponent's hand."
           },
           {
             "op": "custom",

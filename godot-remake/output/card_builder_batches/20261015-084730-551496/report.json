@@ -1,0 +1,153 @@
+{
+  "created": 11,
+  "errors": 0,
+  "input": "Z:\\process\\godot-remake\\card_batches\\input\\requested-cards-4.csv",
+  "previewPages": [
+    "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-084730-551496\\preview-01.png"
+  ],
+  "cards": [
+    {
+      "row": 2,
+      "filename": "AAOTS",
+      "name": "Amazon of the Seas",
+      "status": "created",
+      "files": [
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-084730-551496\\AAOTS.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-084730-551496\\AAOTS-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-084730-551496\\AAOTS.json"
+      ],
+      "bodySize": 6.1,
+      "lines": 2
+    },
+    {
+      "row": 3,
+      "filename": "ABMR",
+      "name": "Beastly Mirror Ritual",
+      "status": "created",
+      "files": [
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-084730-551496\\ABMR.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-084730-551496\\ABMR-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-084730-551496\\ABMR.json"
+      ],
+      "bodySize": 6.1,
+      "lines": 3
+    },
+    {
+      "row": 4,
+      "filename": "ABOL",
+      "name": "Breath of Light",
+      "status": "created",
+      "files": [
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-084730-551496\\ABOL.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-084730-551496\\ABOL-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-084730-551496\\ABOL.json"
+      ],
+      "bodySize": 6.1,
+      "lines": 1
+    },
+    {
+      "row": 5,
+      "filename": "AFM",
+      "name": "Fiend's Mirror",
+      "status": "created",
+      "files": [
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-084730-551496\\AFM.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-084730-551496\\AFM-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-084730-551496\\AFM.json"
+      ],
+      "bodySize": 6.1,
+      "lines": 4
+    },
+    {
+      "row": 6,
+      "filename": "AHOL",
+      "name": "Hourglass of Life",
+      "status": "created",
+      "files": [
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-084730-551496\\AHOL.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-084730-551496\\AHOL-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-084730-551496\\AHOL.json"
+      ],
+      "bodySize": 6.1,
+      "lines": 1
+    },
+    {
+      "row": 7,
+      "filename": "AIAWLC",
+      "name": "Insect Armor with Laser Cannon",
+      "status": "created",
+      "files": [
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-084730-551496\\AIAWLC.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-084730-551496\\AIAWLC-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-084730-551496\\AIAWLC.json"
+      ],
+      "bodySize": 6.1,
+      "lines": 2
+    },
+    {
+      "row": 8,
+      "filename": "AI",
+      "name": "Invigoration",
+      "status": "created",
+      "files": [
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-084730-551496\\AI.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-084730-551496\\AI-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-084730-551496\\AI.json"
+      ],
+      "bodySize": 6.1,
+      "lines": 2
+    },
+    {
+      "row": 9,
+      "filename": "AKTS",
+      "name": "Kanan the Swordmistress",
+      "status": "created",
+      "files": [
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-084730-551496\\AKTS.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-084730-551496\\AKTS-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-084730-551496\\AKTS.json"
+      ],
+      "bodySize": 6.1,
+      "lines": 2
+    },
+    {
+      "row": 10,
+      "filename": "AKM",
+      "name": "Key Mace",
+      "status": "created",
+      "files": [
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-084730-551496\\AKM.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-084730-551496\\AKM-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-084730-551496\\AKM.json"
+      ],
+      "bodySize": 6.1,
+      "lines": 2
+    },
+    {
+      "row": 11,
+      "filename": "AMM",
+      "name": "Mushroom Man",
+      "status": "created",
+      "files": [
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-084730-551496\\AMM.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-084730-551496\\AMM-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-084730-551496\\AMM.json"
+      ],
+      "bodySize": 6.1,
+      "lines": 2
+    },
+    {
+      "row": 12,
+      "filename": "ARR",
+      "name": "Restructer Revolution",
+      "status": "created",
+      "files": [
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-084730-551496\\ARR.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-084730-551496\\ARR-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261015-084730-551496\\ARR.json"
+      ],
+      "bodySize": 6.1,
+      "lines": 2
+    }
+  ]
+}

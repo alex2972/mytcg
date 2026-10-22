@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://dnnva2rhee0l1"
+
+[deps]
+
+files=["res://card_batches/input/requested-cards.artwork.translation", "res://card_batches/input/requested-cards.name.translation", "res://card_batches/input/requested-cards.kind.translation", "res://card_batches/input/requested-cards.attribute.translation", "res://card_batches/input/requested-cards.level.translation", "res://card_batches/input/requested-cards.race.translation", "res://card_batches/input/requested-cards.atk.translation", "res://card_batches/input/requested-cards.def.translation", "res://card_batches/input/requested-cards.description.translation", "res://card_batches/input/requested-cards.titleColor.translation", "res://card_batches/input/requested-cards.subtype.translation", "res://card_batches/input/requested-cards.titleSize.translation", "res://card_batches/input/requested-cards.bodySize.translation", "res://card_batches/input/requested-cards.gameNumber.translation"]
+
+source_file="res://card_batches/input/requested-cards.csv"
+dest_files=["res://card_batches/input/requested-cards.artwork.translation", "res://card_batches/input/requested-cards.name.translation", "res://card_batches/input/requested-cards.kind.translation", "res://card_batches/input/requested-cards.attribute.translation", "res://card_batches/input/requested-cards.level.translation", "res://card_batches/input/requested-cards.race.translation", "res://card_batches/input/requested-cards.atk.translation", "res://card_batches/input/requested-cards.def.translation", "res://card_batches/input/requested-cards.description.translation", "res://card_batches/input/requested-cards.titleColor.translation", "res://card_batches/input/requested-cards.subtype.translation", "res://card_batches/input/requested-cards.titleSize.translation", "res://card_batches/input/requested-cards.bodySize.translation", "res://card_batches/input/requested-cards.gameNumber.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

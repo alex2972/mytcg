@@ -1,0 +1,18 @@
+﻿filename,artwork,name,kind,attribute,level,race,atk,def,description,code,edition,titleColor,subtype,zoom,cropX,cropY,brightness,contrast,saturation,titleSize,bodySize,gameNumber
+ABI,BigInsect-TF04-JP-VG.webp,Big Insect,Normal,EARTH,4,Insect,1200,1500,"A giant ant that dwells in the jungle, it is powerful whether attacking or defending.",,,black,normal,,,,,,,16.5,6.1,48
+AB,Blocker-TF04-JP-VG.webp,Blocker,Normal,DARK,4,Machine,850,1800,This monster has several components that can be launched for formation attacks.,,,black,normal,,,,,,,16.5,6.1,415
+ABP,BoltPenguin-TF04-JP-VG.webp,Bolt Penguin,Normal,WATER,3,Thunder,1100,800,"With both arms forming an electric whip, this monster paralyzes its enemies with electric shocks.",,,black,normal,,,,,,,16.5,6.1,460
+ABR,Bracchioraidus-TF04-JP-VG.webp,Bracchio-raidus,Fusion,WATER,6,Dinosaur,2200,2000,"""Two-Headed King Rex"" + ""Crawling Dragon #2""",,,black,normal,,,,,,,16.5,6.1,508
+ACZ,ClownZombie-TF04-JP-VG.webp,Clown Zombie,Normal,DARK,2,Zombie,1350,0,"A clown revived by the powers of darkness, its deadly dance has sent many monsters to their grave.",,,black,normal,,,,,,,16.5,6.1,97
+ACS,CrimsonSunbird-TF04-JP-VG.webp,Crimson Sunbird,Fusion,FIRE,6,Winged Beast,2300,1800,"""Faith Bird"" + ""Skull Red Bird""",,,black,normal,,,,,,,16.5,6.1,466
+AFKT,FairyKingTruesdale-TF04-JP-VG.webp,Fairy King Truesdale,Effect,WATER,6,Plant,2200,1500,"As long as this card remains face-up on the field, increase the ATK and DEF of all Plant-Type monsters on your side of the field by 500 points. ",,,black,normal,,,,,,,16.5,6.1,1252
+AFP,FirewingPegasus-TF04-JP-VG.webp,Firewing Pegasus,Normal,FIRE,6,Beast,2250,1800,A heavenly stallion soaring through the skies on crimson wings.,,,black,normal,,,,,,,16.5,6.1,713
+AGMOG,GreatMammothofGoldfine-TF04-JP-VG.webp,Great Mammoth of Goldfine,Fusion,DARK,6,Zombie,2200,1800,"""The Snake Hair"" + ""Dragon Zombie""",,,black,normal,,,,,,,16.5,6.1,563
+AHOC,HourglassofCourage-TF04-JP-VG.webp,Hourglass of Courage,Effect,LIGHT,4,Fairy,1100,1200,"For 3 turns (including your opponent's) following the Summon of this card (including Flip Summon), the ATK and DEF of this monster is halved. After that, both ATK and DEF are doubled for the remainder of the Duel.",,,black,normal,,,,,,,16.5,6.1,615
+ALDOW,LastDayofWitch-TF04-JP-VG.webp,Last Day of Witch,Spell,,,,,,Destroys all face-up Spellcaster-Type monsters on the field.,,,white,normal,,,,,,,16.5,6.1,1036
+ALD,LittleD-TF04-JP-VG.webp,Little D,Normal,EARTH,3,Dinosaur,1100,700,A tyrannosaurus offspring with a vicious disposition.,,,black,normal,,,,,,,16.5,6.1,572
+AME,MonsterEye-TF04-JP-VG.webp,Monster Eye,Effect,DARK,1,Fiend,250,350,"At the cost of 1000 Life Points, you can return ""Polymerization"" from the Graveyard to your hand.",,,black,normal,,,,,,,16.5,6.1,401
+ARD,RogueDoll-TF04-JP-VG.webp,Rogue Doll,Normal,LIGHT,4,Spellcaster,1600,1000,"A deadly doll gifted with mystical power, it is particularly powerful when attacking against dark forces.",,,black,normal,,,,,,,16.5,6.1,43
+ATIS,TheInexperiencedSpy-TF04-JP-VG.webp,The Inexperienced Spy,Spell,,,,,,Select and see 1 card in your opponent's hand.,,,white,normal,,,,,,,16.5,6.1,1014
+ATSH,TheSnakeHair-TF04-JP-VG.webp,The Snake Hair,Normal,DARK,4,Zombie,1500,1200,A monster with a head of poison snakes. One look from this monster can turn an opponent to stone.,,,black,normal,,,,,,,16.5,6.1,35
+AWGOTA,WretchedGhostoftheAttic-TF04-JP-VG.webp,Wretched Ghost of the Attic,Normal,DARK,2,Fiend,550,400,A harmless monster found in just about any attic.,,,black,normal,,,,,,,16.5,6.1,562

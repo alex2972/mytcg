@@ -51,3 +51,33 @@ static func load_file(path: String, db: CardDB) -> Deck:
 
 func copies(card_index: int) -> int:
 	return main.count(card_index) + extra.count(card_index) + side.count(card_index)
+
+
+const WORKING_PATH := "user://working_deck.ydc"
+
+## The signed-in account's working deck (falls back to WORKING_PATH without the Session autoload).
+static func active_working_path() -> String:
+	var tree := Engine.get_main_loop() as SceneTree
+	var session: Node = tree.root.get_node_or_null("Session") if tree != null else null
+	return session.deck_path() if session != null else WORKING_PATH
+
+static func load_working(db: CardDB, path := "") -> Deck:
+	if path.is_empty():
+		path = active_working_path()
+	var saved: Deck = load_file(path, db) if FileAccess.file_exists(path) else null
+	return saved if saved != null else load_file("res://data/default_deck.ydc", db)
+
+func save_working(db: CardDB, path := "") -> Error:
+	if path.is_empty():
+		path = active_working_path()
+	var temporary := path + ".tmp"
+	var file := FileAccess.open(temporary, FileAccess.WRITE)
+	if file == null:
+		return FileAccess.get_open_error()
+	file.store_buffer(to_bytes(db))
+	file.flush()
+	var error := file.get_error()
+	file.close()
+	if error != OK:
+		return error
+	return DirAccess.rename_absolute(ProjectSettings.globalize_path(temporary), ProjectSettings.globalize_path(path))

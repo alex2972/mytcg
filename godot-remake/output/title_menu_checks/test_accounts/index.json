@@ -1,0 +1,9 @@
+{
+	"accounts": [
+		{
+			"id": "player",
+			"name": "Player"
+		}
+	],
+	"active": "player"
+}
