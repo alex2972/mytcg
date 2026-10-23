@@ -18,6 +18,7 @@ for c in cards[1:]:
     by_name.setdefault(c["name"]["eng"].lower(), []).append(c)
 
 sources = sorted(glob.glob("output/card_builder/*.json")) + sorted(glob.glob("output/card_builder_batches/*/*.json"))
+sources = [x for x in sources if os.path.basename(x) != "report.json"]
 os.makedirs("assets/art_override_mini", exist_ok=True)
 custom = set()
 if os.path.exists("assets/art_override_mini/custom.txt"):
@@ -34,14 +35,14 @@ for js in sources:                                  # later batches win over ear
     if not hits or not os.path.exists(base + ".png"):
         problems.append((os.path.basename(js), name, "no card or no image"))
         continue
-    token_hits = [c for c in hits if c["art"] == "token_sl"]
+    token_hits = [c for c in hits if c.get("art") == "token_sl"]
     for c in (token_hits or hits):
         n = c["number"]
         shutil.copy(base + ".png", "assets/art_override/%d.png" % n)
         if os.path.exists(base + "-mini.png"):
             shutil.copy(base + "-mini.png", "assets/art_override_mini/%d.png" % n)
             custom.add(n)
-        linked.append((name, n, "token" if token_hits else "REAL ART REPLACED"))
+        linked.append((name, n, "token" if token_hits else "REAL ART REPLACED" if c.get("art") else "new card"))
 open("assets/art_override_mini/custom.txt", "w").write("\n".join(map(str, sorted(custom))) + "\n")
 print(len(linked), "cards linked")
 for l in linked:
