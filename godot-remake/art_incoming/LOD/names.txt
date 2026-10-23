@@ -1,0 +1,64 @@
+number	name	set code
+10001	Dark Ruler Ha Des	LOD-EN001
+10002	Dark Balter the Terrible	LOD-EN002
+10003	Lesser Fiend	LOD-EN003
+10004	Possessed Dark Soul	LOD-EN004
+10006	Skull Knight #2	LOD-EN006
+10007	Ryu-Kishin Clown	LOD-EN007
+10008	Twin-Headed Wolf	LOD-EN008
+10009	Opticlops	LOD-EN009
+10010	Bark of Dark Ruler	LOD-EN010
+10011	Fatal Abacus	LOD-EN011
+10012	Life Absorbing Machine	LOD-EN012
+10013	The Puppet Magic of Dark Ruler	LOD-EN013
+10014	Soul Demolition	LOD-EN014
+10016	Freed the Matchless General	LOD-EN016
+10017	Throwstone Unit	LOD-EN017
+10018	Marauding Captain	LOD-EN018
+10019	Ryu Senshi	LOD-EN019
+10020	Warrior Dai Grepher	LOD-EN020
+10021	Mysterious Guard	LOD-EN021
+10022	Frontier Wiseman	LOD-EN022
+10023	Exiled Force	LOD-EN023
+10024	The Hunter with 7 Weapons	LOD-EN024
+10025	Shadow Tamer	LOD-EN025
+10026	Dragon Manipulator	LOD-EN026
+10027	The A. Forces	LOD-EN027
+10030	The Warrior Returning Alive	LOD-EN030
+10031	Ready for Intercepting	LOD-EN031
+10032	A Feint Plan	LOD-EN032
+10033	Emergency Provisions	LOD-EN033
+10034	Tyrant Dragon	LOD-EN034
+10035	Spear Dragon	LOD-EN035
+10036	Spirit Ryu	LOD-EN036
+10037	The Dragon Dwelling in the Cave	LOD-EN037
+10039	Fiend Skull Dragon	LOD-EN039
+10040	Cave Dragon	LOD-EN040
+10042	Troop Dragon	LOD-EN042
+10043	The Dragon's Bead	LOD-EN043
+10044	A Wingbeat of Giant Dragon	LOD-EN044
+10046	Stamping Destruction	LOD-EN046
+10048	Dragon's Rage	LOD-EN048
+10049	Burst Breath	LOD-EN049
+10050	Luster Dragon #2	LOD-EN050
+10051	Robotic Knight	LOD-EN051
+10052	Wolf Axwielder	LOD-EN052
+10053	The Illusory Gentleman	LOD-EN053
+10058	Patrician of Darkness	LOD-EN058
+10059	Thunder Nyan Nyan	LOD-EN059
+10062	Airknight Parshath	LOD-EN062
+10063	Twin-Headed Behemoth	LOD-EN063
+10066	Susa Soldier	LOD-EN066
+10077	Heart of Clear Water	LOD-EN077
+10078	A Legendary Ocean	LOD-EN078
+10079	Fusion Sword Murasame Blade	LOD-EN079
+10081	Creature Swap	LOD-EN081
+10083	Second Coin Toss	LOD-EN083
+10085	The Secret of the Bandit	LOD-EN085
+10087	Magic Reflector	LOD-EN087
+10088	Blast with Chain	LOD-EN088
+10089	Disappear	LOD-EN089
+10092	Bottomless Trap Hole	LOD-EN092
+10093	Bad Reaction to Simochi	LOD-EN093
+10094	Ominous Fortunetelling	LOD-EN094
+10096	Nutrient Z	LOD-EN096

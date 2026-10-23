@@ -36,8 +36,8 @@ const LP_COUNT_RATE := 30.0
 const AFTER_LP_COUNT_PAUSE := 0.33
 
 # Optional shake before destruction. The original has none (0.0).
-const SHAKE_DURATION := 0.0
-const AFTER_SHAKE_PAUSE := 0.0
+const SHAKE_DURATION := 0.7
+const AFTER_SHAKE_PAUSE := 0.3
 
 # Destruction: growing star over the still-visible card (~0.46 s), then the puffs (~0.29 s).
 # Graveyard handoff follows the animation stage, automatically scaling with duration.

@@ -1,0 +1,71 @@
+[
+  {
+    "video": "Z:\\process\\videos\\activationselectiondestructionandgraveyardanims.mp4",
+    "slug": "activationselectiondestructionandgraveyardanims",
+    "frames": 29,
+    "sheets": [
+      "Z:\\process\\scratch\\video-references\\activationselectiondestructionandgraveyardanims_sheet1.jpg"
+    ]
+  },
+  {
+    "video": "Z:\\process\\videos\\battlephase.mp4",
+    "slug": "battlephase",
+    "frames": 72,
+    "sheets": [
+      "Z:\\process\\scratch\\video-references\\battlephase_sheet1.jpg",
+      "Z:\\process\\scratch\\video-references\\battlephase_sheet2.jpg"
+    ]
+  },
+  {
+    "video": "Z:\\process\\videos\\duelstart.mp4",
+    "slug": "duelstart",
+    "frames": 92,
+    "sheets": [
+      "Z:\\process\\scratch\\video-references\\duelstart_sheet1.jpg",
+      "Z:\\process\\scratch\\video-references\\duelstart_sheet2.jpg"
+    ]
+  },
+  {
+    "video": "Z:\\process\\videos\\normal summon.mp4",
+    "slug": "normal_summon",
+    "frames": 21,
+    "sheets": [
+      "Z:\\process\\scratch\\video-references\\normal_summon_sheet1.jpg"
+    ]
+  },
+  {
+    "video": "Z:\\process\\videos\\rockpaperscissors.mp4",
+    "slug": "rockpaperscissors",
+    "frames": 264,
+    "sheets": [
+      "Z:\\process\\scratch\\video-references\\rockpaperscissors_sheet1.jpg",
+      "Z:\\process\\scratch\\video-references\\rockpaperscissors_sheet2.jpg",
+      "Z:\\process\\scratch\\video-references\\rockpaperscissors_sheet3.jpg"
+    ]
+  },
+  {
+    "video": "Z:\\process\\videos\\spelltrapset animation plus turn change animation.mp4",
+    "slug": "spelltrapset_animation_plus_turn_change_animation",
+    "frames": 53,
+    "sheets": [
+      "Z:\\process\\scratch\\video-references\\spelltrapset_animation_plus_turn_change_animation_sheet1.jpg",
+      "Z:\\process\\scratch\\video-references\\spelltrapset_animation_plus_turn_change_animation_sheet2.jpg"
+    ]
+  },
+  {
+    "video": "Z:\\process\\videos\\trapactivationanim.mp4",
+    "slug": "trapactivationanim",
+    "frames": 27,
+    "sheets": [
+      "Z:\\process\\scratch\\video-references\\trapactivationanim_sheet1.jpg"
+    ]
+  },
+  {
+    "video": "Z:\\process\\videos\\tributesummonanim.mp4",
+    "slug": "tributesummonanim",
+    "frames": 28,
+    "sheets": [
+      "Z:\\process\\scratch\\video-references\\tributesummonanim_sheet1.jpg"
+    ]
+  }
+]
