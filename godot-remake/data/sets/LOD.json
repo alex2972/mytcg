@@ -1,0 +1,2357 @@
+{
+ "set_name": "Legacy of Darkness",
+ "code": "LOD",
+ "source": "https://db.ygoprodeck.com/api/v7/cardinfo.php (cardset=Legacy of Darkness)",
+ "number_base": 10000,
+ "exclude": [
+  "After the Struggle",
+  "Array of Revealing Light",
+  "Asura Priest",
+  "Bubble Crash",
+  "Convulsion of Nature",
+  "Double Snare",
+  "Dragon's Gunfire",
+  "Drop Off",
+  "Fengsheng Mirror",
+  "Fiber Jar",
+  "Fiend Comedian",
+  "Fushi No Tori",
+  "Gradius' Option",
+  "Gray Wing",
+  "Great Long Nose",
+  "Hino-Kagu-Tsuchi",
+  "Inaba White Rabbit",
+  "Injection Fairy Lily",
+  "Last Turn",
+  "Lizard Soldier",
+  "Maharaghi",
+  "Otohime",
+  "Reinforcement of the Army",
+  "Robolady",
+  "Roboyarou",
+  "Royal Oppression",
+  "Serpentine Princess",
+  "Smoke Grenade of the Thief",
+  "Spirit's Invitation",
+  "Spiritual Energy Settle Machine",
+  "Spring of Rebirth",
+  "Super Rejuvenation",
+  "Super Robolady",
+  "Super Roboyarou",
+  "Winged Minion",
+  "Woodland Sprite",
+  "Yamata Dragon",
+  "Yata-Garasu"
+ ],
+ "cards": [
+  {
+   "passcode": 3078576,
+   "name": {
+    "eng": "Yata-Garasu",
+    "fra": "Yata-Garasu",
+    "ger": "Yata-Garasu",
+    "ita": "Yata-Garasu"
+   },
+   "desc": {
+    "eng": "This card cannot be Special Summoned. This card returns to its owner's hand during the End Phase of the turn it is Normal Summoned or flipped face-up. When this card inflicts Battle Damage to your opponent, they skip their next Draw Phase.",
+    "fra": "Cette carte ne peut pas être Invoquée Spécialement. Cette carte retourne dans la main de son propriétaire durant la End Phase du tour où elle a été Invoquée Normalement ou retournée face recto. Lorsque cette carte inflige des dommages de combat à votre adversaire, celui-ci saute sa prochaine Draw Phase.",
+    "ger": "Diese Karte kann nicht als Spezialbeschwörung beschworen werden. Diese Karte kehrt in der End Phase des Spielzugs, in dem sie als Normalbeschwörung beschworen oder aufgedeckt wurde, auf die Hand ihres Besitzers zurück. Wenn diese Karte deinem Gegner Kampfschaden zufügt, überspringt er seine nächste Draw Phase.",
+    "ita": "Questa carta non può essere Evocata tramite Evocazione Speciale. Questa carta ritorna in mano al proprietario durante l'End Phase del turno in cui è stata Evocata tramite Evocazione Normale o scoperta. Quando questa carta infligge danno da combattimento al tuo avversario, quell'avversario salta la sua prossima Draw Phase."
+   },
+   "set_code": "LOD-EN000",
+   "rarity": "Secret Rare",
+   "type": "Spirit Monster",
+   "race": "Fiend",
+   "attribute": "WIND",
+   "level": 2,
+   "atk": 200,
+   "def": 100
+  },
+  {
+   "passcode": 53982768,
+   "name": {
+    "eng": "Dark Ruler Ha Des",
+    "fra": "Ha Dès le Gouverneur des Ténèbres",
+    "ger": "Dunkler Herrscher Ha Des",
+    "ita": "Ha Des Sovrano Oscuro"
+   },
+   "desc": {
+    "eng": "Cannot be Special Summoned from the GY. Negate the effects of monsters destroyed by battle with Fiend monsters you control.",
+    "fra": "Non Invocable Spécialement depuis le Cimetière. Annulez les effets des monstres détruits au combat avec les monstres Démon que vous contrôlez.",
+    "ger": "Kann nicht als Spezialbeschwörung vom Friedhof beschworen werden. Annulliere die Effekte von Monstern, die durch Kampf mit Unterweltler-Monstern zerstört werden, die du kontrollierst.",
+    "ita": "Non può essere Evocato Specialmente dal Cimitero. Annulla gli effetti dei mostri distrutti in battaglia con i mostri Demone che controlli."
+   },
+   "set_code": "LOD-EN001",
+   "rarity": "Ultra Rare",
+   "type": "Effect Monster",
+   "race": "Fiend",
+   "attribute": "DARK",
+   "level": 6,
+   "atk": 2450,
+   "def": 1600
+  },
+  {
+   "passcode": 80071763,
+   "name": {
+    "eng": "Dark Balter the Terrible",
+    "fra": "Dark Balter le Terrible",
+    "ger": "Dunkler Balter, der Fürchterliche",
+    "ita": "Balter Oscuro il Terribile"
+   },
+   "desc": {
+    "eng": "\"Possessed Dark Soul\" + \"Frontier Wiseman\"\nA Fusion Summon of this monster can only be conducted with the above Fusion Material Monsters. When a Normal Spell Card is activated, negate the effect by paying 1000 Life Points. The effect of an Effect Monster that this monster destroys as a result of battle is negated.",
+    "fra": "\"Âme Possédée\" + \"Le Sage de la Frontière\"\nUne Invocation Fusion de ce monstre ne peut être réalisée qu'avec les Monstres-Matériels de Fusion ci-dessus. Tant que cette carte reste face recto sur le Terrain, payez 1000 Life Points pour annuler l'effet d'une Carte Magie Normale lorsque celle-ci est activée. De plus, annulez les effets des Monstres à Effet détruits à l'issue d'un combat par ce monstre.",
+    "ger": "„Besessene dunkle Seele“ + „Weiser aus den Grenzlanden“\nEine Fusionsbeschwörung dieses Monsters kann nur mit den oben genannten Fusionsmaterial-Monstern durchgeführt werden. Solange diese Karte offen auf dem Spielfeld liegt, zahle 1000 Life Points, um den Effekt einer Normalen Zauberkarte zu annullieren. Zusätzlich, annulliere die Effekte von Effektmonstern, die von diesem Monster als Ergebnis eines Kampfes zerstört werden.",
+    "ita": "\"Anima Oscura Posseduta\" + \"Saggio della Frontiera\"\nL'Evocazione per Fusione di questo mostro può essere effettuata solamente con i Mostri-Materiale da Fusione sopra riportati. Fino a quando questa carta resta scoperta sul Terreno paga 1000 Life Points per annullare l'effetto di una Carta Magia Normale quando viene attivata. Annulla inoltre gli effetti dei Mostri con Effetto distrutti in seguito a una battaglia da questo mostro."
+   },
+   "set_code": "LOD-EN002",
+   "rarity": "Super Rare",
+   "type": "Fusion Monster",
+   "race": "Fiend",
+   "attribute": "DARK",
+   "level": 5,
+   "atk": 2000,
+   "def": 1200
+  },
+  {
+   "passcode": 16475472,
+   "name": {
+    "eng": "Lesser Fiend",
+    "fra": "Démon Mineur",
+    "ger": "Geringerer Unterweltler",
+    "ita": "Demone Minore"
+   },
+   "desc": {
+    "eng": "(This card is always treated as an \"Archfiend\" card.)\nBanish any monster destroyed by battle with this card.",
+    "fra": "(Cette carte est toujours traitée comme une carte \"Archdémon\".)\nBannissez les monstres détruits au combat avec cette carte.",
+    "ger": "(Diese Karte wird immer als „Erzunterweltler“-Karte behandelt.)\nVerbanne alle Monster, die durch Kampf mit dieser Karte zerstört werden.",
+    "ita": "(Questa carta viene sempre considerata come una carta \"Arcidemone\".)\nBandisci qualsiasi mostro distrutto in battaglia con questa carta."
+   },
+   "set_code": "LOD-EN003",
+   "rarity": "Rare",
+   "type": "Effect Monster",
+   "race": "Fiend",
+   "attribute": "DARK",
+   "level": 5,
+   "atk": 2100,
+   "def": 1000
+  },
+  {
+   "passcode": 52860176,
+   "name": {
+    "eng": "Possessed Dark Soul",
+    "fra": "Âme Possédée",
+    "ger": "Besessene dunkle Seele",
+    "ita": "Anima Oscura Posseduta"
+   },
+   "desc": {
+    "eng": "You can Tribute this face-up card; take control of all face-up Level 3 or lower monsters your opponent currently controls.",
+    "fra": "Vous pouvez Sacrifier cette carte face recto ; prenez le contrôle de tous les monstres face recto de max. Niveau 3 actuellement contrôlés par votre adversaire.",
+    "ger": "Du kannst diese offene Karte als Tribut anbieten; übernimm die Kontrolle über alle offenen Monster der Stufe 3 oder niedriger, die dein Gegner derzeit kontrolliert.",
+    "ita": "Puoi offrire come Tributo questa carta scoperta; prendi il controllo di tutti i mostri scoperti di Livello 3 o inferiore attualmente controllati dal tuo avversario."
+   },
+   "set_code": "LOD-EN004",
+   "rarity": "Common",
+   "type": "Effect Monster",
+   "race": "Fiend",
+   "attribute": "DARK",
+   "level": 3,
+   "atk": 1200,
+   "def": 800
+  },
+  {
+   "passcode": 89258225,
+   "name": {
+    "eng": "Winged Minion",
+    "fra": "Minion Ailé",
+    "ger": "Geflügelter Scherge",
+    "ita": "Servo Alato"
+   },
+   "desc": {
+    "eng": "Tribute this face-up card. Select 1 face-up Fiend-Type monster on the field. Increase the ATK and DEF of the monster by 700 points as long as it remains face-up on the field.",
+    "fra": "Sacrifiez cette carte face recto. Sélectionnez 1 monstre de Type Démon face recto sur le Terrain et augmentez son ATK et sa DEF de 700 points tant qu'il reste face recto sur le Terrain.",
+    "ger": "Biete diese Karte offen als Tribut an. Wähle 1 offenes Monster vom Typ Unterweltler auf dem Spielfeld und erhöhe seine ATK und DEF um 700 Punkte, solange es offen auf dem Spielfeld liegt.",
+    "ita": "Offri questa carta scoperta come Tributo. Scegli 1 mostro di Tipo Demone scoperto sul Terreno e aumenta il suo ATK e DEF di 700 punti fino a quando quello resta scoperto sul Terreno."
+   },
+   "set_code": "LOD-EN005",
+   "rarity": "Common",
+   "type": "Effect Monster",
+   "race": "Fiend",
+   "attribute": "DARK",
+   "level": 2,
+   "atk": 700,
+   "def": 700
+  },
+  {
+   "passcode": 15653824,
+   "name": {
+    "eng": "Skull Knight #2",
+    "fra": "Crâne Chevalier N°2",
+    "ger": "Totenkopfritter #2",
+    "ita": "Teschio Cavaliere #2"
+   },
+   "desc": {
+    "eng": "If you Tribute Summon a Fiend-Type monster by Tributing this monster, Special Summon 1 \"Skull Knight #2\" from your Deck. Then shuffle your Deck.",
+    "fra": "Si vous Invoquez par Invocation Sacrifice un monstre de Type Démon en sacrifiant ce monstre, faites une Invocation Spéciale d'1 \"Crâne Chevalier N°2\" de votre Deck. Mélangez ensuite votre Deck.",
+    "ger": "Falls du ein Monster vom Typ Unterweltler als Tributbeschwörung beschwörst, indem du dieses Monster als Tribut anbietest, beschwöre 1 „Totenkopfritter #2“-Karte als Spezialbeschwörung aus deinem Deck. Mische dein Deck anschließend.",
+    "ita": "Se Evochi con una Evocazione tramite Tributo un mostro di Tipo Demone offrendo questo mostro come Tributo, effettua l'Evocazione Speciale di 1 \"Teschio Cavaliere #2\" dal tuo Deck. Dopo di che, mischia il tuo Deck."
+   },
+   "set_code": "LOD-EN006",
+   "rarity": "Common",
+   "type": "Effect Monster",
+   "race": "Fiend",
+   "attribute": "DARK",
+   "level": 3,
+   "atk": 1000,
+   "def": 1200
+  },
+  {
+   "passcode": 42647539,
+   "name": {
+    "eng": "Ryu-Kishin Clown",
+    "fra": "Clown Ryu-Kishin",
+    "ger": "Ryu-Kishin-Clown",
+    "ita": "Clown Ryu-Kishin"
+   },
+   "desc": {
+    "eng": "When this card is Summoned (including Flip Summon and Special Summon), select 1 face-up monster on the field and change its battle position.",
+    "fra": "Lorsque cette carte est Invoquée : ciblez 1 monstre face recto sur le Terrain ; changez sa position de combat.",
+    "ger": "Wenn diese Karte als Normal-, Flipp- oder Spezialbeschwörung beschworen wird, ändere die Position von 1 offenen Monster auf dem Spielfeld.",
+    "ita": "Quando questa carta viene Evocata: scegli come bersaglio 1 mostro scoperto sul Terreno; cambia la sua posizione."
+   },
+   "set_code": "LOD-EN007",
+   "rarity": "Common",
+   "type": "Effect Monster",
+   "race": "Fiend",
+   "attribute": "DARK",
+   "level": 2,
+   "atk": 800,
+   "def": 500
+  },
+  {
+   "passcode": 88132637,
+   "name": {
+    "eng": "Twin-Headed Wolf",
+    "fra": "Loup à Deux Têtes",
+    "ger": "Doppelköpfiger Wolf",
+    "ita": "Lupo Bifronte"
+   },
+   "desc": {
+    "eng": "While you control another Fiend monster, negate the effects of Flip monsters destroyed by battle with this card.",
+    "fra": "Tant que vous contrôlez un autre monstre Démon, annulez les effets des monstres Flip détruits au combat avec cette carte.",
+    "ger": "Solange du ein anderes Unterweltler-Monster kontrollierst, annulliere die Effekte von Flippmonstern, die durch Kampf mit dieser Karte zerstört werden.",
+    "ita": "Mentre controlli un altro mostro Demone, annulla gli effetti dei mostri Scoperta distrutti in battaglia con questa carta."
+   },
+   "set_code": "LOD-EN008",
+   "rarity": "Common",
+   "type": "Effect Monster",
+   "race": "Fiend",
+   "attribute": "DARK",
+   "level": 4,
+   "atk": 1500,
+   "def": 1000
+  },
+  {
+   "passcode": 14531242,
+   "name": {
+    "eng": "Opticlops",
+    "fra": "Opticlops",
+    "ger": "Optiklop",
+    "ita": "Opticlops"
+   },
+   "desc": {
+    "eng": "A one-eyed giant that serves the \"Dark Ruler Ha Des\", it skewers its enemies with its sharp horn, shattering them to pieces.",
+    "fra": "Serviteur de \"Ha Dès le Gouverneur des Ténèbres\", ce cyclope transperce ses ennemis de sa corne avant de les mettre en pièce.",
+    "ger": "Ein einäugiger Riese, der dem Dunklen Herrscher Ha Des dient und alle Feinde mit seinem scharfen Horn angreift.",
+    "ita": "Un gigante con un solo occhio servo di Ha Des Sovrano Oscuro, infilza i suoi nemici con il suo corno affilato, facendoli a pezzi."
+   },
+   "set_code": "LOD-EN009",
+   "rarity": "Rare",
+   "type": "Normal Monster",
+   "race": "Fiend",
+   "attribute": "DARK",
+   "level": 4,
+   "atk": 1800,
+   "def": 1700
+  },
+  {
+   "passcode": 41925941,
+   "name": {
+    "eng": "Bark of Dark Ruler",
+    "fra": "Le Rugissement du Gouverneur des Ténèbres",
+    "ger": "Gebell des Dunklen Herrschers",
+    "ita": "Latrato del Sovrano Oscuro"
+   },
+   "desc": {
+    "eng": "If a Fiend-Type monster you control battles, during the Damage Step: Pay LP (in multiples of 100 points), then target the opponent's battling monster; that opponent's monster loses that much ATK and DEF, until the end of this turn.",
+    "fra": "Si un monstre Démon que vous contrôlez combat, durant la Damage Step : payez des LP (en multiples de 100), puis ciblez le monstre combattant de l'adversaire ; jusqu'à la fin de ce tour, le monstre de l'adversaire perd autant d'ATK/DEF.",
+    "ger": "Falls ein Unterweltler-Monster kämpft, das du kontrollierst, während des Damage Steps: Zahle LP (in Vielfachen von 100) und wähle dann das kämpfende Monster des Gegners; das Monster des Gegners verliert bis zum Ende dieses Spielzugs so viele ATK und DEF.",
+    "ita": "Se un mostro Demone che controlli combatte, durante il Damage Step: paga LP (in multipli di 100), poi scegli come bersaglio il mostro dell'avversario che sta combattendo; quel mostro dell'avversario perde quell'ammontare di ATK e DEF, fino alla fine di questo turno."
+   },
+   "set_code": "LOD-EN010",
+   "rarity": "Common",
+   "type": "Trap Card",
+   "race": "Normal",
+   "attribute": "",
+   "level": 0,
+   "atk": 0,
+   "def": 0
+  },
+  {
+   "passcode": 77910045,
+   "name": {
+    "eng": "Fatal Abacus",
+    "fra": "Abacus Fatal",
+    "ger": "Tödlicher Abakus",
+    "ita": "Pallottoliere Fatale"
+   },
+   "desc": {
+    "eng": "Each time 1 monster is sent from the field to the Graveyard, inflict 500 points of damage per card to the respective card owner's Life Points.",
+    "fra": "À chaque fois qu'1 Carte Monstre est envoyée du Terrain au Cimetière, son propriétaire reçoit 500 points de dommages par carte à ses Life Points.",
+    "ger": "Jedesmal, wenn eine Monsterkarte vom Spielfeld auf den Friedhof gelegt wird, erhält der Besitzer der Karte 500 Punkte Schaden pro Karte.",
+    "ita": "Ogni volta che 1 Carta Mostro viene mandata dal Terreno al Cimitero, il suo proprietario riceve 500 punti di danno per ogni carta ai suoi Life Points."
+   },
+   "set_code": "LOD-EN011",
+   "rarity": "Rare",
+   "type": "Trap Card",
+   "race": "Continuous",
+   "attribute": "",
+   "level": 0,
+   "atk": 0,
+   "def": 0
+  },
+  {
+   "passcode": 14318794,
+   "name": {
+    "eng": "Life Absorbing Machine",
+    "fra": "Absorbeur de Vie",
+    "ger": "Lebenabsorbierende Maschine",
+    "ita": "Macchina Assorbi Vita"
+   },
+   "desc": {
+    "eng": "During your Standby Phase, gain Life Points equal to half of the total Life Points you paid during your last turn.",
+    "fra": "Durant chacune de vos Standby Phases, gagnez un nombre de Life Points égal à la moitié du total des Life Points que vous avez payés durant votre tour précédent.",
+    "ger": "Während deiner Standby Phase erhältst du Life Points in Höhe der Hälfte der Life Points, die du während deines letzten Spielzugs gezahlt hast.",
+    "ita": "Durante la tua Standby Phase, guadagni Life Points pari alla metà del totale dei Life Points che hai pagato durante il tuo ultimo turno."
+   },
+   "set_code": "LOD-EN012",
+   "rarity": "Common",
+   "type": "Trap Card",
+   "race": "Continuous",
+   "attribute": "",
+   "level": 0,
+   "atk": 0,
+   "def": 0
+  },
+  {
+   "passcode": 40703393,
+   "name": {
+    "eng": "The Puppet Magic of Dark Ruler",
+    "fra": "Poupée Magique du Gouverneur des Ténèbres",
+    "ger": "Puppenmagie des Dunklen Herrschers",
+    "ita": "Il Pupazzo Magico del Sovrano Oscuro"
+   },
+   "desc": {
+    "eng": "Select 1 Fiend-Type monster from your Graveyard. Remove from play monsters on your side of the field whose total Levels exactly equal the Level of the selected Fiend-Type monster. Then Special Summon the selected monster from your Graveyard.",
+    "fra": "Ciblez 1 monstre Démon dans votre Cimetière ; bannissez des monstres face recto que vous contrôlez dont le Niveau total est exactement égal au Niveau du monstre, puis Invoquez-le Spécialement.",
+    "ger": "Wähle 1 Unterweltler-Monster in deinem Friedhof; verbanne offene Monster, die du kontrollierst und deren gemeinsame Stufe genau der Stufe des Monsters entspricht, dann beschwöre es als Spezialbeschwörung.",
+    "ita": "Scegli come bersaglio 1 mostro Demone nel tuo Cimitero; bandisci mostri scoperti che controlli con Livello totale pari esattamente al Livello di quel mostro, poi Evocalo Specialmente."
+   },
+   "set_code": "LOD-EN013",
+   "rarity": "Common",
+   "type": "Spell Card",
+   "race": "Normal",
+   "attribute": "",
+   "level": 0,
+   "atk": 0,
+   "def": 0
+  },
+  {
+   "passcode": 76297408,
+   "name": {
+    "eng": "Soul Demolition",
+    "fra": "Démolition de l'Âme",
+    "ger": "Seelenzerstörung",
+    "ita": "Distruggi-Anima"
+   },
+   "desc": {
+    "eng": "You can only activate this card's effect when you have a Fiend-Type monster on your side of the field. Pay 500 Life Points to use this effect. Both players select 1 Monster Card from their opponent's Graveyard. Remove the selected cards from play.",
+    "fra": "Si vous contrôlez un monstre Démon : vous pouvez payer 500 LP, puis chaque joueur cible 1 monstre dans le Cimetière se son adversaire ; bannissez les cibles.",
+    "ger": "Falls du ein Unterweltler-Monster kontrollierst: Du kannst 500 LP zahlen, dann wählt jeder Spieler 1 Monster im Friedhof seines Gegners; verbanne die gewählten Ziele.",
+    "ita": "Se controlli un mostro Demone: puoi pagare 500 LP, poi ogni giocatore sceglie come bersaglio 1 mostro nel Cimitero del suo avversario; bandisci quei bersagli."
+   },
+   "set_code": "LOD-EN014",
+   "rarity": "Common",
+   "type": "Trap Card",
+   "race": "Continuous",
+   "attribute": "",
+   "level": 0,
+   "atk": 0,
+   "def": 0
+  },
+  {
+   "passcode": 3682106,
+   "name": {
+    "eng": "Double Snare",
+    "fra": "Double Piège",
+    "ger": "Doppelfalle",
+    "ita": "Doppio Tranello"
+   },
+   "desc": {
+    "eng": "Destroy 1 face-up card on the field that has an effect that negates Trap Cards' effects.",
+    "fra": "Sélectionnez 1 carte face recto sur le Terrain dont l'effet annule les effets des Cartes Piège et détruisez-la.",
+    "ger": "Zerstöre 1 offene Karte auf dem Spielfeld, deren Effekt die Effekte von Fallenkarten annulliert.",
+    "ita": "Scegli 1 carta scoperta sul Terreno che ha l'effetto di annullare gli effetti delle Carte Trappola e distruggila."
+   },
+   "set_code": "LOD-EN015",
+   "rarity": "Common",
+   "type": "Spell Card",
+   "race": "Normal",
+   "attribute": "",
+   "level": 0,
+   "atk": 0,
+   "def": 0
+  },
+  {
+   "passcode": 49681811,
+   "name": {
+    "eng": "Freed the Matchless General",
+    "fra": "Freed le Général Irremplaçable",
+    "ger": "Freed, der Unvergleichliche General",
+    "ita": "Freed il Generale Senza Avversari"
+   },
+   "desc": {
+    "eng": "Negate any Spell effects that target this card, and if you do, destroy that Spell Card. During your Draw Phase, instead of conducting your normal draw: You can add 1 Level 4 or lower Warrior-Type monster from your Deck to your hand. This card must be face-up on the field to activate and to resolve this effect.",
+    "fra": "Annulez les effets de Magie qui ciblent cette carte sur le Terrain lorsqu'ils sont résolus, et si vous le faites, détruisez la carte. Durant votre Draw Phase, au lieu de mener votre pioche normale : vous pouvez ajouter 1 monstre Guerrier de max. Niveau 4 depuis votre Deck à votre main. Cette carte doit être face recto sur le Terrain pour activer et résoudre cet effet.",
+    "ger": "Annulliere jeden Zaubereffekt, der diese Karte auf dem Spielfeld als Ziel wählt, wenn er aufgelöst wird, und falls du dies tust, zerstöre die Karte. Während deiner Draw Phase, anstatt dein normales Ziehen durchzuführen: Du kannst deiner Hand 1 Krieger-Monster der Stufe 4 oder niedriger von deinem Deck hinzufügen. Diese Karte muss offen auf dem Spielfeld liegen, um diesen Effekt zu aktivieren und aufzulösen.",
+    "ita": "Annulla l'effetto di qualsiasi Magia che sceglie come bersaglio questa carta sul Terreno quando si risolve e, se lo fai, distruggi quella carta. Durante la tua Draw Phase, invece di effettuare la tua normale pescata: puoi aggiungere 1 mostro Guerriero di Livello 4 o inferiore dal tuo Deck alla tua mano. Questa carta deve essere scoperta sul Terreno per attivare e risolvere questo effetto."
+   },
+   "set_code": "LOD-EN016",
+   "rarity": "Ultra Rare",
+   "type": "Effect Monster",
+   "race": "Warrior",
+   "attribute": "EARTH",
+   "level": 5,
+   "atk": 2300,
+   "def": 1700
+  },
+  {
+   "passcode": 76075810,
+   "name": {
+    "eng": "Throwstone Unit",
+    "ger": "Steinwerfer-Einheit",
+    "ita": "Unità Scagliapietra"
+   },
+   "desc": {
+    "eng": "Tribute 1 Warrior-Type monster on your side of the field to destroy 1 face-up monster on the field whose DEF is equal to or less than the ATK of this card.",
+    "ger": "Biete 1 Monster vom Typ Krieger auf deiner Spielfeldseite als Tribut an, um 1 offenes Monster auf dem Spielfeld zu zerstören, dessen DEF kleiner oder gleich der ATK dieser Karte ist.",
+    "ita": "Offri come Tributo 1 Mostro di Tipo Guerriero sul tuo Terreno per distruggere 1 Mostro scoperto sul Terreno con DEF pari o inferiore all'ATK di questa carta.\n"
+   },
+   "set_code": "LOD-EN017",
+   "rarity": "Common",
+   "type": "Effect Monster",
+   "race": "Warrior",
+   "attribute": "EARTH",
+   "level": 4,
+   "atk": 900,
+   "def": 2000
+  },
+  {
+   "passcode": 2460565,
+   "name": {
+    "eng": "Marauding Captain",
+    "fra": "Capitaine en Maraude",
+    "ger": "Plündernder Hauptmann",
+    "ita": "Capitano Saccheggiatore"
+   },
+   "desc": {
+    "eng": "Your opponent cannot target Warrior monsters for attacks, except this one. When this card is Normal Summoned: You can Special Summon 1 Level 4 or lower monster from your hand.",
+    "fra": "Votre adversaire ne peut pas cibler de monstres Guerrier (celui-ci exclu) avec une attaque. Lorsque cette carte est Invoquée Normalement : vous pouvez Invoquer Spécialement 1 monstre de max. Niveau 4 depuis votre main.",
+    "ger": "Dein Gegner kann keine Krieger-Monster als Angriffsziel wählen, außer diesem. Wenn diese Karte als Normalbeschwörung beschworen wird: Du kannst 1 Monster der Stufe 4 oder niedriger als Spezialbeschwörung von deiner Hand beschwören.",
+    "ita": "Il tuo avversario non può scegliere mostri Guerriero come bersaglio per gli attacchi, eccetto questo. Quando questa carta viene Evocata Normalmente: puoi Evocare Specialmente 1 mostro di Livello 4 o inferiore dalla tua mano."
+   },
+   "set_code": "LOD-EN018",
+   "rarity": "Ultra Rare",
+   "type": "Effect Monster",
+   "race": "Warrior",
+   "attribute": "EARTH",
+   "level": 3,
+   "atk": 1200,
+   "def": 400
+  },
+  {
+   "passcode": 49868263,
+   "name": {
+    "eng": "Ryu Senshi",
+    "fra": "Ryu Senshi",
+    "ger": "Ryu Senshi",
+    "ita": "Ryu Senshi"
+   },
+   "desc": {
+    "eng": "\"Warrior Dai Grepher\" + \"Spirit Ryu\"\nA Fusion Summon of this card can only be done with the above Fusion Materials. When a Normal Trap Card is activated (Quick Effect): You can pay 1000 LP; negate that effect. This card must be face-up on the field to activate and to resolve this effect. Negate the effects of any Spell Card that targets this card and destroy it.",
+    "fra": "\"Dai Grepher le Guerrier\" + \"Esprit Ryu\"\nL'Invocation Fusion de cette carte ne peut être faite qu'avec les Matériels Fusion ci-dessus. Lorsqu'une Carte Piège Normal est activée (Effet Rapide) : vous pouvez payer 1000 LP ; annulez l'effet. Cette carte doit être face recto sur le Terrain pour activer et résoudre cet effet. Annulez les effets des Cartes Magie qui ciblent cette carte et détruisez-les.",
+    "ger": "„Dai Grepher, der Krieger“ + „Ryu-Geist“\nEine Fusionsbeschwörung dieser Karte kann nur mit dem oben erwähnten Fusionsmaterial durchgeführt werden. Wenn eine Normale Fallenkarte aktiviert wird (Schnelleffekt): Du kannst 1000 LP zahlen; annulliere den Effekt. Diese Karte muss offen auf dem Spielfeld liegen, um diesen Effekt zu aktivieren und aufzulösen. Annulliere die Effekte aller Zauberkarten, die diese Karte als Ziel wählen, und zerstöre sie.",
+    "ita": "\"Guerriero Dai Grepher\" + \"Spirito Ryu\"\nL'Evocazione tramite Fusione di questa carta può essere effettuata solo con i Materiali da Fusione sopra indicati. Quando viene attivata una Carta Trappola Normale (Effetto Rapido): puoi pagare 1000 LP; annulla quell'effetto. Questa carta deve essere scoperta sul Terreno per attivare e risolvere questo effetto. Annulla gli effetti di qualsiasi Carta Magia che sceglie questa carta come bersaglio e distruggila."
+   },
+   "set_code": "LOD-EN019",
+   "rarity": "Super Rare",
+   "type": "Fusion Monster",
+   "race": "Warrior",
+   "attribute": "EARTH",
+   "level": 6,
+   "atk": 2000,
+   "def": 1200
+  },
+  {
+   "passcode": 75953262,
+   "name": {
+    "eng": "Warrior Dai Grepher",
+    "fra": "Dai Grepher le Guerrier",
+    "ger": "Dai Grepher, der Krieger",
+    "ita": "Guerriero Dai Grepher"
+   },
+   "desc": {
+    "eng": "The warrior who can manipulate dragons. Nobody knows his mysterious past.",
+    "fra": "Personne ne connaît le passé mystérieux de l'homme qui murmurait à l'oreille des dragons.",
+    "ger": "Ein Krieger, der Drachen manipulieren kann. Niemand kennt seine mysteriöse Vergangenheit.",
+    "ita": "Il guerriero in grado di manipolare i draghi. Nessuno conosce il suo misterioso passato."
+   },
+   "set_code": "LOD-EN020",
+   "rarity": "Common",
+   "type": "Normal Monster",
+   "race": "Warrior",
+   "attribute": "EARTH",
+   "level": 4,
+   "atk": 1700,
+   "def": 1600
+  },
+  {
+   "passcode": 1347977,
+   "name": {
+    "eng": "Mysterious Guard",
+    "fra": "Garde Mystérieux",
+    "ger": "Mysteriöse Wache",
+    "ita": "Guardia Misteriosa"
+   },
+   "desc": {
+    "eng": "FLIP: Target 1 face-up monster on the field, and if you control a face-up Warrior-Type monster, you can target 1 additional face-up monster on the field; return the first target to the top of the Deck, then return the additional target (if any) to the hand if you still control a face-up Warrior-Type monster.",
+    "fra": "FLIP : Ciblez 1 monstre face recto sur le Terrain, et si vous contrôlez un monstre Guerrier face recto, vous pouvez cibler 1 monstre face recto supplémentaire sur le Terrain ; placez la première cible au-dessus du Deck, puis renvoyez la cible supplémentaire (s'il y en a une) à la main si vous contrôlez toujours un monstre Guerrier face recto.",
+    "ger": "FLIPP: Wähle 1 offenes Monster auf dem Spielfeld und falls du ein offenes Krieger-Monster kontrollierst, kannst du 1 zusätzliches offenes Monster auf dem Spielfeld wählen; lege das erste gewählte Ziel aufs Deck, dann gib das zusätzliche gewählte Ziel (falls es eins gibt) auf die Hand zurück, falls du immer noch ein offenes Krieger-Monster kontrollierst.",
+    "ita": "SCOPRI: Scegli come bersaglio 1 mostro scoperto sul Terreno e, se controlli un mostro Guerriero scoperto, puoi scegliere come bersaglio 1 mostro scoperto sul Terreno addizionale; metti il primo bersaglio in cima al Deck, poi fai ritornare il bersaglio addizionale (se c'è) nella mano se controlli ancora un mostro Guerriero scoperto."
+   },
+   "set_code": "LOD-EN021",
+   "rarity": "Common",
+   "type": "Flip Effect Monster",
+   "race": "Spellcaster",
+   "attribute": "EARTH",
+   "level": 3,
+   "atk": 800,
+   "def": 1200
+  },
+  {
+   "passcode": 38742075,
+   "name": {
+    "eng": "Frontier Wiseman",
+    "fra": "Le Sage de la Frontière",
+    "ger": "Weiser aus den Grenzlanden",
+    "ita": "Saggio della Frontiera"
+   },
+   "desc": {
+    "eng": "Negate any Spell effects that target a Warrior-Type monster you control, and if you do, destroy that card.",
+    "fra": "Annulez les effets de Magie qui ciblent un monstre de Type Guerrier que vous contrôlez, et si vous le faites, détruisez la carte.",
+    "ger": "Annulliere alle Zaubereffekte, die ein Monster vom Typ Krieger, das du kontrollierst, als Ziel wählen, und falls du dies tust, zerstöre die Karte.",
+    "ita": "Annulla qualsiasi effetto delle Magie che scelgono come bersaglio un mostro di Tipo Guerriero che controlli e, se lo fai, distruggi quella carta."
+   },
+   "set_code": "LOD-EN022",
+   "rarity": "Common",
+   "type": "Effect Monster",
+   "race": "Spellcaster",
+   "attribute": "EARTH",
+   "level": 3,
+   "atk": 1600,
+   "def": 800
+  },
+  {
+   "passcode": 74131780,
+   "name": {
+    "eng": "Exiled Force",
+    "fra": "La Troupe Exilée",
+    "ger": "Truppen im Exil",
+    "ita": "Forza Esiliata"
+   },
+   "desc": {
+    "eng": "You can Tribute this card to target 1 monster on the field; destroy that target.",
+    "fra": "Vous pouvez Sacrifier cette carte, puis ciblez 1 monstre sur le Terrain ; détruisez la cible.",
+    "ger": "Du kannst diese Karte als Tribut anbieten und dann 1 Monster auf dem Spielfeld wählen; zerstöre das gewählte Ziel.",
+    "ita": "Puoi offrire come Tributo questa carta, poi scegliere come bersaglio 1 mostro sul Terreno; distruggi quel bersaglio."
+   },
+   "set_code": "LOD-EN023",
+   "rarity": "Super Rare",
+   "type": "Effect Monster",
+   "race": "Warrior",
+   "attribute": "EARTH",
+   "level": 4,
+   "atk": 1000,
+   "def": 1000
+  },
+  {
+   "passcode": 1525329,
+   "name": {
+    "eng": "The Hunter with 7 Weapons",
+    "ger": "Der Jäger mit 7 Waffen",
+    "ita": "Il Cacciatore dalle 7 Armi"
+   },
+   "desc": {
+    "eng": "When this card is Normal Summoned, declare 1 Type of monster. When battling that Type of monster, increase the ATK of this card by 1000 points during Damage Calculation.",
+    "ger": "Nenne 1 Monstertyp, wenn diese Karte als Normalbeschwörung beschworen wird. Erhöhe die ATK dieser Karte nur während der Schadensberechnung um 1000 Punkte, wenn sie gegen ein Monster des genannten Typs kämpft.",
+    "ita": "Quando questa carta viene Evocata tramite Evocazione Normale, dichiara 1 Tipo di Mostro. Quando combatte con un Mostro di quel Tipo, questa carta guadagna 1000 ATK durante il calcolo dei danni.\n"
+   },
+   "set_code": "LOD-EN024",
+   "rarity": "Common",
+   "type": "Effect Monster",
+   "race": "Warrior",
+   "attribute": "EARTH",
+   "level": 3,
+   "atk": 1000,
+   "def": 600
+  },
+  {
+   "passcode": 37620434,
+   "name": {
+    "eng": "Shadow Tamer",
+    "fra": "Dresseuse des Ombres",
+    "ger": "Schattenbändiger",
+    "ita": "Domaombra"
+   },
+   "desc": {
+    "eng": "(This card is always treated as an \"Archfiend\" card.)\nFLIP: Target 1 Fiend-Type monster your opponent controls; take control of that target until the End Phase.",
+    "fra": "(Cette carte est toujours traitée comme une carte \"Archdémon\".)\nFLIP : Ciblez 1 monstre de Type Démon contrôlé par votre adversaire ; jusqu'à la End Phase, prenez le contrôle de la cible.",
+    "ger": "(Diese Karte wird immer als „Erzunterweltler“-Karte behandelt.)\nFLIPP: Wähle 1 Monster vom Typ Unterweltler, das dein Gegner kontrolliert; übernimm bis zur End Phase die Kontrolle über das gewählte Ziel.",
+    "ita": "(Questa carta è sempre considerata come una carta \"Arcidemone\".)\nSCOPRI: Scegli come bersaglio 1 mostro di Tipo Demone controllato dal tuo avversario; prendi il controllo di quel bersaglio fino alla End Phase."
+   },
+   "set_code": "LOD-EN025",
+   "rarity": "Rare",
+   "type": "Flip Effect Monster",
+   "race": "Warrior",
+   "attribute": "EARTH",
+   "level": 3,
+   "atk": 800,
+   "def": 700
+  },
+  {
+   "passcode": 63018132,
+   "name": {
+    "eng": "Dragon Manipulator",
+    "fra": "Dresseur de Dragon",
+    "ger": "Drachenmanipulator",
+    "ita": "Manipola-Draghi"
+   },
+   "desc": {
+    "eng": "FLIP: Take control of 1 face-up Dragon-Type monster on your opponent's side of the field until the end of the End Phase.",
+    "fra": "FLIP : Contrôlez 1 monstre de Type Dragon face recto sur le Terrain de votre adversaire jusqu'à la fin du tour.",
+    "ger": "FLIPP: Übernimm die Kontrolle über 1 Monster vom Typ Drache auf der Spielfeldseite deines Gegners bis zur End Phase dieses Spielzugs.",
+    "ita": "SCOPRI: Prendi il controllo di 1 mostro scoperto di Tipo Drago sul Terreno del tuo avversario fino alla fine del turno."
+   },
+   "set_code": "LOD-EN026",
+   "rarity": "Common",
+   "type": "Flip Effect Monster",
+   "race": "Warrior",
+   "attribute": "EARTH",
+   "level": 3,
+   "atk": 700,
+   "def": 800
+  },
+  {
+   "passcode": 403847,
+   "name": {
+    "eng": "The A. Forces",
+    "fra": "Les Forces A.",
+    "ger": "Die verbündeten Truppen",
+    "ita": "Le Truppe A."
+   },
+   "desc": {
+    "eng": "All Warrior-Type monsters you control gain 200 ATK for each Warrior or Spellcaster-Type monster you control.",
+    "fra": "Tous les monstres de Type Guerrier que vous contrôlez gagnent 200 ATK pour chaque monstre de Type Guerrier ou Magicien que vous contrôlez.",
+    "ger": "Alle Monster vom Typ Krieger, die du kontrollierst, erhalten 200 ATK für jedes Monster vom Typ Krieger oder Hexer, das du kontrollierst.",
+    "ita": "Tutti i mostri di Tipo Guerriero che controlli guadagnano 200 ATK per ogni mostro di Tipo Guerriero o Incantatore che controlli."
+   },
+   "set_code": "LOD-EN027",
+   "rarity": "Rare",
+   "type": "Spell Card",
+   "race": "Continuous",
+   "attribute": "",
+   "level": 0,
+   "atk": 0,
+   "def": 0
+  },
+  {
+   "passcode": 32807846,
+   "name": {
+    "eng": "Reinforcement of the Army",
+    "fra": "Renfort de l'Armée",
+    "ger": "Verstärkung für die Armee",
+    "ita": "Rinforzi dell'Esercito"
+   },
+   "desc": {
+    "eng": "Add 1 Level 4 or lower Warrior monster from your Deck to your hand.",
+    "fra": "Ajoutez 1 monstre Guerrier de max. Niveau 4 depuis votre Deck à votre main.",
+    "ger": "Füge deiner Hand 1 Krieger-Monster der Stufe 4 oder niedriger von deinem Deck hinzu.",
+    "ita": "Aggiungi 1 mostro Guerriero di Livello 4 o inferiore dal tuo Deck alla tua mano."
+   },
+   "set_code": "LOD-EN028",
+   "rarity": "Super Rare",
+   "type": "Spell Card",
+   "race": "Normal",
+   "attribute": "",
+   "level": 0,
+   "atk": 0,
+   "def": 0
+  },
+  {
+   "passcode": 69296555,
+   "name": {
+    "eng": "Array of Revealing Light",
+    "fra": "Tableau de Lumière Révélatrice",
+    "ger": "Kampfstellung des Enthüllenden Lichts",
+    "ita": "Ordine della Luce Rivelatrice"
+   },
+   "desc": {
+    "eng": "Declare 1 Type of monster. Any monster of the declared Type cannot declare an attack during the turn it is Normal Summoned, Flip Summoned or Special Summoned.",
+    "fra": "Annoncez 1 Type de monstre. Tous les monstres du Type annoncé ne peuvent pas attaquer durant le tour où ils sont Invoqués par Invocation Normale, Flip ou Spéciale.",
+    "ger": "Nenne 1 Monstertyp. Alle Monster dieses Typs können im Spielzug, in dem sie als Normal-, Flipp- oder Spezialbeschwörung beschworen werden, nicht angreifen.",
+    "ita": "Dichiara 1 Tipo di mostro. Ogni mostro del Tipo dichiarato non può attaccare durante il turno in cui viene Evocato tramite Evocazione Normale, Evocazione per Scoperta o Evocazione Speciale."
+   },
+   "set_code": "LOD-EN029",
+   "rarity": "Rare",
+   "type": "Spell Card",
+   "race": "Field",
+   "attribute": "",
+   "level": 0,
+   "atk": 0,
+   "def": 0
+  },
+  {
+   "passcode": 95281259,
+   "name": {
+    "eng": "The Warrior Returning Alive",
+    "fra": "Le Guerrier Réincarné",
+    "ger": "Der lebendig heimkehrende Krieger",
+    "ita": "Il Guerriero Sopravvissuto"
+   },
+   "desc": {
+    "eng": "Target 1 Warrior-Type monster in your Graveyard; add that target to your hand.",
+    "fra": "Ciblez 1 monstre Guerrier dans votre Cimetière ; ajoutez la cible à votre main.",
+    "ger": "Wähle 1 Krieger-Monster in deinem Friedhof; füge das gewählte Ziel deiner Hand hinzu.",
+    "ita": "Scegli come bersaglio 1 mostro Guerriero nel tuo Cimitero; aggiungi quel bersaglio alla tua mano."
+   },
+   "set_code": "LOD-EN030",
+   "rarity": "Rare",
+   "type": "Spell Card",
+   "race": "Normal",
+   "attribute": "",
+   "level": 0,
+   "atk": 0,
+   "def": 0
+  },
+  {
+   "passcode": 31785398,
+   "name": {
+    "eng": "Ready for Intercepting",
+    "fra": "Paré à l'Interception",
+    "ger": "Bereit zum Abfangen",
+    "ita": "Pronti all'Intercetto"
+   },
+   "desc": {
+    "eng": "Target 1 Warrior or Spellcaster monster on the field; change that target to face-down Defense Position.",
+    "fra": "Ciblez 1 monstre Guerrier ou Magicien sur le Terrain ; changez la cible en Position de Défense face verso.",
+    "ger": "Wähle 1 Krieger- oder Hexer-Monster auf dem Spielfeld; ändere das gewählte Ziel in die verdeckte Verteidigungsposition.",
+    "ita": "Scegli come bersaglio 1 mostro Guerriero o Incantatore sul Terreno; metti quel bersaglio coperto in Posizione di Difesa."
+   },
+   "set_code": "LOD-EN031",
+   "rarity": "Common",
+   "type": "Trap Card",
+   "race": "Normal",
+   "attribute": "",
+   "level": 0,
+   "atk": 0,
+   "def": 0
+  },
+  {
+   "passcode": 68170903,
+   "name": {
+    "eng": "A Feint Plan",
+    "ger": "Plan für eine Finte",
+    "ita": "Un Finto Piano"
+   },
+   "desc": {
+    "eng": "A player cannot attack face-down monsters during this turn.",
+    "ger": "Spieler können in diesem Spielzug keine verdeckten Monsterkarten als Ziel eines Angriffs bestimmen.",
+    "ita": "I Mostri coperti non possono essere attaccati durante questo turno.\n"
+   },
+   "set_code": "LOD-EN032",
+   "rarity": "Common",
+   "type": "Trap Card",
+   "race": "Normal",
+   "attribute": "",
+   "level": 0,
+   "atk": 0,
+   "def": 0
+  },
+  {
+   "passcode": 53046408,
+   "name": {
+    "eng": "Emergency Provisions",
+    "fra": "Provisions de Secours",
+    "ger": "Notvorräte",
+    "ita": "Rifornimenti d'Emergenza"
+   },
+   "desc": {
+    "eng": "Send any number of other Spell/Trap Cards you control to the Graveyard; gain 1000 LP for each card sent to the Graveyard this way.",
+    "fra": "Envoyez un nombre de votre choix d'autres Cartes Magie/Piège que vous contrôlez au Cimetière ; gagnez 1000 LP pour chaque carte envoyée au Cimetière de cette façon.",
+    "ger": "Lege eine beliebige Anzahl anderer Zauber-/Fallenkarten, die du kontrollierst, auf den Friedhof; du erhältst 1000 LP für jede Karte, die auf diese Art auf den Friedhof gelegt wird.",
+    "ita": "Manda un qualsiasi numero di altre Carte Magia/Trappola che controlli al Cimitero; guadagni 1000 LP per ogni carta mandata al Cimitero in questo modo."
+   },
+   "set_code": "LOD-EN033",
+   "rarity": "Common",
+   "type": "Spell Card",
+   "race": "Quick-Play",
+   "attribute": "",
+   "level": 0,
+   "atk": 0,
+   "def": 0
+  },
+  {
+   "passcode": 94568601,
+   "name": {
+    "eng": "Tyrant Dragon",
+    "fra": "Dragon Tyran",
+    "ger": "Drachentyrann",
+    "ita": "Drago Tiranno"
+   },
+   "desc": {
+    "eng": "During your Battle Phase, if your opponent controls a monster after this card's first attack, this card can make a second attack. Negate any Trap effects that target this card on the field, and if you do, destroy that Trap. This card cannot be Special Summoned from the GY, unless you Tribute 1 Dragon monster.",
+    "fra": "Durant votre Battle Phase, si votre adversaire contrôle un monstre après la première attaque de cette carte, cette dernière peut attaquer une seconde fois. Annulez les effets de Piège qui ciblent cette carte sur le Terrain, et si vous le faites, détruisez le Piège. Cette carte ne peut pas être Invoquée Spécialement depuis votre Cimetière, sauf si vous Sacrifiez 1 monstre Dragon.",
+    "ger": "Während deiner Battle Phase, falls dein Gegner nach dem ersten Angriff dieser Karte ein Monster kontrolliert, kann diese Karte einen zweiten Angriff durchführen. Annulliere jeden Falleneffekt, der diese Karte auf dem Spielfeld als Ziel wählt, und falls du dies tust, zerstöre die Falle. Diese Karte kann nicht als Spezialbeschwörung vom Friedhof beschworen werden, es sei denn, du bietest 1 Drache-Monster als Tribut an.",
+    "ita": "Durante la tua Battle Phase, se il tuo avversario controlla un mostro dopo il primo attacco di questa carta, questa carta può effettuare un secondo attacco. Annulla qualsiasi effetto di Trappola che sceglie questa carta sul Terreno come bersaglio e, se lo fai, distruggi quella Trappola. Questa carta non può essere Evocata Specialmente dal Cimitero, a meno che tu offra come Tributo 1 mostro Drago."
+   },
+   "set_code": "LOD-EN034",
+   "rarity": "Ultra Rare",
+   "type": "Effect Monster",
+   "race": "Dragon",
+   "attribute": "FIRE",
+   "level": 8,
+   "atk": 2900,
+   "def": 2500
+  },
+  {
+   "passcode": 31553716,
+   "name": {
+    "eng": "Spear Dragon",
+    "fra": "Lance Dragon",
+    "ger": "Speer-Drache",
+    "ita": "Drago Lanciere"
+   },
+   "desc": {
+    "eng": "During battle between this attacking card and a Defense Position monster whose DEF is lower than the ATK of this card, inflict the difference as Battle Damage to your opponent. If this card attacks, it is changed to Defense Position at the end of the Damage Step.",
+    "fra": "Si cette carte attaque un monstre en Position de Défense, infligez des dommages de combat perçants. Si cette carte attaque, elle est changée en Position de Défense à la fin de la Damage Step.",
+    "ger": "Falls diese Karte ein Monster in Verteidigungsposition angreift, füge durchschlagenden Kampfschaden zu. Falls diese Karte angreift, wird sie am Ende des Damage Steps in die Verteidigungsposition geändert.",
+    "ita": "Se questa carta attacca un mostro in Posizione di Difesa, infliggi danno da combattimento perforante. Se questa carta attacca, essa viene messa in Posizione di Difesa alla fine del Damage Step."
+   },
+   "set_code": "LOD-EN035",
+   "rarity": "Super Rare",
+   "type": "Effect Monster",
+   "race": "Dragon",
+   "attribute": "WIND",
+   "level": 4,
+   "atk": 1900,
+   "def": 0
+  },
+  {
+   "passcode": 67957315,
+   "name": {
+    "eng": "Spirit Ryu",
+    "fra": "Esprit Ryu",
+    "ger": "Ryu-Geist",
+    "ita": "Spirito Ryu"
+   },
+   "desc": {
+    "eng": "During your Battle Step, if this card battles (Quick Effect): You can discard 1 Dragon monster to the GY; this card gains 1000 ATK/DEF until the end of the Battle Phase.",
+    "fra": "Durant votre Battle Step, si cette carte combat (Effet Rapide) : vous pouvez défausser 1 monstre Dragon au Cimetière ; jusqu'à la fin de la Battle Phase, cette carte gagne 1000 ATK/DEF.",
+    "ger": "Während deines Battle Steps, falls diese Karte kämpft (Schnelleffekt): Du kannst 1 Drache-Monster auf den Friedhof abwerfen; diese Karte erhält bis zum Ende der Battle Phase 1000 ATK/DEF.",
+    "ita": "Durante il tuo Battle Step, se questa carta combatte (Effetto Rapido): puoi scartare al Cimitero 1 mostro Drago; questa carta guadagna 1000 ATK/DEF fino alla fine della Battle Phase."
+   },
+   "set_code": "LOD-EN036",
+   "rarity": "Common",
+   "type": "Effect Monster",
+   "race": "Dragon",
+   "attribute": "WIND",
+   "level": 4,
+   "atk": 1000,
+   "def": 1000
+  },
+  {
+   "passcode": 93346024,
+   "name": {
+    "eng": "The Dragon Dwelling in the Cave",
+    "fra": "Le Dragon Tapi dans la Caverne",
+    "ger": "Drache, der in der Höhle haust",
+    "ita": "Il Drago Abitante nella Caverna"
+   },
+   "desc": {
+    "eng": "A huge dragon dwelling in a cave. It is horrible when it gets angry, although it is usually quiet. It is said to preserve certain treasures.",
+    "fra": "Un imposant dragon vivant dans une caverne. Calme de nature, il est redoutable lorsqu'il se met en colère. Selon la légende, il protègerait certains trésors.",
+    "ger": "Ein großer Drache, der in einer Höhle lebt. Sein Zorn ist fürchterlich, wenn er gereizt wird, doch normalerweise ist er recht friedlich. Man sagt, er bewache Schätze.",
+    "ita": "Un gigantesco drago che vive nelle caverne. Terribile quando si infuria, tuttavia è generalmente tranquillo. Si narra che protegga alcuni tesori."
+   },
+   "set_code": "LOD-EN037",
+   "rarity": "Common",
+   "type": "Normal Monster",
+   "race": "Dragon",
+   "attribute": "WIND",
+   "level": 4,
+   "atk": 1300,
+   "def": 2000
+  },
+  {
+   "passcode": 20831168,
+   "name": {
+    "eng": "Lizard Soldier",
+    "ger": "Echsensoldat",
+    "ita": "Soldato Lucertola"
+   },
+   "desc": {
+    "eng": "A beast soldier derived from dragons, it is small for a Dragon-Type. Moving very quickly, this monster is an excellent strategist.",
+    "ger": "Ein von Drachen abstammender Ungeheuer-Soldat, der für einen Drachen jedoch sehr klein ist. Er kann sich sehr schnell fortbewegen und ist ein exzellenter Stratege.",
+    "ita": "''A beast soldier derived from dragons, it is small for a Dragon-Type. Moving very quickly, this monster is an excellent strategist''\n"
+   },
+   "set_code": "LOD-EN038",
+   "rarity": "Common",
+   "type": "Normal Monster",
+   "race": "Dragon",
+   "attribute": "WIND",
+   "level": 3,
+   "atk": 1100,
+   "def": 800
+  },
+  {
+   "passcode": 66235877,
+   "name": {
+    "eng": "Fiend Skull Dragon",
+    "fra": "Dragon Crâne Démon",
+    "ger": "Unterweltler-Totenkopfdrache",
+    "ita": "Drago Teschio-Demone"
+   },
+   "desc": {
+    "eng": "\"Cave Dragon\" + \"Lesser Fiend\"\n(This card is always treated as an \"Archfiend\" card.)\nA Fusion Summon of this card can only be done with the above Fusion Material Monsters. Negate the effects of Flip Effect Monsters. Negate any Trap effects that target this card on the field, and if you do, destroy that Trap Card.",
+    "fra": "\"Dragon des Cavernes\" + \"Démon Mineur\"\n(Cette carte est toujours traitée comme une carte \"Archdémon\".)\nL'Invocation Fusion de cette carte ne peut être faite qu'avec les Monstres-Matériels de Fusion ci-dessus. Annulez les effets de Monstre à Effet Flip. Annulez les effets de Piège qui ciblent cette carte sur le Terrain, et si vous le faites, détruisez la Carte Piège.",
+    "ger": "„Höhlendrache“ + „Geringerer Unterweltler“\n(Diese Karte wird immer als „Erzunterweltler“-Karte behandelt.)\nEine Fusionsbeschwörung dieser Karte kann nur mit den oben aufgeführten Fusionsmaterialmonstern durchgeführt werden. Annulliere die Effekte von Flippeffektmonstern. Annulliere alle Falleneffekte, die diese Karte auf dem Spielfeld als Ziel wählen, und falls du dies tust, zerstöre die Fallenkarte.",
+    "ita": "\"Drago delle Caverne\" + \"Demone Minore\"\n(Questa carta è sempre considerata come una carta \"Arcidemone\".)\nL'Evocazione tramite Fusione di questa carta può essere effettuata solamente con i Mostri Materiale da Fusione sopra riportati. Annulla gli effetti dei Mostri con Effetto Scoperta. Annulla qualsiasi effetto di Trappola che sceglie come bersaglio questa carta sul Terreno e, se lo fai, distruggi quella Carta Trappola."
+   },
+   "set_code": "LOD-EN039",
+   "rarity": "Super Rare",
+   "type": "Fusion Monster",
+   "race": "Dragon",
+   "attribute": "WIND",
+   "level": 5,
+   "atk": 2000,
+   "def": 1200
+  },
+  {
+   "passcode": 93220472,
+   "name": {
+    "eng": "Cave Dragon",
+    "fra": "Dragon des Cavernes",
+    "ger": "Höhlendrache",
+    "ita": "Drago delle Caverne"
+   },
+   "desc": {
+    "eng": "Cannot be Normal Summoned while you control a monster. This card cannot declare an attack unless you control another Dragon-Type monster.",
+    "fra": "Non Invocable Normalement tant que vous contrôlez un monstre. Cette carte ne peut pas déclarer d'attaque sauf si vous contrôlez un autre monstre de Type Dragon.",
+    "ger": "Kann nicht als Normalbeschwörung beschworen werden, solange du ein Monster kontrollierst. Diese Karte kann keinen Angriff deklarieren, es sei denn, du kontrollierst ein anderes Monster vom Typ Drache.",
+    "ita": "Non può essere Evocato Normalmente mentre controlli un mostro. Questa carta non può dichiarare un attacco a meno che tu controlli un altro mostro di Tipo Drago."
+   },
+   "set_code": "LOD-EN040",
+   "rarity": "Common",
+   "type": "Effect Monster",
+   "race": "Dragon",
+   "attribute": "WIND",
+   "level": 4,
+   "atk": 2000,
+   "def": 100
+  },
+  {
+   "passcode": 29618570,
+   "name": {
+    "eng": "Gray Wing",
+    "fra": "Aile Grise",
+    "ger": "Grauschwinge",
+    "ita": "Ali Grigie"
+   },
+   "desc": {
+    "eng": "Discard 1 card from your hand during your Main Phase 1. This monster can attack twice during the Battle Phase of this turn.",
+    "fra": "Défaussez 1 carte de votre main durant la Main Phase 1. Ce monstre peut attaquer deux fois durant la Battle Phase de ce tour.",
+    "ger": "Wirf in deiner Main Phase 1 eine Karte aus deiner Hand ab. Dieses Monster kann zweimal in der Battle Phase dieses Spielzugs angreifen.",
+    "ita": "Scarta 1 carta dalla tua mano durante la Main Phase 1. Questo mostro può attaccare due volte durante la Battle Phase di questo turno."
+   },
+   "set_code": "LOD-EN041",
+   "rarity": "Common",
+   "type": "Effect Monster",
+   "race": "Dragon",
+   "attribute": "WIND",
+   "level": 3,
+   "atk": 1300,
+   "def": 700
+  },
+  {
+   "passcode": 55013285,
+   "name": {
+    "eng": "Troop Dragon",
+    "fra": "Troupe Draconique",
+    "ger": "Drachentruppen",
+    "ita": "Truppa-Drago"
+   },
+   "desc": {
+    "eng": "If this card is destroyed by battle and sent to the GY: Special Summon 1 \"Troop Dragon\" from your Deck.",
+    "fra": "Si cette carte est détruite au combat et envoyée au Cimetière : Invoquez Spécialement 1 \"Troupe Draconique\" depuis votre Deck.",
+    "ger": "Falls diese Karte durch Kampf zerstört und auf den Friedhof gelegt wird: Beschwöre 1 „Drachentruppen“ als Spezialbeschwörung von deinem Deck.",
+    "ita": "Se questa carta viene distrutta in battaglia e mandata al Cimitero: Evoca Specialmente 1 \"Truppa-Drago\" dal tuo Deck."
+   },
+   "set_code": "LOD-EN042",
+   "rarity": "Common",
+   "type": "Effect Monster",
+   "race": "Dragon",
+   "attribute": "WIND",
+   "level": 2,
+   "atk": 700,
+   "def": 800
+  },
+  {
+   "passcode": 92408984,
+   "name": {
+    "eng": "The Dragon's Bead",
+    "fra": "La Pierre du Dragon",
+    "ger": "Perle des Drachen",
+    "ita": "La Perla di Drago"
+   },
+   "desc": {
+    "eng": "Discard 1 card from your hand. Negate the effect of a Trap Card that targets 1 face-up Dragon-Type monster and destroy the Trap Card.",
+    "fra": "Défaussez 1 carte de votre main pour annuler l'effet d'une Carte Piège désignant 1 monstre de Type Dragon face recto comme cible et détruisez-la.",
+    "ger": "Wirf 1 Karte aus deiner Hand ab, um den Effekt einer Fallenkarte, die 1 offenes Monster vom Typ Drache als Ziel bestimmt, zu annullieren und die Fallenkarte zu zerstören.",
+    "ita": "Scarta 1 carta dalla tua mano per annullare l'effetto di una Carta Trappola che designa 1 mostro scoperto di Tipo Drago come bersaglio e distruggila."
+   },
+   "set_code": "LOD-EN043",
+   "rarity": "Rare",
+   "type": "Trap Card",
+   "race": "Continuous",
+   "attribute": "",
+   "level": 0,
+   "atk": 0,
+   "def": 0
+  },
+  {
+   "passcode": 28596933,
+   "name": {
+    "eng": "A Wingbeat of Giant Dragon",
+    "fra": "Le Battement d'Aile du Dragon Géant",
+    "ger": "Flügelschlag des Drachengiganten",
+    "ita": "Il Battito d'Ali del Drago Gigante"
+   },
+   "desc": {
+    "eng": "Return 1 Level 5 or higher Dragon-Type monster you control to the hand, and if you do, destroy all Spell and Trap Cards on the field.",
+    "fra": "Renvoyez 1 monstre de Type Dragon de min. Niveau 5 que vous contrôlez à la main, et si vous le faites, détruisez toutes les Cartes Magie/Piège sur le Terrain.",
+    "ger": "Gib 1 Monster vom Typ Drache der Stufe 5 oder höher, das du kontrollierst, auf die Hand zurück und falls du dies tust, zerstöre alle Zauber- und Fallenkarten auf dem Spielfeld.",
+    "ita": "Fai ritornare nella mano 1 mostro di Tipo Drago di Livello 5 o superiore che controlli e, se lo fai, distruggi tutte le Carte Magia e Trappola sul Terreno."
+   },
+   "set_code": "LOD-EN044",
+   "rarity": "Common",
+   "type": "Spell Card",
+   "race": "Normal",
+   "attribute": "",
+   "level": 0,
+   "atk": 0,
+   "def": 0
+  },
+  {
+   "passcode": 55991637,
+   "name": {
+    "eng": "Dragon's Gunfire",
+    "fra": "Le Souffle du Dragon",
+    "ger": "Kanonenfeuer des Drachen",
+    "ita": "Fiammata di Drago"
+   },
+   "desc": {
+    "eng": "If you control a Dragon monster: Activate 1 of these effects;\n● Inflict 800 damage to your opponent.\n● Target 1 monster with 800 or less DEF; destroy that target.",
+    "fra": "Si vous contrôlez un monstre Dragon : activez 1 de ces effets ;\n●Infligez 800 points de dommages à votre adversaire.\n●Ciblez 1 monstre avec max. 800 DEF ; détruisez la cible.",
+    "ger": "Falls du ein Drache-Monster kontrollierst: Aktiviere 1 dieser Effekte;\n●Füge deinem Gegner 800 Schaden zu.\n●Wähle 1 Monster mit 800 oder weniger DEF; zerstöre das gewählte Ziel.",
+    "ita": "Se controlli un mostro Drago: attiva 1 di questi effetti;\n●Infliggi 800 danni al tuo avversario.\n●Scegli come bersaglio 1 mostro con DEF di 800 o inferiore; distruggi quel bersaglio."
+   },
+   "set_code": "LOD-EN045",
+   "rarity": "Common",
+   "type": "Spell Card",
+   "race": "Normal",
+   "attribute": "",
+   "level": 0,
+   "atk": 0,
+   "def": 0
+  },
+  {
+   "passcode": 81385346,
+   "name": {
+    "eng": "Stamping Destruction",
+    "fra": "Écrasement Destructeur",
+    "ger": "Stampfende Zerstörung",
+    "ita": "Distruzione Schiacciante"
+   },
+   "desc": {
+    "eng": "If you control a Dragon monster: Target 1 Spell/Trap on the field; destroy that target, and if you do, inflict 500 damage to its controller.",
+    "fra": "Si vous contrôlez un monstre Dragon : ciblez 1 Magie/Piège sur le Terrain ; détruisez la cible, et si vous le faites, infligez 500 points de dommages à son contrôleur.",
+    "ger": "Falls du ein Drache-Monster kontrollierst: Wähle 1 Zauber/Falle auf dem Spielfeld; zerstöre das gewählte Ziel und falls du dies tust, füge seinem Beherrscher 500 Schaden zu.",
+    "ita": "Se controlli un mostro Drago: scegli come bersaglio 1 Magia/Trappola sul Terreno; distruggi quel bersaglio e, se lo fai, infliggi 500 danni al suo controllore."
+   },
+   "set_code": "LOD-EN046",
+   "rarity": "Common",
+   "type": "Spell Card",
+   "race": "Normal",
+   "attribute": "",
+   "level": 0,
+   "atk": 0,
+   "def": 0
+  },
+  {
+   "passcode": 27770341,
+   "name": {
+    "eng": "Super Rejuvenation",
+    "fra": "Super Rajeunissement",
+    "ger": "Superverjüngung",
+    "ita": "Super Ringiovanimento"
+   },
+   "desc": {
+    "eng": "During the End Phase of the turn this card was activated, draw a number of cards equal to the combined number of Dragon monsters you discarded or Tributed from your hand or field this turn.",
+    "fra": "Durant la End Phase du tour où cette carte a été activée, piochez un nombre de cartes égal à la somme des monstres Dragon que vous avez défaussés ou Sacrifiés depuis votre main ou Terrain ce tour.",
+    "ger": "Während der End Phase des Spielzugs, in dem diese Karte aktiviert wurde, ziehe Karten in Höhe der Gesamtanzahl der Drache-Monster, die du in diesem Spielzug abgeworfen oder von deiner Hand oder Spielfeldseite als Tribut angeboten hast.",
+    "ita": "Durante la End Phase del turno in cui questa carta è stata attivata, pesca un numero di carte pari al numero totale di mostri Drago che hai scartato o offerto come Tributo dalla tua mano o Terreno in questo turno."
+   },
+   "set_code": "LOD-EN047",
+   "rarity": "Common",
+   "type": "Spell Card",
+   "race": "Quick-Play",
+   "attribute": "",
+   "level": 0,
+   "atk": 0,
+   "def": 0
+  },
+  {
+   "passcode": 54178050,
+   "name": {
+    "eng": "Dragon's Rage",
+    "fra": "La Colère du Dragon",
+    "ger": "Drachenzorn",
+    "ita": "Rabbia del Drago"
+   },
+   "desc": {
+    "eng": "Dragon-Type monsters you control inflict piercing Battle Damage when they attack a Defense Position monster.",
+    "fra": "Durant un combat entre un monstre attaquant de Type Dragon que vous contrôlez et un monstre en Position de Défense dont la DEF est inférieure à l'ATK du monstre attaquant, infligez la différence en tant que dommages de combat à votre adversaire.",
+    "ger": "Während eines Kampfes zwischen einem angreifenden Monster vom Typ Drache, das du kontrollierst, und einem Monster in Verteidigungsposition, dessen DEF niedriger sind als die ATK des angreifenden Monsters, füge die Differenz deinem Gegner als Kampfschaden zu.",
+    "ita": "Durante una battaglia tra un mostro di Tipo Drago attaccante che controlli e un mostro in Posizione di Difesa il cui DEF è inferiore all'ATK del mostro attaccante, infliggi la differenza come danno da combattimento al tuo avversario."
+   },
+   "set_code": "LOD-EN048",
+   "rarity": "Common",
+   "type": "Trap Card",
+   "race": "Continuous",
+   "attribute": "",
+   "level": 0,
+   "atk": 0,
+   "def": 0
+  },
+  {
+   "passcode": 80163754,
+   "name": {
+    "eng": "Burst Breath",
+    "fra": "Souffle Ardent",
+    "ger": "Flammender Odem",
+    "ita": "Soffio Incendiario"
+   },
+   "desc": {
+    "eng": "Tribute 1 Dragon-Type monster; destroy all face-up monsters on the field whose DEF is less than or equal to the ATK the Tributed monster had on the field.",
+    "fra": "Sacrifiez 1 monstre de Type Dragon ; détruisez tous les monstres face recto sur le Terrain dont la DEF est inférieure ou égale à l'ATK que le monstre Sacrifié avait sur le Terrain.",
+    "ger": "Biete 1 Monster vom Typ Drache als Tribut an; zerstöre alle offenen Monster auf dem Spielfeld, deren DEF kleiner oder gleich den ATK sind, die das als Tribut angebotene Monster auf dem Spielfeld hatte.",
+    "ita": "Offri come Tributo 1 mostro di Tipo Drago; distruggi tutti i mostri scoperti sul Terreno con DEF pari o inferiore all'ATK che il mostro offerto come Tributo aveva sul Terreno."
+   },
+   "set_code": "LOD-EN049",
+   "rarity": "Common",
+   "type": "Trap Card",
+   "race": "Normal",
+   "attribute": "",
+   "level": 0,
+   "atk": 0,
+   "def": 0
+  },
+  {
+   "passcode": 17658803,
+   "name": {
+    "eng": "Luster Dragon #2",
+    "fra": "Dragon Étincelant N°2",
+    "ger": "Schimmerdrache #2",
+    "ita": "Drago Avido #2"
+   },
+   "desc": {
+    "eng": "This dragon feeds on emerald. Enchanted by this monster even when attacked, few people live to tell of its beauty.",
+    "fra": "Ce dragon se nourrit d'émeraudes. Le peu de personnes ayant survécu à sa rencontre ne tarissent pas d'éloges sur sa beauté.",
+    "ger": "Dieser Drache ernährt sich von Smaragden. Nur wenige können von seiner Schönheit berichten, die sogar dann noch bezaubert, wenn man von diesem Monster angegriffen wird.",
+    "ita": "Questo drago si nutre di smeraldo. Incantati da questo mostro anche quando attaccati, pochi sono sopravissuti per poterne descrivere la bellezza."
+   },
+   "set_code": "LOD-EN050",
+   "rarity": "Super Rare",
+   "type": "Normal Monster",
+   "race": "Dragon",
+   "attribute": "WIND",
+   "level": 6,
+   "atk": 2400,
+   "def": 1400
+  },
+  {
+   "passcode": 44203504,
+   "name": {
+    "eng": "Robotic Knight",
+    "fra": "Chevalier Robotisé",
+    "ger": "Roboterritter",
+    "ita": "Cavaliere Robotico"
+   },
+   "desc": {
+    "eng": "The Commander of Machine-Types, he serves the Machine King. He is famous for the way he controls his troops.",
+    "fra": "Serviteur du Roi des Machines, ce commandant est reputé pour la manière dont il contrôle ses troupes.",
+    "ger": "Der Befehlshaber aller Maschinen-Monster dient dem Maschinenkönig. Er ist bekannt für seine besondere Weise, seine Truppen zu befehligen.",
+    "ita": "Il Comandante delle Macchine, serve il Re delle Macchine. Famoso per il modo in cui comanda le sue truppe."
+   },
+   "set_code": "LOD-EN051",
+   "rarity": "Common",
+   "type": "Normal Monster",
+   "race": "Machine",
+   "attribute": "FIRE",
+   "level": 4,
+   "atk": 1600,
+   "def": 1800
+  },
+  {
+   "passcode": 56369281,
+   "name": {
+    "eng": "Wolf Axwielder",
+    "fra": "Loup Manieur de Hache",
+    "ger": "Axtschwinger-Wolf",
+    "ita": "Lupo con Ascia"
+   },
+   "desc": {
+    "eng": "Once it has started battle, this monster attacks fiercely and cannot stop.",
+    "fra": "''Une fois qu'il a commencé à se battre, ce monstre attaque férocement et ne peut plus s'arrêter.''\n",
+    "ger": "Sobald dieses Monster einmal einen Kampf begonnen hat, kämpft es mit allen Mitteln und kann sich nicht stoppen.",
+    "ita": "''Una volta che ha iniziato a combattere, questo mostro attacca ferocemente senza fermarsi.''\n"
+   },
+   "set_code": "LOD-EN052",
+   "rarity": "Common",
+   "type": "Normal Monster",
+   "race": "Beast-Warrior",
+   "attribute": "EARTH",
+   "level": 4,
+   "atk": 1650,
+   "def": 1000
+  },
+  {
+   "passcode": 83764996,
+   "name": {
+    "eng": "The Illusory Gentleman",
+    "fra": "Le Gentleman de l'Illusion",
+    "ger": "Illusionärer Herr",
+    "ita": "Il Gentiluomo Illusorio"
+   },
+   "desc": {
+    "eng": "Wearing odd fashions, this gentleman is very fickle. He sometimes saves people and at other times commits crimes.",
+    "fra": "''Issu d'une autre époque, ce gentleman lunatique sait faire le bien comme le mal.''\n",
+    "ger": "Dieser Herr in seltsamer Kleidung ist unberechenbar. Manchmal rettet er Menschenleben und andermal begeht er Verbrechen.",
+    "ita": "''Indossando vestiti spaiati, questo gentiluomo è molto volubile. Qualche volta salva le persone e altre volte commette crimini.''\n"
+   },
+   "set_code": "LOD-EN053",
+   "rarity": "Common",
+   "type": "Normal Monster",
+   "race": "Spellcaster",
+   "attribute": "DARK",
+   "level": 4,
+   "atk": 1500,
+   "def": 1600
+  },
+  {
+   "passcode": 92421852,
+   "name": {
+    "eng": "Robolady",
+    "ger": "Robot-Lady",
+    "ita": "Robolady"
+   },
+   "desc": {
+    "eng": "A warrior fully covered with metal. It upgrades by fusing with \"Roboyarou\".",
+    "ger": "Eine komplett von Metall bedeckte Kriegerin. Sie wird stärker, wenn sie sich mit „Robot-Yarou“ verbindet.",
+    "ita": "''Una guerriera completamente ricoperta di metallo. Si aggiorna fondendosi con \"Roboyarou\".''\n"
+   },
+   "set_code": "LOD-EN054",
+   "rarity": "Common",
+   "type": "Normal Monster",
+   "race": "Machine",
+   "attribute": "EARTH",
+   "level": 3,
+   "atk": 450,
+   "def": 900
+  },
+  {
+   "passcode": 38916461,
+   "name": {
+    "eng": "Roboyarou",
+    "ger": "Robot-Yarou",
+    "ita": "Roboyarou"
+   },
+   "desc": {
+    "eng": "A warrior fully covered with metal. It upgrades by fusing with \"Robolady\".",
+    "ger": "Ein komplett von Metall bedeckter Krieger. Er wird stärker, wenn er sich mit „Robot-Lady“ verbindet.",
+    "ita": "''Un guerriero ricoperto interamente di metallo. Si aggiorna fondendosi con \"Robolady\".''\n"
+   },
+   "set_code": "LOD-EN055",
+   "rarity": "Common",
+   "type": "Normal Monster",
+   "race": "Machine",
+   "attribute": "EARTH",
+   "level": 3,
+   "atk": 900,
+   "def": 450
+  },
+  {
+   "passcode": 78706415,
+   "name": {
+    "eng": "Fiber Jar",
+    "fra": "Fiberjarre",
+    "ger": "Gewebekrug",
+    "ita": "Giara di Fibra"
+   },
+   "desc": {
+    "eng": "FLIP: Each player shuffles all cards from their hand, field, and Graveyard into the Deck, then draws 5 cards.",
+    "fra": "FLIP : Chaque joueur mélange toutes les cartes depuis leur main, Terrain et Cimetière dans le Deck, puis pioche 5 cartes.",
+    "ger": "FLIPP: Jeder Spieler mischt alle Karten von seiner Hand, seiner Spielfeldseite und seinem Friedhof ins Deck, dann zieht er 5 Karten.",
+    "ita": "SCOPRI: Ogni giocatore mischia tutte le carte dalla sua mano, Terreno e Cimitero nel Deck, poi pesca 5 carte."
+   },
+   "set_code": "LOD-EN056",
+   "rarity": "Ultra Rare",
+   "type": "Flip Effect Monster",
+   "race": "Plant",
+   "attribute": "EARTH",
+   "level": 3,
+   "atk": 500,
+   "def": 500
+  },
+  {
+   "passcode": 71829750,
+   "name": {
+    "eng": "Serpentine Princess",
+    "fra": "Princesse Reptile",
+    "ger": "Schlangenhafte Prinzessin",
+    "ita": "Principessa Serpentina"
+   },
+   "desc": {
+    "eng": "If this face-up card is returned from the field to your Deck, select and Special Summon 1 Level 3 or lower monster from your Deck to your side of the field. Then shuffle your Deck.",
+    "fra": "Si cette carte face recto est renvoyée du Terrain dans votre Deck, faites une Invocation Spéciale d'1 monstre de Niveau 3 ou moins de votre Deck.",
+    "ger": "Falls diese offene Karte vom Spielfeld in dein Deck zurückgelegt wird, beschwöre 1 Monster der Stufe 3 oder niedriger als Spezialbeschwörung aus deinem Deck. Mische dein Deck anschließend.",
+    "ita": "Se questa carta scoperta viene rimessa nel tuo Deck dal Terreno, effettua l'Evocazione Speciale di 1 mostro di Livello 3 o inferiore dal tuo Deck. Dopo di che, mischia il tuo Deck."
+   },
+   "set_code": "LOD-EN057",
+   "rarity": "Common",
+   "type": "Effect Monster",
+   "race": "Reptile",
+   "attribute": "WATER",
+   "level": 4,
+   "atk": 1400,
+   "def": 2000
+  },
+  {
+   "passcode": 19153634,
+   "name": {
+    "eng": "Patrician of Darkness",
+    "fra": "Patricien des Ténèbres",
+    "ger": "Patrizier der Dunkelheit",
+    "ita": "Nobile dell'Oscurità"
+   },
+   "desc": {
+    "eng": "You choose the attack targets for your opponent's attacks.",
+    "fra": "Vous choisissez la cible de l'attaque des attaques de votre adversaire.",
+    "ger": "Du bestimmst die Angriffsziele für die Angriffe deines Gegners.",
+    "ita": "Seleziona tu i bersagli degli attacchi per gli attacchi del tuo avversario."
+   },
+   "set_code": "LOD-EN058",
+   "rarity": "Common",
+   "type": "Effect Monster",
+   "race": "Zombie",
+   "attribute": "DARK",
+   "level": 5,
+   "atk": 2000,
+   "def": 1400
+  },
+  {
+   "passcode": 70797118,
+   "name": {
+    "eng": "Thunder Nyan Nyan",
+    "fra": "Nyan Nyan du Tonnerre",
+    "ger": "Donner-Nyan Nyan",
+    "ita": "Tuono Nyan Nyan"
+   },
+   "desc": {
+    "eng": "If there is a non-LIGHT monster on your side of the field, destroy this face-up card.",
+    "fra": "S'il y a un monstre autre que LUMIÈRE face recto sur votre Terrain, détruisez cette carte face recto.",
+    "ger": "Falls sich ein Nicht-LICHT Monster auf deiner Spielfeldseite befindet, zerstöre diese offene Karte.",
+    "ita": "Se c'è un mostro non LUCE scoperto sul tuo Terreno, distruggi questa carta scoperta."
+   },
+   "set_code": "LOD-EN059",
+   "rarity": "Rare",
+   "type": "Effect Monster",
+   "race": "Thunder",
+   "attribute": "LIGHT",
+   "level": 4,
+   "atk": 1900,
+   "def": 800
+  },
+  {
+   "passcode": 14291024,
+   "name": {
+    "eng": "Gradius' Option",
+    "fra": "Option de Gradius",
+    "ger": "Gradius' Option",
+    "ita": "Opzione di Gradius"
+   },
+   "desc": {
+    "eng": "This card cannot be Normal Summoned or Set. This monster can only be Special Summoned by selecting 1 face-up \"Gradius\" on your side of the field. The ATK and DEF of this card becomes the same as the ATK and DEF of the selected \"Gradius\". If the selected \"Gradius\" is removed from the field, destroy this card.",
+    "fra": "Cette carte ne peut ni être Invoquée par Invocation Normale ni être Posée. Cette carte ne peut être Invoquée par Invocation Spéciale qu'en sélectionnant 1 \"Gradius\" face recto sur votre Terrain. L'ATK et la DEF de ce monstre sont toujours égales à l'ATK et la DEF du \"Gradius\" sélectionné. Si le \"Gradius\" sélectionné est détruit ou retiré du Terrain, cette carte est également détruite.",
+    "ger": "Diese Karte kann nicht als Normalbeschwörung beschworen oder gesetzt werden. Diese Karte kann nur als Spezialbeschwörung beschworen werden, indem du 1 offene „Gradius“-Karte auf deiner Spielfeldseite wählst. Die ATK und DEF dieser Karte entsprechen stets den ATK und DEF des gewählten „Gradius“. Falls der gewählte „Gradius“ zerstört oder vom Spielfeld entfernt wird, zerstöre diese Karte.",
+    "ita": "Questa carta non può essere Evocata tramite Evocazione Normale o Posizionata. Questa carta può essere Evocata solo tramite Evocazione Speciale scegliendo 1 \"Gradius\" sul tuo Terreno. L'ATK e il DEF di questo mostro sono sempre uguali all' ATK e DEF del \"Gradius\" scelto. Se il \"Gradius\" scelto viene distrutto o rimosso dal Terreno, anche questa carta viene distrutta."
+   },
+   "set_code": "LOD-EN060",
+   "rarity": "Common",
+   "type": "Effect Monster",
+   "race": "Machine",
+   "attribute": "LIGHT",
+   "level": 1,
+   "atk": -1,
+   "def": -1
+  },
+  {
+   "passcode": 6979239,
+   "name": {
+    "eng": "Woodland Sprite",
+    "fra": "Fée des Bois",
+    "ger": "Waldgeist",
+    "ita": "Spiritello Silvestre"
+   },
+   "desc": {
+    "eng": "Send 1 Equip Card equipped to this card to the Graveyard. Inflict 500 points of damage to your opponent's Life Points.",
+    "fra": "Envoyez 1 Carte d'Équipement équipée à ce monstre au Cimetière pour infliger 500 points de dommages aux Life Points de votre adversaire.",
+    "ger": "Lege 1 Ausrüstungskarte, mit der dieses Monster ausgerüstet ist, auf den Friedhof, um den Life Points deines Gegners 500 Punkte Schaden zuzufügen.",
+    "ita": "Manda al Cimitero 1 Carta Equipaggiamento equipaggiata a questo mostro per infliggere 500 punti di danno ai Life Points del tuo avversario."
+   },
+   "set_code": "LOD-EN061",
+   "rarity": "Common",
+   "type": "Effect Monster",
+   "race": "Plant",
+   "attribute": "EARTH",
+   "level": 3,
+   "atk": 900,
+   "def": 400
+  },
+  {
+   "passcode": 18036057,
+   "name": {
+    "eng": "Airknight Parshath",
+    "fra": "Parshath le Chevalier du Ciel",
+    "ger": "Parshath, der Luftritter",
+    "ita": "Parshath Cavaliere Volante"
+   },
+   "desc": {
+    "eng": "If this card attacks a Defense Position monster, inflict piercing battle damage. If this card inflicts battle damage to your opponent: Draw 1 card.",
+    "fra": "Si cette carte attaque un monstre en Position de Défense, infligez des dommages de combat perçants. Si cette carte inflige des dommages de combat à votre adversaire : piochez 1 carte.",
+    "ger": "Falls diese Karte ein Monster in Verteidigungsposition angreift, füge durchschlagenden Kampfschaden zu. Falls diese Karte deinem Gegner Kampfschaden zufügt: Ziehe 1 Karte.",
+    "ita": "Se questa carta attacca un mostro in Posizione di Difesa, infliggi danno da combattimento perforante. Se questa carta infligge danno da combattimento al tuo avversario: pesca 1 carta."
+   },
+   "set_code": "LOD-EN062",
+   "rarity": "Ultra Rare",
+   "type": "Effect Monster",
+   "race": "Fairy",
+   "attribute": "LIGHT",
+   "level": 5,
+   "atk": 1900,
+   "def": 1400
+  },
+  {
+   "passcode": 43586926,
+   "name": {
+    "eng": "Twin-Headed Behemoth",
+    "fra": "Béhémoth à Deux Têtes",
+    "ger": "Zweiköpfiger Behemoth",
+    "ita": "Behemoth Bifronte"
+   },
+   "desc": {
+    "eng": "During the End Phase, if this card is in the GY because it was destroyed on the field and sent there this turn: You can Special Summon this card, but its ATK/DEF become 1000. You can only use this effect of \"Twin-Headed Behemoth\" once per Duel.",
+    "fra": "Durant la End Phase, si cette carte est dans le Cimetière parce qu'elle a été détruite sur le Terrain et y a été envoyée ce tour : vous pouvez Invoquer Spécialement cette carte, mais son ATK/DEF deviennent 1000. Vous ne pouvez utiliser cet effet de \"Béhémoth à Deux Têtes\" qu'une fois par Duel.",
+    "ger": "Während der End Phase, falls diese Karte auf dem Friedhof liegt, weil sie in diesem Spielzug auf dem Spielfeld zerstört und dorthin gelegt wurde: Du kannst diese Karte als Spezialbeschwörung beschwören, aber ihre ATK/DEF werden zu 1000. Du kannst diesen Effekt von „Zweiköpfiger Behemoth“ nur einmal pro Duell verwenden.",
+    "ita": "Durante la End Phase, se questa carta è nel Cimitero perché è stata distrutta sul Terreno e mandata lì in questo turno: puoi Evocare Specialmente questa carta, ma i suoi ATK/DEF diventano 1000. Puoi utilizzare questo effetto di \"Behemoth Bifronte\" una sola volta per Duello."
+   },
+   "set_code": "LOD-EN063",
+   "rarity": "Super Rare",
+   "type": "Effect Monster",
+   "race": "Dragon",
+   "attribute": "WIND",
+   "level": 3,
+   "atk": 1500,
+   "def": 1200
+  },
+  {
+   "passcode": 40695128,
+   "name": {
+    "eng": "Maharaghi",
+    "fra": "Maharaghi",
+    "ger": "Maharaghi",
+    "ita": "Maharaghi"
+   },
+   "desc": {
+    "eng": "This card cannot be Special Summoned. This card returns to the owner's hand during the End Phase of the turn that this card is Normal Summoned or flipped face-up. If this card is Normal Summoned or flipped face-up, look at 1 card on the top of your Deck during your next Draw Phase (before you draw), and return the card to the top or the bottom of your Deck.",
+    "fra": "Cette carte ne peut pas être Invoquée par Invocation Spéciale. Cette carte retourne dans la main de son propriétaire durant la End Phase du tour où elle a été Invoquée par Invocation Normale ou retournée face recto. Si cette carte est Invoquée par Invocation Normale ou retournée face recto, regardez 1 carte du dessus de votre Deck durant votre prochaine Draw Phase (avant de piocher) et renvoyez-la au-dessus ou au-dessous de votre Deck.",
+    "ger": "Diese Karte kann nicht als Spezialbeschwörung beschworen werden. Diese Karte kehrt in der End Phase des Spielzugs, in dem sie als Normalbeschwörung beschworen oder aufgedeckt wurde, auf die Hand ihres Besitzers zurück. Falls diese Karte als Normal- oder Flippbeschwörung beschworen oder aufgedeckt wird, sieh dir in deiner nächsten Draw Phase, bevor du ziehst, die oberste Karte deines Decks an und lege sie auf oder unter dein Deck zurück.",
+    "ita": "Questa carta non può essere Evocata tramite Evocazione Speciale. Questa carta ritorna in mano al proprietario durante l'End Phase del turno in cui è stata Evocata tramite Evocazione Normale o scoperta. Se questa carta viene Evocata tramite Evocazione Normale o scoperta, guarda 1 carta in cima al tuo Deck durante la tua prossima Draw Phase prima di pescare, e rimetti quella carta in cima o in fondo al tuo Deck."
+   },
+   "set_code": "LOD-EN064",
+   "rarity": "Common",
+   "type": "Spirit Monster",
+   "race": "Rock",
+   "attribute": "EARTH",
+   "level": 4,
+   "atk": 1200,
+   "def": 1700
+  },
+  {
+   "passcode": 77084837,
+   "name": {
+    "eng": "Inaba White Rabbit",
+    "fra": "Inaba le Lapin Blanc",
+    "ger": "Weißes Kaninchen Inaba",
+    "ita": "Coniglio Bianco Inaba"
+   },
+   "desc": {
+    "eng": "This card cannot be Special Summoned. This card returns to the owner's hand during the End Phase of the turn that this card is Normal Summoned or flipped face-up. This monster attacks your opponent's Life Points directly.",
+    "fra": "Cette carte ne peut pas être Invoquée par Invocation Spéciale. Cette carte retourne dans la main de son propriétaire durant la End Phase du tour où elle a été Invoquée par Invocation Normale ou retournée face recto. Ce monstre attaque directement les Life Points de votre adversaire.",
+    "ger": "Diese Karte kann nicht als Spezialbeschwörung beschworen werden. Diese Karte kehrt in der End Phase des Spielzugs, in dem sie als Normalbeschwörung beschworen oder aufgedeckt wurde, auf die Hand ihres Besitzers zurück. Dieses Monster greift die Life Points deines Gegners direkt an, auch wenn sich Monster auf der Spielfeldseite deines Gegners befinden.",
+    "ita": "Questa carta non può essere Evocata tramite Evocazione Speciale. Questa carta ritorna in mano al proprietario durante l'End Phase del turno in cui è stata Evocata tramite Evocazione Normale o scoperta. Questo mostro attacca direttamente i Life Points del tuo avversario."
+   },
+   "set_code": "LOD-EN065",
+   "rarity": "Common",
+   "type": "Spirit Monster",
+   "race": "Beast",
+   "attribute": "EARTH",
+   "level": 3,
+   "atk": 700,
+   "def": 500
+  },
+  {
+   "passcode": 40473581,
+   "name": {
+    "eng": "Susa Soldier",
+    "fra": "Soldat Susa",
+    "ger": "Susa, der Soldat",
+    "ita": "Soldato Susa"
+   },
+   "desc": {
+    "eng": "This card cannot be Special Summoned. This card returns to the owner's hand during the End Phase of the turn that this card is Normal Summoned or flipped face-up. The Battle Damage this card inflicts to your opponent's Life Points is halved.",
+    "fra": "Cette carte ne peut pas être Invoquée par Invocation Spéciale. Cette carte retourne dans la main de son propriétaire durant la End Phase du tour où elle a été Invoquée par Invocation Normale ou retournée face recto. Les dommages de combat que cette carte inflige aux Life Points de votre adversaire sont divisés par deux.",
+    "ger": "Diese Karte kann nicht als Spezialbeschwörung beschworen werden. Diese Karte kehrt in der End Phase des Spielzugs, in dem sie als Normalbeschwörung beschworen oder aufgedeckt wurde, auf die Hand ihres Besitzers zurück. Kampfschaden, den diese Karte den Life Points deines Gegners zufügt, wird halbiert.",
+    "ita": "Questa carta non può essere Evocata tramite Evocazione Speciale. Questa carta ritorna in mano al proprietario durante l'End Phase del turno in cui è stata Evocata tramite Evocazione Normale o scoperta. Il danno da combattimento che questa carta infligge ai Life Points del tuo avversario viene dimezzato."
+   },
+   "set_code": "LOD-EN066",
+   "rarity": "Rare",
+   "type": "Spirit Monster",
+   "race": "Thunder",
+   "attribute": "EARTH",
+   "level": 4,
+   "atk": 2000,
+   "def": 1600
+  },
+  {
+   "passcode": 76862289,
+   "name": {
+    "eng": "Yamata Dragon",
+    "fra": "Dragon Yamata",
+    "ger": "Yamata-Drache",
+    "ita": "Drago Yamata"
+   },
+   "desc": {
+    "eng": "This card cannot be Special Summoned. This card returns to its owner's hand during the End Phase of the turn it is Normal Summoned or flipped face-up. When this card inflicts Battle Damage to your opponent, draw cards until you have 5 cards in your hand.",
+    "fra": "Cette carte ne peut pas être Invoquée Spécialement. Cette carte retourne dans la main de son propriétaire durant la End Phase du tour où elle a été Invoquée Normalement ou retournée face recto. Lorsque cette carte inflige des dommages de combat à votre adversaire, piochez des cartes de votre Deck jusqu'à avoir 5 cartes dans votre main.",
+    "ger": "Diese Karte kann nicht als Spezialbeschwörung beschworen werden. Diese Karte kehrt während der End Phase des Spielzugs, in dem sie als Normalbeschwörung beschworen oder aufgedeckt wurde, auf die Hand ihres Besitzers zurück. Wenn diese Karte deinem Gegner Kampfschaden zufügt, ziehe Karten, bis du 5 Karten auf deiner Hand hast.",
+    "ita": "Questa carta non può essere Evocata tramite Evocazione Speciale. Questa carta ritorna in mano al suo proprietario durante l'End Phase del turno in cui è stata Evocata tramite Evocazione Normale o scoperta. Quando questa carta infligge danno da combattimento al tuo avversario, pesca fino ad avere 5 carte nella tua mano."
+   },
+   "set_code": "LOD-EN067",
+   "rarity": "Ultra Rare",
+   "type": "Spirit Monster",
+   "race": "Dragon",
+   "attribute": "FIRE",
+   "level": 7,
+   "atk": 2600,
+   "def": 3100
+  },
+  {
+   "passcode": 2356994,
+   "name": {
+    "eng": "Great Long Nose",
+    "fra": "Long-Nez le Géant",
+    "ger": "Große Langnase",
+    "ita": "Grande Naso Lungo"
+   },
+   "desc": {
+    "eng": "This card cannot be Special Summoned. This card returns to the owner's hand during the End Phase of the turn that this card is Normal Summoned or flipped face-up. If this card inflicts Battle Damage to your opponent's Life Points, your opponent skips their next Battle Phase.",
+    "fra": "Cette carte ne peut pas être Invoquée par Invocation Spéciale. Cette carte retourne dans la main de son propriétaire durant la End Phase du tour où elle a été Invoquée par Invocation Normale ou retournée face recto. Si cette carte inflige des dommages de combat aux Life Points de votre adversaire, celui-ci saute la Battle Phase de son prochain tour.",
+    "ger": "Diese Karte kann nicht als Spezialbeschwörung beschworen werden. Diese Karte kehrt in der End Phase des Spielzugs, in dem sie als Normalbeschwörung beschworen oder aufgedeckt wurde, auf die Hand ihres Besitzers zurück. Falls diese Karte den Life Points deines Gegners Kampfschaden zufügt, überspringe die Battle Phase des nächsten Spielzugs deines Gegners.",
+    "ita": "Questa carta non può essere Evocata tramite Evocazione Speciale. Questa carta ritorna in mano al proprietario durante l'End Phase del turno in cui è stata Evocata tramite Evocazione Normale o scoperta. Se questa carta infligge danno da combattimento ai Life Points del tuo avversario, salta la Battle Phase del prossimo turno del tuo avversario."
+   },
+   "set_code": "LOD-EN068",
+   "rarity": "Common",
+   "type": "Spirit Monster",
+   "race": "Beast-Warrior",
+   "attribute": "DARK",
+   "level": 5,
+   "atk": 1900,
+   "def": 1700
+  },
+  {
+   "passcode": 39751093,
+   "name": {
+    "eng": "Otohime",
+    "fra": "Otohimé",
+    "ger": "Otohime",
+    "ita": "Otohime"
+   },
+   "desc": {
+    "eng": "Cannot be Special Summoned. During the End Phase of the turn this card is Normal Summoned or flipped face-up: Return it to the hand. When this card is Normal Summoned or flipped face-up: You can target 1 face-up monster your opponent controls; change that target's battle position.",
+    "fra": "Non Invocable Spécialement. Durant la End Phase du tour où cette carte est Invoquée Normalement ou retournée face recto : renvoyez-la à la main. Lorsque cette carte est Invoquée Normalement ou retournée face recto : vous pouvez cibler 1 monstre face recto contrôlé par votre adversaire ; changez la position de combat de la cible.",
+    "ger": "Kann nicht als Spezialbeschwörung beschworen werden. Während der End Phase des Spielzugs, in dem diese Karte als Normalbeschwörung beschworen oder aufgedeckt wird: Gib sie auf die Hand zurück. Wenn diese Karte als Normalbeschwörung beschworen oder aufgedeckt wird: Du kannst 1 offenes Monster wählen, das dein Gegner kontrolliert; ändere die Kampfposition des gewählten Ziels.",
+    "ita": "Non può essere Evocato Specialmente. Durante la End Phase del turno in cui questa carta è stata Evocata Normalmente o scoperta: falla ritornare nella mano. Quando questa carta viene Evocata Normalmente o scoperta: puoi scegliere come bersaglio 1 mostro scoperto controllato dal tuo avversario; cambia la posizione di quel bersaglio."
+   },
+   "set_code": "LOD-EN069",
+   "rarity": "Super Short Print",
+   "type": "Spirit Monster",
+   "race": "Spellcaster",
+   "attribute": "LIGHT",
+   "level": 3,
+   "atk": 0,
+   "def": 100
+  },
+  {
+   "passcode": 75745607,
+   "name": {
+    "eng": "Hino-Kagu-Tsuchi",
+    "fra": "Hino-Kagu-Tsuchi",
+    "ger": "Hino-Kagu-Tsuchi",
+    "ita": "Hino-Kagu-Tsuchi"
+   },
+   "desc": {
+    "eng": "This card cannot be Special Summoned. This card returns to its owner's hand during the End Phase of the turn it is Normal Summoned or flipped face-up. If this card inflicts Battle Damage to your opponent, they discard all cards in their hand during the next Draw Phase, before they draw.",
+    "fra": "Cette carte ne peut pas être Invoquée Spécialement. Cette carte revient dans la main de son propriétaire durant la End Phase du tour où elle a été Invoquée Normalement ou retournée face recto. Si cette carte inflige des dommages de combat aux Life Points de votre adversaire, celui-ci se défausse de toutes les cartes de sa main durant sa prochaine Draw Phase, avant de piocher.",
+    "ger": "Diese Karte kann nicht als Spezialbeschwörung beschworen werden. Diese Karte kehrt in der End Phase des Spielzugs, in dem sie als Normalbeschwörung beschworen oder aufgedeckt wurde, auf die Hand ihres Besitzers zurück. Falls diese Karte deinem Gegner Kampfschaden zufügt, wirft er während seiner nächsten Draw Phase alle Karten von seiner Hand ab, bevor er zieht.",
+    "ita": "Questa carta non può essere Evocata tramite Evocazione Speciale. Questa carta ritorna in mano al suo proprietario durante l'End Phase del turno in cui è stata Evocata tramite Evocazione Normale o scoperta. Se questa carta infligge danno da combattimento al tuo avversario, lui scarta tutte le carte dalla sua mano durante la prossima Draw Phase prima di pescare."
+   },
+   "set_code": "LOD-EN070",
+   "rarity": "Ultra Rare",
+   "type": "Spirit Monster",
+   "race": "Pyro",
+   "attribute": "FIRE",
+   "level": 8,
+   "atk": 2800,
+   "def": 2900
+  },
+  {
+   "passcode": 2134346,
+   "name": {
+    "eng": "Asura Priest",
+    "fra": "Prêtre d'Asura",
+    "ger": "Asura-Priester",
+    "ita": "Prete Asura"
+   },
+   "desc": {
+    "eng": "Cannot be Special Summoned. During the End Phase of the turn this card is Normal Summoned or flipped face-up: Return it to the hand. This card can attack all monsters your opponent controls once each.",
+    "fra": "Non Invocable Spécialement. Durant la End Phase du tour où cette carte est Invoquée Normalement ou retournée face recto : renvoyez-la à la main. Cette carte peut attaquer une fois chacun des monstres contrôlés par votre adversaire.",
+    "ger": "Kann nicht als Spezialbeschwörung beschworen werden. Während der End Phase des Spielzugs, in dem diese Karte als Normalbeschwörung beschworen oder aufgedeckt wird: Gib sie auf die Hand zurück. Diese Karte kann alle Monster, die dein Gegner kontrolliert, einmal angreifen.",
+    "ita": "Non può essere Evocato Specialmente. Durante la End Phase del turno in cui questa carta è stata Evocata Normalmente o scoperta: falla ritornare nella mano. Questa carta può attaccare tutti i mostri controllati dal tuo avversario una volta ciascuno."
+   },
+   "set_code": "LOD-EN071",
+   "rarity": "Super Rare",
+   "type": "Spirit Monster",
+   "race": "Fairy",
+   "attribute": "LIGHT",
+   "level": 4,
+   "atk": 1700,
+   "def": 1200
+  },
+  {
+   "passcode": 38538445,
+   "name": {
+    "eng": "Fushi No Tori",
+    "fra": "Fushi No Tori",
+    "ger": "Fushi No Tori",
+    "ita": "Fushi No Tori"
+   },
+   "desc": {
+    "eng": "This card cannot be Special Summoned. This card returns to the owner's hand during the End Phase of the turn that this card is Normal Summoned or flipped face-up. When this card inflicts Battle Damage to your opponent's Life Points, increase your Life Points by an amount equal to the Battle Damage.",
+    "fra": "Cette carte ne peut pas être Invoquée par Invocation Spéciale. Cette carte retourne dans la main de son propriétaire durant la End Phase du tour où elle a été Invoquée par Invocation Normale ou retournée face recto. Lorsque cette carte inflige des dommages de combat aux Life Points de votre adversaire, augmentez vos Life Points d'un nombre égal à ces dommages.",
+    "ger": "Diese Karte kann nicht als Spezialbeschwörung beschworen werden. Diese Karte kehrt in der End Phase des Spielzugs, in dem sie als Normalbeschwörung beschworen oder aufgedeckt wurde, auf die Hand ihres Besitzers zurück. Wenn diese Karte den Life Points deines Gegners Kampfschaden zufügt, erhöhe deine Life Points um diesen Kampfschaden.",
+    "ita": "Questa carta non può essere Evocata tramite Evocazione Speciale. Questa carta ritorna in mano al proprietario durante l'End Phase del turno in cui è stata Evocata tramite Evocazione Normale o scoperta. Se questa carta infligge danno da combattimento ai Life Points del tuo avversario, aumenta i tuoi Life Points di un ammontare di punti pari al danno da combattimento."
+   },
+   "set_code": "LOD-EN072",
+   "rarity": "Common",
+   "type": "Spirit Monster",
+   "race": "Winged Beast",
+   "attribute": "FIRE",
+   "level": 4,
+   "atk": 1200,
+   "def": 0
+  },
+  {
+   "passcode": 75923050,
+   "name": {
+    "eng": "Super Robolady",
+    "fra": "Super Robolady",
+    "ger": "Super-Robot-Lady",
+    "ita": "Super Robolady"
+   },
+   "desc": {
+    "eng": "\"Robolady\" + \"Roboyarou\"\nYou can Special Summon \"Super Roboyarou\" by returning this card from the field to the Extra Deck. You cannot use this effect during the same turn this monster is Special Summoned. In addition, increase the ATK of this monster by 1000 points during the Damage Step when this monster inflicts Direct Damage to your opponent's Life Points.",
+    "fra": "\"Robolady\" + \"Roboyarou\"\nVous pouvez faire l'Invocation Spéciale de \"Super Roboyarou\" en renvoyant cette carte du Terrain dans le Fusion Deck. Vous ne pouvez pas utiliser cet effet durant le tour où ce monstre est Invoqué par Invocation Spéciale. De plus, augmentez l'ATK de ce monstre de 1000 points durant la Damage Step lorsque ce monstre inflige des dommages de combat par une attaque directe.\n",
+    "ger": "„Robot-Lady“ + „Robot-Yarou“\nDu kannst „Super-Robot-Yarou“ als Spezialbeschwörung beschwören, indem du diese Karte vom Spielfeld auf das Extra Deck zurücklegst. Du kannst diesen Effekt nicht im gleichen Spielzug verwenden, in dem diese Karte als Spezialbeschwörung beschworen wurde. Zusätzlich, erhöhe die ATK dieser Karte um 1000 Punkte während des Damage Steps, wenn diese Karte die Life Points deines Gegners direkt angreift.",
+    "ita": "\"Robolady\" + \"Roboyarou\"\nPuoi Evocare tramite Evocazione Speciale \"Super Roboyarou\" facendo tornare questa carta dal Terreno all'Extra Deck. Non puoi usare questo effetto nello stesso turno in cui viene Evocata tramite Evocazione Speciale. Inoltre, questa carta guadagna 1000 ATK durante la Damage Step quando infligge danno attaccando direttamente il tuo avversario.\n"
+   },
+   "set_code": "LOD-EN073",
+   "rarity": "Common",
+   "type": "Fusion Monster",
+   "race": "Machine",
+   "attribute": "EARTH",
+   "level": 6,
+   "atk": 1200,
+   "def": 500
+  },
+  {
+   "passcode": 1412158,
+   "name": {
+    "eng": "Super Roboyarou",
+    "fra": "Super Roboyaro",
+    "ger": "Super-Robot-Yarou",
+    "ita": "Super Roboyarou"
+   },
+   "desc": {
+    "eng": "\"Roboyarou\" + \"Robolady\"\nYou can Special Summon \"Super Robolady\" by returning this card from the field to the Extra Deck. You cannot use this effect during the same turn this monster is Special Summoned. In addition, increase the ATK of this monster by 1000 points during the Damage Step when this monster battles with a monster.",
+    "fra": "\"Roboyaro\" + \"Robolady\"\nVous pouvez faire une Invocation Spéciale de \"Super Robolady\" en renvoyant cette carte du Terrain dans le Fusion Deck. Vous ne pouvez pas utiliser cet effet durant le tour où ce monstre est Invoqué par Invocation Spéciale. De plus, augmentez l'ATK de ce monstre de 1000 points durant la Damage Step lorsque ce monstre combat un monstre.\n",
+    "ger": "„Robot-Yarou“ + „Robot-Lady“\nDu kannst „Super-Robot-Lady“ als Spezialbeschwörung beschwören, indem du diese Karte vom Spielfeld auf das Extra Deck zurücklegst. Du kannst diesen Effekt nicht im gleichen Spielzug verwenden, in dem diese Karte als Spezialbeschwörung beschworen wurde Zusätzlich, erhöhe die ATK dieser Karte um 1000 Punkte während des Damage Steps, wenn diese Karte gegen ein Monster kämpft.",
+    "ita": "\"Roboyarou\" + \"Robolady\"\nPuoi Evocare tramite Evocazione Speciale \"Super Robolady\" facendo tornare questa carta dal Terreno all'Fusion Deck. Non puoi usare questo effetto nello stesso turno in cui viene Evocata tramite Evocazione Speciale. Inoltre, questa carta guadagna 1000 ATK durante la Damage Step quando combatte con un altro Mostro.\n"
+   },
+   "set_code": "LOD-EN074",
+   "rarity": "Common",
+   "type": "Fusion Monster",
+   "race": "Machine",
+   "attribute": "EARTH",
+   "level": 6,
+   "atk": 1200,
+   "def": 500
+  },
+  {
+   "passcode": 37406863,
+   "name": {
+    "eng": "Fengsheng Mirror",
+    "fra": "Miroir de Fengsheng",
+    "ger": "Fengsheng-Spiegel",
+    "ita": "Specchio Fengsheng"
+   },
+   "desc": {
+    "eng": "Look at your opponent's hand. Select and discard 1 Spirit monster to the Graveyard if Spirit monsters exist in his/her hand.",
+    "fra": "Regardez la main de votre adversaire. S'il y a un/des monstre(s) Spirit dans sa main, sélectionnez et défaussez-en 1 au Cimetière.\n",
+    "ger": "Schaue die Karten auf der Hand deines Gegners an. Wenn sich Spirit-Monster auf seiner Hand befinden, wähle 1 Spirit-Monster und wirf es auf den Friedhof ab.",
+    "ita": "Guarda la mano del tuo avversario. Scegli e scarta 1 Mostro spirit dalla sua mano se ne ha.\n"
+   },
+   "set_code": "LOD-EN075",
+   "rarity": "Common",
+   "type": "Spell Card",
+   "race": "Normal",
+   "attribute": "",
+   "level": 0,
+   "atk": 0,
+   "def": 0
+  },
+  {
+   "passcode": 94425169,
+   "name": {
+    "eng": "Spring of Rebirth",
+    "fra": "Printemps de la Renaissance",
+    "ger": "Quell der Wiedergeburt",
+    "ita": "Primavera di Rinascita"
+   },
+   "desc": {
+    "eng": "Increase your Life Points by 500 points every time monsters return from the field to the owner's hand.",
+    "fra": "À chaque fois que des monstres sont renvoyés du Terrain dans la main de leur propriétaire, augmentez vos Life Points de 500 points.",
+    "ger": "Erhöhe deine Life Points um 500 Punkte, jedesmal, wenn Monster vom Spielfeld auf die Hand ihrer Besitzer zurückgegeben werden.",
+    "ita": "Ogni volta che dei mostri vengono fatti ritornare dal Terreno in mano al proprietario, aumenta i tuoi Life Points di 500 punti."
+   },
+   "set_code": "LOD-EN076",
+   "rarity": "Common",
+   "type": "Spell Card",
+   "race": "Continuous",
+   "attribute": "",
+   "level": 0,
+   "atk": 0,
+   "def": 0
+  },
+  {
+   "passcode": 64801562,
+   "name": {
+    "eng": "Heart of Clear Water",
+    "fra": "Cœur de L'Eau Claire",
+    "ger": "Herz des klaren Wassers",
+    "ita": "Cuore d'Acqua Chiara"
+   },
+   "desc": {
+    "eng": "If the equipped monster's ATK is 1300 or higher, this card is destroyed. The monster equipped with this card is not destroyed as a result of battle or by the effect of a card that targets the monster. (Damage calculation is applied normally.)",
+    "fra": "Si l'ATK du monstre équipé est de 1300 ou plus, détruisez cette carte. Le monstre équipé de cette carte n'est pas détruit en combat ou par l'effet d'une carte désignant une cible. Les dommages de combat sont calculés normalement.",
+    "ger": "Falls das Monster, das mit dieser Karte ausgerüstet wird, eine ATK von 1300 oder höher hat, zerstöre diese Karte. Das Monster, das mit dieser Karte ausgerüstet wird, wird durch das Ergebnis eines Kampfes oder einen Effekt, der ein Ziel bestimmt, nicht zerstört. Führe die Schadensberechnung normal durch.",
+    "ita": "Se l'ATK del mostro equipaggiato è di 1300 o maggiore, distruggi questa carta. Il mostro equipaggiato con questa carta non viene distrutto in seguito a una battaglia o dall'effetto di una carta che designa un bersaglio. Il danno da combattimento è calcolato normalmente."
+   },
+   "set_code": "LOD-EN077",
+   "rarity": "Common",
+   "type": "Spell Card",
+   "race": "Equip",
+   "attribute": "",
+   "level": 0,
+   "atk": 0,
+   "def": 0
+  },
+  {
+   "passcode": 295517,
+   "name": {
+    "eng": "A Legendary Ocean",
+    "fra": "Océan Légendaire",
+    "ger": "Ein Legendärer Ozean",
+    "ita": "Un Oceano Leggendario"
+   },
+   "desc": {
+    "eng": "(This card's name is always treated as \"Umi\".)\nAll WATER monsters on the field gain 200 ATK/DEF. Reduce the Level of all WATER monsters in both players' hands and on the field by 1.",
+    "fra": "(Le nom de cette carte est toujours traité comme \"Umi\".)\nTous les monstres EAU sur le Terrain gagnent 200 ATK/DEF. Réduisez le Niveau de tous les monstres EAU dans la main de chaque joueur et sur le Terrain de 1.",
+    "ger": "(Der Name dieser Karte wird immer als „Umi“ behandelt.)\nAlle WASSER Monster auf dem Spielfeld erhalten 200 ATK/DEF. Verringere die Stufe aller WASSER Monster in den Händen beider Spieler und auf dem Spielfeld um 1.",
+    "ita": "(Il nome di questa carta viene sempre considerato come \"Umi\".)\nTutti i mostri ACQUA sul Terreno guadagnano 200 ATK/DEF. Riduci di 1 il Livello di tutti i mostri ACQUA nelle mani di entrambi i giocatori e sul Terreno."
+   },
+   "set_code": "LOD-EN078",
+   "rarity": "Common",
+   "type": "Spell Card",
+   "race": "Field",
+   "attribute": "",
+   "level": 0,
+   "atk": 0,
+   "def": 0
+  },
+  {
+   "passcode": 37684215,
+   "name": {
+    "eng": "Fusion Sword Murasame Blade",
+    "fra": "Murasame l'Épée de Fusion",
+    "ger": "Fusionsschwert Murasama-Klinge",
+    "ita": "Spada-Fusione Lama Murasame"
+   },
+   "desc": {
+    "eng": "Equip only to a Warrior-Type monster. It gains 800 ATK. While equipped to a monster, this card cannot be destroyed by card effects.",
+    "fra": "Équipable uniquement à un monstre Guerrier. Il gagne 800 ATK. Tant qu'elle est équipée à un monstre, cette carte ne peut pas être détruite par des effets de carte.",
+    "ger": "Rüste nur ein Krieger-Monster mit dieser Karte aus. Es erhält 800 ATK. Solange diese Karte ein Monster ausrüstet, kann sie nicht durch Karteneffekte zerstört werden.",
+    "ita": "Equipaggia solo a un mostro Guerriero. Esso guadagna 800 ATK. Mentre è equipaggiata a un mostro, questa carta non può essere distrutta dagli effetti delle carte."
+   },
+   "set_code": "LOD-EN079",
+   "rarity": "Rare",
+   "type": "Spell Card",
+   "race": "Equip",
+   "attribute": "",
+   "level": 0,
+   "atk": 0,
+   "def": 0
+  },
+  {
+   "passcode": 63789924,
+   "name": {
+    "eng": "Smoke Grenade of the Thief",
+    "fra": "Fumigène du Voleur",
+    "ger": "Rauchgranate des Diebs",
+    "ita": "Bomba Fumogena del Ladro"
+   },
+   "desc": {
+    "eng": "When this card is destroyed by a card effect while equipped to a monster: Look at your opponent's hand and discard 1 card from their hand.",
+    "fra": "Lorsque cette carte est détruite par un effet de carte tant qu'elle est équipée à un monstre : regardez la main de votre adversaire et défaussez-lui 1 carte.",
+    "ger": "Wenn diese Karte durch einen Karteneffekt zerstört wird, solange sie ein Monster ausrüstet: Sieh dir die Hand deines Gegners an und wirf 1 Karte von seiner Hand ab.",
+    "ita": "Quando questa carta viene distrutta dall'effetto di una carta mentre è equipaggiata a un mostro: guarda la mano del tuo avversario e scarta 1 carta dalla sua mano."
+   },
+   "set_code": "LOD-EN080",
+   "rarity": "Common",
+   "type": "Spell Card",
+   "race": "Equip",
+   "attribute": "",
+   "level": 0,
+   "atk": 0,
+   "def": 0
+  },
+  {
+   "passcode": 31036355,
+   "name": {
+    "eng": "Creature Swap",
+    "fra": "Permutation de Créature",
+    "ger": "Kreaturentausch",
+    "ita": "Scambio-Creature"
+   },
+   "desc": {
+    "eng": "Each player chooses 1 monster they control and switches control of those monsters with each other. Those monsters cannot change their battle positions for the rest of this turn.",
+    "fra": "Chaque joueur choisit 1 monstre qu'il contrôle et échange son contrôle avec celui choisi par l'adversaire. Le reste de ce tour, ces monstres ne peuvent pas changer de position de combat.",
+    "ger": "Jeder Spieler bestimmt 1 Monster, das er kontrolliert, und ihr tauscht die Kontrolle über jene Monster. Jene Monster können für den Rest dieses Spielzugs ihre Kampfpositionen nicht ändern.",
+    "ita": "Ogni giocatore seleziona 1 mostro che controlla e scambia il controllo di quel mostro con quello selezionato dall'avversario. Quei mostri non possono cambiare posizione per il resto di questo turno."
+   },
+   "set_code": "LOD-EN081",
+   "rarity": "Ultra Rare",
+   "type": "Spell Card",
+   "race": "Normal",
+   "attribute": "",
+   "level": 0,
+   "atk": 0,
+   "def": 0
+  },
+  {
+   "passcode": 99173029,
+   "name": {
+    "eng": "Spiritual Energy Settle Machine",
+    "fra": "Arrangeur d'Énergie Spirituelle",
+    "ger": "Maschine der Ruhigen Geistesenergie",
+    "ita": "Energia Spirituale Sistema Macchina"
+   },
+   "desc": {
+    "eng": "As long as this card remains face-up on the field, all Spirit monsters remain face-up on the field and do not return to their owners' hands during the End Phase even if they are Normal Summoned or flipped face-up. Discard 1 card from your hand during each of your End Phases. If you do not, destroy this card. When this card is removed from the field, all face-up Spirit monsters return to the owners' hands.",
+    "fra": "Tant que cette carte reste face recto sur le Terrain, tous les monstres Spirit face recto restent sur le Terrain. Défaussez 1 carte de votre main durant chacune de vos End Phases. Si vous ne défaussez pas, détruisez cette carte. De plus, lorsque cette carte est détruite ou retirée du Terrain, tous les monstres Spirit face recto sur le Terrain retournent dans les mains de leur propriétaire.",
+    "ger": "Solange diese Karte offen auf dem Spielfeld liegt, kehren offene Spirit-Monster in der End Phase des Spielzugs, in dem sie als Normalbeschwörung beschworen oder aufgedeckt werden, nicht auf die Hand ihrer Besitzer zurück, sondern verbleiben offen auf dem Spielfeld. Wirf in jeder deiner End Phasen 1 Karte aus deiner Hand ab. Falls du dies nicht tust, zerstöre diese Karte. Wenn diese Karte vom Spielfeld entfernt wird, werden alle offenen Spirit-Monster auf dem Spielfeld auf die Hand ihrer Besitzer zurückgegeben.",
+    "ita": "Fino a quando questa carta resta scoperta sul Terreno, tutti i mostri Spirit restano scoperti sul Terreno e non ritornano in mano ai proprietari durante l'End Phase. Scarta 1 carta dalla tua mano durante ogni tua End Phase. Se non lo fai, distruggi questa carta. Se questa carta viene distrutta o rimossa dal Terreno, tutti i mostri Spirit scoperti ritornano in mano ai proprietari."
+   },
+   "set_code": "LOD-EN082",
+   "rarity": "Common",
+   "type": "Spell Card",
+   "race": "Continuous",
+   "attribute": "",
+   "level": 0,
+   "atk": 0,
+   "def": 0
+  },
+  {
+   "passcode": 36562627,
+   "name": {
+    "eng": "Second Coin Toss",
+    "fra": "Deuxième Pile ou Face",
+    "ger": "Erneuter Münzwurf",
+    "ita": "Secondo Lancio della Moneta"
+   },
+   "desc": {
+    "eng": "When a coin toss is performed, you can choose to redo the coin toss. (If the toss involved multiple coin flips, redo all of them.) You can only use the effect of \"Second Coin Toss\" once per turn.",
+    "fra": "Lorsqu'un lancer de pièce est effectué, vous pouvez choisir de le relancer. (Si plusieurs lancers étaient impliqués, refaites-les tous.) Vous ne pouvez utiliser l'effet de \"Deuxième Pile ou Face\" qu'une fois par tour.",
+    "ger": "Wenn ein Münzwurf durchgeführt wird, kannst du bestimmen, dass der Münzwurf wiederholt wird. (Falls der Wurf aus dem Werfen mehrerer Münzen besteht, werden alle Würfe wiederholt.) Du kannst den Effekt von „Erneuter Münzwurf“ nur einmal pro Spielzug verwenden.",
+    "ita": "Quando viene effettuato un lancio di moneta, puoi scegliere di rifare il lancio. (Se il lancio comprendeva diversi lanci di monete, rifalli tutti.) Puoi utilizzare l'effetto di \"Secondo Lancio della Moneta\" una sola volta per turno."
+   },
+   "set_code": "LOD-EN083",
+   "rarity": "Rare",
+   "type": "Spell Card",
+   "race": "Continuous",
+   "attribute": "",
+   "level": 0,
+   "atk": 0,
+   "def": 0
+  },
+  {
+   "passcode": 62966332,
+   "name": {
+    "eng": "Convulsion of Nature",
+    "fra": "Convulsion de la Nature",
+    "ger": "Erschütterung der Natur",
+    "ita": "Sconvolgimento della Natura"
+   },
+   "desc": {
+    "eng": "As long as this card remains face-up on the field, both players must turn their respective Decks upside down and proceed with the current Duel.",
+    "fra": "Tant que cette carte reste face recto sur le Terrain, les deux joueurs doivent retourner leur Deck à l'envers et continuer ainsi ce Duel.",
+    "ger": "Solange diese Karte offen auf dem Spielfeld liegt, drehen beide Spieler ihr Deck auf den Kopf, so dass nun die unterste Karte offen oben liegt, und setzen das Duell fort.",
+    "ita": "Fino a quando questa carta resta scoperta sul Terreno, entrambi i giocatori girano a faccia in su i rispettivi Deck e continuano il Duello in corso."
+   },
+   "set_code": "LOD-EN084",
+   "rarity": "Common",
+   "type": "Spell Card",
+   "race": "Continuous",
+   "attribute": "",
+   "level": 0,
+   "atk": 0,
+   "def": 0
+  },
+  {
+   "passcode": 99351431,
+   "name": {
+    "eng": "The Secret of the Bandit",
+    "fra": "Le Secret du Bandit",
+    "ger": "Das Geheimnis des Banditen",
+    "ita": "Il Segreto del Bandito"
+   },
+   "desc": {
+    "eng": "This card can only be activated during Main Phase 1. Select 1 face-up monster on the field. Each time the selected monster inflicts Battle Damage to your opponent's Life Points this turn, your opponent discards 1 random card.",
+    "fra": "Cette carte ne peut être activée que durant la Main Phase 1. Sélectionnez 1 monstre face recto sur le Terrain. Durant ce tour, chaque fois que le monstre sélectionné inflige des dommages de combat à votre adversaire, celui-ci se défausse au hasard d'1 carte de sa main.",
+    "ger": "Diese Karte kann nur in Main Phase 1 aktiviert werden. Wähle 1 offenes Monster auf dem Spielfeld. Jedesmal, wenn das gewählte Monster in diesem Spielzug Kampfschaden zufügt, wirft dein Gegner 1 zufällige Karte aus seiner Hand ab.",
+    "ita": "Questa carta può essere attivata solamente durante la Main Phase 1. Scegli 1 mostro scoperto sul Terreno. Durante questo turno, ogni volta che il mostro scelto infligge danno da combattimento al tuo avversario, il tuo avversario scarta 1 carta a caso dalla sua mano."
+   },
+   "set_code": "LOD-EN085",
+   "rarity": "Common",
+   "type": "Spell Card",
+   "race": "Normal",
+   "attribute": "",
+   "level": 0,
+   "atk": 0,
+   "def": 0
+  },
+  {
+   "passcode": 25345186,
+   "name": {
+    "eng": "After the Struggle",
+    "fra": "Après la Bataille",
+    "ger": "Nach der großen Schlacht",
+    "ita": "Dopo la Battaglia"
+   },
+   "desc": {
+    "eng": "This card can only be activated during Main Phase 1. All monsters on both sides of the field that have been involved in damage calculation are destroyed during the End Step of the turn.",
+    "fra": "Cette carte ne peut être activée que durant la Main Phase 1. Tous vos monstres et ceux de votre adversaire impliqués dans le calcul des dommages en combat dans ce tour sont détruits durant la End Step.",
+    "ger": "Diese Karte kann nur in Main Phase 1 aktiviert werden. Alle Monster auf dem Spielfeld, die in diesem Spielzug an Schadensberechnungen beteiligt sind, werden im End Step zerstört.",
+    "ita": "Questa carta può essere attivata solamente durante la Main Phase 1. Tutti i mostri sul Terreno che sono stati coinvolti nel calcolo dei danni in questo turno sono distrutti durante l'End Step."
+   },
+   "set_code": "LOD-EN086",
+   "rarity": "Rare",
+   "type": "Spell Card",
+   "race": "Normal",
+   "attribute": "",
+   "level": 0,
+   "atk": 0,
+   "def": 0
+  },
+  {
+   "passcode": 61844784,
+   "name": {
+    "eng": "Magic Reflector",
+    "fra": "Réflecteur Magique",
+    "ger": "Magischer Reflektor",
+    "ita": "Riflettore Magico"
+   },
+   "desc": {
+    "eng": "Target 1 face-up Spell Card you control; place 1 counter on it. If it would ever be destroyed, remove the counter instead.",
+    "fra": "Sélectionnez 1 Carte Magie face recto que vous contrôlez et posez 1 compteur dessus. Si la carte sélectionnée est détruite, retirez le compteur à la place.",
+    "ger": "Wähle 1 offene Zauberkarte, die du kontrollierst, und lege 1 Zählmarke darauf. Falls die gewählte Karte zerstört werden würde, entferne stattdessen die Zählmarke.",
+    "ita": "Scegli 1 Carta Magia scoperta che controlli e metti 1 segnalino su di essa. Se la carta scelta sta per essere distrutta, rimuovi invece il segnalino."
+   },
+   "set_code": "LOD-EN087",
+   "rarity": "Rare",
+   "type": "Spell Card",
+   "race": "Normal",
+   "attribute": "",
+   "level": 0,
+   "atk": 0,
+   "def": 0
+  },
+  {
+   "passcode": 98239899,
+   "name": {
+    "eng": "Blast with Chain",
+    "fra": "Chaîne Explosive",
+    "ger": "Kettenexplosion",
+    "ita": "Colpo con Catena"
+   },
+   "desc": {
+    "eng": "Target 1 face-up monster you control; equip this card to that target. It gains 500 ATK. If this card is destroyed by a card effect while equipped: Target 1 card on the field; destroy that target.",
+    "fra": "Ciblez 1 monstre face recto que vous contrôlez ; équipez cette carte à la cible. Il gagne 500 ATK. Si cette carte est détruite par un effet de carte tant qu'elle était équipée : ciblez 1 carte sur le Terrain ; détruisez la cible.",
+    "ger": "Wähle 1 offenes Monster, das du kontrollierst; rüste das gewählte Ziel mit dieser Karte aus. Es erhält 500 ATK. Falls diese Karte durch einen Karteneffekt zerstört wird, solange sie ausrüstet: Wähle 1 Karte auf dem Spielfeld; zerstöre das gewählte Ziel.",
+    "ita": "Scegli come bersaglio 1 mostro scoperto che controlli; equipaggia questa carta a quel bersaglio. Esso guadagna 500 ATK. Se questa carta viene distrutta dall'effetto di una carta mentre è equipaggiata: scegli come bersaglio 1 carta sul Terreno; distruggi quel bersaglio."
+   },
+   "set_code": "LOD-EN088",
+   "rarity": "Rare",
+   "type": "Trap Card",
+   "race": "Normal",
+   "attribute": "",
+   "level": 0,
+   "atk": 0,
+   "def": 0
+  },
+  {
+   "passcode": 24623598,
+   "name": {
+    "eng": "Disappear",
+    "fra": "Disparaître",
+    "ger": "Verschwinden",
+    "ita": "Sparizione"
+   },
+   "desc": {
+    "eng": "Remove from play 1 card from your opponent's Graveyard.",
+    "fra": "Retirez du jeu 1 carte du Cimetière de votre adversaire.",
+    "ger": "Wähle 1 Karte im Friedhof deines Gegners und entferne sie aus dem Spiel.",
+    "ita": "Rimuovi dal gioco 1 carta dal Cimitero del tuo avversario."
+   },
+   "set_code": "LOD-EN089",
+   "rarity": "Common",
+   "type": "Trap Card",
+   "race": "Normal",
+   "attribute": "",
+   "level": 0,
+   "atk": 0,
+   "def": 0
+  },
+  {
+   "passcode": 61622107,
+   "name": {
+    "eng": "Bubble Crash",
+    "fra": "Crash Boursier",
+    "ger": "Zuviel des Guten",
+    "ita": "Sogno Economico Infranto"
+   },
+   "desc": {
+    "eng": "This card can only be activated when any player has 6 or more cards on the field and/or in their hand. The player(s) then select and send cards to their respective Graveyards until the amount remaining on the field and in their hand is 5.",
+    "fra": "Cette carte ne peut être activée que lorsqu'un joueur détient 6 cartes ou plus, sur le Terrain ou dans sa main. Les deux joueurs sélectionnent et envoient au Cimetière autant de cartes que nécessaire de leur Terrain ou de leur main jusqu'à ce qu'il reste 5 cartes sur leur Terrain ou dans leur main.",
+    "ger": "Beide Spieler wählen Karten auf ihrer jeweiligen Spielfeldseite und/oder auf ihrer jeweiligen Hand und legen diese auf den Friedhof, bis sie auf ihrer jeweiligen Spielfeldseite und/oder ihrer jeweiligen Hand nur noch 5 Karten haben.",
+    "ita": "Entrambi i giocatori scelgono e mandano nei rispettivi Cimiteri tante carte quante necessarie dal proprio Terreno e/o dalla loro mano fino a quando non restano con 5 carte sul loro Terreno e/o nella loro mano."
+   },
+   "set_code": "LOD-EN090",
+   "rarity": "Common",
+   "type": "Trap Card",
+   "race": "Normal",
+   "attribute": "",
+   "level": 0,
+   "atk": 0,
+   "def": 0
+  },
+  {
+   "passcode": 93016201,
+   "name": {
+    "eng": "Royal Oppression",
+    "fra": "Oppression Royale",
+    "ger": "Unterdrückungsherrschaft",
+    "ita": "Oppressione Reale"
+   },
+   "desc": {
+    "eng": "Either player can pay 800 Life Points to negate the Special Summon of a monster(s), and/or an effect that Special Summons a monster(s), and destroy those cards.",
+    "fra": "Chaque joueur peut payer 800 Life Points pour annuler l'Invocation Spéciale d'un ou plusieurs monstres, et/ou un effet qui permet d'Invoquer Spécialement un ou plusieurs monstres, et détruire ces cartes.",
+    "ger": "Jeder Spieler kann 800 Life Points zahlen, um die Spezialbeschwörung von Monstern und/oder einem Effekt, der Monster als Spezialbeschwörung beschwört, zu annullieren und die Karten zu zerstören.",
+    "ita": "Qualsiasi giocatore può pagare 800 Life Point per annullare l'Evocazione Speciale di uno o più mostri, e/o un effetto che Evoca Specialmente uno o più mostri, e distruggere quelle carte."
+   },
+   "set_code": "LOD-EN091",
+   "rarity": "Rare",
+   "type": "Trap Card",
+   "race": "Continuous",
+   "attribute": "",
+   "level": 0,
+   "atk": 0,
+   "def": 0
+  },
+  {
+   "passcode": 29401950,
+   "name": {
+    "eng": "Bottomless Trap Hole",
+    "fra": "Trappe sans Fond",
+    "ger": "Bodenlose Fallgrube",
+    "ita": "Buco Trappola Senza Fine"
+   },
+   "desc": {
+    "eng": "When your opponent Summons a monster(s) with 1500 or more ATK: Destroy that monster(s) with 1500 or more ATK, and if you do, banish it.",
+    "fra": "Lorsque votre adversaire Invoque un ou plusieurs monstres avec min. 1500 ATK : détruisez ces monstres avec min. 1500 ATK, et si vous le faites, bannissez-les.",
+    "ger": "Wenn dein Gegner ein oder mehr Monster mit 1500 oder mehr ATK beschwört: Zerstöre die Monster mit 1500 oder mehr ATK und falls du dies tust, verbanne sie.",
+    "ita": "Quando il tuo avversario Evoca uno o più mostri con ATK di 1500 o superiore: distruggi quei mostri con ATK di 1500 o superiore e, se lo fai, bandiscili."
+   },
+   "set_code": "LOD-EN092",
+   "rarity": "Rare",
+   "type": "Trap Card",
+   "race": "Normal",
+   "attribute": "",
+   "level": 0,
+   "atk": 0,
+   "def": 0
+  },
+  {
+   "passcode": 40633297,
+   "name": {
+    "eng": "Bad Reaction to Simochi",
+    "fra": "Effets Secondaires",
+    "ger": "Simochi-Allergie",
+    "ita": "Brutta Reazione a Simochi"
+   },
+   "desc": {
+    "eng": "As long as this card remains face-up on the field, any effect of increasing your opponent's Life Points is changed to inflict the same amount of points in damage to your opponent's Life Points.",
+    "fra": "Les effets qui augmentent les Life Points de votre adversaire deviennent des effets qui infligent des dommages à ses Life Points.",
+    "ger": "Effekte, die die Life Points deines Gegners erhöhen, fügen statt dessen den Life Points deines Gegners Schaden zu.",
+    "ita": "Gli effetti che aumentano i Life Points del tuo avversario diventano effetti che infliggono danno ai Life Points del tuo avversario."
+   },
+   "set_code": "LOD-EN093",
+   "rarity": "Common",
+   "type": "Trap Card",
+   "race": "Continuous",
+   "attribute": "",
+   "level": 0,
+   "atk": 0,
+   "def": 0
+  },
+  {
+   "passcode": 56995655,
+   "name": {
+    "eng": "Ominous Fortunetelling",
+    "fra": "Sinistre Prédiction",
+    "ger": "Unheil verkündende Weissagung",
+    "ita": "Predizione Malevola"
+   },
+   "desc": {
+    "eng": "During your Standby Phase, select 1 random card from your opponent's hand. Call the type of card (Monster, Spell, or Trap). If you call it right, inflict 700 points of damage to your opponent's Life Points. You can use this effect only once per turn.",
+    "fra": "Durant votre Standby Phase, sélectionnez au hasard 1 carte de la main de votre adversaire et devinez son Type (Monstre, Magie ou Piège). Si vous devinez juste, infligez 700 points de dommages aux Life Points de votre adversaire. Vous ne pouvez utiliser cet effet qu'une fois par tour.",
+    "ger": "Wähle während deiner Standby Phase 1 Karte in der Hand deines Gegners und nenne einen Kartentyp (Monster, Zauber oder Falle). Falls du richtig vorausgesagt hast, füge den Life Points deines Gegners 700 Punkte Schaden zu. Dieser Effekt kann nur einmal in jedem Spielzug verwendet werden.",
+    "ita": "Durante la tua Standby Phase, scegli 1 carta dalla mano del tuo avversario e nomina un Tipo di carta (Mostro,Magia o Trappola). Se indovini, infliggi 700 punti di danno ai Life Points del tuo avversario. Puoi utilizzare questo effetto solamente una volta per turno."
+   },
+   "set_code": "LOD-EN094",
+   "rarity": "Common",
+   "type": "Trap Card",
+   "race": "Continuous",
+   "attribute": "",
+   "level": 0,
+   "atk": 0,
+   "def": 0
+  },
+  {
+   "passcode": 92394653,
+   "name": {
+    "eng": "Spirit's Invitation",
+    "fra": "Invitation Spirit",
+    "ger": "Einladung des Geistes",
+    "ita": "Invito dello Spirito"
+   },
+   "desc": {
+    "eng": "Each time your Spirit monster returns to your hand, select 1 monster on your opponent's side of the field and return it to its owner's hand. Pay 500 Life Points during each of your Standby Phases. If you do not, destroy this card.",
+    "fra": "Chaque fois qu'un monstre Spirit retourne dans votre main, votre adversaire sélectionne 1 monstre sur son Terrain et le renvoie dans la main de son propriétaire. Payez 500 Life Points durant chacune de vos Standby Phases. Si vous ne payez pas, cette carte est détruite.",
+    "ger": "Jedesmal, wenn ein Spirit-Monster auf deine Hand zurückkehrt, wählt dein Gegner 1 Monster auf seiner Spielfeldseite und gibt es auf die Hand seines Besitzers zurück. Zahle in jeder deiner Standby Phasen 500 Life Points. Falls du dies nicht tust, zerstöre diese Karte.",
+    "ita": "Ogni volta che un tuo mostro Spirit ritorna nella tua mano, il tuo avversario sceglie 1 mostro sul suo Terreno e la fa ritornare nella mano del suo proprietario. Paga 500 Life Points durante ogni tua Standby Phase. Se non lo fai, distruggi questa carta."
+   },
+   "set_code": "LOD-EN095",
+   "rarity": "Common",
+   "type": "Trap Card",
+   "race": "Continuous",
+   "attribute": "",
+   "level": 0,
+   "atk": 0,
+   "def": 0
+  },
+  {
+   "passcode": 29389368,
+   "name": {
+    "eng": "Nutrient Z",
+    "fra": "Ration Z",
+    "ger": "Nährmittel Z",
+    "ita": "Nutriente Z"
+   },
+   "desc": {
+    "eng": "During damage calculation, when you are about to take 2000 or more battle damage: Gain 4000 LP first.",
+    "fra": "Durant le calcul des dommages, lorsque vous allez recevoir min. 2000 points de dommages de combat : gagnez d'abord 4000 LP.",
+    "ger": "Während der Schadensberechnung, wenn du gleich 2000 oder mehr Kampfschaden erhältst: Du erhältst zuerst 4000 LP.",
+    "ita": "Durante il calcolo dei danni, quando stai per subire 2000 o più danni da combattimento: guadagni prima 4000 LP."
+   },
+   "set_code": "LOD-EN096",
+   "rarity": "Common",
+   "type": "Trap Card",
+   "race": "Normal",
+   "attribute": "",
+   "level": 0,
+   "atk": 0,
+   "def": 0
+  },
+  {
+   "passcode": 55773067,
+   "name": {
+    "eng": "Drop Off",
+    "fra": "Laissez Tomber",
+    "ger": "Fallen lassen",
+    "ita": "Caduta"
+   },
+   "desc": {
+    "eng": "When your opponent draws for their normal draw in their Draw Phase: Your opponent discards 1 card they just drew.",
+    "fra": "Lorsque votre adversaire pioche pour sa pioche normale durant sa Draw Phase : votre adversaire défausse 1 carte qu'il vient de piocher.",
+    "ger": "Wenn dein Gegner für sein normales Ziehen in seiner Draw Phase zieht: Dein Gegner wirft 1 Karte ab, die er gerade gezogen hat.",
+    "ita": "Quando il tuo avversario pesca per la sua normale pescata nella sua Draw Phase: il tuo avversario scarta 1 carta che ha appena pescato."
+   },
+   "set_code": "LOD-EN097",
+   "rarity": "Super Rare",
+   "type": "Trap Card",
+   "race": "Normal",
+   "attribute": "",
+   "level": 0,
+   "atk": 0,
+   "def": 0
+  },
+  {
+   "passcode": 81172176,
+   "name": {
+    "eng": "Fiend Comedian",
+    "ger": "Unterweltler-Komiker",
+    "ita": "Commediante Malvagio"
+   },
+   "desc": {
+    "eng": "Toss a coin and call it. If you call it right, all your opponent's cards in the Graveyard are removed from play immediately. If you call it wrong, send a number of cards equal to the cards in your opponent's Graveyard from your Deck to your Graveyard.",
+    "ger": "Wirf eine Münze und wähle Kopf oder Zahl. Wenn du richtig vorausgesagt hast, entferne alle Karten im Friedhof deines Gegners aus dem Spiel. Wenn du falsch vorausgesagt hast, lege eine Anzahl Karten, die der Anzahl der Karten im Friedhof deines Gegners entspricht, von deinem Deck auf deinen Friedhof.",
+    "ita": "Lancia una moneta e scegli Testa o Croce. Se indovini, rimuovi dal gioco tutte le carte nel Cimitero del tuo avversario. Se sbagli, manda al Cimitero dalla cima del tuo Deck un numero di carte pari al numero di nel Cimitero del tuo avversario.\n"
+   },
+   "set_code": "LOD-EN098",
+   "rarity": "Common",
+   "type": "Trap Card",
+   "race": "Normal",
+   "attribute": "",
+   "level": 0,
+   "atk": 0,
+   "def": 0
+  },
+  {
+   "passcode": 28566710,
+   "name": {
+    "eng": "Last Turn",
+    "fra": "Dernier Tour",
+    "ger": "Letzter Spielzug",
+    "ita": "Ultimo Turno"
+   },
+   "desc": {
+    "eng": "This card can only be activated during your opponent's turn when your Life Points are 1000 or less. Select 1 monster on your side of the field and send all other cards on the field and in their respective owners' hands to their respective Graveyards. After that, your opponent selects and Special Summons 1 monster from their Deck in face-up Attack Position and attacks your selected monster. (Any Battle Damage from this battle is treated as 0.) The player whose monster remains alone on the field at the End Phase of this turn wins the Duel. Any other case results in a DRAW.",
+    "fra": "Cette carte ne peut être activée que durant le tour de votre adversaire lorsque vos Life Points sont de 1000 ou moins. Sélectionnez 1 monstre sur votre Terrain et envoyez toutes les autres cartes sur le Terrain et dans les mains des deux joueurs au Cimetière. Votre adversaire sélectionne alors 1 monstre de son Deck, fait une Invocation Spéciale de celui-ci en Position d'Attaque face recto et le fait combattre (les dommages de combat aux joueurs sont considérés comme 0). Lors de la End Phase, le joueur dont le monstre reste seul sur le Terrain gagne le Duel. Dans tout autre cas, le résultat est une ÉGALITÉ.",
+    "ger": "Diese Karte kann nur im Spielzug deines Gegners aktiviert werden, wenn deine Life Points 1000 Punkte oder weniger betragen. Wähle 1 Monster auf deiner Spielfeldseite und lege alle anderen Karten auf dem Spielfeld und auf der Hand beider Spieler auf den jeweiligen Friedhof. Dein Gegner beschwört dann 1 Monster als Spezialbeschwörung aus seinem Deck, offen in Angriffsposition, und greift dein gewähltes Monster an. (Jeglicher Kampfschaden, der den Life Points der Spieler zugefügt wird, wird zu 0.) Der Spieler, dessen Monster in der End Phase allein auf dem Spielfeld verbleibt, gewinnt das Duell. In jedem anderen Fall endet das Duell UNENTSCHIEDEN.",
+    "ita": "Questa carta può essere attivata solamente durante il turno del tuo avversario quando i tuoi Life Points sono 1000 o meno. Scegli 1 mostro sul tuo Terreno e manda tutte le altre carte sul Terreno e in mano ad entrambi i giocatori nei rispettivi Cimiteri. Quindi il tuo avversario sceglie 1 mostro dal suo Deck, lo Evoca tramite Evocazione Speciale scoperto in Posizione di Attacco e attacca il mostro da te scelto (il danno da combattimento ai giocatori viene considerato 0). Nell'End Phase, il giocatore il cui mostro resta sul Terreno vince il Duello. In ogni altro caso, il risultato è un PAREGGIO."
+   },
+   "set_code": "LOD-EN099",
+   "rarity": "Ultra Rare",
+   "type": "Trap Card",
+   "race": "Normal",
+   "attribute": "",
+   "level": 0,
+   "atk": 0,
+   "def": 0
+  },
+  {
+   "passcode": 79575620,
+   "name": {
+    "eng": "Injection Fairy Lily",
+    "fra": "Lily Fée des Piqûres",
+    "ger": "Injektionsfee Lily",
+    "ita": "Lily Iniezione Fatata"
+   },
+   "desc": {
+    "eng": "If this card attacks or is attacked, during damage calculation (in either player's turn): You can pay 2000 LP once per battle; this card gains 3000 ATK during that damage calculation only.",
+    "fra": "Si cette carte attaque ou est attaquée, durant le calcul des dommages (du tour de chaque joueur) : une fois par combat, vous pouvez payer 2000 LP ; durant ce calcul des dommages uniquement, cette carte gagne 3000 ATK.",
+    "ger": "Falls diese Karte angreift oder angegriffen wird, während der Schadensberechnung (im Spielzug eines beliebigen Spielers): Du kannst einmal pro Kampf 2000 LP zahlen; diese Karte erhält nur während der Schadensberechnung 3000 ATK.",
+    "ita": "Se questa carta attacca o viene attaccata, durante il calcolo dei danni (nel turno di qualsiasi giocatore): puoi pagare 2000 LP una volta per battaglia; questa carta guadagna 3000 ATK solamente durante quel calcolo dei danni."
+   },
+   "set_code": "LOD-EN100",
+   "rarity": "Secret Rare",
+   "type": "Effect Monster",
+   "race": "Spellcaster",
+   "attribute": "EARTH",
+   "level": 3,
+   "atk": 400,
+   "def": 1500
+  }
+ ]
+}

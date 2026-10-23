@@ -8,7 +8,7 @@ func _init() -> void:
 		if not ok:
 			fails += 1
 			print("FAIL: ", msg)
-	check.call(db.count() == 1114, "card count %d" % db.count())
+	check.call(db.count() == 1177, "card count %d (1114 original + 63 Legacy of Darkness)" % db.count())
 	var c := db.card(2)
 	check.call(db.card_name(2) == "Armored Starfish", "name")
 	check.call(c.atk == 850 and c.def == 1400 and c.level == 4, "stats (card image of Amphibian Beast / Armored Starfish: ATK is the SMALLER field for Starfish)")
