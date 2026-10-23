@@ -36,7 +36,7 @@ ATD_LOD034 | 10034 | LOD-EN034 | Tyrant Dragon | 5.5
 ASD_LOD035 | 10035 | LOD-EN035 | Spear Dragon | 5.5
 ASR | 10036 | LOD-EN036 | Spirit Ryu | 6.1
 ATDDITC | 10037 | LOD-EN037 | The Dragon Dwelling in the Cave | 6.1
-AFSD | 10039 | LOD-EN039 | Fiend Skull Dragon | 4.5
+AFSD | 10039 | LOD-EN039 | Fiend Skull Dragon | 5.5
 ACD | 10040 | LOD-EN040 | Cave Dragon | 6.1
 ATD_LOD042 | 10042 | LOD-EN042 | Troop Dragon | 6.1
 ATDB | 10043 | LOD-EN043 | The Dragon's Bead | 6.1

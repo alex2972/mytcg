@@ -3,9 +3,9 @@
   "errors": 0,
   "input": "Z:\\process\\godot-remake\\card_batches\\input\\LOD-cards.csv",
   "previewPages": [
-    "output\\card_builder_batches\\20261023-113852-623658\\preview-01.png",
-    "output\\card_builder_batches\\20261023-113852-623658\\preview-02.png",
-    "output\\card_builder_batches\\20261023-113852-623658\\preview-03.png"
+    "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\preview-01.png",
+    "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\preview-02.png",
+    "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\preview-03.png"
   ],
   "cards": [
     {
@@ -14,9 +14,9 @@
       "name": "Dark Ruler Ha Des",
       "status": "created",
       "files": [
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ADRHD.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ADRHD-mini.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ADRHD.json"
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ADRHD.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ADRHD-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ADRHD.json"
       ],
       "bodySize": 6.1,
       "lines": 3
@@ -27,9 +27,9 @@
       "name": "Dark Balter the Terrible",
       "status": "created",
       "files": [
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ADBTT.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ADBTT-mini.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ADBTT.json"
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ADBTT.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ADBTT-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ADBTT.json"
       ],
       "bodySize": 4.7,
       "lines": 5
@@ -40,12 +40,12 @@
       "name": "Lesser Fiend",
       "status": "created",
       "files": [
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ALF.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ALF-mini.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ALF.json"
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ALF.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ALF-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ALF.json"
       ],
       "bodySize": 6.1,
-      "lines": 2
+      "lines": 1
     },
     {
       "row": 5,
@@ -53,9 +53,9 @@
       "name": "Possessed Dark Soul",
       "status": "created",
       "files": [
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\APDS.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\APDS-mini.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\APDS.json"
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\APDS.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\APDS-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\APDS.json"
       ],
       "bodySize": 6.1,
       "lines": 2
@@ -66,9 +66,9 @@
       "name": "Skull Knight #2",
       "status": "created",
       "files": [
-        "output\\card_builder_batches\\20261023-113852-623658\\ASK2.png",
-        "output\\card_builder_batches\\20261023-113852-623658\\ASK2-mini.png",
-        "output\\card_builder_batches\\20261023-113852-623658\\ASK2.json"
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ASK2.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ASK2-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ASK2.json"
       ],
       "bodySize": 6.1,
       "lines": 3
@@ -79,9 +79,9 @@
       "name": "Ryu-Kishin Clown",
       "status": "created",
       "files": [
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ARKC.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ARKC-mini.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ARKC.json"
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ARKC.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ARKC-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ARKC.json"
       ],
       "bodySize": 6.1,
       "lines": 3
@@ -92,9 +92,9 @@
       "name": "Twin-Headed Wolf",
       "status": "created",
       "files": [
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ATHW.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ATHW-mini.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ATHW.json"
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ATHW.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ATHW-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ATHW.json"
       ],
       "bodySize": 6.1,
       "lines": 2
@@ -105,9 +105,9 @@
       "name": "Opticlops",
       "status": "created",
       "files": [
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\AO_LOD009.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\AO_LOD009-mini.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\AO_LOD009.json"
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\AO_LOD009.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\AO_LOD009-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\AO_LOD009.json"
       ],
       "bodySize": 6.1,
       "lines": 2
@@ -118,9 +118,9 @@
       "name": "Bark of Dark Ruler",
       "status": "created",
       "files": [
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ABODR.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ABODR-mini.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ABODR.json"
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ABODR.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ABODR-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ABODR.json"
       ],
       "bodySize": 6.1,
       "lines": 5
@@ -131,9 +131,9 @@
       "name": "Fatal Abacus",
       "status": "created",
       "files": [
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\AFA.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\AFA-mini.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\AFA.json"
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\AFA.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\AFA-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\AFA.json"
       ],
       "bodySize": 6.1,
       "lines": 3
@@ -144,9 +144,9 @@
       "name": "Life Absorbing Machine",
       "status": "created",
       "files": [
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ALAM.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ALAM-mini.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ALAM.json"
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ALAM.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ALAM-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ALAM.json"
       ],
       "bodySize": 6.1,
       "lines": 2
@@ -157,9 +157,9 @@
       "name": "The Puppet Magic of Dark Ruler",
       "status": "created",
       "files": [
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ATPMODR.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ATPMODR-mini.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ATPMODR.json"
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ATPMODR.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ATPMODR-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ATPMODR.json"
       ],
       "bodySize": 6.1,
       "lines": 5
@@ -170,9 +170,9 @@
       "name": "Soul Demolition",
       "status": "created",
       "files": [
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ASD_LOD014.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ASD_LOD014-mini.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ASD_LOD014.json"
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ASD_LOD014.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ASD_LOD014-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ASD_LOD014.json"
       ],
       "bodySize": 6.1,
       "lines": 5
@@ -183,9 +183,9 @@
       "name": "Freed the Matchless General",
       "status": "created",
       "files": [
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\AFTMG.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\AFTMG-mini.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\AFTMG.json"
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\AFTMG.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\AFTMG-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\AFTMG.json"
       ],
       "bodySize": 5.5,
       "lines": 5
@@ -196,9 +196,9 @@
       "name": "Throwstone Unit",
       "status": "created",
       "files": [
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ATU.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ATU-mini.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ATU.json"
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ATU.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ATU-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ATU.json"
       ],
       "bodySize": 6.1,
       "lines": 3
@@ -209,9 +209,9 @@
       "name": "Marauding Captain",
       "status": "created",
       "files": [
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\AMC.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\AMC-mini.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\AMC.json"
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\AMC.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\AMC-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\AMC.json"
       ],
       "bodySize": 6.1,
       "lines": 4
@@ -222,9 +222,9 @@
       "name": "Ryu Senshi",
       "status": "created",
       "files": [
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ARS.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ARS-mini.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ARS.json"
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ARS.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ARS-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ARS.json"
       ],
       "bodySize": 4.5,
       "lines": 6
@@ -235,9 +235,9 @@
       "name": "Warrior Dai Grepher",
       "status": "created",
       "files": [
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\AWDG.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\AWDG-mini.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\AWDG.json"
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\AWDG.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\AWDG-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\AWDG.json"
       ],
       "bodySize": 6.1,
       "lines": 2
@@ -248,9 +248,9 @@
       "name": "Mysterious Guard",
       "status": "created",
       "files": [
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\AMG_LOD021.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\AMG_LOD021-mini.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\AMG_LOD021.json"
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\AMG_LOD021.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\AMG_LOD021-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\AMG_LOD021.json"
       ],
       "bodySize": 5.5,
       "lines": 5
@@ -261,9 +261,9 @@
       "name": "Frontier Wiseman",
       "status": "created",
       "files": [
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\AFW_LOD022.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\AFW_LOD022-mini.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\AFW_LOD022.json"
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\AFW_LOD022.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\AFW_LOD022-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\AFW_LOD022.json"
       ],
       "bodySize": 6.1,
       "lines": 2
@@ -274,9 +274,9 @@
       "name": "Exiled Force",
       "status": "created",
       "files": [
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\AEF.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\AEF-mini.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\AEF.json"
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\AEF.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\AEF-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\AEF.json"
       ],
       "bodySize": 6.1,
       "lines": 2
@@ -287,9 +287,9 @@
       "name": "The Hunter with 7 Weapons",
       "status": "created",
       "files": [
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ATHW7W.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ATHW7W-mini.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ATHW7W.json"
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ATHW7W.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ATHW7W-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ATHW7W.json"
       ],
       "bodySize": 6.1,
       "lines": 3
@@ -300,12 +300,12 @@
       "name": "Shadow Tamer",
       "status": "created",
       "files": [
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\AST.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\AST-mini.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\AST.json"
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\AST.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\AST-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\AST.json"
       ],
       "bodySize": 6.1,
-      "lines": 3
+      "lines": 2
     },
     {
       "row": 25,
@@ -313,9 +313,9 @@
       "name": "Dragon Manipulator",
       "status": "created",
       "files": [
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ADM.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ADM-mini.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ADM.json"
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ADM.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ADM-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ADM.json"
       ],
       "bodySize": 6.1,
       "lines": 3
@@ -326,9 +326,9 @@
       "name": "The A. Forces",
       "status": "created",
       "files": [
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ATAF.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ATAF-mini.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ATAF.json"
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ATAF.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ATAF-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ATAF.json"
       ],
       "bodySize": 6.1,
       "lines": 2
@@ -339,9 +339,9 @@
       "name": "The Warrior Returning Alive",
       "status": "created",
       "files": [
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ATWRA.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ATWRA-mini.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ATWRA.json"
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ATWRA.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ATWRA-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ATWRA.json"
       ],
       "bodySize": 6.1,
       "lines": 2
@@ -352,9 +352,9 @@
       "name": "Ready for Intercepting",
       "status": "created",
       "files": [
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ARFI.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ARFI-mini.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ARFI.json"
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ARFI.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ARFI-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ARFI.json"
       ],
       "bodySize": 6.1,
       "lines": 2
@@ -365,9 +365,9 @@
       "name": "A Feint Plan",
       "status": "created",
       "files": [
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\AAFP.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\AAFP-mini.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\AAFP.json"
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\AAFP.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\AAFP-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\AAFP.json"
       ],
       "bodySize": 6.1,
       "lines": 1
@@ -378,9 +378,9 @@
       "name": "Emergency Provisions",
       "status": "created",
       "files": [
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\AEP.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\AEP-mini.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\AEP.json"
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\AEP.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\AEP-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\AEP.json"
       ],
       "bodySize": 6.1,
       "lines": 3
@@ -391,9 +391,9 @@
       "name": "Tyrant Dragon",
       "status": "created",
       "files": [
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ATD_LOD034.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ATD_LOD034-mini.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ATD_LOD034.json"
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ATD_LOD034.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ATD_LOD034-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ATD_LOD034.json"
       ],
       "bodySize": 5.5,
       "lines": 5
@@ -404,9 +404,9 @@
       "name": "Spear Dragon",
       "status": "created",
       "files": [
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ASD_LOD035.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ASD_LOD035-mini.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ASD_LOD035.json"
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ASD_LOD035.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ASD_LOD035-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ASD_LOD035.json"
       ],
       "bodySize": 5.5,
       "lines": 4
@@ -417,9 +417,9 @@
       "name": "Spirit Ryu",
       "status": "created",
       "files": [
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ASR.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ASR-mini.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ASR.json"
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ASR.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ASR-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ASR.json"
       ],
       "bodySize": 6.1,
       "lines": 3
@@ -430,9 +430,9 @@
       "name": "The Dragon Dwelling in the Cave",
       "status": "created",
       "files": [
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ATDDITC.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ATDDITC-mini.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ATDDITC.json"
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ATDDITC.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ATDDITC-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ATDDITC.json"
       ],
       "bodySize": 6.1,
       "lines": 3
@@ -443,11 +443,11 @@
       "name": "Fiend Skull Dragon",
       "status": "created",
       "files": [
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\AFSD.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\AFSD-mini.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\AFSD.json"
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\AFSD.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\AFSD-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\AFSD.json"
       ],
-      "bodySize": 4.5,
+      "bodySize": 5.5,
       "lines": 5
     },
     {
@@ -456,9 +456,9 @@
       "name": "Cave Dragon",
       "status": "created",
       "files": [
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ACD.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ACD-mini.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ACD.json"
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ACD.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ACD-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ACD.json"
       ],
       "bodySize": 6.1,
       "lines": 3
@@ -469,9 +469,9 @@
       "name": "Troop Dragon",
       "status": "created",
       "files": [
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ATD_LOD042.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ATD_LOD042-mini.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ATD_LOD042.json"
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ATD_LOD042.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ATD_LOD042-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ATD_LOD042.json"
       ],
       "bodySize": 6.1,
       "lines": 2
@@ -482,9 +482,9 @@
       "name": "The Dragon's Bead",
       "status": "created",
       "files": [
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ATDB.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ATDB-mini.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ATDB.json"
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ATDB.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ATDB-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ATDB.json"
       ],
       "bodySize": 6.1,
       "lines": 3
@@ -495,9 +495,9 @@
       "name": "A Wingbeat of Giant Dragon",
       "status": "created",
       "files": [
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\AAWOGD.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\AAWOGD-mini.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\AAWOGD.json"
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\AAWOGD.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\AAWOGD-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\AAWOGD.json"
       ],
       "bodySize": 6.1,
       "lines": 3
@@ -508,9 +508,9 @@
       "name": "Stamping Destruction",
       "status": "created",
       "files": [
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ASD_LOD046.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ASD_LOD046-mini.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ASD_LOD046.json"
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ASD_LOD046.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ASD_LOD046-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ASD_LOD046.json"
       ],
       "bodySize": 6.1,
       "lines": 3
@@ -521,9 +521,9 @@
       "name": "Dragon's Rage",
       "status": "created",
       "files": [
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ADR_LOD048.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ADR_LOD048-mini.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ADR_LOD048.json"
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ADR_LOD048.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ADR_LOD048-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ADR_LOD048.json"
       ],
       "bodySize": 6.1,
       "lines": 2
@@ -534,9 +534,9 @@
       "name": "Burst Breath",
       "status": "created",
       "files": [
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ABB.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ABB-mini.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ABB.json"
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ABB.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ABB-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ABB.json"
       ],
       "bodySize": 6.1,
       "lines": 3
@@ -547,9 +547,9 @@
       "name": "Luster Dragon #2",
       "status": "created",
       "files": [
-        "output\\card_builder_batches\\20261023-113852-623658\\ALD2.png",
-        "output\\card_builder_batches\\20261023-113852-623658\\ALD2-mini.png",
-        "output\\card_builder_batches\\20261023-113852-623658\\ALD2.json"
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ALD2.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ALD2-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ALD2.json"
       ],
       "bodySize": 6.1,
       "lines": 2
@@ -560,9 +560,9 @@
       "name": "Robotic Knight",
       "status": "created",
       "files": [
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ARK.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ARK-mini.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ARK.json"
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ARK.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ARK-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ARK.json"
       ],
       "bodySize": 6.1,
       "lines": 2
@@ -573,9 +573,9 @@
       "name": "Wolf Axwielder",
       "status": "created",
       "files": [
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\AWA.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\AWA-mini.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\AWA.json"
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\AWA.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\AWA-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\AWA.json"
       ],
       "bodySize": 6.1,
       "lines": 2
@@ -586,9 +586,9 @@
       "name": "The Illusory Gentleman",
       "status": "created",
       "files": [
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ATIG.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ATIG-mini.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ATIG.json"
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ATIG.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ATIG-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ATIG.json"
       ],
       "bodySize": 6.1,
       "lines": 2
@@ -599,9 +599,9 @@
       "name": "Patrician of Darkness",
       "status": "created",
       "files": [
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\APOD.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\APOD-mini.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\APOD.json"
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\APOD.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\APOD-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\APOD.json"
       ],
       "bodySize": 6.1,
       "lines": 1
@@ -612,9 +612,9 @@
       "name": "Thunder Nyan Nyan",
       "status": "created",
       "files": [
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ATNN.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ATNN-mini.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ATNN.json"
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ATNN.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ATNN-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ATNN.json"
       ],
       "bodySize": 6.1,
       "lines": 2
@@ -625,9 +625,9 @@
       "name": "Airknight Parshath",
       "status": "created",
       "files": [
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\AAP.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\AAP-mini.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\AAP.json"
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\AAP.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\AAP-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\AAP.json"
       ],
       "bodySize": 6.1,
       "lines": 3
@@ -638,9 +638,9 @@
       "name": "Twin-Headed Behemoth",
       "status": "created",
       "files": [
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ATHB.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ATHB-mini.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ATHB.json"
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ATHB.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ATHB-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ATHB.json"
       ],
       "bodySize": 5.5,
       "lines": 4
@@ -651,9 +651,9 @@
       "name": "Susa Soldier",
       "status": "created",
       "files": [
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ASS_LOD066.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ASS_LOD066-mini.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ASS_LOD066.json"
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ASS_LOD066.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ASS_LOD066-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ASS_LOD066.json"
       ],
       "bodySize": 5.5,
       "lines": 4
@@ -664,9 +664,9 @@
       "name": "Heart of Clear Water",
       "status": "created",
       "files": [
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\AHOCW.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\AHOCW-mini.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\AHOCW.json"
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\AHOCW.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\AHOCW-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\AHOCW.json"
       ],
       "bodySize": 6.1,
       "lines": 5
@@ -677,9 +677,9 @@
       "name": "A Legendary Ocean",
       "status": "created",
       "files": [
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\AALO.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\AALO-mini.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\AALO.json"
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\AALO.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\AALO-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\AALO.json"
       ],
       "bodySize": 6.1,
       "lines": 4
@@ -690,9 +690,9 @@
       "name": "Fusion Sword Murasame Blade",
       "status": "created",
       "files": [
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\AFSMB.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\AFSMB-mini.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\AFSMB.json"
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\AFSMB.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\AFSMB-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\AFSMB.json"
       ],
       "bodySize": 6.1,
       "lines": 3
@@ -703,9 +703,9 @@
       "name": "Creature Swap",
       "status": "created",
       "files": [
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ACS_LOD081.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ACS_LOD081-mini.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ACS_LOD081.json"
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ACS_LOD081.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ACS_LOD081-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ACS_LOD081.json"
       ],
       "bodySize": 6.1,
       "lines": 3
@@ -716,9 +716,9 @@
       "name": "Second Coin Toss",
       "status": "created",
       "files": [
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ASCT.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ASCT-mini.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ASCT.json"
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ASCT.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ASCT-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ASCT.json"
       ],
       "bodySize": 6.1,
       "lines": 4
@@ -729,9 +729,9 @@
       "name": "The Secret of the Bandit",
       "status": "created",
       "files": [
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ATSOTB.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ATSOTB-mini.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ATSOTB.json"
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ATSOTB.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ATSOTB-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ATSOTB.json"
       ],
       "bodySize": 6.1,
       "lines": 4
@@ -742,9 +742,9 @@
       "name": "Magic Reflector",
       "status": "created",
       "files": [
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\AMR.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\AMR-mini.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\AMR.json"
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\AMR.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\AMR-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\AMR.json"
       ],
       "bodySize": 6.1,
       "lines": 2
@@ -755,9 +755,9 @@
       "name": "Blast with Chain",
       "status": "created",
       "files": [
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ABWC.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ABWC-mini.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ABWC.json"
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ABWC.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ABWC-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ABWC.json"
       ],
       "bodySize": 6.1,
       "lines": 4
@@ -768,9 +768,9 @@
       "name": "Disappear",
       "status": "created",
       "files": [
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\AD.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\AD-mini.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\AD.json"
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\AD.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\AD-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\AD.json"
       ],
       "bodySize": 6.1,
       "lines": 1
@@ -781,9 +781,9 @@
       "name": "Bottomless Trap Hole",
       "status": "created",
       "files": [
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ABTH.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ABTH-mini.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ABTH.json"
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ABTH.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ABTH-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ABTH.json"
       ],
       "bodySize": 6.1,
       "lines": 3
@@ -794,9 +794,9 @@
       "name": "Bad Reaction to Simochi",
       "status": "created",
       "files": [
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ABRTS.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ABRTS-mini.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ABRTS.json"
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ABRTS.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ABRTS-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ABRTS.json"
       ],
       "bodySize": 6.1,
       "lines": 4
@@ -807,9 +807,9 @@
       "name": "Ominous Fortunetelling",
       "status": "created",
       "files": [
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\AOF.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\AOF-mini.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\AOF.json"
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\AOF.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\AOF-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\AOF.json"
       ],
       "bodySize": 6.1,
       "lines": 5
@@ -820,9 +820,9 @@
       "name": "Nutrient Z",
       "status": "created",
       "files": [
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ANZ.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ANZ-mini.png",
-        "Z:\\process\\godot-remake\\output\\card_builder_batches\\20261023-113852-623658\\ANZ.json"
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ANZ.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ANZ-mini.png",
+        "Z:\\process\\godot-remake\\output\\card_builder_batches\\LOD\\ANZ.json"
       ],
       "bodySize": 6.1,
       "lines": 2

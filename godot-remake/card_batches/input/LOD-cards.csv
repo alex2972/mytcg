@@ -2,7 +2,7 @@
 ADRHD,10001.jpg,Dark Ruler Ha Des,Effect,DARK,6,Fiend,2450,1600,Cannot be Special Summoned from the GY. Negate the effects of monsters destroyed by battle with Fiend monsters you control.,LOD-EN001,,black,normal,,,,,,,16.5,6.1,10001
 ADBTT,10002.jpg,Dark Balter the Terrible,Fusion,DARK,5,Fiend,2000,1200,"""Possessed Dark Soul"" + ""Frontier Wiseman""
 A Fusion Summon of this monster can only be conducted with the above Fusion Material Monsters. When a Normal Spell Card is activated, negate the effect by paying 1000 Life Points. The effect of an Effect Monster that this monster destroys as a result of battle is negated.",LOD-EN002,,black,normal,,,,,,,16.5,6.1,10002
-ALF,10003.jpg,Lesser Fiend,Effect,DARK,5,Fiend,2100,1000,"Banish any monster destroyed by battle with this card.",LOD-EN003,,black,normal,,,,,,,16.5,6.1,10003
+ALF,10003.jpg,Lesser Fiend,Effect,DARK,5,Fiend,2100,1000,Banish any monster destroyed by battle with this card.,LOD-EN003,,black,normal,,,,,,,16.5,6.1,10003
 APDS,10004.jpg,Possessed Dark Soul,Effect,DARK,3,Fiend,1200,800,You can Tribute this face-up card; take control of all face-up Level 3 or lower monsters your opponent currently controls.,LOD-EN004,,black,normal,,,,,,,16.5,6.1,10004
 ASK2,10006.jpg,Skull Knight #2,Effect,DARK,3,Fiend,1000,1200,"If you Tribute Summon a Fiend-Type monster by Tributing this monster, Special Summon 1 ""Skull Knight #2"" from your Deck. Then shuffle your Deck.",LOD-EN006,,black,normal,,,,,,,16.5,6.1,10006
 ARKC,10007.jpg,Ryu-Kishin Clown,Effect,DARK,2,Fiend,800,500,"When this card is Summoned (including Flip Summon and Special Summon), select 1 face-up monster on the field and change its battle position.",LOD-EN007,,black,normal,,,,,,,16.5,6.1,10007
@@ -23,7 +23,7 @@ AMG_LOD021,10021.jpg,Mysterious Guard,Effect,EARTH,3,Spellcaster,800,1200,"FLIP:
 AFW_LOD022,10022.jpg,Frontier Wiseman,Effect,EARTH,3,Spellcaster,1600,800,"Negate any Spell effects that target a Warrior-Type monster you control, and if you do, destroy that card.",LOD-EN022,,black,normal,,,,,,,16.5,6.1,10022
 AEF,10023.jpg,Exiled Force,Effect,EARTH,4,Warrior,1000,1000,You can Tribute this card to target 1 monster on the field; destroy that target.,LOD-EN023,,black,normal,,,,,,,16.5,6.1,10023
 ATHW7W,10024.jpg,The Hunter with 7 Weapons,Effect,EARTH,3,Warrior,1000,600,"When this card is Normal Summoned, declare 1 Type of monster. When battling that Type of monster, increase the ATK of this card by 1000 points during Damage Calculation.",LOD-EN024,,black,normal,,,,,,,16.5,6.1,10024
-AST,10025.jpg,Shadow Tamer,Effect,EARTH,3,Warrior,800,700,"FLIP: Target 1 Fiend-Type monster your opponent controls; take control of that target until the End Phase.",LOD-EN025,,black,normal,,,,,,,16.5,6.1,10025
+AST,10025.jpg,Shadow Tamer,Effect,EARTH,3,Warrior,800,700,FLIP: Target 1 Fiend-Type monster your opponent controls; take control of that target until the End Phase.,LOD-EN025,,black,normal,,,,,,,16.5,6.1,10025
 ADM,10026.jpg,Dragon Manipulator,Effect,EARTH,3,Warrior,700,800,FLIP: Take control of 1 face-up Dragon-Type monster on your opponent's side of the field until the end of the End Phase.,LOD-EN026,,black,normal,,,,,,,16.5,6.1,10026
 ATAF,10027.jpg,The A. Forces,Spell,,,,,,All Warrior-Type monsters you control gain 200 ATK for each Warrior or Spellcaster-Type monster you control.,LOD-EN027,,white,continuous,,,,,,,16.5,6.1,10027
 ATWRA,10030.jpg,The Warrior Returning Alive,Spell,,,,,,Target 1 Warrior-Type monster in your Graveyard; add that target to your hand.,LOD-EN030,,white,normal,,,,,,,16.5,6.1,10030

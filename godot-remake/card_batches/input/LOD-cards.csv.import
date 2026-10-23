@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://b0ar1d5x43to2"
+
+[deps]
+
+files=["res://card_batches/input/LOD-cards.artwork.translation", "res://card_batches/input/LOD-cards.name.translation", "res://card_batches/input/LOD-cards.kind.translation", "res://card_batches/input/LOD-cards.attribute.translation", "res://card_batches/input/LOD-cards.level.translation", "res://card_batches/input/LOD-cards.race.translation", "res://card_batches/input/LOD-cards.atk.translation", "res://card_batches/input/LOD-cards.def.translation", "res://card_batches/input/LOD-cards.description.translation", "res://card_batches/input/LOD-cards.code.translation", "res://card_batches/input/LOD-cards.titleColor.translation", "res://card_batches/input/LOD-cards.subtype.translation", "res://card_batches/input/LOD-cards.titleSize.translation", "res://card_batches/input/LOD-cards.bodySize.translation", "res://card_batches/input/LOD-cards.gameNumber.translation"]
+
+source_file="res://card_batches/input/LOD-cards.csv"
+dest_files=["res://card_batches/input/LOD-cards.artwork.translation", "res://card_batches/input/LOD-cards.name.translation", "res://card_batches/input/LOD-cards.kind.translation", "res://card_batches/input/LOD-cards.attribute.translation", "res://card_batches/input/LOD-cards.level.translation", "res://card_batches/input/LOD-cards.race.translation", "res://card_batches/input/LOD-cards.atk.translation", "res://card_batches/input/LOD-cards.def.translation", "res://card_batches/input/LOD-cards.description.translation", "res://card_batches/input/LOD-cards.code.translation", "res://card_batches/input/LOD-cards.titleColor.translation", "res://card_batches/input/LOD-cards.subtype.translation", "res://card_batches/input/LOD-cards.titleSize.translation", "res://card_batches/input/LOD-cards.bodySize.translation", "res://card_batches/input/LOD-cards.gameNumber.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true
