@@ -391,6 +391,8 @@ func to_main2(p: int) -> String:
 
 ## Goblin Attack Force style effects: attackers turn to Defense Position when the Battle Phase ends.
 func _apply_battle_end() -> void:
+	for c in cards.values():
+		c.expire_mods("end_battle")                      # Spirit Ryu: "until the end of this Battle Phase"
 	for p in 2:
 		for c in monsters_of(p):
 			if c.flags.get("destroy_at_battle_end", false):
@@ -469,6 +471,7 @@ func _end_of_turn_cleanup() -> void:
 				send_to_grave(c, "returned")
 	for c in cards.values():
 		c.expire_mods("end_turn")
+		c.expire_mods("end_battle")                      # (a Battle Phase that never reached Main Phase 2)
 		c.expire_mods("turn:%d" % turn)
 		if c.flags.get("control_until", "") == "end_turn":
 			c.flags.erase("control_until")

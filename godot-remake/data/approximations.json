@@ -380,10 +380,6 @@
     "gap": "Only answers Traps the opponent activates.",
     "fix": "Also offer it for your own Traps that target a Dragon."
   },
-  "Spirit Ryu": {
-    "gap": "The +1000 ATK/DEF lasts until the end of the turn, not the end of the Battle Phase.",
-    "fix": "Add an 'until: end_battle' expiry for mods and clear them when the Battle Phase ends."
-  },
   "Tyrant Dragon": {
     "gap": "When it is Special Summoned from the Graveyard, the Dragon to Tribute is chosen automatically (the one with the lowest ATK).",
     "fix": "Ask the summoning player to pick the Dragon (needs a decision inside Duel.special_summon)."

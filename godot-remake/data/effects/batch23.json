@@ -475,7 +475,7 @@
        "type": "monster"
       },
       "n": 1,
-      "min": 0,
+      "min": 1,
       "required": false,
       "auto": false,
       "prompt_text": "Select a monster in your opponent's Graveyard to remove from play."
@@ -488,7 +488,7 @@
        "type": "monster"
       },
       "n": 1,
-      "min": 0,
+      "min": 1,
       "required": false,
       "auto": false,
       "chooser": "opp",
@@ -1214,7 +1214,7 @@
       "what": "src",
       "atk": 1000,
       "def": 1000,
-      "until": "end_turn"
+      "until": "end_battle"
      }
     ]
    }

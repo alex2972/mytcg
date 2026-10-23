@@ -2,7 +2,7 @@
 
 Generated from `data/approximations.json` by `tools/list_approximations.py`. Do not edit by hand.
 
-84 cards and 20 rules.
+83 cards and 20 rules.
 
 ## Cards
 
@@ -72,7 +72,6 @@ Generated from `data/approximations.json` by `tools/list_approximations.py`. Do 
 | Soul Demolition | Its effect can only be used during your own Main Phase. | Allow the effect as a speed-2 Quick Effect in any response window. |
 | Soul of Purity and Light | The -300 ATK to the opponent's monsters during their Battle Phase is missing. | A static modifier that depends on the current phase/turn. |
 | Spellbinding Circle | The card is also destroyed when the selected monster is offered as a Tribute (the original keeps it). | Tell Tributes apart from other ways of leaving the field. |
-| Spirit Ryu | The +1000 ATK/DEF lasts until the end of the turn, not the end of the Battle Phase. | Add an 'until: end_battle' expiry for mods and clear them when the Battle Phase ends. |
 | Spirit of Flames | The +300 ATK during my Battle Phase is missing. | A static modifier that depends on the current phase/turn. |
 | Stim-Pack | The -200 ATK per Standby Phase stays on the monster if the Equip Card leaves the field (also Germ Infection, -300). | Tie the decrease to the Equip Card (a counter on it). |
 | Sword of Dragon's Soul | The Dragon is destroyed when the Battle Phase ends (entering Main Phase 2 or ending the turn). | Verify the timing against the original. |
