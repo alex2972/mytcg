@@ -496,9 +496,101 @@ static func run(fn: String, _step: Dictionary, ctx: Dictionary, fx: Fx):
 					d.destroy_card(c, "effect")
 				else:
 					c.face_up = false
+		"creature_swap":
+			# Creature Swap: each player gives the monster they chose; neither may change position this turn
+			var mine_l: Array = ctx["vars"].get("mine", [])
+			var theirs_l: Array = ctx["vars"].get("theirs", [])
+			if mine_l.is_empty() or theirs_l.is_empty():
+				return null
+			var a: DCard = mine_l[0]
+			var b: DCard = theirs_l[0]
+			if not d.is_on_field(a) or not d.is_on_field(b) or a.controller == b.controller:
+				return null
+			var pa: int = a.controller
+			var pb: int = b.controller
+			var za: int = (d.side(pa).monsters as Array).find(a)
+			var zb: int = (d.side(pb).monsters as Array).find(b)
+			d.side(pa).monsters[za] = b
+			d.side(pb).monsters[zb] = a
+			a.controller = pb
+			b.controller = pa
+			for m in [a, b]:
+				m.flags["lock_pos_until"] = d.turn
+			d._emit("control", {"player": pa, "uid": b.uid})
+			d._emit("control", {"player": pb, "uid": a.uid})
+		"bark_choice":
+			# Bark of Dark Ruler: how many LP to pay (multiples of 100); the first offer is just enough to win the battle
+			var battle := bark_battle(d, int(ctx["controller"]))
+			if battle.is_empty():
+				return "abort"
+			var mine3: DCard = battle["mine"]
+			var foe_m: DCard = battle["theirs"]
+			ctx["vars"]["bt"] = [foe_m]
+			var mine_value: int = d.atk_of(mine3) if mine3.pos == "atk" else d.def_of(mine3)
+			var foe_value: int = d.atk_of(foe_m) if foe_m.pos == "atk" or foe_m == d.current_attack.get("attacker") else d.def_of(foe_m)
+			var amounts := []
+			@warning_ignore("integer_division")
+			var enough: int = ((foe_value - mine_value) / 100 + 1) * 100
+			for x in [enough, 100, 200, 300, 500, 800, 1000, 1500, 2000, 3000]:
+				if x > 0 and x < d.side(int(ctx["controller"])).lp and not amounts.has(x):
+					amounts.append(x)
+			if amounts.is_empty():
+				return "abort"
+			ctx["vars"]["_bark_amounts"] = amounts
+			return {"type": "choice", "player": int(ctx["controller"]), "as": "bark", "count": amounts.size(),
+				"labels": amounts.map(func(x): return "Pay %d LP" % x), "prompt_text": "Bark of Dark Ruler: how many Life Points do you pay?"}
+		"bark_pay":
+			var amts: Array = ctx["vars"].get("_bark_amounts", [])
+			var pick := int(ctx["vars"].get("bark", 0))
+			ctx["vars"]["bark_x"] = int(amts[pick]) if pick >= 0 and pick < amts.size() else 0
+			d.pay_lp(int(ctx["controller"]), int(ctx["vars"]["bark_x"]))
+		"bark_apply":
+			var x: int = int(ctx["vars"].get("bark_x", 0))
+			for c in ctx["vars"].get("bt", []):
+				if d.is_on_field(c):
+					c.mods.append({"atk": -x, "def": -x, "until": "end_turn", "src": ctx["src"].uid})
+		"puppet_cands":
+			ctx["vars"]["_pf"] = puppet_candidates(d, int(ctx["controller"]))
+		"puppet_select":
+			# The Puppet Magic of Dark Ruler: my monsters whose Levels add up to exactly the chosen Fiend's Level
+			var chosen: Array = ctx["vars"].get("g", [])
+			if chosen.is_empty():
+				return "abort"
+			var mons := d.monsters_of(int(ctx["controller"]))
+			return {"type": "select", "player": int(ctx["controller"]), "candidates": mons.map(func(c): return c.uid), "min": 1, "max": mons.size(),
+				"as": "pm", "prompt": 0, "from": "self.monsters", "cost": true, "discard": false, "sum_level_min": 0, "sum_level_eq": d.level_of(chosen[0]),
+				"banish_intent": false, "hidden_pick": false, "prompt_text": "Remove from play monsters whose Levels add up to exactly %d." % d.level_of(chosen[0])}
 		_:
 			push_warning("unknown custom effect: " + fn)
 	return null
+
+## Bark of Dark Ruler: {mine, theirs} for the current battle between a monster of `p` and one of the opponent, or {}.
+static func bark_battle(d: Duel, p: int) -> Dictionary:
+	var a: DCard = d.current_attack.get("attacker")
+	var t: DCard = d.current_attack.get("target")
+	if a == null or t == null:
+		return {}
+	if a.controller == p and t.controller != p:
+		return {"mine": a, "theirs": t}
+	if t.controller == p and a.controller != p:
+		return {"mine": t, "theirs": a}
+	return {}
+
+## The Puppet Magic of Dark Ruler: Fiends in `p`'s Graveyard whose Level equals the total Level of some of `p`'s monsters.
+static func puppet_candidates(d: Duel, p: int) -> Array:
+	var levels: Array = d.monsters_of(p).map(func(m): return d.level_of(m))
+	var sums := {}
+	for mask in range(1, 1 << levels.size()):
+		var total := 0
+		for i in levels.size():
+			if mask & (1 << i):
+				total += int(levels[i])
+		sums[total] = true
+	var out := []
+	for g in d.side(p).grave:
+		if d.is_monster(g) and d.race_of(g) == CardDB.RACES.find("Fiend") and sums.has(d.level_of(g)) and d.special_summon_problem(g, p, true) == "":
+			out.append(g)
+	return out
 
 ## Special Summon procedures must stay legal before the Tribute is committed.
 static func procedure_materials(d: Duel, source: DCard, kind: String) -> Array:

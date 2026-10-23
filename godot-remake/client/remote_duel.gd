@@ -199,6 +199,9 @@ func activatable_effects(_p: int) -> Array:
 func hand_excess(_p: int) -> int:
 	return int(_legal.get("hand_excess", 0))
 
+func check_states() -> bool:
+	return false                       # the server destroys cards; the client only shows its batches
+
 func start_opening_deal() -> void:
 	pass
 

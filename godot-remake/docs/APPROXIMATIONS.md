@@ -2,15 +2,17 @@
 
 Generated from `data/approximations.json` by `tools/list_approximations.py`. Do not edit by hand.
 
-70 cards and 20 rules.
+84 cards and 20 rules.
 
 ## Cards
 
 | Card | What differs | What it takes to fix |
 |---|---|---|
+| A Feint Plan | Both players are affected ('A player cannot attack face-down monsters'). | Confirm against the original whether it binds only the opponent. |
 | Alligator's Sword Dragon | Face-down opposing monsters count as their real attribute when deciding if a direct attack is allowed. | Check what the original does with face-down monsters. |
 | Ancient Telescope | No effect: seeing the opponent's top 5 cards needs an interface. | A card-list dialog. |
 | Aqua Spirit | The Standby Phase position-change effect is missing (only the special summon condition is in). | A trigger on the opponent's Standby Phase that lets the owner change one face-up monster's position. |
+| Bark of Dark Ruler | The LP to pay is picked from a list (just enough to win the battle, then 100, 200, 300, 500, 800, 1000, 1500, 2000, 3000) instead of any multiple of 100. | Add a number-entry decision to the board. |
 | Big Shield Gardna | The face-down single-target Spell negation is implemented. The shift to Attack Position still happens at Battle Phase end rather than immediately after the individual Damage Step; exact native position-event order needs tracing. | Spell targets in the chain link, and a post-Damage-Step window. |
 | Black Illusion Ritual | Relinquished's special effect is missing (it is only a 0/0 monster). | Implement Relinquished (equip and take over ATK/DEF). |
 | Blue-Eyes Toon Dragon | The 'attack directly while the opponent controls no Toon monster' rule is missing. | As Toon Summoned Skull. |
@@ -18,7 +20,9 @@ Generated from `data/approximations.json` by `tools/list_approximations.py`. Do 
 | Ceremonial Bell | No effect: the hand reveal is only a display matter and needs an interface. | Show both hands while the card is face-up (board view). |
 | Cyber Jar | Summon positions and the order in which the two players pick up cards are simplified. | Check the original's order and which player's monsters are summoned first. |
 | DNA Surgery | Monster Type icons in the interface do not change. | Use Duel.race_of in the card detail panel. |
+| Dark Balter the Terrible | Only offered against the opponent's Normal Spells (never your own). Flip Effect timing as Twin-Headed Wolf. | Offer it for both players' Normal Spells (adds a prompt to each of your own). |
 | Dark Necrofear | Only the special summon condition is in; the 'becomes an Equip Card and takes control' effect is missing. | Use become_equip plus a control link when destroyed. |
+| Dark Ruler Ha Des | Same Flip Effect timing as Twin-Headed Wolf; Graveyard effects of its battle victims are negated for the rest of that turn. | See Twin-Headed Wolf. |
 | Dark Spirit of the Silent | The original target is retained, as confirmed by FUN_0058dcc0. The forced position change is still quiet; exact position-change response timing needs tracing. | Trace FUN_005751e0 and the queued attack commands before changing position response windows. |
 | De-Fusion | Revival is now optional, each material has a position choice, and the activating player's Graveyard is used. Material eligibility still matches the printed Fusion recipe rather than recording the actual cards used, including substitutes. | Trace the native material-history flags in FUN_00599e30 and persist actual Fusion materials. |
 | Destiny Board | The Spirit Message cards can still be played or Set by hand; only the board places them properly. | Forbid playing/Setting the Spirit Message cards manually. |
@@ -33,6 +37,7 @@ Generated from `data/approximations.json` by `tools/list_approximations.py`. Do 
 | Gilasaurus | The 'treat as Special Summon' choice only marks the card as Special Summoned (the Normal Summon of the turn is still used). | Let the summon dialog offer Special Summon, which would not use the Normal Summon. |
 | Ground Collapse | Only zones on the opponent's side can be blocked, and an occupied choice moves to the next free zone automatically. | A zone-picker UI for either side. |
 | Harpie Lady Sisters | Cannot be Normal Summoned, but other Special Summons (not only Elegant Egotist) are not blocked. | A summon-procedure rule like Wall Shadow's. |
+| Heart of Clear Water | 'Effects that target the monster' means a destroy step on a selected card; mass destruction never counts as targeting. | Mark which selections are targets in the effect data and check that flag. |
 | Hourglass of Courage | The doubling is computed from the printed ATK/DEF (other bonuses are not doubled). | Double the final value. |
 | Infinite Dismissal | Destroys every Level 3 or lower monster summoned (Normal Summoned, Flip Summoned or Set) during the turn, including ones summoned before the trap was activated. | Only count monsters summoned after the activation. |
 | Insect Queen | The Insect Monster Token appears immediately, not at the end of the turn. | Create the token in the End Phase. |
@@ -48,6 +53,7 @@ Generated from `data/approximations.json` by `tools/list_approximations.py`. Do 
 | Minar | Only effects that go through the standard 'discard', 'mill' and 'to_grave' steps count as the opponent's effect (also Electric Snake, Penguin Knight). | Set Duel.effect_player in every custom op that moves cards. |
 | Morphing Jar #2 | Rules/counts now follow native handler 0058c490: count all Main Deck returns by owner, stop on any excavated monster, summon only eligible Level 4 or lower monsters, and conceal multiple newly Set monsters by shuffling their occupied positions. Excavation uses a 0.45-second face-up preview and a 0.35-second position shuffle; these visual timings/path are reconstructed without a reference clip. | Compare an original Morphing Jar #2 resolution video to match the excavation display and face-down position shuffle choreography/timing. |
 | Mystical Refpanel | A Spell 'targets 1 player' if its effect damages, heals, draws, mills or discards for a player; the effect is swapped as a whole. | Mark such Spells explicitly. |
+| Patrician of Darkness | The opponent first declares an attack on one of your monsters, then you pick the real target (it redirects the attack). | Let the Patrician's controller pick the target in the attack declaration UI. |
 | Polymerization | 'Goddess with the Third Eye' / 'Versago the Destroyer' can be picked for more than one material slot. | Allow at most one substitute per Fusion. |
 | Pumpking the King of Ghosts | The Standby Phase counter is reset only at the next Standby Phase after Castle of Dark Illusions leaves the field. | Reset the counter when the Castle leaves. |
 | Red-Moon Baby | The destroyed monster comes back immediately, not at the end of the Battle Phase, and always in Attack Position. | Queue the revival for the end of the Battle Phase and let the player pick the position. |
@@ -56,24 +62,32 @@ Generated from `data/approximations.json` by `tools/list_approximations.py`. Do 
 | Return of the Doomed | The Spell Card stays face-up on the field until the End Phase instead of going to the Graveyard right away. | A delayed end-of-turn effect that is not tied to a card on the field. |
 | Riryoku | The ATK change lasts until the end of the turn (the card text gives no duration). | Check the original's duration. |
 | Riryoku Field | 'Designates 1 monster' means the Spell's target step ended with exactly 1 monster selected; Spells that affect monsters without a target step are not detected. | Mark target-style Spells explicitly in the effect data. |
+| Ryu Senshi | Its LP payment is only offered against the opponent's Normal Traps (never your own). | Offer it for both players' Normal Traps. |
+| Second Coin Toss | Offered only for your own coin tosses and only after a losing result (for several coins: when not all are heads). | Offer it after every coin toss the controller performs. |
 | Shadow of Eyes | Works once, as a normal Trap, for the monster that was just Set. | Check the original: continuous or one-shot. |
 | Shift | Redirects only to my other monsters, and is limited to monster attacks (not Spell/Trap targets). | Add target_declared events for Spell/Trap targeting. |
 | Sinister Serpent | Returning to the hand is automatic instead of optional. | A yes/no prompt. |
 | Slate Warrior | The penalty applies to whoever destroys it in battle, including in a mutual destruction. | Check the original for mutual destruction. |
 | Solomon's Lawbook | Implemented as 'skip my next draw'; other Standby Phase effects of mine still happen. | Skip the whole Standby Phase of my next turn. |
+| Soul Demolition | Its effect can only be used during your own Main Phase. | Allow the effect as a speed-2 Quick Effect in any response window. |
 | Soul of Purity and Light | The -300 ATK to the opponent's monsters during their Battle Phase is missing. | A static modifier that depends on the current phase/turn. |
 | Spellbinding Circle | The card is also destroyed when the selected monster is offered as a Tribute (the original keeps it). | Tell Tributes apart from other ways of leaving the field. |
+| Spirit Ryu | The +1000 ATK/DEF lasts until the end of the turn, not the end of the Battle Phase. | Add an 'until: end_battle' expiry for mods and clear them when the Battle Phase ends. |
 | Spirit of Flames | The +300 ATK during my Battle Phase is missing. | A static modifier that depends on the current phase/turn. |
 | Stim-Pack | The -200 ATK per Standby Phase stays on the monster if the Equip Card leaves the field (also Germ Infection, -300). | Tie the decrease to the Equip Card (a counter on it). |
 | Sword of Dragon's Soul | The Dragon is destroyed when the Battle Phase ends (entering Main Phase 2 or ending the turn). | Verify the timing against the original. |
 | Tailor of the Fickle | The new host is selected before the chain and checked against the Equip effect's race/Attribute/side restrictions. Special native host predicates for revival and monster Equip Cards are not fully ported. | Port the remaining Equip-specific predicates from FUN_0056fc50; preserve them when moving the Equip. |
+| The Dragon's Bead | Only answers Traps the opponent activates. | Also offer it for your own Traps that target a Dragon. |
 | The Eye of Truth | The hand reveal is missing (interface); only the +1000 LP effect is in. | Show the other player's hand while the card is face-up (board view). |
 | The Flute of Summoning Dragon | Needs a free Monster Card Zone for every Dragon; extra ones fail silently. | Limit the selection to the number of free zones. |
+| The Puppet Magic of Dark Ruler | The monsters are removed from play when the card is activated, not when it resolves. | Choose them at activation and remove them on resolution. |
 | The Rock Spirit | The +300 ATK during the opponent's Battle Phase is missing. | A static modifier that depends on the current phase/turn. |
 | Thousand-Eyes Restrict | A face-down monster should give 0 ATK/DEF; it gives its printed values. The stats are the equipped monster's printed ones. | Use 0/0 for face-down monsters. |
 | Toon Mermaid | The 'attack directly while the opponent controls no Toon monster' rule is missing. | As Toon Summoned Skull. |
 | Toon Summoned Skull | The 'attack directly while the opponent controls no Toon monster' rule is missing. | Use the direct_vs_attributes style rule with a Toon-monster check. |
 | Trap Master | A face-up card of the wrong kind can be selected and nothing happens (also Reaper of the Cards, Armed Ninja, De-Spell). | Restrict the selection to face-down cards and face-up cards of the right kind. |
+| Twin-Headed Wolf | A Flip monster it attacks face-down is judged when it flips: its Flip Effect is skipped if the current ATK beats its DEF. Damage Step boosts played afterwards do not change that (the engine resolves Flip Effects before damage, the TCG after). | Resolve Flip Effects of monsters flipped by an attack after damage calculation, then negate them if the monster was destroyed. |
+| Tyrant Dragon | When it is Special Summoned from the Graveyard, the Dragon to Tribute is chosen automatically (the one with the lowest ATK). | Ask the summoning player to pick the Dragon (needs a decision inside Duel.special_summon). |
 | Valkyrion the Magna Warrior | Only the summon condition is in; the rest of the card text has not been read for details. | Check the full original text and effects. |
 | Wall of Illusion | Sent back to the hand after damage calculation using a flag; edge cases with multiple attackers untested. | More tests. |
 | Weather Report | Only the destruction of Swords of Revealing Light is in; the extra Battle Phase is missing. | Let Duel run the Battle Phase twice after the flag is set. |

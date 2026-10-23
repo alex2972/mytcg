@@ -33,11 +33,43 @@ func _init(d: Duel, effect_db: EffectDB) -> void:
 func effects_of(c: DCard) -> Array:
 	if duel.card_data(c).get("type", "") == "trap" and trap_negated(c):
 		return []
+	if int(c.flags.get("effects_negated_turn", -1)) == duel.turn:
+		return []                       # destroyed in battle by Dark Ruler Ha Des & co.
 	if duel.prohibited(c):
 		return []
 	if c.face_up and not duel.turn_rules.is_empty() and _negated_this_turn(c):
 		return []
 	return edb.for_number(c.number)
+
+## Level change from face-up static mods with a "level" key (A Legendary Ocean), also for monsters in the hand.
+func level_bonus(c: DCard) -> int:
+	var total := 0
+	for p in 2:
+		for src in cards_controlled(p):
+			if not src.face_up:
+				continue
+			for e in effects_of(src):
+				if e.get("type", "") == "static" and e.has("mod") and (e["mod"] as Dictionary).has("level") and _static_applies(src, e["mod"], c):
+					total += int(e["mod"]["level"])
+	return total
+
+## Are the effects of `victim` negated when `killer` destroys it in battle? Static rule `negate_battle_victims`
+## (scope/filter pick the killers, `victim` filters the destroyed monster, `cond` must hold for the rule's card):
+## Dark Ruler Ha des (Fiends I control), Twin-Headed Wolf (Flip monsters, with another Fiend), Dark Balter the Terrible.
+func negates_battle_victim(killer: DCard, victim: DCard) -> bool:
+	if killer == null or victim == null:
+		return false
+	for p in 2:
+		for src in cards_controlled(p):
+			if not src.face_up:
+				continue
+			for e in effects_of(src):
+				if e.get("type", "") != "static" or e.get("rule", "") != "negate_battle_victims" or not _static_applies(src, e, killer):
+					continue
+				var ctx := {"src": src, "controller": src.controller, "vars": {}, "event": {}}
+				if ops.matches(victim, e.get("victim", {}), ctx) and ops.conditions_ok(e.get("cond", []), ctx) == "":
+					return true
+	return false
 
 ## Sum of the `amount` of every active static rule of this name that applies to `c` (or to everybody when c is null).
 func rule_total(rule: String, c: DCard = null) -> int:
@@ -84,7 +116,12 @@ func pump() -> void:
 	if _pumping:
 		return
 	_pumping = true
-	while pending.is_empty() and not tasks.is_empty():
+	while pending.is_empty():
+		if tasks.is_empty():
+			# idle: state-based destruction may open new windows (Thunder Nyan Nyan)
+			if duel == null or not duel.check_states() or tasks.is_empty():
+				break
+			continue
 		var t: Dictionary = tasks.back()
 		match t["t"]:
 			"presentation":
@@ -298,13 +335,17 @@ func activation_problem(p: int, c: DCard, idx: int, event: String, data: Diction
 							return "%s cannot be played right now." % ge["name"]
 	if type == "flip" and rule_active("no_flip_effects"):
 		return "Flip Effects are negated."
+	if type == "flip" and bool(data.get("by_battle", false)) and _flip_victim_negated(c):
+		return "This monster will be destroyed by a monster that negates its effect."
+	if e.get("once_per_duel", false) and duel.once_per_duel.has("%d:%s" % [p, duel.db.card_name(c.idx)]):
+		return "Once per Duel."
 	if type in ["trap", "counter", "continuous_trap"] and rule_active("no_trap"):
 		return "Trap Cards cannot be activated."
 	if type in ["spell", "equip", "field", "ritual_spell", "quickplay", "trap", "counter", "continuous_trap"] and duel.lockdown_until > duel.turn:
 		return "Spell and Trap Cards cannot be activated right now."
 	if type in ["spell", "equip", "field", "ritual_spell", "quickplay"] and rule_active("no_spell") and not (zone == "spell" and c.face_up):
 		return "Spell Cards cannot be activated."
-	if (zone == "spell" or zone == "fieldspell") and not c.face_up and type in ["trigger", "trigger_forced"]:
+	if (zone == "spell" or zone == "fieldspell") and not c.face_up and type in ["trigger", "trigger_forced", "ignition"]:
 		return "Face-down."
 	if type == "quickplay" and zone == "hand" and p != duel.turn_player:
 		return "Quick-Play Spells can only be activated from the hand on your own turn."
@@ -330,6 +371,14 @@ func activation_problem(p: int, c: DCard, idx: int, event: String, data: Diction
 		if s.spells.find(null) == -1 and type != "field":
 			return "Your Spell and Trap Card Zone is full."
 	return ops.conditions_ok(e.get("cond", []), {"src": c, "controller": p, "event": data, "effect": e, "idx": idx, "vars": {}}, true)
+
+## A face-down monster flipped by an attack whose attacker will destroy it and negates its effects (Twin-Headed Wolf, Dark Ruler Ha Des):
+## the Flip Effect is not used. The engine resolves Flip Effects before damage, so the outcome is read from the current ATK/DEF.
+func _flip_victim_negated(c: DCard) -> bool:
+	var attacker: DCard = duel.current_attack.get("attacker")
+	if attacker == null or duel.current_attack.get("target") != c or not negates_battle_victim(attacker, c):
+		return false
+	return duel.atk_of(attacker) > (duel.def_of(c) if c.pos == "def" else duel.atk_of(c)) and not rule_active("battle_indestructible", c)
 
 func _zone_of(c: DCard) -> String:
 	var s: Duel.PlayerSide = duel.side(c.controller)
@@ -383,6 +432,8 @@ func _start_activation(p: int, c: DCard, idx: int, event: String, data: Dictiona
 		duel.log_event("flip", {"player": p, "uid": c.uid})
 	duel.log_event("card_activated", {"uid": c.uid, "player": p, "kind": type})
 	c.used[idx] = duel.turn
+	if e.get("once_per_duel", false):
+		duel.once_per_duel["%d:%s" % [p, duel.db.card_name(c.idx)]] = true
 	if c.borrowed_from != -1:
 		duel.damage_player(p, 2000, "effect")               # Graverobber's price
 	activating += 1
@@ -434,6 +485,13 @@ func _run_resolve(_t: Dictionary) -> void:
 		link["negated"] = true
 	if link["kind"] == "trap" and trap_negated(c):
 		link["negated"] = true
+	if not link["negated"] and link["kind"] in ["spell", "trap"] and _target_shielded(link):
+		# Freed the Matchless General, Tyrant Dragon & co.: a Spell/Trap that targets them is negated and destroyed
+		link["negated"] = true
+		push_call(func():
+			duel.effect_player = 1 - int(link["player"])
+			duel.destroy_card(c, "effect")
+			duel.effect_player = -1)
 	if link["negated"]:
 		duel.log_event("negated", {"uid": c.uid})
 		return
@@ -441,10 +499,31 @@ func _run_resolve(_t: Dictionary) -> void:
 	if not steps.is_empty():
 		push_script(steps, link["ctx"])
 
+## Does the chain link's card target a monster protected by a static rule `negate_targeting` {kind: spell|trap}?
+func _target_shielded(link: Dictionary) -> bool:
+	var lctx: Dictionary = link["ctx"]
+	for step in (lctx["effect"].get("target", []) as Array):
+		if step.get("op", "") != "select":
+			continue
+		for m in lctx["vars"].get(step.get("as", ""), []):
+			if not duel.is_monster(m) or not m.face_up or not duel.is_on_field(m):
+				continue
+			for p in 2:
+				for src in cards_controlled(p):
+					if not src.face_up:
+						continue
+					for e in effects_of(src):
+						if e.get("type", "") == "static" and e.get("rule", "") == "negate_targeting" and e.get("kind", "") == link["kind"] and _static_applies(src, e, m):
+							return true
+	return false
+
 func _dispose_after_resolution(link: Dictionary) -> void:
 	var c: DCard = link["card"]
 	var e: Dictionary = link["ctx"]["effect"]
 	var type: String = e.get("type", "")
+	if e.get("equip_trap", false) and c.equipped_to == null and _zone_of(c) == "spell":
+		duel.send_to_grave(c, "equip_failed")       # Blast with Chain: its monster left before it resolved
+		return
 	if e.get("stay", false):
 		return
 	if type in ["spell", "quickplay", "ritual_spell", "trap", "counter"] and _zone_of(c) == "spell":
@@ -497,6 +576,11 @@ func stat_bonus(c: DCard, stat: String) -> int:
 						total += mini(n, int(m["per"].get("max_n", 1000))) * int(m["per"]["by"])
 				if m.has("per_counter") and stat in (m["per_counter"]["stats"] as Array) and _static_applies(src, m, c):
 					total += int(src.flags.get(str(m["per_counter"]["name"]), 0)) * int(m["per_counter"]["by"])
+				if m.has("battle_vs_flag_race") and stat == "atk" and src == c and duel.calc_pair.has(c):
+					# The Hunter with 7 Weapons: more ATK during damage calculation against the declared Type
+					for other in duel.calc_pair:
+						if other != c and duel.race_of(other) == int(c.flags.get("chosen_race", -1)):
+							total += int(m["battle_vs_flag_race"])
 				if m.get("hourglass", false) and (stat == "atk" or stat == "def") and _static_applies(src, m, c):
 					# Hourglass of Courage: halved for 3 turns after it is summoned, doubled afterwards
 					var printed: int = int(duel.card_data(c).get(stat, 0))

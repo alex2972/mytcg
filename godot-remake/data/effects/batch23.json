@@ -1,0 +1,2349 @@
+{
+ "_about": "Batch 23: Legacy of Darkness (LOD). Engine hooks added for this set are listed in docs/EFFECTS.md under 'Added in batch 23'.",
+ "Dark Ruler Ha Des": {
+  "fx": [
+   {
+    "type": "static",
+    "rule": "no_revive"
+   },
+   {
+    "type": "static",
+    "rule": "negate_battle_victims",
+    "scope": "mine",
+    "filter": {
+     "race": "Fiend"
+    }
+   }
+  ]
+ },
+ "Dark Balter the Terrible": {
+  "fx": [
+   {
+    "type": "static",
+    "rule": "no_fusion_substitute"
+   },
+   {
+    "type": "trigger",
+    "speed": 2,
+    "when": [
+     "summoned",
+     "special_summoned",
+     "flip_summoned",
+     "attack_declared",
+     "target_declared",
+     "damage_step",
+     "activated_spell",
+     "activated_trap",
+     "standby_phase",
+     "end_phase"
+    ],
+    "cond": [
+     {
+      "c": "chain_top_card",
+      "filter": {
+       "type": "spell",
+       "subtype": "normal"
+      }
+     },
+     {
+      "c": "chain_top_by",
+      "is": "opp"
+     },
+     {
+      "c": "lp",
+      "who": "self",
+      "op": ">",
+      "v": 1000
+     }
+    ],
+    "cost": [
+     {
+      "op": "pay_lp",
+      "amount": 1000
+     }
+    ],
+    "do": [
+     {
+      "op": "negate"
+     }
+    ]
+   },
+   {
+    "type": "static",
+    "rule": "negate_battle_victims",
+    "scope": "self",
+    "victim": {
+     "category": 1
+    }
+   }
+  ]
+ },
+ "Lesser Fiend": {
+  "fx": [
+   {
+    "type": "static",
+    "rule": "banish_battle_victims",
+    "scope": "self"
+   }
+  ]
+ },
+ "Possessed Dark Soul": {
+  "fx": [
+   {
+    "type": "ignition",
+    "cond": [
+     {
+      "c": "has",
+      "zone": "opp.monsters",
+      "filter": {
+       "face_up": true,
+       "level_max": 3
+      }
+     }
+    ],
+    "cost": [
+     {
+      "op": "to_grave",
+      "what": "src",
+      "reason": "tribute"
+     }
+    ],
+    "do": [
+     {
+      "op": "take_control",
+      "what": {
+       "from": "opp.monsters",
+       "filter": {
+        "face_up": true,
+        "level_max": 3
+       }
+      },
+      "until": "forever"
+     }
+    ]
+   }
+  ]
+ },
+ "Skull Knight #2": {
+  "fx": [
+   {
+    "type": "trigger_forced",
+    "when": "summoned",
+    "zone": "grave",
+    "cond": [
+     {
+      "c": "tributed_for_event"
+     },
+     {
+      "c": "event_card",
+      "filter": {
+       "race": "Fiend"
+      }
+     },
+     {
+      "c": "free_zone",
+      "who": "self"
+     },
+     {
+      "c": "has",
+      "zone": "self.deck",
+      "filter": {
+       "name_is": "Skull Knight #2"
+      }
+     }
+    ],
+    "do": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "self.deck",
+      "filter": {
+       "name_is": "Skull Knight #2"
+      },
+      "n": 1,
+      "prompt": 83
+     },
+     {
+      "op": "choice",
+      "as": "pos",
+      "count": 2,
+      "labels": [
+       "Attack Position",
+       "Defense Position"
+      ]
+     },
+     {
+      "op": "special_summon",
+      "what": "$t",
+      "pos_var": "pos",
+      "face_up": true
+     },
+     {
+      "op": "shuffle",
+      "who": "self"
+     }
+    ]
+   }
+  ]
+ },
+ "Ryu-Kishin Clown": {
+  "fx": [
+   {
+    "type": "trigger_forced",
+    "when": [
+     "summoned",
+     "flip_summoned",
+     "special_summoned"
+    ],
+    "cond": [
+     {
+      "c": "event_src"
+     }
+    ],
+    "do": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "monsters",
+      "filter": {
+       "face_up": true
+      },
+      "n": 1,
+      "prompt_text": "Select a face-up monster to change its battle position."
+     },
+     {
+      "op": "flip_pos",
+      "what": "$t"
+     }
+    ]
+   }
+  ]
+ },
+ "Twin-Headed Wolf": {
+  "fx": [
+   {
+    "type": "static",
+    "rule": "negate_battle_victims",
+    "scope": "self",
+    "victim": {
+     "has_flip": true
+    },
+    "cond": [
+     {
+      "c": "has",
+      "zone": "self.monsters",
+      "filter": {
+       "race": "Fiend",
+       "face_up": true,
+       "not_src": true
+      }
+     }
+    ]
+   }
+  ]
+ },
+ "Bark of Dark Ruler": {
+  "fx": [
+   {
+    "type": "trap",
+    "speed": 2,
+    "when": [
+     "damage_step"
+    ],
+    "cond": [
+     {
+      "c": "battling_mine",
+      "filter": {
+       "race": "Fiend",
+       "face_up": true
+      }
+     },
+     {
+      "c": "lp",
+      "who": "self",
+      "op": ">",
+      "v": 100
+     }
+    ],
+    "cost": [
+     {
+      "op": "custom",
+      "fn": "bark_choice"
+     },
+     {
+      "op": "custom",
+      "fn": "bark_pay"
+     }
+    ],
+    "do": [
+     {
+      "op": "custom",
+      "fn": "bark_apply"
+     }
+    ]
+   }
+  ]
+ },
+ "Fatal Abacus": {
+  "fx": [
+   {
+    "type": "continuous_trap",
+    "speed": 2,
+    "stay": true,
+    "when": [
+     "summoned",
+     "special_summoned",
+     "flip_summoned",
+     "attack_declared",
+     "activated_spell",
+     "activated_trap",
+     "standby_phase",
+     "end_phase"
+    ],
+    "do": []
+   },
+   {
+    "type": "trigger_forced",
+    "when": "sent_to_grave",
+    "cond": [
+     {
+      "c": "was_on_field"
+     },
+     {
+      "c": "event_card",
+      "filter": {
+       "type": "monster"
+      }
+     }
+    ],
+    "do": [
+     {
+      "op": "damage",
+      "who": "event_owner",
+      "amount": 500
+     }
+    ]
+   }
+  ]
+ },
+ "Life Absorbing Machine": {
+  "fx": [
+   {
+    "type": "continuous_trap",
+    "speed": 2,
+    "stay": true,
+    "when": [
+     "summoned",
+     "special_summoned",
+     "flip_summoned",
+     "attack_declared",
+     "activated_spell",
+     "activated_trap",
+     "standby_phase",
+     "end_phase"
+    ],
+    "do": []
+   },
+   {
+    "type": "trigger_forced",
+    "when": "standby_phase",
+    "cond": [
+     {
+      "c": "turn",
+      "is": "self"
+     },
+     {
+      "c": "paid_last_turn",
+      "who": "self"
+     }
+    ],
+    "do": [
+     {
+      "op": "heal",
+      "who": "self",
+      "amount": {
+       "half": {
+        "lp_paid_last_turn": "self"
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ "The Puppet Magic of Dark Ruler": {
+  "fx": [
+   {
+    "type": "spell",
+    "cond": [
+     {
+      "c": "puppet_possible"
+     }
+    ],
+    "target": [
+     {
+      "op": "custom",
+      "fn": "puppet_cands"
+     },
+     {
+      "op": "select",
+      "as": "g",
+      "from": "$_pf",
+      "n": 1,
+      "required": false,
+      "prompt_text": "Select a Fiend-Type monster in your Graveyard."
+     },
+     {
+      "op": "custom",
+      "fn": "puppet_select"
+     },
+     {
+      "op": "banish",
+      "what": "$pm"
+     }
+    ],
+    "do": [
+     {
+      "op": "if",
+      "cond": [
+       {
+        "c": "var_in_grave",
+        "name": "g"
+       }
+      ],
+      "then": [
+       {
+        "op": "special_summon",
+        "what": "$g",
+        "pos": "atk",
+        "face_up": true
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "Soul Demolition": {
+  "fx": [
+   {
+    "type": "continuous_trap",
+    "speed": 2,
+    "stay": true,
+    "when": [
+     "summoned",
+     "special_summoned",
+     "flip_summoned",
+     "attack_declared",
+     "activated_spell",
+     "activated_trap",
+     "standby_phase",
+     "end_phase"
+    ],
+    "do": []
+   },
+   {
+    "type": "ignition",
+    "cond": [
+     {
+      "c": "has",
+      "zone": "self.monsters",
+      "filter": {
+       "race": "Fiend",
+       "face_up": true
+      }
+     },
+     {
+      "c": "lp",
+      "who": "self",
+      "op": ">",
+      "v": 500
+     }
+    ],
+    "cost": [
+     {
+      "op": "pay_lp",
+      "amount": 500
+     }
+    ],
+    "do": [
+     {
+      "op": "select",
+      "as": "a",
+      "from": "opp.grave",
+      "filter": {
+       "type": "monster"
+      },
+      "n": 1,
+      "min": 0,
+      "required": false,
+      "auto": false,
+      "prompt_text": "Select a monster in your opponent's Graveyard to remove from play."
+     },
+     {
+      "op": "select",
+      "as": "b",
+      "from": "self.grave",
+      "filter": {
+       "type": "monster"
+      },
+      "n": 1,
+      "min": 0,
+      "required": false,
+      "auto": false,
+      "chooser": "opp",
+      "prompt_text": "Select a monster in your opponent's Graveyard to remove from play."
+     },
+     {
+      "op": "banish",
+      "what": "$a"
+     },
+     {
+      "op": "banish",
+      "what": "$b"
+     }
+    ]
+   }
+  ]
+ },
+ "Freed the Matchless General": {
+  "fx": [
+   {
+    "type": "static",
+    "rule": "negate_targeting",
+    "kind": "spell",
+    "scope": "self"
+   },
+   {
+    "type": "static",
+    "rule": "draw_replace_search",
+    "filter": {
+     "type": "monster",
+     "race": "Warrior",
+     "level_max": 4
+    }
+   }
+  ]
+ },
+ "Throwstone Unit": {
+  "fx": [
+   {
+    "type": "ignition",
+    "cost": [
+     {
+      "op": "select",
+      "as": "tr",
+      "from": "self.monsters",
+      "filter": {
+       "race": "Warrior"
+      },
+      "n": 1,
+      "cost": true,
+      "prompt": 154
+     },
+     {
+      "op": "to_grave",
+      "what": "$tr",
+      "reason": "tribute"
+     }
+    ],
+    "target": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "monsters",
+      "filter": {
+       "face_up": true,
+       "def_max": {
+        "src_stat": "atk"
+       }
+      },
+      "n": 1,
+      "prompt": 109
+     }
+    ],
+    "do": [
+     {
+      "op": "destroy",
+      "what": "$t"
+     }
+    ]
+   }
+  ]
+ },
+ "Marauding Captain": {
+  "fx": [
+   {
+    "type": "static",
+    "rule": "attack_shield",
+    "scope": "mine",
+    "filter": {
+     "race": "Warrior",
+     "face_up": true,
+     "not_src": true
+    }
+   },
+   {
+    "type": "trigger",
+    "when": "summoned",
+    "cond": [
+     {
+      "c": "event_src"
+     },
+     {
+      "c": "free_zone",
+      "who": "self"
+     },
+     {
+      "c": "has",
+      "zone": "self.hand",
+      "filter": {
+       "type": "monster",
+       "level_max": 4
+      }
+     }
+    ],
+    "do": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "self.hand",
+      "filter": {
+       "type": "monster",
+       "level_max": 4
+      },
+      "n": 1,
+      "prompt": 83
+     },
+     {
+      "op": "choice",
+      "as": "pos",
+      "count": 2,
+      "labels": [
+       "Attack Position",
+       "Defense Position"
+      ]
+     },
+     {
+      "op": "special_summon",
+      "what": "$t",
+      "pos_var": "pos",
+      "face_up": true
+     }
+    ]
+   }
+  ]
+ },
+ "Ryu Senshi": {
+  "fx": [
+   {
+    "type": "static",
+    "rule": "no_fusion_substitute"
+   },
+   {
+    "type": "trigger",
+    "speed": 2,
+    "when": [
+     "summoned",
+     "special_summoned",
+     "flip_summoned",
+     "attack_declared",
+     "target_declared",
+     "damage_step",
+     "activated_spell",
+     "activated_trap",
+     "standby_phase",
+     "end_phase"
+    ],
+    "cond": [
+     {
+      "c": "chain_top_card",
+      "filter": {
+       "type": "trap",
+       "subtype": "normal"
+      }
+     },
+     {
+      "c": "chain_top_by",
+      "is": "opp"
+     },
+     {
+      "c": "lp",
+      "who": "self",
+      "op": ">",
+      "v": 1000
+     }
+    ],
+    "cost": [
+     {
+      "op": "pay_lp",
+      "amount": 1000
+     }
+    ],
+    "do": [
+     {
+      "op": "negate"
+     }
+    ]
+   },
+   {
+    "type": "static",
+    "rule": "negate_targeting",
+    "kind": "spell",
+    "scope": "self"
+   }
+  ]
+ },
+ "Mysterious Guard": {
+  "fx": [
+   {
+    "type": "flip",
+    "when": "flipped",
+    "cond": [
+     {
+      "c": "event_src"
+     }
+    ],
+    "do": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "monsters",
+      "filter": {
+       "face_up": true
+      },
+      "n": 1,
+      "prompt_text": "Select a face-up monster to return to the top of its owner's Deck."
+     },
+     {
+      "op": "if",
+      "cond": [
+       {
+        "c": "has",
+        "zone": "self.monsters",
+        "filter": {
+         "race": "Warrior",
+         "face_up": true
+        }
+       }
+      ],
+      "then": [
+       {
+        "op": "select",
+        "as": "u",
+        "from": "monsters",
+        "filter": {
+         "face_up": true,
+         "not_in": [
+          "t"
+         ]
+        },
+        "n": 1,
+        "min": 0,
+        "required": false,
+        "auto": false,
+        "prompt_text": "You may select another face-up monster to return to its owner's hand."
+       }
+      ]
+     },
+     {
+      "op": "to_deck",
+      "what": "$t",
+      "where": "top"
+     },
+     {
+      "op": "if",
+      "cond": [
+       {
+        "c": "has",
+        "zone": "self.monsters",
+        "filter": {
+         "race": "Warrior",
+         "face_up": true
+        }
+       }
+      ],
+      "then": [
+       {
+        "op": "to_hand",
+        "what": "$u"
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "Frontier Wiseman": {
+  "fx": [
+   {
+    "type": "static",
+    "rule": "negate_targeting",
+    "kind": "spell",
+    "scope": "mine",
+    "filter": {
+     "race": "Warrior"
+    }
+   }
+  ]
+ },
+ "Exiled Force": {
+  "fx": [
+   {
+    "type": "ignition",
+    "cost": [
+     {
+      "op": "to_grave",
+      "what": "src",
+      "reason": "tribute"
+     }
+    ],
+    "target": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "monsters",
+      "filter": {
+       "not_src": true
+      },
+      "n": 1,
+      "prompt": 109
+     }
+    ],
+    "do": [
+     {
+      "op": "destroy",
+      "what": "$t"
+     }
+    ]
+   }
+  ]
+ },
+ "The Hunter with 7 Weapons": {
+  "fx": [
+   {
+    "type": "trigger_forced",
+    "when": "summoned",
+    "cond": [
+     {
+      "c": "event_src"
+     }
+    ],
+    "do": [
+     {
+      "op": "choice",
+      "as": "r",
+      "count": 20,
+      "labels": [
+       "Dragon",
+       "Zombie",
+       "Fiend",
+       "Pyro",
+       "Sea Serpent",
+       "Rock",
+       "Machine",
+       "Fish",
+       "Dinosaur",
+       "Insect",
+       "Beast",
+       "Beast-Warrior",
+       "Plant",
+       "Aqua",
+       "Warrior",
+       "Winged Beast",
+       "Fairy",
+       "Spellcaster",
+       "Thunder",
+       "Reptile"
+      ],
+      "prompt_text": "Declare a Type of monster."
+     },
+     {
+      "op": "flag_from_var",
+      "what": "src",
+      "name": "chosen_race",
+      "var": "r",
+      "add": 1
+     }
+    ]
+   },
+   {
+    "type": "static",
+    "mod": {
+     "scope": "self",
+     "battle_vs_flag_race": 1000
+    }
+   }
+  ]
+ },
+ "Shadow Tamer": {
+  "fx": [
+   {
+    "type": "flip",
+    "when": "flipped",
+    "cond": [
+     {
+      "c": "event_src"
+     }
+    ],
+    "do": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "opp.monsters",
+      "filter": {
+       "race": "Fiend",
+       "face_up": true
+      },
+      "n": 1,
+      "prompt": 119
+     },
+     {
+      "op": "take_control",
+      "what": "$t",
+      "until": "end_turn"
+     }
+    ]
+   }
+  ]
+ },
+ "Dragon Manipulator": {
+  "fx": [
+   {
+    "type": "flip",
+    "when": "flipped",
+    "cond": [
+     {
+      "c": "event_src"
+     }
+    ],
+    "do": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "opp.monsters",
+      "filter": {
+       "race": "Dragon",
+       "face_up": true
+      },
+      "n": 1,
+      "prompt": 119
+     },
+     {
+      "op": "take_control",
+      "what": "$t",
+      "until": "end_turn"
+     }
+    ]
+   }
+  ]
+ },
+ "The A. Forces": {
+  "fx": [
+   {
+    "type": "spell",
+    "stay": true,
+    "do": []
+   },
+   {
+    "type": "static",
+    "mod": {
+     "scope": "mine",
+     "filter": {
+      "race": "Warrior",
+      "face_up": true
+     },
+     "per": {
+      "zone": "self.monsters",
+      "filter": {
+       "race": [
+        "Warrior",
+        "Spellcaster"
+       ],
+       "face_up": true
+      },
+      "by": 200,
+      "stats": [
+       "atk"
+      ]
+     }
+    }
+   }
+  ]
+ },
+ "The Warrior Returning Alive": {
+  "fx": [
+   {
+    "type": "spell",
+    "target": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "self.grave",
+      "filter": {
+       "type": "monster",
+       "race": "Warrior"
+      },
+      "n": 1,
+      "prompt": 83
+     }
+    ],
+    "do": [
+     {
+      "op": "if",
+      "cond": [
+       {
+        "c": "var_in_grave",
+        "name": "t"
+       }
+      ],
+      "then": [
+       {
+        "op": "to_hand",
+        "what": "$t"
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "Ready for Intercepting": {
+  "fx": [
+   {
+    "type": "trap",
+    "speed": 2,
+    "when": [
+     "summoned",
+     "special_summoned",
+     "flip_summoned",
+     "attack_declared",
+     "activated_spell",
+     "activated_trap",
+     "standby_phase",
+     "end_phase"
+    ],
+    "target": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "monsters",
+      "filter": {
+       "face_up": true,
+       "race": [
+        "Warrior",
+        "Spellcaster"
+       ]
+      },
+      "n": 1,
+      "prompt_text": "Select a Warrior or Spellcaster monster to change to face-down Defense Position."
+     }
+    ],
+    "do": [
+     {
+      "op": "flip_down",
+      "what": "$t"
+     }
+    ]
+   }
+  ]
+ },
+ "A Feint Plan": {
+  "fx": [
+   {
+    "type": "trap",
+    "speed": 2,
+    "when": [
+     "summoned",
+     "special_summoned",
+     "flip_summoned",
+     "attack_declared",
+     "activated_spell",
+     "activated_trap",
+     "standby_phase",
+     "end_phase"
+    ],
+    "do": [
+     {
+      "op": "rule_turn",
+      "rule": "no_attack_face_down",
+      "who": "self"
+     },
+     {
+      "op": "rule_turn",
+      "rule": "no_attack_face_down",
+      "who": "opp"
+     }
+    ]
+   }
+  ]
+ },
+ "Emergency Provisions": {
+  "fx": [
+   {
+    "type": "quickplay",
+    "speed": 2,
+    "when": [
+     "summoned",
+     "special_summoned",
+     "flip_summoned",
+     "attack_declared",
+     "target_declared",
+     "damage_step",
+     "activated_spell",
+     "activated_trap",
+     "standby_phase",
+     "end_phase"
+    ],
+    "cost": [
+     {
+      "op": "select",
+      "as": "s",
+      "from": [
+       "self.spells",
+       "self.fieldspell"
+      ],
+      "filter": {
+       "not_src": true
+      },
+      "n": 6,
+      "min": 1,
+      "cost": true,
+      "auto": false,
+      "prompt_text": "Send any number of your other Spell and Trap Cards to the Graveyard."
+     },
+     {
+      "op": "to_grave",
+      "what": "$s",
+      "reason": "cost"
+     }
+    ],
+    "do": [
+     {
+      "op": "heal",
+      "who": "self",
+      "amount": {
+       "mul": {
+        "var_count": "s"
+       },
+       "by": 1000
+      }
+     }
+    ]
+   }
+  ]
+ },
+ "Tyrant Dragon": {
+  "fx": [
+   {
+    "type": "static",
+    "rule": "double_attack_vs_monster",
+    "scope": "self"
+   },
+   {
+    "type": "static",
+    "rule": "negate_targeting",
+    "kind": "trap",
+    "scope": "self"
+   },
+   {
+    "type": "static",
+    "rule": "revive_tribute",
+    "filter": {
+     "race": "Dragon",
+     "face_up": true
+    }
+   }
+  ]
+ },
+ "Spear Dragon": {
+  "fx": [
+   {
+    "type": "static",
+    "rule": "pierce",
+    "scope": "self"
+   },
+   {
+    "type": "static",
+    "rule": "def_after_attack",
+    "scope": "self"
+   }
+  ]
+ },
+ "Spirit Ryu": {
+  "fx": [
+   {
+    "type": "trigger",
+    "speed": 2,
+    "when": [
+     "attack_declared",
+     "target_declared"
+    ],
+    "cond": [
+     {
+      "c": "turn",
+      "is": "self"
+     },
+     {
+      "c": "in_battle"
+     }
+    ],
+    "cost": [
+     {
+      "op": "select",
+      "as": "d",
+      "from": "self.hand",
+      "filter": {
+       "type": "monster",
+       "race": "Dragon"
+      },
+      "n": 1,
+      "cost": true,
+      "auto": false,
+      "prompt_text": "Discard 1 Dragon-Type monster."
+     },
+     {
+      "op": "to_grave",
+      "what": "$d",
+      "reason": "discard"
+     }
+    ],
+    "do": [
+     {
+      "op": "mod",
+      "what": "src",
+      "atk": 1000,
+      "def": 1000,
+      "until": "end_turn"
+     }
+    ]
+   }
+  ]
+ },
+ "Fiend Skull Dragon": {
+  "fx": [
+   {
+    "type": "static",
+    "rule": "no_fusion_substitute"
+   },
+   {
+    "type": "static",
+    "rule": "no_flip_effects"
+   },
+   {
+    "type": "static",
+    "rule": "negate_targeting",
+    "kind": "trap",
+    "scope": "self"
+   }
+  ]
+ },
+ "Cave Dragon": {
+  "fx": [
+   {
+    "type": "static",
+    "rule": "no_summon_with_monsters"
+   },
+   {
+    "type": "static",
+    "rule": "attack_needs_other",
+    "filter": {
+     "race": "Dragon",
+     "face_up": true
+    }
+   }
+  ]
+ },
+ "Troop Dragon": {
+  "fx": [
+   {
+    "type": "trigger_forced",
+    "when": "destroyed",
+    "zone": "grave",
+    "cond": [
+     {
+      "c": "event_src"
+     },
+     {
+      "c": "event_reason",
+      "is": "destroyed:battle"
+     },
+     {
+      "c": "free_zone",
+      "who": "self"
+     },
+     {
+      "c": "has",
+      "zone": "self.deck",
+      "filter": {
+       "name_is": "Troop Dragon"
+      }
+     }
+    ],
+    "do": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "self.deck",
+      "filter": {
+       "name_is": "Troop Dragon"
+      },
+      "n": 1,
+      "prompt": 83
+     },
+     {
+      "op": "choice",
+      "as": "pos",
+      "count": 2,
+      "labels": [
+       "Attack Position",
+       "Defense Position"
+      ]
+     },
+     {
+      "op": "special_summon",
+      "what": "$t",
+      "pos_var": "pos",
+      "face_up": true
+     },
+     {
+      "op": "shuffle",
+      "who": "self"
+     }
+    ]
+   }
+  ]
+ },
+ "The Dragon's Bead": {
+  "fx": [
+   {
+    "type": "continuous_trap",
+    "speed": 2,
+    "stay": true,
+    "when": [
+     "summoned",
+     "special_summoned",
+     "flip_summoned",
+     "attack_declared",
+     "activated_spell",
+     "activated_trap",
+     "standby_phase",
+     "end_phase"
+    ],
+    "do": []
+   },
+   {
+    "type": "trigger",
+    "speed": 2,
+    "when": [
+     "summoned",
+     "special_summoned",
+     "flip_summoned",
+     "attack_declared",
+     "target_declared",
+     "damage_step",
+     "activated_spell",
+     "activated_trap",
+     "standby_phase",
+     "end_phase"
+    ],
+    "cond": [
+     {
+      "c": "chain_top_kind",
+      "is": "trap"
+     },
+     {
+      "c": "chain_top_by",
+      "is": "opp"
+     },
+     {
+      "c": "chain_top_targets",
+      "filter": {
+       "race": "Dragon",
+       "face_up": true
+      }
+     },
+     {
+      "c": "hand",
+      "who": "self",
+      "op": ">=",
+      "v": 1
+     }
+    ],
+    "cost": [
+     {
+      "op": "discard",
+      "who": "self",
+      "n": 1,
+      "prompt": 12
+     }
+    ],
+    "do": [
+     {
+      "op": "negate",
+      "destroy": true
+     }
+    ]
+   }
+  ]
+ },
+ "A Wingbeat of Giant Dragon": {
+  "fx": [
+   {
+    "type": "spell",
+    "target": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "self.monsters",
+      "filter": {
+       "race": "Dragon",
+       "level_min": 5,
+       "face_up": true
+      },
+      "n": 1,
+      "prompt_text": "Select a Level 5 or higher Dragon-Type monster to return to your hand."
+     }
+    ],
+    "do": [
+     {
+      "op": "if",
+      "cond": [
+       {
+        "c": "var_on_field",
+        "name": "t"
+       }
+      ],
+      "then": [
+       {
+        "op": "to_hand",
+        "what": "$t"
+       },
+       {
+        "op": "destroy",
+        "what": {
+         "from": "field",
+         "filter": {
+          "type": [
+           "spell",
+           "trap"
+          ],
+          "not_src": true
+         }
+        }
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "Stamping Destruction": {
+  "fx": [
+   {
+    "type": "spell",
+    "cond": [
+     {
+      "c": "has",
+      "zone": "self.monsters",
+      "filter": {
+       "race": "Dragon",
+       "face_up": true
+      }
+     }
+    ],
+    "target": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "field",
+      "filter": {
+       "type": [
+        "spell",
+        "trap"
+       ],
+       "not_src": true
+      },
+      "n": 1,
+      "prompt": 141
+     }
+    ],
+    "do": [
+     {
+      "op": "if",
+      "cond": [
+       {
+        "c": "var_on_field",
+        "name": "t"
+       }
+      ],
+      "then": [
+       {
+        "op": "destroy",
+        "what": "$t"
+       },
+       {
+        "op": "if",
+        "cond": [
+         {
+          "c": "var_in_grave",
+          "name": "t"
+         }
+        ],
+        "then": [
+         {
+          "op": "damage",
+          "who": "owner_of:t",
+          "amount": 500
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "Dragon's Rage": {
+  "fx": [
+   {
+    "type": "continuous_trap",
+    "speed": 2,
+    "stay": true,
+    "when": [
+     "summoned",
+     "special_summoned",
+     "flip_summoned",
+     "attack_declared",
+     "activated_spell",
+     "activated_trap",
+     "standby_phase",
+     "end_phase"
+    ],
+    "do": []
+   },
+   {
+    "type": "static",
+    "rule": "pierce",
+    "scope": "mine",
+    "filter": {
+     "race": "Dragon"
+    }
+   }
+  ]
+ },
+ "Burst Breath": {
+  "fx": [
+   {
+    "type": "trap",
+    "speed": 2,
+    "when": [
+     "summoned",
+     "special_summoned",
+     "flip_summoned",
+     "attack_declared",
+     "activated_spell",
+     "activated_trap",
+     "standby_phase",
+     "end_phase"
+    ],
+    "cost": [
+     {
+      "op": "select",
+      "as": "tr",
+      "from": "self.monsters",
+      "filter": {
+       "race": "Dragon",
+       "face_up": true
+      },
+      "n": 1,
+      "cost": true,
+      "prompt": 154
+     },
+     {
+      "op": "calc",
+      "as": "a",
+      "value": {
+       "stat": "atk",
+       "of": "tr"
+      }
+     },
+     {
+      "op": "to_grave",
+      "what": "$tr",
+      "reason": "tribute"
+     }
+    ],
+    "do": [
+     {
+      "op": "destroy",
+      "what": {
+       "from": "monsters",
+       "filter": {
+        "face_up": true,
+        "def_max": {
+         "var": "a"
+        }
+       }
+      }
+     }
+    ]
+   }
+  ]
+ },
+ "Patrician of Darkness": {
+  "fx": [
+   {
+    "type": "trigger_forced",
+    "when": "attack_declared",
+    "cond": [
+     {
+      "c": "event_by",
+      "who": "opp"
+     },
+     {
+      "c": "event_target",
+      "mine": true
+     }
+    ],
+    "do": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "self.monsters",
+      "n": 1,
+      "prompt_text": "Patrician of Darkness: choose the monster your opponent attacks."
+     },
+     {
+      "op": "redirect_attack",
+      "to": "$t"
+     }
+    ]
+   }
+  ]
+ },
+ "Thunder Nyan Nyan": {
+  "fx": [
+   {
+    "type": "static",
+    "rule": "self_destroy_if",
+    "cond": [
+     {
+      "c": "has",
+      "zone": "self.monsters",
+      "filter": {
+       "face_up": true,
+       "not_attribute": "LIGHT"
+      }
+     }
+    ]
+   }
+  ]
+ },
+ "Airknight Parshath": {
+  "fx": [
+   {
+    "type": "static",
+    "rule": "pierce",
+    "scope": "self"
+   },
+   {
+    "type": "trigger_forced",
+    "when": "damaged",
+    "cond": [
+     {
+      "c": "source_is_src"
+     },
+     {
+      "c": "event_by",
+      "who": "opp"
+     }
+    ],
+    "do": [
+     {
+      "op": "draw",
+      "who": "self",
+      "n": 1
+     }
+    ]
+   }
+  ]
+ },
+ "Twin-Headed Behemoth": {
+  "fx": [
+   {
+    "type": "trigger",
+    "when": "end_phase",
+    "zone": "grave",
+    "once_per_duel": true,
+    "cond": [
+     {
+      "c": "src_destroyed_this_turn"
+     },
+     {
+      "c": "free_zone",
+      "who": "self"
+     }
+    ],
+    "do": [
+     {
+      "op": "choice",
+      "as": "pos",
+      "count": 2,
+      "labels": [
+       "Attack Position",
+       "Defense Position"
+      ]
+     },
+     {
+      "op": "special_summon",
+      "what": "src",
+      "pos_var": "pos",
+      "face_up": true
+     },
+     {
+      "op": "set_stat",
+      "what": "src",
+      "atk": 1000,
+      "def": 1000,
+      "until": "forever"
+     }
+    ]
+   }
+  ]
+ },
+ "Susa Soldier": {
+  "fx": [
+   {
+    "type": "static",
+    "rule": "no_special_summon_self"
+   },
+   {
+    "type": "trigger_forced",
+    "when": "end_phase",
+    "cond": [
+     {
+      "c": "spirit_turn"
+     }
+    ],
+    "do": [
+     {
+      "op": "to_hand",
+      "what": "src"
+     }
+    ]
+   },
+   {
+    "type": "static",
+    "rule": "half_battle_damage",
+    "scope": "self"
+   }
+  ]
+ },
+ "Heart of Clear Water": {
+  "fx": [
+   {
+    "type": "equip",
+    "target": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "monsters",
+      "filter": {
+       "face_up": true
+      },
+      "n": 1,
+      "prompt": 101
+     }
+    ],
+    "do": [
+     {
+      "op": "equip",
+      "to": "$t"
+     }
+    ]
+   },
+   {
+    "type": "static",
+    "rule": "battle_indestructible",
+    "scope": "equipped"
+   },
+   {
+    "type": "static",
+    "rule": "target_destroy_immune",
+    "scope": "equipped"
+   },
+   {
+    "type": "static",
+    "rule": "self_destroy_if",
+    "cond": [
+     {
+      "c": "equipped_is",
+      "filter": {
+       "atk_min": 1300
+      }
+     }
+    ]
+   }
+  ]
+ },
+ "A Legendary Ocean": {
+  "fx": [
+   {
+    "type": "field",
+    "do": []
+   },
+   {
+    "type": "static",
+    "mod": {
+     "scope": "all",
+     "filter": {
+      "attribute": "WATER"
+     },
+     "atk": 200,
+     "def": 200
+    }
+   },
+   {
+    "type": "static",
+    "mod": {
+     "scope": "all",
+     "filter": {
+      "attribute": "WATER"
+     },
+     "level": -1
+    }
+   }
+  ]
+ },
+ "Fusion Sword Murasame Blade": {
+  "fx": [
+   {
+    "type": "equip",
+    "target": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "monsters",
+      "filter": {
+       "face_up": true,
+       "race": "Warrior"
+      },
+      "n": 1,
+      "prompt": 101
+     }
+    ],
+    "do": [
+     {
+      "op": "equip",
+      "to": "$t",
+      "atk": 800
+     }
+    ]
+   },
+   {
+    "type": "static",
+    "rule": "effect_indestructible_equipped",
+    "scope": "self"
+   }
+  ]
+ },
+ "Creature Swap": {
+  "fx": [
+   {
+    "type": "spell",
+    "cond": [
+     {
+      "c": "has",
+      "zone": "self.monsters"
+     },
+     {
+      "c": "has",
+      "zone": "opp.monsters"
+     }
+    ],
+    "do": [
+     {
+      "op": "select",
+      "as": "mine",
+      "from": "self.monsters",
+      "n": 1,
+      "cost": true,
+      "prompt_text": "Choose a monster you control to give to your opponent."
+     },
+     {
+      "op": "select",
+      "as": "theirs",
+      "from": "opp.monsters",
+      "n": 1,
+      "cost": true,
+      "chooser": "opp",
+      "prompt_text": "Choose a monster you control to give to your opponent."
+     },
+     {
+      "op": "custom",
+      "fn": "creature_swap"
+     }
+    ]
+   }
+  ]
+ },
+ "Second Coin Toss": {
+  "fx": [
+   {
+    "type": "spell",
+    "stay": true,
+    "do": []
+   },
+   {
+    "type": "static",
+    "rule": "second_coin_toss"
+   }
+  ]
+ },
+ "The Secret of the Bandit": {
+  "fx": [
+   {
+    "type": "spell",
+    "cond": [
+     {
+      "c": "phase",
+      "is": [
+       "main1"
+      ]
+     }
+    ],
+    "target": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "monsters",
+      "filter": {
+       "face_up": true
+      },
+      "n": 1,
+      "prompt_text": "Select a face-up monster."
+     }
+    ],
+    "do": [
+     {
+      "op": "set_flag",
+      "what": "$t",
+      "name": "bandit_turn",
+      "value_turn_offset": 0
+     },
+     {
+      "op": "set_flag",
+      "what": "$t",
+      "name": "bandit_by",
+      "value_player": true
+     }
+    ]
+   }
+  ]
+ },
+ "Magic Reflector": {
+  "fx": [
+   {
+    "type": "spell",
+    "target": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": [
+       "self.spells",
+       "self.fieldspell"
+      ],
+      "filter": {
+       "type": "spell",
+       "face_up": true,
+       "not_src": true
+      },
+      "n": 1,
+      "prompt_text": "Select a face-up Spell Card you control."
+     }
+    ],
+    "do": [
+     {
+      "op": "if",
+      "cond": [
+       {
+        "c": "var_on_field",
+        "name": "t"
+       }
+      ],
+      "then": [
+       {
+        "op": "counter",
+        "what": "$t",
+        "name": "reflector",
+        "add": 1
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "Blast with Chain": {
+  "fx": [
+   {
+    "type": "trap",
+    "speed": 2,
+    "when": [
+     "summoned",
+     "special_summoned",
+     "flip_summoned",
+     "attack_declared",
+     "activated_spell",
+     "activated_trap",
+     "standby_phase",
+     "end_phase"
+    ],
+    "stay": true,
+    "equip_trap": true,
+    "target": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "self.monsters",
+      "filter": {
+       "face_up": true
+      },
+      "n": 1,
+      "prompt": 101
+     }
+    ],
+    "do": [
+     {
+      "op": "equip",
+      "to": "$t",
+      "atk": 500
+     }
+    ]
+   },
+   {
+    "type": "trigger_forced",
+    "when": "destroyed",
+    "zone": "grave",
+    "cond": [
+     {
+      "c": "event_src"
+     },
+     {
+      "c": "event_reason",
+      "is": "destroyed:effect"
+     },
+     {
+      "c": "was_equipping"
+     }
+    ],
+    "target": [
+     {
+      "op": "select",
+      "as": "x",
+      "from": "field",
+      "n": 1,
+      "prompt": 98
+     }
+    ],
+    "do": [
+     {
+      "op": "destroy",
+      "what": "$x"
+     }
+    ]
+   }
+  ]
+ },
+ "Disappear": {
+  "fx": [
+   {
+    "type": "trap",
+    "speed": 2,
+    "when": [
+     "summoned",
+     "special_summoned",
+     "flip_summoned",
+     "attack_declared",
+     "activated_spell",
+     "activated_trap",
+     "standby_phase",
+     "end_phase"
+    ],
+    "target": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "opp.grave",
+      "n": 1,
+      "prompt": 81
+     }
+    ],
+    "do": [
+     {
+      "op": "if",
+      "cond": [
+       {
+        "c": "var_in_grave",
+        "name": "t"
+       }
+      ],
+      "then": [
+       {
+        "op": "banish",
+        "what": "$t"
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "Bottomless Trap Hole": {
+  "fx": [
+   {
+    "type": "trap",
+    "speed": 2,
+    "when": [
+     "summoned",
+     "special_summoned",
+     "flip_summoned"
+    ],
+    "cond": [
+     {
+      "c": "event_by",
+      "who": "opp"
+     },
+     {
+      "c": "event_card",
+      "filter": {
+       "atk_min": 1500
+      }
+     }
+    ],
+    "do": [
+     {
+      "op": "let",
+      "as": "ev",
+      "what": "event_card"
+     },
+     {
+      "op": "if",
+      "cond": [
+       {
+        "c": "var_on_field",
+        "name": "ev"
+       }
+      ],
+      "then": [
+       {
+        "op": "destroy",
+        "what": "event_card"
+       },
+       {
+        "op": "if",
+        "cond": [
+         {
+          "c": "var_in_grave",
+          "name": "ev"
+         }
+        ],
+        "then": [
+         {
+          "op": "banish",
+          "what": "$ev"
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "Bad Reaction to Simochi": {
+  "fx": [
+   {
+    "type": "continuous_trap",
+    "speed": 2,
+    "stay": true,
+    "when": [
+     "summoned",
+     "special_summoned",
+     "flip_summoned",
+     "attack_declared",
+     "activated_spell",
+     "activated_trap",
+     "standby_phase",
+     "end_phase"
+    ],
+    "do": []
+   },
+   {
+    "type": "static",
+    "rule": "reverse_opp_heal"
+   }
+  ]
+ },
+ "Ominous Fortunetelling": {
+  "fx": [
+   {
+    "type": "continuous_trap",
+    "speed": 2,
+    "stay": true,
+    "when": [
+     "summoned",
+     "special_summoned",
+     "flip_summoned",
+     "attack_declared",
+     "activated_spell",
+     "activated_trap",
+     "standby_phase",
+     "end_phase"
+    ],
+    "do": []
+   },
+   {
+    "type": "trigger",
+    "when": "standby_phase",
+    "once_per_turn": true,
+    "cond": [
+     {
+      "c": "turn",
+      "is": "self"
+     },
+     {
+      "c": "hand",
+      "who": "opp",
+      "op": ">=",
+      "v": 1
+     }
+    ],
+    "do": [
+     {
+      "op": "select",
+      "as": "t",
+      "from": "opp.hand",
+      "n": 1,
+      "random": true
+     },
+     {
+      "op": "choice",
+      "as": "call",
+      "count": 3,
+      "labels": [
+       "Monster",
+       "Spell",
+       "Trap"
+      ],
+      "prompt_text": "Call the kind of the random card from your opponent's hand."
+     },
+     {
+      "op": "reveal",
+      "what": "$t",
+      "public": true,
+      "seconds": 2.0
+     },
+     {
+      "op": "if",
+      "cond": [
+       {
+        "c": "var_eq",
+        "name": "call",
+        "v": 0
+       },
+       {
+        "c": "var_matches",
+        "name": "t",
+        "filter": {
+         "type": "monster"
+        }
+       }
+      ],
+      "then": [
+       {
+        "op": "damage",
+        "who": "opp",
+        "amount": 700
+       }
+      ]
+     },
+     {
+      "op": "if",
+      "cond": [
+       {
+        "c": "var_eq",
+        "name": "call",
+        "v": 1
+       },
+       {
+        "c": "var_matches",
+        "name": "t",
+        "filter": {
+         "type": "spell"
+        }
+       }
+      ],
+      "then": [
+       {
+        "op": "damage",
+        "who": "opp",
+        "amount": 700
+       }
+      ]
+     },
+     {
+      "op": "if",
+      "cond": [
+       {
+        "c": "var_eq",
+        "name": "call",
+        "v": 2
+       },
+       {
+        "c": "var_matches",
+        "name": "t",
+        "filter": {
+         "type": "trap"
+        }
+       }
+      ],
+      "then": [
+       {
+        "op": "damage",
+        "who": "opp",
+        "amount": 700
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "Nutrient Z": {
+  "fx": [
+   {
+    "type": "trap",
+    "speed": 2,
+    "when": [
+     "damage_step"
+    ],
+    "cond": [
+     {
+      "c": "incoming_battle_damage",
+      "who": "self",
+      "min": 2000
+     }
+    ],
+    "do": [
+     {
+      "op": "heal",
+      "who": "self",
+      "amount": 4000
+     }
+    ]
+   }
+  ]
+ }
+}

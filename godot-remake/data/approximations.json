@@ -359,5 +359,61 @@
   "RULE: Deck editor collection drawer": {
     "gap": "Uses original panel, filter, sorting and card-info sprites. Drawer motion uses a smooth 0.30-second tween inferred from screenshots; exact original duration is unverified. Sorts attack/defense/level descending, type/attribute ascending with alphabetical ties; original tie ordering is unverified. Expanded names use the current UI font. Preview typography uses Arial and Arial Black matched visually to screenshots; exact original font settings remain unverified.",
     "fix": "Compare an original deck-editor video and native sorting tables to refine motion duration, font and tie ordering."
+  },
+  "Twin-Headed Wolf": {
+    "gap": "A Flip monster it attacks face-down is judged when it flips: its Flip Effect is skipped if the current ATK beats its DEF. Damage Step boosts played afterwards do not change that (the engine resolves Flip Effects before damage, the TCG after).",
+    "fix": "Resolve Flip Effects of monsters flipped by an attack after damage calculation, then negate them if the monster was destroyed."
+  },
+  "Dark Ruler Ha Des": {
+    "gap": "Same Flip Effect timing as Twin-Headed Wolf; Graveyard effects of its battle victims are negated for the rest of that turn.",
+    "fix": "See Twin-Headed Wolf."
+  },
+  "Dark Balter the Terrible": {
+    "gap": "Only offered against the opponent's Normal Spells (never your own). Flip Effect timing as Twin-Headed Wolf.",
+    "fix": "Offer it for both players' Normal Spells (adds a prompt to each of your own)."
+  },
+  "Ryu Senshi": {
+    "gap": "Its LP payment is only offered against the opponent's Normal Traps (never your own).",
+    "fix": "Offer it for both players' Normal Traps."
+  },
+  "The Dragon's Bead": {
+    "gap": "Only answers Traps the opponent activates.",
+    "fix": "Also offer it for your own Traps that target a Dragon."
+  },
+  "Spirit Ryu": {
+    "gap": "The +1000 ATK/DEF lasts until the end of the turn, not the end of the Battle Phase.",
+    "fix": "Add an 'until: end_battle' expiry for mods and clear them when the Battle Phase ends."
+  },
+  "Tyrant Dragon": {
+    "gap": "When it is Special Summoned from the Graveyard, the Dragon to Tribute is chosen automatically (the one with the lowest ATK).",
+    "fix": "Ask the summoning player to pick the Dragon (needs a decision inside Duel.special_summon)."
+  },
+  "Heart of Clear Water": {
+    "gap": "'Effects that target the monster' means a destroy step on a selected card; mass destruction never counts as targeting.",
+    "fix": "Mark which selections are targets in the effect data and check that flag."
+  },
+  "Patrician of Darkness": {
+    "gap": "The opponent first declares an attack on one of your monsters, then you pick the real target (it redirects the attack).",
+    "fix": "Let the Patrician's controller pick the target in the attack declaration UI."
+  },
+  "Soul Demolition": {
+    "gap": "Its effect can only be used during your own Main Phase.",
+    "fix": "Allow the effect as a speed-2 Quick Effect in any response window."
+  },
+  "The Puppet Magic of Dark Ruler": {
+    "gap": "The monsters are removed from play when the card is activated, not when it resolves.",
+    "fix": "Choose them at activation and remove them on resolution."
+  },
+  "Second Coin Toss": {
+    "gap": "Offered only for your own coin tosses and only after a losing result (for several coins: when not all are heads).",
+    "fix": "Offer it after every coin toss the controller performs."
+  },
+  "Bark of Dark Ruler": {
+    "gap": "The LP to pay is picked from a list (just enough to win the battle, then 100, 200, 300, 500, 800, 1000, 1500, 2000, 3000) instead of any multiple of 100.",
+    "fix": "Add a number-entry decision to the board."
+  },
+  "A Feint Plan": {
+    "gap": "Both players are affected ('A player cannot attack face-down monsters').",
+    "fix": "Confirm against the original whether it binds only the opponent."
   }
 }

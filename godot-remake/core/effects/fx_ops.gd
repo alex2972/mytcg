@@ -7,8 +7,8 @@ extends RefCounted
 var fx: Fx
 var duel: Duel
 
-## Cards that count as another card for "name is" checks (Cyber Harpie is treated as Harpie Lady).
-const NAME_ALIASES := {"Cyber Harpie": "Harpie Lady"}
+## Cards that count as another card for "name is" checks (Cyber Harpie is Harpie Lady, A Legendary Ocean is Umi).
+const NAME_ALIASES := {"Cyber Harpie": "Harpie Lady", "A Legendary Ocean": "Umi"}
 ## Fusion Substitute monsters: each can stand in for one Fusion-Material in a Fusion.
 const FUSION_SUBS := ["Goddess with the Third Eye", "Versago the Destroyer", "Mystical Sheep #1", "Beastking of the Swamps"]
 
@@ -32,6 +32,12 @@ func who(x, ctx: Dictionary) -> int:
 		"turn": return duel.turn_player
 		"event": return int(ctx["event"].get("player", me))
 		"equipped_ctrl": return (ctx["src"].equipped_to.controller if ctx["src"].equipped_to != null else me)
+		"event_owner":
+			var ec := duel.card_by_uid(int(ctx["event"].get("uid", -1)))      # Fatal Abacus: the owner of the card in the event
+			return ec.owner if ec != null else me
+	if str(x).begins_with("owner_of:"):                    # the owner of the first card of a variable (Stamping Destruction)
+		var held: Array = ctx["vars"].get(str(x).substr(9), [])
+		return (held[0] as DCard).owner if not held.is_empty() else me
 	return me
 
 func race_id(x) -> int:
@@ -127,18 +133,28 @@ func matches(c: DCard, f: Dictionary, ctx: Dictionary) -> bool:
 			if d.get("type", "") == "monster" and duel.race_of(c) == race_id(x):
 				return false
 	var is_mon: bool = d.get("type", "") == "monster"
-	if f.has("level_min") and (not is_mon or int(d.get("level", 0)) < int(f["level_min"])):
+	if f.has("level_min") and (not is_mon or duel.level_of(c) < _num(f["level_min"], ctx)):
 		return false
-	if f.has("level_max") and (not is_mon or int(d.get("level", 0)) > int(f["level_max"])):
+	if f.has("level_max") and (not is_mon or duel.level_of(c) > _num(f["level_max"], ctx)):
 		return false
-	if f.has("atk_min") and (not is_mon or duel.atk_of(c) < int(f["atk_min"])):
+	if f.has("atk_min") and (not is_mon or duel.atk_of(c) < _num(f["atk_min"], ctx)):
 		return false
-	if f.has("atk_max") and (not is_mon or duel.atk_of(c) > int(f["atk_max"])):
+	if f.has("atk_max") and (not is_mon or duel.atk_of(c) > _num(f["atk_max"], ctx)):
 		return false
-	if f.has("def_min") and (not is_mon or duel.def_of(c) < int(f["def_min"])):
+	if f.has("def_min") and (not is_mon or duel.def_of(c) < _num(f["def_min"], ctx)):
 		return false
-	if f.has("def_max") and (not is_mon or duel.def_of(c) > int(f["def_max"])):
+	if f.has("def_max") and (not is_mon or duel.def_of(c) > _num(f["def_max"], ctx)):
 		return false
+	if f.has("not_attribute") and is_mon and duel.attribute_of(c) == attr_id(f["not_attribute"]):
+		return false
+	if f.has("has_flip"):
+		# a Flip Effect monster: one of its effects is a Flip Effect
+		var flip := false
+		for e in fx.edb.for_number(c.number):
+			if e.get("type", "") == "flip":
+				flip = true
+		if not is_mon or flip != bool(f["has_flip"]):
+			return false
 	if f.has("name_has") and not duel.db.card_name(c.idx).to_lower().contains(str(f["name_has"]).to_lower()):
 		return false
 	if f.has("number") and not (f["number"] as Array).has(c.number):
@@ -190,6 +206,17 @@ func matches(c: DCard, f: Dictionary, ctx: Dictionary) -> bool:
 	if f.has("owner") and c.owner != who(f["owner"], ctx):
 		return false
 	return true
+
+## A filter bound: a number or a value expression ({"var": ...}, {"src_stat": "atk"}, ...).
+func _num(x, ctx: Dictionary) -> int:
+	if x is Dictionary:
+		var full := ctx
+		if not ctx.has("vars") or not ctx.has("event"):
+			full = ctx.duplicate()
+			full["vars"] = ctx.get("vars", {})
+			full["event"] = ctx.get("event", {})
+		return val(x, full)
+	return int(x)
 
 ## Empty searches are information, not a zero-card selection. Costs and random
 ## choices still use their existing failure rules.
@@ -306,7 +333,7 @@ func fusion_candidates(p: int) -> Array:
 			continue
 		var avail := pool.duplicate()
 		var ok := true
-		var substitute_used := false
+		var substitute_used := no_fusion_substitute(fm)      # Dark Balter the Terrible & co. accept only their own materials
 		for need in recipe:
 			var found: DCard = null
 			for c in avail:
@@ -326,6 +353,13 @@ func fusion_candidates(p: int) -> Array:
 		if ok:
 			out.append(fm)
 	return out
+
+## "A Fusion Summon of this card can only be done with the above Fusion Material Monsters" (no Fusion Substitutes).
+func no_fusion_substitute(fusion_monster: DCard) -> bool:
+	for e in fx.edb.for_number(fusion_monster.number):
+		if e.get("rule", "") == "no_fusion_substitute":
+			return true
+	return false
 
 # --- values and conditions -------------------------------------------------------------
 
@@ -357,7 +391,56 @@ func val(x, ctx: Dictionary) -> int:
 		if x.has("half"):
 			@warning_ignore("integer_division")
 			return val(x["half"], ctx) / 2
+		if x.has("src_stat"):                                # Throwstone Unit: "the ATK of this card"
+			return duel.atk_of(ctx["src"]) if x["src_stat"] == "atk" else duel.def_of(ctx["src"])
+		if x.has("lp_paid_last_turn"):
+			return lp_paid_last_turn(who(x["lp_paid_last_turn"], ctx))
 	return 0
+
+## Life Points player `p` paid during their previous turn (Life Absorbing Machine).
+func lp_paid_last_turn(p: int) -> int:
+	var turns: Array = duel.turns_of[p]
+	var last := -1
+	for t in turns:
+		if int(t) < duel.turn:
+			last = int(t)
+	if last == -1:
+		return 0
+	return int((duel.lp_paid.get(last, [0, 0]) as Array)[p])
+
+## Battle damage player `p` takes from the current battle if nothing changes (Nutrient Z).
+func incoming_battle_damage(p: int) -> int:
+	var a: DCard = duel.current_attack.get("attacker")
+	var t: DCard = duel.current_attack.get("target")
+	if a == null:
+		return 0
+	var attacker_side: int = a.controller
+	if t == null:
+		return duel.atk_of(a) if p != attacker_side else 0
+	if t.pos == "atk":
+		var diff := duel.atk_of(a) - duel.atk_of(t)
+		if diff > 0 and p == t.controller:
+			return diff
+		if diff < 0 and p == attacker_side:
+			return -diff
+		return 0
+	var diff2 := duel.atk_of(a) - duel.def_of(t)
+	if diff2 < 0 and p == attacker_side:
+		return -diff2
+	if diff2 > 0 and p == t.controller and fx.rule_active("pierce", a):
+		return diff2
+	return 0
+
+## Targets chosen by the target steps of a chain link (Spell/Trap targeting checks).
+func link_targets(link: Dictionary) -> Array:
+	var out := []
+	var lctx: Dictionary = link["ctx"]
+	for step in (lctx["effect"].get("target", []) as Array):
+		if step.get("op", "") == "select":
+			for c in lctx["vars"].get(step.get("as", ""), []):
+				if not out.has(c):
+					out.append(c)
+	return out
 
 ## Does the Spell Card on top of the chain designate exactly 1 monster as its target? [Riryoku Field, Big Shield Gardna]
 func chain_top_single_monster_target(ctx: Dictionary) -> bool:
@@ -469,6 +552,7 @@ func _cond(c: Dictionary, ctx: Dictionary) -> bool:
 		"equipped_is": return ctx["src"].equipped_to != null and matches(ctx["src"].equipped_to, c.get("filter", {}), ctx)
 		"event_reason": return str(ctx["event"].get("reason", "")) == str(c.get("is", ""))
 		"was_on_field": return bool(ctx["event"].get("was_on_field", false))
+		"was_equipping": return bool(ctx["event"].get("was_equipping", false))        # Blast with Chain
 		"counter": return cmp(int(ctx["src"].flags.get(c.get("name", ""), 0)), c.get("op", ">="), int(c.get("v", 0)))
 		"free_zone": return duel.side(who(c.get("who", "self"), ctx)).monsters.count(null) >= int(c.get("n", 1))
 		"summon_unused": return not duel.summons_this_turn[who(c.get("who", "self"), ctx)]
@@ -497,6 +581,34 @@ func _cond(c: Dictionary, ctx: Dictionary) -> bool:
 			return host != null and (int(ctx["event"].get("attacker", -1)) == host.uid or int(ctx["event"].get("target", -1)) == host.uid)
 		"in_battle": return int(ctx["event"].get("attacker", -1)) == ctx["src"].uid or int(ctx["event"].get("target", -1)) == ctx["src"].uid
 		"attacker_is_src": return int(ctx["event"].get("attacker", -1)) == ctx["src"].uid
+		"var_on_field":
+			var held: Array = ctx["vars"].get(c.get("name", ""), [])
+			return not held.is_empty() and duel.is_on_field(held[0])
+		"var_in_grave":
+			var held2: Array = ctx["vars"].get(c.get("name", ""), [])
+			return not held2.is_empty() and (duel.side((held2[0] as DCard).owner).grave as Array).has(held2[0])
+		"tributed_for_event": return (ctx["event"].get("tributes", []) as Array).has(ctx["src"].uid)      # Skull Knight #2
+		"src_destroyed_this_turn": return duel.field_destroyed.has(ctx["src"].uid)                        # Twin-Headed Behemoth
+		"spirit_turn":                                       # Susa Soldier: Normal Summoned or flipped face-up this turn
+			return int(ctx["src"].flags.get("ns_turn", -1)) == duel.turn or int(ctx["src"].flags.get("flip_turn", -1)) == duel.turn
+		"chain_top_targets":                                 # The Dragon's Bead: the top link targets such a monster
+			if fx.chain.is_empty():
+				return false
+			for tc in link_targets(fx.chain.back()):
+				if duel.is_monster(tc) and duel.is_on_field(tc) and matches(tc, c.get("filter", {}), ctx):
+					return true
+			return false
+		"incoming_battle_damage": return incoming_battle_damage(who(c.get("who", "self"), ctx)) >= int(c.get("min", 1))
+		"paid_last_turn": return lp_paid_last_turn(who(c.get("who", "self"), ctx)) > 0
+		"battling_mine":                                     # Bark of Dark Ruler: my monster is in this battle against an opponent's monster
+			var ba: DCard = duel.current_attack.get("attacker")
+			var bt: DCard = duel.current_attack.get("target")
+			if ba == null or bt == null:
+				return false
+			var mine: DCard = ba if ba.controller == me else bt if bt.controller == me else null
+			var theirs: DCard = bt if mine == ba else ba
+			return mine != null and theirs.controller != me and matches(mine, c.get("filter", {}), ctx)
+		"puppet_possible": return not FxCustom.puppet_candidates(duel, me).is_empty()
 		"killer_is_src": return int(ctx["event"].get("killer", -1)) == ctx["src"].uid
 	return true
 
@@ -528,6 +640,12 @@ func accept(p: Dictionary, answer) -> String:
 				for owner in 2:
 					if removals[owner] > duel.monsters_of(owner).size():
 						return "Not enough monsters on the field to remove as substitutes."
+			if int(p.get("sum_level_eq", 0)) > 0:
+				var exact := 0
+				for c in cards:
+					exact += duel.level_of(c)
+				if exact != int(p["sum_level_eq"]):
+					return "The Levels must add up to exactly %d." % int(p["sum_level_eq"])
 			if int(p.get("sum_level_min", 0)) > 0:
 				var total := 0
 				for c in cards:
@@ -684,12 +802,15 @@ func _run(step: Dictionary, ctx: Dictionary):
 				fx.tasks.append({"t": "script", "steps": branch, "i": 0, "ctx": ctx})
 				return "pushed"
 		"coin":
-			var heads := duel.rng.randi_range(0, 1) == 1
+			var heads := duel.rng.randi_range(0, 1) == 1 if not step.has("_heads") else bool(step["_heads"])
 			var correct := heads
 			if step.has("call"):
 				correct = heads == (int(ctx["vars"].get(str(step["call"]), 0)) == 0)
+			if not step.has("_heads"):
+				duel.log_event("coin", {"player": me, "heads": heads, "correct": correct, "call": ctx["vars"].get(str(step.get("call", "")), -1)})
+				if not correct and _offer_second_toss(step, ctx, {"_heads": heads}):
+					return {"type": "presentation", "player": me} if fx.presentation_enabled else "pushed"
 			ctx["vars"][step.get("as", "coin")] = correct
-			duel.log_event("coin", {"player": me, "heads": heads, "correct": correct, "call": ctx["vars"].get(str(step.get("call", "")), -1)})
 			var branch2: Array = step.get("heads", []) if correct else step.get("tails", [])
 			if not branch2.is_empty():
 				fx.tasks.append({"t": "script", "steps": branch2, "i": 0, "ctx": ctx})
@@ -705,7 +826,10 @@ func _run(step: Dictionary, ctx: Dictionary):
 		"draw": duel.draw_cards(who(step.get("who", "self"), ctx), val(step.get("n", 1), ctx))
 		"destroy":
 			duel.effect_player = me
+			var targeted: bool = str(step.get("what", "$t")).begins_with("$")
 			for c in tg(step, ctx):
+				if targeted and duel.is_on_field(c) and fx.rule_active("target_destroy_immune", c):
+					continue                                    # Heart of Clear Water: not destroyed by effects that target it
 				duel.destroy_card(c, "effect")
 			duel.effect_player = -1
 		"to_grave":
@@ -830,13 +954,21 @@ func _run(step: Dictionary, ctx: Dictionary):
 			for c in _targets(step.get("what", "src"), ctx):
 				if step.has("value_turn_offset"):
 					c.flags[step["name"]] = duel.turn + int(step["value_turn_offset"])
+				elif step.get("value_player", false):
+					c.flags[step["name"]] = me                     # The Secret of the Bandit: who played it
 				else:
 					c.flags[step["name"]] = ctx["src"].uid if step.get("value_src", false) else step.get("value", true)
 		"skip_phase": duel.skip_phase(step.get("phase", "battle"))
 		"win": duel.force_win(me, str(step.get("reason", "effect")))
 		"log": duel.log_event(step.get("event", "effect"), step.get("data", {}))
 		"let": ctx["vars"][step["as"]] = _targets(step.get("what", "src"), ctx)
-		"counter": ctx["src"].flags[step["name"]] = int(ctx["src"].flags.get(step["name"], 0)) + int(step.get("add", 1))
+		"counter":
+			for c in (_targets(step["what"], ctx) if step.has("what") else [ctx["src"]]):
+				c.flags[step["name"]] = int(c.flags.get(step["name"], 0)) + int(step.get("add", 1))
+		"sct_use":
+			var used_sct := second_coin_toss(me)
+			if used_sct != null:
+				used_sct.flags["sct_turn"] = duel.turn
 		"rule_turn": duel.add_turn_rule(step["rule"], who(step.get("who", "self"), ctx))
 		"rule_next_turn": duel.next_turn_rules.append({"rule": step["rule"], "player": who(step.get("who", "opp"), ctx)})
 		"skip_next_draw": duel.skip_draw[who(step.get("who", "self"), ctx)] = true
@@ -854,9 +986,14 @@ func _run(step: Dictionary, ctx: Dictionary):
 				outcomes.append(heads)
 				if heads:
 					heads_n += 1
+			if step.has("_heads_n"):
+				heads_n = int(step["_heads_n"])
+			else:
+				duel.log_event("coins", {"player": me, "heads": heads_n, "n": int(step.get("n", 3)), "outcomes": outcomes})
+				if heads_n < int(step.get("n", 3)) and _offer_second_toss(step, ctx, {"_heads_n": heads_n}):
+					return {"type": "presentation", "player": me} if fx.presentation_enabled else "pushed"
 			ctx["vars"][step.get("as", "heads")] = heads_n
-			duel.log_event("coins", {"player": me, "heads": heads_n, "n": int(step.get("n", 3)), "outcomes": outcomes})
-			if fx.presentation_enabled:
+			if fx.presentation_enabled and not step.has("_heads_n"):
 				return {"type": "presentation", "player": me}
 		"redirect_attack":
 			var ts := _targets(step.get("to", "$t"), ctx)
@@ -916,7 +1053,7 @@ func _run(step: Dictionary, ctx: Dictionary):
 			var prev := []
 			for i in recipe.size():
 				slots.append({"op": "select", "as": "m%d" % i, "from": ["self.hand", "self.monsters"],
-					"filter": {"type": "monster", "name_in": [recipe[i]] + FUSION_SUBS, "not_in": prev.duplicate()}, "n": 1, "prompt": 241})
+					"filter": {"type": "monster", "name_in": [recipe[i]] + ([] if no_fusion_substitute(fm) else FUSION_SUBS), "not_in": prev.duplicate()}, "n": 1, "prompt": 241})
 				prev.append("m%d" % i)
 			slots.append({"op": "fusion_finish", "mode": step.get("mode", "poly"), "count": recipe.size()})
 			fx.tasks.append({"t": "script", "steps": slots, "i": 0, "ctx": ctx})
@@ -1058,6 +1195,29 @@ func _run(step: Dictionary, ctx: Dictionary):
 		_:
 			push_warning("unknown effect op: " + op)
 	return null
+
+## Second Coin Toss of player `p` that may still be used this turn, or null.
+func second_coin_toss(p: int) -> DCard:
+	for src in fx.cards_controlled(p):
+		if src.face_up and int(src.flags.get("sct_turn", -1)) != duel.turn:
+			for e in fx.effects_of(src):
+				if e.get("type", "") == "static" and e.get("rule", "") == "second_coin_toss":
+					return src
+	return null
+
+## After a coin toss that went wrong: offer Second Coin Toss. The kept result is carried in `keep` (_heads / _heads_n).
+func _offer_second_toss(step: Dictionary, ctx: Dictionary, keep: Dictionary) -> bool:
+	var me: int = ctx["controller"]
+	if step.get("_no_redo", false) or second_coin_toss(me) == null:
+		return false
+	var kept := step.duplicate(true)
+	kept.merge(keep, true)
+	var again := step.duplicate(true)
+	again["_no_redo"] = true
+	fx.tasks.append({"t": "script", "steps": [
+		{"op": "yesno", "as": "_redo", "prompt_text": "Second Coin Toss: toss again?"},
+		{"op": "if", "cond": [{"c": "var_true", "name": "_redo"}], "then": [{"op": "sct_use"}, again], "else": [kept]}], "i": 0, "ctx": ctx})
+	return true
 
 func _cond_dyn(c: Dictionary, ctx: Dictionary) -> bool:
 	match c.get("c", ""):

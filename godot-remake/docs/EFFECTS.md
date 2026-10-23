@@ -171,3 +171,20 @@ Dark Sage is summoned from Time Wizard's coin effect when the call is right.
 `Fx.interactive_selections` requires a human click even with one valid candidate. Patrol Robo uses a private temporary reveal of one opponent Set field card during its controller's Standby Phase. Failed activation scripts do not add a chain link; offered responses recheck activation requirements before accepting their costs.
 
 Card activation presentation logs `card_activated` and pauses before its cost/target steps when presentation is enabled. This prevents rolls and chain effects from outrunning the visible flip/activation. The board's opening deal similarly pauses each draw independently.
+
+## Added in batch 23 (Legacy of Darkness)
+The cards come from the TCG set (tools/import_set.py, data/sets/LOD.json); tests/test_effects18.gd checks every one and plays CPU duels with them.
+Static rules: `negate_targeting` {kind: spell|trap} (a Spell/Trap whose target step chose a protected monster is negated and destroyed at resolution: Freed, Frontier Wiseman, Ryu Senshi, Tyrant Dragon, Fiend Skull Dragon) ·
+`negate_battle_victims` {victim filter, cond} (killers picked by scope/filter; the victim's effects are off for the turn, and its Flip Effect is skipped when the attack will destroy it) · `banish_battle_victims` (Lesser Fiend) ·
+`self_destroy_if` {cond} (state-based: checked whenever the engine is idle, `Duel.check_states`) · `battle_indestructible`, `target_destroy_immune` (Heart of Clear Water), `effect_indestructible_equipped` (Murasame Blade) ·
+`attack_shield` (Marauding Captain: such monsters cannot be attack targets) · `attack_needs_other` {filter} and `no_summon_with_monsters` (Cave Dragon) · `double_attack_vs_monster` (Tyrant Dragon) · `def_after_attack` (Spear Dragon, at the end of the Damage Step) ·
+`half_battle_damage` (Susa Soldier) · `no_special_summon_self`, `no_revive`, `revive_tribute` {filter} · `no_fusion_substitute` · `draw_replace_search` {filter} (Freed: yes/no at the Draw Phase) · `reverse_opp_heal` (Simochi) · `second_coin_toss`.
+Static mod keys: `level` (A Legendary Ocean; `Duel.level_of` includes it, also in the hand) and `battle_vs_flag_race` (The Hunter with 7 Weapons, during damage calculation only: `Duel.calc_pair`).
+Effect keys: `once_per_duel` (per player and card name, `Duel.once_per_duel`), `equip_trap` (a Trap that equips; sent to the Graveyard if its monster left before it resolved).
+Conditions: `var_on_field`, `var_in_grave`, `tributed_for_event` (the `summoned` event lists `tributes`), `src_destroyed_this_turn` (`Duel.field_destroyed`), `spirit_turn` (flags `ns_turn` / `flip_turn`), `chain_top_targets` {filter},
+`incoming_battle_damage` {who, min}, `paid_last_turn` (`Duel.lp_paid`, `Duel.turns_of`), `battling_mine` {filter}, `was_equipping` (the `destroyed` event carries it), `puppet_possible`.
+Filters: `not_attribute`, `has_flip` (a Flip Effect monster); `level/atk/def_min/max` accept value expressions. Values: `{"src_stat": "atk"}`, `{"lp_paid_last_turn": who}`. Players: `event_owner`, `owner_of:<var>`.
+Ops: `counter` takes `what`; `set_flag` takes `value_player`; a `destroy` of a selected card (`$var`) skips monsters with `target_destroy_immune`; `coin`/`coins` offer Second Coin Toss after a losing toss.
+Select: `sum_level_eq` (exact Level total). Custom ops: `creature_swap`, `bark_choice`/`bark_pay`/`bark_apply`, `puppet_cands`/`puppet_select`.
+Engine: `Duel.is_named` applies `FxOps.NAME_ALIASES` to field-name checks (A Legendary Ocean is Umi); battle damage to the attacking player now has the defending monster as its `source`;
+a face-down Spell/Trap cannot use its ignition effect before it is activated.
