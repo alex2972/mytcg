@@ -2,7 +2,7 @@
 
 Generated from `data/approximations.json` by `tools/list_approximations.py`. Do not edit by hand.
 
-83 cards and 20 rules.
+78 cards and 20 rules.
 
 ## Cards
 
@@ -12,7 +12,6 @@ Generated from `data/approximations.json` by `tools/list_approximations.py`. Do 
 | Alligator's Sword Dragon | Face-down opposing monsters count as their real attribute when deciding if a direct attack is allowed. | Check what the original does with face-down monsters. |
 | Ancient Telescope | No effect: seeing the opponent's top 5 cards needs an interface. | A card-list dialog. |
 | Aqua Spirit | The Standby Phase position-change effect is missing (only the special summon condition is in). | A trigger on the opponent's Standby Phase that lets the owner change one face-up monster's position. |
-| Bark of Dark Ruler | The LP to pay is picked from a list (just enough to win the battle, then 100, 200, 300, 500, 800, 1000, 1500, 2000, 3000) instead of any multiple of 100. | Add a number-entry decision to the board. |
 | Big Shield Gardna | The face-down single-target Spell negation is implemented. The shift to Attack Position still happens at Battle Phase end rather than immediately after the individual Damage Step; exact native position-event order needs tracing. | Spell targets in the chain link, and a post-Damage-Step window. |
 | Black Illusion Ritual | Relinquished's special effect is missing (it is only a 0/0 monster). | Implement Relinquished (equip and take over ATK/DEF). |
 | Blue-Eyes Toon Dragon | The 'attack directly while the opponent controls no Toon monster' rule is missing. | As Toon Summoned Skull. |
@@ -20,7 +19,7 @@ Generated from `data/approximations.json` by `tools/list_approximations.py`. Do 
 | Ceremonial Bell | No effect: the hand reveal is only a display matter and needs an interface. | Show both hands while the card is face-up (board view). |
 | Cyber Jar | Summon positions and the order in which the two players pick up cards are simplified. | Check the original's order and which player's monsters are summoned first. |
 | DNA Surgery | Monster Type icons in the interface do not change. | Use Duel.race_of in the card detail panel. |
-| Dark Balter the Terrible | Only offered against the opponent's Normal Spells (never your own). Flip Effect timing as Twin-Headed Wolf. | Offer it for both players' Normal Spells (adds a prompt to each of your own). |
+| Dark Balter the Terrible | Flip Effect timing as Twin-Headed Wolf. | Resolve Flip Effects of monsters flipped by an attack after damage calculation, then negate them if the monster was destroyed. |
 | Dark Necrofear | Only the special summon condition is in; the 'becomes an Equip Card and takes control' effect is missing. | Use become_equip plus a control link when destroyed. |
 | Dark Ruler Ha Des | Same Flip Effect timing as Twin-Headed Wolf; Graveyard effects of its battle victims are negated for the rest of that turn. | See Twin-Headed Wolf. |
 | Dark Spirit of the Silent | The original target is retained, as confirmed by FUN_0058dcc0. The forced position change is still quiet; exact position-change response timing needs tracing. | Trace FUN_005751e0 and the queued attack commands before changing position response windows. |
@@ -62,8 +61,6 @@ Generated from `data/approximations.json` by `tools/list_approximations.py`. Do 
 | Return of the Doomed | The Spell Card stays face-up on the field until the End Phase instead of going to the Graveyard right away. | A delayed end-of-turn effect that is not tied to a card on the field. |
 | Riryoku | The ATK change lasts until the end of the turn (the card text gives no duration). | Check the original's duration. |
 | Riryoku Field | 'Designates 1 monster' means the Spell's target step ended with exactly 1 monster selected; Spells that affect monsters without a target step are not detected. | Mark target-style Spells explicitly in the effect data. |
-| Ryu Senshi | Its LP payment is only offered against the opponent's Normal Traps (never your own). | Offer it for both players' Normal Traps. |
-| Second Coin Toss | Offered only for your own coin tosses and only after a losing result (for several coins: when not all are heads). | Offer it after every coin toss the controller performs. |
 | Shadow of Eyes | Works once, as a normal Trap, for the monster that was just Set. | Check the original: continuous or one-shot. |
 | Shift | Redirects only to my other monsters, and is limited to monster attacks (not Spell/Trap targets). | Add target_declared events for Spell/Trap targeting. |
 | Sinister Serpent | Returning to the hand is automatic instead of optional. | A yes/no prompt. |
@@ -76,10 +73,8 @@ Generated from `data/approximations.json` by `tools/list_approximations.py`. Do 
 | Stim-Pack | The -200 ATK per Standby Phase stays on the monster if the Equip Card leaves the field (also Germ Infection, -300). | Tie the decrease to the Equip Card (a counter on it). |
 | Sword of Dragon's Soul | The Dragon is destroyed when the Battle Phase ends (entering Main Phase 2 or ending the turn). | Verify the timing against the original. |
 | Tailor of the Fickle | The new host is selected before the chain and checked against the Equip effect's race/Attribute/side restrictions. Special native host predicates for revival and monster Equip Cards are not fully ported. | Port the remaining Equip-specific predicates from FUN_0056fc50; preserve them when moving the Equip. |
-| The Dragon's Bead | Only answers Traps the opponent activates. | Also offer it for your own Traps that target a Dragon. |
 | The Eye of Truth | The hand reveal is missing (interface); only the +1000 LP effect is in. | Show the other player's hand while the card is face-up (board view). |
 | The Flute of Summoning Dragon | Needs a free Monster Card Zone for every Dragon; extra ones fail silently. | Limit the selection to the number of free zones. |
-| The Puppet Magic of Dark Ruler | The monsters are removed from play when the card is activated, not when it resolves. | Choose them at activation and remove them on resolution. |
 | The Rock Spirit | The +300 ATK during the opponent's Battle Phase is missing. | A static modifier that depends on the current phase/turn. |
 | Thousand-Eyes Restrict | A face-down monster should give 0 ATK/DEF; it gives its printed values. The stats are the equipped monster's printed ones. | Use 0/0 for face-down monsters. |
 | Toon Mermaid | The 'attack directly while the opponent controls no Toon monster' rule is missing. | As Toon Summoned Skull. |

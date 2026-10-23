@@ -81,6 +81,8 @@ static func _handler(h: String, d: Duel, p: int, c: DCard, idx: int, event: Stri
 	match h:
 		"581040":                                       # no extra condition
 			return 1
+		"lod_neg_opp":                                  # Dark Balter, Ryu Senshi, The Dragon's Bead: never negate my own card
+			return int(not d.fx.chain.is_empty() and int(d.fx.chain.back()["player"]) != p)
 		"5b5a20":                                       # equip: my best monster must have more than 1299 ATK
 			return int(_best_target_atk(d, p, c, idx, true) > 1299)
 		"5b5a60":                                       # curse: the enemy's best monster must have more than 1299 ATK

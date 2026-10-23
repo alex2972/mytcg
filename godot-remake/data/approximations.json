@@ -369,16 +369,8 @@
     "fix": "See Twin-Headed Wolf."
   },
   "Dark Balter the Terrible": {
-    "gap": "Only offered against the opponent's Normal Spells (never your own). Flip Effect timing as Twin-Headed Wolf.",
-    "fix": "Offer it for both players' Normal Spells (adds a prompt to each of your own)."
-  },
-  "Ryu Senshi": {
-    "gap": "Its LP payment is only offered against the opponent's Normal Traps (never your own).",
-    "fix": "Offer it for both players' Normal Traps."
-  },
-  "The Dragon's Bead": {
-    "gap": "Only answers Traps the opponent activates.",
-    "fix": "Also offer it for your own Traps that target a Dragon."
+    "gap": "Flip Effect timing as Twin-Headed Wolf.",
+    "fix": "Resolve Flip Effects of monsters flipped by an attack after damage calculation, then negate them if the monster was destroyed."
   },
   "Tyrant Dragon": {
     "gap": "When it is Special Summoned from the Graveyard, the Dragon to Tribute is chosen automatically (the one with the lowest ATK).",
@@ -395,18 +387,6 @@
   "Soul Demolition": {
     "gap": "Its effect can only be used during your own Main Phase.",
     "fix": "Allow the effect as a speed-2 Quick Effect in any response window."
-  },
-  "The Puppet Magic of Dark Ruler": {
-    "gap": "The monsters are removed from play when the card is activated, not when it resolves.",
-    "fix": "Choose them at activation and remove them on resolution."
-  },
-  "Second Coin Toss": {
-    "gap": "Offered only for your own coin tosses and only after a losing result (for several coins: when not all are heads).",
-    "fix": "Offer it after every coin toss the controller performs."
-  },
-  "Bark of Dark Ruler": {
-    "gap": "The LP to pay is picked from a list (just enough to win the battle, then 100, 200, 300, 500, 800, 1000, 1500, 2000, 3000) instead of any multiple of 100.",
-    "fix": "Add a number-entry decision to the board."
   },
   "A Feint Plan": {
     "gap": "Both players are affected ('A player cannot attack face-down monsters').",

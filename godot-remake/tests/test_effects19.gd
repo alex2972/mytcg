@@ -92,6 +92,10 @@ func _initialize() -> void:
 	test_soul_demolition()
 	test_spirit_ryu()
 	test_behemoth_and_susa()
+	test_bark_any_amount()
+	test_own_card_negation()
+	test_second_coin_toss_opponent()
+	test_puppet_on_resolution()
 	print("effect tests 19 (Legacy of Darkness review): ", "OK" if fails == 0 else "%d FAILED" % fails)
 	quit(1 if fails else 0)
 
@@ -162,3 +166,96 @@ func test_behemoth_and_susa() -> void:
 	d.end_turn(0)
 	settle(d)
 	check(d.side(0).hand.has(su), "Susa Soldier returns to the hand at the End Phase of the turn it is Flip Summoned")
+
+## Answer pending decisions; choices take the next value from `choices` (else 0), chains use the first option.
+func drive(d: Duel, choices: Array) -> void:
+	var guard := 0
+	while not d.fx.pending.is_empty() and guard < 40:
+		guard += 1
+		var p: Dictionary = d.fx.pending
+		match p["type"]:
+			"chain":
+				var o: Dictionary = p["options"][0]
+				d.respond({"uid": o["uid"], "idx": o["idx"]})
+			"choice": d.respond(choices.pop_front() if not choices.is_empty() else 0)
+			"select": d.respond((p["candidates"] as Array).slice(0, p["max"]))
+			"yesno": d.respond(true)
+			"presentation": d.respond(true)
+			_: return
+
+## "Pay LP (in multiples of 100 points)": any multiple, not only a preset list.
+func test_bark_any_amount() -> void:
+	var d := new_duel()
+	var lf := place(d, 0, 0, "Lesser Fiend")
+	trap(d, 0, 0, "Bark of Dark Ruler")
+	var big := mon(d, 1, 0, 2500)
+	d.to_battle(0)
+	d.attack(0, lf, big)
+	drive(d, [1, 2])          # "100 to 900 LP", then "Pay 300 LP"
+	check(d.side(0).lp == 8000 - 300 - 100 and d.atk_of(big) == 2200 and d.side(0).grave.has(lf),
+		"Bark of Dark Ruler: 300 LP paid exactly, the opponent's monster loses 300 (LP %d, ATK %d)" % [d.side(0).lp, d.atk_of(big)])
+	d = new_duel()
+	lf = place(d, 0, 0, "Lesser Fiend")
+	trap(d, 0, 0, "Bark of Dark Ruler")
+	big = mon(d, 1, 0, 2500)
+	d.to_battle(0)
+	d.attack(0, lf, big)
+	drive(d, [3, 4])          # "2000 to 2900 LP", then "Pay 2400 LP"
+	check(d.side(0).lp == 8000 - 2400 and d.side(1).banished.has(big), "...also amounts like 2400 (LP %d)" % d.side(0).lp)
+
+## Dark Balter, Ryu Senshi: "When a Normal Spell/Trap Card is activated" includes your own; the CPU only uses them on the opponent's.
+func test_own_card_negation() -> void:
+	var d := new_duel()
+	place(d, 0, 0, "Dark Balter the Terrible")
+	d.activate_effect(0, d.debug_give(0, idx("Hinotama")), 0)
+	var offered: bool = d.fx.pending.get("type", "") == "chain" and int(d.fx.pending.get("player", -1)) == 0
+	check(offered and CardAI.respond_choice(d, 0, d.fx.pending).is_empty(), "Dark Balter is offered against my own Normal Spell, the CPU declines")
+	settle(d, "use")
+	check(d.side(1).lp == 8000 and d.side(0).lp == 7000, "...and a player who uses it negates it (LP %d / %d)" % [d.side(0).lp, d.side(1).lp])
+	d = new_duel()
+	place(d, 0, 0, "Dark Balter the Terrible")
+	next_turn(d)
+	d.activate_effect(1, d.debug_give(1, idx("Hinotama")), 0)
+	check(d.fx.pending.get("type", "") == "chain" and not CardAI.respond_choice(d, 0, d.fx.pending).is_empty(), "...the CPU still negates the opponent's Normal Spell")
+	d = new_duel()
+	place(d, 0, 0, "Ryu Senshi")
+	var jar := trap(d, 0, 0, "Jar of Greed")
+	var hand_n: int = d.side(0).hand.size()
+	d.end_turn(0)
+	settle(d, "use")
+	check(d.side(0).grave.has(jar) and d.side(0).lp == 7000 and d.side(0).hand.size() == hand_n, "Ryu Senshi can negate my own Normal Trap (LP %d)" % d.side(0).lp)
+
+## "When a coin toss is performed": the opponent's tosses too.
+func test_second_coin_toss_opponent() -> void:
+	var asked := false
+	for sd in 30:
+		var d := new_duel(sd)
+		var sct := face_up_spell(d, 0, 0, "Second Coin Toss")
+		var src := d.debug_place_spell(1, idx("Pot of Greed"), 0, true)
+		d.fx.push_script([{"op": "coin", "as": "won"}], {"src": src, "controller": 1, "vars": {}, "event": {}, "effect": {}})
+		d.fx.pump()
+		if d.fx.pending.get("type", "") == "yesno":
+			asked = true
+			check(int(d.fx.pending["player"]) == 0 and str(d.fx.pending.get("prompt_text", "")).contains("opponent"), "Second Coin Toss: its owner may make the opponent toss again after a good result for them")
+			d.respond(true)
+			settle(d)
+			check(int(sct.flags.get("sct_turn", -1)) == d.turn and d.fx.pending.is_empty(), "...which uses it for the turn")
+			break
+	check(asked, "Second Coin Toss is offered against the opponent's toss")
+
+## "Remove from play monsters ... Then Special Summon": the monsters stay until the card resolves.
+func test_puppet_on_resolution() -> void:
+	var d := new_duel()
+	var g1 := in_grave(d, d._new_card(idx("Lesser Fiend"), 0))
+	var m3 := place(d, 0, 0, "Skull Knight #2")
+	var m2 := place(d, 0, 1, "Ryu-Kishin Clown")
+	trap(d, 1, 0, "Jar of Greed")
+	d.activate_effect(0, d.debug_give(0, idx("The Puppet Magic of Dark Ruler")), 0)
+	var guard := 0
+	while d.fx.pending.get("type", "") == "select" and guard < 5:
+		guard += 1
+		d.respond((d.fx.pending["candidates"] as Array).slice(0, d.fx.pending["max"]))
+	var waiting: bool = d.fx.pending.get("type", "") == "chain"
+	check(waiting and d.side(0).monsters.has(m3) and d.side(0).monsters.has(m2), "The Puppet Magic of Dark Ruler: the monsters are still on the field while the opponent may respond")
+	settle(d)
+	check(d.side(0).banished.has(m3) and d.side(0).banished.has(m2) and d.side(0).monsters.has(g1), "...and are removed when it resolves, then the Fiend is revived")

@@ -519,7 +519,8 @@ static func run(fn: String, _step: Dictionary, ctx: Dictionary, fx: Fx):
 			d._emit("control", {"player": pa, "uid": b.uid})
 			d._emit("control", {"player": pb, "uid": a.uid})
 		"bark_choice":
-			# Bark of Dark Ruler: how many LP to pay (multiples of 100); the first offer is just enough to win the battle
+			# Bark of Dark Ruler: pay any multiple of 100 LP (less than all of them). First choice: "just enough to win the battle"
+			# or a range of 1000; the second choice (bark_hundreds) picks the exact amount inside that range.
 			var battle := bark_battle(d, int(ctx["controller"]))
 			if battle.is_empty():
 				return "abort"
@@ -528,21 +529,46 @@ static func run(fn: String, _step: Dictionary, ctx: Dictionary, fx: Fx):
 			ctx["vars"]["bt"] = [foe_m]
 			var mine_value: int = d.atk_of(mine3) if mine3.pos == "atk" else d.def_of(mine3)
 			var foe_value: int = d.atk_of(foe_m) if foe_m.pos == "atk" or foe_m == d.current_attack.get("attacker") else d.def_of(foe_m)
-			var amounts := []
+			@warning_ignore("integer_division")
+			var max_x: int = ((d.side(int(ctx["controller"])).lp - 1) / 100) * 100
+			if max_x < 100:
+				return "abort"
 			@warning_ignore("integer_division")
 			var enough: int = ((foe_value - mine_value) / 100 + 1) * 100
-			for x in [enough, 100, 200, 300, 500, 800, 1000, 1500, 2000, 3000]:
-				if x > 0 and x < d.side(int(ctx["controller"])).lp and not amounts.has(x):
-					amounts.append(x)
-			if amounts.is_empty():
+			var labels := []
+			var ranges := []
+			if enough >= 100 and enough <= max_x:
+				labels.append("Just enough to win the battle (%d LP)" % enough)
+				ranges.append([enough, enough])
+			@warning_ignore("integer_division")
+			for k in range(max_x / 1000 + 1):
+				var lo: int = maxi(100, k * 1000)
+				var hi: int = mini(max_x, k * 1000 + 900)
+				if lo <= hi:
+					labels.append("%d to %d LP" % [lo, hi])
+					ranges.append([lo, hi])
+			ctx["vars"]["_bark_ranges"] = ranges
+			return {"type": "choice", "player": int(ctx["controller"]), "as": "bark", "count": labels.size(),
+				"labels": labels, "prompt_text": "Bark of Dark Ruler: how many Life Points do you pay?"}
+		"bark_hundreds":
+			var ranges: Array = ctx["vars"].get("_bark_ranges", [])
+			var pick := int(ctx["vars"].get("bark", 0))
+			if pick < 0 or pick >= ranges.size():
 				return "abort"
+			var r: Array = ranges[pick]
+			var amounts := []
+			for x in range(int(r[0]), int(r[1]) + 1, 100):
+				amounts.append(x)
 			ctx["vars"]["_bark_amounts"] = amounts
-			return {"type": "choice", "player": int(ctx["controller"]), "as": "bark", "count": amounts.size(),
-				"labels": amounts.map(func(x): return "Pay %d LP" % x), "prompt_text": "Bark of Dark Ruler: how many Life Points do you pay?"}
+			if amounts.size() == 1:
+				ctx["vars"]["bark2"] = 0
+				return null
+			return {"type": "choice", "player": int(ctx["controller"]), "as": "bark2", "count": amounts.size(),
+				"labels": amounts.map(func(x): return "Pay %d LP" % x), "prompt_text": "Bark of Dark Ruler: pay exactly how many Life Points?"}
 		"bark_pay":
 			var amts: Array = ctx["vars"].get("_bark_amounts", [])
-			var pick := int(ctx["vars"].get("bark", 0))
-			ctx["vars"]["bark_x"] = int(amts[pick]) if pick >= 0 and pick < amts.size() else 0
+			var pick2 := int(ctx["vars"].get("bark2", 0))
+			ctx["vars"]["bark_x"] = int(amts[pick2]) if pick2 >= 0 and pick2 < amts.size() else 0
 			d.pay_lp(int(ctx["controller"]), int(ctx["vars"]["bark_x"]))
 		"bark_apply":
 			var x: int = int(ctx["vars"].get("bark_x", 0))

@@ -808,7 +808,7 @@ func _run(step: Dictionary, ctx: Dictionary):
 				correct = heads == (int(ctx["vars"].get(str(step["call"]), 0)) == 0)
 			if not step.has("_heads"):
 				duel.log_event("coin", {"player": me, "heads": heads, "correct": correct, "call": ctx["vars"].get(str(step.get("call", "")), -1)})
-				if not correct and _offer_second_toss(step, ctx, {"_heads": heads}):
+				if _offer_second_toss(step, ctx, {"_heads": heads}, not correct, correct):
 					return {"type": "presentation", "player": me} if fx.presentation_enabled else "pushed"
 			ctx["vars"][step.get("as", "coin")] = correct
 			var branch2: Array = step.get("heads", []) if correct else step.get("tails", [])
@@ -966,7 +966,7 @@ func _run(step: Dictionary, ctx: Dictionary):
 			for c in (_targets(step["what"], ctx) if step.has("what") else [ctx["src"]]):
 				c.flags[step["name"]] = int(c.flags.get(step["name"], 0)) + int(step.get("add", 1))
 		"sct_use":
-			var used_sct := second_coin_toss(me)
+			var used_sct := second_coin_toss(who(step.get("who", "self"), ctx))
 			if used_sct != null:
 				used_sct.flags["sct_turn"] = duel.turn
 		"rule_turn": duel.add_turn_rule(step["rule"], who(step.get("who", "self"), ctx))
@@ -990,7 +990,7 @@ func _run(step: Dictionary, ctx: Dictionary):
 				heads_n = int(step["_heads_n"])
 			else:
 				duel.log_event("coins", {"player": me, "heads": heads_n, "n": int(step.get("n", 3)), "outcomes": outcomes})
-				if heads_n < int(step.get("n", 3)) and _offer_second_toss(step, ctx, {"_heads_n": heads_n}):
+				if _offer_second_toss(step, ctx, {"_heads_n": heads_n}, heads_n < int(step.get("n", 3)), heads_n > 0):
 					return {"type": "presentation", "player": me} if fx.presentation_enabled else "pushed"
 			ctx["vars"][step.get("as", "heads")] = heads_n
 			if fx.presentation_enabled and not step.has("_heads_n"):
@@ -1205,18 +1205,28 @@ func second_coin_toss(p: int) -> DCard:
 					return src
 	return null
 
-## After a coin toss that went wrong: offer Second Coin Toss. The kept result is carried in `keep` (_heads / _heads_n).
-func _offer_second_toss(step: Dictionary, ctx: Dictionary, keep: Dictionary) -> bool:
+## After a coin toss, offer Second Coin Toss to whoever it helps: the tosser may redo a result that went wrong for them
+## (`for_tosser`); an opponent with Second Coin Toss may make them redo a result that went their way (`for_opponent`).
+## The kept result is carried in `keep` (_heads / _heads_n).
+func _offer_second_toss(step: Dictionary, ctx: Dictionary, keep: Dictionary, for_tosser: bool, for_opponent: bool) -> bool:
 	var me: int = ctx["controller"]
-	if step.get("_no_redo", false) or second_coin_toss(me) == null:
+	if step.get("_no_redo", false):
+		return false
+	var user := ""
+	if for_tosser and second_coin_toss(me) != null:
+		user = "self"
+	elif for_opponent and second_coin_toss(1 - me) != null:
+		user = "opp"
+	if user == "":
 		return false
 	var kept := step.duplicate(true)
 	kept.merge(keep, true)
 	var again := step.duplicate(true)
 	again["_no_redo"] = true
+	var question := "Second Coin Toss: toss again?" if user == "self" else "Second Coin Toss: make your opponent toss again?"
 	fx.tasks.append({"t": "script", "steps": [
-		{"op": "yesno", "as": "_redo", "prompt_text": "Second Coin Toss: toss again?"},
-		{"op": "if", "cond": [{"c": "var_true", "name": "_redo"}], "then": [{"op": "sct_use"}, again], "else": [kept]}], "i": 0, "ctx": ctx})
+		{"op": "yesno", "as": "_redo", "chooser": user, "prompt_text": question},
+		{"op": "if", "cond": [{"c": "var_true", "name": "_redo"}], "then": [{"op": "sct_use", "who": user}, again], "else": [kept]}], "i": 0, "ctx": ctx})
 	return true
 
 func _cond_dyn(c: Dictionary, ctx: Dictionary) -> bool:

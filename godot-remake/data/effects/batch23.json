@@ -46,10 +46,6 @@
       }
      },
      {
-      "c": "chain_top_by",
-      "is": "opp"
-     },
-     {
       "c": "lp",
       "who": "self",
       "op": ">",
@@ -272,6 +268,10 @@
      },
      {
       "op": "custom",
+      "fn": "bark_hundreds"
+     },
+     {
+      "op": "custom",
       "fn": "bark_pay"
      }
     ],
@@ -396,13 +396,13 @@
      {
       "op": "custom",
       "fn": "puppet_select"
-     },
-     {
-      "op": "banish",
-      "what": "$pm"
      }
     ],
     "do": [
+     {
+      "op": "banish",
+      "what": "$pm"
+     },
      {
       "op": "if",
       "cond": [
@@ -662,10 +662,6 @@
        "type": "trap",
        "subtype": "normal"
       }
-     },
-     {
-      "c": "chain_top_by",
-      "is": "opp"
      },
      {
       "c": "lp",
@@ -1351,10 +1347,6 @@
      {
       "c": "chain_top_kind",
       "is": "trap"
-     },
-     {
-      "c": "chain_top_by",
-      "is": "opp"
      },
      {
       "c": "chain_top_targets",
