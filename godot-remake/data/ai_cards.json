@@ -1648,5 +1648,155 @@
 "group": "end",
 "h": "581040"
 }
+],
+"A Legendary Ocean": [
+{
+"group": "main_s3",
+"h": "5b5010"
+}
+],
+"The A. Forces": [
+{
+"group": "main_s3",
+"h": "5b4890"
+}
+],
+"Fusion Sword Murasame Blade": [
+{
+"group": "main_s3",
+"h": "5b5a20"
+}
+],
+"Heart of Clear Water": [
+{
+"group": "main_s3",
+"h": "lod_heart"
+}
+],
+"Creature Swap": [
+{
+"group": "main_s3",
+"h": "lod_swap"
+}
+],
+"The Warrior Returning Alive": [
+{
+"group": "main_s3",
+"h": "581040"
+}
+],
+"A Wingbeat of Giant Dragon": [
+{
+"group": "main_s3",
+"h": "5b4ae0"
+}
+],
+"Stamping Destruction": [
+{
+"group": "main_s3",
+"h": "5b4860"
+}
+],
+"Exiled Force": [
+{
+"group": "main_s3",
+"h": "lod_exiled"
+}
+],
+"Possessed Dark Soul": [
+{
+"group": "main_s3",
+"h": "lod_possessed"
+}
+],
+"Throwstone Unit": [
+{
+"group": "main_s3",
+"h": "5b4860"
+}
+],
+"Marauding Captain": [
+{
+"group": "chain_response",
+"h": "581040"
+}
+],
+"Twin-Headed Behemoth": [
+{
+"group": "chain_response",
+"h": "581040"
+}
+],
+"Ominous Fortunetelling": [
+{
+"group": "chain_response",
+"h": "581040"
+}
+],
+"Dark Balter the Terrible": [
+{
+"group": "chain_response",
+"h": "581040"
+}
+],
+"Ryu Senshi": [
+{
+"group": "chain_response",
+"h": "581040"
+}
+],
+"The Dragon's Bead": [
+{
+"group": "chain_response",
+"h": "581040"
+}
+],
+"Bottomless Trap Hole": [
+{
+"group": "chain_response",
+"h": "581040"
+}
+],
+"Bark of Dark Ruler": [
+{
+"group": "chain_response",
+"h": "581040"
+}
+],
+"Nutrient Z": [
+{
+"group": "chain_response",
+"h": "581040"
+}
+],
+"Fatal Abacus": [
+{
+"group": "chain_response",
+"h": "581040"
+}
+],
+"Bad Reaction to Simochi": [
+{
+"group": "chain_response",
+"h": "581040"
+}
+],
+"Spirit Ryu": [
+{
+"group": "chain_response",
+"h": "lod_spirit_ryu"
+}
+],
+"Dragon's Rage": [
+{
+"group": "chain_response",
+"h": "lod_have_dragon"
+}
+],
+"Ready for Intercepting": [
+{
+"group": "chain_response",
+"h": "5b2640"
+}
 ]
 }

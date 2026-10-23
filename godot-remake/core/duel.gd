@@ -1244,7 +1244,7 @@ func _resolve_attack() -> void:
 	var t: DCard = current_attack["target"]
 	var p: int = current_attack["player"]
 	var foe := opponent(p) if t == null else t.controller      # a redirected attack may hit the attacker's own side
-	if current_attack["negated"] or not (sides[p].monsters as Array).has(a):
+	if current_attack["negated"] or not (sides[p].monsters as Array).has(a) or not _attacker_ready(a):
 		current_attack = {}
 		return
 	if t != null and not (sides[foe].monsters as Array).has(t):
@@ -1269,7 +1269,7 @@ func _after_target() -> void:
 		_open_damage_step(func(): _direct_damage_step())
 		return
 	var foe: int = t.controller
-	if current_attack["negated"] or not (sides[p].monsters as Array).has(a) or not (sides[foe].monsters as Array).has(t):
+	if current_attack["negated"] or not (sides[p].monsters as Array).has(a) or not (sides[foe].monsters as Array).has(t) or not _attacker_ready(a):
 		current_attack = {}
 		return
 	if not t.face_up:
@@ -1299,7 +1299,7 @@ func _direct_damage_step() -> void:
 	var a: DCard = current_attack["attacker"]
 	var p: int = current_attack["player"]
 	var foe := opponent(p)
-	var ok: bool = not current_attack["negated"] and (sides[p].monsters as Array).has(a)
+	var ok: bool = not current_attack["negated"] and (sides[p].monsters as Array).has(a) and _attacker_ready(a)
 	var open_field := monsters_of(foe).is_empty() or can_attack_directly(a)
 	var attack_value: int = atk_of(a)
 	current_attack = {}
@@ -1316,7 +1316,7 @@ func _battle_damage_step() -> void:
 	var t: DCard = current_attack["target"]
 	var p: int = current_attack["player"]
 	var foe: int = t.controller
-	if current_attack["negated"] or not (sides[p].monsters as Array).has(a) or not (sides[foe].monsters as Array).has(t):
+	if current_attack["negated"] or not (sides[p].monsters as Array).has(a) or not (sides[foe].monsters as Array).has(t) or not _attacker_ready(a):
 		current_attack = {}
 		return
 	calc_pair = [a, t]
@@ -1377,6 +1377,10 @@ func _battle_damage_step() -> void:
 	_bounce_attacker(a)
 
 ## The end of the Damage Step for the attacker: Wall of Illusion returns it, Spear Dragon turns to Defense Position.
+## An attacker that was turned face-down or to Defense Position during the attack stops attacking (Ready for Intercepting).
+func _attacker_ready(a: DCard) -> bool:
+	return a.face_up and (a.pos == "atk" or fx.rule_active("attack_in_def", a))
+
 func _bounce_attacker(a: DCard) -> void:
 	if a.flags.get("return_after_battle", false) and is_on_field(a):
 		return_to_hand(a)

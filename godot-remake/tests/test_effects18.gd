@@ -654,6 +654,13 @@ func test_traps() -> void:
 	d.end_turn(0)
 	settle(d, "use")
 	check(not rw.face_up and rw.pos == "def", "Ready for Intercepting turns a Warrior face-down")
+	d = new_duel()
+	trap(d, 1, 0, "Ready for Intercepting")
+	var raider := place(d, 0, 0, "Exiled Force")
+	d.to_battle(0)
+	d.attack(0, raider, null)
+	settle(d, "use")
+	check(not raider.face_up and d.side(1).lp == 8000, "...and an attacker turned face-down stops its attack (LP %d)" % d.side(1).lp)
 	# A Feint Plan
 	d = new_duel()
 	trap(d, 1, 0, "A Feint Plan")
@@ -743,6 +750,7 @@ func test_cpu_duels() -> void:
 	var rng := RandomNumberGenerator.new()
 	rng.seed = 23
 	var bad := []
+	var used := {}
 	for n in 12:
 		var seats := []
 		for k in 2:
@@ -761,5 +769,10 @@ func test_cpu_duels() -> void:
 		if reason in ["unfinished", "stuck"] or not logs.is_empty():
 			bad.append("%s %s" % [reason, str(logs.slice(0, 2))])
 		if r.duel != null:
+			for ac: DCard in r.duel.cards.values():
+				if not ac.used.is_empty() and ac.token == "" and str(db.card(ac.idx).get("set", "")).begins_with("LOD-"):
+					used[db.card_name(ac.idx)] = true
 			r.duel.dispose()
+	print("LOD cards the CPU activated: ", used.keys())
+	check(used.size() >= 5, "the CPU uses Legacy of Darkness cards (%d)" % used.size())
 	check(bad.is_empty(), "CPU duels with Legacy of Darkness cards all end normally: %s" % str(bad))

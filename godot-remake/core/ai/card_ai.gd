@@ -149,6 +149,29 @@ static func _handler(h: String, d: Duel, p: int, c: DCard, idx: int, event: Stri
 			return int(d.side(opp).hand.size() >= 2)
 		"5b49d0":                                       # Giant Trunade
 			return int(_trunade_ok(d, p))
+		# Legacy of Darkness cards (not in the original game, so no original handler)
+		"lod_heart":                                    # Heart of Clear Water: on my best monster that is still under 1300 ATK
+			return int(_candidates(d, p, c, idx).any(func(t): return t.controller == p and t.face_up and d.atk_of(t) < 1300 and d.atk_of(t) >= 800))
+		"lod_swap":                                     # Creature Swap: they hand over their weakest monster, I give mine
+			var mine := d.monsters_of(p).map(func(m): return d.atk_of(m))
+			var theirs := d.monsters_of(opp).map(func(m): return d.atk_of(m))
+			return int(not mine.is_empty() and not theirs.is_empty() and mine.min() + 300 < theirs.min())
+		"lod_exiled":                                   # Exiled Force: trade it for a monster that is clearly better
+			return int(d.monsters_of(opp).any(func(m): return not m.face_up or d.atk_of(m) >= 1800))
+		"lod_possessed":                                # Possessed Dark Soul: worth it when it takes more than itself
+			var taken := 0
+			for m in d.monsters_of(opp):
+				if m.face_up and d.level_of(m) <= 3:
+					taken += d.atk_of(m)
+			return int(taken > d.atk_of(c) and d.side(p).monsters.count(null) >= 1)
+		"lod_spirit_ryu":                               # Spirit Ryu: discard a Dragon only when the boost wins the battle
+			var foe: DCard = d.card_by_uid(int(data.get("target", -1)))
+			if foe == null or foe.controller == p:
+				return 0
+			var foe_v: int = d.atk_of(foe) if foe.pos == "atk" else d.def_of(foe)
+			return int(d.atk_of(c) <= foe_v and foe_v < d.atk_of(c) + 1000)
+		"lod_have_dragon":                              # Dragon's Rage: only with a Dragon of mine on the field
+			return int(d.monsters_of(p).any(func(m): return m.face_up and d.race_of(m) == CardDB.RACES.find("Dragon")))
 	return -1
 
 # --- pieces ----------------------------------------------------------------------------------------
