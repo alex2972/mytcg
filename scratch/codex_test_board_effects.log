@@ -1,5 +1,0 @@
-Godot Engine v4.7.1.stable.official.a13da4feb - https://godotengine.org
-
-board effects tests: OK
-ERROR: 1 RID allocations of type 'PN13RendererDummy14TextureStorage12DummyTextureE' were leaked at exit.
-ERROR: 1 RID allocations of type 'PN18TextServerAdvanced12FontAdvancedE' were leaked at exit.

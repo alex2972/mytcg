@@ -14,3 +14,8 @@ extracted/data/j/
 *.ogg
 *.mp3
 __pycache__/
+/scratch/
+/videos/
+/ghproj2/
+godot-remake/output/
+godot-remake/art_incoming/
